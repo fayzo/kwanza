@@ -9,6 +9,11 @@ if ($users->loggedin() == false) {
 if (isset($_GET['hashtag']) && !empty($_GET['hashtag'])) {
     $user_id= $_SESSION['key'];
     $hashtag= $users->test_input($_GET['hashtag']);
+    $jobs= $home->jobsData($_SESSION['key']);
+    $fundraisingV= $home->fundraisingData($_SESSION['key']);
+    $eventV= $home->eventsData($_SESSION['key']);
+    $blogV= $home->blogData($_SESSION['key']);
+    $saleV= $home->saleData($_SESSION['key']);
 	$user= $home->userData($user_id);
 	$notific= $notification->getNotificationCount($user_id);
 	$notification->notificationsView($user_id);

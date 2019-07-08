@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
     $(document).on('click', '.collapse-minus', function () {
         var getmessage = 1;
 

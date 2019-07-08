@@ -88,7 +88,7 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
                            <script type="text/javascript">jssor_1_slider_init();</script>
                       
                        <h4 class="mt-2"><i>
-                          Helps <?php echo $user['lastname1']; ?>
+                          Helps <?php echo $user['lastname1']." ". $user['photo_Title_main']; ?>
                        </i></h4>
                        <div class="mt-2">
                            <?php echo $user['text']; ?>
@@ -110,17 +110,20 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
                        <div class="mt-2">
                             <?php 
                                $file = $user['other_photo'];
+                               $photo_title=  explode("=",$user["photo_Title"]);
                                $expode = explode("=",$file); ?>
                              <div class="imageFundViewPopup more"  data-fund="<?php echo $user["fund_id"] ;?>">
                                 <img src="<?php echo BASE_URL_PUBLIC."uploads/fundraising/".$expode[0] ;?>"
                                     alt="Photo" >
                              </div>
+                             <div class="h5"><i><?php echo $photo_title[0]; ?></i></div>
                        </div>
 
                <?php }else if ($count === 2) { ?>
 
                          <?php 
                                $file = $user['other_photo'];
+                               $photo_title=  explode("=",$user["photo_Title"]);
                                $explode = explode("=",$file);
                                $splice= array_splice($explode,0,2);
                                for ($i=0; $i < count($splice); ++$i) { 
@@ -130,6 +133,7 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
                                          <img src="<?php echo BASE_URL_PUBLIC."uploads/fundraising/".$splice[$i] ;?>"
                                              alt="Photo" >
                                          </div>
+                                        <div class="h5"><i><?php echo $photo_title[$i]; ?></i></div>
                                    </div>
                              <?php } ?>
 
@@ -137,6 +141,7 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
 
                          <?php 
                                $file = $user['other_photo'];
+                               $photo_title=  explode("=",$user["photo_Title"]);
                                $explode = explode("=",$file);
                                $splice= array_splice($explode,0,3);
                                for ($i=0; $i < count($splice); ++$i) { 
@@ -146,6 +151,7 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
                                          <img src="<?php echo BASE_URL_PUBLIC."uploads/fundraising/".$splice[$i] ;?>"
                                              alt="Photo" >
                                          </div>
+                                        <div class="h5"><i><?php echo $photo_title[$i]; ?></i></div>
                                    </div>
                              <?php } ?>
 
@@ -153,6 +159,7 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
 
                             <?php 
                                $file = $user['other_photo'];
+                               $photo_title=  explode("=",$user["photo_Title"]);
                                $explode = explode("=",$file);
                                $splice= array_splice($explode,0,4);
                                for ($i=0; $i < count($splice); ++$i) { 
@@ -162,6 +169,7 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
                                          <img src="<?php echo BASE_URL_PUBLIC."uploads/fundraising/".$splice[$i] ;?>"
                                              alt="Photo" >
                                          </div>
+                                        <div class="h5"><i><?php if(!empty($user["photo_Title"])){ echo $photo_title[$i];} ?></i></div>
                                    </div>
                              <?php } ?>
 

@@ -16,7 +16,8 @@ if (isset($_POST['key'])) {
 				'qualifications_skills'=> 'qualifications_skills', 
 				'conditions'=> 'conditions', 
 				'deadline'=> 'deadline', 
-				'website'=> 'website', 
+		  		'website'=> 'website', 
+		    	'categories_jobs' => 'categories_jobs',
 				'business_id'=> 'business_id', 
 				'created_on'=> 'created_on', 
 
@@ -33,6 +34,7 @@ if (isset($_POST['key'])) {
                 'conditions'=> $data['conditions'],
                 'deadline'=> $data['deadline'],
                 'website'=> $data['website'],
+                'categories_jobs'=> $data['categories_jobs'],
                 'created_on'=> $data['created_on'],
 			);
 			
@@ -134,6 +136,8 @@ if (isset($_POST['key'])) {
 		$conditions = $db->real_escape_string($_POST['conditions']);
 		$deadline = $db->real_escape_string($_POST['deadline']);
 		$website = $db->real_escape_string($_POST['website']);
+		$website = $db->real_escape_string($_POST['website']);
+		$categories_jobs = $db->real_escape_string($_POST['categories_jobs']);
 
 		if ($_POST['key'] == 'update') {
             $datetime= date('Y-m-d H-i-s');
@@ -145,6 +149,7 @@ if (isset($_POST['key'])) {
 			'qualifications_skills'=> $qualifications_skills, 
 			'conditions'=> $conditions,
 			'deadline'=> $deadline, 
+			'categories_jobs' => $categories_jobs,
             'website'=> $website,
             'business_id'=> $businessID,
             'created_on'=> $datetime ),array('job_id' => $rowID));
@@ -163,7 +168,8 @@ if (isset($_POST['key'])) {
 			'conditions'=> $conditions,
 			'deadline'=> $deadline, 
             'website'=> $website,
-            'business_id'=> $businessID,
+			'business_id'=> $businessID,
+			'categories_jobs' => $categories_jobs,
             'turn'=> 'on',
             'created_on'=> $datetime ));
 

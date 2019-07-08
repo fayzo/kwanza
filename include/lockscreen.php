@@ -10,7 +10,7 @@ if (!isset($_SESSION['keys'])) {
 if (isset($_POST['key']) == 'lockscreen') {
     
     $password = $users->test_input($_POST['password']);
-    $sql= $db->query("SELECT user_id ,username FROM users WHERE user_id= $_SESSION[keys] AND password='{$password}' ");
+    $sql= $db->query("SELECT user_id ,username,approval,chat FROM users WHERE user_id= $_SESSION[keys] AND password='{$password}' ");
     $row= $sql->fetch_assoc();
 
     if ($sql->num_rows > 0) {
@@ -20,6 +20,8 @@ if (isset($_POST['key']) == 'lockscreen') {
         $db->query("UPDATE users SET chat = 'on' WHERE user_id= $_SESSION[keys] AND password= '$password' ");
         $_SESSION['key'] = $row['user_id'];
         $_SESSION['username'] = $row['username'];
+        $_SESSION['approval'] = $row['approval'];
+        $_SESSION['chat'] = $row['chat'];
         exit ('<div class="alert alert-success alert-dismissible fade show text-center">
                     <button class="close" data-dismiss="alert" type="button">
                         <span>&times;</span>
@@ -226,7 +228,11 @@ if (isset($_POST['key']) == 'lockscreen') {
             <div class="lockscreen-item">
                 <!-- lockscreen image -->
                 <div class="lockscreen-image">
+                <?php if(!empty($_SESSION['profile_img'])){ ?>
                     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$_SESSION['profile_img'] ;?>" alt="User Image">
+                <?php }else{ ?>
+                    <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL; ?>" alt="User Image">
+                <?php } ?>
                 </div>
                 <form class="lockscreen-credentials">
                     <div class="input-group">

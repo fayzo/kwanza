@@ -158,22 +158,79 @@ class Movies extends Home{
       public function moviesMayLike()
     { 
       $mysqli= $this->database;
-      $query= $mysqli->query("SELECT * FROM movies WHERE  title_movies = title_movies  ORDER BY created_on3 Asc Limit 0,30 ");
+      $query= $mysqli->query("SELECT * FROM movies WHERE  title_movies = title_movies  ORDER BY created_on3 Asc Limit 0,20 ");
       ?>
-       <ul class="list-group mb-5 " >
-          <a class="list-group-item list-group-item-action text-center py-1 main-active" href="javascript:void(0)"><h5><i> You May Also Liked</i></h5></a>
-       <?php while($row= $query->fetch_array()){ ?>
-              <a class="list-group-item list-group-item-action" href="javascript:void(0)"  id="movies_watchvideo" data-movies="<?php echo $row['movies_id'];?> "> <?php echo $row['title_movies']; ?></a>
+        <ul class="list-group mb-5 " style="list-style-type: none;">
+        <a class="list-group-item list-group-item-action text-center py-1 main-active" href="javascript:void(0)"><h5><i> You May Also Liked</i></h5></a>
+        <?php while($row= $query->fetch_array()){ ?>
+
+    
+       <li class="movies-dropdown" >
+        <ul><li>
+         <a class="list-group-item list-group-item-action" href="javascript:void(0)"  id="movies_watchvideo" data-movies="<?php echo $row['movies_id'];?> "> <?php echo $row['title_movies']; ?></a>
+              <ul><li>
+                <?php echo $this->moviesDropdown($row['movies_id']); ?>
+              </li></ul>
+          </li></ul>
+        </li>
 
         <?php } ?>
+
         </ul><!-- LIST GROUP WITH LINKS -->
     <?php }
+
+      public function moviesMayLike0()
+    { 
+      $mysqli= $this->database;
+      $query= $mysqli->query("SELECT * FROM movies WHERE  title_movies = title_movies  ORDER BY created_on3 Asc Limit 0,20 ");
+      ?>
+        <ul class="list-group mb-5 " style="list-style-type: none;">
+        <a class="list-group-item list-group-item-action text-center py-1 main-active" href="javascript:void(0)"><h5><i> You May Also Liked</i></h5></a>
+        <?php while($row= $query->fetch_array()){ ?>
+
+    
+       <li class="movies-dropdown0" >
+        <ul><li>
+         <a class="list-group-item list-group-item-action" href="javascript:void(0)"  id="movies_watchvideo" data-movies="<?php echo $row['movies_id'];?> "> <?php echo $row['title_movies']; ?></a>
+              <ul><li>
+                <?php echo $this->moviesDropdown($row['movies_id']); ?>
+              </li></ul>
+          </li></ul>
+        </li>
+
+        <?php } ?>
+
+        </ul><!-- LIST GROUP WITH LINKS -->
+    <?php }
+
+      public function moviesDropdown($movies_id)
+    { 
+      $mysqli= $this->database;
+      $query= $mysqli->query("SELECT * FROM movies WHERE  movies_id = '{$movies_id}' ");
+      $row = $query->fetch_assoc();
+      ?>
+         <div  class="row" style="width:205px;">
+            <div class="col-md-12">
+
+              <div class="card more" id="movies_watchvideo" data-movies="<?php echo $row['movies_id'];?> ">
+                <img class="card-img" src="<?php echo BASE_URL_PUBLIC."uploads/movies/".$row['photo'] ;?>" width="203px" height="252px" >
+                <div class="card-footer bg-white py-0  text-center">
+                  <div style="border-bottom: 1px #d6cccc solid;" class="text-primary"><?php echo $row['title_movies'] ;?></div>
+                  <div style="font-size:9px"><i class="fa fa-eye" aria-hidden="true"></i> 30 000 000 </div>
+                </div><!-- card-footer -->
+              </div><!-- card -->
+
+            </div> <!-- col -->
+        </div> <!-- row -->
+
+  <?php  }
 
       public function moviesWatchVideo($movies_id)
     {
          $mysqli= $this->database;
          $query= $mysqli->query("SELECT * FROM movies WHERE movies_id= $movies_id ");
          $row= $query->fetch_array();
+         $query0= $mysqli->query("SELECT * FROM movies WHERE categories_movies= 'Action' ");
         ?>
        <div class="card">
        <div class="card-body">
@@ -242,15 +299,68 @@ class Movies extends Home{
          </div> <!-- card -->
          </div><!-- col -->
 
-         <div class="col-md-3">
-           <?php echo $this->moviesMayLike(); ?>
+         <div class="col-md-3 mb-2">
+           <?php echo $this->moviesMayLike0(); ?>
          </div><!-- col -->
+
+         <div class="col-md-12 d-none d-md-block">
+
+            <div class="frame" id="cycleitems">
+               <ul class="clearfix">
+                <?php 
+                    while ($row0= $query0->fetch_array()) { ?>
+                            <li style="width:165px;">
+                               <img  src="<?php echo BASE_URL_PUBLIC."uploads/movies/".$row0['photo'] ;?>" id="movies_watchvideo" data-movies="<?php echo $row0['movies_id'];?> " alt="Card image cap">
+                         		</li>
+                 <?php } ?>
+                 </ul>
+                </div>
+                <!-- <div class="controls text-center mt-3">
+                     <span class="prev" id="prev1"><i class="fa fa-chevron-left"></i></span>
+                     <div class="btn-group">
+                       <button class="btn pause"><i class="fa fa-pause"></i> pause</button>
+                       <button class="btn resume"><i class="fa fa-play"></i> resume</button>
+                       <button class="btn toggle"><i class="fa fa-pause"></i> toggle</button>
+                     </div>
+                     <span class="next" id="next1"><i class="fa fa-chevron-right"></i> </span>
+                </div> -->
+
+            </div><!-- frame -->
+               <script src="<?php echo BASE_URL_LINK ;?>dist/js/sly_scroll/sly.min.js"></script>
+               <script src="<?php echo BASE_URL_LINK ;?>dist/js/sly_scroll/jquery.easing.min.js"></script>
+               <script src="<?php echo BASE_URL_LINK ;?>dist/js/sly_scroll/image_scroll.js"></script>
+           </div><!-- col -->
 
           </div><!-- row -->
          </div><!-- card-body -->
         </div><!-- card -->
 
     <?php }
+
+    public function mostwatchesMovies()
+    { 
+      $mysqli= $this->database;
+      $query= $mysqli->query("SELECT * FROM movies WHERE  title_movies = title_movies  ORDER BY created_on3 Asc Limit 0,10 ");
+      ?>
+        <ul class="list-group mb-5 " style="list-style-type: none;">
+        <a class="list-group-item list-group-item-action text-center py-1 main-active" href="javascript:void(0)"><h5><i> Most Watchest Movies</i></h5></a>
+        <?php while($row= $query->fetch_array()){ ?>
+    
+       <li class="movies-dropdown" >
+        <ul><li>
+         <a class="list-group-item list-group-item-action" href="javascript:void(0)"  id="movies_watchvideo" data-movies="<?php echo $row['movies_id'];?> "> =>  <?php echo $row['title_movies']; ?><div><i class="fa fa-eye" aria-hidden="true"></i> 23 000 000 Viewers</div></a>
+              <ul><li>
+                <?php echo $this->moviesDropdown($row['movies_id']); ?>
+              </li></ul>
+          </li></ul>
+        </li>
+
+        <?php } ?>
+
+        </ul><!-- LIST GROUP WITH LINKS -->
+
+<?php }
+
 }
 
 $movies = new Movies();

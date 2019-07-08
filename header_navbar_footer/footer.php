@@ -197,6 +197,13 @@
    <script src="<?php echo BASE_URL_LINK ;?>js/rwanda_landscapes_add.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/rwandalandscapes.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/news_addcategories.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/businessApplyRead_inbox.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/house_addcategories.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/car_addcategories.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/food_addcategories.js"></script>
+   <!-- <script src="<?php echo BASE_URL_LINK ;?>js/food_cart_items.js"></script> -->
+   <script src="<?php echo BASE_URL_LINK ;?>js/domestic_addcategories.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/crowfund_addcategories.js"></script>
    
    <!-- <script src="<?php echo BASE_URL_LINK ;?>js/add_post_ajax.js"></script> -->
    <script src="<?php echo BASE_URL_LINK ;?>js/manage_admins_ajax.js"></script>
@@ -205,6 +212,7 @@
    <!-- <script src="<?php echo BASE_URL_LINK ;?>plugin/bootstrap-daterangepicker/daterangepicker.js"></script> -->
    <!-- datepicker -->
    <!-- <script src="<?php echo BASE_URL_LINK ;?>plugin/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script> -->
+  <script src="<?php echo BASE_URL_LINK ;?>dist/js/sly_scroll/slick.min.js" type="text/javascript" charset="utf-8"></script>
 
    <script src="<?php echo BASE_URL_LINK ;?>lang/language_rw.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>lang/language_en.js"></script>
@@ -425,6 +433,44 @@ $(function() {
 				}
 			});
 	});
+
+      $('.regular').slick({
+     dots: true,
+    //  prevArrow: $('.slick-prev'),
+    //  nextArrow: $('.next'),
+     infinite: false,
+     speed: 300,
+     slidesToShow: 1,
+     slidesToScroll: 1,
+     responsive: [
+       {
+         breakpoint: 1024,
+         settings: {
+          slidesToShow: 1,
+           slidesToScroll: 1,
+           infinite: true,
+           dots: true
+         }
+       },
+       {
+         breakpoint: 700,
+         settings: {
+           slidesToShow: 1,
+           slidesToScroll: 1
+         }
+       },
+       {
+         breakpoint: 480,
+         settings: {
+           slidesToShow: 1,
+           slidesToScroll: 1
+         }
+       }
+       // You can unslick at a given breakpoint now by adding:
+       // settings: "unslick"
+       // instead of a settings object
+       ]
+   });
 
 </script>
 

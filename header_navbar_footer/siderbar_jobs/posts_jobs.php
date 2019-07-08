@@ -167,6 +167,19 @@
                              <input type="hidden" id="editor1" value="0">
                              <input type="hidden" id="id_posts" value="0">
                              <input type="hidden" id="businessID_posts" value="<?php echo $_SESSION['key'] ;?>">
+                               
+                              <div class="form-group">
+                                    <select class="form-control" name="categories_jobs" id="categories_jobs">
+                                      <option class="categories_jobsx" value="">Select what types of latest_movies</option>
+                                      <option value="Featured">Featured</option>
+                                      <option value="Tenders">Tenders</option>
+                                      <option value="Consultancy">Consultancy</option>
+                                      <option value="Internships">Internships</option>
+                                      <option value="Public">Public</option>
+                                      <option value="Training">Training</option>
+                                    </select>
+                              </div>
+
                                <div class="form-group">
                                    <label for="jobs title">Job Title</label>
                                    <input type="text" class="form-control  job-title" placeholder="job-title">
@@ -203,7 +216,13 @@
                                </div>
                           </form>  
                           </div> <!-- edit-body END -->
+
                           <div class="view-body">
+                            
+                             <h4>categories_jobs: </h4>
+                             <p class="categories_jobs0">Examples of an Accountant Responsibilities. </p>
+                           <hr>
+                      
                            <h4 >Job Title: </h4>
                             <label class="job-title0">Examples of Accountant job titles </label>
                           <hr>
@@ -255,7 +274,20 @@
                            <form method="post">
                              <input type="hidden" id="id_posts1" value="0">
                              <input type="hidden" id="businessID_posts1" value="<?php echo $_SESSION['key'] ;?>">
-                               <div class="form-group">
+                                   
+                              <div class="form-group">
+                                    <select class="form-control" name="categories_jobs1" id="categories_jobs1">
+                                      <option value="">Select what types of latest_movies</option>
+                                      <option value="Featured">Featured</option>
+                                      <option value="Tenders">Tenders</option>
+                                      <option value="Consultancy">Consultancy</option>
+                                      <option value="Internships">Internships</option>
+                                      <option value="Public">Public</option>
+                                      <option value="Training">Training</option>
+                                    </select>
+                              </div>
+
+                              <div class="form-group">
                                    <label for="jobs title">Job Title</label>
                                    <input type="text" class="form-control job-title1"  placeholder="job title">
                                </div>

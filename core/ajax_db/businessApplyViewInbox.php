@@ -8,7 +8,7 @@ if (isset($_POST['cv_id']) && !empty($_POST['business_id'])) {
     $cv_id= $_POST['cv_id'];
     $business_id= $_POST['business_id'];
     $mysqli = $db;
-    $query= $mysqli->query("SELECT * FROM users U Left JOIN apply_job A ON A. business_id0= U. user_id LEFT JOIN jobs J ON J. job_id = A. job_id0  WHERE A. CV_id = $cv_id ");
+    $query= $mysqli->query("SELECT * FROM users U Left JOIN apply_job A ON A. business_id0= U. user_id LEFT JOIN jobs J ON J. job_id = A. job_id0  WHERE A. cv_id = $cv_id ");
     $row = $query->fetch_array();
     ?>
 <div class="inbox-popup">
@@ -18,8 +18,10 @@ if (isset($_POST['cv_id']) && !empty($_POST['business_id'])) {
         </span>
         <div class="img-popup-wrap">
         	<div class="img-popup-body">
+              <form method="post" id="form-inbox">
 
                 <div class="card">
+                    <span id="responseSubmitdelete"></span>
                      <div class="card-body p-0">
                          <div class="mailbox-read-info">
                              <h5>Message Subject Is Placed Here</h5>
@@ -120,6 +122,8 @@ if (isset($_POST['cv_id']) && !empty($_POST['business_id'])) {
                              <p>Thanks,<br>Jane</p>
                          </div>
                          <!-- /.mailbox-read-message -->
+                     <input type="hidden" class="form-control" name="delete" value="delete">
+
                      </div>
                      <!-- /.card-body -->
                      <div class="card-footer">
@@ -139,7 +143,8 @@ if (isset($_POST['cv_id']) && !empty($_POST['business_id'])) {
 
                      for ($i=0; $i < count($expode); ++$i) { ?>
 
-                             <li  class="list-inline-item">
+                     <input type="hidden" class="form-control" name="a<?php echo $row['cv_id']; ?>" value="<?php echo $row['cv_id']; ?>">
+                     <li  class="list-inline-item">
 
                        <?php if(pathinfo($expode[$i])['extension'] == 'docx'|| pathinfo($expode[$i])['extension'] == 'xls'||
                                 pathinfo($expode[$i])['extension'] == 'doc'|| pathinfo($expode[$i])['extension'] == 'xlsx') { ?>
@@ -190,10 +195,27 @@ if (isset($_POST['cv_id']) && !empty($_POST['business_id'])) {
                          </ul>
                      </div>
                  </div>
-
+              </form>
             </div><!-- img-popup-body -->
         </div><!-- tweet-show-popup-box -->
     </div> <!-- Wrp4 -->
 </div> <!-- inbox-popup" -->
 
-<?php } ?>
+<?php } 
+if (isset($_POST['delete'])) {
+
+    if ($_POST['delete'] == 'delete') {
+
+        $datetime= date('Y-m-d H-i-s');
+        $id = array_keys($_POST)[1];
+        $id = $_POST[ $id];
+        // var_dump($_POST);
+        // var_dump($id);
+        // var_dump(array_keys($_POST)[1]);
+
+	$users->InboxDelete('trash',$id,$datetime);
+
+  }
+}
+
+?>

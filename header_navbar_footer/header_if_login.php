@@ -27,7 +27,12 @@ if(!empty($user['language'])){
 }
  require_once "assets/languages/".$_SESSION['lang']. ".php";
 ?>
-<?php echo $sale->cart_item(); ?>
+<?php 
+echo $sale->cart_item(); 
+
+echo $food->Foodcart_item(); 
+
+?>
 
 <!DOCTYPE html>
 <html>

@@ -1,32 +1,67 @@
 /*
+ * Component: progress
+ * -------------------------
+ */
+
+
+.progres {
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    font-size: .75rem;
+    background-color: #e9ecef;
+    border-radius: .25rem;
+}
+
+.progres-bar {
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #007bff;
+    transition: width .6s ease;
+}
+
+/*
  * Component: Dropdown menus
  * -------------------------
  */
- .btn{
-   border-radius: 1.3rem !important;
- }
- .btn-group>.btn {
+.btn {
+    border-radius: 1.3rem !important;
+}
+
+.btn-group>.btn {
     position: relative;
     flex: 0 1 auto;
 }
+
 .btn-default {
     background-color: #f4f4f4;
     color: #444;
     border-color: #ddd;
 }
-.btn.focus, .btn:focus {
+
+.btn.focus,
+.btn:focus {
     outline: 0;
     box-shadow: none !important;
 }
-.wysihtml5-toolbar li ul li a{
-        color: #007bff;
+
+.wysihtml5-toolbar li ul li a {
+    color: #007bff;
 }
+
 /*Dropdowns in general*/
 .dropdown-menu {
     box-shadow: none;
     /* border-color: #eee; */
     border-color: none;
 }
+
 .navbar-badge {
     position: absolute;
     top: 3.5px;
@@ -35,6 +70,7 @@
     font-weight: 300;
     padding: 2px 4px;
 }
+
 .dropdown-menu>li>a {
     color: #777;
 }
@@ -54,25 +90,26 @@
     background-color: #eee;
 }
 
-.dropdown > .background-img > a {
-        border-radius: 10px;
-        background-color: #FFF;
-        border: 3px solid #FFF;
-        padding-left: 0;
-        padding-right: 0;
-        opacity: 1;
-        cursor: pointer;
-        display: block;
-        max-height: 100px;
-        overflow: hidden;
-        padding: 0;
-        min-width: 25%;
+.dropdown>.background-img>a {
+    border-radius: 10px;
+    background-color: #FFF;
+    border: 3px solid #FFF;
+    padding-left: 0;
+    padding-right: 0;
+    opacity: 1;
+    cursor: pointer;
+    display: block;
+    max-height: 100px;
+    overflow: hidden;
+    padding: 0;
+    min-width: 25%;
 }
 
 .progress.xs,
 .progress-xs {
     height: 8px;
 }
+
 .navbar-nav>.notifications-menu>.dropdown-menu,
 .navbar-nav>.messages-menu>.dropdown-menu,
 .navbar-nav>.tasks-menu>.dropdown-menu {
@@ -130,8 +167,8 @@
 .navbar-nav>.notifications-menu>.dropdown-menu>li.footer>a:hover,
 .navbar-nav>.messages-menu>.dropdown-menu>li.footer>a:hover,
 .navbar-nav>.tasks-menu>.dropdown-menu>li.footer>a:hover {
-     background-color: #fff !important;
-     color: rgb(214, 167, 64) !important;
+    background-color: #fff !important;
+    color: rgb(214, 167, 64) !important;
     text-decoration: none;
     font-weight: normal;
 }
@@ -447,10 +484,11 @@
 .options-list a {
     text-decoration: none;
 }
-.options-list ul{
-  list-style-type: none;
-  margin:0px;
-  padding:0px;
+
+.options-list ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
 }
 
 .options-list ul li:hover ul {
@@ -460,6 +498,7 @@
 .options-list ul li {
     position: relative;
 }
+
 .options-list ul li ul {
     position: absolute;
     display: none;
@@ -493,6 +532,7 @@
 .tooltips ul li {
     position: relative;
 }
+
 .tooltips ul li ul {
     position: absolute;
     display: none;
@@ -500,11 +540,11 @@
     z-index: 6;
     background: #333;
     border-radius: 4px;
-     /* top: 2px; */
+    /* top: 2px; */
 }
 
 .tooltips ul li ul li {
-   padding: 2px
+    padding: 2px
 }
 
 .tooltips ul li ul li:hover {
@@ -533,6 +573,7 @@
 .tooltipss ul li {
     position: relative;
 }
+
 .tooltipss ul li ul {
     position: absolute;
     display: none;
@@ -544,7 +585,7 @@
 }
 
 .tooltipss ul li ul li {
-   padding: 2px
+    padding: 2px
 }
 
 .tooltipss ul li ul li:hover {
@@ -552,12 +593,102 @@
     border-radius: 4px
 }
 
+/* MOVIES PEOPLE MAY LIKE VIDEO */
+
+.movies-dropdown a {
+    text-decoration: none;
+}
+
+.movies-dropdown a:hover {
+    text-decoration: underline;
+}
+
+.movies-dropdown ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.movies-dropdown ul li:hover ul {
+    display: block;
+}
+
+.movies-dropdown ul li {
+    position: relative;
+}
+
+.movies-dropdown ul li ul {
+    position: absolute;
+    display: none;
+    padding: 2px;
+    z-index: 6;
+    background: #333;
+    border-radius: 4px;
+    z-index: 1032;
+    top: 0px;
+    left: 105px;
+}
+
+.movies-dropdown ul li ul li {
+    padding: 2px
+}
+
+.movies-dropdown ul li ul li:hover {
+    background: #6ea3d4;
+    border-radius: 4px
+}
+
+/* MOVIES PEOPLE MAY LIKE VIDEO */
+
+.movies-dropdown0 a {
+    text-decoration: none;
+}
+
+.movies-dropdown0 a:hover {
+    text-decoration: underline;
+}
+
+.movies-dropdown0 ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.movies-dropdown0 ul li:hover ul {
+    display: block;
+}
+
+.movies-dropdown0 ul li {
+    position: relative;
+}
+
+.movies-dropdown0 ul li ul {
+    position: absolute;
+    display: none;
+    padding: 2px;
+    z-index: 6;
+    background: #333;
+    border-radius: 4px;
+    z-index: 1032;
+    top: 0px;
+    left: -195px;
+}
+
+.movies-dropdown0 ul li ul li {
+    padding: 2px
+}
+
+.movies-dropdown0 ul li ul li:hover {
+    background: #6ea3d4;
+    border-radius: 4px
+}
+
 .options-list ul li ul li {
-   padding: 5px
+    padding: 5px
 }
 
 .options-list ul li ul li a {
-  color:#c3bebe;
+    color: #c3bebe;
 }
 
 .options-list ul li ul li:hover {

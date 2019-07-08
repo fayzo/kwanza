@@ -15,6 +15,7 @@ $(document).ready(function () {
         $(".responsibilities-duties").val("");
         $(".qualifications-skills").val("");
         $(".terms-conditions").val("");
+        $("#categories_jobs").val("");
         $(".deadline").val("");
         $(".website").val("");
     });
@@ -32,8 +33,9 @@ $(document).ready(function () {
         var conditions = $(".terms-conditions1");
         var deadline = $(".deadline1");
         var website = $(".website1");
+        var categories_jobs = $("#categories_jobs1");
 
-        if (isEmpty(job_title) && isEmpty(job_summary) && isEmpty(responsibilities_duties) && isEmpty(qualifications_skills) &&
+        if (isEmpty(categories_jobs) && isEmpty(job_title) && isEmpty(job_summary) && isEmpty(responsibilities_duties) && isEmpty(qualifications_skills) &&
             isEmpty(conditions) && isEmpty(deadline)) {
 
             $.ajax({
@@ -50,6 +52,7 @@ $(document).ready(function () {
                     deadline: deadline.val(),
                     website: website.val(),
                     rowID: id.val(),
+                    categories_jobs: categories_jobs.val(),
                     businessID: businessID.val(),
 
                 }, success: function (response) {
@@ -87,6 +90,7 @@ function PostsEdits(rowID, businessID, type) {
                 $(".job-summary0").html(decodeHtmlEntities(response.job_summary).replace(/(<([^>]+)>)/ig, ""));
                 $(".responsibilities-duties0").html(decodeHtmlEntities(response.responsibilities_duties).replace(/(<([^>]+)>)/ig, ""));
                 $(".qualifications-skills0").html(decodeHtmlEntities(response.qualifications_skills).replace(/(<([^>]+)>)/ig, ""));
+                $(".categories_jobs0").html(decodeHtmlEntities(response.categories_jobs).replace(/(<([^>]+)>)/ig, ""));
                 $(".terms-conditions0").html(decodeHtmlEntities(response.conditions).replace(/(<([^>]+)>)/ig, ""));
                 $(".deadlin0e").html(decodeHtmlEntities(response.deadline).replace(/(<([^>]+)>)/ig, ""));
                 $(".website0").html(response.website);
@@ -102,6 +106,7 @@ function PostsEdits(rowID, businessID, type) {
                 $(".responsibilities-duties").val(decodeHtmlEntities(response.responsibilities_duties).replace(/(<([^>]+)>)/ig, ""));
                 $(".qualifications-skills").val(decodeHtmlEntities(response.qualifications_skills).replace(/(<([^>]+)>)/ig, ""));
                 $(".terms-conditions").val(decodeHtmlEntities(response.conditions).replace(/(<([^>]+)>)/ig, ""));
+                $(".categories_jobsx").html(decodeHtmlEntities(response.categories_jobs).replace(/(<([^>]+)>)/ig, ""));
                 $(".deadline").val(decodeHtmlEntities(response.deadline).replace(/(<([^>]+)>)/ig, ""));
                 $(".website").val(response.website);
                 $("#posts").attr('value', 'update').attr('onclick', "ajax_requestsPosts('update')").fadeIn();
@@ -122,8 +127,9 @@ function ajax_requestsPosts(key) {
     var conditions= $(".terms-conditions");
     var deadline= $(".deadline");
     var website = $(".website");
+    var categories_jobs = $("#categories_jobs");
 
-    if (isEmpty(job_title) && isEmpty(job_summary) && isEmpty(responsibilities_duties) && isEmpty(qualifications_skills) &&
+    if (isEmpty(categories_jobs) && isEmpty(job_title) && isEmpty(job_summary) && isEmpty(responsibilities_duties) && isEmpty(qualifications_skills) &&
         isEmpty(conditions) && isEmpty(deadline)) {
 
         $.ajax({
@@ -140,6 +146,7 @@ function ajax_requestsPosts(key) {
                 deadline: deadline.val(),
                 website: website.val(),
                 rowID: id.val(),
+                categories_jobs: categories_jobs.val(),
                 businessID: businessID.val(),
 
             }, success: function (response) {
@@ -154,6 +161,8 @@ function ajax_requestsPosts(key) {
                      conditions.val("");
                      deadline.val('');
                      website.val("");
+                    categories_jobs.val("");
+
                 }
             }
         });

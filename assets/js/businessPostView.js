@@ -41,6 +41,27 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on('click', '.trash-view', function () {
+        // e.stopPropagation();
+        var trash_id = $(this).data('trash_id');
+        var business_id = $(this).data('business');
+        $.ajax({
+            url: 'core/ajax_db/businessApplyViewTrash.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                trash_id: trash_id,
+                business_id: business_id,
+            }, success: function (response) {
+                $(".popupTweet").html(response);
+                $(".close-imagePopup").click(function () {
+                    $(".trash-popup").hide();
+                });
+                console.log(response);
+            }
+        });
+    });
+
     $(document).on('keyup', '.search0', function () {
         if ($(this).val() != "") {
             $('.job-hide').hide();

@@ -24,13 +24,13 @@ $(document).ready(function () {
                     }, false);
 
                     xhr.addEventListener('load', function (e) {
-                        $('.progress-bar').removeClass('bg-info').addClass('bg-success').html('<span> completed  <span class="fa fa-check"></span></span>');
+                        $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
                         setInterval(function () {
                             $(".progress-navbar").fadeOut();
                         }, 2000);
                     }, false);
                     return xhr;
-                },success: function (response) {
+                }, success: function (response) {
                     $('.posted').html(response);
                     $('#loader').hide();
 
@@ -38,6 +38,6 @@ $(document).ready(function () {
             });
         }
 
-    })
+    });
 
 });

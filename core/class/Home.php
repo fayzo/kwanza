@@ -31,7 +31,7 @@ class Home extends Comment {
         public function jobsviewData($business_id,$job_id)
     {
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM users Left JOIN jobs ON business_id = '{$business_id}' WHERE business_id = '{$business_id}' and job_id= '{$job_id}' ");
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN  jobs J ON J. business_id = U. user_id WHERE J. business_id = '{$business_id}' and J. job_id= '{$job_id}' ");
         $row= $query->fetch_array();
         return $row;
     }
@@ -39,7 +39,7 @@ class Home extends Comment {
         public function jobsactivities($user_id)
     {
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM users Left JOIN jobs ON business_id= user_id WHERE turn = 'on' and business_id = '{$user_id}' ");
+        $query= $mysqli->query("SELECT * FROM  users U Left JOIN  jobs J ON J. business_id = U. user_id WHERE J.turn = 'on' and J. business_id = '{$user_id}' ");
         ?>
         <div class="card">
             <div class="card-header main-active">
@@ -79,7 +79,7 @@ class Home extends Comment {
         public function jobsfetch()
     {
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM users Left JOIN jobs ON business_id= user_id WHERE turn = 'on' ORDER BY rand() LIMIT 6 ");
+        $query= $mysqli->query("SELECT * FROM  users U Left JOIN  jobs J ON J. business_id = U. user_id WHERE J.turn = 'on' ORDER BY rand() LIMIT 6 ");
         ?>
         <div class="card card-primary mb-3 ">
         <div class="card-header main-active p-1">
@@ -104,10 +104,10 @@ class Home extends Comment {
                    <span class="username">
                        <a style="padding-right:3px;" href="#">Job Title: <?php echo $jobs['job_title'] ;?></a> 
                    </span>
-                   <span class="description"><?php echo $jobs['companyname']; ?> || <i class="flag-icon flag-icon-<?php echo strtolower( $jobs['location']) ;?> h4 mb-0"
+                   <span class="description"><?php echo htmlspecialchars($jobs['companyname']); ?> || <i class="flag-icon flag-icon-<?php echo strtolower( $jobs['location']) ;?> h4 mb-0"
                             id="<?php echo strtolower( $jobs['location']) ;?>" title="us"></i></span>
                    <span class="description">Shared public - <?php echo $this->timeAgo($jobs['created_on']); ?></span>
-                   <span class="description">Deadline -  <?php echo $jobs['deadline']; ?></span>
+                   <span class="description">Deadline -  <?php echo htmlspecialchars($jobs['deadline']); ?></span>
                </div>
             </div>
             <hr >
@@ -123,10 +123,18 @@ class Home extends Comment {
 
     <?php }
 
-        public function jobsfetchALL()
+        public function jobsfetchALL($categories,$pages)
     {
+        $pages= $pages;
+        $categories= $categories;
+        
+        if($pages === 0 || $pages < 1){
+            $showpages = 0 ;
+        }else{
+            $showpages = ($pages*10)-10;
+        }
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM users Left JOIN jobs ON business_id= user_id WHERE turn = 'on' ORDER BY rand()");
+        $query= $mysqli->query("SELECT * FROM  users U Left JOIN  jobs J ON J. business_id = U. user_id WHERE J.categories_jobs ='$categories' AND J. turn = 'on' ORDER BY rand() Desc Limit $showpages,10");
         ?>
         <div class="card card-primary mb-3 ">
         <div class="card-header main-active p-1">
@@ -139,8 +147,19 @@ class Home extends Comment {
                     <input type="text" class="form-control search0"  aria-describedby="helpId" placeholder="Search Accountant, finance ,enginneer">
                 </div>
               </form>
-        </div>
-        <!-- /.card-header -->
+
+            <div class="nav-scroller py-0" style="clear:right;height:2rem;">
+                <nav class="nav d-flex justify-content-between pb-0"  >
+                <a class="p-2" href="javascript:void(0)" onclick="jobsCategories('Featured',1);" >Featured<span class="badge badge-primary"><?php echo $this->jobscountPOSTS('Featured');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="jobsCategories('Tenders',1);" >Tenders<span class="badge badge-primary"><?php echo $this->jobscountPOSTS('Tenders');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="jobsCategories('Consultancy',1);" >Consultancy<span class="badge badge-primary"><?php echo $this->jobscountPOSTS('Consultancy');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="jobsCategories('Internships',1);" >Internships<span class="badge badge-primary"><?php echo $this->jobscountPOSTS('Internships');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="jobsCategories('Public',1);" >Public<span class="badge badge-primary"><?php echo $this->jobscountPOSTS('Public');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="jobsCategories('Training',1);" >Training<span class="badge badge-primary"><?php echo $this->jobscountPOSTS('Training');?></span></a>
+                </nav>
+            </div> <!-- nav-scroller -->
+        </div> <!-- /.card-header -->
+
         <div class="card-body">
         <span class="job-show"></span>
         <div class="job-hide">
@@ -159,25 +178,61 @@ class Home extends Comment {
                    </div>
               </div>
               <div class="col-10 pl-4">
-                   <span>Job Title: <?php echo $jobs['job_title'] ;?></span><br>
+                   <span>Job Title: <?php echo $this->jobsRemoveDiv($jobs['job_title']) ;?></span><br>
                    <span><?php echo $jobs['companyname']; ?></span> || 
                        <i class="flag-icon flag-icon-<?php echo strtolower( $jobs['location']) ;?> h4 mb-0"
                             id="<?php echo strtolower( $jobs['location']) ;?>" title="us"></i><br>
                    <span>Shared public - <?php echo $this->timeAgo($jobs['created_on']); ?></span><br>
-                   <span>Deadline - <?php echo $jobs['deadline']; ?></span>
-               </div>
-             </div>
-             </div>
-            </div>
+                   <span>Deadline - <?php echo $this->jobsRemoveDiv($jobs['deadline']); ?></span>
+               </div> <!-- col-10 -->
+            </div> <!-- row -->
+          </div> <!-- user-block -->
+          </div> <!-- col-12 -->
             <hr>
 
-          <?php } ?>
+        <?php }
+
+        $query1= $mysqli->query("SELECT COUNT(*) FROM jobs WHERE categories_jobs ='$categories' AND turn = 'on' ");
+        $row_Paginaion = $query1->fetch_array();
+        $total_Paginaion = array_shift($row_Paginaion);
+        $post_Perpages = $total_Paginaion/10;
+        $post_Perpage = ceil($post_Perpages); ?>
            </div>
           </div> <!-- /.card-body -->
-       </div>
-       <!-- /.card -->
+       </div> <!-- /.card -->
+
+        <?php if($post_Perpage > 1){ ?>
+         <nav>
+             <ul class="pagination justify-content-center mt-3">
+                 <?php if ($pages > 1) { ?>
+                     <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="jobsCategories('<?php echo $categories; ?>',<?php echo $pages-1; ?>)">Previous</a></li>
+                 <?php } ?>
+                 <?php for ($i=1; $i <= $post_Perpage; $i++) { 
+                         if ($i == $pages) { ?>
+                      <li class="page-item active"><a href="javascript:void(0)"  class="page-link" onclick="jobsCategories('<?php echo $categories; ?>',<?php echo $i; ?>)" ><?php echo $i; ?> </a></li>
+                      <?php }else{ ?>
+                     <li class="page-item"><a href="javascript:void(0)"  class="page-link" onclick="jobsCategories('<?php echo $categories; ?>',<?php echo $i; ?>)" ><?php echo $i; ?> </a></li>
+                 <?php } } ?>
+                 <?php if ($pages+1 <= $post_Perpage) { ?>
+                     <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="jobsCategories('<?php echo $categories; ?>',<?php echo $pages+1; ?>)">Next</a></li>
+                 <?php } ?>
+             </ul>
+         </nav>
+        <?php } ?>
 
     <?php } 
+
+      public function jobscountPOSTS($categories)
+    {
+        $db =$this->database;
+        $sql= $db->query("SELECT COUNT(*) FROM jobs WHERE categories_jobs ='$categories' AND turn = 'on'");
+        $row_post = $sql->fetch_array();
+        $total_post= array_shift($row_post);
+        $array= array(0,$total_post);
+        $total_posts= array_sum($array);
+        echo $total_posts;
+    }
+
 
     public function options(){ ?>
 
@@ -187,6 +242,7 @@ class Home extends Comment {
             </div>
             <div class="card-body options-list">
                 <ul>
+                    <li><h5 class="card-title"><a href="crowfund.php">GushoraStartUp</a></h5> </li>
                     <li><h5 class="card-title"><a href="fundraising.php"> Fundraising</a></h5>
                          <ul>
                               <li><h5 class="card-title"><a href="fundraising.php#list-Education">Education</a></h5></li>
@@ -202,6 +258,7 @@ class Home extends Comment {
                               <li><h5 class="card-title"><a href="fundraising.php#list-Nonprofit">Nonprofit</a></h5></li>
                          </ul>
                     </li>
+                    <li><h5><a href="Unemployment.php"> Unemployment</a></h5> </li>
                     <li><h5 class="card-title"><a href="sale.php">Sale</a></h5>
                         <ul>
                               <li><h5 class="card-title"><a href="sale.php">Electronics</a></h5></li>
@@ -240,6 +297,11 @@ class Home extends Comment {
                     <li><h5 class="card-title"><a href="entertainment.php">Entertainment</a></h5>
                     <li><h5 class="card-title"><a href="rwandaPhotos.php">Rwanda-Landscape</a></h5>
                     <li><h5 class="card-title"><a href="Tembera.php">Tembera-ltd</a></h5>
+                    <li><h5 class="card-title"><a href="hotelbooking.php">Hotel-booking</a></h5>
+                    <li><h5 class="card-title"><a href="house.php">House</a></h5>
+                    <li><h5 class="card-title"><a href="car.php">Car</a></h5>
+                    <li><h5 class="card-title"><a href="food.php">Foodzana</a></h5>
+                    <li><h5 class="card-title"><a href="domestic.php">domestic Helpers</a></h5> </li>
                 </ul>
             </div>
         </div>
@@ -254,7 +316,9 @@ class Home extends Comment {
             </div>
             <div class="card-body options-list">
                 <ul>
+                    <li><h5><a href="crowfund.php">GushoraStartUp</a></h5> </li>
                     <li><h5><a href="fundraising.php"> Fundraising</a></h5> </li>
+                    <li><h5><a href="Unemployment.php"> Unemployment</a></h5> </li>
                     <li><h5><a href="sale.php">Sale</a></h5> </li>
                     <li><h5><a href="blog.php">Blog</a></h5> </li>
                     <li><h5><a href="jobs.php">Jobs</a></h5></li>
@@ -265,6 +329,11 @@ class Home extends Comment {
                     <li><h5><a href="entertainment.php">Entertainment</a></h5>
                     <li><h5><a href="rwandaPhotos.php">Rwanda-Landscape</a></h5>
                     <li><h5><a href="Tembera.php">Tembera-ltd</a></h5>
+                    <li><h5><a href="hotelbooking.php">Hotel-booking</a></h5>
+                    <li><h5><a href="house.php">House</a></h5>
+                    <li><h5><a href="car.php">Car</a></h5>
+                    <li><h5><a href="food.php">Foodzana</a></h5>
+                    <li><h5><a href="domestic.php">domestic Helpers</a></h5> </li>
                 </ul>
             </div>
         </div>
@@ -457,14 +526,35 @@ class Home extends Comment {
         $query= $mysqli->query("SELECT * FROM users U Left JOIN apply_job A ON A. business_id0= U. user_id LEFT JOIN jobs J ON J. job_id = A. job_id0  WHERE A. business_id0= U. user_id ORDER BY created_on0 DESC ");
         while($apply = $query->fetch_array()) { 
             # code...
-       echo ' <tr class="inbox-view more" data-cv_id="'.$apply['cv_id'].'" data-business="'.$apply['business_id'].'" >
-                   <td><input type="checkbox"></td>
+       echo '
+             <tr class="inbox-view more" data-cv_id="'.$apply['cv_id'].'" data-business="'.$apply['business_id'].'" >
+                   <td><input type="checkbox" name="a'.$apply['cv_id'].'" value="'.$apply['cv_id'].'"></td>
                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-warning"></i></a></td>
                    <td class="mailbox-name inbox-view more"><a href="#">'.$apply['firstname0']." ".$apply['lastname0'].'</a></td>
                    <td class="mailbox-subject"><b>'.$apply['job_title'].'</b> - '.$apply['addition_information'].'
                    </td>
                    <td class="mailbox-attachment">'.((!empty($apply['uploadfilecv']))? '<i class="fa fa-paperclip"></i>':'' ).'</td>
                    <td class="mailbox-date">'.$this->timeAgo($apply['created_on0']).'</td>
+              </tr>';
+
+        }
+    }
+
+    public function trash()
+    {
+        $mysqli = $this->database;
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN trash T ON T. business_id0= U. user_id LEFT JOIN jobs J ON J. job_id = T. job_id0  WHERE T. business_id0= U. user_id ORDER BY created_on0 DESC ");
+        while($trash = $query->fetch_array()) { 
+            # code...
+       echo '
+             <tr class="trash-view more" data-trash_id="'.$trash['trash_id'].'" data-business="'.$trash['business_id'].'" >
+                   <td><input type="checkbox"></td>
+                   <td class="mailbox-star"><a href="#"><i class="fa fa-star text-warning"></i></a></td>
+                   <td class="mailbox-name trash-view more"><a href="#">'.$trash['firstname0']." ".$trash['lastname0'].'</a></td>
+                   <td class="mailbox-subject"><b>'.$trash['job_title'].'</b> - '.$trash['addition_information'].'
+                   </td>
+                   <td class="mailbox-attachment">'.((!empty($trash['uploadfilecv']))? '<i class="fa fa-paperclip"></i>':'' ).'</td>
+                   <td class="mailbox-date">'.$this->timeAgo($trash['created_on0']).'</td>
               </tr>';
 
         }
@@ -801,6 +891,114 @@ class Home extends Comment {
 
     }
 
+    public function uploadHouseFile($file)
+    {
+
+        $insertValuesSQL ="";
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/house/';
+        $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
+        
+        foreach($file['name'] as $key => $value){
+            // File upload path
+            $fileName = basename($file['name'][$key]);
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+
+             $filenames = (strlen($fileName) > 10)? 
+                     strtolower(date('Y').'_'.rand(10,100).substr($fileName,0,4).".".$fileActualExt):
+                     strtolower(date('Y').'_'.rand(10,100).$fileName);
+
+            $valued[] = $filenames;
+
+            $targetFilePath = $targetDir . $filenames;
+            
+            // Check whether file type is valid
+            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+            if(in_array($fileType, $allowTypes)){
+                // Upload file to server
+                $fileTmpName = $file["tmp_name"];
+                move_uploaded_file($fileTmpName[$key], $targetFilePath);
+            }
+        }
+        
+        # Build the values
+        $filenamedb = implode("=", $valued);
+        return  $filenamedb;
+
+    }
+
+    public function uploadcarFile($file)
+    {
+
+        $insertValuesSQL ="";
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/car/';
+        $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
+        
+        foreach($file['name'] as $key => $value){
+            // File upload path
+            $fileName = basename($file['name'][$key]);
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+
+             $filenames = (strlen($fileName) > 10)? 
+                     strtolower(date('Y').'_'.rand(10,100).substr($fileName,0,4).".".$fileActualExt):
+                     strtolower(date('Y').'_'.rand(10,100).$fileName);
+
+            $valued[] = $filenames;
+
+            $targetFilePath = $targetDir . $filenames;
+            
+            // Check whether file type is valid
+            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+            if(in_array($fileType, $allowTypes)){
+                // Upload file to server
+                $fileTmpName = $file["tmp_name"];
+                move_uploaded_file($fileTmpName[$key], $targetFilePath);
+            }
+        }
+        
+        # Build the values
+        $filenamedb = implode("=", $valued);
+        return  $filenamedb;
+
+    }
+
+    public function uploadfoodFile($file)
+    {
+
+        $insertValuesSQL ="";
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/food/';
+        $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
+        
+        foreach($file['name'] as $key => $value){
+            // File upload path
+            $fileName = basename($file['name'][$key]);
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+
+             $filenames = (strlen($fileName) > 10)? 
+                     strtolower(date('Y').'_'.rand(10,100).substr($fileName,0,4).".".$fileActualExt):
+                     strtolower(date('Y').'_'.rand(10,100).$fileName);
+
+            $valued[] = $filenames;
+
+            $targetFilePath = $targetDir . $filenames;
+            
+            // Check whether file type is valid
+            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+            if(in_array($fileType, $allowTypes)){
+                // Upload file to server
+                $fileTmpName = $file["tmp_name"];
+                move_uploaded_file($fileTmpName[$key], $targetFilePath);
+            }
+        }
+        
+        # Build the values
+        $filenamedb = implode("=", $valued);
+        return  $filenamedb;
+
+    }
+
     public function uploadSportsFile($file)
     {
 
@@ -1022,6 +1220,42 @@ class Home extends Comment {
 
         $insertValuesSQL ="";
         $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/news/';
+        $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
+        
+        foreach($file['name'] as $key => $value){
+            // File upload path
+            $fileName = basename($file['name'][$key]);
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+
+             $filenames = (strlen($fileName) > 10)? 
+                     strtolower(date('Y').'_'.rand(10,100).substr($fileName,0,4).".".$fileActualExt):
+                     strtolower(date('Y').'_'.rand(10,100).$fileName);
+
+            $valued[] = $filenames;
+
+            $targetFilePath = $targetDir . $filenames;
+            
+            // Check whether file type is valid
+            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+            if(in_array($fileType, $allowTypes)){
+                // Upload file to server
+                $fileTmpName = $file["tmp_name"];
+                move_uploaded_file($fileTmpName[$key], $targetFilePath);
+            }
+        }
+        
+        # Build the values
+        $filenamedb = implode("=", $valued);
+        return  $filenamedb;
+
+    }
+
+    public function uploadcrowfundraisingFile($file)
+    {
+
+        $insertValuesSQL ="";
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/crowfund/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -1793,12 +2027,40 @@ class Home extends Comment {
       
     }
 
+      public function jobsRemoveDiv($tweet)
+    { 
+        // $tweet= preg_replace('/<[^<]+? >/si','',$tweet);
+        //   $tweet= preg_replace('/<(\w+)\b.*? >.*?<\/(\w+)>/','',$tweet);
+        //   $tags= array('p','i','h4');
+        //   foreach($tags as $tag){
+        //        $tweet= preg_replace('/<(\w+)\b.*? >.*?<\/(\w+)>/','',$tweet);
+        //   }
+        // $tweet= preg_replace('/[\r\n\t]+/','',$tweet);
+        $tweet= strip_tags($tweet);
+        $tweet= trim($tweet);
+        return  $tweet;
+    }
+
       public function getTweetLink($tweet)
     {
         $tweet= preg_replace('/(http:\/\/)([\w+.])([\w.]+)/','<a  style="color:green;" href="$0" target="_blink">$0</a>',$tweet);
-        $tweet= preg_replace('/(https:\/\/)([\w+.])([\w.]+)/','<a style="color:green;" href="$0" target="_blink">$0</a>',$tweet);
+        // $tweet= preg_replace('/(https:\/\/)([\w+.])([\w.]+)/','<a style="color:green;" href="$0" target="_blink">$0</a>',$tweet);
         $tweet= preg_replace('/#([\w]+)/','<a style="color:green;" href="'.BASE_URL_PUBLIC.'$1.hashtag" >$0</a>',$tweet);
         $tweet= preg_replace('/@([\w]+)/','<a style="color:green;" href="'.BASE_URL_PUBLIC.'$1">$0</a>',$tweet);
+        $search = '/((https:\/\/)www\.youtube\.com\/embed\/\w+)/';
+        $tweet= preg_replace($search,'<section class="content iframe-container">
+                                            <iframe width="500" height="280" src="$0" frameborder="0"
+                                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                                            </iframe>
+                                            </section>',$tweet);
+        $search0 = '/((https:\/\/)www\.youtube\.com\/watch\?v=\w+)/';
+        $tweet= preg_replace($search0,'<a style="color:green;" href="$0" target="_blink">$0</a>',$tweet);
+        // $search0 = '/((https:\/\/)www\.youtube\.com\/watch\?v=\w+)/';
+        // $tweet= preg_replace($search0,'<section class="content iframe-container">
+        //                                     <iframe width="500" height="280" src="$0" frameborder="0"
+        //                                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        //                                     </iframe>
+        //                                     </section>',$tweet);
         return  $tweet;
     }
 

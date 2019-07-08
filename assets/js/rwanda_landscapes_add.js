@@ -62,12 +62,17 @@ $(document).ready(function () {
         var video = $('#video');
         var youtube = $('#youtube');
         var categories_of_landscapes = $('#categories_of_landscapes');
-        var location_pictures = $('#location_pictures');
-
+        var location_province = $('#location_province');
+        var location_districts = $('#location_districts');
+        var location_Sector = $('#location_Sector');
+        var location_cell = $('#location_cell');
+        var location_village = $('#location_village');
+        
         if (isEmpty(country) && isEmpty(city) && isEmpty(province) && isEmpty(districts) &&
             isEmpty(sector) && isEmpty(cell) && isEmpty(village) && isEmpty(categories_of_landscapes) && 
-            isEmpty(additioninformation) && isEmpty(title) && isEmpty(author) && isEmpty(location_pictures) && isEmpty(phone)&&
-             isEmpty(photo) && isEmpty(other_photo) && isEmpty(video) && isEmpty(youtube)) {
+            isEmpty(additioninformation) && isEmpty(title) && isEmpty(author) && isEmpty(location_province) &&
+            isEmpty(location_districts) && isEmpty(location_Sector) && isEmpty(location_cell) && isEmpty(location_village) &&
+            isEmpty(phone) && isEmpty(photo) && isEmpty(other_photo) && isEmpty(video) && isEmpty(youtube)) {
             
             var extensions1 = $('#photo').val().split('.').pop().toLowerCase();
             var extensions2 = $('#other-photo').val().split('.').pop().toLowerCase();
@@ -133,24 +138,171 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on('click', '.imageSaleViewPopup', function (e) {
+    $(document).on('click', '#districts-readmore', function (e) {
         e.stopPropagation();
-        var fund_id = $(this).data('fund');
+        var districts = $(this).data('districts');
+
         $.ajax({
-            url: 'core/ajax_db/saleImageViewPopup.php',
+            url: 'core/ajax_db/landscapes_search.php',
             method: 'POST',
             dataType: 'text',
             data: {
-                showpimage: fund_id,
+                districts: districts,
+                pages: '1',
+            }, success: function (response) {
+                $(".districts").html(response);
+                console.log(response);
+            }
+        });
+    });
+
+    $(document).on('click', '#sector-readmore', function (e) {
+        e.stopPropagation();
+        var sector = $(this).data('sector');
+
+        $.ajax({
+            url: 'core/ajax_db/landscapes_search.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                sector: sector,
+                pages: '1',
+            }, success: function (response) {
+                $(".districts").html(response);
+                console.log(response);
+            }
+        });
+    });
+
+    $(document).on('click', '#cell-readmore', function (e) {
+        e.stopPropagation();
+        var cell = $(this).data('cell');
+
+        $.ajax({
+            url: 'core/ajax_db/landscapes_search.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                cell: cell,
+                pages: '1',
+            }, success: function (response) {
+                $(".districts").html(response);
+                console.log(response);
+            }
+        });
+    });
+    
+    $(document).on('click', '#kigali-districts-readmore', function (e) {
+        e.stopPropagation();
+        var province = $(this).data('province');
+
+        $.ajax({
+            url: 'core/ajax_db/landscapes_search.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                province: province,
+                pages: '1',
+            }, success: function (response) {
+                $(".districts").html(response);
+                console.log(response);
+            }
+        });
+    });
+
+    $(document).on('click', '#province-readmore', function (e) {
+        e.stopPropagation();
+        var province = $(this).data('province');
+
+        $.ajax({
+            url: 'core/ajax_db/rwandalandscapes_province.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                province: province,
+                pages: '1',
+            }, success: function (response) {
+                $(".province-districts").html(response);
+                console.log(response);
+            }
+        });
+    });
+
+    $(document).on('click', '#province-districts-readmore', function (e) {
+        e.stopPropagation();
+        var districts = $(this).data('districts');
+
+        $.ajax({
+            url: 'core/ajax_db/rwandalandscapes_province.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                districts: districts,
+                pages: '1',
+            }, success: function (response) {
+                $(".province-districts").html(response);
+                console.log(response);
+            }
+        });
+    });
+
+    $(document).on('click', '#province-sector-readmore', function (e) {
+        e.stopPropagation();
+        var sector = $(this).data('sector');
+
+        $.ajax({
+            url: 'core/ajax_db/rwandalandscapes_province.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                sector: sector,
+                pages: '1',
+            }, success: function (response) {
+                $(".province-districts").html(response);
+                console.log(response);
+            }
+        });
+    });
+
+    $(document).on('click', '#province-cell-readmore', function (e) {
+        e.stopPropagation();
+        var cell = $(this).data('cell');
+
+        $.ajax({
+            url: 'core/ajax_db/rwandalandscapes_province.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                cell: cell,
+                pages: '1',
+            }, success: function (response) {
+                $(".province-districts").html(response);
+                console.log(response);
+            }
+        });
+    });
+
+    $(document).on('click', '#village-readmore', function (e) {
+        e.stopPropagation();
+        var village_id = $(this).data('village');
+
+        $.ajax({
+            url: 'core/ajax_db/landscapes_search.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                village_id: village_id,
             }, success: function (response) {
                 $(".popupTweet").html(response);
                 $(".close-imagePopup").click(function () {
-                    $(".img-popup").hide();
+                    $(".landscapes-popup").hide();
                 });
                 console.log(response);
             }
         });
     });
+
+
 });
 
 function isEmpty(caller) {

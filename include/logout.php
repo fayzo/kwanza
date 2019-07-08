@@ -4,7 +4,7 @@ include "../core/init.php";
 session_start();
 $users->forgotUsernameCountsTodelete('users',
 array('forgotUsernameCounts' => 0, ),$_SESSION['keycreate']);
-$db->query("UPDATE users SET chat = 'off' WHERE user_id= $_SESSION[keys] ");
+$db->query("UPDATE users SET chat = 'off' WHERE user_id= $_SESSION[key] ");
 
 session_unset($_SESSION['key']);
 session_unset($_SESSION['keycreate']);

@@ -17,6 +17,10 @@ include('class/Sports.php');
 include('class/Football.php');
 include('class/Landscapes.php');
 include('class/News.php');
+include('class/House.php');
+include('class/Car.php');
+include('class/Food.php');
+include('class/Crowfund.php');
 
 define('BASE_URL_LINK', 'http://localhost:84/Blog_nyarwanda_CMS/assets/');
 // SETTING FILE

@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand fixed-top">
+<div class="fixed-top">
+<nav class="navbar navbar-expand">
 <div class="row">
     <div class="col-lg-6">
     
@@ -24,6 +25,9 @@
       </li>
       <li class="nav-item">
         <button type="button" class="btn btn-outline-primary ml-2"><a class="nav-link p-0 m-0" href="<?php echo BASE_URL_PUBLIC ;?>i.notifications" ><i style="font-size: 22px;" class="fa fa-bell nav-link p-0 m-0"></i> Notification <span id="notification"><?php if( $notific['totalnotification'] > 0){echo '<span class="span-i">'.$notific['totalnotification'].'</span>'; } ?></span></a></button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-outline-primary ml-2"><a class="nav-link p-0 m-0" href="<?php echo JOBS;?>"><i style="font-size: 22px;" class="fa fa-star nav-link p-0 m-0"></i> Jobs </a></button>
       </li>
       <?php if($_SESSION['approval'] === 'on'){ ?>
         <li class="nav-item">
@@ -225,12 +229,13 @@
     </div>
   </div>
   <!--  progress-xs -->
-<span class="progress progress-navbar mt-1 ml-0 mr-0" style="height: 6px;">
+</nav>
+<span class="progress progress-navbar m-0" style="height: 6px;">
     <span class="progress-bar bg-info" role="progressbar"
         style="width:0%;" id="progress_width" aria-valuenow="" aria-valuemin="0"
         aria-valuemax="100"></span>
 </span>
-</nav>
+</div>
     <span id="clock" class="main-active" style ="position: fixed;z-index:1030;right:0;top:-5.5px;" ></span>
   
 

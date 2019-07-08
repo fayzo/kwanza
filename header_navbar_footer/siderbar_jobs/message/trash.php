@@ -46,6 +46,7 @@
                          <div class="table-responsive mailbox-messages">
                              <table class="table table-hover table-striped">
                                  <tbody>
+                                     <?php echo $home->trash(); ?>
                                      <tr>
                                          <td><input type="checkbox"></td>
                                          <td class="mailbox-star"><a href="#"><i

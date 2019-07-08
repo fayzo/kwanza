@@ -184,13 +184,13 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
               </div>
               <div class="col-10 pl-4">
                    <span>
-                       <a style="padding-right:3px;" href="<?php echo BASE_URL_PUBLIC ;?>"><?php echo $jobs['companyname']; ?></a> || 
-                       <i class="flag-icon flag-icon-<?php echo strtolower( $jobs['location']) ;?> h4 mb-0"
+                       <a style="padding-right:3px;" href="<?php echo BASE_URL_PUBLIC ;?>"><?php echo htmlspecialchars($jobs['companyname']); ?></a> || 
+                       <i class="flag-icon flag-icon-<?php echo strtolower($jobs['location']) ;?> h4 mb-0"
                             id="<?php echo strtolower( $jobs['location']) ;?>" title="us"></i>
                    </span><br>
-                   <span>Job Title: <?php echo $jobs['job_title'] ;?></span><br>
+                   <span>Job Title: <?php echo htmlspecialchars($jobs['job_title']); ?></span><br>
                    <span>Shared public -<?php echo $home->timeAgo($jobs['created_on']); ?></span><br>
-                   <span>Deadline to submit - <?php echo $jobs['deadline']; ?></span>
+                   <span>Deadline to submit - <?php echo htmlspecialchars($jobs['deadline']); ?></span>
                </div>
              </div>
              </div>

@@ -29,7 +29,7 @@ class Users{
      public function login($email,$password,$datetime)
     {
        $mysqli= $this->database;
-       $sql= $mysqli->query("SELECT user_id,username ,approval , chat FROM users WHERE username ='{$email}' AND password='{$password}' OR email ='{$email}'and password='{$password}' ");
+       $sql= $mysqli->query("SELECT user_id,username ,approval, chat FROM users WHERE username ='{$email}' AND password='{$password}' OR email ='{$email}'and password='{$password}' ");
        $sql1= $mysqli->query("SELECT user_id ,username,profile_img ,approval, chat FROM users WHERE username ='{$email}' or email ='{$email}'");
 
         $row= $sql->fetch_assoc();
@@ -81,6 +81,59 @@ class Users{
             return true;
         }else {
             return false;
+        }
+    }
+
+    public function InboxDelete($table,$id,$datetime)
+    {
+        $mysqli= $this->database;
+        $sql = "INSERT INTO $table (cv_id, firstname0, middlename0, lastname0, email0, address0, telephone, degree,
+        field, uploadfilecv, uploadfilecertificates, addition_information, user_id0, job_id0, business_id0, 
+        created_on0, deadline0) SELECT cv_id, firstname0, middlename0, lastname0, email0, address0, 
+        telephone, degree, field, uploadfilecv, uploadfilecertificates, addition_information, user_id0, job_id0, business_id0,
+        created_on0, deadline0 FROM apply_job WHERE cv_id= $id";
+        
+        // $sql = "INSERT INTO $table  (SELECT * FROM apply_job WHERE cv_id= $id )";
+        $query= $mysqli->query($sql);
+        var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail input try again !!!</strong>
+                </div>');
+        }
+    }
+
+    public function TrashDelete($table,$id,$datetime)
+    {
+        $mysqli= $this->database;
+        $sql = "DELETE FROM $table WHERE trash_id= $id ";
+        
+        $query= $mysqli->query($sql);
+        var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail input try again !!!</strong>
+                </div>');
         }
     }
 
@@ -371,7 +424,7 @@ class Users{
          }
          $querys= $mysqli->query($sql1);
          $rows = $querys->fetch_assoc();
-         var_dump($sql);
+        //  var_dump($sql);
         // $b= array_keys($conditions);
         // var_dump($conditions['username'][0]);
         // var_dump($b[0]);
@@ -389,7 +442,7 @@ class Users{
                     </button>
                     <strong>Email Already Tooken ???</strong> </div>');
         }else{
-             $this->creates('users',$conditions);
+             $this->Postsjobscreates('users',$conditions);
         }
     } 
 

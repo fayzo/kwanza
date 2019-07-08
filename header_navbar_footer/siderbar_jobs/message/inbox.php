@@ -16,13 +16,15 @@
                      </div>
                      <!-- /.card-header -->
                      <div class="card-body p-0">
+                       <form method="post" id="form-inbox0">
+
                          <div class="mailbox-controls">
                              <!-- Check all button -->
                              <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i
                                      class="fa fa-square-o"></i>
                              </button>
                              <div class="btn-group">
-                                 <button type="button" class="btn btn-default btn-sm"><i
+                                 <button type="button" class="btn btn-default btn-sm" ><i
                                          class="fa fa-trash-o"></i></button>
                                  <button type="button" class="btn btn-default btn-sm"><i
                                          class="fa fa-reply"></i></button>
@@ -56,8 +58,9 @@
                                      </tr>
                                  </thead>
                                  <tbody>
+                                    <tr><input type="hidden" class="form-control" name="deleteCheck" value="deleteCheck" ></tr>
                                     <?php echo $home->inbox() ; ?>
-                                     <tr>
+                                     <!-- <tr>
                                          <td><input type="checkbox"></td>
                                          <td class="mailbox-star"><a href="#"><i
                                                      class="fa fa-star-o text-warning"></i></a></td>
@@ -68,12 +71,13 @@
                                          </td>
                                          <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
                                          <td class="mailbox-date">28 mins ago</td>
-                                     </tr>
+                                     </tr> -->
                                  </tbody>
                              </table>
                              <!-- /.table -->
                          </div>
                          <!-- /.mail-box-messages -->
+                         </form>
                      </div>
                      <!-- /.card-body -->
                      <div class="card-footer p-0">

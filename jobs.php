@@ -99,9 +99,9 @@
             <div class="col-md-6">
                 <div class="row">
 
-                    <div class="col-md-12 mb-4">
+                    <div class="col-md-12 mb-4"  id="jobs-hides">
                         <!-- jobs -->
-                               <?php echo $home->jobsfetchALL() ;?>
+                               <?php echo $home->jobsfetchALL('Featured',1) ;?>
                         <!-- /.card -->
                     </div>
                     <!-- /.col -->

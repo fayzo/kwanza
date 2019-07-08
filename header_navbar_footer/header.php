@@ -34,7 +34,11 @@
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/blog.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/jquery.Jcrop.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/image_scroll.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="<?php echo BASE_URL_LINK ;?>plugin/iCheck/flat/blue.css"  rel="stylesheet">
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/slick.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/slick-themeg.css" rel="stylesheet" type="text/css" media="screen" />
+
     <!-- <link href="<?php echo BASE_URL_LINK ;?>dist/css/AdminLTE.css" rel="stylesheet"> -->
 
     <link href="<?php echo BASE_URL_LINK ;?>icon/google_icon/google_icons.css" rel="stylesheet">
@@ -177,7 +181,7 @@
          }, false);
 
         xhr.addEventListener('load', function (e) { 
-            $('.progress-bar').removeClass('bg-info').addClass('bg-success').html('<span> completed  <span class="fa fa-check"></span></span>');
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
             setInterval(function () {
                 $(".progress-navbar").fadeOut();
             }, 2000);
@@ -225,7 +229,7 @@
          }, false);
 
         xhr.addEventListener('load', function (e) { 
-            $('.progress-bar').removeClass('bg-info').addClass('bg-success').html('<span> completed  <span class="fa fa-check"></span></span>');
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
             setInterval(function () {
                 $(".progress-navbar").fadeOut();
             }, 2000);
@@ -279,7 +283,7 @@
          }, false);
 
         xhr.addEventListener('load', function (e) { 
-            $('.progress-bar').removeClass('bg-info').addClass('bg-success').html('<span> completed  <span class="fa fa-check"></span></span>');
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
             setInterval(function () {
                 $(".progress-navbar").fadeOut();
             }, 2000);
@@ -331,7 +335,7 @@
          }, false);
 
         xhr.addEventListener('load', function (e) { 
-            $('.progress-bar').removeClass('bg-info').addClass('bg-success').html('<span> completed  <span class="fa fa-check"></span></span>');
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
             setInterval(function () {
                 $(".progress-navbar").fadeOut();
             }, 2000);
@@ -383,7 +387,7 @@
          }, false);
 
         xhr.addEventListener('load', function (e) { 
-            $('.progress-bar').removeClass('bg-info').addClass('bg-success').html('<span> completed  <span class="fa fa-check"></span></span>');
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
             setInterval(function () {
                 $(".progress-navbar").fadeOut();
             }, 2000);
@@ -435,7 +439,7 @@
          }, false);
 
         xhr.addEventListener('load', function (e) { 
-            $('.progress-bar').removeClass('bg-info').addClass('bg-success').html('<span> completed  <span class="fa fa-check"></span></span>');
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
             setInterval(function () {
                 $(".progress-navbar").fadeOut();
             }, 2000);
@@ -487,12 +491,208 @@
          }, false);
 
         xhr.addEventListener('load', function (e) { 
-            $('.progress-bar').removeClass('bg-info').addClass('bg-success').html('<span> completed  <span class="fa fa-check"></span></span>');
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
             setInterval(function () {
                 $(".progress-navbar").fadeOut();
             }, 2000);
         }, false);
     }
+
+    function jobsCategories(categories,id) {
+        var xhr = new XMLHttpRequest();
+        // Add any event handlers here...
+        xhr.open('POST', 'core/ajax_db/businessView_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (categories) {
+                    case categories:
+                         var pagination = document.getElementById('jobs-hides');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
+    function houseCategories(categories,id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'core/ajax_db/houseView_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (categories) {
+                    case categories:
+                         var pagination = document.getElementById('house-hides');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
+    function carCategories(categories,id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'core/ajax_db/carView_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (categories) {
+                    case categories:
+                         var pagination = document.getElementById('car-hides');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
+    function foodCategories(categories,id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'core/ajax_db/foodView_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (categories) {
+                    case categories:
+                         var pagination = document.getElementById('food-hides');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
+    function xxda(requests,formx, id) {
+        var xhr = new XMLHttpRequest();
+        var form = document.getElementById(formx);
+        var formData = new FormData(form);
+        // Add any event handlers here...
+        xhr.open('POST', 'food.php?actions=' + requests + '&code=' + id, true);
+        xhr.send(formData);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                $("#responseSubmitfooditerm").html('<div class="alert alert-success alert-dismissible fade show text-center">'+
+                     '<button class="close" data-dismiss="alert" type="button">'+
+                         '<span>&times;</span>'+
+                     '</button> <strong>SUCCESS</strong>'+' </div>');
+                var forms = document.getElementById('responseSubmitfooditermview');
+                 setInterval(function () {
+                    $("#responseSubmitfooditerm").fadeOut();
+                            }, 2000);
+                forms.innerHTML = xhr.responseText;
+            }
+        };
+    }
+
+    function cartItemsCategories(categories,id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'core/ajax_db/saleView_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (categories) {
+                    case categories:
+                         var pagination = document.getElementById('sale-hides');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
+    function cart_add(requests,formx, id) {
+        var xhr = new XMLHttpRequest();
+        var form = document.getElementById(formx);
+        var formData = new FormData(form);
+        // Add any event handlers here...
+        xhr.open('POST', 'sale.php?action=' + requests + '&code=' + id, true);
+        xhr.send(formData);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                $("#responseSubmititerm").html('<div class="alert alert-success alert-dismissible fade show text-center">'+
+                     '<button class="close" data-dismiss="alert" type="button">'+
+                         '<span>&times;</span>'+
+                     '</button> <strong>SUCCESS</strong>'+' </div>');
+                var forms = document.getElementById('responseSubmitcartiterm');
+                 setInterval(function () {
+                    $("#responseSubmititerm").fadeOut();
+                            }, 2000);
+                forms.innerHTML = xhr.responseText;
+            }
+        };
+    }
+    
 
     // function postsFetch() {
 
