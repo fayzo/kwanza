@@ -13,3 +13,7 @@
 
         </div>
     </section>
+
+    <div id="Music-view">
+      <?php echo $crowfund->crowfundraisings(1,'Music'); ?>
+    </div><!-- row -->

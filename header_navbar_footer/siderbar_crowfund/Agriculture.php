@@ -14,6 +14,6 @@
         </div>
     </section>
     
-    <div class="crowfundraisings">
+    <div id="Agriculture-hides">
       <?php echo $crowfund->crowfundraisings(1,'Agriculture'); ?>
     </div><!-- row -->

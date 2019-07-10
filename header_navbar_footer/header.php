@@ -529,6 +529,37 @@
         }, false);
     }
 
+    function unemploymentCategories(categories,id) {
+        var xhr = new XMLHttpRequest();
+        // Add any event handlers here...
+        xhr.open('POST', 'core/ajax_db/unemploymentView_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (categories) {
+                    case categories:
+                         var pagination = document.getElementById('jobs-hides');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
     function houseCategories(categories,id) {
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'core/ajax_db/houseView_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
@@ -691,6 +722,68 @@
                 forms.innerHTML = xhr.responseText;
             }
         };
+    }
+    
+    function crowfundraising_FecthRequest(categories,id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'core/ajax_db/crowfundraisingView_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (categories) {
+                    case 'Agriculture':
+                         var pagination = document.getElementById('Agriculture-hides');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                    case  'ubworonzi':
+                         var pagination = document.getElementById('ubworonzi-hides');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                    case  'electronics':
+                         var pagination = document.getElementById('electronics-view');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                    case  'web_apps':
+                         var pagination = document.getElementById('web_apps-view');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                    case  'phone_app':
+                         var pagination = document.getElementById('phone_app-view');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                    case  'Arts':
+                         var pagination = document.getElementById('Arts-view');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                    case  'Film':
+                         var pagination = document.getElementById('Film-view');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                    case  'Music':
+                         var pagination = document.getElementById('Music-view');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                    case  'Fashion':
+                         var pagination = document.getElementById('Fashion-view');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
     }
     
 

@@ -13,3 +13,9 @@
 
         </div>
     </section>
+
+    
+    <div id="ubworonzi-view">
+      <?php echo $crowfund->crowfundraisings(1,'ubworonzi'); ?>
+    </div><!-- row -->
+

@@ -21,29 +21,34 @@ class Crowfund extends home {
             <div class="row mt-3">
         <?php while($row= $query->fetch_array()) { ?>
 
-               <div class="col-md-3 mb-2">
+               <div class="col-md-3 mb-3">
             
-            <div class="card" >
+            <div class="card more" id="crowfund-readmore" data-crowfund="<?php echo $row['fund_id'] ;?>">
                 <img class="card-img-top" width="242px" height="160px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/crowfund/<?php echo $row['photo'] ;?>" >
                 <div class="card-body">
                     <div class="p-0 font-weight-bold">Funding <i class="fa fa-heart-o float-right" aria-hidden="true"></i></div>
                     <hr>
-                    <a href="javascript:void(0);"  id="fund-readmore" data-fund="<?php echo $row['fund_id'] ;?>" class="card-text h5">Kogera umusaruro muguhinga</a>
-                    <p class="text-muted">turashaka kongera umusaruro mu buhinzi tukabona ubufasha buhagije no kubona imbuto</p>
+                    <a href="javascript:void(0);"  id="crowfund-readmore" data-crowfund="<?php echo $row['fund_id'] ;?>" class="card-text h5"><?php echo $row['photo_Title_main'] ;?></a>
+                    <!-- Kogera umusaruro muguhinga -->
+                    <p class="text-muted"><?php echo $row['text']; ?></p>
+                    <!-- turashaka kongera umusaruro mu buhinzi tukabona ubufasha buhagije no kubona imbuto -->
 
-                    <div class="text-muted mb-1">Agriculture</div>
+                    <div class="text-muted mb-1"><?php echo $categories; ?></div>
                     <div class="card-text">
-                        <span class="font-weight-bold">40,000 Frw</span>
+                    <!-- 40,000 -->
+                        <span class="font-weight-bold"><?php echo number_format($row['money_raising'],2); ?> Frw</span>
                          Raised
-                        <div class="float-right">40%</div>
+                        <div class="float-right"><?php echo $row['percentage']; ?>%</div>
+                        <!-- 40 -->
                     </div>
                      <div class="progress clear-float " style="height: 10px;">
-                        <div class="progress-bar  bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar  bg-success" role="progressbar" style="width: <?php echo $row['percentage']; ?>%" aria-valuenow="<?php echo $row['percentage']; ?>" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     
                     <div class="clear-float">
                         <i class="fa fa-clock-o" aria-hidden="true"></i>
-                        <span class="text-muted">13 days Left</span>
+                        <span class="text-muted"><?php echo $this->timeAgo($row['created_on2']); ?></span>
+                        <!-- 13 days Left -->
                     </div>
                 </div>
             </div> <!-- card -->
@@ -79,6 +84,14 @@ class Crowfund extends home {
    <?php } ?>
    
    <?php }
+
+    public function crowfundFecthReadmore($fund_id)
+    {
+        $mysqli= $this->database;
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN crowfundraising C ON C. user_id2 = u. user_id WHERE C. fund_id = '$fund_id' ");
+        $row= $query->fetch_array();
+        return $row;
+    }
 }
 
 $crowfund = new Crowfund;

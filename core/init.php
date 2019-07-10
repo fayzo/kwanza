@@ -21,6 +21,7 @@ include('class/House.php');
 include('class/Car.php');
 include('class/Food.php');
 include('class/Crowfund.php');
+include('class/Unemployment.php');
 
 define('BASE_URL_LINK', 'http://localhost:84/Blog_nyarwanda_CMS/assets/');
 // SETTING FILE

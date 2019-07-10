@@ -1,3 +1,17 @@
+        <header class="blog-header py-2 mb-3 bg-light">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-4">
+            <button type="button" class="btn btn-light" id="add_for_help" data-fund="<?php echo $_SESSION['key']; ?>" value="add_for_help"> + Add for help </button>
+          </div>
+          <div class="col-4 text-center">
+            <a class="blog-header-logo text-dark" href="#">Fundraising</a>
+          </div>
+          <div class="col-4 d-flex justify-content-end align-items-center">
+           
+          </div>
+        </div>
+      </header>
+
 <div role="tabpanel">
   <div class="row">
     <div class="col-4 col-md-2 col-lg-2 py-3 px-2">
@@ -13,7 +27,6 @@
         <a class="list-group-item list-group-item-action" id="list-Emergency-list" data-toggle="tab" href="#list-Emergency" role="tab" aria-controls="list-Emergency">Emergency</a>
         <a class="list-group-item list-group-item-action" id="list-Nonprofit-list" data-toggle="tab" href="#list-Nonprofit" role="tab" aria-controls="list-Nonprofit">Nonprofit</a>
         <a class="list-group-item list-group-item-action" id="list-Animals-list" data-toggle="tab" href="#list-Animals" role="tab" aria-controls="list-Animals">Animals</a>
-        <button type="button" class="btn btn-light mt-2" id="add_for_help" data-fund="<?php echo $_SESSION['key']; ?>" value="add_for_help"> + Add for help </button>
       </div>
     </div>
 

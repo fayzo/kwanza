@@ -204,6 +204,7 @@
    <!-- <script src="<?php echo BASE_URL_LINK ;?>js/food_cart_items.js"></script> -->
    <script src="<?php echo BASE_URL_LINK ;?>js/domestic_addcategories.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/crowfund_addcategories.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/unemplyoment_message.js"></script>
    
    <!-- <script src="<?php echo BASE_URL_LINK ;?>js/add_post_ajax.js"></script> -->
    <script src="<?php echo BASE_URL_LINK ;?>js/manage_admins_ajax.js"></script>

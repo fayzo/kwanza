@@ -91,6 +91,35 @@ if (isset($_POST['crowfund_view']) && !empty($_POST['crowfund_view'])) {
                               </select>
                             </div>
                         </div>
+
+                        <div class="col">
+                            <input type="text" class="form-control" name="money_raising" id="money_raising" placeholder="money raising">
+                        </div>
+                        
+                        <div class="col">
+                            <div class="form-group">
+                              <select class="form-control" name="percentage" id="percentage">
+                                <option value="">Select what types of helps you need</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                                <option value="25">25</option>
+                                <option value="30">30</option>
+                                <option value="35">35</option>
+                                <option value="40">40</option>
+                                <option value="45">45</option>
+                                <option value="50">50</option>
+                                <option value="50">50</option>
+                                <option value="60">60</option>
+                                <option value="65">65</option>
+                                <option value="70">70</option>
+                                <option value="75">75</option>
+                                <option value="80">80</option>
+                                <option value="90">90</option>
+                                <option value="100">100</option>
+                              </select>
+                            </div>
+                        </div>
                       </div>
 
                       <div class="form-group mt-2">
@@ -224,6 +253,8 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
     $village = $users->test_input($_POST['village']);
     $additioninformation = $users->test_input($_POST['additioninformation']);
     $categories_crowfundraising=  $users->test_input($_POST['categories_crowfundraising']);
+    $money_raising=  $users->test_input($_POST['money_raising']);
+    $percentage=  $users->test_input($_POST['percentage']);
     // $deadline = $users->test_input($_POST['deadline']);
 
 
@@ -245,6 +276,8 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
 	$users->Postsjobscreates('crowfundraising',array( 
 	'firstname1'=> $firstname, 
 	'middlename1'=> $middlename, 
+	'money_raising'=> $money_raising, 
+	'percentage'=> $percentage, 
 	'lastname1'=> $lastname,
 	'email1'=> $email, 
 	'address1'=> $address,

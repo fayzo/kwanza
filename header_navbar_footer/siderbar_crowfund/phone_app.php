@@ -13,3 +13,8 @@
 
         </div>
     </section>
+
+    
+    <div id="phone_app-view-view">
+      <?php echo $crowfund->crowfundraisings(1,'phone_app'); ?>
+    </div><!-- row -->
