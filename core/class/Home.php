@@ -61,12 +61,12 @@ class Home extends Comment {
                    </div>
                    </div>
                    <span class="username">
-                       <a style="padding-right:3px;" href="#">Job Title: <?php echo $jobs['job_title'] ;?></a> 
+                       <a style="padding-right:3px;" href="#">Job Title: <?php echo $this->htmlspecialcharss($jobs['job_title']) ;?></a> 
                    </span>
-                   <span class="description"><?php echo $jobs['companyname']; ?> || <i class="flag-icon flag-icon-<?php echo strtolower( $jobs['location']) ;?> h4 mb-0"
+                   <span class="description"><?php echo $this->htmlspecialcharss($jobs['companyname']); ?> || <i class="flag-icon flag-icon-<?php echo strtolower( $jobs['location']) ;?> h4 mb-0"
                             id="<?php echo strtolower( $jobs['location']) ;?>" title="us"></i></span>
                    <span class="description">Shared public - <?php echo $this->timeAgo($jobs['created_on']); ?></span>
-                   <span class="description">Deadline -  <?php echo $jobs['deadline']; ?></span>
+                   <span class="description">Deadline -  <?php echo $this->htmlspecialcharss($jobs['deadline']); ?></span>
                </div>
                <hr class="main-active" style="width:100%">
             </div>
@@ -102,12 +102,12 @@ class Home extends Comment {
                    </div>
                    </div>
                    <span class="username">
-                       <a style="padding-right:3px;" href="#">Job Title: <?php echo $jobs['job_title'] ;?></a> 
+                       <a style="padding-right:3px;" href="#">Job Title: <?php echo $this->htmlspecialcharss($jobs['job_title']) ;?></a> 
                    </span>
-                   <span class="description"><?php echo htmlspecialchars($jobs['companyname']); ?> || <i class="flag-icon flag-icon-<?php echo strtolower( $jobs['location']) ;?> h4 mb-0"
+                   <span class="description"><?php echo $this->htmlspecialcharss($jobs['companyname']); ?> || <i class="flag-icon flag-icon-<?php echo strtolower($jobs['location']) ;?> h4 mb-0"
                             id="<?php echo strtolower( $jobs['location']) ;?>" title="us"></i></span>
                    <span class="description">Shared public - <?php echo $this->timeAgo($jobs['created_on']); ?></span>
-                   <span class="description">Deadline -  <?php echo htmlspecialchars($jobs['deadline']); ?></span>
+                   <span class="description">Deadline -  <?php echo $this->htmlspecialcharss($jobs['deadline']); ?></span>
                </div>
             </div>
             <hr >
@@ -122,8 +122,13 @@ class Home extends Comment {
        <!-- /.card -->
 
     <?php }
+        
+        function htmlspecialcharss($string)
+    {
+        return strip_tags(html_entity_decode($string));
+    }
 
-        public function jobsfetchALL($categories,$pages)
+        function jobsfetchALL($categories,$pages)
     {
         $pages= $pages;
         $categories= $categories;
@@ -136,7 +141,7 @@ class Home extends Comment {
         $mysqli= $this->database;
         $query= $mysqli->query("SELECT * FROM  users U Left JOIN  jobs J ON J. business_id = U. user_id WHERE J.categories_jobs ='$categories' AND J. turn = 'on' ORDER BY rand() Desc Limit $showpages,10");
         ?>
-        <div class="card card-primary mb-3 ">
+        <div class="card card-primary mb-1 ">
         <div class="card-header main-active p-1">
             <h5 class="card-title float-left pl-2"><i> Jobs to Search</i></h5>
              <form class="form-inline float-right">
@@ -178,18 +183,17 @@ class Home extends Comment {
                    </div>
               </div>
               <div class="col-10 pl-4">
-                   <span>Job Title: <?php echo $this->jobsRemoveDiv($jobs['job_title']) ;?></span><br>
-                   <span><?php echo $jobs['companyname']; ?></span> || 
+                   <span>Job Title: <?php echo $this->htmlspecialcharss($jobs['job_title']) ;?></span><br>
+                   <span><?php echo $this->htmlspecialcharss($jobs['companyname']); ?></span> || 
                        <i class="flag-icon flag-icon-<?php echo strtolower( $jobs['location']) ;?> h4 mb-0"
                             id="<?php echo strtolower( $jobs['location']) ;?>" title="us"></i><br>
                    <span>Shared public - <?php echo $this->timeAgo($jobs['created_on']); ?></span><br>
-                   <span>Deadline - <?php echo $this->jobsRemoveDiv($jobs['deadline']); ?></span>
+                   <span>Deadline - <?php echo $this->htmlspecialcharss($jobs['deadline']); ?></span>
                </div> <!-- col-10 -->
             </div> <!-- row -->
           </div> <!-- user-block -->
           </div> <!-- col-12 -->
-            <hr>
-
+          <hr class="bg-info mt-0 mb-1" style="width:95%;">
         <?php }
 
         $query1= $mysqli->query("SELECT COUNT(*) FROM jobs WHERE categories_jobs ='$categories' AND turn = 'on' ");
@@ -215,6 +219,109 @@ class Home extends Comment {
                  <?php } } ?>
                  <?php if ($pages+1 <= $post_Perpage) { ?>
                      <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="jobsCategories('<?php echo $categories; ?>',<?php echo $pages+1; ?>)">Next</a></li>
+                 <?php } ?>
+             </ul>
+         </nav>
+        <?php } ?>
+
+    <?php } 
+
+        function jobsfetchALL0($categories,$pages)
+    {
+        $pages= $pages;
+        $categories= $categories;
+        
+        if($pages === 0 || $pages < 1){
+            $showpages = 0 ;
+        }else{
+            $showpages = ($pages*10)-10;
+        }
+        $mysqli= $this->database;
+        $query= $mysqli->query("SELECT * FROM  users U Left JOIN  jobs J ON J. business_id = U. user_id WHERE J.categories_jobs ='$categories' AND J. turn = 'on' ORDER BY rand() Desc Limit $showpages,10");
+        ?>
+        <div class="card card-primary mb-1 ">
+        <div class="card-header main-active p-1">
+            <h5 class="card-title float-left pl-2"><i> Jobs to Search</i></h5>
+             <form class="form-inline float-right">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i> </span>
+                    </div>
+                    <input type="text" class="form-control search0"  aria-describedby="helpId" placeholder="Search Accountant, finance ,enginneer">
+                </div>
+              </form>
+
+            <div class="nav-scroller py-0" style="clear:right;height:2rem;">
+                <nav class="nav d-flex justify-content-between pb-0"  >
+                <a class="p-2" href="javascript:void(0)" onclick="jobsCategories0('Featured',1);" >Featured<span class="badge badge-primary"><?php echo $this->jobscountPOSTS('Featured');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="jobsCategories0('Tenders',1);" >Tenders<span class="badge badge-primary"><?php echo $this->jobscountPOSTS('Tenders');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="jobsCategories0('Consultancy',1);" >Consultancy<span class="badge badge-primary"><?php echo $this->jobscountPOSTS('Consultancy');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="jobsCategories0('Internships',1);" >Internships<span class="badge badge-primary"><?php echo $this->jobscountPOSTS('Internships');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="jobsCategories0('Public',1);" >Public<span class="badge badge-primary"><?php echo $this->jobscountPOSTS('Public');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="jobsCategories0('Training',1);" >Training<span class="badge badge-primary"><?php echo $this->jobscountPOSTS('Training');?></span></a>
+                </nav>
+            </div> <!-- nav-scroller -->
+        </div> <!-- /.card-header -->
+
+        <div class="card-body">
+        <span class="job-show"></span>
+        <div class="job-hide row">
+            <div class="col-md-6 large-2 ">
+          <?php while($jobs= $query->fetch_array()) { ?>
+
+            <div class="px-0 py-2 jobHover jobHovers0 more" data-job="<?php echo $jobs['job_id'];?>" data-business="<?php echo $jobs['business_id'];?>">
+            <div class="user-block mb-2" >
+             <div class="row">
+              <div class="col-2">
+                   <div class="user-jobImgall">
+                         <?php if (!empty($jobs['profile_img'])) {?>
+                         <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $jobs['profile_img'] ;?>" alt="User Image">
+                         <?php  }else{ ?>
+                           <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
+                         <?php } ?>
+                   </div>
+              </div>
+              <div class="col-10 pl-4">
+                   <span>Job Title: <?php echo $this->htmlspecialcharss($jobs['job_title']) ;?></span><br>
+                   <span><?php echo $this->htmlspecialcharss($jobs['companyname']); ?></span> || 
+                       <i class="flag-icon flag-icon-<?php echo strtolower( $jobs['location']) ;?> h4 mb-0"
+                            id="<?php echo strtolower( $jobs['location']) ;?>" title="us"></i><br>
+                   <span>Shared public - <?php echo $this->timeAgo($jobs['created_on']); ?></span><br>
+                   <span>Deadline - <?php echo $this->htmlspecialcharss($jobs['deadline']); ?></span>
+               </div> <!-- col-10 -->
+            </div> <!-- row -->
+          </div> <!-- user-block -->
+          </div> <!-- col-12 -->
+          <hr class="bg-info mt-0 mb-1" style="width:95%;">
+        <?php }
+
+        $query1= $mysqli->query("SELECT COUNT(*) FROM jobs WHERE categories_jobs ='$categories' AND turn = 'on' ");
+        $row_Paginaion = $query1->fetch_array();
+        $total_Paginaion = array_shift($row_Paginaion);
+        $post_Perpages = $total_Paginaion/10;
+        $post_Perpage = ceil($post_Perpages); ?>
+            </div>
+            <div class="col-md-6 large-2 jobslarge">
+                
+            </div>
+           </div><!-- row -->
+          </div> <!-- /.card-body -->
+       </div> <!-- /.card -->
+
+        <?php if($post_Perpage > 1){ ?>
+         <nav>
+             <ul class="pagination justify-content-center mt-3">
+                 <?php if ($pages > 1) { ?>
+                     <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="jobsCategories0('<?php echo $categories; ?>',<?php echo $pages-1; ?>)">Previous</a></li>
+                 <?php } ?>
+                 <?php for ($i=1; $i <= $post_Perpage; $i++) { 
+                         if ($i == $pages) { ?>
+                      <li class="page-item active"><a href="javascript:void(0)"  class="page-link" onclick="jobsCategories0('<?php echo $categories; ?>',<?php echo $i; ?>)" ><?php echo $i; ?> </a></li>
+                      <?php }else{ ?>
+                     <li class="page-item"><a href="javascript:void(0)"  class="page-link" onclick="jobsCategories0('<?php echo $categories; ?>',<?php echo $i; ?>)" ><?php echo $i; ?> </a></li>
+                 <?php } } ?>
+                 <?php if ($pages+1 <= $post_Perpage) { ?>
+                     <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="jobsCategories0('<?php echo $categories; ?>',<?php echo $pages+1; ?>)">Next</a></li>
                  <?php } ?>
              </ul>
          </nav>
@@ -289,7 +396,7 @@ class Home extends Comment {
                               <li><h5 class="card-title"><a href="blog.php#list-Politics">Politics</a></h5></li>
                          </ul>
                     </li>
-                    <li><h5 class="card-title"><a href="jobs.php">Jobs</a></h5></li>
+                    <li><h5 class="card-title"><a href="jobs0.php">Jobs</a></h5></li>
                     <li><h5 class="card-title"><a href="events.php">Events</a></h5>
                     <li><h5 class="card-title"><a href="movies.php">Movies</a></h5>
                     <li><h5 class="card-title"><a href="sports.php">Sports</a></h5>
@@ -302,6 +409,7 @@ class Home extends Comment {
                     <li><h5 class="card-title"><a href="car.php">Car</a></h5>
                     <li><h5 class="card-title"><a href="food.php">Foodzana</a></h5>
                     <li><h5 class="card-title"><a href="domestic.php">domestic Helpers</a></h5> </li>
+                    <li><h5 class="card-title"><a href="school.php">school</a></h5> </li>
                 </ul>
             </div>
         </div>
@@ -321,7 +429,7 @@ class Home extends Comment {
                     <li><h5><a href="Unemployment.php"> Unemployment</a></h5> </li>
                     <li><h5><a href="sale.php">Sale</a></h5> </li>
                     <li><h5><a href="blog.php">Blog</a></h5> </li>
-                    <li><h5><a href="jobs.php">Jobs</a></h5></li>
+                    <li><h5><a href="jobs0.php">Jobs</a></h5></li>
                     <li><h5><a href="events.php">Events</a></h5>
                     <li><h5><a href="movies.php">Movies</a></h5>
                     <li><h5><a href="sports.php">Sports</a></h5>
@@ -334,6 +442,7 @@ class Home extends Comment {
                     <li><h5><a href="car.php">Car</a></h5>
                     <li><h5><a href="food.php">Foodzana</a></h5>
                     <li><h5><a href="domestic.php">domestic Helpers</a></h5> </li>
+                    <li><h5><a href="school.php">school</a></h5> </li>
                 </ul>
             </div>
         </div>
@@ -520,10 +629,10 @@ class Home extends Comment {
    <?php }
 
 
-    public function inbox()
+    public function inbox($sessions)
     {
         $mysqli = $this->database;
-        $query= $mysqli->query("SELECT * FROM users U Left JOIN apply_job A ON A. business_id0= U. user_id LEFT JOIN jobs J ON J. job_id = A. job_id0  WHERE A. business_id0= U. user_id ORDER BY created_on0 DESC ");
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN apply_job A ON A. business_id0= U. user_id LEFT JOIN jobs J ON J. job_id = A. job_id0  WHERE A. business_id0= '$sessions' ORDER BY created_on0 DESC ");
         while($apply = $query->fetch_array()) { 
             # code...
        echo '
@@ -540,10 +649,10 @@ class Home extends Comment {
         }
     }
 
-    public function trash()
+    public function trash($sessions)
     {
         $mysqli = $this->database;
-        $query= $mysqli->query("SELECT * FROM users U Left JOIN trash T ON T. business_id0= U. user_id LEFT JOIN jobs J ON J. job_id = T. job_id0  WHERE T. business_id0= U. user_id ORDER BY created_on0 DESC ");
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN trash T ON T. business_id0= U. user_id LEFT JOIN jobs J ON J. job_id = T. job_id0  WHERE T. business_id0= '$sessions' ORDER BY created_on0 DESC ");
         while($trash = $query->fetch_array()) { 
             # code...
        echo '
@@ -556,7 +665,6 @@ class Home extends Comment {
                    <td class="mailbox-attachment">'.((!empty($trash['uploadfilecv']))? '<i class="fa fa-paperclip"></i>':'' ).'</td>
                    <td class="mailbox-date">'.$this->timeAgo($trash['created_on0']).'</td>
               </tr>';
-
         }
     }
 
@@ -639,7 +747,7 @@ class Home extends Comment {
                      strtolower(rand(100,1000).$filename);
    		             $fileTmpName = $files['tmp_name'];
                     //  $file_dest= 'uploads/posts/'.$filenames;
-                     $file_dest= $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/posts/'.$filenames;
+                     $file_dest= $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/posts/'.$filenames;
                      move_uploaded_file($fileTmpName,$file_dest);
                    
                     return substr($file_dest,42);
@@ -669,7 +777,7 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/posts/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/posts/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -708,7 +816,7 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/album/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/album/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -747,7 +855,7 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/jobs/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/jobs/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -787,7 +895,7 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/fundraising/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/fundraising/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -823,7 +931,7 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/sale/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/sale/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -859,7 +967,7 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/Blog/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/Blog/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -895,7 +1003,7 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/house/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/house/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -931,7 +1039,43 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/car/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/car/';
+        $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
+        
+        foreach($file['name'] as $key => $value){
+            // File upload path
+            $fileName = basename($file['name'][$key]);
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+
+             $filenames = (strlen($fileName) > 10)? 
+                     strtolower(date('Y').'_'.rand(10,100).substr($fileName,0,4).".".$fileActualExt):
+                     strtolower(date('Y').'_'.rand(10,100).$fileName);
+
+            $valued[] = $filenames;
+
+            $targetFilePath = $targetDir . $filenames;
+            
+            // Check whether file type is valid
+            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+            if(in_array($fileType, $allowTypes)){
+                // Upload file to server
+                $fileTmpName = $file["tmp_name"];
+                move_uploaded_file($fileTmpName[$key], $targetFilePath);
+            }
+        }
+        
+        # Build the values
+        $filenamedb = implode("=", $valued);
+        return  $filenamedb;
+
+    }
+
+    public function uploaddomesticsFile($file)
+    {
+
+        $insertValuesSQL ="";
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/domestics/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -967,7 +1111,7 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/food/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/food/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -1003,7 +1147,7 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/sports/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/sports/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -1039,7 +1183,43 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/sports/football/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/sports/football/';
+        $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
+        
+        foreach($file['name'] as $key => $value){
+            // File upload path
+            $fileName = basename($file['name'][$key]);
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+
+             $filenames = (strlen($fileName) > 10)? 
+                     strtolower(date('Y').'_'.rand(10,100).substr($fileName,0,4).".".$fileActualExt):
+                     strtolower(date('Y').'_'.rand(10,100).$fileName);
+
+            $valued[] = $filenames;
+
+            $targetFilePath = $targetDir . $filenames;
+            
+            // Check whether file type is valid
+            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+            if(in_array($fileType, $allowTypes)){
+                // Upload file to server
+                $fileTmpName = $file["tmp_name"];
+                move_uploaded_file($fileTmpName[$key], $targetFilePath);
+            }
+        }
+        
+        # Build the values
+        $filenamedb = implode("=", $valued);
+        return  $filenamedb;
+
+    }
+
+    public function uploadRwandaschoolFile($file)
+    {
+
+        $insertValuesSQL ="";
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/schoolFile/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -1075,7 +1255,7 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/sports/basketball/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/sports/basketball/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -1111,7 +1291,7 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/movies/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/movies/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -1147,7 +1327,7 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/events/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/events/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -1183,7 +1363,7 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/rwandaLandscapes/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/rwandaLandscapes/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -1219,7 +1399,7 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/news/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/news/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){
@@ -1255,7 +1435,7 @@ class Home extends Comment {
     {
 
         $insertValuesSQL ="";
-        $targetDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/crowfund/';
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/crowfund/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){

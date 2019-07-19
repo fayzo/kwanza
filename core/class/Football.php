@@ -57,7 +57,7 @@ class Football extends Home{
           $dayz= $day;
         }
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM football WHERE SUBDATE(NOW(), INTERVAL $dayz DAY ) < created_on3 ORDER BY created_on3 Desc Limit 3");
+        $query= $mysqli->query("SELECT * FROM football WHERE SUBDATE(NOW(), INTERVAL $dayz DAY ) < date_of_match ORDER BY created_on3 Desc Limit 3");
             //  SECOND	, MINUTE, HOUR, DAY, WEEK	, MONTH	, QUARTER	, YEAR,
             // var_dump('ERROR: Could not able to execute $sql.'.mysqli_error($mysqli));
         if($query->num_rows != 0){

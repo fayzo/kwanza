@@ -32,10 +32,12 @@ if (isset($_POST['apply_id']) && !empty($_POST['business_id'])) {
                        </div>
                        </div>
                        <span class="username">
-                           <a style="padding-right:3px;" href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $user['companyname'] ;?></a>
-                       </span>
-                        <span class="description">Shared public - <?php echo $home->timeAgo($user['created_on']); ?></span>
-                   </div>
+                          <a style="padding-right:3px;" class="h5" href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $home->htmlspecialcharss($user['job_title']) ;?></a>
+                        </span>
+                              <a style="padding-right:3px;" href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $home->htmlspecialcharss($user['companyname']).' || '.$user['country'];?> <i class="flag-icon flag-icon-<?php echo strtolower($user['country']) ;?> h4 mb-0"
+                          id="<?php echo strtolower( $jobs['location']) ;?>" title="us"></i></a>
+                            <span class="description">Shared public - <?php echo $home->timeAgo($user['created_on']); ?> </span>
+                    </div>
                     <h4 class="card-title text-center">CV Submission</h4>
                     <p class="card-text text-center">Do you want to work with us ? Please fill in your details below.</p>
                 </div>

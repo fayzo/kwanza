@@ -11,6 +11,8 @@ session_unset($_SESSION['keycreate']);
 session_unset($_SESSION['profile_img']);
 session_unset($_SESSION['approval']);
 session_unset($_SESSION['chat']);
+session_unset($_SESSION['domestics']);
+session_unset($_SESSION['employers']);
 session_destroy();
 header ('location: '.LOGIN.'');
 

@@ -20,8 +20,8 @@ $(document).ready(function () {
         $(".website").val("");
     });
     
-    jobspostsFetch(0, 50);
-    jobspostsFetchOn(0, 50);
+    jobspostsFetch(0, 50,$('#session').val());
+    jobspostsFetchOn(0, 50, $('#session').val());
 
     $(document).on('click', '#addposts', function () {
         var id = $("#id_posts1");
@@ -169,7 +169,7 @@ function ajax_requestsPosts(key) {
     }
 }
 
-function jobspostsFetch(begin_nmber, end_nmber) {
+function jobspostsFetch(begin_nmber, end_nmber, session) {
 
     $.ajax({
         url: 'core/ajax_db/businessPosts_db.php',
@@ -178,7 +178,8 @@ function jobspostsFetch(begin_nmber, end_nmber) {
         data: {
             key: 'jobspostsFetch',
             begin_nmber: begin_nmber,
-            end_nmber: end_nmber
+            end_nmber: end_nmber,
+            session: session,
         }, success: function (response) {
             if (response != "Max") {
                 $('#tbody-jobsFetch').append(response);
@@ -189,7 +190,7 @@ function jobspostsFetch(begin_nmber, end_nmber) {
     });
 }
 
-function jobspostsFetchOn(begin_nmber, end_nmber) {
+function jobspostsFetchOn(begin_nmber, end_nmber, session) {
 
     $.ajax({
         url: 'core/ajax_db/businessPosts_db.php',
@@ -198,7 +199,8 @@ function jobspostsFetchOn(begin_nmber, end_nmber) {
         data: {
             key: 'jobspostsFetchOn',
             begin_nmber: begin_nmber,
-            end_nmber: end_nmber
+            end_nmber: end_nmber,
+            session: session,
         }, success: function (response) {
             if (response != "Max") {
                 $('#tbody-jobsFetchOn').append(response);

@@ -15,7 +15,7 @@
     </section>
 
     <div class="row">
-     <div class="col-md-12">
+     <div class="col-md-6">
       
      <div id="jssor_4" style="position:relative;margin:0 auto;top:0px;left:0px;width:940px;height:380px;overflow:hidden;visibility:hidden;">
         <!-- Loading Screen -->

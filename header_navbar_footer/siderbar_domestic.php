@@ -1,21 +1,13 @@
-      <header class="blog-header py-3 bg-light">
+      <header class="blog-header py-1 bg-light">
         <div class="row flex-nowrap justify-content-between align-items-center">
-          <div class="col-4 pt-1">
+          <div class="col-4 ">
             <button type="button" class="btn btn-light" id="add_car" data-car="<?php echo $_SESSION['key']; ?>" > + Add car </button>
           </div>
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="#">City maid</a>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
-           <form class="form-inline">
-                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i> </span>
-                    </div>
-                    <input type="text" class="form-control" name="searches" id="searches" aria-describedby="helpId"
-                        placeholder="Search">
-                </div>
-              </form>
+       
           </div>
         </div>
       </header>
@@ -34,38 +26,10 @@
             </div> <!-- card -->
          </div> <!-- col -->
 
-         <div class="col-md-6 " id="car-hides">
+         <div class="col-md-6 domestic-forms" id="car-hides">
            
-         <div class="card">
-           <div class="card-header text-center">
-             <h5><i>What are you looking for ?</i> </h5>
-           </div>
-           <div class="card-body domestic-forms">
-            <div class="row">
-
-                <div class="col-md-6">
-                    <div class="card text-center shadow-lg more" id="helper-family">
-                      <div class="mt-4"><img class="img-fluid rounded-circle" src="<?php echo BASE_URL_LINK.'image/img/avatar2.png'; ?>" width="200px" heght="200px"></div>
-                      <div class="card-body">
-                        <a href="javascript:void(0);" class="h4" id="helper-family" >HELP</a>
-                        <p class="card-text">Domestic Helper. Be in touch with our applicants online, set up interviews and find the most sitable domestic helper for your family </p>
-                      </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card text-center shadow-lg more" id="job-helper">
-                      <div class="mt-4"><img class="img-fluid rounded-circle" src="<?php echo BASE_URL_LINK.'image/img/avatar3.png'; ?>" width="200px" heght="200px"></div>
-                      <div class="card-body">
-                        <a href="javascript:void(0);" class="h4" id="job-helper" >A JOB</a>
-                        <p class="card-text">Domestic Helper. Be in touch with our applicants online, set up interviews and find the most sitable domestic helper for your family </p>
-                      </div>
-                    </div>
-                </div>
-               
-             </div> <!-- row -->
-           </div> <!-- card-body -->
-         </div>
+             <?php echo $domestics->domesticshelpers(); ?>
+           
          </div> <!-- col -->
 
          <div class="col-md-3">

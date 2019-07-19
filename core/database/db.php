@@ -19,7 +19,7 @@ class Db
         $dbUsername = "root";
         $dbPassword = "";
         $dbName = "social_menya";
-        $dbport = "3308";
+        $dbport = "3306";
         // $conn = new mysqli( 'localhost','fayzo','fayzo123','retrieve_data','3306');
         $this->connection = new Mysqli($dbHost, $dbUsername, $dbPassword, $dbName,$dbport);
 

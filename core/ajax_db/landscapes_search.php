@@ -55,7 +55,13 @@ if (isset($_POST['districts']) && !empty($_POST['districts'])) {
     $bck= $querybck->fetch_assoc();
     $query= $mysqli->query("SELECT * FROM rwandalandscapes WHERE location_districts='{$categories}' GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc Limit $showpages,6");
     $query0= $mysqli->query("SELECT location_Sector FROM rwandalandscapes WHERE location_districts='{$categories}' GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc Limit $showpages,6");
-    $query1= $mysqli->query("SELECT COUNT(DISTINCT location_districts)= 1 FROM rwandalandscapes WHERE location_districts='{$categories}' GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc ");
+    // $query1= $mysqli->query("SELECT COUNT(location_Sector) FROM rwandalandscapes WHERE location_Sector=location_Sector  GROUP BY location_Sector HAVING  COUNT(DISTINCT location_Sector)= 1 ORDER BY created_on_ Desc ");
+     $query1= $mysqli->query("SELECT COUNT(*)
+            FROM(
+            SELECT DISTINCT location_Sector
+            FROM `rwandalandscapes`
+            WHERE location_districts='{$categories}'
+            ) AS DerivedTableAlias ");
     ?>
     <button type="button" class="btn btn-primary btn-sm  mb-3"id="kigali-districts-readmore" data-province="<?php echo $bck['location_province'] ;?>" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back </button>
     
@@ -164,8 +170,13 @@ if (isset($_POST['sector']) && !empty($_POST['sector'])) {
     $bck= $querybck->fetch_assoc();
     $query= $mysqli->query("SELECT * FROM rwandalandscapes WHERE location_Sector='{$categories}' GROUP BY location_cell HAVING  COUNT(DISTINCT location_cell)= 1 ORDER BY created_on_ Desc Limit $showpages,6");
     $query0= $mysqli->query("SELECT location_cell FROM rwandalandscapes WHERE location_Sector='{$categories}' GROUP BY location_cell HAVING  COUNT(DISTINCT location_cell)= 1 ORDER BY created_on_ Desc Limit $showpages,6");
-    $query1= $mysqli->query("SELECT COUNT(DISTINCT location_cell)= 1 FROM rwandalandscapes WHERE location_Sector='{$categories}' GROUP BY location_cell HAVING  COUNT(DISTINCT location_cell)= 1 ORDER BY created_on_ Desc ");
-
+    // $query1= $mysqli->query("SELECT COUNT(DISTINCT location_cell)= 1 FROM rwandalandscapes WHERE location_Sector='{$categories}' GROUP BY location_cell HAVING  COUNT(DISTINCT location_cell)= 1 ORDER BY created_on_ Desc ");
+     $query1= $mysqli->query("SELECT COUNT(*)
+            FROM(
+            SELECT DISTINCT location_cell
+            FROM `rwandalandscapes`
+            WHERE location_Sector='{$categories}'
+            ) AS DerivedTableAlias ");
     ?>
     <button type="button" class="btn btn-primary btn-sm  mb-3" id="districts-readmore" data-districts="<?php echo $bck['location_districts'] ;?>" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back </button>
     
@@ -275,9 +286,14 @@ if (isset($_POST['cell']) && !empty($_POST['cell'])) {
     $bck= $querybck->fetch_assoc();
     $query= $mysqli->query("SELECT * FROM rwandalandscapes WHERE location_cell='{$categories}' GROUP BY location_village HAVING  COUNT(DISTINCT location_village)= 1 ORDER BY created_on_ Desc Limit $showpages,6");
     $query0= $mysqli->query("SELECT location_village FROM rwandalandscapes WHERE location_cell='{$categories}' GROUP BY location_village HAVING  COUNT(DISTINCT location_village)= 1 ORDER BY created_on_ Desc Limit $showpages,6");
-    $query1= $mysqli->query("SELECT COUNT(DISTINCT location_village)= 1 FROM rwandalandscapes WHERE location_cell='{$categories}' GROUP BY location_village HAVING  COUNT(DISTINCT location_village)= 1 ORDER BY created_on_ Desc ");
-
-    ?>
+    // $query1= $mysqli->query("SELECT COUNT(DISTINCT location_village)= 1 FROM rwandalandscapes WHERE location_cell='{$categories}' GROUP BY location_village HAVING  COUNT(DISTINCT location_village)= 1 ORDER BY created_on_ Desc ");
+     $query1= $mysqli->query("SELECT COUNT(*)
+            FROM(
+            SELECT DISTINCT location_village
+            FROM `rwandalandscapes`
+            WHERE location_cell='{$categories}'
+            ) AS DerivedTableAlias ");
+   ?>
     <button type="button" class="btn btn-primary btn-sm  mb-3" id="sector-readmore" data-sector="<?php echo $bck['location_Sector'] ;?>" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back </button>
     
      <div class="row">

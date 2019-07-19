@@ -20,6 +20,7 @@ $path= 'Blog_nyarwanda_CMS/public/assets/image/users_profile_cover/assets/';
 $count = strlen($path).'<br>';
 $strpos = substr($path,0,strlen($path)-15).'<br>';
 echo $strpos;
+echo $_SERVER['DOCUMENT_ROOT'];
 // echo substr($path);
 echo $count;
 // echo date("n");

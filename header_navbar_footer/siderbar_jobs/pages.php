@@ -11,7 +11,11 @@
     <p id="business_id0" data-business="<?php echo $_SESSION['key'];?>"></p>
     <div class="text-center">
     <h4 class="card-title  The-company-name0">The Logo company </h4>
-          <img src="<?php echo BASE_URL_LINK.'image/users_profile_cover/'.$user['profile_img'] ;?>" width="40px" height="40px" alt="logo" >
+           <?php if (!empty($user['profile_img'])) {?>
+              <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $user['profile_img'] ;?>"  width="40px" height="40px" alt="logo" >
+              <?php  }else{ ?>
+                <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  width="40px" height="40px" alt="logo" >
+              <?php } ?>
     </div>
     <hr>
 

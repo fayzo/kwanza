@@ -184,9 +184,17 @@ if (isset($_POST['showChatPopup']) && !empty($_POST['showChatPopup'])) {
 						<div class="float-center">
     		            	<div class="message-head-img">
 			            	<?php if (!empty($user['profile_img'])) { ?>
-    		            	     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$user['profile_img'];?>"/><h4 class="py-3">Messages</h4>
+    		            	     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$user['profile_img'];?>"/>
+								 <div class="d-inline-block pt-1 pl-3">
+								   <div><?php echo $user['username']; ?></div>
+								   <div><i style="font-size: 20px;" class="fa fa-envelope-o"></i> Messages</div>
+								 </div>
 			            	<?php }else {?>
-    		            	     <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"/><h4 class="py-3">Messages</h4>
+    		            	     <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"/>
+								 <div class="d-inline-block pt-1 pl-3">
+								   <div><?php echo $user['username']; ?></div>
+								   <div><i style="font-size: 20px;" class="fa fa-envelope-o"></i> Messages</div>
+								 </div>
 			            	<?php } ?>
     		            	</div>
 			            </div>

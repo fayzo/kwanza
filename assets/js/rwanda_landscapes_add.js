@@ -50,13 +50,7 @@ $(document).ready(function () {
         var author = $('#author');
         var phone = $('#phone');
         var country = $('#country');
-        var province = $('#province');
         var additioninformation = $('#addition-information');
-        var districts = $('#districts');
-        var city = $('#city');
-        var sector = $('#sector');
-        var cell = $('#cell');
-        var village = $('#village');
         var photo = $('#photo');
         var other_photo = $('#other-photo');
         var video = $('#video');
@@ -64,14 +58,13 @@ $(document).ready(function () {
         var categories_of_landscapes = $('#categories_of_landscapes');
         var location_province = $('#location_province');
         var location_districts = $('#location_districts');
-        var location_Sector = $('#location_Sector');
+        var location_Sector = $('#location_sectors');
         var location_cell = $('#location_cell');
         var location_village = $('#location_village');
         
-        if (isEmpty(country) && isEmpty(city) && isEmpty(province) && isEmpty(districts) &&
-            isEmpty(sector) && isEmpty(cell) && isEmpty(village) && isEmpty(categories_of_landscapes) && 
-            isEmpty(additioninformation) && isEmpty(title) && isEmpty(author) && isEmpty(location_province) &&
-            isEmpty(location_districts) && isEmpty(location_Sector) && isEmpty(location_cell) && isEmpty(location_village) &&
+        if (isEmpty(country) && isEmpty(location_province) &&isEmpty(location_districts) && 
+            isEmpty(location_Sector) && isEmpty(location_cell) && isEmpty(location_village) &&
+            isEmpty(categories_of_landscapes) && isEmpty(additioninformation) && isEmpty(title) && isEmpty(author) && 
             isEmpty(phone) && isEmpty(photo) && isEmpty(other_photo) && isEmpty(video) && isEmpty(youtube)) {
             
             var extensions1 = $('#photo').val().split('.').pop().toLowerCase();

@@ -116,9 +116,14 @@ class Landscapes extends Home{
         $mysqli= $this->database;
         $query= $mysqli->query("SELECT * FROM rwandalandscapes WHERE location_province= '{$categories}' AND location_districts= location_districts GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc , rand() ");
         $query0= $mysqli->query("SELECT location_districts FROM rwandalandscapes WHERE location_province='{$categories}' GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc ");
-        $query1= $mysqli->query("SELECT COUNT(location_districts) FROM rwandalandscapes WHERE location_province='{$categories}' GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc ");
-
+        $query1= $mysqli->query("SELECT COUNT(*)
+            FROM(
+            SELECT DISTINCT location_districts
+            FROM `rwandalandscapes`
+            WHERE location_province='{$categories}'
+            ) AS DerivedTableAlias ");
         ?>
+
         <div class="card">
         <div class="card-header main-active p-1">
            <form class="form-inline float-right">
@@ -135,6 +140,7 @@ class Landscapes extends Home{
          <span class="landscapes-show"></span>
           <div class="landscapes-hide">
             <?php
+            // echo var_dump($query1);
                 $row1= $query1->fetch_array();
                 $total= array_shift($row1);
                 $array= array(0,$total);
@@ -196,8 +202,12 @@ class Landscapes extends Home{
         $mysqli= $this->database;
         $query= $mysqli->query("SELECT * FROM rwandalandscapes WHERE location_province= '{$categories}' AND location_districts= location_districts GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc , rand() ");
         $query0= $mysqli->query("SELECT location_districts FROM rwandalandscapes WHERE location_province='{$categories}' GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc ");
-        $query1= $mysqli->query("SELECT COUNT(location_districts) FROM rwandalandscapes WHERE location_province='{$categories}' GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc ");
-
+        $query1= $mysqli->query("SELECT COUNT(*)
+            FROM(
+            SELECT DISTINCT location_districts
+            FROM `rwandalandscapes`
+            WHERE location_province='{$categories}'
+            ) AS DerivedTableAlias ");
         ?>
         <div class="card">
         <div class="card-header main-active p-1">
@@ -242,7 +252,7 @@ class Landscapes extends Home{
                        <h5 class="text-primary mb-0">
                       <a class="text-primary" href="javascript:void(0)"  id="province-districts-readmore" data-districts="<?php echo $row['location_districts'] ;?>"><?php echo $row['location_districts'] ;?> Districts</a>
                        </h5>
-                       <div class="text-muted">Created on <?php echo $row['created_on_'] ;?> By <?php echo $row['author_'] ;?> </div>
+                       <div class="text-muted">Created on <?php echo ($row['created_on_']) ;?> By <?php echo $row['author_'] ;?> </div>
                        <p class="card-text mb-1">vIEW Different Landscapes of <?php echo $row['location_districts'] ;?> Districts</p>
                    </div><!-- card-body -->
                 </div><!-- card -->
@@ -257,6 +267,99 @@ class Landscapes extends Home{
 
     <?php 
     } 
+
+      function landscapesfetchALL($categories)
+    {
+        $mysqli= $this->database;
+        $query= $mysqli->query("SELECT * FROM rwandalandscapes WHERE location_province= '{$categories}' AND location_districts= location_districts GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc , rand() ");
+        $query0= $mysqli->query("SELECT location_districts FROM rwandalandscapes WHERE location_province='{$categories}' GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc ");
+        $query1= $mysqli->query("SELECT COUNT(*)
+            FROM(
+            SELECT DISTINCT location_districts
+            FROM `rwandalandscapes`
+            WHERE location_province='{$categories}'
+            ) AS DerivedTableAlias ");
+        ?>
+        <div class="card card-primary mb-1 ">
+        <div class="card-header main-active p-1">
+            <h5 class="card-title float-left pl-2"><i> Rwanda landscapes to Search</i></h5>
+             <form class="form-inline float-right">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i> </span>
+                    </div>
+                    <input type="text" class="form-control searchlandscapes"  aria-describedby="helpId" placeholder="Search Accountant, finance ,enginneer">
+                </div>
+              </form>
+
+            <div class="nav-scroller py-0" style="clear:right;height:2rem;">
+                <nav class="nav d-flex justify-content-between pb-0"  >
+                <a class="p-2" href="javascript:void(0)" onclick="landscapesCategories('kigali city');" >kigali city<span class="badge badge-primary"><?php echo $this->landscapescountPOSTS('kigali city');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="landscapesCategories('Northern province');" >Northern province<span class="badge badge-primary"><?php echo $this->landscapescountPOSTS('Northern province');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="landscapesCategories('East province');" >East province<span class="badge badge-primary"><?php echo $this->landscapescountPOSTS('East province');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="landscapesCategories('West province');" >West province<span class="badge badge-primary"><?php echo $this->landscapescountPOSTS('West province');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="landscapesCategories('Southern province');" >Southern province<span class="badge badge-primary"><?php echo $this->landscapescountPOSTS('Southern province');?></span></a>
+                </nav>
+            </div> <!-- nav-scroller -->
+        </div> <!-- /.card-header -->
+
+        <div class="card-body">
+        <span class="job-show"></span>
+        <div class="job-hide">
+        <h5 class="card-title text-center "><i><?php echo $categories;?> Landscapes</i></h5>
+            <?php
+                $row1= $query1->fetch_array();
+                $total= array_shift($row1);
+                $array= array(0,$total);
+                $totals= array_sum($array);
+
+                $District= '<div><span class="h5 text-success">'.$categories.' </span> has '.$totals.' Districts are :  ';
+                $i= 0;
+                $Districts='';
+                
+                while($conditionz= $query0->fetch_assoc()){
+                     $pre = ($i < 0)?' Districts, ':' Districts.';
+                     $Districts .= $conditionz['location_districts'].$pre;
+                     $i++;
+                 }
+                 echo $District.$Districts."</div></br>" ;
+            ?>
+
+          <?php while($row= $query->fetch_array()) { ?>
+
+            <div class="card flex-md-row shadow-sm h-md-100 border-0 mb-3">
+                    <img class="card-img-left flex-auto d-none d-lg-block" height="150px" width="150px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/rwandaLandscapes/<?php echo $row['photo_']; ?>" alt="Card image cap">
+                <div class="card-body d-flex flex-column align-items-start pt-0">
+                    <h5 class="text-primary mb-0">
+                    <a class="text-primary" href="javascript:void(0)"  id="districts-view" data-districts="<?php echo $row['location_districts'] ;?>"><?php echo $row['location_districts'] ;?> Districts</a>
+                    </h5>
+                    <div class="text-muted">Created on <?php echo $row['created_on_'] ;?> By <?php echo $row['author_'] ;?> </div>
+                    <p class="card-text mb-1">vIEW Different Landscapes of <?php echo $row['location_districts'] ;?> Districts</p>
+                </div><!-- card-body -->
+            </div><!-- card -->
+          <hr class="bg-info mt-0 mb-1" style="width:95%;">
+        <?php } ?>
+           </div>
+          </div> <!-- /.card-body -->
+       </div> <!-- /.card -->
+
+    <?php } 
+
+       public function landscapescountPOSTS($categories)
+    {
+        $mysqli =$this->database;
+        $sql= $mysqli->query("SELECT COUNT(*)
+            FROM(
+            SELECT DISTINCT location_districts
+            FROM `rwandalandscapes`
+            WHERE location_province='{$categories}'
+            ) AS DerivedTableAlias ");
+        $row_post = $sql->fetch_array();
+        $total_post= array_shift($row_post);
+        $array= array(0,$total_post);
+        $total_posts= array_sum($array);
+        echo $total_posts;
+    }
 
 }
 $landscapes= new Landscapes();

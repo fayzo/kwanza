@@ -195,6 +195,7 @@
    <script src="<?php echo BASE_URL_LINK ;?>js/sports_addcategories.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/football_addcategories.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/rwanda_landscapes_add.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/rwanda_landscapes.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/rwandalandscapes.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/news_addcategories.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/businessApplyRead_inbox.js"></script>
@@ -205,6 +206,7 @@
    <script src="<?php echo BASE_URL_LINK ;?>js/domestic_addcategories.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/crowfund_addcategories.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/unemplyoment_message.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/school_add.js"></script>
    
    <!-- <script src="<?php echo BASE_URL_LINK ;?>js/add_post_ajax.js"></script> -->
    <script src="<?php echo BASE_URL_LINK ;?>js/manage_admins_ajax.js"></script>

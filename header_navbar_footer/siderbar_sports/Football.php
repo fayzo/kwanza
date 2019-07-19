@@ -24,7 +24,7 @@
         <div class="col-md-6">
             <div class="card">
                  <div id="Football-view">
-                      <?php echo $football->currentDatefootballMatch(3); ?>
+                      <?php echo $football->currentDatefootballMatch(0); ?>
                 </div>
             </div> <!-- card -->
         </div> <!-- col -->

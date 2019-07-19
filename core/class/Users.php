@@ -72,6 +72,97 @@ class Users{
         }
     }
 
+     public function domesticslogin($username,$email,$password,$datetime)
+    {
+       $mysqli= $this->database;
+       $sql= $mysqli->query("SELECT domestics_id,username ,email FROM domestics WHERE username ='{$username}' AND email ='{$email}' AND password='{$password}' ");
+       $sql1= $mysqli->query("SELECT domestics_id ,username,email FROM domestics WHERE username ='{$username}' or password='{$password}'");
+
+        $row= $sql->fetch_assoc();
+        $rows= $sql1->fetch_assoc();
+    
+        if ($sql->num_rows > 0) {
+            $_SESSION['domestics'] = $row['domestics_id'];
+            exit ('<div class="alert alert-success alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS</strong> </div>');
+
+        }else if($sql1->num_rows > 0){
+            $_SESSION['domestics'] = $row['domestics_id'];
+            exit ('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail Password</strong>
+                </div>');
+
+        }else{
+            exit ('<div class="alert alert-danger alert-dismissible fade show text">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>TRY AGAIN !!! </strong>
+                </div>');
+        }
+    }
+
+    
+     public function employersdomesticslogin($username,$email,$password,$datetime)
+    {
+       $mysqli= $this->database;
+       $sql= $mysqli->query("SELECT employers_id,username ,email FROM employersdomestics WHERE username ='{$username}' AND email ='{$email}' AND password='{$password}' ");
+       $sql1= $mysqli->query("SELECT employers_id ,username,email FROM employersdomestics WHERE username ='{$username}' or password='{$password}'");
+
+        $row= $sql->fetch_assoc();
+        $rows= $sql1->fetch_assoc();
+    
+        if ($sql->num_rows > 0) {
+            $_SESSION['employers'] = $row['employers_id'];
+            exit ('<div class="alert alert-success alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS</strong> </div>');
+
+        }else if($sql1->num_rows > 0){
+            $_SESSION['employers'] = $row['employers_id'];
+            exit ('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail Password</strong>
+                </div>');
+
+        }else{
+            exit ('<div class="alert alert-danger alert-dismissible fade show text">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>TRY AGAIN !!! </strong>
+                </div>');
+        }
+    }
+
+    public function domesticsloggedin()
+    {
+        if (isset($_SESSION['domestics'])) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+    
+     public function employersloggedin()
+    {
+        if (isset($_SESSION['employers'])) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     public function checkPassword($password)
     {
         $mysqli= $this->database;

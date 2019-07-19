@@ -21,7 +21,7 @@ if (isset($_POST['job_id']) && !empty($_POST['job_id'])) {
                 <div class="card">
                     <div class="card-header">
                         <div class="user-block">
-                             <div class="user-blockImgBorder">
+                             <div class="user-blockImgBorder" style="top:20px;">
                              <div class="user-blockImg">
                                    <?php if (!empty($user['profile_img'])) {?>
                                    <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $user['profile_img'] ;?>" alt="User Image">
@@ -31,10 +31,11 @@ if (isset($_POST['job_id']) && !empty($_POST['job_id'])) {
                              </div>
                              </div>
                              <span class="username">
-                                 <a style="padding-right:3px;" href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $user['companyname'] ;?></a>
+                                 <a style="padding-right:3px;" class="h5" href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $home->htmlspecialcharss($user['job_title']) ;?></a>
                              </span>
-                              <span class="description">Shared public - <?php echo $home->timeAgo($user['created_on']); ?></span>
-                             <span class="description h3">Viewed: 234 times</span>
+                                 <a style="padding-right:3px;" href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $home->htmlspecialcharss($user['companyname']).' || '.$user['country'];?> <i class="flag-icon flag-icon-<?php echo strtolower($user['country']) ;?> h4 mb-0"
+                            id="<?php echo strtolower( $jobs['location']) ;?>" title="us"></i></a>
+                              <span class="description">Shared public - <?php echo $home->timeAgo($user['created_on']); ?>  . <span>Views: 234 times</span></span>
                          </div>
                          <!-- <h2>job title <s?php echo $user['job_title']; ?></h2> -->
                     </div> <!-- card-header -->
@@ -53,7 +54,7 @@ if (isset($_POST['job_id']) && !empty($_POST['job_id'])) {
                                  </div>
                              </div> <!-- col-md-3 -->
                              <div class="col-md-10">
-                               <span><?php echo $user['companyname']; ?></span><br>
+                               <span><?php echo $user['companyname']; ?></span>
                                <h5>Company Overview</h5>
                                <span><?php echo $user['overview']; ?></span>
                              </div> <!-- col-md-9 -->
@@ -63,7 +64,33 @@ if (isset($_POST['job_id']) && !empty($_POST['job_id'])) {
 
                         <p class="card-text">job-id -<?php echo $job_id ;?></p>
                         <p class="card-text">business-id -<?php echo $business_id ;?></p>
-                        <h4 >Job Title: </h4>
+                        <h4 >Job Title: <?php echo $user['job_title'] ;?> </h4>
+                          <hr>
+                      
+                             <h4 >Job Summary: </h4>
+                             <div><?php echo $user['job_summary'] ;?></div>
+                           <hr>
+                      
+                             <h4>Responsibilities and Duties: </h4>
+                            <div> <?php echo $user['responsibilities_duties'] ;?></div>
+                           <hr>
+                      
+                           <h4 >Qualifications and Skills: </h4>
+                           <div><?php echo $user['qualifications_skills'] ;?></div>
+
+                         <hr>
+                            <h4 class="card-title">Terms and conditions: </h4>
+                           <div><?php echo $user['conditions'] ;?></div>
+                          <hr>
+                  
+                            <h4 class="card-title">Deadline to submit: </h4>
+                           <div><?php echo $user['deadline'] ;?></div>
+                          <hr>
+                  
+                            <h4 class="card-title">Apply to website: </h4>
+                             <div><?php echo $user['website'] ;?></div>
+                          <hr>
+                        <!-- <h4 >Job Title: </h4>
                             <label for="">Examples of Accountant job titles </label>
                             <ul style="list-style-type:dot">
                                <li> Accountant</li>
@@ -149,7 +176,8 @@ if (isset($_POST['job_id']) && !empty($_POST['job_id'])) {
                             </ul>
                               <span>Deadline: june 23 </span>
                              <span >number of positions: 2</span>
-                          <hr>
+                          <hr> -->
+                          <input type="button" id="Apply" value="Apply" data-applyjob="<?php echo $job_id ;?>" data-business="<?php echo $business_id ;?>" class="btn btn-success">
                     </div>
                 </div>
 
@@ -196,7 +224,9 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
              </div>
             </div>
             <hr>
-
+<p><div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li>
+<li><div><p>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessaryï»¿</p></div></li>
+</ul></div></p>
         <?php } 
         }
 } ?>

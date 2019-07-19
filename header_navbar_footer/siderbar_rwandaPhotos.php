@@ -26,6 +26,10 @@
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Home" role="tab" aria-controls="list-Home">Home</a>
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Kigali_city" role="tab" aria-controls="list-Kigali_city">Kigali city</a>
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Province" role="tab" aria-controls="list-Province">Province</a>
+           <a class="p-2 text-muted" data-toggle="tab" href="#list-Northern" role="tab" aria-controls="list-Northern">Northern Province</a>
+           <a class="p-2 text-muted" data-toggle="tab" href="#list-West" role="tab" aria-controls="list-West">West Province</a>
+           <a class="p-2 text-muted" data-toggle="tab" href="#list-East" role="tab" aria-controls="list-East">East Province</a>
+           <a class="p-2 text-muted" data-toggle="tab" href="#list-Southern" role="tab" aria-controls="list-Southern">Southern Province</a>
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Uburanga" role="tab" aria-controls="list-Uburanga">Uburanga</a>
            <button type="button" class="btn btn-light mt-2" id="add_rwandalandscapes" data-rwandalandscapes="<?php echo $_SESSION['key']; ?>" > + Add rwanda-Landscapes </button>
         </nav>
@@ -42,6 +46,22 @@
 
         <div class="tab-pane fade" id="list-Province" role="tabpanel" aria-labelledby="list-Province-list">
            <?php include "siderbar_rwandaPhotos/Province.php"?>
+        </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
+
+        <div class="tab-pane fade" id="list-Northern" role="tabpanel" aria-labelledby="listNorthern-list">
+           <?php include "siderbar_rwandaPhotos/Northern_Province.php"?>
+        </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
+
+        <div class="tab-pane fade" id="list-West" role="tabpanel" aria-labelledby="list-West-list">
+           <?php include "siderbar_rwandaPhotos/West_Province.php"?>
+        </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
+
+        <div class="tab-pane fade" id="list-East" role="tabpanel" aria-labelledby="list-East-list">
+           <?php include "siderbar_rwandaPhotos/East_Province.php"?>
+        </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
+
+        <div class="tab-pane fade" id="list-Southern" role="tabpanel" aria-labelledby="list-East-list">
+           <?php include "siderbar_rwandaPhotos/Southern_Province.php"?>
         </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
 
         <div class="tab-pane fade " id="list-Uburanga" role="tabpanel" aria-labelledby="list-Uburanga-list">

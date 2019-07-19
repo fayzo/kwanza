@@ -44,7 +44,7 @@
     <link href="<?php echo BASE_URL_LINK ;?>icon/google_icon/google_icons.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>icon/flag-icon-css-master/css/flag-icon.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>icon/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- <link href="<?php echo BASE_URL_LINK ;?>icon/glyphicons/glyphicons.css" rel="stylesheet"> -->
+    <link href="<?php echo BASE_URL_LINK ;?>icon/glyphicons/glyphicons.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>plugin/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet">
     
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL_LINK ;?>dist/css/dataTables.bootstrap4.min.css">
@@ -59,11 +59,11 @@
     <link   href="fontawesome_5_4/css/solid.css" rel="stylesheet">
     <link   href="fontawesome_5_4/css/regular.css" rel="stylesheet">
     <link   href="fontawesome_5_4/css/brands.css" rel="stylesheet"> -->
-    <!-- <link   href="fontawesome_5_4/css/all.css" rel="stylesheet"> -->
-    <!-- <script src="fontawesome_5_4/js/fontawesome.js"></script>
-    <script src="fontawesome_5_4/js/solid.js"></script>
-    <script src="fontawesome_5_4/js/regular.js"></script>
-    <script src="fontawesome_5_4/js/brands.js"></script> -->
+    <!-- <link   href="<?php echo BASE_URL_LINK ;?>icon/fontawesome_5_4/css/all.css" rel="stylesheet">
+    <script src="<?php echo BASE_URL_LINK ;?>icon/fontawesome_5_4/js/fontawesome.js"></script>
+    <script src="<?php echo BASE_URL_LINK ;?>icon/fontawesome_5_4/js/solid.js"></script>
+    <script src="<?php echo BASE_URL_LINK ;?>icon/fontawesome_5_4/js/regular.js"></script>
+    <script src="<?php echo BASE_URL_LINK ;?>icon/fontawesome_5_4/js/brands.js"></script> -->
     <!-- <script src="<?php echo BASE_URL_LINK ;?>icon/fontawesome_5_4/js/all.js"></script> -->
     <!-- <script src="<?php echo BASE_URL_LINK ;?>dist/js/country.js"></script> -->
 
@@ -403,27 +403,7 @@
             if (xhr.readyState == 4 && xhr.status == 200) {
 
                 switch (id) {
-                    case 1:
-                         var pagination = document.getElementById('Football-view');
-                         pagination.innerHTML = xhr.responseText;
-                        break;
-                    case  2:
-                         var pagination = document.getElementById('Football-view');
-                         pagination.innerHTML = xhr.responseText;
-                        break;
-                    case  3:
-                         var pagination = document.getElementById('Football-view');
-                         pagination.innerHTML = xhr.responseText;
-                        break;
-                    case  4:
-                         var pagination = document.getElementById('Football-view');
-                         pagination.innerHTML = xhr.responseText;
-                        break;
-                    case  5:
-                         var pagination = document.getElementById('Football-view');
-                         pagination.innerHTML = xhr.responseText;
-                        break;
-                    case  6:
+                    case id:
                          var pagination = document.getElementById('Football-view');
                          pagination.innerHTML = xhr.responseText;
                         break;
@@ -498,10 +478,165 @@
         }, false);
     }
 
+    function landscapesCategories(categories) {
+        var xhr = new XMLHttpRequest();
+        // Add any event handlers here...
+        xhr.open('POST', 'core/ajax_db/landscapes_FecthPaginat0.php?categories=' + categories, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+               switch (categories) {
+                    case categories:
+                         var pagination = document.getElementById('jobs-hides');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
     function jobsCategories(categories,id) {
         var xhr = new XMLHttpRequest();
         // Add any event handlers here...
         xhr.open('POST', 'core/ajax_db/businessView_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (categories) {
+                    case categories:
+                         var pagination = document.getElementById('jobs-hides');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
+    function jobsCategories0(categories,id) {
+        var xhr = new XMLHttpRequest();
+        // Add any event handlers here...
+        xhr.open('POST', 'core/ajax_db/businessView_FecthPaginat.php?pages=' + id + '&categoriess=' + categories+ '&jobs0=jobs0', true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (categories) {
+                    case categories:
+                         var pagination = document.getElementById('jobs-hides');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
+    function schoolCategories0(categories,id) {
+        var xhr = new XMLHttpRequest();
+        // Add any event handlers here...
+        xhr.open('POST', 'core/ajax_db/school_FecthPaginat.php?pages=' + id + '&categories=' + categories + '&school=school', true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (categories) {
+                    case categories:
+                         var pagination = document.getElementById('jobs-hides');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
+    function schoolCategories(categories,id) {
+        var xhr = new XMLHttpRequest();
+        // Add any event handlers here...
+        xhr.open('POST', 'core/ajax_db/school_FecthPaginat.php?pages=' + id + '&categories=' + categories + '&school_location=school_location', true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (categories) {
+                    case categories:
+                         var pagination = document.getElementById('jobs-hides');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
+    function jobsCategories0(categories,id) {
+        var xhr = new XMLHttpRequest();
+        // Add any event handlers here...
+        xhr.open('POST', 'core/ajax_db/businessView_FecthPaginat.php?pages=' + id + '&categoriess=' + categories+ '&jobs0=jobs0', true);
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {

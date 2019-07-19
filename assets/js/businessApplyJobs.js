@@ -90,7 +90,7 @@ $(document).ready(function () {
                       $("#responseSubmit").fadeOut();
                     }, 2000);
                     setInterval(function () {
-                        location.reload();
+                        // location.reload();
                     }, 2400);
                 }, error: function (response) {
                      $("#responseSubmit").html(response).fadeIn();

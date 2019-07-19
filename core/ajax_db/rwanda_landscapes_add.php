@@ -26,30 +26,51 @@ if (isset($_POST['landscapes_view']) && !empty($_POST['landscapes_view'])) {
                     <div>Choose your location and categories </div>
                       <input type="hidden" name="user_id" value="<?php echo $user_id ;?>">
                       <div class="form-row mt-2">
+                        <script src="<?php echo BASE_URL_LINK ;?>dist/js/country.js"></script>
+
                         <div class="col">
-                          <input type="text" class="form-control" name="country" id="country" placeholder="Country">
+                            <div id="myCountry"></div>
                         </div>
                         <div class="col">
-                          <input type="text" class="form-control" name="city" id="city" placeholder="City">
-                        </div>
-                      </div>
-                      <div class="form-row mt-2">
-                        <div class="col">
-                          <input type="text" class="form-control" name="province" id="province" placeholder="Province">
+                            <div id="myProvince"></div>
                         </div>
                         <div class="col">
-                          <input type="text" class="form-control" name="districts" id="districts" placeholder="districts">
-                        </div>
-                        <div class="col">
-                          <input type="text" class="form-control" name="sector" id="sector" placeholder="sector">
+                            <div id="myDistricts"></div>
                         </div>
                       </div>
+
                       <div class="form-row mt-2">
                         <div class="col">
-                          <input type="text" class="form-control" name="cell" id="cell" placeholder="cell">
+                            <div id="mySectors"></div>
                         </div>
-                        <div class="col">
-                          <input type="text" class="form-control" name="village" id="village" placeholder="village">
+
+                       <div class="col">
+                            <div class="form-group">
+                              <select class="form-control" name="location_cell" id="location_cell">
+                                <option value="">choose what Location of cell is taken</option>
+                                <option value="Rugando">Rugando</option>
+                                <option value="kimihurura1">kimihurura1</option>
+                                <option value="Kicukiro">Kicukiro</option>
+                                <option value="muhobe">muhobe</option>
+                                <option value="Rutsiro">Rutsiro</option>
+                                <option value="rutondo">rutondo</option>
+                              </select>
+                            </div>
+                        </div>
+
+                       <div class="col">
+                            <div class="form-group">
+                              <select class="form-control" name="location_village" id="location_village">
+                                <option value="">choose what Location of village is taken</option>
+                                <option value="gasange">gasange</option>
+                                <option value="amajyambere">amajyambere</option>
+                                <option value="henza">henza</option>
+                                <option value="Kicukiro">Kicukiro</option>
+                                <option value="kamuhima">kamuhima</option>
+                                <option value="rugombe">rugombe</option>
+                                <option value="mujabana">mujabana</option>
+                              </select>
+                            </div>
                         </div>
 
                         <div class="col">
@@ -62,6 +83,7 @@ if (isset($_POST['landscapes_view']) && !empty($_POST['landscapes_view'])) {
                               </select>
                             </div>
                         </div>
+                        
                       </div>
 
                       <div class="form-group mt-2">
@@ -98,82 +120,6 @@ if (isset($_POST['landscapes_view']) && !empty($_POST['landscapes_view'])) {
                           </div>
                         </div>
 
-                         <div class="col">
-                            <div class="form-group">
-                              <select class="form-control" name="location_province" id="location_province">
-                                <option value="">Select what Location of photos is taken</option>
-                                <option value="Kigali-city">Kigali city</option>
-                                <option value="Province">Province</option>
-                              </select>
-                            </div>
-                        </div>
-
-                      </div>
-
-                      <div class="form-row mt-2">
-                       <div class="col">
-                            <div class="form-group">
-                              <select class="form-control" name="location_districts" id="location_districts">
-                                <option value="">Select what Location of districts is taken</option>
-                                <option value="Gasabo">Gasabo</option>
-                                <option value="Nyarugenge">Nyarugenge</option>
-                                <option value="Kicukiro">Kicukiro</option>
-                                <option value="Rubavu">Rubavu</option>
-                                <option value="Nyabihu">Nyabihu</option>
-                                <option value="Musanze">Musanze</option>
-                                <option value="Burera">Burera</option>
-                                <option value="Gicumbi">Gicumbi</option>
-                                <option value="Nyagatare">Nyagatare</option>
-                              </select>
-                            </div>
-                        </div>
-
-                       <div class="col">
-                            <div class="form-group">
-                              <select class="form-control" name="location_Sector" id="location_Sector">
-                                <option value="">Select what Location of Sector is taken</option>
-                                <option value="kimihurura">kimihurura</option>
-                                <option value="kimihurura1">kimihurura1</option>
-                                <option value="Kicukiro">Kicukiro</option>
-                                <option value="Kicukiro">Kicukiro</option>
-                                <option value="MUhima">MUhima</option>
-                                <option value="kabeza">kabeza</option>
-                                <option value="Remera">Remera</option>
-                                <option value="kiyovu">kiyovu</option>
-                                <option value="Nyamirambo">Nyamirambo</option>
-                              </select>
-                            </div>
-                        </div>
-
-                       <div class="col">
-                            <div class="form-group">
-                              <select class="form-control" name="location_cell" id="location_cell">
-                                <option value="">Select what Location of cell is taken</option>
-                                <option value="Rugando">Rugando</option>
-                                <option value="kimihurura1">kimihurura1</option>
-                                <option value="Kicukiro">Kicukiro</option>
-                                <option value="muhobe">muhobe</option>
-                                <option value="Rutsiro">Rutsiro</option>
-                                <option value="rutondo">rutondo</option>
-                              </select>
-                            </div>
-                        </div>
-                      </div>
-
-                       <div class="col">
-                            <div class="form-group">
-                              <select class="form-control" name="location_village" id="location_village">
-                                <option value="">Select what Location of village is taken</option>
-                                <option value="gasange">gasange</option>
-                                <option value="amajyambere">amajyambere</option>
-                                <option value="henza">henza</option>
-                                <option value="Kicukiro">Kicukiro</option>
-                                <option value="kamuhima">kamuhima</option>
-                                <option value="rugombe">rugombe</option>
-                                <option value="mujabana">mujabana</option>
-                              </select>
-                            </div>
-                        </div>
                       </div>
 
                       <div class="form-row mt-2">
@@ -256,17 +202,11 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
     $author = $users->test_input($_POST['author']);
     $phone = $users->test_input($_POST['phone']);
     $country = $users->test_input($_POST['country']);
-    $city = $users->test_input($_POST['city']);
-    $province = $users->test_input($_POST['province']);
-    $districts = $users->test_input($_POST['districts']);
-    $cell = $users->test_input($_POST['cell']);
-    $sector = $users->test_input($_POST['sector']);
-    $village = $users->test_input($_POST['village']);
     $additioninformation = $users->test_input($_POST['additioninformation']);
     $categories_of_landscapes=  $users->test_input($_POST['categories_of_landscapes']);
     $location_province=  $users->test_input($_POST['location_province']);
     $location_districts=  $users->test_input($_POST['location_districts']);
-    $location_Sector=  $users->test_input($_POST['location_Sector']);
+    $location_Sector=  $users->test_input($_POST['location_sectors']);
     $location_cell=  $users->test_input($_POST['location_cell']);
     $location_village=  $users->test_input($_POST['location_village']);
 
@@ -290,13 +230,7 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
 	'title_'=> $title,
 	'author_'=> $author,
 	'phone_'=> $phone,
-	'country_'=> $country,
-	'city_'=> $city,
-	'province_'=> $province,
-	'districts_'=> $districts,
-	'sector_'=> $sector,
-	'cell_'=> $cell,
-	'village_'=> $village,
+	'country'=> $country,
 	'photo_'=> $photo_,
 	'other_photo_'=> $other_photo_, 
 	'video_'=> $video_, 

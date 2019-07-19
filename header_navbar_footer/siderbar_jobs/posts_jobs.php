@@ -1,14 +1,17 @@
 
-<div class="card mt-3 col-8 offset-2 mb-4">
+<div class="card mt-3 col-12 mb-4">
     <div class="card-header text-center">
         <input style="float: right" type="button" class="btn btn-success" id="addPostsjobs" value="Post jobs">
         <input style="float: left" type="button" class="btn btn-info" data-toggle="modal" data-target="#examplePost" value="Example jobs Posted">
         <h1><i>Jobs Description</i></h1>
+          <input type="hidden"  id="session" value="<?php echo $_SESSION['key']; ?>">
     </div>
     <div class="card-body">
 
-  <?php if ($jobs['business_id'] == $user['user_id']) { ?>
-                
+  <?php if ($jobs['business_id'] == $user['user_id'] && $_SESSION['key'] == $jobs['business_id']) { ?>
+             <div class="row">
+              <div class="col-md-6">
+
                 <?php if($jobs['turn']  === 'on') { ?>
                        <h3 class="text-center"><i> Jobs Turn <span class="bg-success rounded text-white px-1">On</span></i></h3>
                       <table class="table table-striped table-bordered table-hover table-jobsFetchOn" >
@@ -23,10 +26,13 @@
                          <tbody id="tbody-jobsFetchOn">
                          </tbody>
                      </table>
+              </div>
 
                 <?php}else if( $jobs['turn'] === 'off') { ?>
 
-                     <h3 class="text-center"><i> Jobs Turn <span class="bg-danger rounded text-white px-1">Off</span></i></h3>
+              <div class="col-md-6">
+       
+                <h3 class="text-center"><i> Jobs Turn <span class="bg-danger rounded text-white px-1">Off</span></i></h3>
                 <table class="table table-striped table-bordered table-hover table-jobsFetch" >
                   <thead class="main-active">
                        <tr>
@@ -39,10 +45,18 @@
                    <tbody id="tbody-jobsFetch">
                    </tbody>
                </table>
+               
+              </div><!-- col -->
 
               <?php } ?>
+          </div><!-- row -->
+        </div><!-- card-body -->
+       </div><!-- card -->
 
     <?php }else{ ?>  
+
+     <div class="card mt-3 col-8 offset-2 mb-4">
+       <div class="card-body">
 
           <h4 class="card-title">Job Title: </h4>
           <p class="card-title">Explaination of Title: </p>
@@ -146,11 +160,10 @@
                  <li>Strong attention to detail </li>
           </ul>
         <hr>
-
+        
+      </div>
+  </div>
     <?php } ?>
-
-    </div>
-</div>
 
 
              <div id="Postjobs" class="modal fade">

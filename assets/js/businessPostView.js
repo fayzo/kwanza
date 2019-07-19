@@ -20,6 +20,24 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on('click', '.jobHovers0', function () {
+        // e.stopPropagation();
+        var job_id = $(this).data('job');
+        var business_id = $(this).data('business');
+        $.ajax({
+            url: 'core/ajax_db/businessPostView0.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                job_id: job_id,
+                business_id: business_id,
+            }, success: function (response) {
+                $(".jobslarge").html(response);
+                console.log(response);
+            }
+        });
+    });
+
     $(document).on('click', '.inbox-view', function () {
         // e.stopPropagation();
         var cv_id = $(this).data('cv_id');

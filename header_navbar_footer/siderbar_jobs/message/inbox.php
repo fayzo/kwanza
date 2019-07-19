@@ -59,7 +59,7 @@
                                  </thead>
                                  <tbody>
                                     <tr><input type="hidden" class="form-control" name="deleteCheck" value="deleteCheck" ></tr>
-                                    <?php echo $home->inbox() ; ?>
+                                    <?php echo $home->inbox($_SESSION['key']) ; ?>
                                      <!-- <tr>
                                          <td><input type="checkbox"></td>
                                          <td class="mailbox-star"><a href="#"><i
