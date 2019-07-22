@@ -14,18 +14,11 @@
 <div role="tabpanel">
       <div class="nav-scroller py-1 mb-2 bg-light">
         <nav class="nav d-flex justify-content-between" id="list-tab" role="tablist">
-           <a class="p-2 text-muted" data-toggle="tab" href="#list-Technology" role="tab" aria-controls="list-Technology">Home</a>
-           <a class="p-2 text-muted" data-toggle="tab" href="#list-Design" role="tab" aria-controls="list-Design">Destination</a>
-           <a class="p-2 text-muted" data-toggle="tab" href="#list-Culture" role="tab" aria-controls="list-Culture">Culture</a>
-           <a class="p-2 text-muted" data-toggle="tab" href="#list-Business" role="tab" aria-controls="list-Business">Business</a>
-           <a class="p-2 text-muted" data-toggle="tab" href="#list-Politics" role="tab" aria-controls="list-Politics">Politics</a>
-           <a class="p-2 text-muted" data-toggle="tab" href="#list-Opinion" role="tab" aria-controls="list-Opinion">Opinion</a>
-           <a class="p-2 text-muted" data-toggle="tab" href="#list-Health" role="tab" aria-controls="list-Health">Health</a>
-           <a class="p-2 text-muted" data-toggle="tab" href="#list-Style" role="tab" aria-controls="list-Style">Style</a>
+           <a class="p-2 text-muted" data-toggle="tab" href="#list-Home" role="tab" aria-controls="list-Home">Home</a>
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Travel" role="tab" aria-controls="list-Travel">Travel</a>
-           <a class="p-2 text-muted" data-toggle="tab" href="#list-History" role="tab" aria-controls="list-History">History</a>
-           <a class="p-2 text-muted" data-toggle="tab" href="#list-Science" role="tab" aria-controls="list-Science">Science</a>
-           <a class="p-2 text-muted" data-toggle="tab" href="#list-Computer_science" role="tab" aria-controls="list-Computer_science">Computer science</a>
+           <a class="p-2 text-muted" data-toggle="tab" href="#list-Destination" role="tab" aria-controls="list-Destination">Destination</a>
+           <a class="p-2 text-muted" data-toggle="tab" href="#list-Culture" role="tab" aria-controls="list-Culture">Culture</a>
+           <a class="p-2 text-muted" data-toggle="tab" href="#list-Style" role="tab" aria-controls="list-Style">LifeStyle</a>
         </nav>
       </div>
   <!-- </div>
@@ -43,53 +36,27 @@
     </div> -->
  
       <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="list-Technology" role="tabpanel" aria-labelledby="list-Technology-list">
-           <?php include "siderbar_blog/Technology.php"?>
+
+        <div class="tab-pane fade" id="list-Home" role="tabpanel" aria-labelledby="list-Design-list">
+           <?php include "siderbar_travel/Home.php"?>
         </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
 
-        <div class="tab-pane fade" id="list-Design" role="tabpanel" aria-labelledby="list-Design-list">
-           <?php include "siderbar_blog/Design.php"?>
+         <div class="tab-pane fade " id="list-Travel" role="tabpanel" aria-labelledby="list-Travel-list">
+           <?php include "siderbar_travel/Travel.php"?>
+        </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
+
+        <div class="tab-pane fade" id="list-Destination" role="tabpanel" aria-labelledby="list-Culture-list">
+           <?php include "siderbar_travel/Destination.php"?>
         </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
 
         <div class="tab-pane fade" id="list-Culture" role="tabpanel" aria-labelledby="list-Culture-list">
-           <?php include "siderbar_blog/Culture.php"?>
+           <?php include "siderbar_travel/Culture.php"?>
         </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
 
-        <div class="tab-pane fade " id="list-Business" role="tabpanel" aria-labelledby="list-Business-list">
-           <?php include "siderbar_blog/Business.php"?>
-        </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
-
-        <div class="tab-pane fade " id="list-Politics" role="tabpanel" aria-labelledby="list-Politics-list">
-           <?php include "siderbar_blog/politics.php"?>
-        </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
-
-        <div class="tab-pane fade " id="list-Opinion" role="tabpanel" aria-labelledby="list-Opinion-list">
-           <?php include "siderbar_blog/Opinion.php"?>
-        </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
-
-        <div class="tab-pane fade " id="list-Health" role="tabpanel" aria-labelledby="list-Health-list">
-           <?php include "siderbar_blog/Health.php"?>
-        </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
-
-        <div class="tab-pane fade " id="list-Style" role="tabpanel" aria-labelledby="list-Style-list">
-           <?php include "siderbar_blog/Style.php"?>
-        </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
-
-        <div class="tab-pane fade " id="list-Travel" role="tabpanel" aria-labelledby="list-Travel-list">
-           <?php include "siderbar_blog/Travel.php"?>
-        </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
-
-        <div class="tab-pane fade " id="list-History" role="tabpanel" aria-labelledby="list-History-list">
-           <?php include "siderbar_blog/history.php"?>
-        </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
-
-        <div class="tab-pane fade" id="list-Science" role="tabpanel" aria-labelledby="list-Science-list">
-                     <?php include "siderbar_blog/science.php"?>
+        <div class="tab-pane fade" id="list-Style" role="tabpanel" aria-labelledby="list-Science-list">
+                     <?php include "siderbar_travel/Lifestyle.php"?>
          </div> <!-- END-OF A LINK OF Comment ID=#  -->
 
-         <div class="tab-pane fade" id="list-Computer_science" role="tabpanel" aria-labelledby="list-Computer_science-list">
-            <?php include "siderbar_blog/computer_science.php"?>
-         </div> <!-- END-OF A LINK OF profile ID=#  -->
       </div>
       <!-- tab-content -->
 </div>

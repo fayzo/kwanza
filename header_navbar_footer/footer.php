@@ -160,7 +160,9 @@
    <script src="<?php echo BASE_URL_LINK ;?>dist/js/removeChat.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>dist/js/siderbarResponsive.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>dist/js/jquery.Jcrop.min.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>dist/js/lightslider.js"></script> 
 
+    <script src="<?php echo BASE_URL_LINK ;?>dist/js/jquery.range.js"></script>
    <!-- THIS IS JAVASCRIPTS OF VALIDATION FORMS IN BOOTSTRAP! --> 
    <!-- THIS IS JAVASCRIPTS OF VALIDATION FORMS IN BOOTSTRAP! -->
    <script src="<?php echo BASE_URL_LINK ;?>js/profileEdit.js"></script>
@@ -205,6 +207,7 @@
    <!-- <script src="<?php echo BASE_URL_LINK ;?>js/food_cart_items.js"></script> -->
    <script src="<?php echo BASE_URL_LINK ;?>js/domestic_addcategories.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/crowfund_addcategories.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/hotel_addcategories.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/unemplyoment_message.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/school_add.js"></script>
    
@@ -474,6 +477,39 @@ $(function() {
        // instead of a settings object
        ]
    });
+
+</script>
+ <script>
+$('.price_range').jRange({
+    from: 0,
+    to: 500,
+    step: 50,
+    scale: [0,100,200,300,400,500],
+    format: '%s USD',
+    width: 300,
+    showLabels: true,
+    isRange : true,
+    theme: "theme-blue",
+    onstatechange: function(){
+           $('.price_range').change();
+        }
+});
+
+  $('.price_range').change(function(){
+          var price_range = $('.price_range').val();
+            $.ajax({
+                type: 'POST',
+                url: 'core/ajax_db/hotel_add.php',
+                data:'price_range='+price_range,
+                beforeSend: function () {
+                    $('.container').css("opacity", ".5");
+                },
+                success: function (html) {
+                    $('#productContainer').html(html);
+                    $('.container').css("opacity", "");
+                }
+            });
+    });
 
 </script>
 

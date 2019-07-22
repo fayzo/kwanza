@@ -38,7 +38,9 @@
     <link href="<?php echo BASE_URL_LINK ;?>plugin/iCheck/flat/blue.css"  rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/slick.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/slick-themeg.css" rel="stylesheet" type="text/css" media="screen" />
-
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/jquery.range.css"  rel="stylesheet">
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/lightslider.css"  rel="stylesheet"  />
+    
     <!-- <link href="<?php echo BASE_URL_LINK ;?>dist/css/AdminLTE.css" rel="stylesheet"> -->
 
     <link href="<?php echo BASE_URL_LINK ;?>icon/google_icon/google_icons.css" rel="stylesheet">
@@ -858,7 +860,37 @@
             }
         };
     }
-    
+   
+     function  hotelCategories(categories,id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'core/ajax_db/hotel_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (categories) {
+                    case categories:
+                         var pagination = document.getElementById('hotel-view');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
     function crowfundraising_FecthRequest(categories,id) {
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'core/ajax_db/crowfundraisingView_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);

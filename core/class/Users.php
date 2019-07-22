@@ -248,7 +248,7 @@ class Users{
         # Build the insert query
         $queryl = "INSERT INTO $table (".$columns.") VALUES (".$values.")";
         $query= $mysqli->query($queryl);
-        // var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
+        var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
 
         if($query){
                 exit('<div class="alert alert-success alert-dismissible fade show text-center">
