@@ -1,2 +1,2 @@
 # cms_ajax
-# kinyarwandaBLOGSOCIAL
+# BLOGSOCIAL
