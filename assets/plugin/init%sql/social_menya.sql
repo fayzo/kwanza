@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308
--- Generation Time: Jul 08, 2019 at 04:34 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.10
+-- Host: 127.0.0.1
+-- Generation Time: Jul 24, 2019 at 10:04 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.2.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -91,7 +91,10 @@ INSERT INTO `apply_job` (`cv_id`, `firstname0`, `middlename0`, `lastname0`, `ema
 (8, 'm', 'm', 'm', 'm@gmail.com', 'm', '42424', '', '', '2019_74head.jpg=2019_70hear.jpg=2019_83hear.jpg', '2019_26ramz.png=2019_97ramz.png=2019_19rwanda.jpg', 'hgd', 61, 8, 61, '2019-05-28 14:38:13', '0000-00-00 00:00:00'),
 (9, 'ronaldo', 'ronaldo', 'ronaldo', 'ronaldol@gmail.com', 'ronaldo', 'ronaldo', '', '', '2019_39gori.jpg=2019_55images.jpg', '2019_50hear.jpg', 'ronaldoronaldoronaldoronaldoronaldoronaldo', 61, 8, 61, '2019-05-30 05:36:05', '0000-00-00 00:00:00'),
 (10, 'c', 'c', 'c', 'c@gmail.com', 'c', 'c', 'diploma', 'finace', '2019_43hear.jpg', '2019_20imag.jpg', 'ddc', 61, 3, 61, '2019-05-30 07:28:49', '0000-00-00 00:00:00'),
-(11, 'c', 'd', 'd', 'd', 'sdfds', 'c', 'diploma', 'account', '2019_79fayz.jpg', '2019_56imag.jpg', 'c', 61, 3, 61, '2019-05-30 11:44:21', '0000-00-00 00:00:00');
+(11, 'c', 'd', 'd', 'd', 'sdfds', 'c', 'diploma', 'account', '2019_79fayz.jpg', '2019_56imag.jpg', 'c', 61, 3, 61, '2019-05-30 11:44:21', '0000-00-00 00:00:00'),
+(12, 'fa', 'fa', 'fa', 'fa@gmail.com', 'da', '0389758', 'diploma', 'account', '2019_38hote.pdf', '2019_50hote.pdf', 'amadamda', 61, 30, 64, '2019-07-13 09:38:23', '0000-00-00 00:00:00'),
+(13, 'eq', 'wrw', 'wrw', 'dfsdf', '', 'wrwr', 'diploma', 'account', '2019_49hote.pdf', '2019_25hote.pdf', 'rwrw', 61, 30, 64, '2019-07-13 09:43:04', '0000-00-00 00:00:00'),
+(14, 'faf', 'afa', 'fa', 'fafa', 'fa', 'fa', 'diploma', 'account', '2019_91hote.pdf', '2019_96hote.pdf', 'fafa', 61, 30, 64, '2019-07-13 09:56:36', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -204,9 +207,6 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`comment_id`, `comment`, `comment_on`, `comment_by`, `comment_at`) VALUES
-(1, 'nice', 333, 61, '2019-06-11 15:05:09'),
-(2, 'df', 333, 61, '2019-06-13 15:49:42'),
-(3, 'uy', 333, 61, '2019-06-21 02:25:08'),
 (4, 'nice', 334, 61, '2019-06-26 09:22:46'),
 (5, ',mm', 343, 61, '2019-07-03 14:41:18');
 
@@ -243,15 +243,91 @@ CREATE TABLE `crowfundraising` (
   `telephone1` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `categories_crowfundraising` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `photo_Title` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `photo_Title_main` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL
+  `photo_Title_main` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `money_raising` float(10,2) NOT NULL,
+  `percentage` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `crowfundraising`
 --
 
-INSERT INTO `crowfundraising` (`fund_id`, `firstname1`, `middlename1`, `lastname1`, `address1`, `country1`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `text`, `progress_payment`, `photo`, `other_photo`, `video`, `youtube`, `user_id2`, `created_on2`, `total_likes`, `comments`, `email1`, `telephone1`, `categories_crowfundraising`, `photo_Title`, `photo_Title_main`) VALUES
-(56, 'fafa', 'faf', 'afa', 'faf', 'afaf', 'afa', 'afa', 'faf', 'afa', 'afaf', 'afa', 'affa', '', '2019_401.jpg', '2019_312.jpg', '', '', 61, '2019-07-08 14:03:14', 0, '', 'faf', 'afa', 'Agriculture', 'afafa=====', 'fafa');
+INSERT INTO `crowfundraising` (`fund_id`, `firstname1`, `middlename1`, `lastname1`, `address1`, `country1`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `text`, `progress_payment`, `photo`, `other_photo`, `video`, `youtube`, `user_id2`, `created_on2`, `total_likes`, `comments`, `email1`, `telephone1`, `categories_crowfundraising`, `photo_Title`, `photo_Title_main`, `money_raising`, `percentage`) VALUES
+(56, 'fafa', 'faf', 'afa', 'faf', 'afaf', 'afa', 'afa', 'faf', 'afa', 'afaf', 'afa', 'affa', '', '2019_401.jpg', '2019_312.jpg', '', '', 61, '2019-07-08 14:03:14', 0, '', 'faf', 'afa', 'Agriculture', 'afafa=====', 'fafa', 30900.00, 40);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `domestics`
+--
+
+CREATE TABLE `domestics` (
+  `domestics_id` int(11) NOT NULL,
+  `firstname_` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname_` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `other_photo_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text_` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` char(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cpassword` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` char(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_province` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_districts` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_sector` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_cell` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_village` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id_` int(11) NOT NULL,
+  `created_on_` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `domestics`
+--
+
+INSERT INTO `domestics` (`domestics_id`, `firstname_`, `lastname_`, `phone_`, `country_`, `photo_`, `other_photo_`, `text_`, `gender`, `cpassword`, `password`, `status`, `email`, `username`, `location_province`, `location_districts`, `location_sector`, `location_cell`, `location_village`, `user_id_`, `created_on_`) VALUES
+(30, 'ruzindana', 'eric', '03680482477', 'rwanda', '2019_74capt.png', '2019_52capt.png', 'dcsdc', 'Female', 'fafa', 'fafa', 'Married', 'hemafaysal@gmail.com', 'fayz', 'Northern province', 'Gatsibo', 'Bugeshi', 'rutondo', 'henza', 64, '2019-07-17 11:57:03');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employersdomestics`
+--
+
+CREATE TABLE `employersdomestics` (
+  `employers_id` int(11) NOT NULL,
+  `firstname_` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname_` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text_` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` char(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cpassword` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` char(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_province` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_districts` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_sector` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_cell` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_village` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id_` int(11) NOT NULL,
+  `created_on_` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `employersdomestics`
+--
+
+INSERT INTO `employersdomestics` (`employers_id`, `firstname_`, `lastname_`, `phone_`, `country_`, `photo_`, `text_`, `gender`, `cpassword`, `password`, `status`, `email`, `username`, `location_province`, `location_districts`, `location_sector`, `location_cell`, `location_village`, `user_id_`, `created_on_`) VALUES
+(29, 'ruzindana', 'eric', '03680482477', 'rwanda', 'images.jpg', 'uruyu', 'Female', 'fafa', 'fafa', 'Married', 'hemafaysal@gmail.com', 'fayz', 'Southern province', 'Gasabo', 'Burega', 'Rutsiro', 'kamuhima', 64, '2019-07-17 11:56:10'),
+(30, 'faysal', 'shema', '03680482477', 'rwanda', 'images.jpg', 'fafaf', 'Male', 'fafa', 'fafa', 'Single', 'shemafaysal@gmail.com', 'fayzo', 'West province', 'Gatsibo', 'Bugarama', 'Rutsiro', 'Kicukiro', 61, '2019-07-17 14:07:23');
 
 -- --------------------------------------------------------
 
@@ -405,7 +481,9 @@ CREATE TABLE `football` (
 
 INSERT INTO `football` (`football_id`, `match_game`, `goals_player_name_match`, `goal_player_id_match`, `counts_goals`, `counts_drows`, `counts_points`, `date_of_match`, `created_on3`, `user_id3`, `text`, `location_of_match`, `home_team_photo`, `away_team_photo`) VALUES
 (1, 'rayon-sports', '', 0, 0, 0, 0, '2019-06-18', '2019-06-17 10:42:40', 61, 'ibintu nu buryohe itike ni 1000 frw kwijira', '10pm at stadium', '2019_58imag.jpg', '2019_10imag.jpg'),
-(2, 'kiyovu ?-? sports', '', 0, 0, 0, 0, '2019-06-18', '2019-06-18 14:58:28', 61, 'kwijira bizaba bishushe', '10pm at stadium', '2019_35ligh.jpg', '2019_33imag.jpg');
+(2, 'kiyovu ?-? sports', '', 0, 0, 0, 0, '2019-06-18', '2019-06-18 14:58:28', 61, 'kwijira bizaba bishushe', '10pm at stadium', '2019_35ligh.jpg', '2019_33imag.jpg'),
+(3, 'apr', '', 0, 0, 0, 0, '2019-07-13', '2019-07-13 15:38:37', 64, 'nice', 'kimironko', '2019_63map-.png', '2019_49capt.png'),
+(4, 'apr', '', 0, 0, 0, 0, '2019-07-12', '2019-07-13 15:41:38', 64, 'rtw', 'rt', '2019_64capt.png', '2019_16capt.png');
 
 -- --------------------------------------------------------
 
@@ -570,22 +648,14 @@ INSERT INTO `jobs` (`job_id`, `job_title`, `job_summary`, `responsibilities_duti
 (3, 'a', 'a', 'a', 'a', 61, 'a', 'Tenders', 'a', 'a', '2019-05-25 00:00:00', 'on'),
 (7, 'a', '<p>a</p>', '<p>a</p>', '<p>a</p>', 61, '<p>a</p>', 'Consultancy', '<p>ad</p>', 'gukora', '2019-05-26 13:34:55', 'on'),
 (8, 'ddfdf', '<p>dfdf</p>', '<p>fdf</p>', '<p>dfdf</p>', 61, '<p>dfdf</p>', 'Internships', '<p>dfdf</p>', 'dfdf', '2019-05-26 15:34:43', 'on'),
-(9, 'mechanical engineerings', '\n\nJob Summary:                               Example of an Accountant job summary.                                                              Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to-d', '\n\n Responsibilities and Duties:                              Examples of an Accountant Responsibilities.                                                               Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/', '\n\nQualifications and Skills:                            Examples of an Accountant skills.                                                           2+ years accounting experience                               Expertise with QuickBooks                               Extensive knowledge of US GAAP</', 64, '\n\nTerms and conditions:                             Explaination of Terms and conditions:                             Include a list of hard and soft skills. Of course, the job d', 'Internships', '\n\nDeadline to submit:                             Explaination of Deadline to submit:  ', 'Apply to website: ', '2019-07-01 08:37:06', 'on'),
-(10, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:41:31', 'on'),
-(11, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Consultancy', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:41:46', 'on'),
-(12, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Internships', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:14', 'on'),
-(13, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:35', 'on'),
-(14, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:35', 'on'),
-(15, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:35', 'on'),
-(16, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:35', 'on'),
-(17, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:36', 'on'),
-(18, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:44', 'on'),
 (19, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:44', 'on'),
-(20, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:44', 'on'),
-(21, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:44', 'on'),
-(22, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:44', 'on'),
-(23, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:45', 'on'),
-(24, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:45', 'on');
+(23, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:45', 'off'),
+(25, 'Accountant', '<p><ul><li>\r\n\r\n<div><p>Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to-day bookkeeping. Weâ€™re an energetic company and are looking for a passionate individual to join our organization and revitalize our record keeping and bring more organization to our day to day financials.</p></div></li><li><p>\r\n', '<p>\r\n\r\n<div><div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li></ul><ul><li>Analyze and report on financial status including income statement variances, communicating financial results to management, budget preparation and analysis</li></ul><ul>', '<p>\n\n<div><div>2+ years accounting experience</div><div>Expertise with QuickBooks</div><div>Extensive knowledge of US GAAP</div><div>Advanced computer skills in MS Office, accounting software and databases</div><div>Excellent organizational, problem-solving, project management and communication skills</div><div>Additional experience in Audit and International accounting</div><div>Experience with SaaS companies</div><div>CPA certification&nbsp;</div></div>\n\n<br></p>', 64, '<p>\n\n<div><div><ul><li>Include a list of hard and soft skills. Of course, the job description should specify education, previous job experience, certifications and technical skills required for the role. You may also include soft skills, like communication and problem solving, as well as personality', 'Public', '<p>\n\n<div><div>Include a list of hard and soft skills. Of course, the job description should specify education, previous job experience, certifications and technical skills required for the role. You ', 'wwww.dgsfg.com', '2019-07-12 17:22:06', 'off'),
+(26, 'Senior Staff Accountant ', '<p><ul><li>\r\n\r\n<div><p>Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to-day bookkeeping. Weâ€™re an energetic company and are looking for a passionate individual to join our organization and revitalize our record keeping and bring more organization to our day to day financials.</p></div></li><li><p>\r\n', '<p>\r\n\r\n<div><div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li></ul><ul><li>Analyze and report on financial status including income statement variances, communicating financial results to management, budget preparation and analysis</li></ul><ul>', '<p>\n\n<div><div>2+ years accounting experience</div><div>Expertise with QuickBooks</div><div>Extensive knowledge of US GAAP</div><div>Advanced computer skills in MS Office, accounting software and databases</div><div>Excellent organizational, problem-solving, project management and communication skills</div><div>Additional experience in Audit and International accounting</div><div>Experience with SaaS companies</div><div>CPA certification&nbsp;</div></div>\n\n<br></p>', 64, '<p>\n\n<div><div><ul><li>Include a list of hard and soft skills. Of course, the job description should specify education, previous job experience, certifications and technical skills required for the role. You may also include soft skills, like communication and problem solving, as well as personality', 'Public', '<p>\n\n<div><div>Include a list of hard and soft skills. Of course, the job description should specify education, previous job experience, certifications and technical skills required for the role. You ', 'wwww.dgsfg.com', '2019-07-12 17:22:37', 'on'),
+(27, 'Accounts Payable Specialist', '<p>\n\n<div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>\n\n<div><p>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessaryï»¿</p></div></li><li>\n\n<di', '<p><ul><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\n\n<br></li><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</', '<h1><b>niceï»¿</b><b></b></h1><p><ul><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\n\n</li><li><p>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial r', 64, '<p><small>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\n\n</small><br></p><p>\n\n<div><div>Perform monthly', 'Featured', '<p><ul><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewi', 'goood', '2019-07-12 17:46:31', 'on'),
+(28, 'Senior Staff Accountant', '<p><div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li>\r\n<li><div><p>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessaryï»¿</p></div></li>\r\n</ul></di', '<p><ul><li>\r\n\r\n<div><div>xPerform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\r\n\r\n<br></li><li>\r\n\r\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as nece', '<h1><b>niceï»¿</b><b></b></h1><p><ul><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\n\n</li><li><p>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial r', 64, '<p><small>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\n\n</small><br></p><p>\n\n<div><div>Perform monthly', 'Featured', '<p><ul><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewi', 'goood', '2019-07-12 17:46:58', 'on'),
+(29, 'amakuru', '<p><ul><li>adad</li><li>adad</li><li>adada</li><li>adad</li><li>adad</li><li>ad</li></ul></p>', '<p><ul><li>ama</li><li>abab</li><li>abab</li><li>abab</li><li>abab</li><li>abab</li></ul></p>', '<p><ul><li>dadad</li><li>dada</li><li>dad</li><li>dada</li><li>dadadvad</li><li>dafaav</li></ul></p>', 64, '<p><ul><li>adfadfad</li><li>adfafadf</li><li>afadfadf</li><li>dfadf</li><li>fadfadf</li><li>dfadfad</li><li>adfadbd</li></ul></p>', 'Tenders', '<p><ul><li>vsfbfvsfa</li><li>afavabfs</li><li>adfadvdafadfa</li><li>adfadvazc</li><li>adfadfadfad</li><li>vadvadfzcfz</li><li>adfdvv</li></ul></p>', 'dvadvf', '2019-07-12 18:25:40', 'on'),
+(30, 'Accountant', '<p>\n\n<div><div><ul><li>Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to-day bookkeeping. Weâ€™re an energetic company and are looking for a passionate individual to join our organization and revitalize our record keeping and bring more organization to our day to day financials.</li><li>Weâ€™re looking for an organized and drive', '<p>\n\n<div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly a', '<p>\n\n<div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary Perform monthly, quarterly and annua', 64, '<p>\n\n<div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly and annual accounting activi', 'Tenders', '<p>\n\n<div><ul><li><i>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing', 'Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/su', '2019-07-12 18:35:34', 'on');
 
 -- --------------------------------------------------------
 
@@ -643,7 +713,6 @@ INSERT INTO `message` (`message_id`, `message`, `message_to`, `message_from`, `m
 (60, 'uraho', 67, 61, '2019-06-11 15:10:27', 0),
 (61, 'amakuru yawe', 61, 72, '2019-07-01 16:27:15', 1),
 (62, 'ndaho wowe', 72, 61, '2019-07-01 16:28:52', 1),
-(63, 'ndaho', 61, 72, '2019-07-01 16:52:45', 1),
 (64, 'ndaho', 61, 72, '2019-07-01 16:52:45', 1),
 (65, 'umeze ute', 72, 61, '2019-07-03 14:09:07', 0),
 (67, 'ga', 72, 61, '2019-07-03 14:09:16', 0);
@@ -755,9 +824,91 @@ CREATE TABLE `notification` (
 INSERT INTO `notification` (`notification_id`, `notification_for`, `notification_from`, `target`, `type`, `time`, `status`) VALUES
 (1, 61, 66, 334, 'mention', '2019-06-17 04:12:32', 1),
 (2, 70, 61, 70, 'follow', '2019-06-17 09:28:24', 0),
-(3, 66, 61, 335, 'mention', '2019-06-26 09:20:23', 0),
 (5, 61, 64, 61, 'follow', '2019-06-29 13:16:25', 1),
 (6, 61, 72, 61, 'follow', '2019-07-01 16:26:57', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `product_id` int(11) NOT NULL,
+  `product_name` varchar(50) NOT NULL,
+  `product_price` int(20) NOT NULL,
+  `product_image` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `product_name`, `product_price`, `product_image`) VALUES
+(1, 'OPPO A83', 6990, 'upload/OPPO_A83_L_1.jpg'),
+(2, 'HUAWEI Y6 (2018)', 5690, 'upload/HUAWEI_Y6_2018_L_1.jpg'),
+(3, 'Vivo V9', 16500, 'upload/Vivo_V9_1_L_1.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products_`
+--
+
+CREATE TABLE `products_` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `price` float(6,2) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `status` enum('1','0') COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `products_`
+--
+
+INSERT INTO `products_` (`id`, `name`, `price`, `created`, `modified`, `status`) VALUES
+(1, 'car', 200.00, '2019-07-21 00:00:00', '2019-07-21 00:00:46', ''),
+(2, 'bicyle', 130.00, '2019-07-21 00:00:00', '2019-07-21 00:00:00', ''),
+(3, 'motor', 280.00, '2019-07-21 00:00:00', '2019-07-21 00:00:00', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rwandahotel`
+--
+
+CREATE TABLE `rwandahotel` (
+  `hotel_id` int(11) NOT NULL,
+  `title_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `author_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int(11) NOT NULL,
+  `ranges` double(10,2) NOT NULL,
+  `text_` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `other_photo_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `video_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `youtube_` varchar(2002) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_province` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_districts` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_Sector` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_cell` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_village` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id_` int(11) NOT NULL,
+  `created_on_` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `rwandahotel`
+--
+
+INSERT INTO `rwandahotel` (`hotel_id`, `title_`, `author_`, `price`, `ranges`, `text_`, `photo_`, `other_photo_`, `video_`, `youtube_`, `country`, `location_province`, `location_districts`, `location_Sector`, `location_cell`, `location_village`, `phone_`, `user_id_`, `created_on_`) VALUES
+(26, 'milles collins', 'jean damour', 189, 6.50, 'gud', '2019_37cs-1.jpg', '2019_14cs-1.jpg=2019_61cs-2.jpg=2019_37cs-3.jpg=2019_13cs-5.jpg=2019_44cs-6.jpg=2019_11cs-7.jpg', '', '', 'RW', 'kigali city', 'Gasabo', 'Boneza', 'Kicukiro', 'amajyambere', '07874254254', 61, '2019-07-21 12:23:51'),
+(27, 'milles collins', 'jean damour', 189, 6.50, 'gud', '2019_83cs-1.jpg', '2019_54cs-1.jpg=2019_50cs-2.jpg=2019_31cs-3.jpg=2019_78cs-5.jpg=2019_88cs-6.jpg=2019_10cs-7.jpg', '', '', 'RW', 'kigali city', 'Gasabo', 'Boneza', 'Kicukiro', 'amajyambere', '07874254254', 61, '2019-07-21 12:24:00'),
+(28, 'milles collins', 'jean damour', 189, 6.50, 'gud', '2019_42cs-1.jpg', '2019_54cs-1.jpg=2019_85cs-2.jpg=2019_74cs-3.jpg=2019_32cs-5.jpg=2019_50cs-6.jpg=2019_37cs-7.jpg', '', '', 'RW', 'kigali city', 'Gasabo', 'Boneza', 'Kicukiro', 'amajyambere', '07874254254', 61, '2019-07-21 12:24:04');
 
 -- --------------------------------------------------------
 
@@ -773,15 +924,9 @@ CREATE TABLE `rwandalandscapes` (
   `text_` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `photo_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `other_photo_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `country_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `city_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `province_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `districts_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sector_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cell_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `village_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `video_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `youtube_` varchar(2002) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location_province` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location_districts` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location_Sector` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -796,17 +941,19 @@ CREATE TABLE `rwandalandscapes` (
 -- Dumping data for table `rwandalandscapes`
 --
 
-INSERT INTO `rwandalandscapes` (`landscape_id`, `title_`, `author_`, `categories_of_landscapes`, `text_`, `photo_`, `other_photo_`, `country_`, `city_`, `province_`, `districts_`, `sector_`, `cell_`, `village_`, `video_`, `youtube_`, `location_province`, `location_districts`, `location_Sector`, `location_cell`, `location_village`, `phone_`, `user_id_`, `created_on_`) VALUES
-(13, 'shema rutahizamu ntiyoroshye', 'fayzo', 'Kigali-city', 'let me do we it', '2019_681.jpg', '2019_573.jpg', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', '', '', 'Kigali-city', 'Gasabo', 'kimihurura', 'Rugando', 'gasange', '0787345243243', 61, '2019-06-27 07:58:23'),
-(14, 'Title of a longer featured blog post', 'fayzo', 'Kigali-city', 'akagari ka gasange', '2019_1005046.jpg', '2019_186147.jpg', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', '', '', 'Kigali-city', 'Gasabo', 'kimihurura', 'Rugando', 'gasambe', '0787345243243', 61, '2019-06-27 12:22:38'),
-(15, 'Title of a longer featured blog post', 'fayzo', 'Kigali-city', 'nono', '2019_461.jpg', '2019_336147.jpg', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'rugando', '', '', 'Kigali-city', 'Nyarugenge', 'Kicukiro', 'Kicukiro', 'rutare', '0787345243243', 61, '2019-06-27 12:43:46'),
-(16, 'Title of a longer featured blog post', 'fayzo', 'Kigali-city', 'it is in good place', '2019_17caus.jpg', '2019_40quot.jpg', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', '', '', 'Kigali-city', 'Nyarugenge', 'Kicukiro', 'Kicukiro', 'amajyambere', '0787345243243', 61, '2019-06-27 12:50:47'),
-(17, 'Title of a longer featured blog post', 'fayzo', 'Kigali-city', 'it is in good place', '2019_69caus.jpg', '2019_25quot.jpg', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', '', '', 'Kigali-city', 'Nyarugenge', 'Kicukiro', 'Kicukiro', 'amajyambere', '0787345243243', 61, '2019-06-27 12:50:47'),
-(18, 'Title of a longer featured blog post', 'fayzo', 'Kigali-city', 'mice', '2019_1005220.jpg', '2019_255220.jpg', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', '', '', 'Kigali-city', 'Kicukiro', 'Remera', 'muhobe', 'henza', '0787345243243', 61, '2019-06-28 08:47:04'),
-(19, 'Title of a longer featured blog post', 'fayzo', 'Kigali-city', 'mice', '2019_925220.jpg', '2019_975220.jpg', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', '', '', 'Kigali-city', 'Kicukiro', 'Remera', 'muhobe', 'henza', '0787345243243', 61, '2019-06-28 08:47:04'),
-(20, 'Title of a longer featured blog post', 'fayzo', 'Kigali-city', 'sds', '2019_75caus.jpg', '2019_64stoc.jpg', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'c', '', '', 'Province', 'Rubavu', 'kiyovu', 'Rutsiro', 'rugombe', '0787345243243', 61, '2019-06-28 08:49:22'),
-(21, 'Title of a longer featured blog post', 'fayzo', 'Landscapes', 'arfe', '2019_85caus.jpg', '2019_875046.jpg', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', '', '', 'Province', 'Burera', 'Nyamirambo', 'rutondo', 'mujabana', '0787345243243', 61, '2019-06-28 10:44:59'),
-(22, 'Title of a longer featured blog post', 'fayzo', 'Landscapes', 'arfe', '2019_24caus.jpg', '2019_835046.jpg', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', '', '', 'Province', 'Burera', 'Nyamirambo', 'rutondo', 'mujabana', '0787345243243', 61, '2019-06-28 10:45:00');
+INSERT INTO `rwandalandscapes` (`landscape_id`, `title_`, `author_`, `categories_of_landscapes`, `text_`, `photo_`, `other_photo_`, `video_`, `youtube_`, `country`, `location_province`, `location_districts`, `location_Sector`, `location_cell`, `location_village`, `phone_`, `user_id_`, `created_on_`) VALUES
+(13, 'shema rutahizamu ntiyoroshye', 'fayzo', 'Kigali-city', 'let me do we it', '2019_681.jpg', '2019_573.jpg', '', '', '', 'Kigali-city', 'Gasabo', 'kimihurura', 'Rugando', 'gasange', '0787345243243', 61, '2019-06-27 07:58:23'),
+(14, 'Title of a longer featured blog post', 'fayzo', 'Kigali-city', 'akagari ka gasange', '2019_1005046.jpg', '2019_186147.jpg', '', '', '', 'Kigali-city', 'Gasabo', 'kimihurura', 'Rugando', 'gasambe', '0787345243243', 61, '2019-06-27 12:22:38'),
+(15, 'Title of a longer featured blog post', 'fayzo', 'Kigali-city', 'nono', '2019_461.jpg', '2019_336147.jpg', '', '', '', 'Kigali-city', 'Nyarugenge', 'Kicukiro', 'Kicukiro', 'rutare', '0787345243243', 61, '2019-06-27 12:43:46'),
+(16, 'Title of a longer featured blog post', 'fayzo', 'Kigali-city', 'it is in good place', '2019_17caus.jpg', '2019_40quot.jpg', '', '', '', 'Kigali-city', 'Nyarugenge', 'Kicukiro', 'Kicukiro', 'amajyambere', '0787345243243', 61, '2019-06-27 12:50:47'),
+(17, 'Title of a longer featured blog post', 'fayzo', 'Kigali-city', 'it is in good place', '2019_69caus.jpg', '2019_25quot.jpg', '', '', '', 'Kigali-city', 'Nyarugenge', 'Kicukiro', 'Kicukiro', 'amajyambere', '0787345243243', 61, '2019-06-27 12:50:47'),
+(18, 'Title of a longer featured blog post', 'fayzo', 'Kigali-city', 'mice', '2019_1005220.jpg', '2019_255220.jpg', '', '', '', 'Kigali-city', 'Kicukiro', 'Remera', 'muhobe', 'henza', '0787345243243', 61, '2019-06-28 08:47:04'),
+(19, 'Title of a longer featured blog post', 'fayzo', 'Kigali-city', 'mice', '2019_925220.jpg', '2019_975220.jpg', '', '', '', 'Kigali-city', 'Kicukiro', 'Remera', 'muhobe', 'henza', '0787345243243', 61, '2019-06-28 08:47:04'),
+(20, 'Title of a longer featured blog post', 'fayzo', 'Kigali-city', 'sds', '2019_75caus.jpg', '2019_64stoc.jpg', '', '', '', 'Province', 'Rubavu', 'kiyovu', 'Rutsiro', 'rugombe', '0787345243243', 61, '2019-06-28 08:49:22'),
+(21, 'Title of a longer featured blog post', 'fayzo', 'Landscapes', 'arfe', '2019_85caus.jpg', '2019_875046.jpg', '', '', '', 'Province', 'Burera', 'Nyamirambo', 'rutondo', 'mujabana', '0787345243243', 61, '2019-06-28 10:44:59'),
+(22, 'Title of a longer featured blog post', 'fayzo', 'Landscapes', 'arfe', '2019_24caus.jpg', '2019_835046.jpg', '', '', '', 'Province', 'Burera', 'Nyamirambo', 'rutondos', 'mujabana', '0787345243243', 61, '2019-06-28 10:45:00'),
+(23, 'da', 'da', 'kigali-city', 'xccdc', 'csc', 'scsc', 'fl', 'fl', '', 'Province', 'Burera', 'fl', 'fl', 'fl', 'fk', 64, '2019-07-08 00:00:00'),
+(24, 'ddaa', 'adfad', '', 'adfd', '2019_32capt.png', '2019_39capt.png', '', '', '', 'Southern province', 'Gakenke', 'Bigogwe', 'Kicukiro', 'Kicukiro', 'dfad', 61, '2019-07-15 09:07:28');
 
 -- --------------------------------------------------------
 
@@ -860,6 +1007,46 @@ INSERT INTO `sale` (`sale_id`, `title`, `code`, `price`, `quantity`, `phone`, `p
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `school`
+--
+
+CREATE TABLE `school` (
+  `school_id` int(11) NOT NULL,
+  `title_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `author_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `categories_of_school` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type_of_school` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text_` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `other_photo_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `video_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `youtube_` varchar(2002) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_province` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_districts` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_Sector` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_cell` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_village` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id_` int(11) NOT NULL,
+  `created_on_` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `school`
+--
+
+INSERT INTO `school` (`school_id`, `title_`, `author_`, `categories_of_school`, `type_of_school`, `text_`, `photo_`, `other_photo_`, `video_`, `youtube_`, `country`, `location_province`, `location_districts`, `location_Sector`, `location_cell`, `location_village`, `phone_`, `user_id_`, `created_on_`) VALUES
+(1, 'lycee de kigali', 'gatete', 'Kigali-city', 'College', 'gud', '2019_80capt.png', '2019_27capt.png', '', '', 'RW', 'kigali city', 'Gasabo', 'Kimihurura', 'Rugando', 'gasange', '078745646', 61, '2019-07-15 09:05:01'),
+(2, 'IFAK', 'gatete', 'Province', 'College', 'gud', '2019_268512.jpg', '2019_248557.jpg', '', '', 'RW', 'kigali city', 'Gasabo', 'Kimihurura', 'Rugando', 'gasange', '05673784', 61, '2019-07-15 09:44:54'),
+(3, 'APADE', 'MASABO', 'Religion School', 'College', 'nice', '2019_43images.jpg', '2019_15imag.jpg', '', '', 'AX', 'kigali city', 'Gasabo', 'Kimihurura', 'Rugando', 'gasange', '03457248', 61, '2019-07-15 09:48:55'),
+(4, 'maternitte', 'hice', 'Religion School', 'kindergarden', 'gud', '2019_67capt.png', '2019_92mode.jpg', '', '', 'AX', 'kigali city', 'Gasabo', 'Kimihurura', 'Rugando', 'gasange', '0799353452', 61, '2019-07-15 09:51:29'),
+(5, 'upc kigali', 'fayzo', 'Public School', 'kindergarden', 'gud', '2019_81down.png', '2019_608557.jpg', '', '', 'AO', 'kigali city', 'Gasabo', 'Kibangu', 'Rugando', 'amajyambere', '07856353', 61, '2019-07-15 09:54:25'),
+(6, 'upc kigali', 'fayzo', 'Public School', 'College', 'gud', '2019_59down.png', '2019_358557.jpg', '', '', 'AO', 'kigali city', 'Gasabo', 'Kibangu', 'Rugando', 'amajyambere', '07856353', 61, '2019-07-15 09:54:28');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sports`
 --
 
@@ -890,7 +1077,8 @@ INSERT INTO `sports` (`sports_id`, `title`, `authors`, `text`, `photo`, `other_p
 (7, 'shema yavuze kwi cyipe ye', 'fayzo', 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.\r\n\r\nCurabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.\r\n\r\nEtiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.\r\n\r\nHeading\r\nVivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.\r\n\r\nSub-heading\r\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', '2019_77diar.jpg', '2019_91gabr.jpg', '', '', 'Football', 61, '2019-06-15 06:53:21'),
 (8, 'umutozam wa equipe yigihugu', 'harry kane', 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.\r\n\r\nCurabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.\r\n\r\nEtiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.\r\n\r\nHeading\r\nVivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.\r\n\r\nSub-heading\r\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', '2019_45imag.jpg', '2019_56capt.jpg', '', '', 'Football', 61, '2019-06-15 06:55:57'),
 (9, 'shema rutahizamu ntiyoroshye', 'fayzo', 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.\r\n\r\nCurabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.\r\n\r\nEtiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.\r\n\r\nHeading\r\nVivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.\r\n\r\nSub-heading\r\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', '2019_45capt.jpg', '2019_78capt.jpg', '', '', 'Football', 61, '2019-06-15 06:57:07'),
-(10, 'urwanda rwa tsinze kimwe', 'fayzo', 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.\r\n\r\nCurabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.\r\n\r\nEtiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.\r\n\r\nHeading\r\nVivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.\r\n\r\nSub-heading\r\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', '2019_55arto.jpg', '2019_78a-84.jpg', '', '', 'Football', 61, '2019-06-15 06:58:03');
+(10, 'urwanda rwa tsinze kimwe', 'fayzo', 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.\r\n\r\nCurabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.\r\n\r\nEtiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.\r\n\r\nHeading\r\nVivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.\r\n\r\nSub-heading\r\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', '2019_55arto.jpg', '2019_78a-84.jpg', '', '', 'Football', 61, '2019-06-15 06:58:03'),
+(11, 'guud', 'fa', 'nice', '2019_24capt.png', '2019_47driv.png', '', '', 'Football', 64, '2019-07-13 15:37:41');
 
 -- --------------------------------------------------------
 
@@ -1138,13 +1326,6 @@ CREATE TABLE `trends` (
   `created_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `trends`
---
-
-INSERT INTO `trends` (`trend_id`, `hashtag`, `target`, `created_on`) VALUES
-(13, 'rayon', '331', '2019-06-09 14:15:17');
-
 -- --------------------------------------------------------
 
 --
@@ -1190,21 +1371,9 @@ CREATE TABLE `tweets` (
 --
 
 INSERT INTO `tweets` (`tweet_id`, `status`, `tweetBy`, `retweet_id`, `retweet_by`, `tweet_image`, `likes_counts`, `retweet_counts`, `posted_on`, `retweet_Msg`) VALUES
-(331, '#rayon sport yatz b', 61, 0, 0, '2019_18ramp.jpg=2019_73ramzy2.jpg', 0, 0, '2019-06-09 14:15:17', ''),
-(332, 'nc', 61, 0, 0, '2019_862019.mp3', 0, 0, '2019-06-09 14:19:06', ''),
-(333, 'vd', 61, 0, 0, '2019_792019.mp4', 0, 0, '2019-06-09 14:19:32', ''),
 (334, 'amakuru @fayzo', 66, 0, 0, '', 0, 0, '2019-06-17 04:12:32', ''),
-(335, 'amalon@fayzo@karim', 61, 0, 0, '2019_212.jpg', 0, 0, '2019-06-26 09:20:23', ''),
-(336, 'amakuru yawe msr https://www.youtube.com/embed/9YffrCViTVk', 61, 0, 0, '', 0, 0, '2019-06-26 10:10:59', ''),
-(337, 'https://www.youtube.com/embed/9YffrCViTVk', 61, 0, 0, '', 0, 0, '2019-06-26 10:13:06', ''),
-(338, 'https://www.youtube.com/embed/9YffrCViTVk', 61, 0, 0, '', 0, 0, '2019-06-26 10:14:26', ''),
-(339, 'https://www.youtube.com/watch?v=VULpA4VCk3g', 61, 0, 0, '', 0, 0, '2019-06-26 10:40:15', ''),
-(340, 'https://stackoverflow.com/questions/31391113/php-preg-replace-youtube-links', 61, 0, 0, '', 0, 1, '2019-06-26 11:33:48', ''),
-(341, 'nice @fayzo', 61, 0, 0, '2019_246147.jpg', 0, 0, '2019-06-28 18:19:11', ''),
-(342, 'good', 61, 0, 0, '2019_341.jpg=2019_362.jpg=2019_883.jpg', 0, 0, '2019-06-28 18:19:46', ''),
 (343, 'https://stackoverflow.com/questions/31391113/php-preg-replace-youtube-links', 61, 340, 61, '', 0, 1, '2019-06-29 13:15:25', 'amakuru'),
-(344, 'abana muri beza', 72, 0, 0, '2019_411.jpg', 0, 0, '2019-07-01 16:25:56', ''),
-(345, 'dfsfd', 61, 0, 0, '2019_2431enum.jpg=2019_3241vu.jpg=2019_4551qs.jpg=2019_9851xj.jpg', 0, 0, '2019-07-01 19:39:15', '');
+(344, 'abana muri beza', 72, 0, 0, '2019_411.jpg', 0, 0, '2019-07-01 16:25:56', '');
 
 -- --------------------------------------------------------
 
@@ -1255,26 +1424,29 @@ CREATE TABLE `users` (
   `legal_structure` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `location_facilities` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `mission_statement` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `website` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL
+  `website` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `unemplyoment` char(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `categories_fields` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `password`, `gender`, `chat`, `career`, `country`, `date_birth`, `date_registry`, `last_login`, `counts_login`, `forgotUsernameCounts`, `forgotUsernameCountsTimesHeCreates`, `forgotUsernameCountsTimesHeCreatespassword`, `profile_img`, `profile_img_crop`, `cover_img`, `background`, `language`, `color`, `education`, `diploma`, `skills`, `location`, `hobbys`, `followers`, `following`, `approval`, `company_education`, `type_of_business`, `address`, `size_of_people`, `companyname`, `overview`, `history`, `team`, `legal_structure`, `location_facilities`, `mission_statement`, `website`) VALUES
-(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'on', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-07-08 13:21:45', 246, 0, 10, 10, '911f.jpg', '', '702caus.jpg', 'chair', '', 'rose', 'lycee', 'project', 'web', 'BR', 'styuding', 6, 3, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn'),
-(64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'on', '', 'RW', '2019-05-02', '2019-05-02', '2019-07-01 19:34:13', 11, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', ''),
-(65, 'karisa', 'bosco', 'bosco', 'faysal@gmail.com', 'bosco', 'Male', '', '', 'RW', '2019-05-03', '2019-05-02', '2019-05-27 21:50:00', 8, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 1, 2, 'off', '', '', '', '', '', '0', '0', '0', '0', '', '0', ''),
-(66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'on', '', 'RW', '1994-08-03', '2019-05-05', '2019-06-22 03:31:56', 57, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'chair', '', 'rose', '', '', '', '', '', 3, 0, 'off', '', '', '', '', '', '0', '0', '0', '0', '', '0', ''),
-(67, 'musema', 'musema', 'musema', 'musemafaysal@gmail.com', 'musema', 'Male', '', '', 'RW', '2019-05-06', '2019-05-06', '2019-05-21 14:53:30', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 2, 'off', '', '', '', '', '', '0', '0', '0', '0', '', '0', ''),
-(68, 'zidani', 'zidani', 'zidanii', 'zidani@gmail.com', 'zidani', 'Male', '', '', 'FR', '2019-05-06', '2019-05-22', '2019-05-30 11:54:50', 5, 0, 0, 0, '855fays.gif', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', ''),
-(69, 'rihana', 'rihana', 'rihana', 'rihana@gmail.com', 'rihana', 'Female', 'on', '', 'AF', '1988-03-18', '2019-06-02', '2019-06-02 14:51:44', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', ''),
-(70, 'patrick', 'patrick', 'patrick', 'patrick@gmail.com', 'patrick', 'Male', '', '', 'AS', '2019-06-04', '2019-06-02', '2019-06-02 14:47:57', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', ''),
-(71, 'saleh', 'saleh', 'saleh', 'saleh@gmail.com', 'saleh', 'Male', 'on', '', 'AQ', '2019-05-31', '2019-06-02', '2019-06-02 14:50:22', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', ''),
-(72, 'riri', 'aline', 'aline', 'aline@gmail.com', 'aline', 'Male', 'off', '', 'RW', '2019-07-01', '2019-07-01', '2019-07-02 08:52:01', 5, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', ''),
-(73, 'antonia', 'griezman', 'antonia', 'antonia@gmail.com', 'fafa', 'Male', 'off', '', 'FR', '2019-07-01', '2019-07-02', '2019-07-02 08:36:59', 2, 0, 0, 1, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', ''),
-(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-07-02 08:49:57', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '');
+INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `password`, `gender`, `chat`, `career`, `country`, `date_birth`, `date_registry`, `last_login`, `counts_login`, `forgotUsernameCounts`, `forgotUsernameCountsTimesHeCreates`, `forgotUsernameCountsTimesHeCreatespassword`, `profile_img`, `profile_img_crop`, `cover_img`, `background`, `language`, `color`, `education`, `diploma`, `skills`, `location`, `hobbys`, `followers`, `following`, `approval`, `company_education`, `type_of_business`, `address`, `size_of_people`, `companyname`, `overview`, `history`, `team`, `legal_structure`, `location_facilities`, `mission_statement`, `website`, `unemplyoment`, `categories_fields`, `phone`) VALUES
+(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'off', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-07-23 14:41:14', 266, 0, 10, 10, '911f.jpg', '', '702caus.jpg', 'chair', '', 'rose', 'lycee', 'project', 'web', 'BR', 'styuding', 6, 3, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
+(64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'on', '', 'RW', '2019-05-02', '2019-05-02', '2019-07-19 08:25:01', 26, 0, 0, 0, '', '', '', 'chair', '', 'purple', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
+(65, 'karisa', 'bosco', 'bosco', 'faysal@gmail.com', 'bosco', 'Male', '', '', 'RW', '2019-05-03', '2019-05-02', '2019-05-27 21:50:00', 8, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 1, 2, 'off', '', '', '', '', 'LAMBORGIN', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
+(66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'on', '', 'RW', '1994-08-03', '2019-05-05', '2019-06-22 03:31:56', 57, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'chair', '', 'rose', '', '', '', '', '', 3, 0, 'off', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
+(67, 'musema', 'musema', 'musema', 'musemafaysal@gmail.com', 'musema', 'Male', '', '', 'RW', '2019-05-06', '2019-05-06', '2019-05-21 14:53:30', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 2, 'off', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
+(68, 'zidani', 'zidani', 'zidanii', 'zidani@gmail.com', 'zidani', 'Male', '', '', 'FR', '2019-05-06', '2019-05-22', '2019-05-30 11:54:50', 5, 0, 0, 0, '855fays.gif', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
+(69, 'rihana', 'rihana', 'rihana', 'rihana@gmail.com', 'rihana', 'Female', 'on', '', 'AF', '1988-03-18', '2019-06-02', '2019-06-02 14:51:44', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
+(70, 'patrick', 'patrick', 'patrick', 'patrick@gmail.com', 'patrick', 'Male', '', '', 'AS', '2019-06-04', '2019-06-02', '2019-06-02 14:47:57', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
+(71, 'saleh', 'saleh', 'saleh', 'saleh@gmail.com', 'saleh', 'Male', 'on', '', 'AQ', '2019-05-31', '2019-06-02', '2019-06-02 14:50:22', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
+(72, 'riri', 'aline', 'aline', 'aline@gmail.com', 'aline', 'Male', 'off', '', 'RW', '2019-07-01', '2019-07-01', '2019-07-02 08:52:01', 5, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
+(73, 'antonia', 'griezman', 'antonia', 'antonia@gmail.com', 'fafa', 'Male', 'off', '', 'FR', '2019-07-01', '2019-07-02', '2019-07-02 08:36:59', 2, 0, 0, 1, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
+(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-07-02 08:49:57', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477');
 
 --
 -- Indexes for dumped tables
@@ -1315,6 +1487,18 @@ ALTER TABLE `comment`
 --
 ALTER TABLE `crowfundraising`
   ADD PRIMARY KEY (`fund_id`);
+
+--
+-- Indexes for table `domestics`
+--
+ALTER TABLE `domestics`
+  ADD PRIMARY KEY (`domestics_id`);
+
+--
+-- Indexes for table `employersdomestics`
+--
+ALTER TABLE `employersdomestics`
+  ADD PRIMARY KEY (`employers_id`);
 
 --
 -- Indexes for table `events`
@@ -1389,6 +1573,24 @@ ALTER TABLE `notification`
   ADD PRIMARY KEY (`notification_id`);
 
 --
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indexes for table `products_`
+--
+ALTER TABLE `products_`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rwandahotel`
+--
+ALTER TABLE `rwandahotel`
+  ADD PRIMARY KEY (`hotel_id`);
+
+--
 -- Indexes for table `rwandalandscapes`
 --
 ALTER TABLE `rwandalandscapes`
@@ -1399,6 +1601,12 @@ ALTER TABLE `rwandalandscapes`
 --
 ALTER TABLE `sale`
   ADD PRIMARY KEY (`sale_id`);
+
+--
+-- Indexes for table `school`
+--
+ALTER TABLE `school`
+  ADD PRIMARY KEY (`school_id`);
 
 --
 -- Indexes for table `sports`
@@ -1495,7 +1703,7 @@ ALTER TABLE `album`
 -- AUTO_INCREMENT for table `apply_job`
 --
 ALTER TABLE `apply_job`
-  MODIFY `cv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `cv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `blog`
@@ -1522,6 +1730,18 @@ ALTER TABLE `crowfundraising`
   MODIFY `fund_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
+-- AUTO_INCREMENT for table `domestics`
+--
+ALTER TABLE `domestics`
+  MODIFY `domestics_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `employersdomestics`
+--
+ALTER TABLE `employersdomestics`
+  MODIFY `employers_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
@@ -1543,7 +1763,7 @@ ALTER TABLE `food`
 -- AUTO_INCREMENT for table `football`
 --
 ALTER TABLE `football`
-  MODIFY `football_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `football_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `fundraising`
@@ -1561,7 +1781,7 @@ ALTER TABLE `house`
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `job_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `job_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `likes`
@@ -1594,10 +1814,28 @@ ALTER TABLE `notification`
   MODIFY `notification_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `products_`
+--
+ALTER TABLE `products_`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `rwandahotel`
+--
+ALTER TABLE `rwandahotel`
+  MODIFY `hotel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
 -- AUTO_INCREMENT for table `rwandalandscapes`
 --
 ALTER TABLE `rwandalandscapes`
-  MODIFY `landscape_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `landscape_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `sale`
@@ -1606,10 +1844,16 @@ ALTER TABLE `sale`
   MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `school`
+--
+ALTER TABLE `school`
+  MODIFY `school_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `sports`
 --
 ALTER TABLE `sports`
-  MODIFY `sports_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `sports_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tblproduct`
@@ -1663,7 +1907,7 @@ ALTER TABLE `trash`
 -- AUTO_INCREMENT for table `trends`
 --
 ALTER TABLE `trends`
-  MODIFY `trend_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `trend_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tutorial`
@@ -1675,7 +1919,7 @@ ALTER TABLE `tutorial`
 -- AUTO_INCREMENT for table `tweets`
 --
 ALTER TABLE `tweets`
-  MODIFY `tweet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=346;
+  MODIFY `tweet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=345;
 
 --
 -- AUTO_INCREMENT for table `users`

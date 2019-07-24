@@ -236,6 +236,6 @@
         aria-valuemax="100"></span>
 </span>
 </div>
-    <span id="clock" class="main-active" style ="position: fixed;z-index:1030;right:0;top:-5.5px;" ></span>
+    <span id="clock" class="main-active" style ="position: fixed;z-index:1030;right:3px;top:-5.5px;" ></span>
   
 
