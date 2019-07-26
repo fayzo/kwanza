@@ -672,7 +672,7 @@ class Home extends Comment {
     {
         $mysqli= $this->database;
         $param= '%'.$search.'%';
-        $query = "SELECT user_id, username, email, career,hobbys, profile_img FROM users Where username LIKE '{$param}' OR firstname LIKE '{$param}' OR lastname LIKE '{$param}' ";
+        $query = "SELECT user_id, username, email, career,hobbys, profile_img,chat FROM users Where username LIKE '{$param}' OR firstname LIKE '{$param}' OR lastname LIKE '{$param}' ";
         $result= $mysqli->query($query);
         $contacts = array();
         while ($row= $result->fetch_array()) {
@@ -682,7 +682,8 @@ class Home extends Comment {
             'email' => $row['email'],
             'career' => $row['career'],
             'hobbys' => $row['hobbys'],
-            'profile_img' => $row['profile_img']
+            'profile_img' => $row['profile_img'],
+            'chat' => $row['chat']
            );
         }
         return $contacts; // Return the $contacts array

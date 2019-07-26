@@ -17,9 +17,9 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
                     	<div class="people-inner">
                     		<div class="people-img">
                     			 '.((!empty($user['profile_img']))?'
-                                    <a href="#"><img src="'.BASE_URL_LINK."image/users_profile_cover/".$user['profile_img'].'"/></a>
+                                    <a href="#"><img src="'.BASE_URL_LINK."image/users_profile_cover/".$user['profile_img'].'"  class="img"/></a>
                                     ':'
-                                    <a href="#"><img src="'.BASE_URL_LINK.NO_PROFILE_IMAGE_URL.'"/></a>
+                                    <a href="#"><img src="'.BASE_URL_LINK.NO_PROFILE_IMAGE_URL.'"  class="img" /></a>
                                 ').'
                     		</div>
                     		<div class="name-right2">

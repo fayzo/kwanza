@@ -511,6 +511,33 @@ $('.price_range').jRange({
             });
     });
 
+  $('#codecell').change(function(){
+        //   var province = $('#provincecode');
+        //   var district = $('#districtcode');
+        //   var sector = $('#sectorcode');
+        //   var cell = $('#codecell');
+        // if (isEmpty(province) && isEmpty(district) && isEmpty(sector) && isEmpty(cell)){
+          var province = $('#provincecode').val();
+          var district = $('#districtcode').val();
+          var sector = $('#sectorcode').val();
+          var cell = $('#codecell').val();
+          var type_of_school = $('#type_of_school').val();
+
+            $.ajax({
+                type: 'POST',
+                url: 'core/ajax_db/getcell.php',
+                data:'type_of_school='+type_of_school+'&province='+province+'&district='+district+'&sector'+sector+'&cell='+cell,
+                beforeSend: function () {
+                    $('.cell-hide').css("opacity", ".5");
+                },
+                success: function (html) {
+                    $('#cell-hide').html(html);
+                    $('.cell-hide').css("opacity", "");
+                }
+            });
+        // }
+    });
+
 </script>
 
     <!-- #endregion Jssor Slider End -->

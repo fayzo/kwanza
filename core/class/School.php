@@ -18,6 +18,7 @@ class School extends Home {
         $mysqli= $this->database;
         $query= $mysqli->query("SELECT * FROM school WHERE type_of_school= '{$categories}' ORDER BY created_on_ Desc , rand() Limit $showpages,5");
         $query1= $mysqli->query("SELECT COUNT(*) FROM school WHERE type_of_school= '{$categories}' ");
+        $get_province = mysqli_query($mysqli,"SELECT * FROM provinces");   
         ?>
         <div class="card card-primary mb-1 ">
         <div class="card-header main-active p-1">
@@ -61,6 +62,61 @@ class School extends Home {
         <div class="job-hide">
         <h5 class="card-title text-center "><i><?php echo $categories;?></i></h5>
 
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="form" id="form" >
+        <input type="hidden" name="type_of_school" id="type_of_school" value="<?php echo $categories;?>">
+        <div class="form-row mb-3">
+            <div class="col">
+                <label for="">Province</label>
+                 <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                    </div>
+                    <select name="provincecode"  id="provincecode" onchange="showResult();" class="form-control">
+                        <option value="">----Select province----</option>
+                        <?php while($show_province = mysqli_fetch_array($get_province)) { ?>
+                        <option value="<?php echo $show_province['provincecode'] ?>"><?php echo $show_province['provincename'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <label for=""> District</label>
+                 <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                    </div>
+                    <select class="form-control" name="districtcode" id="districtcode" onchange="showResult2();" >
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <label for="Sector">Sector</label>
+                 <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                    </div>
+                    <select class="form-control" name="sectorcode" id="sectorcode"  onchange="showResult3();">
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <label for="Cell">Cell</label>
+                 <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                    </div>
+                    <select name="codecell" id="codecell" class="form-control" onchange="showResult4();">
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        </form>
+
+        <div id="cell-hide">
+         
           <?php while($row= $query->fetch_array()) { ?>
 
             <div class="card flex-md-row shadow-sm h-md-100 border-0 mb-3">
@@ -76,6 +132,7 @@ class School extends Home {
             </div><!-- card -->
           <hr class="bg-info mt-0 mb-1" style="width:95%;">
         <?php } ?>
+        </div>
            </div>
           </div> <!-- /.card-body -->
        </div> <!-- /.card -->

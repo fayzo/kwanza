@@ -61,9 +61,9 @@ if (isset($_POST['showMessage']) && !empty($_POST['showMessage'])) {
         				<div class="people-inner">
         					<div class="people-img">
 							<?php if (!empty($Message['profile_img'])) { ?>
-        						     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$Message['profile_img'];?>"/>
+        						     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$Message['profile_img'];?>" class="img" />
 							<?php }else {?>
-        						     <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"/>
+        						     <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  class="img" />
 							<?php } ?>
         					</div>
         					<div class="name-right2">
@@ -104,12 +104,18 @@ if (isset($_POST['showMessage']) && !empty($_POST['showMessage'])) {
         			        <!--Direct Messages-->
         			        	<div class="people-message p-3" data-user="<?php echo $Message['user_id'];?>">
         			        		<div class="people-inner">
-        			        			<div class="people-img">
+        			        			<div class="people-img" style="position:relative;">		
 					        				<?php if (!empty($Message['profile_img'])) { ?>
-        			        			     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$Message['profile_img'];?>"/>
+        			        			     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$Message['profile_img'];?>" class="img" />
 					        		        <?php }else {?>
-        			        		        	     <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"/>
+        			        		        	     <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  class="img"/>
 					        		        <?php } ?>
+
+											<?php if ($Message['chat'] == 'on') { ?>
+														<img src="<?php echo BASE_URL_LINK ;?>image/color/green.png" width="15px" style="position:absolute;bottom:0px;right:0px;">
+											<?php }else {?>
+														<img src="<?php echo BASE_URL_LINK ;?>image/color/rose.png" width="15px" style="position:absolute;bottom:0px;right:0px;">
+											<?php } ?>
         			        			</div>
         			        			<div class="name-right2">
         			        				<span><a href="#"><?php echo $Message['username'];?></a></span>
@@ -145,11 +151,17 @@ if (isset($_POST['showMessage1']) && !empty($_POST['showMessage1'])) {
 					<!--Direct Messages-->
 				<li class="people-message" data-user="<?php echo $Message['user_id'];?>" > <!-- start message -->
                     <a href="#">
-                      <div class="pull-left">
+                      <div class="pull-left" style="position:relative;">
 						  	<?php if (!empty($Message['profile_img'])) { ?>
-        						     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$Message['profile_img'];?>"  class="rounded-circle" />
+        						     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$Message['profile_img'];?>"  class="rounded-circle img"  />
 							<?php }else {?>
-        						     <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  class="rounded-circle" />
+        						     <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  class="rounded-circle img" />
+							<?php } ?>
+
+							<?php if ($Message['chat'] == 'on') { ?>
+										<img src="<?php echo BASE_URL_LINK ;?>image/color/green.png" width="15px" style="position:absolute;bottom:0px;right:0px;">
+							<?php }else {?>
+										<img src="<?php echo BASE_URL_LINK ;?>image/color/rose.png" width="15px" style="position:absolute;bottom:0px;right:0px;">
 							<?php } ?>
                       </div>
                       <h4>
@@ -183,14 +195,29 @@ if (isset($_POST['showChatPopup']) && !empty($_POST['showChatPopup'])) {
     		            <label class="close-msgPopup float-right" for="message-body" ><i class="fa fa-times" aria-hidden="true"></i></label> 
 						<div class="float-center">
     		            	<div class="message-head-img">
-			            	<?php if (!empty($user['profile_img'])) { ?>
-    		            	     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$user['profile_img'];?>"/>
+							<?php if (!empty($user['profile_img'])) { ?>
+								<div style="position:relative;float: left;">		
+    		            	       <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$user['profile_img'];?>" class="img" />
+									<?php if ($user['chat'] == 'on') { ?>
+												<img src="<?php echo BASE_URL_LINK ;?>image/color/green.png" width="15px" style="position:absolute;bottom:0px;right:0px;">
+									<?php }else {?>
+												<img src="<?php echo BASE_URL_LINK ;?>image/color/rose.png" width="15px" style="position:absolute;bottom:0px;right:0px;">
+									<?php } ?>
+								</div>
 								 <div class="d-inline-block pt-1 pl-3">
 								   <div><?php echo $user['username']; ?></div>
 								   <div><i style="font-size: 20px;" class="fa fa-envelope-o"></i> Messages</div>
 								 </div>
-			            	<?php }else {?>
-    		            	     <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"/>
+							<?php }else { ?>
+								<div  style="position:relative;float: left;">		
+
+									<img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" class="img" />
+									<?php if ($user['chat'] == 'on') { ?>
+												<img src="<?php echo BASE_URL_LINK ;?>image/color/green.png" width="15px" style="position:absolute;bottom:0px;right:0px;">
+									<?php }else {?>
+												<img src="<?php echo BASE_URL_LINK ;?>image/color/rose.png" width="15px" style="position:absolute;bottom:0px;right:0px;">
+									<?php } ?>
+								</div>
 								 <div class="d-inline-block pt-1 pl-3">
 								   <div><?php echo $user['username']; ?></div>
 								   <div><i style="font-size: 20px;" class="fa fa-envelope-o"></i> Messages</div>
