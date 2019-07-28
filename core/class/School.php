@@ -16,7 +16,15 @@ class School extends Home {
         }
 
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM school WHERE type_of_school= '{$categories}' ORDER BY created_on_ Desc , rand() Limit $showpages,5");
+        // $query= $mysqli->query("SELECT * FROM school WHERE type_of_school= '{$categories}' ORDER BY created_on_ Desc , rand() Limit $showpages,5");
+        $query= $mysqli->query("SELECT * FROM school S 
+						Left JOIN provinces P ON S. location_province = P. provincecode
+						Left JOIN districts D ON S. location_districts = D. districtcode
+						Left JOIN sectors T ON S. location_Sector = T. sectorcode
+						Left JOIN cells C ON S. location_cell = C. codecell
+						Left JOIN vilages V ON S. location_village = V. CodeVillage
+        WHERE type_of_school= '{$categories}' ORDER BY created_on_ Desc , rand() Limit $showpages,5 ");
+        
         $query1= $mysqli->query("SELECT COUNT(*) FROM school WHERE type_of_school= '{$categories}' ");
         $get_province = mysqli_query($mysqli,"SELECT * FROM provinces");   
         ?>
@@ -48,19 +56,19 @@ class School extends Home {
 
             <div class="nav-scroller py-0" style="clear:right;height:2rem;">
                 <nav class="nav d-flex justify-content-between pb-0"  >
-                    <a class="p-2" href="javascript:void(0)" onclick="schoolCategories0('kindergarden',1);" >kindergarden<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('kindergarden');?></span></a>
-                    <a class="p-2" href="javascript:void(0)" onclick="schoolCategories0('Primary',1);" >Primary School<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('Primary');?></span></a>
-                    <a class="p-2" href="javascript:void(0)" onclick="schoolCategories0('Secondary',1);" >Secondary School<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('Secondary');?></span></a>
-                    <a class="p-2" href="javascript:void(0)" onclick="schoolCategories0('College',1);" >College School<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('College');?></span></a>
+                    <a class="p-2" href="javascript:void(0)" onclick="schoolCategories0('kindergarden School',1);" >kindergarden<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('kindergarden School');?></span></a>
+                    <a class="p-2" href="javascript:void(0)" onclick="schoolCategories0('Primary School',1);" >Primary School<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('Primary School');?></span></a>
+                    <a class="p-2" href="javascript:void(0)" onclick="schoolCategories0('Secondary School',1);" >Secondary School<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('Secondary School');?></span></a>
+                    <a class="p-2" href="javascript:void(0)" onclick="schoolCategories0('College School',1);" >College School<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('College School');?></span></a>
                     <a class="p-2" href="javascript:void(0)" onclick="schoolCategories0('University',1);" >University School<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('University');?></span></a>
                 </nav>
             </div> <!-- nav-scroller -->
         </div> <!-- /.card-header -->
 
         <div class="card-body">
-        <span class="job-show"></span>
-        <div class="job-hide">
-        <h5 class="card-title text-center "><i><?php echo $categories;?></i></h5>
+        <span class="school-show"></span>
+        <div class="school-hide">
+        <h5 class="card-title text-center " style="background:#faebd7;padding:10px;"><i><?php echo $categories;?></i></h5>
 
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="form" id="form" >
         <input type="hidden" name="type_of_school" id="type_of_school" value="<?php echo $categories;?>">
@@ -107,7 +115,7 @@ class School extends Home {
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
                     </div>
-                    <select name="codecell" id="codecell" class="form-control" onchange="showResult4();">
+                    <select name="codecell" id="codecell" class="form-control" onchange="showResultCell();">
                         <option></option>
                     </select>
                 </div>
@@ -126,8 +134,9 @@ class School extends Home {
                     <a class="text-primary" href="javascript:void(0)"  id="districts-view" data-districts="<?php echo $row['location_districts'] ;?>"><?php echo $row['title_'] ;?></a>
                     </h5>
                     <div class="text-muted">Created on <?php echo $this->timeAgo($row['created_on_']) ;?> By <?php echo $row['author_'] ;?> </div>
-                    <div class="text-muted"><?php echo $row['location_districts'] ;?> District/ <?php echo $row['location_Sector'] ;?> Sector/  <?php echo $row['location_cell'] ;?> cell</div>
-                    <p class="card-text mb-1">vIEW Different Landscapes of <?php echo $row['location_districts'] ;?> Districts</p>
+                    <div class="text-muted"><?php 	echo ''.$row['provincename'].' Province/ '.$row['namedistrict'].' district/ '.$row['namesector'].' Sector' ;?></div>
+                    <div class="text-muted"><?php 	echo ''.$row['nameCell'].' Cell/ '.$row['VillageName'].' Village' ;?></div>
+                   <p class="card-text mb-1">vIEW Different Landscapes of <?php echo $row['location_districts'] ;?> Districts</p>
                 </div><!-- card-body -->
             </div><!-- card -->
           <hr class="bg-info mt-0 mb-1" style="width:95%;">
@@ -178,7 +187,15 @@ class School extends Home {
         }
 
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM school WHERE location_province= '{$categories}' ORDER BY created_on_ Desc , rand() Limit $showpages,5");
+        // $query= $mysqli->query("SELECT * FROM school WHERE location_province= '{$categories}' ORDER BY created_on_ Desc , rand() Limit $showpages,5");
+        $query= $mysqli->query("SELECT * FROM school S 
+						Left JOIN provinces P ON S. location_province = P. provincecode
+						Left JOIN districts D ON S. location_districts = D. districtcode
+						Left JOIN sectors T ON S. location_Sector = T. sectorcode
+						Left JOIN cells C ON S. location_cell = C. codecell
+						Left JOIN vilages V ON S. location_village = V. CodeVillage
+        WHERE location_province= '{$categories}' ORDER BY created_on_ Desc , rand() Limit $showpages,5 ");
+
         $query1= $mysqli->query("SELECT COUNT(*) FROM school WHERE location_province= '{$categories}' ");
         ?>
         <div class="card card-primary mb-1 ">
@@ -190,10 +207,10 @@ class School extends Home {
                             school province
                         </button>
                 <div class="dropdown-menu main-active" aria-labelledby="triggerId">
-                    <a class="dropdown-item" href="javascript:void(0)" onclick="schoolCategories0('kindergarden',1);" >kindergarden<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('kindergarden');?></span></a>
-                    <a class="dropdown-item" href="javascript:void(0)" onclick="schoolCategories0('Primary',1);" >Primary School<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('Primary');?></span></a>
-                    <a class="dropdown-item" href="javascript:void(0)" onclick="schoolCategories0('Secondary',1);" >Secondary School<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('Secondary');?></span></a>
-                    <a class="dropdown-item" href="javascript:void(0)" onclick="schoolCategories0('College',1);" >College School<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('College');?></span></a>
+                    <a class="dropdown-item" href="javascript:void(0)" onclick="schoolCategories0('kindergarden School',1);" >kindergarden<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('kindergarden School');?></span></a>
+                    <a class="dropdown-item" href="javascript:void(0)" onclick="schoolCategories0('Primary School',1);" >Primary School<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('Primary School');?></span></a>
+                    <a class="dropdown-item" href="javascript:void(0)" onclick="schoolCategories0('Secondary School',1);" >Secondary School<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('Secondary School');?></span></a>
+                    <a class="dropdown-item" href="javascript:void(0)" onclick="schoolCategories0('College School',1);" >College School<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('College School');?></span></a>
                     <a class="dropdown-item" href="javascript:void(0)" onclick="schoolCategories0('University',1);" >University School<span class="badge badge-primary"><?php echo $this->schoolcountPOSTS0('University');?></span></a>
 
                 </div>
@@ -219,9 +236,9 @@ class School extends Home {
         </div> <!-- /.card-header -->
 
         <div class="card-body">
-        <span class="job-show"></span>
-        <div class="job-hide">
-        <h5 class="card-title text-center "><i><?php echo $categories;?></i></h5>
+        <span class="school-show"></span>
+        <div class="school-hide">
+        <h5 class="card-title text-center"  style="background:#faebd7;padding:10px;"><i><?php echo $categories;?></i></h5>
 
           <?php while($row= $query->fetch_array()) { ?>
 
@@ -232,7 +249,8 @@ class School extends Home {
                     <a class="text-primary" href="javascript:void(0)"  id="districts-view" data-districts="<?php echo $row['location_districts'] ;?>"><?php echo $row['title_'] ;?></a>
                     </h5>
                     <div class="text-muted">Created on <?php echo $this->timeAgo($row['created_on_']) ;?> By <?php echo $row['author_'] ;?> </div>
-                    <div class="text-muted"><?php echo $row['location_districts'] ;?> District/ <?php echo $row['location_Sector'] ;?> Sector/  <?php echo $row['location_cell'] ;?> cell</div>
+                    <div class="text-muted"><?php 	echo ''.$row['provincename'].' Province/ '.$row['namedistrict'].' district/ '.$row['namesector'].' Sector' ;?></div>
+                    <div class="text-muted"><?php 	echo ''.$row['nameCell'].' Cell/ '.$row['VillageName'].' Village' ;?></div>
                     <p class="card-text mb-1">vIEW Different Landscapes of <?php echo $row['location_districts'] ;?> Districts</p>
                 </div><!-- card-body -->
             </div><!-- card -->

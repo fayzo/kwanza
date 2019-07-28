@@ -219,7 +219,7 @@ class Landscapes extends Home{
                   <input type="text" class="form-control searchvirunga"  aria-describedby="helpId" placeholder="Search virunga any place in rwanda">
               </div>
             </form>
-          <h5 class="card-title text-center pl-2"><i><?php echo $categories;?> Landscapes</i></h5>
+          <h5 class="text-dark text-center" style="background:#faebd7;padding:10px;"><i><?php echo $categories;?> Landscapes</i></h5>
         </div>
         <div class="card-body">
          <span class="landscapes-show"></span>
@@ -273,6 +273,7 @@ class Landscapes extends Home{
         $mysqli= $this->database;
         $query= $mysqli->query("SELECT * FROM rwandalandscapes WHERE location_province= '{$categories}' AND location_districts= location_districts GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc , rand() ");
         $query0= $mysqli->query("SELECT location_districts FROM rwandalandscapes WHERE location_province='{$categories}' GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc ");
+        $get_province = mysqli_query($mysqli,"SELECT * FROM provinces");   
         $query1= $mysqli->query("SELECT COUNT(*)
             FROM(
             SELECT DISTINCT location_districts
@@ -306,14 +307,67 @@ class Landscapes extends Home{
         <div class="card-body">
         <span class="job-show"></span>
         <div class="job-hide">
-        <h5 class="card-title text-center "><i><?php echo $categories;?> Landscapes</i></h5>
+
+          <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="form" id="form" >
+        <div class="form-row mb-2 pt-2 pb-2" style="background:#faebd7;">
+            <div class="col">
+                <label for="" class="text-dark">Province</label>
+                 <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                    </div>
+                    <select name="provincecode"  id="provincecode" onchange="showResult();" class="form-control">
+                        <option value="">----Select province----</option>
+                        <?php while($show_province = mysqli_fetch_array($get_province)) { ?>
+                        <option value="<?php echo $show_province['provincecode'] ?>"><?php echo $show_province['provincename'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <label for="" class="text-dark"> District</label>
+                 <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                    </div>
+                    <select class="form-control" name="districtcode" id="districtcode" onchange="showResult2();" >
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <label for="Sector" class="text-dark">Sector</label>
+                 <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                    </div>
+                    <select class="form-control" name="sectorcode" id="sectorcode"  onchange="showResult3();">
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <label for="Cell" class="text-dark">Cell</label>
+                 <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                    </div>
+                    <select name="codecell" id="codecell" class="form-control" onchange="showResultCellOnLandscapes();">
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        </form>
+
+        <h5 class="text-dark text-center" style="background:#faebd7;padding:10px;"><i><?php echo $categories;?> Landscapes</i></h5>
             <?php
                 $row1= $query1->fetch_array();
                 $total= array_shift($row1);
                 $array= array(0,$total);
                 $totals= array_sum($array);
 
-                $District= '<div><span class="h5 text-success">'.$categories.' </span> has '.$totals.' Districts are :  ';
+                $District= '<div style="background:#b9b6b22b;padding:10px;"><span class="h5 text-success">'.$categories.' </span> has '.$totals.' Districts are :  ';
                 $i= 0;
                 $Districts='';
                 

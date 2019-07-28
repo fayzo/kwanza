@@ -8,11 +8,18 @@ class Message extends Home
     public function recentMessage($user_id)
     {
        $mysqli= $this->database;
-    //    $query="SELECT * FROM message LEFT JOIN users ON message_from= user_id WHERE message_to= $user_id ;";
-       $query="SELECT * FROM message LEFT JOIN users ON message_from= user_id WHERE message_to= $user_id GROUP BY message_from HAVING  COUNT(DISTINCT message_to)= 1 ORDER BY message_on Desc ;";
-    //    SELECT name, MIN(type) AS type FROM table_name GROUP BY name HAVING COUNT(DISTINCT type) = 1 ;
-    //    HAVING MIN(type) = MAX(type)
-    
+       $query="SELECT * FROM message LEFT JOIN users ON message_from= user_id WHERE message_to= $user_id ORDER BY message_on Desc ;";
+    //    $query="SELECT * FROM message M LEFT JOIN users U ON M. message_from= U. user_id WHERE M. message_to= $user_id GROUP BY M. message_from, M. message_to HAVING  COUNT(DISTINCT M. message_to) AND COUNT(DISTINCT M. message_from) ORDER BY M. message_on Desc ;";
+        
+    // $query="SELECT * FROM message M LEFT JOIN users U ON M. message_from = U. user_id WHERE M. message_to IN (
+    //         SELECT MAX(message_to)
+    //         FROM message WHERE message_to = $user_id  GROUP BY message_from 
+    //     ) GROUP BY M. message_from  ORDER BY M. message_on Desc";
+
+    // $query="SELECT * from users U
+    // inner join (select message,message_on,MAX(message_from)as ma, MAX(message_to) as maxid from message group by message_on) as b on
+    //     U.user_id= b.ma WHERE b.maxid= $user_id GROUP BY b.ma ORDER BY b.message_on Desc";
+
        $result=$mysqli->query($query);
        $data=array();
        while ($row = $result->fetch_array()) {

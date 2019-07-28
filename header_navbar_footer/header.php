@@ -1029,10 +1029,29 @@
 		
 		}		
     }
-    
+	
+	// Get Villages list
+    function showResult4(){
+		var codecell=document.getElementById('codecell').value;
+		var params = "&codecell="+codecell+"";
+		http=new XMLHttpRequest();
+		http.open("POST","core/ajax_db/getvillage.php",true);
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		http.send(params);
+		http.onreadystatechange = function() 
+		{
+            // Call a function when the cell changes.
+			
+		document.getElementById("CodeVillage").innerHTML=http.responseText;
+				
+		if(document.getElementById('CodeVillage').value!=="No village Available")
+		document.form.name.disabled=false;
+		
+		}		
+	}
+      
     // Get Villages list
-		function showResult4(){
-        // var codecell=document.getElementById('codecell').value;
+    function showResultCell(){
         var province = document.getElementById('provincecode').value;
         var district = document.getElementById('districtcode').value;
         var sector = document.getElementById('sectorcode').value;
@@ -1050,27 +1069,27 @@
 		document.getElementById("cell-hide").innerHTML=http.responseText;
 				
 		}		
-	}
-	
-	// Get Villages list
-	// 	function showResult4(){
-	// 	var codecell=document.getElementById('codecell').value;
-	// 	var params = "&codecell="+codecell+"";
-	// 	http=new XMLHttpRequest();
-	// 	http.open("POST","getvillage.php",true);
-	// 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-	// 	http.send(params);
-	// 	http.onreadystatechange = function() 
-	// 	{
-    //         Call a function when the cell changes.
+    }
+    
+    // Get Villages list
+    function showResultCellOnLandscapes(){
+        var province = document.getElementById('provincecode').value;
+        var district = document.getElementById('districtcode').value;
+        var sector = document.getElementById('sectorcode').value;
+        var cell = document.getElementById('codecell').value;
+        var params = '&province='+province+'&district='+district+'&sector='+sector+'&cell='+cell,
+		http=new XMLHttpRequest();
+		http.open("POST","core/ajax_db/rwandalandscapes_province0.php",true);
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		http.send(params);
+		http.onreadystatechange = function() 
+		{
+            // Call a function when the cell changes.
 			
-	// 	document.getElementById("CodeVillage").innerHTML=http.responseText;
+		document.getElementById("cell-hide").innerHTML=http.responseText;
 				
-	// 	if(document.getElementById('CodeVillage').value!=="No village Available")
-	// 	document.form.name.disabled=false;
-		
-	// 	}		
-	// }
+		}		
+	}
 </script>
     <?php include('header_image_slide.php') ;?>
     <style>

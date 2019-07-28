@@ -725,6 +725,27 @@ class Home extends Comment {
         return $contacts; // Return the $contacts array
     }
 
+    public function searchSchool($search)
+    {
+        $mysqli= $this->database;
+        $param= '%'.$search.'%';
+        // $query = "SELECT * FROM school WHERE title_ LIKE '{$param}' ";
+        $query="SELECT * FROM school S 
+						Left JOIN provinces P ON S. location_province = P. provincecode
+						Left JOIN districts D ON S. location_districts = D. districtcode
+						Left JOIN sectors T ON S. location_Sector = T. sectorcode
+						Left JOIN cells C ON S. location_cell = C. codecell
+						Left JOIN vilages V ON S. location_village = V. CodeVillage
+	    WHERE title_ LIKE '{$param}' ";
+
+        $result= $mysqli->query($query);
+        $contacts = array();
+        while ($row= $result->fetch_array()) {
+            $contacts[] = $row;
+        }
+        return $contacts; // Return the $contacts array
+    }
+
     public function landscapeSearchJobs($search)
     {
         $mysqli= $this->database;
