@@ -1,4 +1,5 @@
-<?php include "header_navbar_footer/header_if_login.php"?>
+<!-- < ?php include "header_navbar_footer/header_if_login.php"?> -->
+<?php include "header_navbar_footer/Get_usernameProfile.php"?>
 <title>Unemplyoment</title>
 <?php include "header_navbar_footer/header.php"?>
 <?php include "header_navbar_footer/navbar.php"?>
@@ -27,7 +28,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-
+   <?php if (isset($_SESSION['key'])){ ?>
             <div class="col-md-3 mb-3">
                 <!-- Profile Image -->
                    <!-- Profile Image -->
@@ -95,7 +96,11 @@
                  <?php echo $trending->trends(); ?>
             </div>
             <!-- /.col -->
-
+<?php }else{ ?>
+    <div class="col-md-3 mb-3">
+          <?php echo $home->jobsfetch() ;?>
+    </div>
+<?php } ?>
             <div class="col-md-6">
                 <div class="row">
 
@@ -112,10 +117,12 @@
 
             <div class="col-md-3">
                 <div class="row">
+                <?php if (isset($_SESSION['key'])){ ?>
                     <div class="col-md-12 mb-3">
                        <?php echo $follow->whoTofollow($user_id,$user_id) ;?>
                     </div>
                     <!-- /.col -->
+                <?php } ?>
                     <div class="col-md-12 mb-3">
                        <?php echo $home->options(); ?>
                     </div>

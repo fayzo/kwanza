@@ -18,7 +18,7 @@
                    <h5 class="card-title pb-0"><i> Message Chat</i></h5>
 
                    <div class="card-tools">
-                       <span data-toggle="tooltip" title="3 New Messages" class="badge badge-primary"><?php if( $notific['totalmessage'] > 0){echo '<span>'.$notific['totalmessage'].'</span>'; } ?></span>
+                       <span id="tooltipsmessages1" data-toggle="tooltip" title="3 New Messages" class="badge badge-primary"><?php if( $notific['totalmessage'] > 0){echo '<span>'.$notific['totalmessage'].'</span>'; } ?></span>
                        <button type="button" class="btn btn-tool btn-sm collapse-minus" data-toggle="collapse"
                            data-target="#collapseExample4">
                            <i class="fa fa-minus"></i>
@@ -210,9 +210,12 @@
    <script src="<?php echo BASE_URL_LINK ;?>js/hotel_addcategories.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/unemplyoment_message.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/school_add.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/crowfund_addomments.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/domesticsHelper_profile.js"></script>
    
    <!-- <script src="<?php echo BASE_URL_LINK ;?>js/add_post_ajax.js"></script> -->
    <script src="<?php echo BASE_URL_LINK ;?>js/manage_admins_ajax.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/login_please.js"></script>
    <!-- daterangepicker -->
    <!-- <script src="<?php echo BASE_URL_LINK ;?>plugin/moment/min/moment.min.js"></script> -->
    <!-- <script src="<?php echo BASE_URL_LINK ;?>plugin/bootstrap-daterangepicker/daterangepicker.js"></script> -->
@@ -229,7 +232,7 @@
    <!-- Page Script -->
    <script src="<?php echo BASE_URL_LINK ;?>plugin/ckeditor/ckeditor.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>plugin/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-   <script>
+    <script>
 //  FastClick is a simple, easy-to-use library for eliminating
 //  the 300ms delay between a physical tap and the firing of a `click` 
 //  event on mobile browsers. The aim is to make your application feel less laggy and
@@ -510,6 +513,33 @@ $('.price_range').jRange({
                 }
             });
     });
+    
+//   $('#codecell').change(function(){
+//           var province = $('#provincecode');
+//           var district = $('#districtcode');
+//           var sector = $('#sectorcode');
+//           var cell = $('#codecell');
+//         if (isEmpty(province) && isEmpty(district) && isEmpty(sector) && isEmpty(cell)){
+//           var province = $('#provincecode').val();
+//           var district = $('#districtcode').val();
+//           var sector = $('#sectorcode').val();
+//           var cell = $('#codecell').val();
+//           var type_of_school = $('#type_of_school').val();
+
+//             $.ajax({
+//                 type: 'POST',
+//                 url: 'core/ajax_db/getcell.php',
+//                 data:'type_of_school='+type_of_school+'&province='+province+'&district='+district+'&sector'+sector+'&cell='+cell,
+//                 beforeSend: function () {
+//                     $('.cell-hide').css("opacity", ".5");
+//                 },
+//                 success: function (html) {
+//                     $('#cell-hide').html(html);
+//                     $('.cell-hide').css("opacity", "");
+//                 }
+//             });
+//         }
+//     });
 
 </script>
 

@@ -5,6 +5,18 @@
 
 class Crowfund extends home {
 
+    public function comments($tweet_id)
+    {
+        $mysqli= $this->database;
+        $query= "SELECT * FROM comment_crowfunding LEFT JOIN users ON comment_by=user_id WHERE comment_on = $tweet_id ORDER BY comment_at DESC";
+        $result= $mysqli->query($query);
+        $comments= array();
+        while ($row= $result->fetch_assoc()) {
+             $comments[] = $row;
+        }
+        return $comments;
+    }
+
      public function crowfundraisings($pages,$categories)
     {
         $pages= $pages;
@@ -23,10 +35,10 @@ class Crowfund extends home {
 
                <div class="col-md-3 mb-3">
             
-            <div class="card more" id="crowfund-readmore" data-crowfund="<?php echo $row['fund_id'] ;?>">
-                <img class="card-img-top" width="242px" height="160px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/crowfund/<?php echo $row['photo'] ;?>" >
+            <div class="card more" >
+                <img class="card-img-top" width="242px" id="crowfund-readmore" data-crowfund="<?php echo $row['fund_id'] ;?>" height="160px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/crowfund/<?php echo $row['photo'] ;?>" >
                 <div class="card-body">
-                    <div class="p-0 font-weight-bold">Funding <i class="fa fa-heart-o float-right" aria-hidden="true"></i></div>
+                    <div class="p-0 font-weight-bold">Funding <i class="fa fa-heart-o float-right" aria-hidden="true"  <?php if(isset($_SESSION['key'])){ echo 'id="post_HomeCommentlike"'; }else{ echo 'id="login-please" data-login="1"'; } ?>></i></div>
                     <hr>
                     <a href="javascript:void(0);"  id="crowfund-readmore" data-crowfund="<?php echo $row['fund_id'] ;?>" class="card-text h5"><?php echo $row['photo_Title_main'] ;?></a>
                     <!-- Kogera umusaruro muguhinga -->

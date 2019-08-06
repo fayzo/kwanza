@@ -1,6 +1,6 @@
-   function country() {
+   function countrys() {
         var xmlhttp = new XMLHttpRequest();
-        var url = "../assets/country/country.json";
+       var url = "../assets/country/country.json";
         xmlhttp.open("post", url, true);
         xmlhttp.send();
         xmlhttp.onreadystatechange = function() {
@@ -34,4 +34,4 @@
             }
         };
     }
-    window.onload = country();
+    window.onload = countrys();

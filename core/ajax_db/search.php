@@ -9,8 +9,8 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
 
      if (is_array($result) || is_object($result)){
 
-         echo '<div class="nav-right-down-wrap main-active">
-                <ul> ';
+         echo '<div id="black" class="nav-right-down-wrap main-active">
+                <ul class="large-2" style="height:400px;"> ';
                 //  echo var_dump($result);
     
     foreach ($result as $user) {

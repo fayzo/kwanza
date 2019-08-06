@@ -1,10 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-* {
+/* * {
     box-sizing: border-box;
+} */
+
+.img-popup-wrapLogin{
+	border-radius: 4px;
+	background: #fff;
+	max-width: 764px;
+	max-height: 480px;
+	position: relative;
+	top: 5%;
+	margin: 20px auto;
+	padding: 0px;
+	
 }
 
-body {
+.body-center{
     font-family: 'Montserrat', sans-serif;
     background: #f6f5f7;
     display: flex;
@@ -15,13 +27,24 @@ body {
     margin: -20px 0 50px;
 }
 
-h1 {
+.body-center0 {
+    font-family: 'Montserrat', sans-serif;
+    /* background: #f6f5f7; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    /* margin: -20px 0 50px; */
+}
+
+.h10 {
     font-weight: bold;
     margin: 0;
     /* font-size: 15px; */
 }
 
-p {
+.p0 {
     font-size: 14px;
     font-weight: 100;
     line-height: 20px;
@@ -33,14 +56,14 @@ span {
     font-size: 12px;
 }
 
-a {
+.alink {
     color: #333;
     font-size: 14px;
     text-decoration: none;
     margin: 15px 0;
 }
 
-.container {
+.containers {
     background: #f6f5f7;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22);
@@ -235,33 +258,33 @@ button.ghost {
 }
 
 /* Move signin to right */
-.container.right-panel-active .sign-in-container {
+.containers.right-panel-active .sign-in-container {
     transform: translateY(100%);
 }
 
 /* Move overlay to left */
-.container.right-panel-active .overlay-container {
+.containers.right-panel-active .overlay-container {
     transform: translateX(-100%);
 }
 
 /* Bring signup over signin */
-.container.right-panel-active .sign-up-container {
+.containers.right-panel-active .sign-up-container {
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
 }
 
 /* Move overlay back to right */
-.container.right-panel-active .overlay {
+.containers.right-panel-active .overlay {
     transform: translateX(50%);
 }
 
 /* Bring back the text to center */
-.container.right-panel-active .overlay-left {
+.containers.right-panel-active .overlay-left {
     transform: translateY(0);
 }
 
 /* Same effect for right */
-.container.right-panel-active .overlay-right {
+.containers.right-panel-active .overlay-right {
     transform: translateY(20%);
 }

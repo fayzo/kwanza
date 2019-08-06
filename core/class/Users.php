@@ -320,12 +320,13 @@ class Users{
         
         # Build the values
         $values = implode(",", array_values($valued));
+
         # Build the insert query
         $queryl = "INSERT INTO $table (".$columns.") VALUES (".$values.")" ;
         $query= $mysqli->query($queryl);
         $row= json_encode($mysqli->insert_id);
-        $query1= "DELETE FROM notification WHERE notification_id= $row AND type= 'retweet' ";
-        $mysqli->query($query1);
+        // $query1= "DELETE FROM notification WHERE notification_id= $row AND type= 'retweet' ";
+        // $mysqli->query($query1);
 
         // if($query){
         //         exit('<div class="alert alert-success alert-dismissible fade show text-center">
@@ -957,7 +958,7 @@ class Users{
     public function countPOSTS()
     {
         $db =$this->database;
-        $sql= $db->query('SELECT COUNT(*) FROM addpost');
+        $sql= $db->query('SELECT COUNT(*) FROM tweets');
         $row_post = $sql->fetch_array();
         $total_post= array_shift($row_post);
         $array= array(0,$total_post);
@@ -965,10 +966,32 @@ class Users{
         echo $total_posts;
     }
 
-    public function countCOMMENTS()
+    public function countApprovalBusiness()
     {
         $db =$this->database;
-        $sql= $db->query('SELECT COUNT(*) FROM comment');
+        $sql= $db->query('SELECT COUNT(*) FROM users WHERE approval = "on" ');
+        $row_comment = $sql->fetch_array();
+        $total_comment= array_shift($row_comment);
+        $array= array(0,$total_comment);
+        $total_comments= array_sum($array);
+        echo $total_comments;
+    }
+
+    public function countUnApprovalBusiness()
+    {
+        $db =$this->database;
+        $sql= $db->query('SELECT COUNT(*) FROM users WHERE approval = "off" ');
+        $row_comment = $sql->fetch_array();
+        $total_comment= array_shift($row_comment);
+        $array= array(0,$total_comment);
+        $total_comments= array_sum($array);
+        echo $total_comments;
+    }
+
+    public function jobCountbusiness()
+    {
+        $db =$this->database;
+        $sql= $db->query('SELECT COUNT(*) FROM jobs WHERE turn = "on" ');
         $row_comment = $sql->fetch_array();
         $total_comment= array_shift($row_comment);
         $array= array(0,$total_comment);

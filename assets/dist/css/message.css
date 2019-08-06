@@ -42,7 +42,7 @@
     overflow: auto;
 }
 
-.people-message:hover {
+.people-messageM:hover {
     background: #f6f6f6;
     cursor: pointer;
 }
@@ -52,6 +52,18 @@
 }
 .people-message2:hover {
     background: #f6f6f6;
+    cursor: pointer;
+}
+/* #black .people-message:hover {
+    background: #ebe8e852;
+    cursor: pointer;
+} */
+#black .people-message1:hover {
+    background: #ebe8e852;
+    cursor: pointer;
+}
+#black .people-message2:hover {
+    background: #ebe8e852;
     cursor: pointer;
 }
 .people-message1 .contacts-list-name {
@@ -79,7 +91,7 @@
     overflow: hidden;
 }
 
-.people-img img {
+.people-img .img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
@@ -180,11 +192,11 @@
     margin: 0px auto;
 }
 
-.message-head-img img {
+.message-head-img .img {
     width: 50px;
     height: 50px;
     border-radius: 50px;
-    float: left;
+    /* float: left; */
 }
 
 .message-head-img h4 {

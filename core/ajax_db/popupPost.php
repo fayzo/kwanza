@@ -28,9 +28,9 @@ if (isset($_POST['showpoptweet']) && !empty($_POST['showpoptweet'])) {
                 <div class="card-header">
 
                     <div class="user-block">
-                        <button class="f-btn btn btn-primary btn-sm float-right"><i class="fa fa-user-plus"></i> Follow
-                        </button>
-                        <?php if (!empty($tweet['profile_img'])) {?>
+                        <!-- <button class="f-btn btn btn-primary btn-sm float-right"><i class="fa fa-user-plus"></i> Follow</button> -->
+                        <div class="float-right"><?php echo $follow->followBtn($tweet['user_id'],$user_id,$tweet['user_id']) ;?></div>
+                        <?php if (!empty($tweet['profile_img'])) { ?>
                         <div class="user-blockImgBorder">
                         <div class="user-blockImg">
                           <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$tweet['profile_img'] ;?>"
@@ -39,8 +39,7 @@ if (isset($_POST['showpoptweet']) && !empty($_POST['showpoptweet'])) {
                         </div>
                         <?php } ?>
                         <span class="username">
-                            <a
-                                href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>"><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
+                            <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>"><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
                             <!-- //Jonathan Burke Jr. -->
                         </span>
                         <span class="description">Shared publicly - <?php echo $home->getTweetLink($tweet['status']); ?></span>
@@ -430,7 +429,7 @@ if (isset($_POST['showpoptweet']) && !empty($_POST['showpoptweet'])) {
                   </div>
                   </div>
                 ')).'
-               <span class="username"> <a href="'.BASE_URL_PUBLIC.$tweet['username'].'" style="float:left;padding-right:3px;">'.$tweet['firstname']   ." ".$tweet['lastname'].'</a>
+               <span class="username"> <a href="'.BASE_URL_PUBLIC.$comments['username'].'" style="float:left;padding-right:3px;">'.$comments['firstname']   ." ".$comments['lastname'].'</a>
                     <!-- //Jonathan Burke Jr. -->
                 </span>
                  <span class="description"> Shared publicly - '.$home->timeAgo($comments["comment_at"]).' today

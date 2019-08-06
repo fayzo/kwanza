@@ -10,8 +10,10 @@ class Trending extends Home
        $mysqli= $this->database;
        $query= "SELECT *, COUNT(tweet_id) AS tweetycounts FROM trends INNER JOIN tweets ON status LIKE CONCAT('%#',hashtag,'%') OR retweet_Msg LIKE CONCAT('%#',hashtag,'%') GROUP BY hashtag ORDER BY tweet_id";
        $result=$mysqli->query($query); 
-       ?>
 
+       if ($result->num_rows > 0 ) {
+          # code...
+       ?>
              <div class="card card-primary mb-3">
                   <div class="card-header main-active p-1">
                         <h5 class="card-title text-center"><i> HashTags</i></h5>
@@ -29,7 +31,9 @@ class Trending extends Home
       <?php  }  ?>
                   </div> <!-- /.card-body -->
             </div> <!-- /.card -->
-   <?php }
+   <?php } 
+   
+   }
 
     public function getTweetsTrendbyhastag($hashtag)
     {

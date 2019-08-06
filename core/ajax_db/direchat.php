@@ -7,7 +7,7 @@
                    <h3 class="box-title"><i> Message Chat</i></h3>
 
                    <div class="box-tools pull-right">
-                       <span data-toggle="tooltip" title="3 New Messages" class="badge bg-info "><?php if( $notific['totalmessage'] > 0){echo '<span>'.$notific['totalmessage'].'</span>'; } ?></span>
+                       <span id="tooltipsmessages" data-toggle="tooltip" title="3 New Messages" class="badge bg-info "><?php if( $notific['totalmessage'] > 0){echo '<span>'.$notific['totalmessage'].'</span>'; } ?></span>
                        <button type="button" style="outline-style:none;" class="btn btn-box-tool collapse-minus1" data-toggle="collapse"
                            data-target="#collapseExample"><i class="fa fa-minus"></i></button>
                            <button type="button" style="outline-style:none;" class="btn btn-box-tool" id="direct-chat-contacts-view1" data-toggle="tooltip" title="Contacts"

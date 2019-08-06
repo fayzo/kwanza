@@ -348,6 +348,8 @@ class Home extends Comment {
               <h5 class="card-title"><i> Options</i></h5>
             </div>
             <div class="card-body options-list">
+
+            <?php if (isset($_SESSION['key'])) { ?>
                 <ul>
                     <li><h5 class="card-title"><a href="crowfund.php">GushoraStartUp</a></h5> </li>
                     <li><h5 class="card-title"><a href="fundraising.php"> Fundraising</a></h5>
@@ -411,6 +413,30 @@ class Home extends Comment {
                     <li><h5 class="card-title"><a href="domestic.php">domestic Helpers</a></h5> </li>
                     <li><h5 class="card-title"><a href="school.php">school</a></h5> </li>
                 </ul>
+              
+              <?php }else { ?>
+               <ul>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.crowfund">GushoraStartUp</a></h5> </li>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.fundraising"> Fundraising</a></h5></li>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.Unemployment"> Unemployment</a></h5> </li>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.sale">Sale</a></h5></li>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.blog">Blog</a></h5></li>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.jobs0">Jobs</a></h5></li>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.events">Events</a></h5>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.movies">Movies</a></h5>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.sports">Sports</a></h5>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.news">news</a></h5>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.entertainment">Entertainment</a></h5>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.rwandaPhotos">Rwanda-Landscape</a></h5>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.Tembera">Tembera-ltd</a></h5>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.hotelbooking">Hotel-booking</a></h5>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.house">House</a></h5>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.car">Car</a></h5>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.food">Foodzana</a></h5>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.domestic">domestic Helpers</a></h5> </li>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.school">school</a></h5> </li>
+                </ul>
+                <?php } ?>
             </div>
         </div>
 
@@ -422,7 +448,8 @@ class Home extends Comment {
             <div class="card-header main-active p-1">
               <h5 class="card-title"><i> Options</i></h5>
             </div>
-            <div class="card-body options-list">
+            <div class="card-body options-list large-2" style="height:520px;">
+            <?php if (isset($_SESSION['key'])) { ?>
                 <ul>
                     <li><h5><a href="crowfund.php">GushoraStartUp</a></h5> </li>
                     <li><h5><a href="fundraising.php"> Fundraising</a></h5> </li>
@@ -444,6 +471,29 @@ class Home extends Comment {
                     <li><h5><a href="domestic.php">domestic Helpers</a></h5> </li>
                     <li><h5><a href="school.php">school</a></h5> </li>
                 </ul>
+              <?php }else { ?>
+               <ul>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.crowfund">GushoraStartUp</a></h5> </li>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.fundraising"> Fundraising</a></h5></li>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.Unemployment"> Unemployment</a></h5> </li>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.sale">Sale</a></h5></li>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.blog">Blog</a></h5></li>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.jobs0">Jobs</a></h5></li>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.events">Events</a></h5>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.movies">Movies</a></h5>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.sports">Sports</a></h5>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.news">news</a></h5>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.entertainment">Entertainment</a></h5>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.rwandaPhotos">Rwanda-Landscape</a></h5>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.Tembera">Tembera-ltd</a></h5>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.hotelbooking">Hotel-booking</a></h5>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.house">House</a></h5>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.car">Car</a></h5>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.food">Foodzana</a></h5>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.domestic">domestic Helpers</a></h5> </li>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.school">school</a></h5> </li>
+                </ul>
+                <?php } ?>
             </div>
         </div>
 
@@ -672,7 +722,7 @@ class Home extends Comment {
     {
         $mysqli= $this->database;
         $param= '%'.$search.'%';
-        $query = "SELECT user_id, username, email, career,hobbys, profile_img FROM users Where username LIKE '{$param}' OR firstname LIKE '{$param}' OR lastname LIKE '{$param}' ";
+        $query = "SELECT user_id, username, email, career,hobbys, profile_img,chat FROM users Where username LIKE '{$param}' OR firstname LIKE '{$param}' OR lastname LIKE '{$param}' ";
         $result= $mysqli->query($query);
         $contacts = array();
         while ($row= $result->fetch_array()) {
@@ -682,7 +732,8 @@ class Home extends Comment {
             'email' => $row['email'],
             'career' => $row['career'],
             'hobbys' => $row['hobbys'],
-            'profile_img' => $row['profile_img']
+            'profile_img' => $row['profile_img'],
+            'chat' => $row['chat']
            );
         }
         return $contacts; // Return the $contacts array
@@ -716,6 +767,27 @@ class Home extends Comment {
         $mysqli= $this->database;
         $param= '%'.$search.'%';
         $query = "SELECT * FROM rwandahotel WHERE title_ LIKE '{$param}' ";
+        $result= $mysqli->query($query);
+        $contacts = array();
+        while ($row= $result->fetch_array()) {
+            $contacts[] = $row;
+        }
+        return $contacts; // Return the $contacts array
+    }
+
+    public function searchSchool($search)
+    {
+        $mysqli= $this->database;
+        $param= '%'.$search.'%';
+        // $query = "SELECT * FROM school WHERE title_ LIKE '{$param}' ";
+        $query="SELECT * FROM school S 
+						Left JOIN provinces P ON S. location_province = P. provincecode
+						Left JOIN districts D ON S. location_districts = D. districtcode
+						Left JOIN sectors T ON S. location_Sector = T. sectorcode
+						Left JOIN cells C ON S. location_cell = C. codecell
+						Left JOIN vilages V ON S. location_village = V. CodeVillage
+	    WHERE title_ LIKE '{$param}' ";
+
         $result= $mysqli->query($query);
         $contacts = array();
         while ($row= $result->fetch_array()) {
@@ -2362,25 +2434,27 @@ class Home extends Comment {
         $mysqli= $this->database;
         $stmt = $mysqli->stmt_init();
         $query= "UPDATE tweets SET retweet_counts = retweet_counts +1  WHERE tweet_id= ? ";
-        // $mysqli->query($query); 
         $stmt->prepare($query);
         $stmt->bind_param('i',$retweet_id);
         $stmt->execute();
 
         $query= "INSERT INTO tweets (status, tweetBy, retweet_id, retweet_by, tweet_image, likes_counts, retweet_counts, posted_on, retweet_Msg) 
         SELECT status, tweetBy, ?, ?, tweet_image, likes_counts, retweet_counts, ? , ?  FROM tweets WHERE tweet_id= ? ";
-        // $mysqli->query($query);
         $stmt->prepare($query);
         $time = date('Y-m-d H-i-s');
         $stmt->bind_param('iissi', $retweet_id, $user_id,$time,$comments, $retweet_id);
         $stmt->execute();  
         $query= "DELETE FROM tweets WHERE tweet_id= ?";
         $stmt->prepare($query);
-        // $last_id= $stmt->insert_id;  
         $stmt->bind_param('i',$stmt->insert_id);
-        Notification::SendNotifications($tweet_by,$user_id, $retweet_id,'retweet');
+
+        if ($retweet_id != $user_id) {
+            var_dump($tweet_by,$user_id, $retweet_id,'retweet');
+            Notification::SendNotifications($tweet_by,$user_id,$retweet_id,'retweet');
+            var_dump(Notification::SendNotifications($tweet_by,$user_id,$retweet_id,'retweet'));
+        }
+        
         return $stmt->execute();
-        // return $mysqli->query($query); 
     }
 
      public function checkRetweet($tweet_id,$user_id)

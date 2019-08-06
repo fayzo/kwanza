@@ -9,7 +9,7 @@ if (isset($_POST['retweet']) && !empty($_POST['retweet'])) {
 	  $tweet_by= $_POST['tweet_By'];
 	  $comment= $_POST['comments'];
 	  $comments= $users->test_input($comment);
-	  $home->retweet($retweet_id, $user_id,$tweet_by,$comments);
+      $g=$home->retweet($retweet_id, $user_id,$tweet_by,$comments);
 }
 
 if (isset($_POST['showpopretweet']) && !empty($_POST['showpopretweet'])) {
@@ -18,16 +18,6 @@ if (isset($_POST['showpopretweet']) && !empty($_POST['showpopretweet'])) {
     $tweet_by= $_POST['tweet_By'];
 	$retweet= $home->getPopupTweet($user_id, $tweet_id, $tweet_by); 
 	?>
-
-
-    
-        <h4 class="card-title">Title</h4>
-        <p class="card-text">Text</p>
-    </div>
-    <div class="card-footer text-muted">
-        Footer
-    </div>
-</div>
 
             <div class="retweet-popup">
                 <div class="wrap5">

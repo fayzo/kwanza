@@ -37,16 +37,17 @@ $(document).on('click', '#form-school', function (e) {
     var youtube = $('#youtube');
     var categories_of_school = $('#categories_of_school');
     var type_of_school = $('#type_of_school');
-    var location_province = $('#location_province');
-    var location_districts = $('#location_districts');
-    var location_Sector = $('#location_sectors');
-    var location_cell = $('#location_cell');
-    var location_village = $('#location_village');
+    var location_province = $('#provincecode');
+    var location_districts = $('#districtcode');
+    var location_Sector = $('#sectorcode');
+    var location_cell = $('#codecell');
+    var location_village = $('#CodeVillage');
 
-    if (isEmpty(country) && isEmpty(location_province) && isEmpty(location_districts) &&
+    if (isEmpty(title) && isEmpty(author) &&isEmpty(phone) && isEmpty(country) && 
+        isEmpty(location_province) && isEmpty(location_districts) &&
         isEmpty(location_Sector) && isEmpty(location_cell) && isEmpty(location_village) &&
-        isEmpty(categories_of_school) && isEmpty(type_of_school) && isEmpty(additioninformation) && isEmpty(title) && isEmpty(author) &&
-        isEmpty(phone) && isEmpty(photo) && isEmpty(other_photo) && isEmpty(video) && isEmpty(youtube)) {
+        isEmpty(categories_of_school) && isEmpty(type_of_school) && isEmpty(additioninformation) &&
+         isEmpty(photo) && isEmpty(other_photo) && isEmpty(video) && isEmpty(youtube)) {
 
         var extensions1 = $('#photo').val().split('.').pop().toLowerCase();
         var extensions2 = $('#other-photo').val().split('.').pop().toLowerCase();
@@ -111,4 +112,24 @@ $(document).on('click', '#form-school', function (e) {
         }
     }
  });
+
+    $(document).on('keyup', '.searchSchool', function () {
+        if ($(this).val() != "") {
+            $('.school-hide').hide();
+        } else {
+            $('.school-hide').show();
+        }
+        var searching = $(this).val();
+        $.ajax({
+            url: 'core/ajax_db/school_FecthPaginat.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                search: searching,
+            }, success: function (response) {
+                $(".school-show").html(response);
+                console.log(response);
+            }
+        });
+    });
 });

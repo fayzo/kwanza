@@ -4,7 +4,6 @@ class Db
     protected $connection;
     static protected $instance;
 
-
     static public function getInstance()
     {
         if (!self::$instance) {

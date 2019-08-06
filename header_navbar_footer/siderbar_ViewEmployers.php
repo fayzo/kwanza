@@ -38,7 +38,7 @@
                                     <img class="card-img-left flex-auto d-none d-lg-block" height="80px" width="80px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/images.jpg" alt="Card image cap">
                                 <div class="card-body d-flex flex-column align-items-start pt-0">
                                     <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">Musanze Family looking for Helper</a>
+                                    <a class="text-primary" href="javascript:void(0)" id="employers-view" data-domestics="1">Musanze Family looking for Helper</a>
                                     </h5>
                                     <div class="text-muted">Created on 10 MAY </div>
                                     <div class="text-muted mb-1">Musanze District/ kanombe Sector/ Majyambere cell</div>
@@ -61,7 +61,7 @@
                                     <img class="card-img-left flex-auto d-none d-lg-block" height="80px" width="80px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/images.jpg" alt="Card image cap">
                                 <div class="card-body d-flex flex-column align-items-start pt-0">
                                     <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">Musanze Family looking for Helper</a>
+                                    <a class="text-primary" href="javascript:void(0)" id="employers-view" data-domestics="1">Musanze Family looking for Helper</a>
                                     </h5>
                                     <div class="text-muted">Created on 10 MAY </div>
                                     <div class="text-muted mb-1">Musanze District/ kanombe Sector/ Majyambere cell</div>
@@ -84,7 +84,7 @@
                                     <img class="card-img-left flex-auto d-none d-lg-block" height="80px" width="80px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/images.jpg" alt="Card image cap">
                                 <div class="card-body d-flex flex-column align-items-start pt-0">
                                     <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">Musanze Family looking for Helper</a>
+                                    <a class="text-primary" href="javascript:void(0)" id="employers-view" data-domestics="1">Musanze Family looking for Helper</a>
                                     </h5>
                                     <div class="text-muted">Created on 10 MAY </div>
                                     <div class="text-muted mb-1">Musanze District/ kanombe Sector/ Majyambere cell</div>
@@ -107,7 +107,7 @@
                                     <img class="card-img-left flex-auto d-none d-lg-block" height="80px" width="80px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/images.jpg" alt="Card image cap">
                                 <div class="card-body d-flex flex-column align-items-start pt-0">
                                     <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">Musanze Family looking for Helper</a>
+                                    <a class="text-primary" href="javascript:void(0)" id="employers-view" data-domestics="1">Musanze Family looking for Helper</a>
                                     </h5>
                                     <div class="text-muted">Created on 10 MAY </div>
                                     <div class="text-muted mb-1">Musanze District/ kanombe Sector/ Majyambere cell</div>
@@ -130,7 +130,7 @@
                                     <img class="card-img-left flex-auto d-none d-lg-block" height="80px" width="80px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/images.jpg" alt="Card image cap">
                                 <div class="card-body d-flex flex-column align-items-start pt-0">
                                     <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">Musanze Family looking for Helper</a>
+                                    <a class="text-primary" href="javascript:void(0)" id="employers-view" data-domestics="1">Musanze Family looking for Helper</a>
                                     </h5>
                                     <div class="text-muted">Created on 10 MAY </div>
                                     <div class="text-muted mb-1">Musanze District/ kanombe Sector/ Majyambere cell</div>
@@ -153,7 +153,7 @@
                                     <img class="card-img-left flex-auto d-none d-lg-block" height="80px" width="80px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/images.jpg" alt="Card image cap">
                                 <div class="card-body d-flex flex-column align-items-start pt-0">
                                     <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">Musanze Family looking for Helper</a>
+                                    <a class="text-primary" href="javascript:void(0)" id="employers-view" data-domestics="1">Musanze Family looking for Helper</a>
                                     </h5>
                                     <div class="text-muted">Created on 10 MAY </div>
                                     <div class="text-muted mb-1">Musanze District/ kanombe Sector/ Majyambere cell</div>
@@ -176,7 +176,7 @@
                                     <img class="card-img-left flex-auto d-none d-lg-block" height="80px" width="80px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/images.jpg" alt="Card image cap">
                                 <div class="card-body d-flex flex-column align-items-start pt-0">
                                     <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">Musanze Family looking for Helper</a>
+                                    <a class="text-primary" href="javascript:void(0)" id="employers-view" data-domestics="1">Musanze Family looking for Helper</a>
                                     </h5>
                                     <div class="text-muted">Created on 10 MAY </div>
                                     <div class="text-muted mb-1">Musanze District/ kanombe Sector/ Majyambere cell</div>

@@ -23,80 +23,13 @@
     <section class="content">
         <div class="row">
 
-            <div class="col-md-3 mb-3">
-                <!-- Profile Image -->
-                   <!-- Profile Image -->
-                        <div class="info-box mb-3">
-                            <div class="info-inner">
-                                <div class="info-in-head">
-                                    <!-- PROFILE-COVER-IMAGE -->
-                                     <?php if (!empty($user['cover_img'])) {?>
-                                      <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $user['cover_img'] ;?>" alt="User Image">
-                                      <?php  }else{ ?>
-                                        <img src="<?php echo BASE_URL_LINK.NO_COVER_IMAGE_URL ;?>"  alt="User Image">
-                                      <?php } ?>
-                                </div>
-                                <!-- info in head end -->
-                                <div class="info-in-body">
-                                    <div class="in-b-box">
-                                        <div class="in-b-img">
-                                            <!-- PROFILE-IMAGE -->
-                                             <?php if (!empty($user['profile_img'])) {?>
-                                              <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $user['profile_img'] ;?>"  alt="User Image">
-                                              <?php  }else{ ?>
-                                                <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
-                                              <?php } ?>
-                                        </div>
-                                    </div><!--  in b box end-->
-                                    <div class="info-body-name">
-                                        <div class="in-b-name">
-                                            <div><a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $user['firstname']." ".$user['lastname'] ;?></a></div> <!-- Nina Mcintire -->
-                                            <span><small><a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $user['career'] ;?></a></small></span>
-                                        </div><!-- in b name end-->
-                                    </div><!-- info body name end-->
-                                </div><!-- info in body end-->
-                                <div class="info-in-footer">
-                                    <div class="number-wrapper">
-                                        <div class="num-box">
-                                            <div class="num-head">
-                                                POSTS
-                                            </div>
-                                            <div class="num-body">
-                                               <?php echo $home->countsPosts($user_id);?>
-                                            </div>
-                                        </div>
-                                        <div class="num-box">
-                                            <div class="num-head">
-                                                FOLLOWING
-                                            </div>
-                                            <div class="num-body">
-                                                <span class="count-following"><?php echo $user['following'] ;?></span>
-                                            </div>
-                                        </div>
-                                        <div class="num-box">
-                                            <div class="num-head">
-                                                FOLLOWERS
-                                            </div>
-                                            <div class="num-body">
-                                                <span class="count-followers"><?php echo $user['followers'] ;?></span>
-                                            </div>
-                                        </div>
-                                    </div><!-- mumber wrapper-->
-                                </div><!-- info in footer -->
-                            </div><!-- info inner end -->
-                        </div><!-- info box -->
-
-                <!-- hastTag Me Box -->
-                 <?php echo $trending->trends(); ?>
-            </div>
-            <!-- /.col -->
-
-            <div class="col-md-6">
+        
+            <div class="col-md-8 offset-2">
                 <div class="row">
 
                     <div class="col-md-12 mb-4"  id="jobs-hides">
                         <!-- jobs -->
-                               <?php echo $landscapes->landscapesfetchALL('Southern province') ;?>
+                               <?php echo $landscapes->landscapesfetchALL(1) ;?>
                         <!-- /.card -->
                     </div>
                     <!-- /.col -->
@@ -105,20 +38,7 @@
             </div>
             <!-- /.col-md-6 -->
 
-            <div class="col-md-3">
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                       <?php echo $follow->whoTofollow($user_id,$user_id) ;?>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-md-12 mb-3">
-                       <?php echo $home->options(); ?>
-                    </div>
-                    <!-- /.col -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.col-md-3 -->
+           
 
         </div>
         <!-- /.row -->

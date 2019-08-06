@@ -19,14 +19,14 @@ if (isset($_POST['province']) && !empty($_POST['province'])) {
 
         <span class="job-show"></span>
         <div class="job-hide">
-        <h5 class="card-title text-center "><i><?php echo $categories;?> Landscapes</i></h5>
+        <h5 class="text-dark text-center"   style="background:#faebd7;padding:10px;"><i><?php echo $categories;?> Landscapes</i></h5>
             <?php
                 $row1= $query1->fetch_array();
                 $total= array_shift($row1);
                 $array= array(0,$total);
                 $totals= array_sum($array);
 
-                $District= '<div><span class="h5 text-success">'.$categories.' </span> has '.$totals.' Districts are :  ';
+                $District= '<div style="background:#b9b6b22b;padding:10px;"><span class="h5 text-success">'.$categories.' </span> has '.$totals.' Districts are :  ';
                 $i= 0;
                 $Districts='';
                 
@@ -78,15 +78,17 @@ if (isset($_POST['districts']) && !empty($_POST['districts'])) {
 
          <span class="landscapes-show"></span>
           <div class="landscapes-hide">
-          <button type="button" class="btn btn-primary btn-sm  float-left" id="province-view" data-province="<?php echo $bck['location_province'] ;?>" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back </button>
-          <h5 class="card-title text-center"><i> <?php echo $categories; ?> Districts Landscapes</i></h5>
+          <div style="background:#faebd7;padding:10px;">
+            <button type="button" class="btn btn-primary btn-sm  float-left" id="province-view" data-province="<?php echo $bck['location_province'] ;?>" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back </button>
+            <h5 class="text-dark text-center"><i> <?php echo $categories; ?> Districts Landscapes</i></h5>
+          </div>
             <?php
                 $row1= $query1->fetch_array();
                 $total= array_shift($row1);
                 $array= array(0,$total);
                 $totals= array_sum($array);
 
-                $District= '<div><span class="h5 text-success">'.$categories.' Districts</span> has '.$totals.' Sectors are :  ';
+                $District= '<div style="background:#b9b6b22b;padding:10px;"><span class="h5 text-success">'.$categories.' Districts</span> has '.$totals.' Sectors are :  ';
                 $i= 0;
                 $Districts='';
                 while($conditionz= $query0->fetch_assoc()){
@@ -139,16 +141,17 @@ if (isset($_POST['sector']) && !empty($_POST['sector'])) {
     
          <span class="landscapes-show"></span>
           <div class="landscapes-hide">
-          <button type="button" class="btn btn-primary btn-sm  float-left" id="districts-view" data-districts="<?php echo $bck['location_districts'] ;?>" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back </button>
-          <h5 class="card-title text-center"><i> <?php echo $categories; ?> Sector Landscapes</i></h5>
-         
+          <div style="background:#faebd7;padding:10px;">
+            <button type="button" class="btn btn-primary btn-sm  float-left" id="districts-view" data-districts="<?php echo $bck['location_districts'] ;?>" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back </button>
+            <h5 class="text-dark text-center"><i> <?php echo $categories; ?> Sector Landscapes</i></h5>
+          </div>
           <?php
                 $row1= $query1->fetch_array();
                 $total= array_shift($row1);
                 $array= array(0,$total);
                 $totals= array_sum($array);
 
-                $District= '<div><span class="h5 text-danger">'.$categories.' Sectors</span> has '.$totals.' Cell are :  ';
+                $District= '<div style="background:#b9b6b22b;padding:10px;"><span class="h5 text-danger">'.$categories.' Sectors</span> has '.$totals.' Cell are :  ';
                 $i= 0;
                 $Districts='';
                 while($conditionz= $query0->fetch_assoc()){
@@ -200,15 +203,17 @@ if (isset($_POST['cell']) && !empty($_POST['cell'])) {
     
          <span class="landscapes-show"></span>
           <div class="landscapes-hide">
-          <button type="button" class="btn btn-primary btn-sm  float-left" id="sector-view" data-sector="<?php echo $bck['location_Sector'] ;?>" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back </button>
-          <h5 class="card-title text-center"><i> <?php echo $categories; ?> Cell Landscapes</i></h5>
+          <div style="background:#faebd7;padding:10px;">
+            <button type="button" class="btn btn-primary btn-sm  float-left" id="sector-view" data-sector="<?php echo $bck['location_Sector'] ;?>" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back </button>
+            <h5 class="text-dark text-center"><i> <?php echo $categories; ?> Cell Landscapes</i></h5>
+          </div>
            <?php
                 $row1= $query1->fetch_array();
                 $total= array_shift($row1);
                 $array= array(0,$total);
                 $totals= array_sum($array);
 
-                $District= '<div><span class="h5 text-warning">'.$categories.' cells</span> has '.$totals.' Villages are :  ';
+                $District= '<div style="background:#b9b6b22b;padding:10px;"><span class="h5 text-warning">'.$categories.' cells</span> has '.$totals.' Villages are :  ';
                 $i= 0;
                 $Districts='';
                 while($conditionz= $query0->fetch_assoc()){

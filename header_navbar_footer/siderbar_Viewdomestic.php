@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="card-body d-flex flex-column align-items-start pt-0">
                                     <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">A hardworking optimistic helpers</a>
+                                    <a class="text-primary" href="javascript:void(0)"  id="domestics-view" data-domestics="1">A hardworking optimistic helpers</a>
                                     </h5>
                                     <div class="text-muted ">40 years old , 3 years experience</div>
                                     <div class="text-muted mb-1">Born Musanze District/ kanombe Sector/ Majyambere cell</div>
@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="card-body d-flex flex-column align-items-start pt-0">
                                     <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">A hardworking optimistic helpers</a>
+                                    <a class="text-primary" href="javascript:void(0)"  id="domestics-view" data-domestics="1">A hardworking optimistic helpers</a>
                                     </h5>
                                     <div class="text-muted ">40 years old , 3 years experience</div>
                                     <div class="text-muted mb-1">Born Musanze District/ kanombe Sector/ Majyambere cell</div>
@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="card-body d-flex flex-column align-items-start pt-0">
                                     <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">A hardworking optimistic helpers</a>
+                                    <a class="text-primary" href="javascript:void(0)"  id="domestics-view" data-domestics="1">A hardworking optimistic helpers</a>
                                     </h5>
                                     <div class="text-muted ">40 years old , 3 years experience</div>
                                     <div class="text-muted mb-1">Born Musanze District/ kanombe Sector/ Majyambere cell</div>
@@ -134,7 +134,7 @@
                                 </div>
                                 <div class="card-body d-flex flex-column align-items-start pt-0">
                                     <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">A hardworking optimistic helpers</a>
+                                    <a class="text-primary" href="javascript:void(0)"  id="domestics-view" data-domestics="1">A hardworking optimistic helpers</a>
                                     </h5>
                                     <div class="text-muted ">40 years old , 3 years experience</div>
                                     <div class="text-muted mb-1">Born Musanze District/ kanombe Sector/ Majyambere cell</div>
@@ -164,7 +164,7 @@
                                 </div>
                                 <div class="card-body d-flex flex-column align-items-start pt-0">
                                     <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">A hardworking optimistic helpers</a>
+                                    <a class="text-primary" href="javascript:void(0)"  id="domestics-view" data-domestics="1">A hardworking optimistic helpers</a>
                                     </h5>
                                     <div class="text-muted ">40 years old , 3 years experience</div>
                                     <div class="text-muted mb-1">Born Musanze District/ kanombe Sector/ Majyambere cell</div>

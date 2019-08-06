@@ -25,7 +25,7 @@ $(document).ready(function () {
         var districts = $(this).data('districts');
 
         $.ajax({
-            url: 'core/ajax_db/rwandalandscapes_province0.php',
+            url: 'core/ajax_db/rwandalandscapes_province0copy.php',
             method: 'POST',
             dataType: 'text',
             data: {
@@ -42,7 +42,7 @@ $(document).ready(function () {
         var sector = $(this).data('sector');
 
         $.ajax({
-            url: 'core/ajax_db/rwandalandscapes_province0.php',
+            url: 'core/ajax_db/rwandalandscapes_province0copy.php',
             method: 'POST',
             dataType: 'text',
             data: {
@@ -59,7 +59,7 @@ $(document).ready(function () {
         var cell = $(this).data('cell');
 
         $.ajax({
-            url: 'core/ajax_db/rwandalandscapes_province0.php',
+            url: 'core/ajax_db/rwandalandscapes_province0copy.php',
             method: 'POST',
             dataType: 'text',
             data: {
@@ -96,7 +96,7 @@ $(document).ready(function () {
         var province = $(this).data('province');
 
         $.ajax({
-            url: 'core/ajax_db/rwandalandscapes_province0.php',
+            url: 'core/ajax_db/rwandalandscapes_province0copy.php',
             method: 'POST',
             dataType: 'text',
             data: {
@@ -116,7 +116,7 @@ $(document).ready(function () {
         }
         var searching = $(this).val();
         $.ajax({
-            url: 'core/ajax_db/rwandalandscapes_province0.php',
+            url: 'core/ajax_db/rwandalandscapes_province0copy.php',
             method: 'POST',
             dataType: 'text',
             data: {

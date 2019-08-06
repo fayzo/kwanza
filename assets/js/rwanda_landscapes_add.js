@@ -24,6 +24,13 @@ $(document).ready(function () {
         $('.progress-hidex').hide();
         $('.progress-hidec').hide();
         $('.progress-hidez').hide();
+        // $('.status').removeClass().addClass('status-remove');
+        $('#provincecode').attr('id', 'count-remove1');
+        $('#districtcode').attr('id', 'count-remove2');
+        $('#sectorcode').attr('id', 'count-remove3');
+        $('#codecell').attr('id', 'count-remove4');
+        $('#CodeVillage').attr('id', 'count-remove5');
+
         e.stopPropagation();
         var landscapes_view = $(this).data('rwandalandscapes');
 
@@ -37,6 +44,11 @@ $(document).ready(function () {
                 $(".popupTweet").html(response);
                 $(".close-imagePopup").click(function () {
                     $(".landscapes-popup").hide();
+                        $('#count-remove1').attr('id', 'provincecode');
+                        $('#count-remove2').attr('id', 'districtcode');
+                        $('#count-remove3').attr('id', 'sectorcode');
+                        $('#count-remove4').attr('id', 'codecell');
+                        $('#count-remove5').attr('id', 'CodeVillage');
                 });
                 console.log(response);
             }
@@ -57,10 +69,15 @@ $(document).ready(function () {
         var youtube = $('#youtube');
         var categories_of_landscapes = $('#categories_of_landscapes');
         var location_province = $('#location_province');
-        var location_districts = $('#location_districts');
-        var location_Sector = $('#location_sectors');
-        var location_cell = $('#location_cell');
-        var location_village = $('#location_village');
+        // var location_districts = $('#location_districts');
+        // var location_Sector = $('#location_sectors');
+        // var location_cell = $('#location_cell');
+        // var location_village = $('#location_village');
+        var location_province = $('.provincecode');
+        var location_districts = $('.districtcode');
+        var location_Sector = $('.sectorcode');
+        var location_cell = $('.codecell');
+        var location_village = $('.CodeVillage');
         
         if (isEmpty(country) && isEmpty(location_province) &&isEmpty(location_districts) && 
             isEmpty(location_Sector) && isEmpty(location_cell) && isEmpty(location_village) &&

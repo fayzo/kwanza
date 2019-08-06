@@ -13,7 +13,7 @@ if ($users->loggedin() == false) {
     $saleV= $home->saleData($_SESSION['key']);
     $user_id= $_SESSION['key'];
     $notific= $notification->getNotificationCount($user_id);
-	$notification->notificationsView($user_id);
+	// $notification->notificationsView($user_id);
 }
 
 if(!empty($user['language'])){

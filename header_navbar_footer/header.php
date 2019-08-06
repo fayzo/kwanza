@@ -969,6 +969,128 @@
     //     };
     // }
     </script>
+    
+      <script type="text/javascript">
+	  
+	  //Get districts list
+	function showResult(){
+		var provincecode=document.getElementById('provincecode').value;
+		var params = "&provincecode="+provincecode+"";
+		http=new XMLHttpRequest();
+		http.open("POST","core/ajax_db/getdistrict.php",true);
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		http.send(params);
+		http.onreadystatechange = function() 
+		{//Call a function when the province changes.
+			
+		document.getElementById("districtcode").innerHTML= http.responseText;
+				
+		if(document.getElementById('districtcode').value!=="No District Available")
+		document.form.name.disabled=false;
+		
+		}		
+	}
+	    
+		
+	    //Get sectors list
+		function showResult2(){
+		var districtcode=document.getElementById('districtcode').value;
+		var params = "&districtcode="+districtcode+"";
+		http=new XMLHttpRequest();
+		http.open("POST","core/ajax_db/getsector.php",true);
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		http.send(params);
+		http.onreadystatechange = function() 
+		{//Call a function when the district changes.
+			
+		document.getElementById("sectorcode").innerHTML=http.responseText;
+				
+		if(document.getElementById('sectorcode').value!=="No Sector Available")
+		document.form.name.disabled=false;
+		
+		}		
+	}
+	
+	//Get cell list
+		function showResult3(){
+		var sectorcode=document.getElementById('sectorcode').value;
+		var params = "&sectorcode="+sectorcode+"";
+		http=new XMLHttpRequest();
+		http.open("POST","core/ajax_db/getcell.php",true);
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		http.send(params);
+		http.onreadystatechange = function() 
+		{//Call a function when the sector changes.
+			
+		document.getElementById("codecell").innerHTML=http.responseText;
+				
+		if(document.getElementById('codecell').value!=="No Cell Available")
+		document.form.name.disabled=false;
+		
+		}		
+    }
+	
+	// Get Villages list
+    function showResult4(){
+		var codecell=document.getElementById('codecell').value;
+		var params = "&codecell="+codecell+"";
+		http=new XMLHttpRequest();
+		http.open("POST","core/ajax_db/getvillage.php",true);
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		http.send(params);
+		http.onreadystatechange = function() 
+		{
+            // Call a function when the cell changes.
+			
+		document.getElementById("CodeVillage").innerHTML=http.responseText;
+				
+		if(document.getElementById('CodeVillage').value!=="No village Available")
+		document.form.name.disabled=false;
+		
+		}		
+	}
+      
+    // Get Villages list
+    function showResultCell(){
+        var province = document.getElementById('provincecode').value;
+        var district = document.getElementById('districtcode').value;
+        var sector = document.getElementById('sectorcode').value;
+        var cell = document.getElementById('codecell').value;
+        var type_of_school = document.getElementById('type_of_school').value;
+        var params = '&type_of_school='+type_of_school+'&province='+province+'&district='+district+'&sector='+sector+'&cell='+cell,
+		http=new XMLHttpRequest();
+		http.open("POST","core/ajax_db/getcell.php",true);
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		http.send(params);
+		http.onreadystatechange = function() 
+		{
+            // Call a function when the cell changes.
+			
+		document.getElementById("cell-hide").innerHTML=http.responseText;
+				
+		}		
+    }
+    
+    // Get Villages list
+    function showResultCellOnLandscapes(){
+        var province = document.getElementById('provincecode').value;
+        var district = document.getElementById('districtcode').value;
+        var sector = document.getElementById('sectorcode').value;
+        var cell = document.getElementById('codecell').value;
+        var params = '&cell0='+cell,
+		http=new XMLHttpRequest();
+		http.open("POST","core/ajax_db/rwandalandscapes_province0copy.php",true);
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		http.send(params);
+		http.onreadystatechange = function() 
+		{
+            // Call a function when the cell changes.
+			
+		document.getElementById("landscapes-hide").innerHTML=http.responseText;
+				
+		}		
+	}
+</script>
     <?php include('header_image_slide.php') ;?>
     <style>
     body{
