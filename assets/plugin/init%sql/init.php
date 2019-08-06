@@ -31,6 +31,7 @@ define('BASE_URL_LINK', 'http://localhost:80/Blog_nyarwanda_CMS/assets/');
 define('LOGIN', 'http://localhost:80/Blog_nyarwanda_CMS/include/login.php');
 define('LOGOUT', 'http://localhost:80/Blog_nyarwanda_CMS/include/logout.php');
 define('LOCKSCREEN_LOGIN', 'http://localhost:80/Blog_nyarwanda_CMS/include/lockscreen.php');
+define('LOCKSCREEN_LOGINCORE', 'http://localhost:80/Blog_nyarwanda_CMS/core/ajax_db/lockscreen.php?login_id=1');
 define('FORGET_PASSPOWRD', 'http://localhost:80/Blog_nyarwanda_CMS/include/forgotpassword.php');
 define('CREATE_PASSPOWRD', 'http://localhost:80/Blog_nyarwanda_CMS/include/createpassword.php');
 // PRIVATE FILE
