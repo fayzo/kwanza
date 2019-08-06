@@ -12,6 +12,9 @@ $(document).ready(function() {
                         $(".popupTweet").html(response);
                         $("#messages").hide();
                         $("#messages1").hide();
+                        $("#tooltipsmessages").hide();
+                        $("#tooltipsmessages1").hide();
+
                         console.log(response);
                     }
                 });
@@ -31,6 +34,26 @@ $(document).ready(function() {
                         $("#messages-menu-view").html(response);
                         $("#messages").hide();
                         $("#messages1").hide();
+                        $("#tooltipsmessages").hide();
+                        $("#tooltipsmessages1").hide();
+                        console.log(response);
+                    }
+                });
+    });
+
+    $(document).on('click','#notification-dropdown-menu',function () {
+        var notificationDrpdown=1;
+
+        $.ajax({
+                    url: 'core/ajax_db/messages.php',
+                    method: 'POST',
+                    dataType: 'text',
+                    data: {
+                        notificationDrpdown: notificationDrpdown,
+                    }, success: function (response) {
+                        $("#notification-menu-view").html(response);
+                        $("#notification").hide();
+                        $("#notification1").hide();
                         console.log(response);
                     }
                 });

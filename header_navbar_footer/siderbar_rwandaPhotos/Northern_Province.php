@@ -29,7 +29,7 @@
 
                     <div class="col-md-12 mb-4"  id="jobs-hides">
                         <!-- jobs -->
-                               <?php echo $landscapes->landscapesfetchALL('Southern province') ;?>
+                               <?php echo $landscapes->landscapesfetchALL(1) ;?>
                         <!-- /.card -->
                     </div>
                     <!-- /.col -->

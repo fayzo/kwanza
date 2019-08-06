@@ -5,6 +5,10 @@ $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpat
 
 if (isset($_POST['car_id']) && !empty($_POST['car_id'])) {
     $user_id= $_SESSION['key'];
+    if (isset($_SESSION['key'])) {
+        # code...
+        $user_id= $_SESSION['key'];
+    }
     $car_id = $_POST['car_id'];
     $user= $car->carReadmore($car_id);
      ?>

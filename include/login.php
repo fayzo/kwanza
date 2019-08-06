@@ -115,6 +115,8 @@ if(isset($_POST['key'])){
     <title>welcome</title>
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/login.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/dropdown.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/main.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>icon/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <script src="<?php echo BASE_URL_LINK ;?>icon/fontawesome_5_4/js/all.js"></script>
     <script src="<?php echo BASE_URL_LINK ;?>dist/js/country_login.js"></script>
@@ -123,8 +125,12 @@ if(isset($_POST['key'])){
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> -->
 </head>
 
-<body>
-    <div class="container" id="container">
+<body style="background: #f6f5f7;">
+    <div style="float:left;margin:50px 50px;">
+            <?php echo $home->options0();?>
+    </div>
+<div class='body-center  clear-float'>
+    <div class="containers container" id="container">
         <div class="form-container sign-up-container">
             <form action="post">
                 <div id="response"></div>
@@ -212,34 +218,35 @@ if(isset($_POST['key'])){
         <div class="form-container sign-in-container">
             <form action="post">
                 <div id="responses"></div>
-                <h1>Sign in</h1>
+                <h1 class="h10">Sign in</h1>
                 <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social alink"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social alink"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social alink"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your account</span>
                 <input type="text" name="usernameoremail" id="usernameoremail" placeholder="Username or Email " />
                 <input type="password" name="passwordlogin" id="passwordlogin" placeholder="Password" />
-                <a href="<?php echo FORGET_PASSPOWRD ;?>">Forgot your password?</a>
+                <a class="alink" href="<?php echo FORGET_PASSPOWRD ;?>">Forgot your password?</a>
                 <button class="blacButton" onclick="manage('login')" type="button">Sign In</button>
             </form>
         </div>
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
-                    <h1>Welcome Back!</h1>
-                    <p>To keep connected with us please login with your personal info</p>
+                    <h1 class="h10">Welcome Back!</h1>
+                    <p class="p0">To keep connected with us please login with your personal info</p>
                     <button class="ghost redbutton" id="signIn">Sign In</button>
                 </div>
                 <div class="overlay-panel overlay-right">
-                    <h1>Hello, Friend!</h1>
-                    <p>Enter your personal details and start journey with us</p>
+                    <h1 class="h10">Hello, Friend!</h1>
+                    <p class="p0">Enter your personal details and start journey with us</p>
                     <button class="ghost redbutton" id="signUp">Sign Up</button>
                 </div>
             </div>
         </div>
     </div>
+</div><!-- body-center -->
     <script src="<?php echo BASE_URL_LINK ;?>dist/js/jquery.min.js"></script>
     <script src="<?php echo BASE_URL_LINK ;?>dist/js/popper.min.js"></script>
     <script src="<?php echo BASE_URL_LINK ;?>dist/js/bootstrap.min.js"></script>

@@ -4,7 +4,13 @@ include('../init.php');
 $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpath($_SERVER['SCRIPT_FILENAME']));
 
 if (isset($_POST['food_id']) && !empty($_POST['food_id'])) {
-    $user_id= $_SESSION['key'];
+    if (isset($_SESSION['key'])) {
+        # code...
+        $user_id= $_SESSION['key'];
+    }else {
+        # code...
+        $user_id= $profileData['user_id'];
+    }
     $food_id = $_POST['food_id'];
     $user= $food->foodReadmore($food_id);
      ?>

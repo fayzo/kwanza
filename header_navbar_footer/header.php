@@ -1077,16 +1077,16 @@
         var district = document.getElementById('districtcode').value;
         var sector = document.getElementById('sectorcode').value;
         var cell = document.getElementById('codecell').value;
-        var params = '&province='+province+'&district='+district+'&sector='+sector+'&cell='+cell,
+        var params = '&cell0='+cell,
 		http=new XMLHttpRequest();
-		http.open("POST","core/ajax_db/rwandalandscapes_province0.php",true);
+		http.open("POST","core/ajax_db/rwandalandscapes_province0copy.php",true);
 		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 		http.send(params);
 		http.onreadystatechange = function() 
 		{
             // Call a function when the cell changes.
 			
-		document.getElementById("cell-hide").innerHTML=http.responseText;
+		document.getElementById("landscapes-hide").innerHTML=http.responseText;
 				
 		}		
 	}

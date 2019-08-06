@@ -4,9 +4,14 @@ include('../init.php');
 $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpath($_SERVER['SCRIPT_FILENAME']));
 
 if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
-    $user_id= $_SESSION['key'];
+    if (isset($_SESSION['key'])) {
+        # code...
+        $user_id= $_SESSION['key'];
+    }
     $crowfund_id = $_POST['crowfund_id'];
     $user= $crowfund->crowfundFecthReadmore($crowfund_id);
+	$comment= $crowfund->comments($crowfund_id);
+
 ?>
 
 <div class="crowfund-popup">
@@ -252,18 +257,43 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
                                 </div> <!-- /.user-block -->
 
                                 <div class="input-group mt-2">
-                                    <input class="form-control form-control-sm" id="commentHome" type="text"
-                                        name="comment" data-crowfund="<?php echo $user['crowfund_id'];?>"
-                                        placeholder="Reply to  <?php echo $user['username'] ;?>">
+                                    <input class="form-control form-control-sm" id="commentField" type="text"
+                                        name="comment" data-crowfund="<?php echo $user['fund_id'];?>"
+                                        placeholder="Reply to  <?php echo $user['username'].$user['fund_id'] ;?>">
                                     <div class="input-group-append">
                                         <span class="input-group-text btn" style="padding: 0px 10px;" 
                                             aria-label="Username" aria-describedby="basic-addon1">
-                                            <span class="fa fa-arrow-right text-muted" id="post_HomeComment"></span></span>
+                                            <span class="fa fa-arrow-right text-muted" id="CrowfundpostComment"></span></span>
                                     </div>
                                 </div> <!-- input-group -->
-
+                                 
                               </div><!-- /.col -->
-
+                              <div class="col-md-12">
+                                <span id="responseComment"></span>
+                                <!-- <div class="tweet-show-popup-comment-wrap"> -->
+                                <div id="comments" style="height:300px;" class="large-2">
+                                        <!--COMMENTS-->
+                                      <?php  foreach ($comment as $user) { ?>
+                                            <div class="user-block mt-3">
+                                                <div class="user-blockImgBorder">
+                                                <div class="user-blockImg">
+                                                        <?php if (!empty($user['profile_img'])) {?>
+                                                        <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $user['profile_img'] ;?>" alt="User Image">
+                                                        <?php  }else{ ?>
+                                                        <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
+                                                        <?php } ?>
+                                                </div>
+                                                </div>
+                                                <span class="username">
+                                                    <a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"> <?php echo $user['username']; ?> comment on - <?php echo $users->timeAgo($user['comment_at']) ;?></a>
+                                                    <span class="float-right">44 <i class="fa fa-heart"></i></span>
+                                                    <!-- //Jonathan Burke Jr. -->
+                                                </span>
+                                                <span class="description"> <?php echo $user['comment']; ?>  </span>
+                                            </div> <!-- /.user-block -->
+                                    <?php } ?>
+                                </div><!-- comments -->
+                              </div><!-- col -->
                             </div><!-- /.row -->
 
                        </div><!-- /.col -->

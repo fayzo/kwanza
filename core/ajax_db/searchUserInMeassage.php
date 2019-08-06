@@ -13,7 +13,7 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
      foreach ($result as $user) {
          if ($user['user_id'] != $user_id) {
              # code...
-             echo '<div class="people-message p-3" data-user="'.$user['user_id'].'">
+             echo '<div class="people-message p-3 people-messageM" data-user="'.$user['user_id'].'">
                     	<div class="people-inner">
                     		<div class="people-img">
                     			 '.((!empty($user['profile_img']))?'

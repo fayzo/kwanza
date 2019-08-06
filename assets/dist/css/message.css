@@ -42,7 +42,7 @@
     overflow: auto;
 }
 
-.people-message:hover {
+.people-messageM:hover {
     background: #f6f6f6;
     cursor: pointer;
 }
@@ -52,6 +52,18 @@
 }
 .people-message2:hover {
     background: #f6f6f6;
+    cursor: pointer;
+}
+/* #black .people-message:hover {
+    background: #ebe8e852;
+    cursor: pointer;
+} */
+#black .people-message1:hover {
+    background: #ebe8e852;
+    cursor: pointer;
+}
+#black .people-message2:hover {
+    background: #ebe8e852;
     cursor: pointer;
 }
 .people-message1 .contacts-list-name {

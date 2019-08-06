@@ -271,6 +271,174 @@ class Landscapes extends Home{
       function landscapesfetchALL($categories)
     {
         $mysqli= $this->database;
+        $query= $mysqli->query("SELECT * FROM rwandalandscapes R
+                        Left JOIN provinces P ON R. location_province = P. provincecode
+						Left JOIN districts D ON R. location_districts = D. districtcode
+						Left JOIN sectors T ON R. location_Sector = T. sectorcode
+						Left JOIN cells C ON R. location_cell = C. codecell
+						Left JOIN vilages V ON R. location_village = V. CodeVillage 
+        WHERE location_province= '{$categories}' AND location_districts= location_districts GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc , rand() ");
+        
+        $query3= $mysqli->query("SELECT * FROM rwandalandscapes R
+                        Left JOIN provinces P ON R. location_province = P. provincecode
+						Left JOIN districts D ON R. location_districts = D. districtcode
+						Left JOIN sectors T ON R. location_Sector = T. sectorcode
+						Left JOIN cells C ON R. location_cell = C. codecell
+						Left JOIN vilages V ON R. location_village = V. CodeVillage 
+        WHERE location_province= '{$categories}' AND location_districts= location_districts GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc , rand() ");
+        $row3=$query3->fetch_assoc();
+        $query0= $mysqli->query("SELECT location_districts,namedistrict FROM rwandalandscapes R
+                        Left JOIN provinces P ON R. location_province = P. provincecode
+						Left JOIN districts D ON R. location_districts = D. districtcode
+						Left JOIN sectors T ON R. location_Sector = T. sectorcode
+						Left JOIN cells C ON R. location_cell = C. codecell
+						Left JOIN vilages V ON R. location_village = V. CodeVillage  
+        WHERE location_province='{$categories}' GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc ");
+        
+        $get_province = mysqli_query($mysqli,"SELECT * FROM provinces");   
+        $query1= $mysqli->query("SELECT COUNT(*)
+            FROM(
+            SELECT DISTINCT location_districts
+            FROM `rwandalandscapes`
+            WHERE location_province='{$categories}'
+            ) AS DerivedTableAlias ");
+        ?>
+        <div class="card card-primary mb-1 ">
+        <div class="card-header main-active p-1">
+            <h5 class="card-title float-left pl-2"><i> Rwanda landscapes to Search</i></h5>
+             <form class="form-inline float-right">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i> </span>
+                    </div>
+                    <input type="text" class="form-control searchlandscapes"  aria-describedby="helpId" placeholder="Search Accountant, finance ,enginneer">
+                </div>
+              </form>
+
+            <div class="nav-scroller py-0" style="clear:right;height:2rem;">
+                <nav class="nav d-flex justify-content-between pb-0"  >
+                    <!-- kigali-city -->
+                <a class="p-2" href="javascript:void(0)" onclick="landscapesCategories(1);" >kigali city<span class="badge badge-primary"><?php echo $this->landscapescountPOSTS(1);?></span></a>
+                         <!-- Northern province -->
+                <a class="p-2" href="javascript:void(0)" onclick="landscapesCategories(4);" >Northern province<span class="badge badge-primary"><?php echo $this->landscapescountPOSTS(4);?></span></a>
+                        <!-- East province -->
+                <a class="p-2" href="javascript:void(0)" onclick="landscapesCategories(5);" >East province<span class="badge badge-primary"><?php echo $this->landscapescountPOSTS(5);?></span></a>
+                                 <!-- West province -->
+                <a class="p-2" href="javascript:void(0)" onclick="landscapesCategories(3);" >West province<span class="badge badge-primary"><?php echo $this->landscapescountPOSTS(3);?></span></a>
+                                <!-- Southern province -->
+                <a class="p-2" href="javascript:void(0)" onclick="landscapesCategories(2);" >Southern province<span class="badge badge-primary"><?php echo $this->landscapescountPOSTS(2);?></span></a>
+                </nav>
+            </div> <!-- nav-scroller -->
+        </div> <!-- /.card-header -->
+
+        <div class="card-body">
+        <span class="job-show"></span>
+        <div class="job-hide">
+
+          <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="form" id="form" >
+        <div class="form-row mb-2 pt-2 pb-2" style="background:#faebd7;">
+            <div class="col">
+                <label for="" class="text-dark">Province</label>
+                 <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                    </div>
+                    <select name="provincecode"  id="provincecode" onchange="showResult();" class="form-control">
+                        <option value="">----Select province----</option>
+                        <?php while($show_province = mysqli_fetch_array($get_province)) { ?>
+                        <option value="<?php echo $show_province['provincecode'] ?>"><?php echo $show_province['provincename'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <label for="" class="text-dark"> District</label>
+                 <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                    </div>
+                    <select class="form-control" name="districtcode" id="districtcode" onchange="showResult2();" >
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <label for="Sector" class="text-dark">Sector</label>
+                 <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                    </div>
+                    <select class="form-control" name="sectorcode" id="sectorcode"  onchange="showResult3();">
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <label for="Cell" class="text-dark">Cell</label>
+                 <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                    </div>
+                    <select name="codecell" id="codecell" class="form-control" onchange="showResultCellOnLandscapes();">
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        </form>
+        <?php 
+        if ($query->num_rows > 0) { ?>
+
+        <div id="landscapes-hide">
+
+        <h5 class="text-dark text-center" style="background:#faebd7;padding:10px;"><i><?php echo $row3['provincename'];?> Landscapes</i></h5>
+            <?php
+                $row1= $query1->fetch_array();
+                $total= array_shift($row1);
+                $array= array(0,$total);
+                $totals= array_sum($array);
+
+                $District= '<div style="background:#b9b6b22b;padding:10px;"><span class="h5 text-success">'.$row3['provincename'].' </span> has '.$totals.' Districts are :  ';
+                $i= 0;
+                $Districts='';
+                
+                while($conditionz= $query0->fetch_assoc()){
+                     $pre = ($i < 0)?' Districts, ':' Districts.';
+                     $Districts .= $conditionz['namedistrict'].$pre;
+                     $i++;
+                 }
+                 echo $District.$Districts."</div></br>" ;
+            ?>
+
+          <?php while($row= $query->fetch_array()) { ?>
+
+            <div class="card flex-md-row shadow-sm h-md-100 border-0 mb-3">
+                    <img class="card-img-left flex-auto d-none d-lg-block" height="150px" width="150px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/rwandaLandscapes/<?php echo $row['photo_']; ?>" alt="Card image cap">
+                <div class="card-body d-flex flex-column align-items-start pt-0">
+                    <h5 class="text-primary mb-0">
+                    <a class="text-primary" href="javascript:void(0)"  id="districts-view" data-districts="<?php echo $row['location_districts'] ;?>"><?php echo $row['namedistrict'] ;?> Districts</a>
+                    </h5>
+                    <div class="text-muted"><?php 	echo ''.$row['provincename'].' Province/ '.$row['namedistrict'].' district/ '.$row['namesector'].' Sector' ;?></div>
+                    <div class="text-muted"><?php 	echo ''.$row['nameCell'].' Cell/ '.$row['VillageName'].' Village' ;?></div>
+                    <div class="text-muted">Created on <?php echo $row['created_on_'] ;?> By <?php echo $row['author_'] ;?> </div>
+                    <p class="card-text mb-1">vIEW Different Landscapes of <?php echo $row['location_districts'] ;?> Districts</p>
+                </div><!-- card-body -->
+            </div><!-- card -->
+          <hr class="bg-info mt-0 mb-1" style="width:95%;">
+        <?php } ?>
+    </div><!-- cell-hide -->
+     <?php }else {
+           		echo ' No yet to register found';
+        } ?>
+           </div>
+          </div> <!-- /.card-body -->
+       </div> <!-- /.card -->
+
+    <?php } 
+
+      function landscapesfetchALL0($categories)
+    {
+        $mysqli= $this->database;
         $query= $mysqli->query("SELECT * FROM rwandalandscapes WHERE location_province= '{$categories}' AND location_districts= location_districts GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc , rand() ");
         $query0= $mysqli->query("SELECT location_districts FROM rwandalandscapes WHERE location_province='{$categories}' GROUP BY location_districts HAVING  COUNT(DISTINCT location_districts)= 1 ORDER BY created_on_ Desc ");
         $get_province = mysqli_query($mysqli,"SELECT * FROM provinces");   
@@ -377,7 +545,7 @@ class Landscapes extends Home{
                      $i++;
                  }
                  echo $District.$Districts."</div></br>" ;
-            ?>
+            ?> 
 
           <?php while($row= $query->fetch_array()) { ?>
 

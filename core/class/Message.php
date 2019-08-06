@@ -8,17 +8,31 @@ class Message extends Home
     public function recentMessage($user_id)
     {
        $mysqli= $this->database;
-       $query="SELECT * FROM message LEFT JOIN users ON message_from= user_id WHERE message_to= $user_id ORDER BY message_on Desc ;";
-    //    $query="SELECT * FROM message M LEFT JOIN users U ON M. message_from= U. user_id WHERE M. message_to= $user_id GROUP BY M. message_from, M. message_to HAVING  COUNT(DISTINCT M. message_to) AND COUNT(DISTINCT M. message_from) ORDER BY M. message_on Desc ;";
-        
-    // $query="SELECT * FROM message M LEFT JOIN users U ON M. message_from = U. user_id WHERE M. message_to IN (
+    //    $query="SELECT * FROM message LEFT JOIN users ON message_from= user_id WHERE message_to= $user_id ORDER BY message_on Desc ;";
+       $query="SELECT * FROM message M LEFT JOIN users U ON M. message_from= U. user_id WHERE M. message_to= $user_id AND M. status= 1 GROUP BY M. message_from, M. message_to HAVING  COUNT(DISTINCT M. message_to) AND COUNT(DISTINCT M. message_from) ORDER BY M. message_on Desc ;";
+             
+    // $query="SELECT DISTINCT * FROM message M LEFT JOIN users U ON M. message_from = U. user_id WHERE M. message_to IN (
     //         SELECT MAX(message_to)
-    //         FROM message WHERE message_to = $user_id  GROUP BY message_from 
-    //     ) GROUP BY M. message_from  ORDER BY M. message_on Desc";
+    //         FROM message WHERE message_to = $user_id  AND M. status= 1 GROUP BY message_from ORDER BY M. message_on Desc
+    //     ) ORDER BY M. message_on Desc";
 
-    // $query="SELECT * from users U
+    // // $query="SELECT * from users U
     // inner join (select message,message_on,MAX(message_from)as ma, MAX(message_to) as maxid from message group by message_on) as b on
     //     U.user_id= b.ma WHERE b.maxid= $user_id GROUP BY b.ma ORDER BY b.message_on Desc";
+
+       $result=$mysqli->query($query);
+       $data=array();
+       while ($row = $result->fetch_array()) {
+                $data[]= $row;
+       }
+       return $data;
+
+    }
+
+    public function recentMessageUnread($user_id)
+    {
+       $mysqli= $this->database;
+       $query="SELECT * FROM message M LEFT JOIN users U ON M. message_from= U. user_id WHERE M. message_to= $user_id AND M. status= 0 GROUP BY M. message_from, M. message_to HAVING  COUNT(DISTINCT M. message_to) AND COUNT(DISTINCT M. message_from) ORDER BY M. message_on Desc ;";
 
        $result=$mysqli->query($query);
        $data=array();
@@ -107,7 +121,10 @@ class Message extends Home
        while ($row = $result->fetch_array()) {
                 $data[]= $row;
        }
-       foreach ($data as $message) {
+    //    echo'
+    //       <div class="bg-dark text-light p-2" style="position:fixed;z-index:1;">'.$data[0]['username'].(($data[0]['chat'] == 'on')?' <img src="'.BASE_URL_LINK.'image/color/green.png" class="img-rounded" width="9px"> online':' <img src="'.BASE_URL_LINK.'image/color/rose.png" class="img-rounded" width="9px"> offline '.$this->timeAgo($data[0]['last_login'])).'</div>
+    //     ';
+        foreach ($data as $message) {
            # code...
            if ($message['message_from'] == $user_id) {
                # code...

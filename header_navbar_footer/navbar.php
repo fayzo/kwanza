@@ -77,7 +77,7 @@
               <li class="header main-active">You have <span><?php if( $notific['totalmessage'] > 0){echo '<span>'.$notific['totalmessage'].'</span>'; }else{ echo 'no' ;} ?></span> messages</li>
               <li>
                 <!-- inner menu: contains the actual data -->
-                <ul class="menu" id="messages-menu-view" >
+                <ul class="menu large-2" id="messages-menu-view" >
                   <!-- <li>
                     <a href="#">
                       <div class="pull-left">
@@ -92,22 +92,22 @@
                   </li> -->
                 </ul>
               </li>
-              <li class="footer "id='messagePopup'><a href="#">See All Messages</a></li>
+              <li class="footer" id='messagePopup'><a href="#">See All Messages</a></li>
             </ul>
           </li>
 
           <!-- Notifications: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu nav-item">
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" id="notification-dropdown-menu">
               <i style="font-size: 20px;" class="fa fa-bell-o"></i>
-             <span id="notification"><?php if( $notific['totalnotification'] > 0){echo '<span class="badge badge-warning navbar-badge">'.$notific['totalnotification'].'</span>'; } ?></span>
+             <span id="notification1"><?php if( $notific['totalnotification'] > 0){echo '<span class="badge badge-warning navbar-badge">'.$notific['totalnotification'].'</span>'; } ?></span>
             </a>
             <ul class="dropdown-menu">
               <li class="header main-active">You have  <span ><?php if( $notific['totalnotification'] > 0){echo '<span >'.$notific['totalnotification'].'</span>'; }else{ echo 'no';} ?></span> notifications</li>
               <li>
                 <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li>
+                <ul class="menu large-2" id="notification-menu-view">
+                  <!-- <li>
                     <a href="#">
                       <i class="fa fa-users text-info"></i> 5 new members joined today
                     </a>
@@ -132,7 +132,7 @@
                     <a href="#">
                       <i class="fa fa-user text-danger"></i> You changed your username
                     </a>
-                  </li>
+                  </li> -->
                 </ul>
               </li>
               <li class="footer"><a href="<?php echo BASE_URL_PUBLIC ;?>i.notifications" >View all</a></li>

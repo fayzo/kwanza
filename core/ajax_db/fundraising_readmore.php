@@ -4,7 +4,13 @@ include('../init.php');
 $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpath($_SERVER['SCRIPT_FILENAME']));
 
 if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
-    $user_id= $_SESSION['key'];
+    if (isset($_SESSION['key'])) {
+        # code...
+        $user_id= $_SESSION['key'];
+    }else {
+        # code...
+        $user_id= $profileData['user_id'];
+    }
     $fund_id = $_POST['fund_id'];
     $user= $fundraising->fundFecthReadmore($fund_id);
      ?>
@@ -250,15 +256,15 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
                                     </span>
                                     <span class="description"> nice to donate keep up </span>
                                 </div> <!-- /.user-block -->
-
+                         
                                 <div class="input-group mt-2">
                                     <input class="form-control form-control-sm" id="commentHome" type="text"
                                         name="comment" data-fund="<?php echo $user['fund_id'];?>"
                                         placeholder="Reply to  <?php echo $user['username'] ;?>">
                                     <div class="input-group-append">
                                         <span class="input-group-text btn" style="padding: 0px 10px;" 
-                                            aria-label="Username" aria-describedby="basic-addon1">
-                                            <span class="fa fa-arrow-right text-muted" id="post_HomeComment"></span></span>
+                                            aria-label="Username" aria-describedby="basic-addon1" <?php if(isset($_SESSION['key'])){ echo 'id="post_HomeComment"'; }else{ echo 'id="login-please" data-login="1"'; } ?> >
+                                            <span class="fa fa-arrow-right text-muted" ></span></span>
                                     </div>
                                 </div> <!-- input-group -->
 

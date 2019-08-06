@@ -134,9 +134,51 @@
     border-bottom-left-radius: 0;
     background-color: #ffffff;
     padding: 7px 10px;
-    border-bottom: 1px solid #f4f4f4;
+    /* border-bottom: 1px solid #f4f4f4; */
     color: #444444;
     font-size: 14px;
+}
+.hovernotication{
+    background:#e2d7d7;
+}
+#black .hovernotication{
+    background:#9de2b63b;
+}
+#black #messages-menu-view{
+ background:#222d32;
+}
+
+#black #notification-menu-view{
+ background:#222d32;
+}
+
+#black .navbar-nav>.notifications-menu>.dropdown-menu>li.header,
+#black .navbar-nav>.messages-menu>.dropdown-menu>li.header,
+#black .navbar-nav>.tasks-menu>.dropdown-menu>li.header {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    /* background-color: #ffffff; */
+    padding: 7px 10px;
+    /* border-bottom: 1px solid #bbb8b8; */
+    /* color: #444444; */
+    font-size: 14px;
+}
+
+#black .navbar-nav>.notifications-menu>.dropdown-menu>li.footer,
+#black .navbar-nav>.messages-menu>.dropdown-menu>li.footer,
+#black .navbar-nav>.tasks-menu>.dropdown-menu>li.footer {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    font-size: 15px;
+    background-color: #333333;
+    padding: 10px;
+    border-bottom: 1px solid #333333;
+    color: #dddada !important;
+    text-align: center;
 }
 
 .navbar-nav>.notifications-menu>.dropdown-menu>li.footer,
@@ -149,7 +191,7 @@
     font-size: 15px;
     background-color: #fff;
     padding: 10px;
-    border-bottom: 1px solid #eeeeee;
+    /* border-bottom: 1px solid #eeeeee; */
     color: #444 !important;
     text-align: center;
 }
@@ -162,6 +204,15 @@
         background-color: #fff !important;
         color: #444 !important;
     }
+}
+
+#black .navbar-nav>.notifications-menu>.dropdown-menu>li.footer>a:hover,
+#black .navbar-nav>.messages-menu>.dropdown-menu>li.footer>a:hover,
+#black .navbar-nav>.tasks-menu>.dropdown-menu>li.footer>a:hover {
+    background-color: #444 !important;
+    color: rgb(214, 167, 64) !important;
+    text-decoration: none;
+    font-weight: normal;
 }
 
 .navbar-nav>.notifications-menu>.dropdown-menu>li.footer>a:hover,
@@ -192,11 +243,34 @@
     border-bottom: 1px solid #f4f4f4;
 }
 
+#black .navbar-nav>.notifications-menu>.dropdown-menu>li .menu>li>a,
+#black .navbar-nav>.messages-menu>.dropdown-menu>li .menu>li>a,
+#black .navbar-nav>.tasks-menu>.dropdown-menu>li .menu>li>a {
+    display: block;
+    white-space: nowrap;
+    /* Prevent text from breaking */
+    border-bottom: 1px solid #00000033;;
+}
+
 .navbar-nav>.notifications-menu>.dropdown-menu>li .menu>li>a:hover,
 .navbar-nav>.messages-menu>.dropdown-menu>li .menu>li>a:hover,
 .navbar-nav>.tasks-menu>.dropdown-menu>li .menu>li>a:hover {
-    background: #f4f4f4;
+    /* background: #f4f4f4; */
+    background: #ebe8e852;
     text-decoration: none;
+}
+#black .navbar-nav>.notifications-menu>.dropdown-menu>li .menu>li>a:hover,
+#black .navbar-nav>.messages-menu>.dropdown-menu>li .menu>li>a:hover,
+#black .navbar-nav>.tasks-menu>.dropdown-menu>li .menu>li>a:hover {
+    background: #ebe8e852;
+    text-decoration: none;
+}
+
+#black .navbar-nav>.notifications-menu>.dropdown-menu>li .menu>li>a {
+    color:#bbb8b8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 10px;
 }
 
 .navbar-nav>.notifications-menu>.dropdown-menu>li .menu>li>a {
@@ -227,6 +301,13 @@
     padding: 0;
     margin: 0 0 0 45px;
     color: #444444;
+    font-size: 15px;
+    position: relative;
+}
+#black .navbar-nav>.messages-menu>.dropdown-menu>li .menu>li>a>h4 {
+    padding: 0;
+    margin: 0 0 0 45px;
+    color:#bbb8b8;
     font-size: 15px;
     position: relative;
 }
@@ -703,3 +784,4 @@
     cursor: pointer;
     display: block;
 }
+

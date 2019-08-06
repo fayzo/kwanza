@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $(document).on('click','#postComment',function () {
         var comment = $('#commentField').val();
         var tweet_id = $('#commentField').data('tweet');
@@ -20,4 +21,5 @@ $(document).ready(function () {
         }
 
     });
+    
 });

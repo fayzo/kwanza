@@ -24,22 +24,24 @@ if (isset($_POST['showChat0']) && !empty($_POST['showChat0'])) {
     $message_from= $_POST['showChat0'];
     $user= $home->userData($message_from);
     ?>
-         <div class="card-body" style="background:#222d32">
+         <div class="card-body" id="black" style="background:#222d32">
+          <div class="bg-dark pl-2" style="width:280px;position:fixed;z-index:1;color: #999;"><?php echo $user['username'].(($user['chat'] == 'on')?' <img src="'.BASE_URL_LINK.'image/color/green.png" class="img-rounded" width="9px"> online':' <img src="'.BASE_URL_LINK.'image/color/rose.png" class="img-rounded" width="9px"> offline '.$home->timeAgo($user['last_login'])) ;?></div>
+
              <span id="message-del"></span>
              <!-- Conversations are loaded here -->
-             <div class="direct-chat-messages" id="messages0">
+             <div class="direct-chat-messages  large-2" id="messages0" style="padding-top:20px;">
                  <!-- Message. Default to the left -->
                  <div id="chats"> </div>
              </div>
              <!--/.direct-chat-messages-->
 
             <!-- Contacts are loaded here -->
-             <div class="direct-chat-contacts" id="contacts0">
-             </div>
+             <div class="direct-chat-contacts  large-2" id="contacts0" style="z-index: 3;">
+             </div> 
              <!-- /.direct-chat-pane -->
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
+        <div class="card-footer main-active">
            <form action="#" method="post">
                <div class="input-group">
                    <input type="text" id="msg0" name="msg" name="message" placeholder="Type Message ..." class="form-control">
@@ -96,10 +98,10 @@ if (isset($_POST['showListMessage0']) && !empty($_POST['showListMessage0'])) {
 	$Msg= $message->recentMessage($user_id); 
 	$notification->messagesView($user_id);
     ?>
-      <div class="card-body" style="background:#222d32">
+      <div id="black" class="card-body" style="background:#222d32">
         <span id="message-del"></span>
         <!-- Conversations are loaded here -->
-        <div class="direct-chat-messages" id="messages0" >
+        <div class="direct-chat-messages large-2" id="messages0" >
           <ul class="contacts-list" >
 
          <?php foreach ($Msg as $Message ) {?>
@@ -131,10 +133,10 @@ if (isset($_POST['showListMessage0']) && !empty($_POST['showListMessage0'])) {
 
         <?php  }?>
              </ul >
-         </div> <!--/.direct-chat-messages-->
+         </div><!--/.direct-chat-messages-->
           <!-- Contacts are loaded here -->
-          <div class="direct-chat-contacts" id="contacts0">
-          </div> <!-- /.direct-chat-pane -->
+          <div class="direct-chat-contacts large-2" id="contacts0">
+          </div><!-- /.direct-chat-pane -->
         </div> <!-- /.card-body -->
 <?php }
 
@@ -237,16 +239,18 @@ if (isset($_POST['showChat']) && !empty($_POST['showChat'])) {
     $message_from= $_POST['showChat'];
     $user= $home->userData($message_from);
     ?>
-        <div class="box-body" style="background:#222d32" >
+        <div id="black" class="box-body" style="background:#222d32;" >
+          <div class="bg-dark pl-2" style="width:280px;position:fixed;z-index:1;"><?php echo $user['username'].(($user['chat'] == 'on')?' <img src="'.BASE_URL_LINK.'image/color/green.png" class="img-rounded" width="9px"> online':' <img src="'.BASE_URL_LINK.'image/color/rose.png" class="img-rounded" width="9px"> offline '.$home->timeAgo($user['last_login'])) ;?></div>
+
              <span id="message-del1"></span>
             <!-- Conversations are loaded here -->
-            <div class="direct-chat-messages" id="message" >
+            <div class="direct-chat-messages large-2" id="message" style="padding-top: 20px;">
                 <div id="chats1"> </div>
             </div> <!--/.direct-chat-messages-->
 
              <!-- Contacts are loaded here -->
-             <div class="direct-chat-contacts" id="contacts">
-             </div> <!-- /.direct-chat-pane -->
+             <div class="direct-chat-contacts large-2" id="contacts" style="z-index: 3;">
+             </div><!-- /.direct-chat-pane -->
          </div> <!-- /.box-body -->
          <div class="box-footer main-active">
              <form action="#" method="post">
@@ -268,10 +272,10 @@ if (isset($_POST['showListMessage1']) && !empty($_POST['showListMessage1'])) {
 	$Msg= $message->recentMessage($user_id); 
 	$notification->messagesView($user_id);
     ?>
-      <div class="box-body" >
+      <div id="black" class="box-body" style="background:#222d32;" >
          <span id="message-del1"></span>
             <!-- Conversations are loaded here -->
-            <div class="direct-chat-messages" style="background:#222d32" >
+            <div class="direct-chat-messages large-2" style="background:#222d32" >
             <ul class="contacts-list" >
            
          <?php foreach ($Msg as $Message ) { ?>
@@ -305,8 +309,8 @@ if (isset($_POST['showListMessage1']) && !empty($_POST['showListMessage1'])) {
              </ul >
             </div> <!--/.direct-chat-messages-->
             <!-- Contacts are loaded here -->
-            <div class="direct-chat-contacts" id="contacts" style="background:#222d32" >
-           </div> <!-- /.direct-chat-pane -->
+            <div class="direct-chat-contacts large-2" id="contacts" style="background:#222d32" >
+           </div><!-- /.direct-chat-pane -->
        </div> <!-- /.box-body -->
 <?php }
 

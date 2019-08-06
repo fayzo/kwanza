@@ -5,10 +5,10 @@
      <div class="main-active p-3">
          Website Overview
      </div>
-     <div class="card-body text-center">
+     <div class="card-body text-center ">
          <div class="row">
              <div class="col-md-3 mb-2">
-                 <div class="card bg-light">
+                 <div class="card bg-light text-dark">
                      <div class="card-body">
                          <h4 class="card-title"><i class="fa fa-user" aria-hidden="true"></i>
                              <?php echo $users->countUSERS() ;?>
@@ -18,43 +18,47 @@
                  </div>
              </div>
              <div class="col-md-3 mb-2">
-                 <div class="card bg-light">
+                 <div class="card bg-light text-dark">
                      <div class="card-body">
                          <h4 class="card-title"><i class="fa fa-book" aria-hidden="true"></i>
+                            <?php echo $users->countApprovalBusiness(); ?>
                              </h4>
-                         <p class="card-text">N0 OF Comments</p>
+                         <p class="card-text">Approval Business</p>
                      </div>
                  </div>
              </div>
              <div class="col-md-3 mb-2">
-                 <div class="card bg-light">
+                 <div class="card bg-light text-dark">
                      <div class="card-body">
                          <h4 class="card-title"><i class="fa fa-book" aria-hidden="true"></i>
+                                <?php echo $users->countUnApprovalBusiness(); ?>
                              </h4>
-                         <p class="card-text">Approvals Comments</p>
+                         <p class="card-text">UnApproval Business</p>
                      </div>
                  </div>
              </div>
              <div class="col-md-3 mb-2">
-                 <div class="card bg-light">
+                 <div class="card bg-light text-dark">
                      <div class="card-body">
                          <h4 class="card-title"><i class="fa fa-book" aria-hidden="true"></i>
+                           <?php echo $users->jobCountbusiness(); ?>
                              </h4>
-                         <p class="card-text">Un-Approvals Comments</p>
+                         <p class="card-text">No Of Jobs</p>
                      </div>
                  </div>
              </div>
              <div class="col-md-3 mb-2">
-                 <div class="card bg-light">
+                 <div class="card bg-light text-dark">
                      <div class="card-body">
                          <h4 class="card-title"><i class="fa fa-pen" aria-hidden="true"></i> 
+                         <?php echo $users->countPOSTS(); ?>
                          </h4>
                          <p class="card-text">Posts</p>
                      </div>
                  </div>
              </div>
              <div class="col-md-3 mb-2">
-                 <div class="card bg-light">
+                 <div class="card bg-light text-dark">
                      <div class="card-body">
                          <h4 class="card-title"><i class="material-icons md-48"> insert_chart </i> 3435</h4>
                          <p class="card-text">Visitors</p>

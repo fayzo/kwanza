@@ -4,7 +4,11 @@ include('../init.php');
 $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpath($_SERVER['SCRIPT_FILENAME']));
 
 if (isset($_POST['blog_id']) && !empty($_POST['blog_id'])) {
-    $user_id= $_SESSION['key'];
+    $user_id= $_SESSION['key'];  
+    if (isset($_SESSION['key'])) {
+        # code...
+        $user_id= $_SESSION['key'];
+    }
     $blog_id = $_POST['blog_id'];
     $user= $blog->BlogReadmore($blog_id);
      ?>

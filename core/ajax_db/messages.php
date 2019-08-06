@@ -36,7 +36,7 @@ if (isset($_POST['showMessage']) && !empty($_POST['showMessage'])) {
     <div class="popup-message-wrap">
         <input id="popup-message-tweet" type="checkbox" checked="unchecked"/>
       <div class="wrap2">
-        <div class="message-send">
+        <div class="message-send large-2">
 		  <div class="card ">
 			<div class="card-body main-active text-center py-0">
 				<label class="float-right" for="popup-message-tweet" ><i class="fa fa-times" aria-hidden="true"></i></label>
@@ -57,7 +57,7 @@ if (isset($_POST['showMessage']) && !empty($_POST['showMessage'])) {
 				<div class="message-recent">
                 <?php foreach ($Msg as $Message ) {?>
         			<!--Direct Messages-->
-        			<div class="people-message p-3" data-user="<?php echo $Message['user_id'];?>">
+        			<div class="people-message p-3 people-messageM" data-user="<?php echo $Message['user_id'];?>">
         				<div class="people-inner">
         					<div class="people-img">
 							<?php if (!empty($Message['profile_img'])) { ?>
@@ -88,7 +88,7 @@ if (isset($_POST['showMessage']) && !empty($_POST['showMessage'])) {
          
          
         	<input id="mass" type="checkbox" checked="unchecked" />
-        	<div class="back">
+        	<div class="back large-2">
 				<div class="card  border-bottom-0">
 					<div class="card-body main-active py-2">
 					    <span class="float-left "><h2> Direct message </h2></span>
@@ -102,7 +102,7 @@ if (isset($_POST['showMessage']) && !empty($_POST['showMessage'])) {
                         <?php foreach ( $Msg as $Message ) { 
                             ?>   
         			        <!--Direct Messages-->
-        			        	<div class="people-message p-3" data-user="<?php echo $Message['user_id'];?>">
+        			        	<div class="people-message p-3 people-messageM" data-user="<?php echo $Message['user_id'];?>">
         			        		<div class="people-inner">
         			        			<div class="people-img" style="position:relative;">		
 					        				<?php if (!empty($Message['profile_img'])) { ?>
@@ -140,15 +140,226 @@ if (isset($_POST['showMessage']) && !empty($_POST['showMessage'])) {
 <?php }
 
 
+if (isset($_POST['notificationDrpdown']) && !empty($_POST['notificationDrpdown'])) {
+	$user_id= $_SESSION['key'];
+	$user= $home->userData($user_id);
+	$notif= $notification->notifications($user_id);
+	$notificatUnread= $notification->notificationsUnread($user_id);
+
+	// var_dump($notif)
+	# code..READ IN NOTIFICATION
+	# code...
+	foreach ($notificatUnread as $data): 
+				$notification->notificationsView($user_id);
+			  if ($data['type'] == 'follow'):
+    ?>
+
+		<li class="hovernotication" >
+			<a href="<?php echo BASE_URL_PUBLIC ;?>i.notifications">
+				<!-- <i class="fa fa-users text-info"></i>  -->
+				<?php if (!empty($data['profile_img'])) { ?>
+				<img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $data['profile_img'] ;?>" height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php  }else{ ?>
+				<img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php } ?> <?php echo $data['username']; ?> 
+				Followed <i class="fa fa-user-plus text-primary"></i>you on 
+				<?php echo $users->timeAgo($data['follow_on']) ;?>
+				<!-- <i class=" fa fa-clock-o"></i>  -->
+			</a>
+		</li>
+	<?php    
+	   endif; 
+	  if ($data['type'] == 'mention' && $data['status'] == 0): ?>
+		<li class="hovernotication">
+			<a href="<?php echo BASE_URL_PUBLIC ;?>i.notifications">
+				<!-- <i class="fa fa-users text-info"></i>  -->
+				<?php if (!empty($data['profile_img'])) { ?>
+				<img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $data['profile_img'] ;?>" height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php  }else{ ?>
+				<img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php } ?> <?php echo $data['username']; ?> 
+				mention <span  class="text-success">@<?php echo $user['username']; ?> </span> on post on 
+				<?php echo $users->timeAgo($data['follow_on']) ;?>
+				<!-- <i class=" fa fa-clock-o"></i>  -->
+			</a>
+		</li>
+	<?php    endif; 
+	  if ($data['type'] == 'retweet' && $data['status'] == 0): ?>
+		<li class="hovernotication">
+			<a href="<?php echo BASE_URL_PUBLIC ;?>i.notifications">
+				<!-- <i class="fa fa-users text-info"></i>  -->
+				<?php if (!empty($data['profile_img'])) { ?>
+				<img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $data['profile_img'] ;?>" height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php  }else{ ?>
+				<img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php } ?>
+				<?php echo $data['username']; ?>
+				 Shared <i class="fa fa-share-alt-square" aria-hidden="true"></i>your post on 
+				<?php echo $users->timeAgo($data['follow_on']) ;?>
+				<!-- <i class=" fa fa-clock-o"></i>  -->
+			</a>
+		</li>
+	<?php    endif; 
+	if ($data['type'] == 'likes' && $data['status'] == 0): ?>
+		<li class="hovernotication">
+			<a href="<?php echo BASE_URL_PUBLIC ;?>i.notifications">
+				<!-- <i class="fa fa-users text-info"></i>  -->
+				<?php if (!empty($data['profile_img'])) { ?>
+				<img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $data['profile_img'] ;?>" height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php  }else{ ?>
+				<img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php } ?>
+				<?php echo $data['username']; ?>
+				liked <i class="fa fa-heart text-danger"></i>  your post on 
+				<?php echo $users->timeAgo($data['follow_on']) ;?>
+				<!-- <i class=" fa fa-clock-o"></i>  -->
+			</a>
+		</li>
+	<?php    
+	        endif; 
+			endforeach; 
+	
+	# code..READ IN NOTIFICATION
+	# if notification > 1
+
+	foreach ($notif as $data): 
+			    if ($data['type'] == 'follow'):
+    ?>
+
+		<li>
+			<a href="<?php echo BASE_URL_PUBLIC ;?>i.notifications">
+				<!-- <i class="fa fa-users text-info"></i>  -->
+				<?php if (!empty($data['profile_img'])) { ?>
+				<img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $data['profile_img'] ;?>" height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php  }else{ ?>
+				<img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php } ?> <?php echo $data['username']; ?> 
+				Followed <i class="fa fa-user-plus text-primary"></i>you on 
+				<?php echo $users->timeAgo($data['follow_on']) ;?>
+				<!-- <i class=" fa fa-clock-o"></i>  -->
+			</a>
+		</li>
+	<?php    
+	   endif; 
+	  if ($data['type'] == 'mention'): ?>
+		<li>
+			<a href="<?php echo BASE_URL_PUBLIC ;?>i.notifications">
+				<!-- <i class="fa fa-users text-info"></i>  -->
+				<?php if (!empty($data['profile_img'])) { ?>
+				<img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $data['profile_img'] ;?>" height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php  }else{ ?>
+				<img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php } ?> <?php echo $data['username']; ?> 
+				mention <span  class="text-success">@<?php echo $user['username']; ?> </span> on post on 
+				<?php echo $users->timeAgo($data['follow_on']) ;?>
+				<!-- <i class=" fa fa-clock-o"></i>  -->
+			</a>
+		</li>
+	<?php    endif; 
+	  if ($data['type'] == 'retweet'): ?>
+		<li >
+			<a href="<?php echo BASE_URL_PUBLIC ;?>i.notifications">
+				<!-- <i class="fa fa-users text-info"></i>  -->
+				<?php if (!empty($data['profile_img'])) { ?>
+				<img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $data['profile_img'] ;?>" height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php  }else{ ?>
+				<img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php } ?>
+				<?php echo $data['username']; ?>
+				 Shared <i class="fa fa-share-alt-square" aria-hidden="true"></i>your post on 
+				<?php echo $users->timeAgo($data['follow_on']) ;?>
+				<!-- <i class=" fa fa-clock-o"></i>  -->
+			</a>
+		</li>
+	<?php    endif; 
+	if ($data['type'] == 'likes'): ?>
+		<li>
+			<a href="<?php echo BASE_URL_PUBLIC ;?>i.notifications">
+				<!-- <i class="fa fa-users text-info"></i>  -->
+				<?php if (!empty($data['profile_img'])) { ?>
+				<img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $data['profile_img'] ;?>" height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php  }else{ ?>
+				<img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  height="25px" width='25px' class=" rounded-circle" alt="User Image">
+				<?php } ?>
+				<?php echo $data['username']; ?>
+				liked <i class="fa fa-heart text-danger"></i>  your post on 
+				<?php echo $users->timeAgo($data['follow_on']) ;?>
+				<!-- <i class=" fa fa-clock-o"></i>  -->
+			</a>
+		</li>
+	<?php    
+			endif; 
+			endforeach; 
+	?>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-warning text-warning"></i> Very long description here that may not fit into the
+                      page and may cause design problems
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-users text-danger"></i> 5 new members joined
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-shopping-cart text-success"></i> 25 sales made
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-user text-danger"></i> You changed your username
+                    </a>
+                  </li>
+
+<?php }
+
+
 if (isset($_POST['showMessage1']) && !empty($_POST['showMessage1'])) {
     $user_id= $_SESSION['key'];
     // $tweet_id= $_POST['showMessage'];
 	$Msg= $message->recentMessage($user_id); 
+	$MsgUnread= $message->recentMessageUnread($user_id); 
 	$notification->messagesView($user_id);
-    ?>
+	?>
+	
+		<!-- MESSAGE UNREAD IN NOTIFICATION -->
+
+		 <?php foreach ($MsgUnread as $Message ) {
+			 ?>
+					<!--Direct Messages-->
+				
+				<li class="people-message hovernotication" data-user="<?php echo $Message['user_id'];?>" > <!-- start message -->
+                    <a href="#">
+                      <div class="pull-left" style="position:relative;">
+						  	<?php if (!empty($Message['profile_img'])) { ?>
+        						     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$Message['profile_img'];?>"  class="rounded-circle img"  />
+							<?php }else {?>
+        						     <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  class="rounded-circle img" />
+							<?php } ?>
+
+							<?php if ($Message['chat'] == 'on') { ?>
+										<img src="<?php echo BASE_URL_LINK ;?>image/color/green.png" width="15px" style="position:absolute;bottom:0px;right:0px;">
+							<?php }else {?>
+										<img src="<?php echo BASE_URL_LINK ;?>image/color/rose.png" width="15px" style="position:absolute;bottom:0px;right:0px;">
+							<?php } ?>
+                      </div>
+                      <h4>
+						 <?php echo $Message['username'];?>
+                        <small><i class="fa fa-clock-o"></i> <?php echo $users->timeAgo($Message['message_on']);?></small>
+                      </h4>
+                      <p><?php echo $Message['message'];?></p>
+                    </a>
+				</li> <!-- end message -->
+
+		<?php  }?>
+
+		<!-- MESSAGE READ IN NOTIFICATION -->
 
          <?php foreach ($Msg as $Message ) {?>
 					<!--Direct Messages-->
+				
 				<li class="people-message" data-user="<?php echo $Message['user_id'];?>" > <!-- start message -->
                     <a href="#">
                       <div class="pull-left" style="position:relative;">
@@ -165,7 +376,7 @@ if (isset($_POST['showMessage1']) && !empty($_POST['showMessage1'])) {
 							<?php } ?>
                       </div>
                       <h4>
-						  <?php echo $Message['username'];?>
+						 <?php echo $Message['username'];?>
                         <small><i class="fa fa-clock-o"></i> <?php echo $users->timeAgo($Message['message_on']);?></small>
                       </h4>
                       <p><?php echo $Message['message'];?></p>
@@ -205,7 +416,10 @@ if (isset($_POST['showChatPopup']) && !empty($_POST['showChatPopup'])) {
 									<?php } ?>
 								</div>
 								 <div class="d-inline-block pt-1 pl-3">
-								   <div><?php echo $user['username']; ?></div>
+								   <div>
+                                    <?php echo $user['username'].(($user['chat'] == 'on')?' online':' offline '.$home->timeAgo($user['last_login'])) ;?>
+                                    <!-- < ?php echo $user['username'].(($user['chat'] == 'on')?' <img src="'.BASE_URL_LINK.'image/color/green.png" class="img-rounded" width="9px"> online':' <img src="'.BASE_URL_LINK.'image/color/rose.png" class="img-rounded" width="9px"> offline '.$home->timeAgo($user['last_login'])) ;?> -->
+								   </div>
 								   <div><i style="font-size: 20px;" class="fa fa-envelope-o"></i> Messages</div>
 								 </div>
 							<?php }else { ?>
@@ -219,7 +433,11 @@ if (isset($_POST['showChatPopup']) && !empty($_POST['showChatPopup'])) {
 									<?php } ?>
 								</div>
 								 <div class="d-inline-block pt-1 pl-3">
-								   <div><?php echo $user['username']; ?></div>
+								   <!-- <div>< ?php echo $user['username']; ?></div> -->
+								   <div>
+                                    <?php echo $user['username'].(($user['chat'] == 'on')?' online':' offline '.$home->timeAgo($user['last_login'])) ;?>
+                                    <!-- < ?php echo $user['username'].(($user['chat'] == 'on')?' <img src="'.BASE_URL_LINK.'image/color/green.png" class="img-rounded" width="9px"> online':' <img src="'.BASE_URL_LINK.'image/color/rose.png" class="img-rounded" width="9px"> offline '.$home->timeAgo($user['last_login'])) ;?> -->
+								   </div>
 								   <div><i style="font-size: 20px;" class="fa fa-envelope-o"></i> Messages</div>
 								 </div>
 			            	<?php } ?>
@@ -241,7 +459,7 @@ if (isset($_POST['showChatPopup']) && !empty($_POST['showChatPopup'])) {
 			            </div>
 				</div><!--card-header ENDS-->
 				</div><!--card ENDS-->
-				  <div class="main-msg-wrap">
+				  <div class="main-msg-wrap large-2">
                      <div id="chat" class="main-msg-inner">
                     
      	             </div>
