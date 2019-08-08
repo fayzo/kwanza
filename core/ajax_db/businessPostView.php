@@ -4,7 +4,7 @@ include('../init.php');
 $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpath($_SERVER['SCRIPT_FILENAME']));
 
 if (isset($_POST['job_id']) && !empty($_POST['job_id'])) {
-    $user_id= $_SESSION['key'];
+    // $user_id= $_SESSION['key'];
     $job_id= $_POST['job_id']; 
     $business_id= $_POST['business_id']; 
     $user = $home->jobsviewData($business_id,$job_id);
@@ -189,7 +189,7 @@ if (isset($_POST['job_id']) && !empty($_POST['job_id'])) {
 <?php } 
 
 if (isset($_POST['search']) && !empty($_POST['search'])) {
-    $user_id= $_SESSION['key'];
+    // $user_id= $_SESSION['key'];
     $search= $users->test_input($_POST['search']);
     $result= $home->searchJobs($search);
     echo '<h4 style="padding: 0px 10px;">'.$_POST['search'].'</h4> ';

@@ -5,6 +5,8 @@ $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpat
 
 if (isset($_POST['fund_view']) && !empty($_POST['fund_view'])) {
     $user_id= $_SESSION['key'];
+    $get_province = mysqli_query($db,"SELECT * FROM provinces");   
+
      ?>
 
 <div class="fund-popup">
@@ -14,6 +16,7 @@ if (isset($_POST['fund_view']) && !empty($_POST['fund_view'])) {
         </span>
         <div class="img-popup-wrap">
         	<div class="img-popup-body">
+                <script src="<?php echo BASE_URL_LINK ;?>dist/js/country_login_ajax-db.js"></script>
 
             <div class="card">
                 <span id="responseSubmithelp"></span>
@@ -21,6 +24,7 @@ if (isset($_POST['fund_view']) && !empty($_POST['fund_view'])) {
                     <h5 class="card-text">Fundraiser</h5>
                     <p class="card-text">Do you want helps Or to helps someone ? Please fill details below.</p>
                 </div>
+
                 <form method="post" id="form-fund"  enctype="multipart/form-data" >
                 <div class="card-body">
                       <input type="hidden" name="user_id" value="<?php echo $user_id ;?>">
@@ -50,7 +54,8 @@ if (isset($_POST['fund_view']) && !empty($_POST['fund_view'])) {
                       </div>
                       <div class="form-row mt-2">
                         <div class="col">
-                          <input type="text" class="form-control" name="country" id="country" placeholder="Country">
+                            <!-- <div id="myCountry"></div> -->
+                            <div id="myDiv"></div>
                         </div>
                         <div class="col">
                           <input type="text" class="form-control" name="city" id="city" placeholder="City">
@@ -58,25 +63,70 @@ if (isset($_POST['fund_view']) && !empty($_POST['fund_view'])) {
                       </div>
                       <div class="form-row mt-2">
                         <div class="col">
-                          <input type="text" class="form-control" name="province" id="province" placeholder="Province">
-                        </div>
-                        <div class="col">
-                          <input type="text" class="form-control" name="districts" id="districts" placeholder="districts">
-                        </div>
-                        <div class="col">
-                          <input type="text" class="form-control" name="sector" id="sector" placeholder="sector">
-                        </div>
+                                <label for="" class="text-dark">Province</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                    <select name="provincecode"  id="provincecode" onchange="showResult();" class="form-control provincecode">
+                                        <option value="">----Select province----</option>
+                                        <?php while($show_province = mysqli_fetch_array($get_province)) { ?>
+                                        <option value="<?php echo $show_province['provincecode'] ?>"><?php echo $show_province['provincename'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="" class="text-dark"> District</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                    <select class="form-control districtcode" name="districtcode" id="districtcode" onchange="showResult2();" >
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="Sector" class="text-dark">Sector</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                    <select class="form-control sectorcode" name="sectorcode" id="sectorcode"  onchange="showResult3();">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="Cell" class="text-dark">Cell</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                    <select name="codecell" id="codecell" class="form-control codecell" onchange="showResult4();">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
                       </div>
+
                       <div class="form-row mt-2">
-                        <div class="col">
-                          <input type="text" class="form-control" name="cell" id="cell" placeholder="cell">
-                        </div>
-                        <div class="col">
-                          <input type="text" class="form-control" name="village" id="village" placeholder="village">
-                        </div>
+                             <div class="col">
+                                <label for="Village">Village</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                      <select name="CodeVillage" id="CodeVillage" class="form-control CodeVillage">
+                                          <option> </option>
+                                      </select>
+                                </div>
+                            </div>
 
                         <div class="col">
                             <div class="form-group">
+                                <label for="Cell" class="text-dark">types of helps you need</label>
                               <select class="form-control" name="categories_fundraising" id="categories_fundraising">
                                 <option value="">Select what types of helps you need</option>
                                 <option value="medical">medical</option>
@@ -219,11 +269,16 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
     $telephone = $users->test_input($_POST['telephone']);
     $country = $users->test_input($_POST['country']);
     $city = $users->test_input($_POST['city']);
-    $province = $users->test_input($_POST['province']);
-    $districts = $users->test_input($_POST['districts']);
-    $cell = $users->test_input($_POST['cell']);
-    $sector = $users->test_input($_POST['sector']);
-    $village = $users->test_input($_POST['village']);
+    // $province = $users->test_input($_POST['province']);
+    // $districts = $users->test_input($_POST['districts']);
+    // $cell = $users->test_input($_POST['cell']);
+    // $sector = $users->test_input($_POST['sector']);
+    // $village = $users->test_input($_POST['village']);
+    $province =  $users->test_input($_POST['provincecode']);
+    $districts =  $users->test_input($_POST['districtcode']);
+    $cell =  $users->test_input($_POST['sectorcode']);
+    $sector =  $users->test_input($_POST['codecell']);
+    $village =  $users->test_input($_POST['CodeVillage']);
     $additioninformation = $users->test_input($_POST['additioninformation']);
     $categories_fundraising=  $users->test_input($_POST['categories_fundraising']);
     // $deadline = $users->test_input($_POST['deadline']);

@@ -107,7 +107,6 @@ if(isset($_POST['key'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -117,7 +116,6 @@ if(isset($_POST['key'])){
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/login.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/dropdown.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/main.css" rel="stylesheet">
-    <link href="<?php echo BASE_URL_LINK ;?>icon/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <script src="<?php echo BASE_URL_LINK ;?>icon/fontawesome_5_4/js/all.js"></script>
     <script src="<?php echo BASE_URL_LINK ;?>dist/js/country_login.js"></script>
 

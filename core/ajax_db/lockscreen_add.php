@@ -48,7 +48,7 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
     ?>
 <style>
 
-.img-popup-wrapLogin{
+.img-popup-wrapLogin1{
 	border-radius: 4px;
 	background: #fff;
 	max-width: 400px;
@@ -65,7 +65,7 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
     overflow: hidden;
 }
 
-    .body-center {
+    .body-center1 {
         font-family: 'Montserrat', sans-serif;
         background: #f6f5f7;
         display: flex;
@@ -100,7 +100,7 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
         margin: 15px 0;
     }
 
-    .containers {
+    .containers1 {
         background: #f6f5f7;
         border-radius: 10px;
         box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22);
@@ -112,7 +112,7 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
         text-align: center
     }
 
-    .form-container {
+    .form-container1 {
         position: relative;
         margin-top: 2%;
         display: flex;
@@ -123,7 +123,7 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
         font-size: small;
     }
 
-    .form-container input {
+    .form-container1 input {
         background: rgb(238, 238, 238);
         border: none;
         padding: 15px 15px;
@@ -133,11 +133,11 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
         outline: none;
         height: 45px
     }
-    .lockscreen-credentials {
+    .lockscreen-credentials1 {
        margin-left: 78px;
     }
 
-    .lockscreen-item {
+    .lockscreen-item1 {
         border-radius: 4px;
         padding: 0;
         position: relative;
@@ -145,20 +145,24 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
         width: 300px;
     }
     .input-group-text{
-        margin-top: 9px;
-        border: none;
+        margin-top: 9px !important;
+        border: none !important;
     }
    
+    .containers1 .btn {
+        border-radius: 0px !important;
+    }
+
      /* User image */
 
-    .lockscreen-image {
+    .lockscreen-image1 {
         border-radius: 50%;
         position: absolute;
         left: -10px;
         top: -20px;
         z-index: 10;
     }
-    #_white .lockscreen-image>img {
+    #_white .lockscreen-image1>img {
         border-radius: 50%;
         background: #fff;
         padding: 5px;
@@ -166,7 +170,7 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
         height: 100px;
     }
 
-    #_green .lockscreen-image>img {
+    #_green .lockscreen-image1>img {
         border-radius: 50%;
         background: rgb(27, 168, 22);
         padding: 5px;
@@ -179,7 +183,7 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
     #_green .text-muted {
         color: #f3f6f9!important;
     }
-    #_red .lockscreen-image>img {
+    #_red .lockscreen-image1>img {
         border-radius: 50%;
         background: rgb(240, 94, 94);
         padding: 5px;
@@ -192,6 +196,7 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
     #_red .text-muted {
         color: #f3f6f9!important;
     }
+
 </style>
 
 <div class="login-popup">
@@ -199,27 +204,27 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
         <span class="colose">
         	<button class="close-imagePopup"><i class="fa fa-times" aria-hidden="true"></i></button>
         </span>
-        <div class="img-popup-wrapLogin">
+        <div class="img-popup-wrapLogin1">
         	<div class="img-popup-bodys">
 
-        <div class="body-center">
-        <div class="containers container" id="container">
+        <div class="body-center1">
+        <div class="containers1 container" id="container">
                 <h1 class="mb-3 h10">Menya.com</h1>
                 <div id="response"></div>
 
-                <div class="form-container">
+                <div class="form-container1">
                     <h4><?php echo $_SESSION['username'] ;?></h4>
                     <!-- START LOCK SCREEN ITEM -->
-                    <div class="lockscreen-item">
+                    <div class="lockscreen-item1">
                         <!-- lockscreen image -->
-                        <div class="lockscreen-image">
+                        <div class="lockscreen-image1">
                         <?php if(!empty($_SESSION['profile_img'])){ ?>
                             <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$_SESSION['profile_img'] ;?>" alt="User Image">
                         <?php }else{ ?>
                             <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL; ?>" alt="User Image">
                         <?php } ?>
                         </div>
-                        <form class="lockscreen-credentials">
+                        <form class="lockscreen-credentials1">
                             <div class="input-group">
                                 <input type="password" id="Password" class="form-control" placeholder="Password">
                                 <div class="input-group-append">
@@ -250,7 +255,7 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
     </div> <!-- Wrp4 -->
 </div> <!-- apply-popup" -->
 <script>
-    $('.body-center').attr("id", '_white');
+    $('.body-center1').attr("id", '_white');
      
     function lockscreen(key) {
         var password = $("#Password");
@@ -287,11 +292,11 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
         if (caller.val() == "") {
             caller.css("border", "1px solid red");
             $('#error').html("Please fill in ...?").css("color", "_red");
-            $('.body-center').attr("id", '_red');
+            $('.body-center1').attr("id", '_red');
             return false;
         } else {
             caller.css("border", "1px solid green");
-            $('.body-center').attr("id", '_green');
+            $('.body-center1').attr("id", '_green');
             $('#error').html("Success").css("color", "_green");
         }
         return true;
@@ -301,7 +306,7 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
         if (caller.val() != "") {
             caller.css("border", "1px solid red");
             $('#error').html("Please Try Again ...?").css("color", "_red");
-            $('.body-center').attr("id", '_red');
+            $('.body-center1').attr("id", '_red');
             return false;
         }
         return true;

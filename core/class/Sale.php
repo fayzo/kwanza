@@ -109,7 +109,7 @@ class Sale extends Home{
 
             <div class="nav-scroller  py-0" style="clear:right;height:2rem;">
                 <nav class="nav d-flex justify-content-between pb-0">
-                <a class="p-2 text-light" href="javascript:void(0)" onclick="cartItemsCategories('electronics',1);">Electronics<span class="badge badge-primary"><?php echo $this->cartcountPOSTS('electronics');?></span></a>
+                <a class="p-2 text-light active" href="javascript:void(0)" data-toggle="tab" role="tab" onclick="cartItemsCategories('electronics',1);">Electronics<span class="badge badge-primary"><?php echo $this->cartcountPOSTS('electronics');?></span></a>
                 <a class="p-2 text-light" href="javascript:void(0)" onclick="cartItemsCategories('clothes',1);">Clothes<span class="badge badge-primary"><?php echo $this->cartcountPOSTS('clothes');?></span></a>
                 <a class="p-2 text-light" href="javascript:void(0)" onclick="cartItemsCategories('sports',1);">Sports<span class="badge badge-primary"><?php echo $this->cartcountPOSTS('sports');?></span></a>
                 <a class="p-2 text-light" href="javascript:void(0)" onclick="cartItemsCategories('health_beauty',1);">Health Beauty<span class="badge badge-primary"><?php echo $this->cartcountPOSTS('health_beauty');?></span></a>

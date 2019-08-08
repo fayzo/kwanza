@@ -13,7 +13,6 @@
 	top: 5%;
 	margin: 20px auto;
 	padding: 0px;
-	
 }
 
 .body-center{
@@ -52,7 +51,7 @@
     margin: 20px 0 30px;
 }
 
-span {
+.containers span {
     font-size: 12px;
 }
 
@@ -123,17 +122,18 @@ span {
     border-radius: 20px;
     outline: none;
 }
-input:hover {
+.containers input:hover {
     outline: none;
 }
-.input-group span{
+.containers .input-group span{
     border-radius: 30px;
     padding: 0px 3px !important;
 }
-.input-group-text{
+.containers .input-group-text{
     margin-top: 9px;
     border: none;
 }
+
 .redbutton {
     border-radius: 20px;
     border: 1px solid #ff4b2b;
@@ -147,15 +147,15 @@ input:hover {
     transition: transform 80ms ease-in;
 }
 
-button:active {
+.containers button:active {
     transform: scale(.95);
 }
 
-button:focus {
+.containers button:focus {
     outline: none;
 }
 
-button.ghost {
+.containers button.ghost {
     background: transparent;
     border-color: #fff;
 }

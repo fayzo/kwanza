@@ -13,6 +13,8 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
     }
     $fund_id = $_POST['fund_id'];
     $user= $fundraising->fundFecthReadmore($fund_id);
+	$comment= $fundraising->comments($fund_id);
+
      ?>
 
 <div class="fund-popup">
@@ -208,7 +210,7 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
                                     <a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $user['lastname'] ;?> | Created  on <?php echo $users->timeAgo($user['created_on2']) ;?></a>
                                     <!-- //Jonathan Burke Jr. -->
                                 </span>
-                                <span class="description" ><span class="people-message more" data-user="<?php echo $user['user_id2'];?>"><i style="font-size: 20px;" class="fa fa-envelope-o"></i> Message </span> | <i class="fa fa-tag mr-1"></i><?php echo $user['categories_fundraising'] ;?></span>
+                                <span class="description" ><span <?php if(isset($_SESSION['key'])){ echo 'class="people-message more"'; }else{ echo 'id="login-please" class="more" data-login="1"'; } ?>  data-user="<?php echo $user['user_id2'];?>"><i style="font-size: 20px;" class="fa fa-envelope-o"></i> Message </span> | <i class="fa fa-tag mr-1"></i><?php echo $user['categories_fundraising'] ;?></span>
                                 <span class="description"><i class="fa fa-map-marker mr-1"></i> <?php echo $user['country1'] ;?> | <?php echo $user['city'] ;?> | <?php echo $user['districts'] ;?>  </span>
                             </div> <!-- /.user-block -->
 
@@ -227,12 +229,11 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
                                     </div>
                                     </div>
                                     <span class="username">
-                                        <a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"> 100Frw </a>
-                                        <span class="float-right"><i class="fa fa-heart"></i> </span>
+                                        <div class="font-weight-1">donated on <?php echo $users->timeAgo($user['created_on2']) ;?> <span class="float-right"><i class="fa fa-heart"></i> </span></div>
+                                        <a class='float-left mr-1' href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"> 100Frw </a>
                                         <!-- //Jonathan Burke Jr. -->
+                                        <span class="description"> nice to donate keep up </span>
                                     </span>
-                                    <span class="description"> nice to donate keep up </span>
-                                    <span class="description">donated on <?php echo $users->timeAgo($user['created_on2']) ;?></span>
                                 </div> <!-- /.user-block -->
                               </div><!-- /.col -->
 
@@ -251,24 +252,104 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
                                     </div>
                                     <span class="username">
                                         <a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"> <?php echo $user['username']; ?> comment on - <?php echo $users->timeAgo($user['created_on2']) ;?></a>
-                                        <span class="float-right">44 <i class="fa fa-heart"></i></span>
+                                        <?php if($user['like_on'] == $user['fund_id']){ ?>
+                                            <span <?php if(isset($_SESSION['key'])){ echo 'class="unlike-fundraising-btn more float-right text-sm  mr-1"'; }else{ echo 'id="login-please" class="more float-right" data-login="1"'; } ?> data-fund="<?php echo $user['fund_id']; ?>"  data-user="<?php echo $user['user_id']; ?>"><span class="likescounter "><?php echo $user['likes_counts'] ;?></span> <i class="fa fa-heart"  ></i></span>
+                                        <?php }else{ ?>
+                                           <span <?php if(isset($_SESSION['key'])){ echo 'class="like-fundraising-btn more float-right text-sm mr-1"'; }else{ echo 'id="login-please" class="more float-right"  data-login="1"'; } ?> data-fund="<?php echo $user['fund_id']; ?>"  data-user="<?php echo $user['user_id']; ?>" ><span class="likescounter"> <?php if ($user['likes_counts'] > 0){ echo $user['likes_counts'];}else{ echo '';} ?></span> <i class="fa fa-heart-o" ></i> </span>
+                                        <?php } ?>
                                         <!-- //Jonathan Burke Jr. -->
                                     </span>
                                     <span class="description"> nice to donate keep up </span>
                                 </div> <!-- /.user-block -->
                          
                                 <div class="input-group mt-2">
-                                    <input class="form-control form-control-sm" id="commentHome" type="text"
+                                    <input class="form-control form-control-sm" id="commentField" type="text"
                                         name="comment" data-fund="<?php echo $user['fund_id'];?>"
                                         placeholder="Reply to  <?php echo $user['username'] ;?>">
                                     <div class="input-group-append">
                                         <span class="input-group-text btn" style="padding: 0px 10px;" 
-                                            aria-label="Username" aria-describedby="basic-addon1" <?php if(isset($_SESSION['key'])){ echo 'id="post_HomeComment"'; }else{ echo 'id="login-please" data-login="1"'; } ?> >
+                                            aria-label="Username" aria-describedby="basic-addon1" <?php if(isset($_SESSION['key'])){ echo 'id="funding_Comment"'; }else{ echo 'id="login-please" data-login="1"'; } ?> >
                                             <span class="fa fa-arrow-right text-muted" ></span></span>
                                     </div>
                                 </div> <!-- input-group -->
 
                               </div><!-- /.col -->
+                              <div class="col-md-12">
+                                <span id="responseComment"></span>
+                            <?php if (count($comment) > 5) { ?>
+
+                                <!-- <div class="tweet-show-popup-comment-wrap"> -->
+                                <div id="comments" style="height:300px;" class="large-2">
+                                        <!--COMMENTS-->
+                                      <?php  foreach ($comment as $user) { ?>
+                                            <div class="user-block mt-3"  id="userComment<?php echo $user["comment_id"]; ?>">
+                                                <div class="user-blockImgBorder">
+                                                <div class="user-blockImg">
+                                                        <?php if (!empty($user['profile_img'])) {?>
+                                                        <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $user['profile_img'] ;?>" alt="User Image">
+                                                        <?php  }else{ ?>
+                                                        <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
+                                                        <?php } ?>
+                                                </div>
+                                                </div>
+                                                <span class="username">
+                                                  <a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"> <?php echo $user['username']; ?> comment on - <?php echo $users->timeAgo($user['comment_at']) ;?>
+                                                     <!-- <i class="fa fa-share more" aria-hidden="true"></i> -->
+                                                  </a>
+                                                <!-- <span class="float-right mr-1">44 <i class="fa fa-heart"></i> -->
+
+                                                    <?php if($user['like_on_'] == $user['comment_id']){ ?>
+                                                        <span <?php if(isset($_SESSION['key'])){ echo 'class="unlike-fundraisingUser-btn more float-right text-sm  mr-1"'; }else{ echo 'id="login-please" class="more float-right" data-login="1"'; } ?> data-comment="<?php echo $user['comment_id']; ?>"  data-user="<?php echo $user['user_id']; ?>"><span class="likescounter "><?php echo $user['likes_counts_'] ;?></span> <i class="fa fa-heart"  ></i></span>
+                                                    <?php }else{ ?>
+                                                        <span <?php if(isset($_SESSION['key'])){ echo 'class="like-fundraisingUser-btn more float-right text-sm mr-1"'; }else{ echo 'id="login-please" class="more float-right"  data-login="1"'; } ?> data-comment="<?php echo $user['comment_id']; ?>"  data-user="<?php echo $user['user_id']; ?>" ><span class="likescounter"> <?php if ($user['likes_counts_'] > 0){ echo $user['likes_counts_'];}else{ echo '';} ?></span> <i class="fa fa-heart-o" ></i> </span>
+                                                    <?php } ?>
+
+                                                    <?php if($user["comment_by"] === $user_id){ ?>
+                                                        <span class="deleteFundraisingComment more" data-fund="<?php echo $user["fund_id"]; ?>" data-comment="<?php echo $user["comment_id"]; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                                    <?php }else { echo ''; } ?>
+                                                </span>
+                                                    <!-- //Jonathan Burke Jr. -->
+                                                </span>
+                                                <span class="description"> <?php echo $user['comment']; ?>  </span>
+                                            </div> <!-- /.user-block -->
+                                    <?php } ?>
+                                </div><!-- comments -->
+
+                                <?php  }else{ ?>
+                                <div id="comments">
+                                        <!--COMMENTS-->
+                                      <?php  foreach ($comment as $user) { ?>
+                                            <div class="user-block mt-3" id="userComment<?php echo $user["comment_id"]; ?>">
+                                                <div class="user-blockImgBorder">
+                                                <div class="user-blockImg">
+                                                        <?php if (!empty($user['profile_img'])) {?>
+                                                        <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $user['profile_img'] ;?>" alt="User Image">
+                                                        <?php  }else{ ?>
+                                                        <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
+                                                        <?php } ?>
+                                                </div>
+                                                </div>
+                                                <span class="username">
+                                                    <a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"> <?php echo $user['username']; ?> comment on - <?php echo $users->timeAgo($user['comment_at']) ;?></a>
+                                                <!-- <span class="float-right mr-1">44 <i class="fa fa-heart"></i> -->
+                                                     <?php if($user['like_on_'] == $user['comment_id']){ ?>
+                                                        <span <?php if(isset($_SESSION['key'])){ echo 'class="unlike-fundraisingUser-btn more float-right text-sm  mr-1"'; }else{ echo 'id="login-please" class="more float-right" data-login="1"'; } ?> data-comment="<?php echo $user['comment_id']; ?>"  data-user="<?php echo $user['user_id']; ?>"><span class="likescounter "><?php echo $user['likes_counts_'] ;?></span> <i class="fa fa-heart"  ></i></span>
+                                                    <?php }else{ ?>
+                                                        <span <?php if(isset($_SESSION['key'])){ echo 'class="like-fundraisingUser-btn more float-right text-sm mr-1"'; }else{ echo 'id="login-please" class="more float-right"  data-login="1"'; } ?> data-comment="<?php echo $user['comment_id']; ?>"  data-user="<?php echo $user['user_id']; ?>" ><span class="likescounter"> <?php if ($user['likes_counts_'] > 0){ echo $user['likes_counts_'];}else{ echo '';} ?></span> <i class="fa fa-heart-o" ></i> </span>
+                                                    <?php } ?>
+
+                                                    <?php if($user["comment_by"] === $user_id){ ?>
+                                                        <span class="deleteFundraisingComment more" data-fund="<?php echo $user["fund_id"]; ?>" data-comment="<?php echo $user["comment_id"]; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                                    <?php }else { echo ''; } ?>
+                                                </span>
+                                                    <!-- //Jonathan Burke Jr. -->
+                                                </span>
+                                                <span class="description"> <?php echo $user['comment']; ?>  </span>
+                                            </div> <!-- /.user-block -->
+                                    <?php } ?>
+                                </div><!-- comments -->
+                                <?php  } ?>
+                              </div><!-- col -->
 
                             </div><!-- /.row -->
 

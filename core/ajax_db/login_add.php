@@ -107,12 +107,11 @@ if(isset($_POST['key'])){
   }
 }
 
-if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
-    $login_id= $_POST['login_id']; 
+if (isset($_REQUEST['login_id']) && !empty($_REQUEST['login_id'])) {
+    $login_id= $_REQUEST['login_id']; 
     ?>
    <link href="<?php echo BASE_URL_LINK ;?>dist/css/login.css" rel="stylesheet">
-    <!-- <script src="< ?php echo BASE_URL_LINK ;?>icon/fontawesome_5_4/js/all.js"></script> -->
-    <script src="<?php echo BASE_URL_LINK ;?>dist/js/country_login.js"></script>
+    <script src="<?php echo BASE_URL_LINK ;?>dist/js/country_login_ajax-db.js"></script>
     <script src="<?php echo BASE_URL_LINK ;?>js/login.js"></script>
 
 <div class="login-popup">
@@ -124,7 +123,7 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
         	<div class="img-popup-body">
                   
             <div class='body-center0  clear-float'>
-                <div class="containers" id="container">
+                <div class="containers container" id="container">
                     <div class="form-container sign-up-container">
                         <form action="post">
                             <div id="response"></div>
@@ -247,8 +246,8 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
         </div><!-- user-show-popup-box -->
     </div> <!-- Wrp4 -->
 </div> <!-- apply-popup" -->
-<script>
 
+<script>
     function manage(key) {
         var email = $("#usernameoremail");
         var password = $("#passwordlogin");
@@ -339,8 +338,11 @@ if (isset($_POST['login_id']) && !empty($_POST['login_id'])) {
                     console.log(response);
                     if (response.indexOf('SUCCESS') >= 0) {
                         setInterval(() => {
-                            window.document = 'core/ajax_db/login_add.php?login_id='+1;
+                            window.location = 'include/login.php';
                         }, 2000);
+                        //  setInterval(() => {
+                        //     location.reload();
+                        // }, 2000);
                     } else {
                         isEmptys(firstname) || isEmptys(lastname) || isEmptys(gender) || isEmptys(country) ||
                             isEmptys(date) || isEmptys(username) || isEmptys(email) || isEmptys(password) ||

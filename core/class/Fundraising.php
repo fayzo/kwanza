@@ -16,7 +16,7 @@ class Fundraising extends Home
             $showpages = ($pages*8)-8;
         }
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM users U Left JOIN fundraising F ON F. user_id2 = u. user_id WHERE F. categories_fundraising ='$categories'  ORDER BY created_on2 Desc Limit $showpages,8");
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN fundraising F ON F. user_id2 = u. user_id  Left JOIN fund_like L ON L. like_on= F. fund_id WHERE F. categories_fundraising ='$categories'  ORDER BY created_on2 Desc Limit $showpages,8");
         ?>
             <div class="row mt-3">
         <?php while($row= $query->fetch_array()) { ?>
@@ -28,6 +28,11 @@ class Fundraising extends Home
                             <span class="btn btn-light"><span style="font-size: 14px" class="material-icons p-0 m-0"> trending_up</span> trending</span>
                         </div>
                         <div style="position: absolute;bottom: 0px; right: 0;left:0px;background-color: #cfd3d6a1">
+                                <?php if($row['like_on'] == $row['fund_id']){ ?>
+                                            <span <?php if(isset($_SESSION['key'])){ echo 'class="unlike-fundraising-btn more float-right text-sm  mt-1 mr-1 text-dark"'; }else{ echo 'id="login-please" class="more float-right  mt-1 mr-1 text-dark" data-login="1" '; } ?> style="font-size:16px;" data-fund="<?php echo $row['fund_id']; ?>"  data-user="<?php echo $row['user_id']; ?>"><span class="likescounter "><?php echo $row['likes_counts'] ;?></span> <i class="fa fa-heart"  ></i></span>
+                                <?php }else{ ?>
+                                    <span <?php if(isset($_SESSION['key'])){ echo 'class="like-fundraising-btn more float-right text-sm  mt-1 mr-1 text-dark"'; }else{ echo 'id="login-please" class="more float-right mt-1 mr-1 text-dark"  data-login="1" '; } ?> style="font-size:16px;" data-fund="<?php echo $row['fund_id']; ?>"  data-user="<?php echo $row['user_id']; ?>" ><span class="likescounter"> <?php if ($row['likes_counts'] > 0){ echo $row['likes_counts'];}else{ echo '';} ?></span> <i class="fa fa-heart-o" ></i> </span>
+                                <?php } ?>
                                <h5 class="card-title text-dark m-1 pb-1 pl-2">Helps <?php echo $row['lastname'] ;?> </h5>
                               <div class="progress " style="height: 6px;">
                                 <div class="progress-bar  bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -38,7 +43,7 @@ class Fundraising extends Home
                             <div class="card-body pl-1 pb-1">
                               <span class="h5">500 Frw raised </span>
                               <span class="text-muted"> Out of 5000 Frw</span>
-                              <p> lifelifelifelifelifelifelifelifelifelifelifelifeli</p>
+                              <p><?php echo $row['text'] ;?></p>
                               <div class="float-right">
                               <button type="button" id="fund-readmore" data-fund="<?php echo $row['fund_id'] ;?>" class="btn btn-primary" >+ Read more</button></div>
                             </div>
@@ -78,9 +83,65 @@ class Fundraising extends Home
     public function fundFecthReadmore($fund_id)
     {
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM users U Left JOIN fundraising F ON F. user_id2 = u. user_id WHERE F. fund_id = '$fund_id' ");
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN fundraising F ON F. user_id2 = u. user_id Left JOIN fund_like L ON L. like_on= F. fund_id WHERE F. fund_id = '$fund_id' ");
         $row= $query->fetch_array();
         return $row;
+    }
+
+      public function comments($tweet_id)
+    {
+        $mysqli= $this->database;
+        $query= "SELECT * FROM comment_funding LEFT JOIN users ON comment_by=user_id LEFT JOIN fundraising ON comment_on=fund_id Left JOIN fundraising_comment_like ON comment_id =like_on_  WHERE comment_on = $tweet_id ORDER BY comment_at DESC";
+        $result= $mysqli->query($query);
+        $comments= array();
+        while ($row= $result->fetch_assoc()) {
+             $comments[] = $row;
+        }
+        return $comments;
+    }
+
+       public function addLikeFundraising($user_id,$fund_id,$get_id)
+    {
+        $mysqli= $this->database;
+        $query= "UPDATE fundraising SET likes_counts = likes_counts +1 WHERE fund_id= $fund_id ";
+        $mysqli->query($query);
+        // if ($get_id != $user_id) {
+        //     Notification::SendNotifications($get_id,$user_id,$fund_id,'likes');
+        // }
+        $this->creates('fund_like',array('like_by' => $user_id ,'like_on' => $fund_id));
+    }
+
+      public function unLikeFundraising( $user_id,$fund_id, $get_id)
+    {
+        $mysqli= $this->database;
+        $query= "UPDATE fundraising SET likes_counts = likes_counts -1 WHERE fund_id= $fund_id ";
+        $mysqli->query($query);
+
+        $query= "DELETE FROM fund_like WHERE like_by = $user_id AND like_on = $fund_id ";
+        $mysqli->query($query);
+
+    }
+
+       public function addLikeFundraisingUsercomment($user_id,$comment_id,$get_id)
+    {
+        $mysqli= $this->database;
+        $query= "UPDATE comment_funding SET likes_counts_ = likes_counts_ +1 WHERE comment_id= $comment_id ";
+        $mysqli->query($query);
+        // if ($get_id != $user_id) {
+        //     Notification::SendNotifications($get_id,$user_id,$fund_id,'likes');
+        // }
+        $this->creates('fundraising_comment_like',array('like_by_' => $user_id ,'like_on_' => $comment_id));
+    }
+
+      public function unLikeFundraisingUsercomment($user_id,$comment_id, $get_id)
+    {
+        $mysqli= $this->database;
+        $query= "UPDATE comment_funding SET likes_counts_ = likes_counts_ -1 WHERE comment_id= $comment_id ";
+        $mysqli->query($query);
+
+        $query= "DELETE FROM fundraising_comment_like WHERE like_by_ = $user_id AND like_on_ = $comment_id ";
+        $mysqli->query($query);
+
     }
 
 }

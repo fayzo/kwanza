@@ -4,7 +4,7 @@ include('../init.php');
 $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpath($_SERVER['SCRIPT_FILENAME']));
 
 if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
-    $user_id= $_SESSION['key'];
+    // $user_id= $_SESSION['key'];
     $user_id = $_POST['user_id'];
     $user= $home->userData($user_id);
 ?>

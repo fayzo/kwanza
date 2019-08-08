@@ -207,7 +207,7 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
                                     <a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $user['lastname'] ;?> | Created  on <?php echo $users->timeAgo($user['created_on2']) ;?></a>
                                     <!-- //Jonathan Burke Jr. -->
                                 </span>
-                                <span class="description" ><span class="people-message more" data-user="<?php echo $user['user_id2'];?>"><i style="font-size: 20px;" class="fa fa-envelope-o"></i> Message </span> | <i class="fa fa-tag mr-1"></i><?php echo $user['categories_crowfundraising'] ;?></span>
+                                <span class="description" ><span <?php if(isset($_SESSION['key'])){ echo 'class="people-message more"'; }else{ echo 'id="login-please" class="more" data-login="1"'; } ?> data-user="<?php echo $user['user_id2'];?>"><i style="font-size: 20px;" class="fa fa-envelope-o"></i> Message </span> | <i class="fa fa-tag mr-1"></i><?php echo $user['categories_crowfundraising'] ;?></span>
                                 <span class="description"><i class="fa fa-map-marker mr-1"></i> <?php echo $user['country1'] ;?> | <?php echo $user['city'] ;?> | <?php echo $user['districts'] ;?>  </span>
                             </div> <!-- /.user-block -->
 
@@ -262,8 +262,8 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
                                         placeholder="Reply to  <?php echo $user['username'].$user['fund_id'] ;?>">
                                     <div class="input-group-append">
                                         <span class="input-group-text btn" style="padding: 0px 10px;" 
-                                            aria-label="Username" aria-describedby="basic-addon1">
-                                            <span class="fa fa-arrow-right text-muted" id="CrowfundpostComment"></span></span>
+                                            aria-label="Username" aria-describedby="basic-addon1"  <?php if(isset($_SESSION['key'])){ echo 'id="CrowfundpostComment"'; }else{ echo 'id="login-please" data-login="1"'; } ?>>
+                                            <span class="fa fa-arrow-right text-muted"></span></span>
                                     </div>
                                 </div> <!-- input-group -->
                                  

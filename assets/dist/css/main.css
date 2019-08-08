@@ -125,6 +125,9 @@
 #rose .colorlightLINK{
   color:  #d2c6c6f7;
 }
+#rose .card .user-block a {
+    color: black;
+}
 #green .main-active{
     background-color:#36f92a;
     color:#283b40;

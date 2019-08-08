@@ -4,7 +4,7 @@ include('../init.php');
 $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpath($_SERVER['SCRIPT_FILENAME']));
 
 if (isset($_POST['job_id']) && !empty($_POST['job_id'])) {
-    $user_id= $_SESSION['key'];
+    // $user_id= $_SESSION['key'];
     $job_id= $_POST['job_id']; 
     $business_id= $_POST['business_id']; 
     $user = $home->jobsviewData($business_id,$job_id);
@@ -23,7 +23,7 @@ if (isset($_POST['job_id']) && !empty($_POST['job_id'])) {
                              </div>
                              </div>
                              <span class="username">
-                                 <a style="padding-right:3px;" class="h5" href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $home->htmlspecialcharss($user['job_title']) ;?></a>
+                                 <a  style="padding-right:3px;" class="h5" href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $home->htmlspecialcharss($user['job_title']) ;?></a>
                              </span>
                                  <a style="padding-right:3px;" href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $home->htmlspecialcharss($user['companyname']).' || '.$user['country'];?> <i class="flag-icon flag-icon-<?php echo strtolower($user['country']) ;?> h4 mb-0"
                             id="<?php echo strtolower( $jobs['location']) ;?>" title="us"></i></a>
@@ -36,7 +36,7 @@ if (isset($_POST['job_id']) && !empty($_POST['job_id'])) {
                       <div class="card mt-2 mb-2 retweetcolor">
                         <div class="card-body">
                            <div class="row">
-                             <div class="col-md-2">
+                             <div class="float-left">
                                  <div class="user-jobImgall">
                                        <?php if (!empty($user['profile_img'])) {?>
                                        <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $user['profile_img'] ;?>" alt="User Image">
@@ -45,11 +45,11 @@ if (isset($_POST['job_id']) && !empty($_POST['job_id'])) {
                                        <?php } ?>
                                  </div>
                              </div> <!-- col-md-3 -->
-                             <div class="col-md-10">
+                             <div class="float-left ml-2 mt-2">
                                <span><?php echo $user['companyname']; ?></span>
                                <h5>Company Overview</h5>
-                               <span><?php echo $user['overview']; ?></span>
-                             </div> <!-- col-md-9 -->
+                              </div> <!-- col-md-9 -->
+                              <span class="clear-float"><?php echo $user['overview']; ?></span>
                            </div>
                         </div>
                       </div>
@@ -169,14 +169,14 @@ if (isset($_POST['job_id']) && !empty($_POST['job_id'])) {
                               <span>Deadline: june 23 </span>
                              <span >number of positions: 2</span>
                           <hr> -->
-                          <input type="button" id="Apply" value="Apply" data-applyjob="<?php echo $job_id ;?>" data-business="<?php echo $business_id ;?>" class="btn btn-success">
+                          <input type="button" value="Apply"  <?php if(isset($_SESSION['key'])){ echo 'id="Apply" data-applyjob="'.$job_id.'" data-business="'.$business_id.'"'; }else{ echo 'id="login-please" data-login="1"' ; } ?>  class="btn btn-success">
                     </div>
                 </div>
 
 <?php } 
 
 if (isset($_POST['search']) && !empty($_POST['search'])) {
-    $user_id= $_SESSION['key'];
+    // $user_id= $_SESSION['key'];
     $search= $users->test_input($_POST['search']);
     $result= $home->searchJobs($search);
     echo '<h4 style="padding: 0px 10px;">'.$_POST['search'].'</h4> ';

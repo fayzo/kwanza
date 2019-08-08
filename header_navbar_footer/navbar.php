@@ -217,7 +217,8 @@
 <?php }else{?>
  <div class="navbar-nav float-right">
       <div class="nav-item">
-        <a class="nav-link" href="<?php echo LOGIN ;?>">
+         <a href="#" id="siderbarResponsive" onclick="openNav()" class="nav-link float-right pt-3"><i class="fa fa-gears"></i></a>
+        <a class="nav-link float-right" href="<?php echo LOGIN ;?>">
         <span style="text-transform:capitalize" id="welcome-json"></span>, Do you Have an account ? 
         <i style="font-size: 22px;" class="fa fa-expeditedssl"></i> Login <span class="sr-only">(current)</span>
         </a>

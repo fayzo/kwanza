@@ -46,6 +46,7 @@
    <!-- END DIRECT CHAT PRIMARY -->
    <?php include_once('core/ajax_db/direchat.php') ;?>
    <!-- END DIRECT CHAT PRIMARY -->
+<?php } ?>
 
    <aside>
        <div id="mySidenav" class="sidenav">
@@ -102,6 +103,8 @@
                   </div>
                 </div>
 
+                 <?php if (isset($_SESSION['key'])){ ?>
+
                    <div class="dropdown">
                        <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
@@ -119,6 +122,8 @@
                                    src="<?php echo BASE_URL_LINK ;?>image/flag/iconfinder_Flag_of_Rwanda_96263.png"
                                    width="30px"></a>
                        </div>
+                    </div>
+                  <?php } ?>
 
                     <div class="dropdown">
                         <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -139,7 +144,6 @@
                    </div>
                </div>
    </aside>
-<?php } ?>
    <!-- Bootstrap core JavaScript
     ================================================== -->
    <!-- Placed at the end of the document so the pages load faster -->
@@ -212,6 +216,9 @@
    <script src="<?php echo BASE_URL_LINK ;?>js/school_add.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/crowfund_addomments.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/domesticsHelper_profile.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/fund_addcomment.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/fundraising_like.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/fundraising_deleteComment.js"></script>
    
    <!-- <script src="<?php echo BASE_URL_LINK ;?>js/add_post_ajax.js"></script> -->
    <script src="<?php echo BASE_URL_LINK ;?>js/manage_admins_ajax.js"></script>

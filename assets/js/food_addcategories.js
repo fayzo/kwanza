@@ -57,9 +57,9 @@ $(document).ready(function () {
         var price = $('#price');
         var phone = $('#phone');
         var country = $('#country');
+        var city = $('#city');
         var province = $('#province');
         var districts = $('#districts');
-        var city = $('#city');
         var sector = $('#sector');
         var cell = $('#cell');
         var village = $('#village');

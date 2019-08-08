@@ -30,7 +30,6 @@ $(document).ready(function () {
     });
 });
 
-
 $(document).ready(function () {
     $(document).on('click', '.unlike-btn', function () {
         var tweet_id = $(this).data('tweet');

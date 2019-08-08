@@ -12,6 +12,7 @@
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/navbar_green.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/navbar_chocolate.css" rel="stylesheet">
 
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/login.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/dropdown.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/siderbarResponsive.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/boxChat.css" rel="stylesheet">
@@ -1104,7 +1105,6 @@
     }
     html,body { font-size: 12px; }
     </style>
-
 </head>
 
 <body class="<?php echo $user['language']." ".$user['background']; ?>" style="padding-top:5rem;" id="<?php echo $user['color']; ?>">

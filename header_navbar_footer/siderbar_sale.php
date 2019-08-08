@@ -13,17 +13,15 @@
       </header>
 
     <div class="row mt-3">
-      <div class="col-4 col-md-2 col-lg-2 py-3 px-2">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Title</h4>
-                    <p class="card-text">Text</p>
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">Title</h4>
-                    <p class="card-text">Text</p>
-                </div>
-            </div> <!-- card -->
+      <div class="col-4 col-md-2 col-lg-2 ">
+          <div class="list-group sticky-top" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-Business-list" onclick="cartItemsCategories('electronics',1);" data-toggle="tab" role="tab" aria-controls="list-Community" >Electronics <span class="float-right badge badge-primary"><?php echo $sale->cartcountPOSTS('electronics');?></span></a>
+            <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="cartItemsCategories('clothes',1);" data-toggle="tab"  role="tab" aria-controls="list-Community" >Clothes  <span class="float-right badge badge-primary"><?php echo $sale->cartcountPOSTS('clothes');?></span></a>
+            <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="cartItemsCategories('sports',1);" data-toggle="tab"  role="tab"  aria-controls="list-Community">Sports  <span class="float-right badge badge-primary"><?php echo $sale->cartcountPOSTS('sports');?></span></a>
+            <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="cartItemsCategories('health_beauty',1);" data-toggle="tab"  role="tab" aria-controls="list-Community">Health  <span class="float-right badge badge-primary"><?php echo $sale->cartcountPOSTS('health_beauty');?></span></a>
+            <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="cartItemsCategories('home_garden',1);" data-toggle="tab"  role="tab" aria-controls="list-Community">Home  <span class="float-right badge badge-primary"><?php echo $sale->cartcountPOSTS('home_garden');?></span></a>
+          </div>
+
       </div>
 
       <div class="col-8 col-md-10 col-lg-10 ">
