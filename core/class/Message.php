@@ -192,6 +192,29 @@ class Message extends Home
         var_dump( $mysqli->query($query));
 
     }
+
+     public function deleteMsgAll($message_to,$user_id)
+    {
+        $mysqli= $this->database;
+        $query= "DELETE FROM message WHERE message_to = $message_to AND message_from = $user_id ";
+        $sql=$mysqli->query($query);
+
+        if($sql){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail input try again !!!</strong>
+                </div>');
+        }
+
+    }
 }
 
 

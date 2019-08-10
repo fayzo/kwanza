@@ -45,16 +45,85 @@ class Car extends House {
         <span class="job-show"></span>
         <div class="job-hide">
             <ul class="timeline timeline-inverse">  
+                <li class="time-label">
+                        <span style="margin-left: -10px;"> <img src="<?php echo BASE_URL_LINK.'image/banner/discount.png' ;?>" width="80px"> </span>
+                        <?php switch ($categories) {
+                            case $categories == 'car_For_sale':
+                                # code...
+                                echo '<img src="'.BASE_URL_LINK.'image/banner/banners1.png" width="200px">
+                                      <img style="float: right;margin-top:15px;margin-right:25px;" src="'.BASE_URL_LINK.'image/banner/weekPrice.png" width="200px">
+                                    ';
+                                break;
+                            case $categories == 'car_For_rent':
+                                # code...
+                                echo '<img src="'.BASE_URL_LINK.'image/img/photo1.png" width="200px">
+                                      <img style="float: right;margin-top:15px;margin-right:25px;" src="'.BASE_URL_LINK.'image/banner/weekPrice.png" width="200px">
+                                    ';
+                                break;
+                            case $categories == 'camion_For_sale':
+                                # code...
+                                echo '<img src="'.BASE_URL_LINK.'image/img/photo2.png" width="200px">
+                                      <img style="float: right;margin-top:15px;margin-right:25px;" src="'.BASE_URL_LINK.'image/banner/weekPrice.png" width="200px">
+                                    ';
+                                break;
+                            case $categories == 'motor_For_sale':
+                                # code...
+                                echo '<img src="'.BASE_URL_LINK.'image/img/photo3.jpg" width="200px">
+                                      <img style="float: right;margin-top:15px;margin-right:25px;" src="'.BASE_URL_LINK.'image/banner/weekPrice.png" width="200px">
+                                    ';
+                                break;
+                            case $categories == 'bicycle_For_sale':
+                                # code...
+                                echo '<img src="'.BASE_URL_LINK.'image/img/photo4.jpg" width="200px">
+                                      <img style="float: right;margin-top:15px;margin-right:25px;" src="'.BASE_URL_LINK.'image/banner/weekPrice.png" width="200px">
+                                    ';
+                                break;
+                        } ?>
+                          
+                </li>
           <?php while($car= $query->fetch_array()) { ?>
                     <li class="time-label">
                         <?php echo $this->buychangesColor($car['buy']); ?>
+                        
+                         <?php if($car['discount'] != 0){ ?>
+                            <?php echo $this->PercentageDiscount($car['discount']); ?>
+                        <?php }else { ?>
+                            <span class="bg-info text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;margin-top: 40px;"> 0% </span> 
+                        <?php } ?>
 
                         <div class="timeline-item card flex-md-row shadow-sm h-md-100 border-0">
-                        <img class="card-img-left flex-auto d-none d-lg-block" height="100px" width="100px" src="<?php echo BASE_URL_PUBLIC.'uploads/car/'.$car['photo'] ;?>" alt="Card image cap">
+                        <!-- <img class="card-img-left flex-auto d-none d-lg-block" height="100px" width="100px" src="< ?php echo BASE_URL_PUBLIC.'uploads/car/'.$car['photo'] ;?>" alt="Card image cap"> -->
+                        <div class='card-img-left flex-auto d-none d-lg-block' style="background: url('<?php echo BASE_URL_PUBLIC.'uploads/car/'.$car['photo']; ?>')no-repeat center center;background-size:cover;height:100px;width:100px">
+                        <?php $banner = $car['banner'];
+                        switch ($banner) {
+                            case $banner == 'new':
+                                # code...
+                                echo '<img style="margin-left: -10px;" src="'.BASE_URL_LINK.'image/banner/new.png" height="100px" width="100px">';
+                                break;
+                            case $banner == 'great_deal':
+                                # code...
+                                echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/great-deal.png" height="100px" width="100px">';
+                                break;
+                            case $banner == 'new_arrival':
+                                # code...
+                                echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival.png" height="100px" width="100px">';
+                                break;
+                            case $banner == 'vegetables':
+                                # code...
+                                echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival5.png" height="100px" width="100px">';
+                                break;
+                            case $banner == 'macedone':
+                                # code...
+                                echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival5.png" height="100px" width="100px">';
+                                break;
+                            
+                        } ?>
+                          
+                        </div>
                         <div class="card-body pt-0">
                            <div class="text-primary mb-0">
                               <a class="text-primary float-left" href="javascript:void(0)" id="car-readmore" data-car="<?php echo $car['car_id']; ?>" ><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $car['cell']."/".$car['sector']; ?></a>
-                               <span class="float-right"> <?php echo $car['price']; ?> Frw</span>
+                               <span class="float-right"> <?php if($car['price_discount'] != 0){ ?><span class="mr-2 text-danger " style="text-decoration: line-through;"><?php echo number_format($car['price_discount'], 2); ?> Frw</span> <?php } ?><span class="text-primary" > <?php echo number_format($car['price'], 2); ?> Frw</span></span>
                             </div> 
                             <div class="text-muted clear-float">
                                 <span class="float-left"><i class="fa fa-home" aria-hidden="true"></i>  <?php echo $categories; ?></span>

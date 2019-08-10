@@ -3,7 +3,7 @@
        header('Location: ../../404.html');
  }
 
-class House extends home {
+class House extends Home {
 
      public function houseList($categories,$pages)
     {
@@ -46,16 +46,93 @@ class House extends home {
         <span class="job-show"></span>
         <div class="job-hide">
             <ul class="timeline timeline-inverse">  
+               <li class="time-label">
+                        <span style="margin-left: -10px;"> <img src="<?php echo BASE_URL_LINK.'image/banner/discount.png' ;?>" width="80px"> </span>
+                        <?php switch ($categories) {
+                            case $categories == 'House_For_sale':
+                                # code...
+                                echo '<img src="'.BASE_URL_LINK.'image/banner/banners1.png" width="200px">
+                                      <img style="float: right;margin-top:15px;margin-right:25px;" src="'.BASE_URL_LINK.'image/banner/weekPrice.png" width="200px">
+                                    ';
+                                break;
+                            case $categories == 'House_For_rent':
+                                # code...
+                                echo '<img src="'.BASE_URL_LINK.'image/img/photo1.png" width="200px">
+                                      <img style="float: right;margin-top:15px;margin-right:25px;" src="'.BASE_URL_LINK.'image/banner/weekPrice.png" width="200px">
+                                    ';
+                                break;
+                            case $categories == 'House_Land':
+                                # code...
+                                echo '<img src="'.BASE_URL_LINK.'image/img/photo2.png" width="200px">
+                                      <img style="float: right;margin-top:15px;margin-right:25px;" src="'.BASE_URL_LINK.'image/banner/weekPrice.png" width="200px">
+                                    ';
+                                break;
+                            case $categories == 'Apartment_For_sale':
+                                # code...
+                                echo '<img src="'.BASE_URL_LINK.'image/img/photo3.jpg" width="200px">
+                                      <img style="float: right;margin-top:15px;margin-right:25px;" src="'.BASE_URL_LINK.'image/banner/weekPrice.png" width="200px">
+                                    ';
+                                break;
+                            case $categories == 'Apartment_For_rent':
+                                # code...
+                                echo '<img src="'.BASE_URL_LINK.'image/img/photo4.jpg" width="200px">
+                                      <img style="float: right;margin-top:15px;margin-right:25px;" src="'.BASE_URL_LINK.'image/banner/weekPrice.png" width="200px">
+                                    ';
+                                break;
+                            case $categories == 'Offices_stores':
+                                # code...
+                                echo '<img src="'.BASE_URL_LINK.'image/img/photo4.jpg" width="200px">
+                                      <img style="float: right;margin-top:15px;margin-right:25px;" src="'.BASE_URL_LINK.'image/banner/weekPrice.png" width="200px">
+                                    ';
+                                break;
+                            
+                        } ?>
+                          
+                </li>
           <?php while($house= $query->fetch_array()) { ?>
                     <li class="time-label">
                         <?php echo $this->buychangesColor($house['buy']); ?>
+                     
+                         <?php if($house['discount'] != 0){ ?>
+                            <?php echo $this->PercentageDiscount($house['discount']); ?>
+                        <?php }else { ?>
+                            <span class="bg-info text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;margin-top: 40px;"> 0% </span> 
+                        <?php } ?>
 
                         <div class="timeline-item card flex-md-row shadow-sm h-md-100 border-0">
-                        <img class="card-img-left flex-auto d-none d-lg-block" height="100px" width="100px" src="<?php echo BASE_URL_PUBLIC.'uploads/house/'.$house['photo'] ;?>" alt="Card image cap">
+                        <!-- <img class="card-img-left flex-auto d-none d-lg-block" height="100px" width="100px" src="< ?php echo BASE_URL_PUBLIC.'uploads/house/'.$house['photo'] ;?>" alt="Card image cap"> -->
+                        <div class='card-img-left flex-auto d-none d-lg-block' style="background: url('<?php echo BASE_URL_PUBLIC.'uploads/house/'.$house['photo']; ?>')no-repeat center center;background-size:cover;height:100px;width:100px">
+                        <?php $banner = $house['banner'];
+                        switch ($banner) {
+                            case $banner == 'new':
+                                # code...
+                                echo '<img style="margin-left: -10px;" src="'.BASE_URL_LINK.'image/banner/new.png" height="100px" width="100px">';
+                                break;
+                            case $banner == 'great_deal':
+                                # code...
+                                echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/great-deal.png" height="100px" width="100px">';
+                                break;
+                            case $banner == 'new_arrival':
+                                # code...
+                                echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival.png" height="100px" width="100px">';
+                                break;
+                            case $banner == 'vegetables':
+                                # code...
+                                echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival5.png" height="100px" width="100px">';
+                                break;
+                            case $banner == 'macedone':
+                                # code...
+                                echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival5.png" height="100px" width="100px">';
+                                break;
+                            
+                        } ?>
+                          
+                        </div>
                         <div class="card-body pt-0">
                            <div class="text-primary mb-0">
                               <a class="text-primary float-left" href="javascript:void(0)" id="house-readmore" data-house="<?php echo $house['house_id']; ?>" ><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $house['cell']."/".$house['sector']; ?></a>
-                               <span class="float-right"> <?php echo $house['price']; ?> Frw</span>
+                               <span class="float-right"> <?php if($house['price_discount'] != 0){ ?><span class="mr-2 text-danger " style="text-decoration: line-through;"><?php echo number_format($house['price_discount'], 2); ?> Frw</span> <?php } ?><span class="text-primary" > <?php echo number_format($house['price'], 2); ?> Frw</span></span>
+                               <!-- <span class="float-right"> < ?php echo $house['price']; ?> Frw</span> -->
                             </div> 
                             <div class="text-muted clear-float">
                                 <span class="float-left"><i class="fa fa-home" aria-hidden="true"></i>  <?php echo $categories; ?></span>
@@ -121,12 +198,12 @@ class House extends home {
     switch ($variable) {
         case $variable == 'available' :
             # code...
-            return '<span class="bg-success text-light" style="position: absolute;font-size: 11px; padding: 2px; margin-left: 10px;"> '.$variable.' </span> ';
+            return '<span class="bg-success text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;"> '.$variable.' </span> ';
             break;
 
         case $variable == 'sold' :
             # code...
-            return '<span class="bg-danger text-light" style="position: absolute;font-size: 11px; padding: 2px; margin-left: 10px;"> '.$variable.' </span> ';
+            return '<span class="bg-danger text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;"> '.$variable.' </span> ';
             break;
         }
     }
@@ -138,6 +215,50 @@ class House extends home {
         $row= $query->fetch_array();
         return $row;
     }
+
+     function PercentageDiscount($variable)
+    {
+
+    switch ($variable) {
+        case $variable <= 10 :
+            # code...
+            return '<span class="bg-danger text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;margin-top: 40px;"> '.$variable.'% </span> ';
+            break;
+        case $variable <= 20 :
+            # code...
+            return '<span class="bg-danger text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;margin-top: 40px;"> '.$variable.'% </span> ';
+            break;
+        case $variable <= 30 :
+            # code...
+            return '<span class="bg-info text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;margin-top: 40px;"> '.$variable.'% </span> ';
+            break;
+        case $variable <= 35:
+            # code...
+            return '<span class="bg-warning text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;margin-top: 40px;"> '.$variable.'% </span> ';
+            break;
+        case $variable <= 40:
+            # code...
+            return '<span class="bg-info text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;margin-top: 40px;"> '.$variable.'% </span> ';
+            break;
+        case $variable <= 50:
+            # code...
+            return '<span class="bg-success text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;margin-top: 40px;"> '.$variable.'% </span> ';
+            break;
+        case $variable <= 60:
+            # code...
+            return '<span class="bg-success text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;margin-top: 40px;"> '.$variable.'% </span> ';
+            break;
+        case $variable <= 75:
+            # code...
+            return '<span class="bg-success text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;margin-top: 40px;"> '.$variable.'% </span> ';
+            break;
+        default:
+            # code...
+            return '<span class="bg-success text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;margin-top: 40px;"> '.$variable.'% </span> ';
+            break;
+        }
+
+    } 
 }
 
 $house = new House();

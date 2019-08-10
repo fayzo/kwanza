@@ -219,6 +219,8 @@
    <script src="<?php echo BASE_URL_LINK ;?>js/fund_addcomment.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/fundraising_like.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/fundraising_deleteComment.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/crowfundraising_like.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/crowfundraising_deleteComment.js"></script>
    
    <!-- <script src="<?php echo BASE_URL_LINK ;?>js/add_post_ajax.js"></script> -->
    <script src="<?php echo BASE_URL_LINK ;?>js/manage_admins_ajax.js"></script>

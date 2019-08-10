@@ -8,6 +8,14 @@ if (isset($_POST['deleteMessage']) && !empty($_POST['deleteMessage'])) {
 	$message_id= $users->test_input($_POST['deleteMessage']);
 	$message->deleteMsg($message_id,$user_id);
 }
+if (isset($_POST['deleteMessageAll']) && !empty($_POST['deleteMessageAll'])) {
+	$user_id= $_SESSION['key'];
+	$message_from= $users->test_input($_POST['deleteMessageAll']);
+	$message_to= $users->test_input($_POST['user_id']);
+	$message->deleteMsgAll($message_to,$message_from);
+	// echo $_POST['deleteMessageAll'];
+	// echo $_POST['user_id'];
+}
 
 if (isset($_POST['sendMessage']) && !empty($_POST['sendMessage'])) {
     $user_id= $_SESSION['key'];
@@ -99,10 +107,25 @@ if (isset($_POST['showMessage']) && !empty($_POST['showMessage'])) {
 					</div>
 				</div>
 				<div>
+	              		<div id="responseMess"></div>
+						<div class="message-del">
+							<div class="message-del-inner">
+								<h4>Are you sure you want to delete this message? </h4>
+								<div class="message-del-box">
+									<span>
+										<button class="cancel btn btn-dark btn-sm" value="Cancel">Cancel</button>
+									</span>
+									<span>	
+										<button class="deleteAll btn btn-danger btn-sm" value="Delete">Delete</button>
+									</span>
+								</div>
+							</div>
+						</div>	
+
                         <?php foreach ( $Msg as $Message ) { 
                             ?>   
         			        <!--Direct Messages-->
-        			        	<div class="people-message p-3 people-messageM" data-user="<?php echo $Message['user_id'];?>">
+        			        	<div class="p-3 people-messageM" id="messageID<?php echo $Message['user_id'];?>">
         			        		<div class="people-inner">
         			        			<div class="people-img" style="position:relative;">		
 					        				<?php if (!empty($Message['profile_img'])) { ?>
@@ -117,15 +140,16 @@ if (isset($_POST['showMessage']) && !empty($_POST['showMessage'])) {
 														<img src="<?php echo BASE_URL_LINK ;?>image/color/rose.png" width="15px" style="position:absolute;bottom:0px;right:0px;">
 											<?php } ?>
         			        			</div>
-        			        			<div class="name-right2">
+        			        			<div class="name-right2 people-message" data-user="<?php echo $Message['user_id'];?>">
         			        				<span><a href="#"><?php echo $Message['username'];?></a></span>
         			        			</div>
         			        			<div class="msg-box">
         			        			   <?php echo $Message['message'];?>
         			        			</div>
         		        				<span>
-        		        				    <?php echo $users->timeAgo($Message['message_on']);?>
+        		        				     <?php echo $users->timeAgo($Message['message_on']);?>
         		        				</span>
+											<span class="deleteMessage more" data-user="<?php echo $user_id; ?>" data-message="<?php echo $Message["user_id"]; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></span> 
         		        			</div>
         		        		</div>
         		        		<!--Direct Messages-->
@@ -323,14 +347,28 @@ if (isset($_POST['showMessage1']) && !empty($_POST['showMessage1'])) {
 	$MsgUnread= $message->recentMessageUnread($user_id); 
 	$notification->messagesView($user_id);
 	?>
-	
+		<li class="message-del">
+			<div class="message-del-inner">
+				<h4>Are you sure you want to delete this message? </h4>
+				<div class="message-del-box">
+					<span>
+						<button class="cancel btn btn-dark btn-sm" value="Cancel">Cancel</button>
+					</span>
+					<span>	
+						<button class="deleteAll btn btn-danger btn-sm" value="Delete">Delete</button>
+					</span>
+				</div>
+			</div>
+		</li>		
 		<!-- MESSAGE UNREAD IN NOTIFICATION -->
+		<li id="responseMess"></li>
+
 
 		 <?php foreach ($MsgUnread as $Message ) {
 			 ?>
 					<!--Direct Messages-->
 				
-				<li class="people-message hovernotication" data-user="<?php echo $Message['user_id'];?>" > <!-- start message -->
+				<li class="hovernotication" id="messageID<?php echo $Message['user_id'];?>" > <!-- start message -->
                     <a href="#">
                       <div class="pull-left" style="position:relative;">
 						  	<?php if (!empty($Message['profile_img'])) { ?>
@@ -346,21 +384,21 @@ if (isset($_POST['showMessage1']) && !empty($_POST['showMessage1'])) {
 							<?php } ?>
                       </div>
                       <h4>
-						 <?php echo $Message['username'];?>
+						<span class="people-message" data-user="<?php echo $Message['user_id'];?>" ><?php echo $Message['username'];?></span> 
                         <small><i class="fa fa-clock-o"></i> <?php echo $users->timeAgo($Message['message_on']);?></small>
                       </h4>
                       <p><?php echo $Message['message'];?></p>
                     </a>
 				</li> <!-- end message -->
 
-		<?php  }?>
+		<?php  } ?>
 
 		<!-- MESSAGE READ IN NOTIFICATION -->
 
          <?php foreach ($Msg as $Message ) {?>
 					<!--Direct Messages-->
 				
-				<li class="people-message" data-user="<?php echo $Message['user_id'];?>" > <!-- start message -->
+				<li id="messageID<?php echo $Message['user_id'];?>"> <!-- start message -->
                     <a href="#">
                       <div class="pull-left" style="position:relative;">
 						  	<?php if (!empty($Message['profile_img'])) { ?>
@@ -376,14 +414,14 @@ if (isset($_POST['showMessage1']) && !empty($_POST['showMessage1'])) {
 							<?php } ?>
                       </div>
                       <h4>
-						 <?php echo $Message['username'];?>
-                        <small><i class="fa fa-clock-o"></i> <?php echo $users->timeAgo($Message['message_on']);?></small>
+						<span class="people-message" data-user="<?php echo $Message['user_id'];?>" > <?php echo $Message['username'];?> </span>
+                        <small><span class="deleteMessage more" data-user="<?php echo $_SESSION["key"]; ?>" data-message="<?php echo $Message["user_id"]; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></span> <i class="fa fa-clock-o"></i> <?php echo $users->timeAgo($Message['message_on']);?></small>
                       </h4>
                       <p><?php echo $Message['message'];?></p>
                     </a>
 				</li> <!-- end message -->
-
-		<?php  }?>
+		<?php  } ?>
+   					
 <?php }
 
 
@@ -457,6 +495,7 @@ if (isset($_POST['showChatPopup']) && !empty($_POST['showChatPopup'])) {
     		            		</div>
     		            	</div>
 			            </div>
+
 				</div><!--card-header ENDS-->
 				</div><!--card ENDS-->
 				  <div class="main-msg-wrap large-2">

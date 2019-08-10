@@ -47,11 +47,11 @@
     cursor: pointer;
 }
 .people-message1:hover {
-    background: #f6f6f6;
+    /* background: #f6f6f6; */
     cursor: pointer;
 }
 .people-message2:hover {
-    background: #f6f6f6;
+    /* background: #f6f6f6; */
     cursor: pointer;
 }
 /* #black .people-message:hover {
@@ -59,10 +59,10 @@
     cursor: pointer;
 } */
 #black .people-message1:hover {
-    background: #ebe8e852;
+    /* background: #ebe8e852; */
     cursor: pointer;
 }
-#black .people-message2:hover {
+#black .people-message3:hover {
     background: #ebe8e852;
     cursor: pointer;
 }
@@ -70,7 +70,7 @@
     color: rgb(187, 184, 184);
     cursor: pointer;
 }
-.people-message2 .contacts-list-name {
+.people-message3 .contacts-list-name {
     color: rgb(187, 184, 184);
     cursor: pointer;
 }

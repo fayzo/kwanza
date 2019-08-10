@@ -145,7 +145,6 @@ $(document).ready(function() {
          $(document).on('click','.deleteMsg',function () {
              var message_id= $(this).data('message');
              $('.message-del-inner').height('100px');
-            
             $(document).on('click','.cancel',function () {
                 $('.message-del-inner').height('0px');
             });
@@ -167,5 +166,39 @@ $(document).ready(function() {
             });
 
          });
-    });
+
+         
+        });
+
+         $(document).on('click','.deleteMessage',function () {
+                var message_from= $(this).data('message');
+                var user_id= $(this).data('user');
+                $('.message-del-inner').height('100px');
+                $(document).on('click','.cancel',function () {
+                    $('.message-del-inner').height('0px');
+                });
+    
+                $(document).on('click','.deleteAll',function () {
+                    
+                        $.ajax({
+                                    url: 'core/ajax_db/messages.php',
+                                    method: 'POST',
+                                    dataType: 'text',
+                                    data: {
+                                        deleteMessageAll: message_from,
+                                        user_id: user_id,
+                                    }, success: function (response) {
+                                        $('.message-del-inner').height('0px');
+                                        $('#messageID'+ message_from).html('');
+                                        $("#responseMess").html(response);
+                                        setInterval(function () {
+                                            $("#responseMess").fadeOut();
+                                        }, 1000);
+
+                                        console.log(response);
+                                    }
+                                });
+                });
+    
+      });
 });

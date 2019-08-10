@@ -73,7 +73,7 @@ class Unemployment extends Home {
             <div class="user-block mb-2" >
              <div class="row">
               <div class="col-2">
-                   <div class="user-jobImgall">
+                   <div class="user-jobImgall" id="unemployment" data-user="<?php echo $row['user_id'];?>">
                          <?php if (!empty($row['profile_img'])) {?>
                          <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $row['profile_img'] ;?>" alt="User Image">
                          <?php  }else{ ?>

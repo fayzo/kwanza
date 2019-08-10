@@ -119,6 +119,11 @@
     width: 40px;
     float: left;
 }
+.contacts-list-box {
+    border-radius: 50%;
+    float: left;
+    position: relative;
+}
 
 .contacts-list-info {
     margin-left: 45px;

@@ -64,8 +64,8 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
 
      foreach ($result as $user) {
          if ($user['user_id'] != $user_id) { ?>
-              <li class="people-message1 more" data-user="<?php echo $user['user_id'];?>" >
-                        <div  style="position:absolute">
+              <li class="people-message3 people-message1 more" data-user="<?php echo $user['user_id'];?>" >
+                        <div class="contacts-list-box">
                             <?php if (!empty($user['profile_img'])) { ?>
                                     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$user['profile_img'];?>" class="contacts-list-img" />
                             <?php }else {?>
@@ -102,11 +102,27 @@ if (isset($_POST['showListMessage0']) && !empty($_POST['showListMessage0'])) {
         <span id="message-del"></span>
         <!-- Conversations are loaded here -->
         <div class="direct-chat-messages large-2" id="messages0" >
+            <span id="responseMess"></span>
+
+              <div class="message-del">
+                  <div class="message-del-inner">
+                      <h4>Are you sure you want to delete this message? </h4>
+                      <div class="message-del-box">
+                          <span>
+                              <button class="cancel btn btn-dark btn-sm" value="Cancel">Cancel</button>
+                          </span>
+                          <span>	
+                              <button class="deleteAll btn btn-danger btn-sm" value="Delete">Delete</button>
+                          </span>
+                      </div>
+                  </div>
+              </div>	
+
           <ul class="contacts-list" >
 
          <?php foreach ($Msg as $Message ) {?>
                     <!--Direct Messages-->
-                  <li class="people-message1 more" data-user="<?php echo $Message['user_id'];?>">
+                  <li class="people-message3 more" id="messageID<?php echo $Message['user_id'];?>">
                         <div style="position:absolute;">
                             <?php if (!empty($Message['profile_img'])) { ?>
                                     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$Message['profile_img'];?>"  class="contacts-list-img" />
@@ -122,8 +138,8 @@ if (isset($_POST['showListMessage0']) && !empty($_POST['showListMessage0'])) {
                         </div>
                          <div class="contacts-list-info">
                              <span class="contacts-list-name">
-                                 <?php echo $Message['username'];?>
-                                 <small class="contacts-list-date float-right"><i class="fa fa-clock-o"></i> <?php echo $users->timeAgo($Message['message_on']);?></small>
+                                  <span class="people-message1" data-user="<?php echo $Message['user_id'];?>" > <?php echo $Message['username'];?> </span>
+                                 <small class="contacts-list-date float-right" ><span class="deleteMessage more" data-user="<?php echo $_SESSION["key"]; ?>" data-message="<?php echo $Message["user_id"]; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></span> <i class="fa fa-clock-o"></i> <?php echo $users->timeAgo($Message['message_on']);?></small>
                              </span>
                              <span class="contacts-list-msg"><?php echo $Message['message'];?></span>
                          </div>
@@ -158,7 +174,7 @@ if (isset($_POST['showListMessage']) && !empty($_POST['showListMessage'])) {
 
          <?php foreach ($Msg as $Message ) {?>
                     <!--Direct Messages-->
-                  <li class="people-message1 more" data-user="<?php echo $Message['user_id'];?>">
+                  <li class="people-message3 people-message1 more" data-user="<?php echo $Message['user_id'];?>">
                         <div style="position:absolute;border-radius:50%;">
                             <?php if (!empty($Message['profile_img'])) { ?>
         						     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$Message['profile_img'];?>"  class="contacts-list-img" />
@@ -200,18 +216,18 @@ if (isset($_POST['search1']) && !empty($_POST['search1'])) {
            <ul class="contacts-list" > ';
      foreach ($result as $user) {
          if ($user['user_id'] != $user_id) { ?>
-              <li class="people-message2 more" data-user="<?php echo $user['user_id'];?>">
-                        <div style="position:absolute;border-radius:50%;">
+              <li class="people-message3 people-message2 more" data-user="<?php echo $user['user_id'];?>">
+                        <div  class="contacts-list-box">
                             <?php if (!empty($user['profile_img'])) { ?>
                                     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$user['profile_img'];?>"  class="contacts-list-img" />
                             <?php }else {?>
-                                    <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  class="contacts-list-img" />
+                                    <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>"  class="contacts-list-img"  />
                             <?php } ?>
                                     
                             <?php if ($user['chat'] == 'on') { ?>
-                                     <img src="<?php echo BASE_URL_LINK ;?>image/color/green.png" width="15px" style="position:absolute;bottom:0px;right:0px;">
+                                     <img src="<?php echo BASE_URL_LINK ;?>image/color/green.png" width="15px" style="position: absolute;bottom:0px;right:0px;" >
                             <?php }else {?>
-                                     <img src="<?php echo BASE_URL_LINK ;?>image/color/rose.png" width="15px" style="position:absolute;bottom:0px;right:0px;">
+                                     <img src="<?php echo BASE_URL_LINK ;?>image/color/rose.png" width="15px" style="position: absolute;bottom:0px;right:0px;">
                             <?php } ?>
                         </div>
                          <div class="contacts-list-info">
@@ -276,11 +292,27 @@ if (isset($_POST['showListMessage1']) && !empty($_POST['showListMessage1'])) {
          <span id="message-del1"></span>
             <!-- Conversations are loaded here -->
             <div class="direct-chat-messages large-2" style="background:#222d32" >
+	    	<span id="responseMess"></span>
+
+                <div class="message-del">
+                    <div class="message-del-inner">
+                        <h4>Are you sure you want to delete this message? </h4>
+                        <div class="message-del-box">
+                            <span>
+                                <button class="cancel btn btn-dark btn-sm" value="Cancel">Cancel</button>
+                            </span>
+                            <span>	
+                                <button class="deleteAll btn btn-danger btn-sm" value="Delete">Delete</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>	
+
             <ul class="contacts-list" >
            
          <?php foreach ($Msg as $Message ) { ?>
                     <!--Direct Messages-->
-                  <li class="people-message2 more" data-user="<?php echo $Message['user_id'];?>">
+                  <li class="people-message3"  id="messageID<?php echo $Message['user_id'];?>">
                         <div style="position:absolute;border-radius:50%;">
                             <?php if (!empty($Message['profile_img'])) { ?>
         						     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$Message['profile_img'];?>"  class="contacts-list-img" />
@@ -296,8 +328,9 @@ if (isset($_POST['showListMessage1']) && !empty($_POST['showListMessage1'])) {
                         </div>
                          <div class="contacts-list-info">
                              <span class="contacts-list-name">
-                                 <?php echo $Message['username'];?>
-                                 <small class="contacts-list-date float-right"><i class="fa fa-clock-o"></i> <?php echo $users->timeAgo($Message['message_on']);?></small>
+						        <span class="people-message2" data-user="<?php echo $Message['user_id'];?>" > <?php echo $Message['username'];?> </span>
+                                <small class="contacts-list-date float-right" ><span class="deleteMessage more" data-user="<?php echo $_SESSION["key"]; ?>" data-message="<?php echo $Message["user_id"]; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></span> <i class="fa fa-clock-o"></i> <?php echo $users->timeAgo($Message['message_on']);?></small>
+                                  
                              </span>
                              <span class="contacts-list-msg"><?php echo $Message['message'];?></span>
                          </div>
@@ -329,9 +362,9 @@ if (isset($_POST['showListMessage2']) && !empty($_POST['showListMessage2'])) {
 				<div class="message-recent">
                  <ul class="contacts-list" >
 
-         <?php foreach ($Msg as $Message ) {?>
+         <?php foreach ($Msg as $Message ) { ?>
                     <!--Direct Messages-->
-                  <li class="people-message2 more" data-user="<?php echo $Message['user_id'];?>">
+                  <li class="people-message3 people-message2 more" data-user="<?php echo $Message['user_id'];?>">
                         <div style="position:absolute;border-radius:50%;">
                             <?php if (!empty($Message['profile_img'])) { ?>
         						     <img src="<?php echo BASE_URL_LINK."image/users_profile_cover/".$Message['profile_img'];?>"  class="contacts-list-img" />
@@ -347,7 +380,7 @@ if (isset($_POST['showListMessage2']) && !empty($_POST['showListMessage2'])) {
                         </div>
                          <div class="contacts-list-info">
                              <span class="contacts-list-name">
-                                 <?php echo $Message['username'];?>
+                                <?php echo $Message['username'];?>
                                  <small class="contacts-list-date float-right"><i class="fa fa-clock-o"></i> <?php echo $users->timeAgo($Message['message_on']);?></small>
                              </span>
                              <span class="contacts-list-msg"><?php echo $Message['message'];?></span>
