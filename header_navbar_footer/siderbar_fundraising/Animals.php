@@ -14,6 +14,6 @@
         </div>
     </section>
   <div id="animalsPagination">
-   <?php echo $fundraising->fundraisings(0,'animals'); ?>
+   <?php echo $fundraising->fundraisings(0,'animals',$user_id); ?>
    </div>
 </div>

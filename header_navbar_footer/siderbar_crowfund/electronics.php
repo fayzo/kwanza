@@ -15,5 +15,5 @@
     </section>
 
    <div id="electronics-view">
-      <?php echo $crowfund->crowfundraisings(1,'electronics'); ?>
+      <?php echo $crowfund->crowfundraisings(1,'electronics',$user_id); ?>
     </div><!-- row -->

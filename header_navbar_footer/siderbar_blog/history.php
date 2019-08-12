@@ -20,12 +20,12 @@
           <!-- SLIDER WITH CAPTIONS -->
           <?php echo $blog->Blogcarousel('history'); ?>
           <!-- END SLIDER WITH CAPTIONS -->
-          <?php echo $blog->blogs(0,'history'); ?>
+          <?php echo $blog->blogs(1,'history',$user_id); ?>
       </div>
     </div> 
     <!-- col -->
       
       <div class="col-4 col-md-4 col-lg-4 px-4">
-          <?php echo $blog-> BlogRecent_Articles('history'); ?>
+          <?php echo $blog-> BlogRecent_Articles('history',$user_id); ?>
     </div> <!-- col -->
 </div> <!-- row -->

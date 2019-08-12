@@ -15,6 +15,6 @@
     </section>
 
  <div id="storyPagination">
-    <?php echo $blog->blogs(0,'story'); ?>
+    <?php echo $blog->blogs(0,'story',$user_id); ?>
   </div>
 </div>

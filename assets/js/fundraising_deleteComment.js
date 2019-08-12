@@ -13,6 +13,9 @@ $(document).on('click', '.deleteFundraisingComment', function (e) {
         }, success: function (response) {
             $("#responseComment").html(response);
             $("#userComment"+comment_id).html('');
+            setInterval(function () {
+                $("#responseComment").fadeOut();
+            }, 1000);
             console.log(response);
         }
     });

@@ -45,7 +45,7 @@ class Car extends House {
         <span class="job-show"></span>
         <div class="job-hide">
             <ul class="timeline timeline-inverse">  
-                <li class="time-label">
+                <li class="time-label" style="margin-bottom: 0px;">
                         <span style="margin-left: -10px;"> <img src="<?php echo BASE_URL_LINK.'image/banner/discount.png' ;?>" width="80px"> </span>
                         <?php switch ($categories) {
                             case $categories == 'car_For_sale':

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2019 at 02:35 AM
+-- Generation Time: Aug 12, 2019 at 02:51 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.2.20
 
@@ -106,6 +106,8 @@ CREATE TABLE `blog` (
   `blog_id` int(10) UNSIGNED NOT NULL,
   `created_on3` datetime NOT NULL,
   `user_id3` int(11) NOT NULL,
+  `retweet_blog_id` int(11) NOT NULL,
+  `tweet_blog_by` int(11) NOT NULL,
   `categories_blog` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -114,25 +116,101 @@ CREATE TABLE `blog` (
   `other_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `video` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `youtube` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `total_likes3` char(4) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `total_comments3` char(4) COLLATE utf8mb4_unicode_ci NOT NULL
+  `likes_counts` int(11) NOT NULL,
+  `retweet_counts` int(11) NOT NULL,
+  `blog_posted_on` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `blog_retweet_Msg` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `blog_post` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `blog`
 --
 
-INSERT INTO `blog` (`blog_id`, `created_on3`, `user_id3`, `categories_blog`, `title`, `text`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `total_likes3`, `total_comments3`) VALUES
-(1, '2019-07-23 12:46:42', 61, 'history', 'fa', 'fa', 'fa', '2019_34f.jpg', '2019_34fayz.jpg', '', '', '', ''),
-(2, '2019-06-28 15:45:07', 61, 'science', 'harry potter', 'iyi film ikoze mwibaga', 'quan', '2019_92f.jpg', '2019_33f.jpg=2019_60fayz.jpg=2019_17fayz.jpg', '', '', '', ''),
-(3, '2019-07-23 12:46:42', 61, 'history', 'Title of a longer featured blog post', 'Multiple lines of text that form the lede, informing new readers quickly and efficiently about what\'s most interesting in this post\'s contents.', 'harry kane', '2019_14fayz.jpg', '2019_64imag.jpg=2019_28imag.jpg', '', '', '', ''),
-(4, '2019-07-23 12:46:42', 61, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'raheem sterling', '2019_90hear.jpg', '2019_51imag.jpg=2019_24imag.jpg', '', '', '', ''),
-(5, '2019-07-23 12:46:42', 61, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_89rwanda.jpg', '2019_55ramp.jpg=2019_80ramzy2.jpg', '', '', '', ''),
-(6, '2019-07-23 12:46:42', 61, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_92rwanda.jpg', '2019_40ramp.jpg=2019_64ramzy2.jpg', '', '', '', ''),
-(7, '2019-07-23 12:46:42', 61, 'history', 'One more for good measure', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'zidani', '2019_11f.jpg', '2019_60hear.jpg', '', '', '', ''),
-(8, '2019-07-23 12:46:42', 61, 'history', 'Example headline.', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'iron man', '2019_100imag.jpg', '2019_19gori.jpg', '', '', '', ''),
-(9, '2019-07-23 12:46:42', 61, '', 'shema rutahizamu ntiyoroshye', 'good', 'fayzo', '2019_93camera.jpg', '2019_68camera.jpg=2019_64exte.jpg', '', '', '', ''),
-(10, '2019-07-23 12:46:42', 61, '', 'shema rutahizamu ntiyoroshye', 'good', 'fayzo', '2019_29camera.jpg', '2019_87camera.jpg=2019_91exte.jpg', '', '', '', '');
+INSERT INTO `blog` (`blog_id`, `created_on3`, `user_id3`, `retweet_blog_id`, `tweet_blog_by`, `categories_blog`, `title`, `text`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `likes_counts`, `retweet_counts`, `blog_posted_on`, `blog_retweet_Msg`, `blog_post`) VALUES
+(2, '2019-06-28 15:45:07', 61, 0, 0, 'science', 'harry potter', 'iyi film ikoze mwibaga', 'quan', '2019_92f.jpg', '2019_33f.jpg=2019_60fayz.jpg=2019_17fayz.jpg', '', '', 0, 0, '0', '', ''),
+(4, '2019-07-23 12:46:42', 61, 0, 0, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'raheem sterling', '2019_90hear.jpg', '2019_51imag.jpg=2019_24imag.jpg', '', '', 1, 3, '0', '', ''),
+(5, '2019-07-23 12:46:42', 61, 0, 0, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_89rwanda.jpg', '2019_55ramp.jpg=2019_80ramzy2.jpg', '', '', 2, 1, '0', '', ''),
+(6, '2019-07-23 12:46:42', 61, 0, 0, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_92rwanda.jpg', '2019_40ramp.jpg=2019_64ramzy2.jpg', '', '', 1, 2, '0', '', ''),
+(7, '2019-07-23 12:46:42', 61, 0, 0, 'history', 'One more for good measure', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'zidani', '2019_11f.jpg', '2019_60hear.jpg', '', '', 0, 1, '0', '', ''),
+(9, '2019-07-23 12:46:42', 61, 0, 0, '', 'shema rutahizamu ntiyoroshye', 'good', 'fayzo', '2019_93camera.jpg', '2019_68camera.jpg=2019_64exte.jpg', '', '', 0, 0, '0', '', ''),
+(10, '2019-07-23 12:46:42', 61, 0, 0, '', 'shema rutahizamu ntiyoroshye', 'good', 'fayzo', '2019_29camera.jpg', '2019_87camera.jpg=2019_91exte.jpg', '', '', 0, 0, '0', '', ''),
+(11, '2019-07-23 12:46:42', 61, 4, 61, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'raheem sterling', '2019_90hear.jpg', '2019_51imag.jpg=2019_24imag.jpg', '', '', 0, 1, '2019', 'nic', 'posted'),
+(12, '2019-07-23 12:46:42', 61, 5, 61, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_89rwanda.jpg', '2019_55ramp.jpg=2019_80ramzy2.jpg', '', '', 0, 1, '2019-08-10 10-01-12', 'nicee', 'posted'),
+(13, '2019-07-23 12:46:42', 61, 3, 66, 'history', 'Title of a longer featured blog post', 'Multiple lines of text that form the lede, informing new readers quickly and efficiently about what\'s most interesting in this post\'s contents.', 'harry kane', '2019_14fayz.jpg', '2019_64imag.jpg=2019_28imag.jpg', '', '', 0, 2, '2019-08-10 10-14-28', 'gudz', 'posted'),
+(14, '2019-07-23 12:46:42', 61, 7, 61, 'history', 'One more for good measure', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'zidani', '2019_11f.jpg', '2019_60hear.jpg', '', '', 0, 1, '2019-08-11 07-28-59', 'sf', 'posted'),
+(15, '2019-07-23 12:46:42', 61, 6, 61, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_92rwanda.jpg', '2019_40ramp.jpg=2019_64ramzy2.jpg', '', '', 0, 1, '2019-08-11 07-42-20', 'xzx', 'posted'),
+(16, '2019-07-23 12:46:42', 61, 4, 64, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'raheem sterling', '2019_90hear.jpg', '2019_51imag.jpg=2019_24imag.jpg', '', '', 0, 2, '2019-08-11 08-38-04', 'dfadfg', 'posted'),
+(17, '2019-07-23 12:46:42', 61, 6, 66, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_92rwanda.jpg', '2019_40ramp.jpg=2019_64ramzy2.jpg', '', '', 1, 2, '2019-08-11 10-34-23', 'ni', 'posted'),
+(18, '2019-07-23 12:46:42', 61, 4, 66, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'raheem sterling', '2019_90hear.jpg', '2019_51imag.jpg=2019_24imag.jpg', '', '', 1, 3, '2019-08-11 10-40-51', 'j', 'posted');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_comment`
+--
+
+CREATE TABLE `blog_comment` (
+  `comment_id` int(11) NOT NULL,
+  `comment` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comment_on` int(11) NOT NULL,
+  `comment_by` int(11) NOT NULL,
+  `comment_at` datetime NOT NULL,
+  `likes_counts_` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `blog_comment`
+--
+
+INSERT INTO `blog_comment` (`comment_id`, `comment`, `comment_on`, `comment_by`, `comment_at`, `likes_counts_`) VALUES
+(2, 'amakuru', 5, 66, '2019-08-11 10:41:35', 3),
+(3, 'bite byawe', 5, 61, '2019-08-11 11:15:18', 0),
+(4, 'as', 5, 61, '2019-08-11 11:17:51', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_comment_like`
+--
+
+CREATE TABLE `blog_comment_like` (
+  `like_id_` int(11) NOT NULL,
+  `like_on_` int(11) NOT NULL,
+  `like_by_` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `blog_comment_like`
+--
+
+INSERT INTO `blog_comment_like` (`like_id_`, `like_on_`, `like_by_`) VALUES
+(1, 2, 66),
+(2, 2, 61),
+(3, 2, 74),
+(4, 4, 61);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_like`
+--
+
+CREATE TABLE `blog_like` (
+  `like_id` int(11) NOT NULL,
+  `like_on` int(11) NOT NULL,
+  `like_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `blog_like`
+--
+
+INSERT INTO `blog_like` (`like_id`, `like_on`, `like_by`) VALUES
+(5, 4, 61),
+(6, 5, 61),
+(9, 6, 66),
+(10, 5, 66);
 
 -- --------------------------------------------------------
 
@@ -2822,8 +2900,8 @@ INSERT INTO `comment_crowfunding` (`comment_id`, `comment`, `comment_on`, `comme
 (16, 'amakuru yawe', 56, 61, '2019-08-09 11:30:48', 0),
 (17, 'ubwo ubufasha mushaka bumeze gute', 56, 61, '2019-08-09 11:31:05', 0),
 (18, 'njyewe ntago byumva ntagato ya uze kogera ubwire neza', 56, 61, '2019-08-09 11:31:32', 0),
-(19, 'rejka ibyo bibaho se', 56, 61, '2019-08-09 11:32:17', 0),
-(21, 'hoya ibyo ntago tubyemera ntagatoya musaza', 56, 61, '2019-08-09 11:32:59', 0);
+(19, 'rejka ibyo bibaho se', 56, 61, '2019-08-09 11:32:17', 3),
+(21, 'hoya ibyo ntago tubyemera ntagatoya musaza', 56, 61, '2019-08-09 11:32:59', 2);
 
 -- --------------------------------------------------------
 
@@ -2845,17 +2923,10 @@ CREATE TABLE `comment_funding` (
 --
 
 INSERT INTO `comment_funding` (`comment_id`, `comment`, `comment_on`, `comment_by`, `likes_counts_`, `comment_at`) VALUES
-(1, 'xs', 44, 61, 0, '2019-08-07 08:36:30'),
-(10, 'akana keza', 56, 61, 0, '2019-08-07 09:44:24'),
-(11, 'gud one', 56, 61, 1, '2019-08-07 09:44:31'),
-(26, 'ibyo bikorwa byanyu muzabitagira ryari tumenye nuko twabafasha mukuzamura imibereho yanyu', 43, 61, 1, '2019-08-07 14:22:04'),
-(27, 'abo bantu turabazi ariko ntacyo bashaka kutubwira', 43, 61, 1, '2019-08-07 14:22:34'),
-(30, 'iyo mubonye amahirwe', 43, 61, 1, '2019-08-07 14:26:28'),
-(31, 'amakuru yanyu mwanfasha ko shaka ubufasha bwanyu bantu banjye', 43, 61, 0, '2019-08-07 15:31:17'),
-(37, 'go gwiki ewan', 43, 61, 0, '2019-08-07 15:57:14'),
-(38, 'ibyo gutaga muzafugure aho umuntu yabasha kohereza', 43, 61, 1, '2019-08-07 15:57:52'),
-(39, 'gud', 43, 61, 0, '2019-08-07 16:01:10'),
-(40, 'umuntu ushaka kugufasha yabigeza gute', 56, 61, 1, '2019-08-08 13:54:02');
+(41, 'ana', 44, 66, 0, '2019-08-11 13:46:53'),
+(42, 'tyt', 44, 66, 1, '2019-08-11 13:48:07'),
+(43, 'yt', 44, 66, 1, '2019-08-11 13:49:14'),
+(44, 'gud', 44, 66, 0, '2019-08-11 13:54:15');
 
 -- --------------------------------------------------------
 
@@ -2901,7 +2972,7 @@ CREATE TABLE `crowfundraising` (
 --
 
 INSERT INTO `crowfundraising` (`fund_id`, `firstname1`, `middlename1`, `lastname1`, `address1`, `country1`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `text`, `progress_payment`, `photo`, `other_photo`, `video`, `youtube`, `user_id2`, `likes_counts`, `created_on2`, `total_likes`, `comments`, `email1`, `telephone1`, `categories_crowfundraising`, `photo_Title`, `photo_Title_main`, `money_raising`, `percentage`) VALUES
-(56, 'fafa', 'faf', 'afa', 'faf', 'afaf', 'afa', 'afa', 'faf', 'afa', 'afaf', 'afa', 'affa', '', '2019_401.jpg', '2019_312.jpg', '', '', 61, 1, '2019-07-08 14:03:14', 0, '', 'faf', 'afa', 'Agriculture', 'afafa=====', 'fafa', 30900.00, 40);
+(56, 'fafa', 'faf', 'afa', 'faf', 'afaf', 'afa', 'afa', 'faf', 'afa', 'afaf', 'afa', 'affa', '', '2019_401.jpg', '2019_312.jpg', '', '', 61, 2, '2019-07-08 14:03:14', 0, '', 'faf', 'afa', 'Agriculture', 'afafa=====', 'fafa', 30900.00, 40);
 
 -- --------------------------------------------------------
 
@@ -2914,6 +2985,16 @@ CREATE TABLE `crowfundraising_comment_like` (
   `like_on_` int(11) NOT NULL,
   `like_by_` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `crowfundraising_comment_like`
+--
+
+INSERT INTO `crowfundraising_comment_like` (`like_id_`, `like_on_`, `like_by_`) VALUES
+(1, 21, 61),
+(2, 19, 61),
+(6, 21, 66),
+(7, 19, 66);
 
 -- --------------------------------------------------------
 
@@ -2932,7 +3013,8 @@ CREATE TABLE `crowfundraising_like` (
 --
 
 INSERT INTO `crowfundraising_like` (`like_id`, `like_on`, `like_by`) VALUES
-(5, 56, 61);
+(5, 56, 61),
+(6, 56, 66);
 
 -- --------------------------------------------------------
 
@@ -3283,11 +3365,11 @@ INSERT INTO `fundraising` (`fund_id`, `firstname1`, `middlename1`, `lastname1`, 
 (32, 'q', 'q', 'q', 'q', '0', 'q', 'q', 'q', 'q', 'q', 'q', 'q', '', 0, '2019_40f.jpg', '2019_74fayz.jpg', '', '', 61, '2019-05-31 06:51:50', 0, '', 'q', 'q', 'business', '', ''),
 (33, 'a', 'a', 'a', 'a', '0', 'a', 'a', 'a', 'a', 'a', 'a', 'a', '', 0, '2019_97gori.jpg', '2019_15ramp.jpg', '', '', 61, '2019-05-31 06:54:12', 0, '', 'a', 'a', 'business', '', ''),
 (34, 'z', 'z', 'z', 'z', '0', 'z', 'z', 'z', 'z', 'z', 'z', 'z', '', 0, '2019_62tree.jpg', '2019_53unti.png', '', '', 61, '2019-05-31 06:56:58', 0, '', 'z', 'z', 'business', '', ''),
-(35, 'd', 'd', 'd', 'd', '0', 'd', 'd', 'd', 'd', 'd', 'd', 'd', '', 1, '2019_40head.jpg', '2019_36images.png', '', '', 61, '2019-05-31 07:09:36', 0, '', 'd', 'd', 'business', '', ''),
+(35, 'd', 'd', 'd', 'd', '0', 'd', 'd', 'd', 'd', 'd', 'd', 'd', '', 0, '2019_40head.jpg', '2019_36images.png', '', '', 61, '2019-05-31 07:09:36', 0, '', 'd', 'd', 'business', '', ''),
 (36, 'x', 'x', 'x', 'x', '0', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '', 0, '2019_69head.jpg', '2019_15fayz.jpg', '', '', 61, '2019-05-31 07:20:30', 0, '', 'x', 'x', 'business', '', ''),
 (37, 'z', 'z', 'z', 'z', '0', 'z', 'z', 'z', 'z', 'z', 'z', 'z', '', 0, '2019_27suns.jpg', '2019_53suns.jpg', '', '', 61, '2019-05-31 07:24:12', 0, '', 'z', 'z', 'business', '', ''),
-(38, 'v', 'v', 'v', 'v', '0', 'v', 'v', 'v', 'v', 'v', 'v', 'v', '', 1, '2019_57f.jpg', '2019_31imag.jpg', '', '', 61, '2019-05-31 07:27:57', 0, '', 'v', 'v', 'business', '', ''),
-(39, 'c', 'c', 'c', 'c', '0', 'c', 'c', 'c', 'c', 'c', 'c', 'c', '', 1, '2019_78gori.jpg', '2019_90ramzya.jpg', '', '', 61, '2019-05-31 07:28:35', 0, '', 'c', 'c', 'business', '', ''),
+(38, 'v', 'v', 'v', 'v', '0', 'v', 'v', 'v', 'v', 'v', 'v', 'v', '', 0, '2019_57f.jpg', '2019_31imag.jpg', '', '', 61, '2019-05-31 07:27:57', 0, '', 'v', 'v', 'business', '', ''),
+(39, 'c', 'c', 'c', 'c', '0', 'c', 'c', 'c', 'c', 'c', 'c', 'c', '', 0, '2019_78gori.jpg', '2019_90ramzya.jpg', '', '', 61, '2019-05-31 07:28:35', 0, '', 'c', 'c', 'business', '', ''),
 (40, 's', 's', 's', 's', '0', 's', 's', 's', 's', 's', 's', 's', '', 0, '2019_951.jpg', '2019_923.jpg', '', '', 61, '2019-05-31 07:59:41', 0, '', 's', 's', 'education', '', ''),
 (41, 'v', 'v', 'v', 'v', '0', 'v', 'v', 'v', 'v', 'v', 'v', 'v', '', 0, '2019_826147.jpg', '2019_58fay121.jpg', '', '', 61, '2019-05-31 08:06:09', 0, '', 'v', 'v', 'creative', '', ''),
 (42, 'x', 'x', 'x', 'x', '0', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '', 0, '2019_781.jpg', '2019_575220.jpg', '', '', 61, '2019-05-31 08:56:20', 0, '', 'x', 'x', 'community', '', ''),
@@ -3304,7 +3386,7 @@ INSERT INTO `fundraising` (`fund_id`, `firstname1`, `middlename1`, `lastname1`, 
 (53, 'shema', 'shema', 'faysal', 'kigali', '0', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'rwaye umtima', '', 0, '2019_941.jpg', '2019_832.jpg=2019_193.jpg', '', '', 61, '2019-06-29 08:53:40', 0, '', 'shemafaysal@gmail.com', '07867424253', 'faith', 'ndi mugitanda=aha ndikugenda buhororor====', ''),
 (54, 'ronaldo', 'shema', 'faysal', 'kigali', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'ndarwaye', '', 0, '2019_655046.jpg', '2019_62caus.jpg=2019_26caus.jpg', '', '', 61, '2019-06-29 09:11:56', 0, '', 'shemafaysal@gmail.com', '07867424253', 'faith', 'no kwiga ntago niga====', 'nta mbaraga'),
 (55, 'x', 'c', 'x', 'sdfds', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'ndarwaye', '', 0, '2019_74fay1.jpg', '2019_26stoc.jpg=2019_52stoc.jpg', '', '', 61, '2019-06-29 09:15:23', 0, '', 'shemafaysal@gmail.com', '007068', 'faith', 'ndaguye====', 'ifoto yo mu mutwe'),
-(56, 'mani', 'mani', 'mani', 'kigali', 'RW', 'kigali', '1', '102', '1020803', '10208', '102080302', 'gudz', '', 1, '2019_80capt.png', '2019_30capt.png', '', '', 61, '2019-08-07 09:43:10', 0, '', 'mani@yahoo.com', '086875', 'competition', 'kumwitaho=====', 'ubufasha mubyerekeye guhoza umwana');
+(56, 'mani', 'mani', 'mani', 'kigali', 'RW', 'kigali', '1', '102', '1020803', '10208', '102080302', 'gudz', '', 0, '2019_80capt.png', '2019_30capt.png', '', '', 61, '2019-08-07 09:43:10', 0, '', 'mani@yahoo.com', '086875', 'competition', 'kumwitaho=====', 'ubufasha mubyerekeye guhoza umwana');
 
 -- --------------------------------------------------------
 
@@ -3323,12 +3405,12 @@ CREATE TABLE `fundraising_comment_like` (
 --
 
 INSERT INTO `fundraising_comment_like` (`like_id_`, `like_on_`, `like_by_`) VALUES
-(2, 30, 61),
-(5, 27, 61),
-(6, 26, 61),
-(7, 38, 61),
-(8, 40, 61),
-(9, 11, 61);
+(10, 39, 66),
+(11, 38, 66),
+(12, 37, 66),
+(13, 31, 66),
+(14, 43, 66),
+(15, 42, 66);
 
 -- --------------------------------------------------------
 
@@ -3347,12 +3429,8 @@ CREATE TABLE `fund_like` (
 --
 
 INSERT INTO `fund_like` (`like_id`, `like_on`, `like_by`) VALUES
-(43, 44, 61),
-(46, 38, 61),
-(48, 39, 61),
-(49, 43, 61),
-(50, 35, 61),
-(51, 56, 61);
+(54, 44, 66),
+(55, 43, 66);
 
 -- --------------------------------------------------------
 
@@ -3483,7 +3561,8 @@ INSERT INTO `likes` (`like_id`, `like_by`, `like_on`) VALUES
 (10, 61, 416),
 (11, 61, 419),
 (12, 0, 418),
-(13, 0, 417);
+(13, 0, 417),
+(14, 66, 419);
 
 -- --------------------------------------------------------
 
@@ -4805,7 +4884,7 @@ INSERT INTO `tweets` (`tweet_id`, `status`, `tweetBy`, `retweet_id`, `retweet_by
 (416, '@fayzo\nbite', 66, 0, 0, '', 1, 1, '2019-07-31 22:38:03', ''),
 (417, '@karim', 61, 0, 0, '', 1, 0, '2019-07-31 22:38:55', ''),
 (418, '@fayzo\nbite', 66, 416, 61, '', 2, 1, '2019-07-31 22:39:07', 'gyud'),
-(419, '@fayzo', 66, 0, 0, '', 1, 1, '2019-07-31 22:41:17', ''),
+(419, '@fayzo', 66, 0, 0, '', 2, 1, '2019-07-31 22:41:17', ''),
 (420, '@fayzo', 66, 419, 61, '', 1, 1, '2019-08-07 08:47:28', 'gudz');
 
 -- --------------------------------------------------------
@@ -4868,10 +4947,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `password`, `gender`, `chat`, `career`, `country`, `date_birth`, `date_registry`, `last_login`, `counts_login`, `forgotUsernameCounts`, `forgotUsernameCountsTimesHeCreates`, `forgotUsernameCountsTimesHeCreatespassword`, `profile_img`, `profile_img_crop`, `cover_img`, `background`, `language`, `color`, `education`, `diploma`, `skills`, `location`, `hobbys`, `followers`, `following`, `approval`, `company_education`, `type_of_business`, `address`, `size_of_people`, `companyname`, `overview`, `history`, `team`, `legal_structure`, `location_facilities`, `mission_statement`, `website`, `unemplyoment`, `categories_fields`, `phone`) VALUES
-(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'off', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-08-09 16:48:31', 385, 0, 10, 10, '911f.jpg', '', '702caus.jpg', 'chair', '', 'purple', 'lycee', 'project', 'web', 'BR', 'styuding', 8, 5, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
-(64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-08-08 13:26:55', 35, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
+(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'on', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-08-12 02:48:44', 402, 0, 10, 10, '911f.jpg', '', '702caus.jpg', 'chair', '', 'rose', 'lycee', 'project', 'web', 'BR', 'styuding', 8, 5, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
+(64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-08-11 08:23:52', 36, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
 (65, 'karisa', 'bosco', 'bosco', 'faysal@gmail.com', 'bosco', 'Male', '', '', 'RW', '2019-05-03', '2019-05-02', '2019-05-27 21:50:00', 8, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 2, 2, 'off', '', '', '', '', 'LAMBORGIN', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
-(66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-08-09 09:26:01', 89, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'chair', '', 'black', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
+(66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-08-11 13:20:16', 97, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'chair', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
 (67, 'musema', 'musema', 'musema', 'musemafaysal@gmail.com', 'musema', 'Male', '', '', 'RW', '2019-05-06', '2019-05-06', '2019-05-21 14:53:30', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 2, 'off', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
 (68, 'zidani', 'zidani', 'zidanii', 'zidani@gmail.com', 'zidani', 'Male', '', '', 'FR', '2019-05-06', '2019-05-22', '2019-05-30 11:54:50', 5, 0, 0, 0, '855fays.gif', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
 (69, 'rihana', 'rihana', 'rihana', 'rihana@gmail.com', 'rihana', 'Female', 'off', '', 'AF', '1988-03-18', '2019-06-02', '2019-08-09 09:33:48', 20, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 3, 3, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
@@ -4879,7 +4958,7 @@ INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `p
 (71, 'saleh', 'saleh', 'saleh', 'saleh@gmail.com', 'saleh', 'Male', 'on', '', 'AQ', '2019-05-31', '2019-06-02', '2019-06-02 14:50:22', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
 (72, 'riri', 'aline', 'aline', 'aline@gmail.com', 'aline', 'Male', 'off', '', 'RW', '2019-07-01', '2019-07-01', '2019-07-02 08:52:01', 5, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
 (73, 'antonia', 'griezman', 'antonia', 'antonia@gmail.com', 'fafa', 'Male', 'off', '', 'FR', '2019-07-01', '2019-07-02', '2019-07-31 17:42:18', 3, 0, 0, 1, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
-(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-08-08 13:33:20', 8, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 1, 6, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
+(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-08-11 11:01:55', 9, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 1, 6, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
 (75, 'FAFA', 'FAFA', 'FAFA', 'FAFA@yahoo.com', 'FAFA', 'Male', 'off', '', '', '2019-08-03', '2019-08-03', '2019-08-03 04:29:40', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (76, 'riri', 'riri', 'riri', 'riri@yahoo.com', 'riri', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 06:58:18', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (77, 'mani', 'mani', 'mani', 'mani@yahoo.com', 'mani', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 07:00:29', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
@@ -17482,6 +17561,24 @@ ALTER TABLE `blog`
   ADD PRIMARY KEY (`blog_id`);
 
 --
+-- Indexes for table `blog_comment`
+--
+ALTER TABLE `blog_comment`
+  ADD PRIMARY KEY (`comment_id`);
+
+--
+-- Indexes for table `blog_comment_like`
+--
+ALTER TABLE `blog_comment_like`
+  ADD PRIMARY KEY (`like_id_`);
+
+--
+-- Indexes for table `blog_like`
+--
+ALTER TABLE `blog_like`
+  ADD PRIMARY KEY (`like_id`);
+
+--
 -- Indexes for table `car`
 --
 ALTER TABLE `car`
@@ -17788,7 +17885,25 @@ ALTER TABLE `apply_job`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `blog_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `blog_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `blog_comment`
+--
+ALTER TABLE `blog_comment`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `blog_comment_like`
+--
+ALTER TABLE `blog_comment_like`
+  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `blog_like`
+--
+ALTER TABLE `blog_like`
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `car`
@@ -17812,7 +17927,7 @@ ALTER TABLE `comment_crowfunding`
 -- AUTO_INCREMENT for table `comment_funding`
 --
 ALTER TABLE `comment_funding`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `crowfundraising`
@@ -17824,13 +17939,13 @@ ALTER TABLE `crowfundraising`
 -- AUTO_INCREMENT for table `crowfundraising_comment_like`
 --
 ALTER TABLE `crowfundraising_comment_like`
-  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `crowfundraising_like`
 --
 ALTER TABLE `crowfundraising_like`
-  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `domestics`
@@ -17878,13 +17993,13 @@ ALTER TABLE `fundraising`
 -- AUTO_INCREMENT for table `fundraising_comment_like`
 --
 ALTER TABLE `fundraising_comment_like`
-  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `fund_like`
 --
 ALTER TABLE `fund_like`
-  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `house`
@@ -17902,7 +18017,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `like_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `like_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `message`

@@ -18,12 +18,12 @@
           <!-- SLIDER WITH CAPTIONS -->
           <?php echo $blog->Blogcarousel('science'); ?>
           <!-- END SLIDER WITH CAPTIONS -->
-          <?php echo $blog->blogs(0,'science'); ?>
+          <?php echo $blog->blogs(1,'science',$user_id); ?>
       </div>
     </div> 
     <!-- col -->
       
       <div class="col-4 col-md-4 col-lg-4 px-4">
-          <?php echo $blog-> BlogRecent_Articles('science'); ?>
+          <?php echo $blog-> BlogRecent_Articles('science',$user_id); ?>
     </div> <!-- col -->
 </div> <!-- row -->

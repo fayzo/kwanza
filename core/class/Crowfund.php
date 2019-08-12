@@ -5,7 +5,7 @@
 
 class Crowfund extends home {
 
-     public function crowfundraisings($pages,$categories)
+     public function crowfundraisings($pages,$categories,$user_id)
     {
         $pages= $pages;
         $categories= $categories;
@@ -16,10 +16,11 @@ class Crowfund extends home {
             $showpages = ($pages*8)-8;
         }
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM users U Left JOIN crowfundraising C ON C. user_id2 = u. user_id Left JOIN crowfundraising_like L ON  C. fund_id= L. like_on WHERE C. categories_crowfundraising ='$categories'  ORDER BY created_on2 Desc Limit $showpages,8");
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN crowfundraising C ON C. user_id2 = u. user_id WHERE C. categories_crowfundraising ='$categories'  ORDER BY created_on2 Desc Limit $showpages,8");
         ?>
             <div class="row mt-3">
-        <?php while($row= $query->fetch_array()) { ?>
+        <?php while($row= $query->fetch_array()) { 
+              $likes= $this->Crowfundraisinglikes($user_id,$row['fund_id']); ?>
 
                <div class="col-md-3 mb-3">
             
@@ -27,7 +28,7 @@ class Crowfund extends home {
                 <img class="card-img-top" width="242px" id="crowfund-readmore" data-crowfund="<?php echo $row['fund_id'] ;?>" height="160px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/crowfund/<?php echo $row['photo'] ;?>" >
                 <div class="card-body">
                     <div class="p-0 font-weight-bold">Funding 
-                        <?php if($row['like_on'] == $row['fund_id']){ ?>
+                        <?php if($likes['like_on'] == $row['fund_id']){ ?>
                             <span <?php if(isset($_SESSION['key'])){ echo 'class="unlike-crowfundraising-btn more float-right text-sm  mr-1"'; }else{ echo 'id="login-please" class="more float-right" data-login="1"'; } ?> data-fund="<?php echo $row['fund_id']; ?>"  data-user="<?php echo $row['user_id']; ?>"><span class="likescounter "><?php echo $row['likes_counts'] ;?></span> <i class="fa fa-heart"  ></i></span>
                         <?php }else{ ?>
                             <span <?php if(isset($_SESSION['key'])){ echo 'class="like-crowfundraising-btn more float-right text-sm mr-1"'; }else{ echo 'id="login-please" class="more float-right"  data-login="1"'; } ?> data-fund="<?php echo $row['fund_id']; ?>"  data-user="<?php echo $row['user_id']; ?>" ><span class="likescounter"> <?php if ($row['likes_counts'] > 0){ echo $row['likes_counts'];}else{ echo '';} ?></span> <i class="fa fa-heart-o" ></i> </span>
@@ -91,10 +92,10 @@ class Crowfund extends home {
    
    <?php }
 
-    public function crowfundFecthReadmore($fund_id)
+    public function crowfundFecthReadmore($fund_id,$user_id)
     {
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM users U Left JOIN crowfundraising C ON C. user_id2 = u. user_id Left JOIN crowfundraising_like L ON L. like_on= C. fund_id WHERE C. fund_id = '$fund_id' ");
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN crowfundraising C ON C. user_id2 = u. user_id WHERE C. fund_id = '$fund_id' ");
         $row= $query->fetch_array();
         return $row;
     }
@@ -102,7 +103,7 @@ class Crowfund extends home {
       public function comments($tweet_id)
     {
         $mysqli= $this->database;
-        $query= "SELECT * FROM comment_crowfunding LEFT JOIN users ON comment_by=user_id Left JOIN crowfundraising_comment_like ON comment_id =like_on_  WHERE comment_on = $tweet_id ORDER BY comment_at DESC";
+        $query= "SELECT * FROM comment_crowfunding LEFT JOIN users ON comment_by=user_id WHERE comment_on = $tweet_id ORDER BY comment_at DESC";
         $result= $mysqli->query($query);
         $comments= array();
         while ($row= $result->fetch_assoc()) {
@@ -154,6 +155,59 @@ class Crowfund extends home {
         $mysqli->query($query);
 
     }
+
+    
+      public function Crowfundraisinglikes($user_id,$tweet_id)
+    {
+        $mysqli= $this->database;
+        $query= "SELECT * FROM crowfundraising_like WHERE like_by = $user_id AND like_on = $tweet_id";
+        $result= $mysqli->query($query);
+
+        $fetchCountLikes= array();
+        while ($row= $result->fetch_assoc()) {
+             $fetchCountLikes[] = array(
+            'like_id' => $row['like_id'],
+            'like_by' => $row['like_by'],
+            'like_on' => $row['like_on']
+           );
+        }
+        foreach ($fetchCountLikes as $fetchLikes) {
+            # code...
+            return $fetchLikes; // Return the $contacts array
+        }
+    }
+
+      public function Crowfundraising_comment_like($user_id,$tweet_id)
+    {
+        $mysqli= $this->database;
+        $query= "SELECT * FROM crowfundraising_comment_like WHERE like_by_ = $user_id AND like_on_ = $tweet_id";
+        $result= $mysqli->query($query);
+
+        $fetchCountLikes= array();
+        while ($row= $result->fetch_assoc()) {
+             $fetchCountLikes[] = array(
+            'like_id_' => $row['like_id_'],
+            'like_by_' => $row['like_by_'],
+            'like_on_' => $row['like_on_']
+           );
+        }
+        foreach ($fetchCountLikes as $fetchLikes) {
+            # code...
+            return $fetchLikes; // Return the $contacts array
+        }
+    }
+
+    public function CountcrowFundraisingComment($fund_id){
+      $db =$this->database;
+      $query="SELECT COUNT(*) FROM comment_crowfunding WHERE comment_on= $fund_id";
+      $sql= $db->query($query);
+      $row_Comment = $sql->fetch_array();
+      $total_Comment= array_shift($row_Comment);
+      $array= array(0,$total_Comment);
+      $total_Comment= array_sum($array);
+      echo $total_Comment;
+    }
+
 }
 
 $crowfund = new Crowfund;

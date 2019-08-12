@@ -15,5 +15,5 @@
     </section>
 
      <div id="Film-view">
-      <?php echo $crowfund->crowfundraisings(1,'Film'); ?>
+      <?php echo $crowfund->crowfundraisings(1,'Film',$user_id); ?>
     </div><!-- row -->

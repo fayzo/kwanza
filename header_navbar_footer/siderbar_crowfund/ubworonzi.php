@@ -16,6 +16,6 @@
 
     
     <div id="ubworonzi-view">
-      <?php echo $crowfund->crowfundraisings(1,'ubworonzi'); ?>
+      <?php echo $crowfund->crowfundraisings(1,'ubworonzi',$user_id); ?>
     </div><!-- row -->
 

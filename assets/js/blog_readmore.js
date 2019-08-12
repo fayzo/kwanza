@@ -13,7 +13,7 @@ $(document).ready(function () {
             dataType: 'text',
             data: {
                 blog_view: blog_view,
-            }, success: function (response) {
+             }, success: function (response) {
                 $(".popupTweet").html(response);
                 $(".close-imagePopup").click(function () {
                     $(".blog-popup").hide();
@@ -33,6 +33,7 @@ $(document).ready(function () {
             dataType: 'text',
             data: {
                 blog_id: blog_id,
+                username: 'jojo',
             }, success: function (response) {
                 $(".popupTweet").html(response);
                 $(".close-imagePopup").click(function () {
@@ -137,6 +138,54 @@ $(document).ready(function () {
                 $(".close-imagePopup").click(function () {
                     $(".img-popup").hide();
                 });
+                console.log(response);
+            }
+        });
+    });
+
+
+    $(document).on('click', '.blog-retweet0', function () {
+        $blog_id = $(this).data('blog');
+        $tweet_blog_by = $(this).data('user');
+        $counter = $(this).find('.retweetcounter');
+        $count = $counter.text();
+        $button = $(this);
+
+        $.ajax({
+            url: 'core/ajax_db/blog_share.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                showpopretweet_blog_id: $blog_id,
+                tweet_blog_By: $tweet_blog_by,
+            }, success: function (response) {
+                $('.popupTweet').html(response);
+                $('.close-retweet-popup').click(function () {
+                    $('.blog-share-popup').hide();
+                });
+
+                console.log(response);
+            }
+        });
+    });
+
+    $(document).on('click', '.blog-retweet-it', function () {
+        $comment = $('.retweetMsg').val();
+
+        $.ajax({
+            url: 'core/ajax_db/blog_share.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                retweet: $blog_id,
+                tweet_By: $tweet_blog_by,
+                comments: $comment
+            }, success: function (response) {
+                $('.blog-share-popup').hide();
+                $count++;
+                $counter.text($count++);
+                $button.removeClass('.blog-retweet0').addClass('.blog-retweeted0');
+
                 console.log(response);
             }
         });

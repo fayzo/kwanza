@@ -1,7 +1,8 @@
-      <header class="blog-header py-3">
+      <header class="blog-header py-2 bg-light">
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 pt-1">
-            <a class="text-muted" href="#">Subscribe</a>
+            <!-- <a class="text-muted" href="#">Subscribe</a> -->
+           <button type="button" class="btn btn-light mt-2" id="add_blog" data-blog="<?php echo $_SESSION['key']; ?>" > + Add Blog </button>
           </div>
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="#">Large</a>
@@ -21,7 +22,7 @@
       </header>
 
 <div role="tabpanel">
-      <div class="nav-scroller py-1 mb-2">
+      <div class="nav-scroller py-1 mb-2 bg-light">
         <nav class="nav d-flex justify-content-between" id="list-tab" role="tablist">
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Technology" role="tab" aria-controls="list-Technology">Technology</a>
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Design" role="tab" aria-controls="list-Design">Design</a>
@@ -35,7 +36,6 @@
            <a class="p-2 text-muted" data-toggle="tab" href="#list-History" role="tab" aria-controls="list-History">History</a>
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Science" role="tab" aria-controls="list-Science">Science</a>
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Computer_science" role="tab" aria-controls="list-Computer_science">Computer science</a>
-           <button type="button" class="btn btn-light mt-2" id="add_blog" data-blog="<?php echo $_SESSION['key']; ?>" > + Add Blog </button>
         </nav>
       </div>
   <!-- </div>

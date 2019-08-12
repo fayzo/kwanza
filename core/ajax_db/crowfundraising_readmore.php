@@ -7,10 +7,17 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
     if (isset($_SESSION['key'])) {
         # code...
         $user_id= $_SESSION['key'];
+    }else {
+        # code...
+        $username= $users->test_input($_REQUEST['username']);
+        $uprofileId= $home->usersNameId($username);
+        $profileData= $home->userData($uprofileId['user_id']);
+        $user_id= $profileData['user_id'];
     }
     $crowfund_id = $_POST['crowfund_id'];
-    $user= $crowfund->crowfundFecthReadmore($crowfund_id);
-	$comment= $crowfund->comments($crowfund_id);
+    $user= $crowfund->crowfundFecthReadmore($crowfund_id,$user_id);
+    $comment= $crowfund->comments($crowfund_id);
+    $likes= $crowfund->Crowfundraisinglikes($user_id,$user['fund_id']);
 
 ?>
 
@@ -250,7 +257,7 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
                                     <span class="username">
                                         <a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"> <?php echo $user['username']; ?> comment on - <?php echo $users->timeAgo($user['created_on2']) ;?></a>
                                         <!-- <span class="float-right">44 <i class="fa fa-heart"></i></span> -->
-                                        <?php if($user['like_on'] == $user['fund_id']){ ?>
+                                        <?php if($likes['like_on'] == $user['fund_id']){ ?>
                                             <span <?php if(isset($_SESSION['key'])){ echo 'class="unlike-crowfundraising-btn more float-right text-sm  mr-1"'; }else{ echo 'id="login-please" class="more float-right" data-login="1"'; } ?> data-fund="<?php echo $user['fund_id']; ?>"  data-user="<?php echo $user['user_id']; ?>"><span class="likescounter "><?php echo $user['likes_counts'] ;?></span> <i class="fa fa-heart"  ></i></span>
                                         <?php }else{ ?>
                                            <span <?php if(isset($_SESSION['key'])){ echo 'class="like-crowfundraising-btn more float-right text-sm mr-1"'; }else{ echo 'id="login-please" class="more float-right"  data-login="1"'; } ?> data-fund="<?php echo $user['fund_id']; ?>"  data-user="<?php echo $user['user_id']; ?>" ><span class="likescounter"> <?php if ($user['likes_counts'] > 0){ echo $user['likes_counts'];}else{ echo '';} ?></span> <i class="fa fa-heart-o" ></i> </span>
@@ -277,7 +284,9 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
                                 <!-- <div class="tweet-show-popup-comment-wrap"> -->
                                 <div id="comments" style="height:300px;" class="large-2">
                                         <!--COMMENTS-->
-                                      <?php  foreach ($comment as $user) { ?>
+                                      <?php  foreach ($comment as $user) { 
+                                            $likes= $crowfund->Crowfundraising_comment_like($user_id,$user['comment_id']);
+                                          ?>
                                             <div class="user-block mt-3" id="userComment<?php echo $user['comment_id']; ?>">
                                                 <div class="user-blockImgBorder">
                                                 <div class="user-blockImg">
@@ -292,7 +301,7 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
                                                     <a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"> <?php echo $user['username']; ?> comment on - <?php echo $users->timeAgo($user['comment_at']) ;?></a>
                                                     <!-- <span class="float-right">44 <i class="fa fa-heart"></i></span> -->
                                                      <!-- <span class="float-right">44 <i class="fa fa-heart"></i></span> -->
-                                                    <?php if($user['like_on_'] == $user['comment_id']){ ?>
+                                                    <?php if($likes['like_on_'] == $user['comment_id']){ ?>
                                                         <span <?php if(isset($_SESSION['key'])){ echo 'class="unlike-crowfundraisingUser-btn more float-right text-sm  mr-1"'; }else{ echo 'id="login-please" class="more float-right" data-login="1"'; } ?> data-comment="<?php echo $user['comment_id']; ?>"  data-user="<?php echo $user['user_id']; ?>"><span class="likescounter "><?php echo $user['likes_counts_'] ;?></span> <i class="fa fa-heart"  ></i></span>
                                                     <?php }else{ ?>
                                                         <span <?php if(isset($_SESSION['key'])){ echo 'class="like-crowfundraisingUser-btn more float-right text-sm mr-1"'; }else{ echo 'id="login-please" class="more float-right"  data-login="1"'; } ?> data-comment="<?php echo $user['comment_id']; ?>"  data-user="<?php echo $user['user_id']; ?>" ><span class="likescounter"> <?php if ($user['likes_counts_'] > 0){ echo $user['likes_counts_'];}else{ echo '';} ?></span> <i class="fa fa-heart-o" ></i> </span>

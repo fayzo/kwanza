@@ -15,5 +15,5 @@
     </section>
     
     <div id="Agriculture-hides">
-      <?php echo $crowfund->crowfundraisings(1,'Agriculture'); ?>
+      <?php echo $crowfund->crowfundraisings(1,'Agriculture',$user_id); ?>
     </div><!-- row -->

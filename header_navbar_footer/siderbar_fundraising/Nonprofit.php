@@ -15,6 +15,6 @@
     </section>
 
   <div id="nonprofitPagination">
-    <?php echo $fundraising->fundraisings(0,'nonprofit'); ?>
+    <?php echo $fundraising->fundraisings(0,'nonprofit',$user_id); ?>
   </div>
 </div>

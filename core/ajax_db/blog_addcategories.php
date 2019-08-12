@@ -166,6 +166,7 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
   'text'=> $additioninformation,
   'categories_blog'=> $categories_blog,
   'user_id3'=> $user_id,
+  'tweet_blog_by'=> $user_id,
   'created_on3'=> $datetime ));
     }
 } ?> 

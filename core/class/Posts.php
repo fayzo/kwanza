@@ -3,13 +3,14 @@
        header('Location: ../../404.html');
  }
 
-class Posts extends Home {
+class Posts extends blog {
    
 
     public function tweets($user_id,$limit)
     {
         $mysqli= $this->database;
-        $sql="SELECT * FROM tweets LEFT JOIN users ON tweetBy= user_id WHERE tweetBy = $user_id AND retweet_id='0' OR tweetBy= user_id AND retweet_by != $user_id AND tweetBy IN (SELECT receiver FROM follow WHERE sender= $user_id) ORDER BY tweet_id DESC LIMIT $limit ";
+        // $sql="SELECT * FROM tweets T LEFT JOIN users U ON T. tweetBy= U. user_id LEFT JOIN blog B ON B. tweet_blog_by = U. user_id WHERE T. tweetBy = $user_id AND T. retweet_id='0' AND B. blog_post = 'posted' OR T. tweetBy= U. user_id AND T. retweet_by != $user_id AND B. blog_post= 'posted' AND T. tweetBy IN (SELECT receiver FROM follow WHERE sender= $user_id) ORDER BY T. tweet_id DESC LIMIT $limit ";
+        $sql="SELECT * FROM tweets T LEFT JOIN users U ON T. tweetBy= U. user_id WHERE T. tweetBy = $user_id AND T. retweet_id='0' OR T. tweetBy= U. user_id AND T. retweet_by != $user_id AND T. tweetBy IN (SELECT receiver FROM follow WHERE sender= $user_id) ORDER BY T. tweet_id DESC LIMIT $limit ";
         $query= $mysqli->query($sql);
         $tweets=array();
         while ($row= $query->fetch_assoc()) {
@@ -17,7 +18,6 @@ class Posts extends Home {
              $tweets[]= $row;
         }
 
-    
                                foreach ($tweets as $tweet) {
                                 $likes= $this->likes($user_id,$tweet['tweet_id']);
                                 $retweet= $this->checkRetweet($tweet['tweet_id'],$user_id);
@@ -343,7 +343,7 @@ class Posts extends Home {
 
                                       </div><!-- card-body -->
                                     </div><!-- card -->
-
+                              
                                 <?php } else { ?> 
 
                                     <div class="user-block">
@@ -510,27 +510,27 @@ class Posts extends Home {
                              <?php } ?>
 
                               <ul class="mt-2 list-inline" style="list-style-type: none; margin-bottom:10px;">  
+                                        
                                         <?php if($tweet['tweet_id'] == $retweet['retweet_id']){ ?>
                                          <li class=" list-inline-item"><button class="share-btn retweeted text-sm mr-2" data-tweet="<?php echo $tweet['tweet_id']; ?>"  data-user="<?php echo $tweet['tweetBy']; ?>">
                                          <i class="fa fa-share green mr-1" style="color: green"> <span class="retweetcounter"><?php echo $retweet["retweet_counts"];?></span></i>
                                             Share</button></li>
                                         <?php }else{ ?>
-
                                                <li  class=" list-inline-item"> <button class="share-btn retweet text-sm mr-2" data-tweet="<?php echo $tweet['tweet_id']; ?>"  data-user="<?php echo $tweet['tweetBy']; ?>">
                                                 <?php if($retweet["retweet_counts"] > 0){ echo '<i class="fa fa-share mr-1" style="color: green"> <span class="retweetcounter">'.$retweet["retweet_counts"].'</span></i>' ; }else{ echo '<i class="fa fa-share mr-1"> <span class="retweetcounter">'.$retweet["retweet_counts"].'</span></i>';} ?>
                                                    Share</button></li>
-
                                          <?php } ?>
-                                            <?php if($likes['like_on'] == $tweet['tweet_id']){ ?>
-                                                <li  class=" list-inline-item"><button class="unlike-btn text-sm" data-tweet="<?php echo $tweet['tweet_id']; ?>"  data-user="<?php echo $tweet['tweetBy']; ?>">
-                                                <i class="fa fa-thumbs-up mr-1" style="color: red"> <span class="likescounter"><?php echo $tweet['likes_counts'] ;?></span></i>
-                                                    Like</button></li>
 
-                                            <?php }else{ ?>
-                                                  <li  class=" list-inline-item"> <button class="like-btn text-sm" data-tweet="<?php echo $tweet['tweet_id']; ?>"  data-user="<?php echo $tweet['tweetBy']; ?>">
-                                                   <i class="fa fa-thumbs-o-up mr-1"> <span class="likescounter"><?php if ($tweet['likes_counts'] > 0){ echo $tweet['likes_counts'];}else{ echo '';} ?></span></i>
-                                                       Like</button></li>
-                                            <?php } ?>
+                                        <?php if($likes['like_on'] == $tweet['tweet_id']){ ?>
+                                            <li  class="list-inline-item"><button class="unlike-btn text-sm" data-tweet="<?php echo $tweet['tweet_id']; ?>"  data-user="<?php echo $tweet['tweetBy']; ?>">
+                                            <i class="fa fa-thumbs-up mr-1" style="color: red"> <span class="likescounter"><?php echo $tweet['likes_counts'] ;?></span></i>
+                                                Like</button></li>
+                                        <?php }else{ ?>
+                                                <li  class="list-inline-item"> <button class="like-btn text-sm" data-tweet="<?php echo $tweet['tweet_id']; ?>"  data-user="<?php echo $tweet['tweetBy']; ?>">
+                                                <i class="fa fa-thumbs-o-up mr-1"> <span class="likescounter"><?php if ($tweet['likes_counts'] > 0){ echo $tweet['likes_counts'];}else{ echo '';} ?></span></i>
+                                                    Like</button></li>
+                                        <?php } ?>
+
                                          <span style="float:right">
                                     
                                           <li  class=" list-inline-item"><button class="comments-btn text-sm" data-target="#a<?php echo  $tweet["tweet_id"];?>" data-toggle="collapse">

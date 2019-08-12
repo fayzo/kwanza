@@ -194,7 +194,7 @@
     function blog_FecthRequest(categories,id) {
         var xhr = new XMLHttpRequest();
         // Add any event handlers here...
-        xhr.open('POST', 'core/ajax_db/blog_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
+        xhr.open('POST', 'core/ajax_db/blog_FecthPaginat.php?pages=' + id + '&username=jojo'+'&categories=' + categories, true);
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {

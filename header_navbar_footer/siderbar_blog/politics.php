@@ -14,6 +14,6 @@
     </section>
 
   <div id="politicsPagination">
-    <?php echo $blog->blogs(0,'politics'); ?>
+    <?php echo $blog->blogs(0,'politics',$user_id); ?>
   </div>
 </div>

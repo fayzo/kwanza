@@ -16,5 +16,5 @@
 
     
     <div id="phone_app-view-view">
-      <?php echo $crowfund->crowfundraisings(1,'phone_app'); ?>
+      <?php echo $crowfund->crowfundraisings(1,'phone_app',$user_id); ?>
     </div><!-- row -->

@@ -15,5 +15,5 @@
     </section>
 
      <div id="Fashion-view">
-      <?php echo $crowfund->crowfundraisings(1,'Fashion'); ?>
+      <?php echo $crowfund->crowfundraisings(1,'Fashion',$user_id); ?>
     </div><!-- row -->

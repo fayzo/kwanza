@@ -2488,7 +2488,6 @@ class Home extends Comment {
             return $countsRetweet; // Return the $contacts array
         }
 
-
     }
 
     public function delete($table,$array)

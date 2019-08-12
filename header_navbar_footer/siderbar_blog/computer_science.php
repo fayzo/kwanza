@@ -14,7 +14,7 @@
     </section>
 
   <div id="computer_sciencePagination">
-    <?php echo $blog->blogs(0,'computer_science'); ?>
+    <?php echo $blog->blogs(0,'computer_science',$user_id); ?>
   </div>
 
 </div>

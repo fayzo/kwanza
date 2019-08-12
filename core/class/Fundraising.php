@@ -5,7 +5,7 @@
 
 class Fundraising extends Home
 {
-    public function fundraisings($pages,$categories)
+    public function fundraisings($pages,$categories,$user_id)
     {
         $pages= $pages;
         $categories= $categories;
@@ -16,10 +16,11 @@ class Fundraising extends Home
             $showpages = ($pages*8)-8;
         }
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM users U Left JOIN fundraising F ON F. user_id2 = u. user_id  Left JOIN fund_like L ON L. like_on= F. fund_id WHERE F. categories_fundraising ='$categories'  ORDER BY created_on2 Desc Limit $showpages,8");
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN fundraising F ON F. user_id2 = u. user_id WHERE F. categories_fundraising ='$categories'  ORDER BY created_on2 Desc Limit $showpages,8");
         ?>
             <div class="row mt-3">
-        <?php while($row= $query->fetch_array()) { ?>
+        <?php while($row= $query->fetch_array()) { 
+              $likes= $this->Fundraisinglikes($user_id,$row['fund_id']); ?>
         
                 <div class="col-md-3 mb-3" >
                     <div class="card" style="border-bottom-left-radius: 0px !important;border-bottom-right-radius: 0px !important;">
@@ -28,7 +29,7 @@ class Fundraising extends Home
                             <span class="btn btn-light"><span style="font-size: 14px" class="material-icons p-0 m-0"> trending_up</span> trending</span>
                         </div>
                         <div style="position: absolute;bottom: 0px; right: 0;left:0px;background-color: #cfd3d6a1">
-                                <?php if($row['like_on'] == $row['fund_id']){ ?>
+                                <?php if($likes['like_on'] == $row['fund_id']){ ?>
                                             <span <?php if(isset($_SESSION['key'])){ echo 'class="unlike-fundraising-btn more float-right text-sm  mt-1 mr-1 text-dark"'; }else{ echo 'id="login-please" class="more float-right  mt-1 mr-1 text-dark" data-login="1" '; } ?> style="font-size:16px;" data-fund="<?php echo $row['fund_id']; ?>"  data-user="<?php echo $row['user_id']; ?>"><span class="likescounter "><?php echo $row['likes_counts'] ;?></span> <i class="fa fa-heart"  ></i></span>
                                 <?php }else{ ?>
                                     <span <?php if(isset($_SESSION['key'])){ echo 'class="like-fundraising-btn more float-right text-sm  mt-1 mr-1 text-dark"'; }else{ echo 'id="login-please" class="more float-right mt-1 mr-1 text-dark"  data-login="1" '; } ?> style="font-size:16px;" data-fund="<?php echo $row['fund_id']; ?>"  data-user="<?php echo $row['user_id']; ?>" ><span class="likescounter"> <?php if ($row['likes_counts'] > 0){ echo $row['likes_counts'];}else{ echo '';} ?></span> <i class="fa fa-heart-o" ></i> </span>
@@ -142,6 +143,58 @@ class Fundraising extends Home
         $query= "DELETE FROM fundraising_comment_like WHERE like_by_ = $user_id AND like_on_ = $comment_id ";
         $mysqli->query($query);
 
+    }
+
+     
+      public function Fundraisinglikes($user_id,$tweet_id)
+    {
+        $mysqli= $this->database;
+        $query= "SELECT * FROM fund_like WHERE like_by = $user_id AND like_on = $tweet_id";
+        $result= $mysqli->query($query);
+
+        $fetchCountLikes= array();
+        while ($row= $result->fetch_assoc()) {
+             $fetchCountLikes[] = array(
+            'like_id' => $row['like_id'],
+            'like_by' => $row['like_by'],
+            'like_on' => $row['like_on']
+           );
+        }
+        foreach ($fetchCountLikes as $fetchLikes) {
+            # code...
+            return $fetchLikes; // Return the $contacts array
+        }
+    }
+
+      public function Fundraising_comment_like($user_id,$tweet_id)
+    {
+        $mysqli= $this->database;
+        $query= "SELECT * FROM fundraising_comment_like WHERE like_by_ = $user_id AND like_on_ = $tweet_id";
+        $result= $mysqli->query($query);
+
+        $fetchCountLikes= array();
+        while ($row= $result->fetch_assoc()) {
+             $fetchCountLikes[] = array(
+            'like_id_' => $row['like_id_'],
+            'like_by_' => $row['like_by_'],
+            'like_on_' => $row['like_on_']
+           );
+        }
+        foreach ($fetchCountLikes as $fetchLikes) {
+            # code...
+            return $fetchLikes; // Return the $contacts array
+        }
+    }
+
+    public function CountFundraisingComment($fund_id){
+      $db =$this->database;
+      $query="SELECT COUNT(*) FROM comment_funding WHERE comment_on= $fund_id";
+      $sql= $db->query($query);
+      $row_Comment = $sql->fetch_array();
+      $total_Comment= array_shift($row_Comment);
+      $array= array(0,$total_Comment);
+      $total_Comment= array_sum($array);
+      echo $total_Comment;
     }
 
 }

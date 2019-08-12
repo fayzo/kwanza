@@ -10,6 +10,7 @@ $(document).ready(function () {
             dataType: 'text',
             data: {
                 crowfund_id: crowfund_id,
+                username: 'jojo',
             }, success: function (response) {
                 $(".popupTweet").html(response);
                 $(".close-imagePopup").click(function () {

@@ -15,5 +15,5 @@
     </section>
 
     <div id="web_apps-view">
-      <?php echo $crowfund->crowfundraisings(1,'web_apps'); ?>
+      <?php echo $crowfund->crowfundraisings(1,'web_apps',$user_id); ?>
     </div><!-- row -->
