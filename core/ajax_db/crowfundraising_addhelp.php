@@ -5,7 +5,9 @@ $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpat
 
 if (isset($_POST['crowfund_view']) && !empty($_POST['crowfund_view'])) {
     $user_id= $_SESSION['key'];
+    $get_province = mysqli_query($db,"SELECT * FROM provinces");   
      ?>
+    <script src="<?php echo BASE_URL_LINK ;?>dist/js/country_login_ajax-db.js"></script>
 
 <div class="crowfund-popup">
     <div class="wrap6">
@@ -49,15 +51,19 @@ if (isset($_POST['crowfund_view']) && !empty($_POST['crowfund_view'])) {
                         </div>
                       </div>
                       <div class="form-row mt-2">
-                        <div class="col">
+                        <!-- <div class="col">
                           <input type="text" class="form-control" name="country" id="country" placeholder="Country">
+                        </div> -->
+                         <div class="col">
+                            <!-- <div id="myCountry"></div> -->
+                            <div id="myDiv"></div>
                         </div>
                         <div class="col">
                           <input type="text" class="form-control" name="city" id="city" placeholder="City">
                         </div>
                       </div>
                       <div class="form-row mt-2">
-                        <div class="col">
+                        <!-- <div class="col">
                           <input type="text" class="form-control" name="province" id="province" placeholder="Province">
                         </div>
                         <div class="col">
@@ -73,12 +79,75 @@ if (isset($_POST['crowfund_view']) && !empty($_POST['crowfund_view'])) {
                         </div>
                         <div class="col">
                           <input type="text" class="form-control" name="village" id="village" placeholder="village">
-                        </div>
+                        </div> -->
+
+                          <div class="col">
+                                <label for="">Province</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                    <select name="provincecode"  id="provincecode" onchange="showResult();" class="form-control provincecode">
+                                        <option value="">----Select province----</option>
+                                        <?php while($show_province = mysqli_fetch_array($get_province)) { ?>
+                                        <option value="<?php echo $show_province['provincecode'] ?>"><?php echo $show_province['provincename'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for=""> District</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                    <select class="form-control districtcode" name="districtcode" id="districtcode" onchange="showResult2();" >
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="Sector">Sector</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                    <select class="form-control sectorcode" name="sectorcode" id="sectorcode"  onchange="showResult3();">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="Cell">Cell</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                    <select name="codecell" id="codecell" class="form-control codecell" onchange="showResult4();">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                      </div>
+
+                      <div class="form-row mt-2">
+                             <div class="col">
+                                <label for="Village">Village</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                      <select name="CodeVillage" id="CodeVillage" class="form-control CodeVillage">
+                                          <option> </option>
+                                      </select>
+                                </div>
+                            </div>
 
                         <div class="col">
                             <div class="form-group">
+                            <label for="">Categories of fund</label>
                               <select class="form-control" name="categories_crowfundraising" id="categories_crowfundraising">
-                                <option value="">Select what types of helps you need</option>
+                                <option value="">Select what types of categories of fund</option>
                                 <option value="Agriculture">Agriculture</option>
                                 <option value="ubworonzi">ubworonzi</option>
                                 <option value="electronics">electronics</option>
@@ -93,32 +162,8 @@ if (isset($_POST['crowfund_view']) && !empty($_POST['crowfund_view'])) {
                         </div>
 
                         <div class="col">
+                          <label for="">Goal to raised money</label>
                             <input type="text" class="form-control" name="money_raising" id="money_raising" placeholder="money raising">
-                        </div>
-                        
-                        <div class="col">
-                            <div class="form-group">
-                              <select class="form-control" name="percentage" id="percentage">
-                                <option value="">Select what types of helps you need</option>
-                                <option value="10">10</option>
-                                <option value="15">15</option>
-                                <option value="20">20</option>
-                                <option value="25">25</option>
-                                <option value="30">30</option>
-                                <option value="35">35</option>
-                                <option value="40">40</option>
-                                <option value="45">45</option>
-                                <option value="50">50</option>
-                                <option value="50">50</option>
-                                <option value="60">60</option>
-                                <option value="65">65</option>
-                                <option value="70">70</option>
-                                <option value="75">75</option>
-                                <option value="80">80</option>
-                                <option value="90">90</option>
-                                <option value="100">100</option>
-                              </select>
-                            </div>
                         </div>
                       </div>
 
@@ -246,15 +291,20 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
     $telephone = $users->test_input($_POST['telephone']);
     $country = $users->test_input($_POST['country']);
     $city = $users->test_input($_POST['city']);
-    $province = $users->test_input($_POST['province']);
-    $districts = $users->test_input($_POST['districts']);
-    $cell = $users->test_input($_POST['cell']);
-    $sector = $users->test_input($_POST['sector']);
-    $village = $users->test_input($_POST['village']);
+    // $province = $users->test_input($_POST['province']);
+    // $districts = $users->test_input($_POST['districts']);
+    // $cell = $users->test_input($_POST['cell']);
+    // $sector = $users->test_input($_POST['sector']);
+    // $village = $users->test_input($_POST['village']);
+        $province=  $users->test_input($_POST['provincecode']);
+        $districts=  $users->test_input($_POST['districtcode']);
+        $cell=  $users->test_input($_POST['sectorcode']);
+        $sector=  $users->test_input($_POST['codecell']);
+        $village=  $users->test_input($_POST['CodeVillage']);
+
     $additioninformation = $users->test_input($_POST['additioninformation']);
     $categories_crowfundraising=  $users->test_input($_POST['categories_crowfundraising']);
     $money_raising=  $users->test_input($_POST['money_raising']);
-    $percentage=  $users->test_input($_POST['percentage']);
     // $deadline = $users->test_input($_POST['deadline']);
 
 
@@ -276,8 +326,7 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
 	$users->Postsjobscreates('crowfundraising',array( 
 	'firstname1'=> $firstname, 
 	'middlename1'=> $middlename, 
-	'money_raising'=> $money_raising, 
-	'percentage'=> $percentage, 
+	'money_to_target'=> $money_raising, 
 	'lastname1'=> $lastname,
 	'email1'=> $email, 
 	'address1'=> $address,

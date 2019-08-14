@@ -17,7 +17,7 @@ if (isset($_POST['showpopupdelete']) && !empty($_POST['showpopupdelete'])) {
     ?>
     <div class="blog-popup">
       <div class="wrap5">
-        <div class="post-popup-body-wrap">
+        <div class="post-popup-body-wrap" style="top: 15%;">
             <div class="card">
             <span id='responseDeletePost'></span>
                 <div class="card-header">

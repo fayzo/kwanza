@@ -2,14 +2,14 @@ $(document).ready(function () {
 
     $(document).on('click', '#events-readmore', function (e) {
         e.stopPropagation();
-        var fund_id = $(this).data('events');
+        var events_id = $(this).data('events');
 
         $.ajax({
-            url: 'core/ajax_db/events_addcategories.php',
+            url: 'core/ajax_db/events_readmore.php',
             method: 'POST',
             dataType: 'text',
             data: {
-                fund_id: fund_id,
+                events_id: events_id,
             }, success: function (response) {
                 $(".popupTweet").html(response);
                 $(".close-imagePopup").click(function () {
@@ -47,18 +47,37 @@ $(document).ready(function () {
         // event.preventDefault();
         e.stopPropagation();
         var country = $('#country');
+        var province = $('.provincecode');
+        var districts = $('.districtcode');
+        var sector = $('.sectorcode');
+        var cell = $('.codecell');
+        var village = $('.CodeVillage');
+
         var additioninformation = $('#addition-information');
         var photo = $('#photo');
         var video = $('#video');
         var youtube = $('#youtube');
         var categories_events = $('#categories_events');
+
         var name_place = $('#name_place');
         var location_events = $('#location_events');
         var start_events = $('#start_events');
         var date0 = $('#date0');
+        var title = $('#title');
+        var authors = $('#authors');
 
-        if (isEmpty(country)  && isEmpty(location_events)  && isEmpty(name_place) && isEmpty(date0)  && isEmpty(start_events)  && isEmpty(categories_events) && isEmpty(additioninformation) && 
-            isEmpty(photo) && isEmpty(video) && isEmpty(youtube)) {
+        var photo_Title0 = $('#photo-Title0');
+        var photo_Title1 = $('#photo-Title1');
+        var photo_Title2 = $('#photo-Title2');
+        var photo_Title3 = $('#photo-Title3');
+        var photo_Title4 = $('#photo-Title4');
+        var photo_Title5 = $('#photo-Title5');
+
+
+        if (isEmpty(country) && isEmpty(province) && isEmpty(districts) && isEmpty(sector) && 
+            isEmpty(cell) && isEmpty(village) && isEmpty(title) && isEmpty(authors) && isEmpty(name_place) && isEmpty(location_events) && isEmpty(date0)  && isEmpty(start_events)  && isEmpty(categories_events) && isEmpty(additioninformation) && 
+            isEmpty(photo) && isEmpty(video) && isEmpty(youtube) && isEmpty(photo_Title0) && isEmpty(photo_Title1) && isEmpty(photo_Title2) &&
+            isEmpty(photo_Title3) && isEmpty(photo_Title4) && isEmpty(photo_Title5)) {
             
             var extensions1 = $('#photo').val().split('.').pop().toLowerCase();
             
@@ -117,20 +136,67 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on('click', '.imageFundViewPopup', function (e) {
+    $(document).on('click', '.imageeventsViewPopup', function (e) {
         e.stopPropagation();
-        var fund_id = $(this).data('fund');
+        var events_id = $(this).data('events');
         $.ajax({
-            url: 'core/ajax_db/FundraisingImageViewPopup.php',
+            url: 'core/ajax_db/eventsraisingImageViewPopup.php',
             method: 'POST',
             dataType: 'text',
             data: {
-                showpimage: fund_id,
+                showpimage: events_id,
             }, success: function (response) {
                 $(".popupTweet").html(response);
                 $(".close-imagePopup").click(function () {
                     $(".img-popup").hide();
                 });
+                console.log(response);
+            }
+        });
+    });
+
+    $(document).on('click', '.events-retweet0', function () {
+        $events_id = $(this).data('events');
+        $tweet_events_by = $(this).data('user');
+        $counter = $(this).find('.retweetcounter');
+        $count = $counter.text();
+        $button = $(this);
+
+        $.ajax({
+            url: 'core/ajax_db/events_share.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                showpopretweet_events_id: $events_id,
+                tweet_events_By: $tweet_events_by,
+            }, success: function (response) {
+                $('.popupTweet').html(response);
+                $('.close-retweet-popup').click(function () {
+                    $('.events-share-popup').hide();
+                });
+
+                console.log(response);
+            }
+        });
+    });
+
+    $(document).on('click', '.events-retweet-it', function () {
+        $comment = $('.retweetMsg').val();
+
+        $.ajax({
+            url: 'core/ajax_db/events_share.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                retweet: $events_id,
+                tweet_By: $tweet_events_by,
+                comments: $comment
+            }, success: function (response) {
+                $('.events-share-popup').hide();
+                $count++;
+                $counter.text($count++);
+                $button.removeClass('.events-retweet0').addClass('.events-retweeted0');
+
                 console.log(response);
             }
         });

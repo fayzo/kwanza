@@ -28,12 +28,33 @@ class Crowfund extends home {
                 <img class="card-img-top" width="242px" id="crowfund-readmore" data-crowfund="<?php echo $row['fund_id'] ;?>" height="160px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/crowfund/<?php echo $row['photo'] ;?>" >
                 <div class="card-body">
                     <div class="p-0 font-weight-bold">Funding 
-                        <?php if($likes['like_on'] == $row['fund_id']){ ?>
-                            <span <?php if(isset($_SESSION['key'])){ echo 'class="unlike-crowfundraising-btn more float-right text-sm  mr-1"'; }else{ echo 'id="login-please" class="more float-right" data-login="1"'; } ?> data-fund="<?php echo $row['fund_id']; ?>"  data-user="<?php echo $row['user_id']; ?>"><span class="likescounter "><?php echo $row['likes_counts'] ;?></span> <i class="fa fa-heart"  ></i></span>
-                        <?php }else{ ?>
-                            <span <?php if(isset($_SESSION['key'])){ echo 'class="like-crowfundraising-btn more float-right text-sm mr-1"'; }else{ echo 'id="login-please" class="more float-right"  data-login="1"'; } ?> data-fund="<?php echo $row['fund_id']; ?>"  data-user="<?php echo $row['user_id']; ?>" ><span class="likescounter"> <?php if ($row['likes_counts'] > 0){ echo $row['likes_counts'];}else{ echo '';} ?></span> <i class="fa fa-heart-o" ></i> </span>
+
+                        <?php if($user_id == $row['user_id2']){ ?>
+                         <ul class="list-inline mb-0  float-right" style="list-style-type: none;">  
+
+                                <li  class=" list-inline-item">
+                                    <ul class="deleteButt" style="list-style-type: none; margin:0px;" >
+                                        <li>
+                                            <a href="javascript:void(0)" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                                            <ul style="list-style-type: none; margin:0px;" >
+                                                <li style="list-style-type: none; margin:0px;"> 
+                                                  <label class="deleteCrowfund"  data-fund="<?php echo $row["fund_id"];?>"  data-user="<?php echo $row["user_id2"];?>">Delete </label>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                        </ul>
                         <?php } ?>
+
+                        <?php if($likes['like_on'] == $row['fund_id']){ ?>
+                            <span <?php if(isset($_SESSION['key'])){ echo 'class="unlike-crowfundraising-btn more float-right text-sm  mr-2"'; }else{ echo 'id="login-please" class="more float-right" data-login="1"'; } ?> data-fund="<?php echo $row['fund_id']; ?>"  data-user="<?php echo $row['user_id']; ?>"><span class="likescounter "><?php echo $row['likes_counts'] ;?></span> <i class="fa fa-heart"  ></i></span>
+                        <?php }else{ ?>
+                            <span <?php if(isset($_SESSION['key'])){ echo 'class="like-crowfundraising-btn more float-right text-sm mr-2"'; }else{ echo 'id="login-please" class="more float-right"  data-login="1"'; } ?> data-fund="<?php echo $row['fund_id']; ?>"  data-user="<?php echo $row['user_id']; ?>" ><span class="likescounter"> <?php if ($row['likes_counts'] > 0){ echo $row['likes_counts'];}else{ echo '';} ?></span> <i class="fa fa-heart-o" ></i> </span>
+                        <?php } ?>
+                     
                     </div>
+
                     <hr>
                     <a href="javascript:void(0);"  id="crowfund-readmore" data-crowfund="<?php echo $row['fund_id'] ;?>" class="card-text h5"><?php echo $row['photo_Title_main'] ;?></a>
                     <!-- Kogera umusaruro muguhinga -->
@@ -43,18 +64,19 @@ class Crowfund extends home {
                     <div class="text-muted mb-1"><?php echo $categories; ?></div>
                     <div class="card-text">
                     <!-- 40,000 -->
-                        <span class="font-weight-bold"><?php echo number_format($row['money_raising'],2); ?> Frw</span>
+                        <span class="font-weight-bold"><?php echo number_format($row['money_raising']); ?> Frw</span>
                          Raised
-                        <div class="float-right"><?php echo $row['percentage']; ?>%</div>
+                        <div class="float-right"><?php echo $this->donationPercetangeMoneyRaimaing($row['money_raising'],$row['money_to_target']); ?> %</div>
                         <!-- 40 -->
                     </div>
                      <div class="progress clear-float " style="height: 10px;">
-                        <div class="progress-bar  bg-success" role="progressbar" style="width: <?php echo $row['percentage']; ?>%" aria-valuenow="<?php echo $row['percentage']; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                        <?php echo $this->Users_donationMoneyRaising($row['money_raising'],$row['money_to_target']); ?>
                     </div>
                     
                     <div class="clear-float">
                         <i class="fa fa-clock-o" aria-hidden="true"></i>
                         <span class="text-muted"><?php echo $this->timeAgo($row['created_on2']); ?></span>
+                        <span class="text-muted float-right text-right">out of <?php echo number_format($row['money_to_target']).' Frw'; ?></span>
                         <!-- 13 days Left -->
                     </div>
                 </div>
@@ -104,6 +126,18 @@ class Crowfund extends home {
     {
         $mysqli= $this->database;
         $query= "SELECT * FROM comment_crowfunding LEFT JOIN users ON comment_by=user_id WHERE comment_on = $tweet_id ORDER BY comment_at DESC";
+        $result= $mysqli->query($query);
+        $comments= array();
+        while ($row= $result->fetch_assoc()) {
+             $comments[] = $row;
+        }
+        return $comments;
+    }
+
+      public function recentDonate($fund_id)
+    {
+        $mysqli= $this->database;
+        $query= "SELECT * FROM crowfund_donation LEFT JOIN users ON sentby_user_id=user_id WHERE fund_id0 = $fund_id ORDER BY created_on3 DESC";
         $result= $mysqli->query($query);
         $comments= array();
         while ($row= $result->fetch_assoc()) {
@@ -206,6 +240,81 @@ class Crowfund extends home {
       $array= array(0,$total_Comment);
       $total_Comment= array_sum($array);
       echo $total_Comment;
+    }
+
+    public function fund_getPopupTweet($user_id,$tweet_id,$tweet_by)
+    {
+        $mysqli= $this->database;
+        $result= $mysqli->query("SELECT * FROM users U Left JOIN crowfundraising F ON F. user_id2 = u. user_id Left JOIN crowfundraising_like L ON L. like_on = F. fund_id WHERE F. fund_id = $tweet_id AND F. user_id2 = $tweet_by ");
+        // var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
+        while ($row= $result->fetch_array()) {
+            # code...
+            return $row;
+        }
+    }
+
+    
+    public function deleteLikesCrowfund($tweet_id,$user_id)
+    {
+        $mysqli= $this->database;
+        $query="DELETE C , L , F ,R FROM crowfundraising C 
+                        LEFT JOIN crowfundraising_like L ON L. like_on = C. fund_id 
+                        LEFT JOIN comment_crowfunding R ON R. comment_on = C. fund_id 
+                        LEFT JOIN crowfundraising_comment_like F ON F. like_on_ = R. comment_id 
+                        WHERE C. fund_id = '{$tweet_id}' and C. user_id2 = '{$user_id}' ";
+
+        $query1="SELECT * FROM crowfundraising WHERE fund_id = $tweet_id and user_id2 = $user_id ";
+
+        $result= $mysqli->query($query1);
+        $rows= $result->fetch_assoc();
+
+        if(!empty($rows['photo'])){
+            $photo=$rows['photo'].'='.$rows['other_photo'];
+            $expodefile = explode("=",$photo);
+            $fileActualExt= array();
+            for ($i=0; $i < count($expodefile); ++$i) { 
+                $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
+            }
+            $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+            if (array_diff($fileActualExt,$allower_ext) == false) {
+                $expode = explode("=",$photo);
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/crowfund/';
+                for ($i=0; $i < count($expode); ++$i) { 
+                      unlink($uploadDir.$expode[$i]);
+                }
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp4') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/crowfund/';
+                      unlink($uploadDir.$photo);
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp3') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/crowfund/';
+                      unlink($uploadDir.$photo);
+            }
+        }
+
+        $query= $mysqli->query($query);
+        // var_dump("ERROR: Could not able to execute $query.".mysqli_error($mysqli));
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS DELETE</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail to delete !!!</strong>
+                </div>');
+        }
+    }
+
+    public function crowfund_donateUpdate($donate,$fund_id)
+    {
+        $mysqli= $this->database;
+        $query= "UPDATE crowfundraising SET donate_counts = donate_counts +1, money_raising = money_raising + $donate  WHERE fund_id= $fund_id ";
+        $mysqli->query($query);
     }
 
 }

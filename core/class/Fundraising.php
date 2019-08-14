@@ -29,11 +29,31 @@ class Fundraising extends Home
                             <span class="btn btn-light"><span style="font-size: 14px" class="material-icons p-0 m-0"> trending_up</span> trending</span>
                         </div>
                         <div style="position: absolute;bottom: 0px; right: 0;left:0px;background-color: #cfd3d6a1">
+                            
+                                    <?php if($user_id == $row['user_id2']){ ?>          
+                                    <ul class="list-inline mb-0 float-right mt-2 ml-1 mr-2" style="list-style-type: none;">  
+
+                                            <li  class=" list-inline-item">
+                                                <ul class="deleteButt" style="list-style-type: none; margin:0px;" >
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                                                        <ul style="list-style-type: none; margin:0px;" >
+                                                            <li style="list-style-type: none; margin:0px;"> 
+                                                            <label class="deleteFundraising"  data-fund="<?php echo $row["fund_id"];?>"  data-user="<?php echo $row["user_id2"];?>">Delete </label>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                    </ul>
+                                    <?php } ?>
+
                                 <?php if($likes['like_on'] == $row['fund_id']){ ?>
                                             <span <?php if(isset($_SESSION['key'])){ echo 'class="unlike-fundraising-btn more float-right text-sm  mt-1 mr-1 text-dark"'; }else{ echo 'id="login-please" class="more float-right  mt-1 mr-1 text-dark" data-login="1" '; } ?> style="font-size:16px;" data-fund="<?php echo $row['fund_id']; ?>"  data-user="<?php echo $row['user_id']; ?>"><span class="likescounter "><?php echo $row['likes_counts'] ;?></span> <i class="fa fa-heart"  ></i></span>
                                 <?php }else{ ?>
                                     <span <?php if(isset($_SESSION['key'])){ echo 'class="like-fundraising-btn more float-right text-sm  mt-1 mr-1 text-dark"'; }else{ echo 'id="login-please" class="more float-right mt-1 mr-1 text-dark"  data-login="1" '; } ?> style="font-size:16px;" data-fund="<?php echo $row['fund_id']; ?>"  data-user="<?php echo $row['user_id']; ?>" ><span class="likescounter"> <?php if ($row['likes_counts'] > 0){ echo $row['likes_counts'];}else{ echo '';} ?></span> <i class="fa fa-heart-o" ></i> </span>
                                 <?php } ?>
+
                                <h5 class="card-title text-dark m-1 pb-1 pl-2">Helps <?php echo $row['lastname'] ;?> </h5>
                               <div class="progress " style="height: 6px;">
                                 <div class="progress-bar  bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -195,6 +215,74 @@ class Fundraising extends Home
       $array= array(0,$total_Comment);
       $total_Comment= array_sum($array);
       echo $total_Comment;
+    }
+
+    
+    public function fund_getPopupTweet($user_id,$tweet_id,$tweet_by)
+    {
+        $mysqli= $this->database;
+        $result= $mysqli->query("SELECT * FROM users U Left JOIN fundraising F ON F. user_id2 = u. user_id Left JOIN fund_like L ON L. like_on = F. fund_id WHERE F. fund_id = $tweet_id AND F. user_id2 = $tweet_by ");
+        // var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
+        while ($row= $result->fetch_array()) {
+            # code...
+            return $row;
+        }
+    }
+    
+    public function deleteLikesfund($tweet_id,$user_id)
+    {
+        $mysqli= $this->database;
+        $query="DELETE C , L , F ,R FROM fundraising C 
+                        LEFT JOIN fund_like L ON L. like_on = C. fund_id 
+                        LEFT JOIN comment_funding R ON R. comment_on = C. fund_id 
+                        LEFT JOIN fundraising_comment_like F ON F. like_on_ = R. comment_id 
+                        WHERE C. fund_id = '{$tweet_id}' and C. user_id2 = '{$user_id}' ";
+
+        $query1="SELECT * FROM fundraising WHERE fund_id = $tweet_id and user_id2 = $user_id ";
+
+        $result= $mysqli->query($query1);
+        $rows= $result->fetch_assoc();
+
+        if(!empty($rows['photo'])){
+            $photo=$rows['photo'].'='.$rows['other_photo'];
+            $expodefile = explode("=",$photo);
+            $fileActualExt= array();
+            for ($i=0; $i < count($expodefile); ++$i) { 
+                $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
+            }
+            $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+            if (array_diff($fileActualExt,$allower_ext) == false) {
+                $expode = explode("=",$photo);
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/fundraising/';
+                for ($i=0; $i < count($expode); ++$i) { 
+                      unlink($uploadDir.$expode[$i]);
+                }
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp4') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/fundraising/';
+                      unlink($uploadDir.$photo);
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp3') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/fundraising/';
+                      unlink($uploadDir.$photo);
+            }
+        }
+
+        $query= $mysqli->query($query);
+        // var_dump("ERROR: Could not able to execute $query.".mysqli_error($mysqli));
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS DELETE</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail to delete !!!</strong>
+                </div>');
+        }
     }
 
 }

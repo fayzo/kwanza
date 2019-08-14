@@ -248,7 +248,7 @@ class Users{
         # Build the insert query
         $queryl = "INSERT INTO $table (".$columns.") VALUES (".$values.")";
         $query= $mysqli->query($queryl);
-        var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
+        // var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
 
         if($query){
                 exit('<div class="alert alert-success alert-dismissible fade show text-center">
@@ -1298,7 +1298,80 @@ class Users{
             break;
         }
     } 
+
+    function Users_donationMoneyRaising($money_raising,$money_to_target){
+        if($money_raising == 0){
+            $variable = 0;
+        }else{
+            $variables = $money_raising * 100 / $money_to_target;
+            $variable = number_format($variables,2,'.','');
+        }
+
+    switch ($variable) {
+        case $variable <= 10 :
+            # code...
+            return '<div class="progress-bar bg-danger" role="progressbar"
+                    style="width: '.($variable ).' %" aria-valuenow="'.($variable).'" aria-valuemin="0"
+                    aria-valuemax="100">'.($variable).'%</div>';
+            break;
+        case $variable <= 20 :
+            # code...
+            return '<div class="progress-bar bg-danger" role="progressbar"
+                    style="width: '.($variable).'%" aria-valuenow="'.($variable).'" aria-valuemin="0"
+                    aria-valuemax="100">'.($variable).'%</div>';
+            break;
+        case $variable <= 30 :
+            # code...
+            return '<div class="progress-bar bg-danger" role="progressbar"
+                    style="width: '.($variable).'%" aria-valuenow="'.($variable).'" aria-valuemin="0"
+                    aria-valuemax="100">'.($variable).'%</div>';
+            break;
+        case $variable <= 35:
+            # code...
+            return '<div class="progress-bar bg-warning" role="progressbar"
+                    style="width: '.($variable).'%" aria-valuenow="'.($variable).'" aria-valuemin="0"
+                    aria-valuemax="100">'.($variable).'%</div>';
+            break;
+        case $variable <= 40:
+            # code...
+            return '<div class="progress-bar bg-info" role="progressbar"
+                    style="width: '.($variable).'%" aria-valuenow="'.($variable).'" aria-valuemin="0"
+                    aria-valuemax="100">'.($variable).'%</div>';
+            break;
+        case $variable <= 50:
+            # code...
+            return '<div class="progress-bar bg-info" role="progressbar"
+                    style="width: '.($variable).'%" aria-valuenow="'.($variable).'" aria-valuemin="0"
+                    aria-valuemax="100">'.($variable).'%</div>';
+            break;
+        case $variable <= 60:
+            # code...
+            return '<div class="progress-bar bg-info" role="progressbar"
+                    style="width: '.($variable).'%" aria-valuenow="'.($variable).'" aria-valuemin="0"
+                    aria-valuemax="100">'.($variable).'%</div>';
+            break;
+        case $variable <= 75:
+            # code...
+            return '<div class="progress-bar bg-primary" role="progressbar"
+                    style="width: '.($variable).'%" aria-valuenow="'.($variable).'" aria-valuemin="0"
+                    aria-valuemax="100">'.($variable).'%</div>';
+            break;
+        default:
+            # code...
+            return '<div class="progress-bar bg-success" role="progressbar"
+                    style="width: '.($variable).'%" aria-valuenow="'.($variable).'" aria-valuemin="0"
+                    aria-valuemax="100">'.($variable).'%</div>';
+            break;
+        }
+    } 
+
+    function donationPercetangeMoneyRaimaing($money_raising,$money_to_target){
+            $variable = $money_raising * 100 / $money_to_target;
+              return  number_format($variable,2,'.','');
+    }
+
 } 
+
 $users = new Users();
 global $db;
 Users::getconstruct($db);

@@ -200,27 +200,10 @@
             if (xhr.readyState == 4 && xhr.status == 200) {
 
                 switch (categories) {
-                    case 'history':
-                         var pagination = document.getElementById('historyPagination');
+                    case categories:
+                         var pagination = document.getElementById(categories+'Pagination');
                          pagination.innerHTML = xhr.responseText;
                         break;
-                    case  'science':
-                         var pagination = document.getElementById('sciencePagination');
-                         pagination.innerHTML = xhr.responseText;
-                        break;
-                    case  'computer_science':
-                         var pagination = document.getElementById('computer_sciencePagination');
-                         pagination.innerHTML = xhr.responseText;
-                        break;
-                    case  'politics':
-                         var pagination = document.getElementById('politicsPagination');
-                         pagination.innerHTML = xhr.responseText;
-                        break;
-                    case  'story':
-                         var pagination = document.getElementById('storyPagination');
-                         pagination.innerHTML = xhr.responseText;
-                        break;
-                   
                 }
             }
         };

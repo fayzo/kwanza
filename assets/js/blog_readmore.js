@@ -55,10 +55,18 @@ $(document).ready(function () {
         var video = $('#video');
         var youtube = $('#youtube');
         var categories_blog = $('#categories_blog');
+        var photo_Titleo0 = $('#photo-Titleo0');
+        var photo_Title0 = $('#photo-Title0');
+        var photo_Title1 = $('#photo-Title1');
+        var photo_Title2 = $('#photo-Title2');
+        var photo_Title3 = $('#photo-Title3');
+        var photo_Title4 = $('#photo-Title4');
+        var photo_Title5 = $('#photo-Title5');
 
         
         if (isEmpty(title) && isEmpty(authors) && isEmpty(categories_blog) && isEmpty(additioninformation) &&
-        isEmpty(photo) && isEmpty(other_photo)) {
+            isEmpty(photo) && isEmpty(other_photo) && isEmpty(video) && isEmpty(youtube) && isEmpty(photo_Titleo0) && isEmpty(photo_Title0) && isEmpty(photo_Title1) && isEmpty(photo_Title2) &&
+            isEmpty(photo_Title3) && isEmpty(photo_Title4) && isEmpty(photo_Title5)) {
             
             var extensions3 = $('#photo').val().split('.').pop().toLowerCase();
             var extensions4 = $('#other-photo').val().split('.').pop().toLowerCase();

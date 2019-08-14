@@ -15,6 +15,6 @@
     </section>
 
   <div id="medicalPagination">
-    <?php echo $fundraising->fundraisings(0,'medical',$user_id); ?>
+    <?php echo $fundraising->fundraisings(1,'medical',$user_id); ?>
   </div>
 </div>

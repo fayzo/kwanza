@@ -1,4 +1,4 @@
-        <header class="blog-header py-2 mb-3 bg-light">
+        <header class="blog-header  mt-3 py-2 mb-3 bg-light">
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4">
             <button type="button" class="btn btn-light" id="add_crowfund" data-crowfund="<?php echo $_SESSION['key']; ?>" > + Add Startup </button>
@@ -11,6 +11,8 @@
           </div>
         </div>
       </header>
+
+ <div class="container-fluid mb-5">
 
 <div role="tabpanel">
   <div class="row">
@@ -27,6 +29,7 @@
         <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="tab" href="#list-Fashion" role="tab" aria-controls="list-settings">Fashion</a>
       </div>
     </div>
+
 
     <div class="col-8 col-md-10 col-lg-10 ">
       <div class="tab-content" id="nav-tabContent">
@@ -72,6 +75,7 @@
       
     </div>
   </div>
+</div>
 </div>
 <!-- Use any element to open the sidenav -->
 <!-- <span>open</span> -->

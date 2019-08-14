@@ -1,4 +1,4 @@
-        <header class="blog-header py-2 mb-3 bg-light">
+        <header class="blog-header mt-3 py-2 mb-3 bg-light">
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4">
             <button type="button" class="btn btn-light" id="add_for_help" data-fund="<?php echo $_SESSION['key']; ?>" value="add_for_help"> + Add for help </button>
@@ -11,6 +11,8 @@
           </div>
         </div>
       </header>
+
+ <div class="container-fluid mb-5">
 
 <div role="tabpanel">
   <div class="row">
@@ -79,6 +81,7 @@
       
     </div>
   </div>
+</div>
 </div>
 <!-- Use any element to open the sidenav -->
 <!-- <span>open</span> -->

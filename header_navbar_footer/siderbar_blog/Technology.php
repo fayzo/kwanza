@@ -13,3 +13,19 @@
 
         </div>
     </section>
+
+<div class="row">
+    <div class="col-8 col-md-8 col-lg-8 ">
+      <div id="TechnologyPagination">
+          <!-- SLIDER WITH CAPTIONS -->
+          <?php echo $blog->Blogcarousel('Technology'); ?>
+          <!-- END SLIDER WITH CAPTIONS -->
+          <?php echo $blog->blogs(1,'Technology',$user_id); ?>
+      </div>
+    </div> 
+    <!-- col -->
+      
+      <div class="col-4 col-md-4 col-lg-4 px-4">
+          <?php echo $blog-> BlogRecent_Articles('Technology',$user_id); ?>
+    </div> <!-- col -->
+</div> <!-- row -->

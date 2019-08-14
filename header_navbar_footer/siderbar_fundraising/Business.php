@@ -15,7 +15,7 @@
     </section>
 
    <div id="businessPagination">
-    <?php echo $fundraising->fundraisings(0,'business',$user_id); ?>
+    <?php echo $fundraising->fundraisings(1,'business',$user_id); ?>
   </div>
 
 </div>

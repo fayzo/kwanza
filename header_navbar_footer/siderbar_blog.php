@@ -1,11 +1,11 @@
-      <header class="blog-header py-2 bg-light">
+      <header class="blog-header  mt-3 py-2 bg-light">
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 pt-1">
             <!-- <a class="text-muted" href="#">Subscribe</a> -->
            <button type="button" class="btn btn-light mt-2" id="add_blog" data-blog="<?php echo $_SESSION['key']; ?>" > + Add Blog </button>
           </div>
           <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="#">Large</a>
+            <a class="blog-header-logo text-dark" href="#">Blog</a>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
            <form class="form-inline">
@@ -51,7 +51,7 @@
         <button type="button" class="btn btn-light mt-2" id="add_blog" data-blog="< ?php echo $_SESSION['key']; ?>" > + Add Blog </button>
       </div>
     </div> -->
- 
+   <div class="container-fluid mb-5">
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="list-Technology" role="tabpanel" aria-labelledby="list-Technology-list">
            <?php include "siderbar_blog/Technology.php"?>
@@ -104,3 +104,4 @@
       <!-- tab-content -->
 </div>
 <!-- tabpanel -->
+</div>

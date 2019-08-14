@@ -15,7 +15,7 @@ class Blog extends Home{
             $showpages = ($pages*6)-6;
         }
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM users U Left JOIN blog B ON B. user_id3 = u. user_id WHERE B. categories_blog ='$categories' AND B. blog_post != 'posted'   ORDER BY created_on3 Desc Limit $showpages,6");
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN blog B ON B. user_id3 = u. user_id WHERE B. categories_blog ='$categories' AND B. blog_post != 'posted' ORDER BY created_on3 Desc Limit $showpages,6");
         ?>
         <div class="row mt-2 mb-2">
         <?php while($row= $query->fetch_array()) { 
@@ -30,13 +30,19 @@ class Blog extends Home{
             <img class="card-img-left flex-auto d-none d-lg-block" width="200px" height="250px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/Blog/<?php echo $row['photo'] ;?>" alt="Card image cap">
             <div class="card-body d-flex flex-column align-items-start">
               <h4 style="font-family: Playfair Display, Georgia, Times New Roman, serif;text-align:left;">
-               <a class="text-primary" href="javascript:void(0)" id="blog-readmore" data-blog="<?php echo $row['blog_id'] ;?>"> <?php echo  $row['title']; ?></a>
+               <a class="text-primary text-left" href="javascript:void(0)" id="blog-readmore" data-blog="<?php echo $row['blog_id'] ;?>">
+                <?php 
+                    if (strlen($row["title"]) > 36) {
+                      echo $row["title"] = substr($row["text"],0,36).'... ';
+                    }else{
+                      echo $row["title"];
+                    } ?></a>
               </h4>
               <div class="mb-1 text-muted">Created on <?php echo $this->timeAgo($row['created_on3']) ;?> By <?php echo $row['authors'] ;?> </div>
               <p class="mb-auto"> 
                 <?php 
-                    if (strlen($row["text"]) > 200) {
-                      echo $row["text"] = substr($row["text"],0,200).'...<br><span class="mb-0"><a href="javascript:void(0)" id="blog-readmore" data-blog="'.$row['blog_id'].'" class="text-muted" style"font-weight: 500 !important;">Continue reading...</a></span>';
+                    if (strlen($row["text"]) > 174) {
+                      echo $row["text"] = substr($row["text"],0,174).'... <span class="mb-0"><a href="javascript:void(0)" id="blog-readmore" data-blog="'.$row['blog_id'].'" class="text-muted" style"font-weight: 500 !important;">Continue reading >>> </a></span>';
                     }else{
                       echo $row["text"];
                     } ?> 
@@ -157,7 +163,7 @@ class Blog extends Home{
                          <p class="lead my-3">
                           <?php 
                              if (strlen($row1["text"]) > 184) {
-                              echo $row1["text"] = substr($row1["text"],0,184).'... <br><span class="mb-0"><a href="javascript:void(0)" id="blog-readmore" data-blog="'.$row1['blog_id'].'" class="text-white font-weight-bold">Continue reading...</a></span>';
+                              echo $row1["text"] = substr($row1["text"],0,184).'...  <span class="mb-0"><a href="javascript:void(0)" id="blog-readmore" data-blog="'.$row1['blog_id'].'" class="text-white font-weight-bold">Continue reading...</a></span>';
                             }else{
                               echo $row1["text"].$countRow->num_rows;
                             } ?> 
@@ -203,9 +209,10 @@ class Blog extends Home{
     public function BlogRecent_Articles($categories,$user_id)
     {
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM users U Left JOIN blog B ON B. user_id3 = u. user_id WHERE B. categories_blog ='$categories' and created_on3  > DATE_SUB(NOW(), INTERVAL 1 MONTH) and B. blog_post != 'posted' ORDER BY created_on3 Desc , rand() Limit 5");
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN blog B ON B. user_id3 = u. user_id WHERE B. categories_blog ='$categories' and B. created_on3  > DATE_SUB(NOW(), INTERVAL 1 MONTH) and B. blog_post != 'posted' ORDER BY B. created_on3 Desc , rand() Limit 5");
             //  SECOND	, MINUTE, HOUR, DAY, WEEK	, MONTH	, QUARTER	, YEAR,
-        if($query->num_rows != 0){
+       
+          if($query->num_rows != 0){
         ?>
        <div class="card d-none d-lg-block">
         <div class="card-header main-active">
@@ -220,10 +227,16 @@ class Blog extends Home{
 
               <div class="col-md-12 mb-2">
                 <div class="card flex-md-row shadow-sm h-md-100 border-0">
-                  <img class="card-img-left flex-auto d-none d-lg-block" height="100px" width="100px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/Blog/<?php echo $row['photo'] ;?>" alt="Card image cap">
+                  <img class="card-img-left flex-auto d-none d-lg-block" height="130px" width="100px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/Blog/<?php echo $row['photo'] ;?>" alt="Card image cap">
                   <div class="card-body d-flex flex-column align-items-start pt-0">
                     <h5 class="text-primary mb-0">
-                   <a class="text-primary" href="javascript:void(0)" id="blog-readmore" data-blog="<?php echo $row['blog_id']; ?> "> <?php echo  $row['title']; ?></a>
+                   <a class="text-primary" href="javascript:void(0)" id="blog-readmore" data-blog="<?php echo $row['blog_id']; ?> ">
+                    <?php 
+                    if (strlen($row["title"]) > 73) {
+                      echo $row["title"] = substr($row["text"],0,73).'... ';
+                    }else{
+                      echo $row["title"];
+                    } ?></a>
                     </h5>
                     <div class="text-muted">Created on <?php echo $this->timeAgo($row['created_on3']) ;?> By <?php echo $row['authors'] ;?> </div>
                     <p class="card-text mb-1">
@@ -456,7 +469,6 @@ class Blog extends Home{
             return $row;
         }
     }
-
     
     public function deleteLikesBlog($tweet_id,$user_id)
     {
@@ -482,15 +494,15 @@ class Blog extends Home{
             $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
             if (array_diff($fileActualExt,$allower_ext) == false) {
                 $expode = explode("=",$photo);
-                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/Blog/';
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/Blog/';
                 for ($i=0; $i < count($expode); ++$i) { 
                       unlink($uploadDir.$expode[$i]);
                 }
             }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp4') {
-                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/Blog/';
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/Blog/';
                       unlink($uploadDir.$photo);
             }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp3') {
-                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/Blog/';
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/Blog/';
                       unlink($uploadDir.$photo);
             }
         }
@@ -513,7 +525,6 @@ class Blog extends Home{
                 </div>');
         }
     }
-
     
      public function checkBlogRetweet($tweet_id,$user_id)
     {
@@ -523,7 +534,7 @@ class Blog extends Home{
         $stmt->prepare($query);
         $stmt->bind_param('iiii', $tweet_id, $user_id, $tweet_id, $user_id);
         $stmt->bind_result($blog_id, $created_on3,$user_id3,$retweet_idd, $tweetBy, $categories_blog, $title, $text, $authors ,$photo ,
-        $other_photo,$video,$youtube,$likes_counts,$retweet_counts,$blog_posted_on,$blog_retweet_Msg, $blog_post);
+        $other_photo,$video,$youtube,$profile_title_main,$profile_title,$likes_counts,$retweet_counts,$blog_posted_on,$blog_retweet_Msg, $blog_post);
         $stmt->execute();
         $CountRetweet= array();
         while ($stmt->fetch()) {
@@ -542,6 +553,8 @@ class Blog extends Home{
              "other_photo" => $other_photo, 
              "video" => $video, 
              "youtube" => $youtube, 
+             "profile_Title_main" => $profile_title_main,
+             "profile_Title" => $profile_title,
              "likes_counts" => $likes_counts, 
              "retweet_counts" => $retweet_counts, 
              "blog_posted_on" => $blog_posted_on, 

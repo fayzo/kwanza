@@ -16,6 +16,7 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
     }
     $crowfund_id = $_POST['crowfund_id'];
     $user= $crowfund->crowfundFecthReadmore($crowfund_id,$user_id);
+    $donates= $crowfund->recentDonate($crowfund_id);
     $comment= $crowfund->comments($crowfund_id);
     $likes= $crowfund->Crowfundraisinglikes($user_id,$user['fund_id']);
 
@@ -193,12 +194,13 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
 
                      </div> <!-- col-md-6  -->
                      <div class="col-md-6 pl-5">
-                            <span class="h5">5000 Frw Goal </span>
-                            <div class="progress " style="height: 6px;">
-                                <div class="progress-bar  bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <span><?php echo number_format($user['money_raising']).' Frw Raised out of<span class="float-right text-right"> '.number_format($user['money_to_target']).' Frw <span class="text-success">Goal </span></span>'; ?>  </span>
+                            <div class="progress " style="height: 10px;">
+                                <?php echo $users->Users_donationMoneyRaising($user['money_raising'],$user['money_to_target']); ?>
+                                <!-- <div class="progress-bar  bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> -->
                             </div>
-                            <p>Raised by 30 people in 30 months</p>
-                            <button type="button" class="btn btn-primary">Donate Now</button><br>
+                            <p>Raised by <?php echo $user['donate_counts']; ?> people in 30 months <span class="float-right text-right"><?php echo $users->donationPercetangeMoneyRaimaing($user['money_raising'],$user['money_to_target']); ?> /100 %</span></p>
+                            <button type="button" class="btn btn-primary donation-crowfund-btn" data-user="<?php echo $user['user_id']; ?>" data-fund="<?php echo $user['fund_id']; ?>">Donate Now</button><br>
                             
                             <div class="user-block mt-3">
                                <div class="user-blockImgBorder">
@@ -220,26 +222,60 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
 
                             <h5 class="mt-3"> Recent Donation</h5>
                             <div class=" row mt-1">
-                              <div class="col-md-12">
-                            
+                            <?php if (count($donates) > 6) { ?>
+                                
+                                <div class="col-md-12">
+                                <div style="height:380px;" class="large-2">
+                                    <?php  foreach ($donates as $donate) { ?> 
+                                
+                                    <div class="user-block mt-3">
+                                    <div class="user-blockImgBorder">
+                                        <div class="user-blockImg">
+                                            <?php if (!empty($donate['profile_img'])) {?>
+                                            <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $donate['profile_img'] ;?>" alt="User Image">
+                                            <?php  }else{ ?>
+                                                <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
+                                            <?php } ?>
+                                        </div>
+                                        </div>
+                                        <span class="username">
+                                            <a href="<?php echo BASE_URL_PUBLIC.$donate['username'] ;?>"><?php echo number_format($donate['money_donate']); ?> Frw <span class="float-right mr-2"><i class="fa fa-heart" ></i></span></a>
+                                            <!-- //Jonathan Burke Jr. -->
+                                        </span>
+                                        <span class="description"><?php echo $donate['comment']; ?> </span>
+                                        <span class="description">donated on <?php echo $users->timeAgo($donate['created_on3']) ;?></span>
+                                    </div> <!-- /.user-block -->
+                                    
+                                    <?php } ?>
+                                  </div><!-- /.col --> 
+                                </div><!-- /.col --> 
+                            <?php  }else{ ?>
+
+                             <div class="col-md-12">
+                            <?php  foreach ($donates as $donate) { ?> 
+                                
                                 <div class="user-block mt-3">
-                                   <div class="user-blockImgBorder">
-                                    <div class="user-blockImg">
-                                          <?php if (!empty($user['profile_img'])) {?>
-                                          <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $user['profile_img'] ;?>" alt="User Image">
-                                          <?php  }else{ ?>
-                                            <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
-                                          <?php } ?>
-                                    </div>
-                                    </div>
-                                    <span class="username">
-                                        <a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"> 100Frw </a>
-                                        <!-- //Jonathan Burke Jr. -->
-                                    </span>
-                                    <span class="description"> nice to donate keep up </span>
-                                    <span class="description">donated on <?php echo $users->timeAgo($user['created_on2']) ;?></span>
-                                </div> <!-- /.user-block -->
-                              </div><!-- /.col -->
+                                    <div class="user-blockImgBorder">
+                                        <div class="user-blockImg">
+                                            <?php if (!empty($donate['profile_img'])) {?>
+                                            <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $donate['profile_img'] ;?>" alt="User Image">
+                                            <?php  }else{ ?>
+                                                <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
+                                            <?php } ?>
+                                        </div>
+                                        </div>
+                                        <span class="username">
+                                            <a href="<?php echo BASE_URL_PUBLIC.$donate['username'] ;?>"><?php echo number_format($donate['money_donate'],2); ?> Frw </a>
+                                            <!-- //Jonathan Burke Jr. -->
+                                        </span>
+                                        <span class="description"><?php echo $donate['comment']; ?> </span>
+                                        <span class="description">donated on <?php echo $users->timeAgo($donate['created_on3']) ;?></span>
+                                    </div> <!-- /.user-block -->
+                                    
+                                    <?php } ?>
+                                </div><!-- /.col --> 
+
+                            <?php  } ?>
 
                               <div class="col-md-12">
                               <h5 class="mt-3"> Comments</h5>
@@ -281,6 +317,7 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
                               </div><!-- /.col -->
                               <div class="col-md-12">
                                 <span id="responseComment"></span>
+                                 <?php if (count($comment) > 5) { ?>
                                 <!-- <div class="tweet-show-popup-comment-wrap"> -->
                                 <div id="comments" style="height:300px;" class="large-2">
                                         <!--COMMENTS-->
@@ -316,6 +353,47 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
                                             </div> <!-- /.user-block -->
                                     <?php } ?>
                                 </div><!-- comments -->
+
+                                <?php  }else{ ?>
+
+                                <!-- <div class="tweet-show-popup-comment-wrap"> -->
+                                <div id="comments">
+                                        <!--COMMENTS-->
+                                      <?php  foreach ($comment as $user) { 
+                                            $likes= $crowfund->Crowfundraising_comment_like($user_id,$user['comment_id']);
+                                          ?>
+                                            <div class="user-block mt-3" id="userComment<?php echo $user['comment_id']; ?>">
+                                                <div class="user-blockImgBorder">
+                                                <div class="user-blockImg">
+                                                        <?php if (!empty($user['profile_img'])) {?>
+                                                        <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $user['profile_img'] ;?>" alt="User Image">
+                                                        <?php  }else{ ?>
+                                                        <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
+                                                        <?php } ?>
+                                                </div>
+                                                </div>
+                                                <span class="username">
+                                                    <a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"> <?php echo $user['username']; ?> comment on - <?php echo $users->timeAgo($user['comment_at']) ;?></a>
+                                                    <!-- <span class="float-right">44 <i class="fa fa-heart"></i></span> -->
+                                                     <!-- <span class="float-right">44 <i class="fa fa-heart"></i></span> -->
+                                                    <?php if($likes['like_on_'] == $user['comment_id']){ ?>
+                                                        <span <?php if(isset($_SESSION['key'])){ echo 'class="unlike-crowfundraisingUser-btn more float-right text-sm  mr-1"'; }else{ echo 'id="login-please" class="more float-right" data-login="1"'; } ?> data-comment="<?php echo $user['comment_id']; ?>"  data-user="<?php echo $user['user_id']; ?>"><span class="likescounter "><?php echo $user['likes_counts_'] ;?></span> <i class="fa fa-heart"  ></i></span>
+                                                    <?php }else{ ?>
+                                                        <span <?php if(isset($_SESSION['key'])){ echo 'class="like-crowfundraisingUser-btn more float-right text-sm mr-1"'; }else{ echo 'id="login-please" class="more float-right"  data-login="1"'; } ?> data-comment="<?php echo $user['comment_id']; ?>"  data-user="<?php echo $user['user_id']; ?>" ><span class="likescounter"> <?php if ($user['likes_counts_'] > 0){ echo $user['likes_counts_'];}else{ echo '';} ?></span> <i class="fa fa-heart-o" ></i> </span>
+                                                    <?php } ?>
+
+                                                    <?php if($user["comment_by"] === $user_id){ ?>
+                                                        <span class="deleteCrowFundraisingComment more" data-fund="<?php echo $user["fund_id"]; ?>" data-comment="<?php echo $user["comment_id"]; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                                    <?php }else { echo ''; } ?>
+                                                    <!-- //Jonathan Burke Jr. -->
+                                                </span>
+                                                <span class="description"> <?php echo $user['comment']; ?>  </span>
+                                            </div> <!-- /.user-block -->
+                                    <?php } ?>
+                                </div><!-- comments -->
+
+                                <?php  } ?>
+
                               </div><!-- col -->
                             </div><!-- /.row -->
 

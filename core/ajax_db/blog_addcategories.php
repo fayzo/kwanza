@@ -64,7 +64,7 @@ if (isset($_POST['blog_view']) && !empty($_POST['blog_view'])) {
                           <div class="form-group">
                                <div class="btn btn-defaults btn-file" >
                                    <i class="fa fa-paperclip"></i> Attachment
-                                   <input type="file" name="photo[]" id="photo" multiple>
+                                   <input type="file" onChange="displayImage0(this)" name="photo[]" id="photo" multiple>
                                 </div>
                                 <span>Upload one photo of proof</span><br>
                                 <span class="progress progress-hidex mt-1">
@@ -80,7 +80,7 @@ if (isset($_POST['blog_view']) && !empty($_POST['blog_view'])) {
                              <div class="form-group">
                                <div class="btn btn-defaults btn-file" >
                                    <i class="fa fa-paperclip"></i> Attachment
-                                   <input type="file" name="otherphoto[]" id="other-photo"  multiple>
+                                   <input type="file" onChange="displayImage(this)" name="otherphoto[]" id="other-photo"  multiple>
                                </div>
                                <span>Other photo</span>
                                <small class="help-block">(e.g show us many photo.) </small><br>
@@ -96,7 +96,8 @@ if (isset($_POST['blog_view']) && !empty($_POST['blog_view'])) {
                       <span onclick="fundAddmoreVideo()" id="add-more" class="btn btn-primary btn-md ">+ add more</span>
 
                     <div id="add-videohelp">
-                      
+                    </div>
+                    <div id="add-photo0" class="row">
                     </div>
                     <!-- collapse addmore-->
 
@@ -136,6 +137,42 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
       $youtube=  "";
     }
 
+  if (!empty($_POST['photo-Titleo0'])) {
+          $photo_Titleo=  $users->test_input($_POST['photo-Titleo0']);
+  }else {
+           $photo_Titleo='';
+  }
+  if (!empty($_POST['photo-Title0'])) {
+          $photo_Title0=  $users->test_input($_POST['photo-Title0']);
+  }else {
+           $photo_Title0='';
+  }
+  if (!empty($_POST['photo-Title1'])) {
+          $photo_Title1=  $users->test_input($_POST['photo-Title1']);
+  }else {
+           $photo_Title1='';
+  }
+  if (!empty($_POST['photo-Title2'])) {
+          $photo_Title2=  $users->test_input($_POST['photo-Title2']);
+  }else {
+           $photo_Title2='';
+  }
+  if (!empty($_POST['photo-Title3'])) {
+          $photo_Title3=  $users->test_input($_POST['photo-Title3']);
+  }else {
+           $photo_Title3='';
+  }
+  if (!empty($_POST['photo-Title4'])) {
+         $photo_Title4=  $users->test_input($_POST['photo-Title4']);
+  }else {
+           $photo_Title4='';
+  }
+  if (!empty($_POST['photo-Title5'])) {
+         $photo_Title5=  $users->test_input($_POST['photo-Title5']);
+  }else {
+           $photo_Title5='';
+  }
+
     $title = $users->test_input($_POST['title']);
     $authors = $users->test_input($_POST['authors']);
     $additioninformation = $users->test_input($_POST['additioninformation']);
@@ -165,6 +202,8 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
 	'youtube'=> $youtube, 
   'text'=> $additioninformation,
   'categories_blog'=> $categories_blog,
+  'photo_Title_main'=> $photo_Titleo,
+  'photo_Title'=> $photo_Title0.'='.$photo_Title1.'='.$photo_Title2.'='.$photo_Title3.'='.$photo_Title4.'='.$photo_Title5,
   'user_id3'=> $user_id,
   'tweet_blog_by'=> $user_id,
   'created_on3'=> $datetime ));

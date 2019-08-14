@@ -15,6 +15,18 @@
         </div>
     </section>
 
-     <div id="Party">
-       <?php echo $events->eventsList(0,'Party'); ?>
-     </div>
+<div class="row">
+    <div class="col-8 col-md-8 col-lg-8 ">
+      <div id="Party">
+          <!-- SLIDER WITH CAPTIONS -->
+          <?php echo $blog->Blogcarousel('history'); ?>
+          <!-- END SLIDER WITH CAPTIONS -->
+         <?php echo $events->eventsList(1,'Party',$user_id); ?>
+      </div>
+    </div> 
+    <!-- col -->
+      
+      <div class="col-4 col-md-4 col-lg-4 px-4">
+          <?php echo $events->Recent_Events('Party',$user_id); ?>
+    </div> <!-- col -->
+</div> <!-- row -->

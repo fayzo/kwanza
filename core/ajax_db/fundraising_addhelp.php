@@ -63,7 +63,7 @@ if (isset($_POST['fund_view']) && !empty($_POST['fund_view'])) {
                       </div>
                       <div class="form-row mt-2">
                         <div class="col">
-                                <label for="" class="text-dark">Province</label>
+                                <label for="">Province</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -77,7 +77,7 @@ if (isset($_POST['fund_view']) && !empty($_POST['fund_view'])) {
                                 </div>
                             </div>
                             <div class="col">
-                                <label for="" class="text-dark"> District</label>
+                                <label for=""> District</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -88,7 +88,7 @@ if (isset($_POST['fund_view']) && !empty($_POST['fund_view'])) {
                                 </div>
                             </div>
                             <div class="col">
-                                <label for="Sector" class="text-dark">Sector</label>
+                                <label for="Sector" >Sector</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -99,7 +99,7 @@ if (isset($_POST['fund_view']) && !empty($_POST['fund_view'])) {
                                 </div>
                             </div>
                             <div class="col">
-                                <label for="Cell" class="text-dark">Cell</label>
+                                <label for="Cell" >Cell</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -126,9 +126,9 @@ if (isset($_POST['fund_view']) && !empty($_POST['fund_view'])) {
 
                         <div class="col">
                             <div class="form-group">
-                                <label for="Cell" class="text-dark">types of helps you need</label>
+                                <label for="">types of categories of fund</label>
                               <select class="form-control" name="categories_fundraising" id="categories_fundraising">
-                                <option value="">Select what types of helps you need</option>
+                                <option value="">Select what types of categories of fund </option>
                                 <option value="medical">medical</option>
                                 <option value="education">education</option>
                                 <option value="faith">faith</option>

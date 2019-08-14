@@ -22,3 +22,47 @@ $(document).on('click', '.deleteCrowFundraisingComment', function (e) {
         }
     });
 });
+
+
+    $(document).on('click', '.deleteCrowfund', function (e) {
+        e.preventDefault();
+        var fund_id = $(this).data('fund');
+        var user_id = $(this).data('user');
+
+        $.ajax({
+            url: 'core/ajax_db/crowfund_delete.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                deletefund: user_id,
+                showpopupdelete: fund_id,
+            }, success: function (response) {
+                $(".popupTweet").html(response);
+                $(".close-retweet-popup,.cancel-it").click(function () {
+                    $(".fund-popup").hide();
+                });
+                $(".delete-it-crowfund").click(function () {
+                    $.ajax({
+                        url: 'core/ajax_db/crowfund_delete.php',
+                        method: 'POST',
+                        dataType: 'text',
+                        data: {
+                            deleteTweetHome: fund_id,
+                        }, success: function (response) {
+                            $("#responseDeletePost").html(response);
+                            setInterval(function () {
+                                $("#responseDeletePost").fadeOut();
+                            }, 1000);
+                            setInterval(function () {
+                                location.reload();
+                            }, 1100);
+                            console.log(response);
+                        }
+
+                    });
+                });
+                console.log(response);
+            }
+
+        });
+    });
