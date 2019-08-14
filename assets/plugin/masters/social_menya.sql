@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2019 at 02:51 AM
+-- Generation Time: Aug 14, 2019 at 02:03 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.2.20
 
@@ -116,6 +116,8 @@ CREATE TABLE `blog` (
   `other_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `video` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `youtube` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title_main` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title` varchar(600) COLLATE utf8mb4_unicode_ci NOT NULL,
   `likes_counts` int(11) NOT NULL,
   `retweet_counts` int(11) NOT NULL,
   `blog_posted_on` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -127,22 +129,27 @@ CREATE TABLE `blog` (
 -- Dumping data for table `blog`
 --
 
-INSERT INTO `blog` (`blog_id`, `created_on3`, `user_id3`, `retweet_blog_id`, `tweet_blog_by`, `categories_blog`, `title`, `text`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `likes_counts`, `retweet_counts`, `blog_posted_on`, `blog_retweet_Msg`, `blog_post`) VALUES
-(2, '2019-06-28 15:45:07', 61, 0, 0, 'science', 'harry potter', 'iyi film ikoze mwibaga', 'quan', '2019_92f.jpg', '2019_33f.jpg=2019_60fayz.jpg=2019_17fayz.jpg', '', '', 0, 0, '0', '', ''),
-(4, '2019-07-23 12:46:42', 61, 0, 0, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'raheem sterling', '2019_90hear.jpg', '2019_51imag.jpg=2019_24imag.jpg', '', '', 1, 3, '0', '', ''),
-(5, '2019-07-23 12:46:42', 61, 0, 0, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_89rwanda.jpg', '2019_55ramp.jpg=2019_80ramzy2.jpg', '', '', 2, 1, '0', '', ''),
-(6, '2019-07-23 12:46:42', 61, 0, 0, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_92rwanda.jpg', '2019_40ramp.jpg=2019_64ramzy2.jpg', '', '', 1, 2, '0', '', ''),
-(7, '2019-07-23 12:46:42', 61, 0, 0, 'history', 'One more for good measure', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'zidani', '2019_11f.jpg', '2019_60hear.jpg', '', '', 0, 1, '0', '', ''),
-(9, '2019-07-23 12:46:42', 61, 0, 0, '', 'shema rutahizamu ntiyoroshye', 'good', 'fayzo', '2019_93camera.jpg', '2019_68camera.jpg=2019_64exte.jpg', '', '', 0, 0, '0', '', ''),
-(10, '2019-07-23 12:46:42', 61, 0, 0, '', 'shema rutahizamu ntiyoroshye', 'good', 'fayzo', '2019_29camera.jpg', '2019_87camera.jpg=2019_91exte.jpg', '', '', 0, 0, '0', '', ''),
-(11, '2019-07-23 12:46:42', 61, 4, 61, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'raheem sterling', '2019_90hear.jpg', '2019_51imag.jpg=2019_24imag.jpg', '', '', 0, 1, '2019', 'nic', 'posted'),
-(12, '2019-07-23 12:46:42', 61, 5, 61, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_89rwanda.jpg', '2019_55ramp.jpg=2019_80ramzy2.jpg', '', '', 0, 1, '2019-08-10 10-01-12', 'nicee', 'posted'),
-(13, '2019-07-23 12:46:42', 61, 3, 66, 'history', 'Title of a longer featured blog post', 'Multiple lines of text that form the lede, informing new readers quickly and efficiently about what\'s most interesting in this post\'s contents.', 'harry kane', '2019_14fayz.jpg', '2019_64imag.jpg=2019_28imag.jpg', '', '', 0, 2, '2019-08-10 10-14-28', 'gudz', 'posted'),
-(14, '2019-07-23 12:46:42', 61, 7, 61, 'history', 'One more for good measure', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'zidani', '2019_11f.jpg', '2019_60hear.jpg', '', '', 0, 1, '2019-08-11 07-28-59', 'sf', 'posted'),
-(15, '2019-07-23 12:46:42', 61, 6, 61, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_92rwanda.jpg', '2019_40ramp.jpg=2019_64ramzy2.jpg', '', '', 0, 1, '2019-08-11 07-42-20', 'xzx', 'posted'),
-(16, '2019-07-23 12:46:42', 61, 4, 64, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'raheem sterling', '2019_90hear.jpg', '2019_51imag.jpg=2019_24imag.jpg', '', '', 0, 2, '2019-08-11 08-38-04', 'dfadfg', 'posted'),
-(17, '2019-07-23 12:46:42', 61, 6, 66, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_92rwanda.jpg', '2019_40ramp.jpg=2019_64ramzy2.jpg', '', '', 1, 2, '2019-08-11 10-34-23', 'ni', 'posted'),
-(18, '2019-07-23 12:46:42', 61, 4, 66, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'raheem sterling', '2019_90hear.jpg', '2019_51imag.jpg=2019_24imag.jpg', '', '', 1, 3, '2019-08-11 10-40-51', 'j', 'posted');
+INSERT INTO `blog` (`blog_id`, `created_on3`, `user_id3`, `retweet_blog_id`, `tweet_blog_by`, `categories_blog`, `title`, `text`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `photo_Title_main`, `photo_Title`, `likes_counts`, `retweet_counts`, `blog_posted_on`, `blog_retweet_Msg`, `blog_post`) VALUES
+(2, '2019-06-28 15:45:07', 61, 0, 0, 'science', 'harry potter', 'iyi film ikoze mwibaga', 'quan', '2019_92f.jpg', '2019_33f.jpg=2019_60fayz.jpg=2019_17fayz.jpg', '', '', '', '', 0, 0, '0', '', ''),
+(4, '2019-07-23 12:46:42', 61, 0, 0, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'raheem sterling', '2019_90hear.jpg', '2019_51imag.jpg=2019_24imag.jpg', '', '', '', '', 1, 3, '0', '', ''),
+(5, '2019-07-23 12:46:42', 61, 0, 0, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_89rwanda.jpg', '2019_55ramp.jpg=2019_80ramzy2.jpg', '', '', '', '', 2, 1, '0', '', ''),
+(6, '2019-07-23 12:46:42', 61, 0, 0, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_92rwanda.jpg', '2019_40ramp.jpg=2019_64ramzy2.jpg', '', '', '', '', 1, 2, '0', '', ''),
+(7, '2019-07-23 12:46:42', 61, 0, 0, 'history', 'One more for good measure', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'zidani', '2019_11f.jpg', '2019_60hear.jpg', '', '', '', '', 2, 1, '0', '', ''),
+(9, '2019-07-23 12:46:42', 61, 0, 0, '', 'shema rutahizamu ntiyoroshye', 'good', 'fayzo', '2019_93camera.jpg', '2019_68camera.jpg=2019_64exte.jpg', '', '', '', '', 0, 0, '0', '', ''),
+(10, '2019-07-23 12:46:42', 61, 0, 0, '', 'shema rutahizamu ntiyoroshye', 'good', 'fayzo', '2019_29camera.jpg', '2019_87camera.jpg=2019_91exte.jpg', '', '', '', '', 0, 0, '0', '', ''),
+(11, '2019-07-23 12:46:42', 61, 4, 61, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'raheem sterling', '2019_90hear.jpg', '2019_51imag.jpg=2019_24imag.jpg', '', '', '', '', 0, 1, '2019', 'nic', 'posted'),
+(12, '2019-07-23 12:46:42', 61, 5, 61, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_89rwanda.jpg', '2019_55ramp.jpg=2019_80ramzy2.jpg', '', '', '', '', 0, 1, '2019-08-10 10-01-12', 'nicee', 'posted'),
+(13, '2019-07-23 12:46:42', 61, 3, 66, 'history', 'Title of a longer featured blog post', 'Multiple lines of text that form the lede, informing new readers quickly and efficiently about what\'s most interesting in this post\'s contents.', 'harry kane', '2019_14fayz.jpg', '2019_64imag.jpg=2019_28imag.jpg', '', '', '', '', 0, 2, '2019-08-10 10-14-28', 'gudz', 'posted'),
+(14, '2019-07-23 12:46:42', 61, 7, 61, 'history', 'One more for good measure', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'zidani', '2019_11f.jpg', '2019_60hear.jpg', '', '', '', '', 0, 1, '2019-08-11 07-28-59', 'sf', 'posted'),
+(15, '2019-07-23 12:46:42', 61, 6, 61, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_92rwanda.jpg', '2019_40ramp.jpg=2019_64ramzy2.jpg', '', '', '', '', 0, 1, '2019-08-11 07-42-20', 'xzx', 'posted'),
+(16, '2019-07-23 12:46:42', 61, 4, 64, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'raheem sterling', '2019_90hear.jpg', '2019_51imag.jpg=2019_24imag.jpg', '', '', '', '', 0, 2, '2019-08-11 08-38-04', 'dfadfg', 'posted'),
+(17, '2019-07-23 12:46:42', 61, 6, 66, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'roon', '2019_92rwanda.jpg', '2019_40ramp.jpg=2019_64ramzy2.jpg', '', '', '', '', 1, 2, '2019-08-11 10-34-23', 'ni', 'posted'),
+(18, '2019-07-23 12:46:42', 61, 4, 66, 'history', 'Title of a longer featured blog post', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'raheem sterling', '2019_90hear.jpg', '2019_51imag.jpg=2019_24imag.jpg', '', '', '', '', 1, 3, '2019-08-11 10-40-51', 'j', 'posted'),
+(19, '2019-08-12 08:31:31', 61, 0, 61, 'Technology', 'HARRY POTTER', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'murisa', '2019_18a2-d.jpg', '2019_36abst.jpg', '', '', '', '', 0, 0, '', '', ''),
+(20, '2019-08-12 08:41:58', 61, 0, 61, 'history', 'Title of a longer featured blog post', 'Click to share on Facebook (Opens in new window)Click to share on WhatsApp (Opens in new window)Click to share on Google+ (Opens in new window)Click to share on Twitter (Opens in new window)\r\nI am Marilyn, 40 years old. Graduated in bachelor of science and business administration. I have been 11 years worked here in hong kong. My first employer is a single mom with 6 years old daughter. I do housework chores and help the child and tutoring her home work.', 'fax', '2019_510a50.png', '2019_705-ye.jpg', '', '', '', '', 1, 0, '', '', ''),
+(22, '2019-08-12 08:59:38', 61, 0, 61, 'history', 'My Skills And Experiences', 'Click to share on Facebook (Opens in new window)Click to share on WhatsApp (Opens in new window)Click to share on Google+ (Opens in new window)Click to share on Twitter (Opens in new window)\r\nI am Marilyn, 40 years old. Graduated in bachelor of science and business administration. I have been 11 years worked here in hong kong. My first employer is a single mom with 6 years old daughter. I do housework chores and help the child and tutoring her home work.', 'hope', '2019_561099.jpg', '2019_48a2-d.jpg', '', '', '', '', 1, 0, '', '', ''),
+(23, '2019-08-12 09:37:37', 61, 0, 61, 'Technology', 'English Filipino', 'Click to share on Facebook (Opens in new window)Click to share on WhatsApp (Opens in new window)Click to share on Google+ (Opens in new window)Click to share on Twitter (Opens in new window)\r\nI am Marilyn, 40 years old. Graduated in bachelor of science and business administration. I have been 11 years worked here in hong kong. My first employer is a single mom with 6 years old daughter. I do housework chores and help the child and tutoring her home work.', 'jojo', '2019_42b753.jpg', '2019_585-ye.jpg=2019_764778.jpg=2019_100a2-d.jpg=2019_50abst.jpg=2019_16b753.jpg', '', '', 'concert', 'june=may=double=sign=music=', 0, 0, '', '', ''),
+(24, '2019-08-12 09:37:38', 61, 0, 61, 'Technology', 'English Filipino', 'Click to share on Facebook (Opens in new window)Click to share on WhatsApp (Opens in new window)Click to share on Google+ (Opens in new window)Click to share on Twitter (Opens in new window)\r\nI am Marilyn, 40 years old. Graduated in bachelor of science and business administration. I have been 11 years worked here in hong kong. My first employer is a single mom with 6 years old daughter. I do housework chores and help the child and tutoring her home work.', 'jojo', '2019_58b753.jpg', '2019_325-ye.jpg=2019_564778.jpg=2019_43a2-d.jpg=2019_21abst.jpg=2019_16b753.jpg', '', '', 'concert', 'june=may=double=sign=music=', 0, 0, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -188,7 +195,9 @@ INSERT INTO `blog_comment_like` (`like_id_`, `like_on_`, `like_by_`) VALUES
 (1, 2, 66),
 (2, 2, 61),
 (3, 2, 74),
-(4, 4, 61);
+(4, 4, 61),
+(5, 6, 61),
+(6, 5, 61);
 
 -- --------------------------------------------------------
 
@@ -210,7 +219,11 @@ INSERT INTO `blog_like` (`like_id`, `like_on`, `like_by`) VALUES
 (5, 4, 61),
 (6, 5, 61),
 (9, 6, 66),
-(10, 5, 66);
+(10, 5, 66),
+(11, 7, 61),
+(12, 7, 66),
+(14, 20, 61),
+(15, 22, 61);
 
 -- --------------------------------------------------------
 
@@ -2897,11 +2910,21 @@ CREATE TABLE `comment_crowfunding` (
 --
 
 INSERT INTO `comment_crowfunding` (`comment_id`, `comment`, `comment_on`, `comment_by`, `comment_at`, `likes_counts_`) VALUES
-(16, 'amakuru yawe', 56, 61, '2019-08-09 11:30:48', 0),
-(17, 'ubwo ubufasha mushaka bumeze gute', 56, 61, '2019-08-09 11:31:05', 0),
-(18, 'njyewe ntago byumva ntagato ya uze kogera ubwire neza', 56, 61, '2019-08-09 11:31:32', 0),
-(19, 'rejka ibyo bibaho se', 56, 61, '2019-08-09 11:32:17', 3),
-(21, 'hoya ibyo ntago tubyemera ntagatoya musaza', 56, 61, '2019-08-09 11:32:59', 2);
+(26, 'ibyo bikorwa ni byiza turabashigikiye', 60, 61, '2019-08-12 07:11:52', 0),
+(27, 'iyo hectare murashaka gutera imbuto yiki ???', 60, 61, '2019-08-12 07:12:21', 0),
+(28, 'aho nkumuntu ahaska kwifatanya namwe umuntu yabigeza gute muduhe nukuntu umuntu yakorana namwe', 60, 61, '2019-08-12 07:13:04', 0),
+(29, 'watubwira neza utwo dusimba batitwa gute tubimenye', 61, 61, '2019-08-12 07:18:34', 0),
+(30, 'byaba byiza nutubwiye uko utwo dusimba dushobora kuza murako gace byaba ari impanvu yizo mboga muri gutera', 61, 61, '2019-08-12 07:19:33', 1),
+(31, 'aha turikubona ibirirwa mweeza ni kubura abagurira', 62, 61, '2019-08-12 07:25:26', 0),
+(32, 'ndumfashe tumenye uko umuntu yagufasha', 62, 61, '2019-08-12 07:25:44', 0),
+(33, 'izo ni nyama zihene', 64, 61, '2019-08-12 07:35:52', 0),
+(34, 'ubu mwe icyo mushaka ni tugo gusa', 65, 74, '2019-08-13 12:42:00', 1),
+(35, 'ubu nanjye naze nabigwirwa niki mwayabonye', 65, 69, '2019-08-13 12:43:22', 1),
+(36, 'ndagushigikiye kwi jana kwi jana', 65, 64, '2019-08-13 12:44:19', 0),
+(37, 'ubu hamagije gutaga abantu 3', 65, 61, '2019-08-13 12:45:14', 0),
+(38, 'mukomeze mutange', 65, 61, '2019-08-13 12:45:26', 0),
+(39, 'komeza musore wacu', 63, 61, '2019-08-13 13:38:55', 0),
+(40, 'tukuri inyuma', 63, 61, '2019-08-13 13:39:04', 0);
 
 -- --------------------------------------------------------
 
@@ -2923,10 +2946,10 @@ CREATE TABLE `comment_funding` (
 --
 
 INSERT INTO `comment_funding` (`comment_id`, `comment`, `comment_on`, `comment_by`, `likes_counts_`, `comment_at`) VALUES
-(41, 'ana', 44, 66, 0, '2019-08-11 13:46:53'),
-(42, 'tyt', 44, 66, 1, '2019-08-11 13:48:07'),
-(43, 'yt', 44, 66, 1, '2019-08-11 13:49:14'),
-(44, 'gud', 44, 66, 0, '2019-08-11 13:54:15');
+(45, 'ikibazzo nukubura aho mukorera cyangwa namafaranga mushaka', 57, 61, 0, '2019-08-12 07:45:05'),
+(46, 'udusobanurire neza iyo company yanyu ishaka bantu bagahe', 57, 61, 0, '2019-08-12 07:45:38'),
+(47, 'njyewe mfitte igitekerezo cyo kuzakora aka business ibyerekeye no gumfura bank yo kwizigamira', 58, 61, 0, '2019-08-12 07:54:15'),
+(48, 'ayo mafaranga yatuma mushaka gukora icyo gishora agana ate ????', 58, 61, 1, '2019-08-12 07:54:46');
 
 -- --------------------------------------------------------
 
@@ -2963,7 +2986,9 @@ CREATE TABLE `crowfundraising` (
   `categories_crowfundraising` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `photo_Title` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `photo_Title_main` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `money_to_target` float(10,2) NOT NULL,
   `money_raising` float(10,2) NOT NULL,
+  `donate_counts` int(11) NOT NULL,
   `percentage` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -2971,8 +2996,13 @@ CREATE TABLE `crowfundraising` (
 -- Dumping data for table `crowfundraising`
 --
 
-INSERT INTO `crowfundraising` (`fund_id`, `firstname1`, `middlename1`, `lastname1`, `address1`, `country1`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `text`, `progress_payment`, `photo`, `other_photo`, `video`, `youtube`, `user_id2`, `likes_counts`, `created_on2`, `total_likes`, `comments`, `email1`, `telephone1`, `categories_crowfundraising`, `photo_Title`, `photo_Title_main`, `money_raising`, `percentage`) VALUES
-(56, 'fafa', 'faf', 'afa', 'faf', 'afaf', 'afa', 'afa', 'faf', 'afa', 'afaf', 'afa', 'affa', '', '2019_401.jpg', '2019_312.jpg', '', '', 61, 2, '2019-07-08 14:03:14', 0, '', 'faf', 'afa', 'Agriculture', 'afafa=====', 'fafa', 30900.00, 40);
+INSERT INTO `crowfundraising` (`fund_id`, `firstname1`, `middlename1`, `lastname1`, `address1`, `country1`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `text`, `progress_payment`, `photo`, `other_photo`, `video`, `youtube`, `user_id2`, `likes_counts`, `created_on2`, `total_likes`, `comments`, `email1`, `telephone1`, `categories_crowfundraising`, `photo_Title`, `photo_Title_main`, `money_to_target`, `money_raising`, `donate_counts`, `percentage`) VALUES
+(60, 'muhire', 'jean', 'jean de dieu', 'kigali', 'RW', 'kigali', '1', '101', '1010603', '10106', '101060303', 'turashaka kongera imbuto yindobanure twogere umusaruro wi mboga tuve kubiro 100 tujye kuri ton 8', '', '2019_2191xb.jpg', '2019_9847f4.jpg', '', '', 61, 0, '2019-08-12 07:10:43', 0, '', 'shema@yahoo.com', '0748267745', 'Agriculture', 'aho turashaka kugwanya ni zuba ibirirwa bituma=====', 'aha turashaka gutera imbuto', 1000000.00, 50000.00, 0, 35),
+(61, 'muhore', 'aliance', 'boris', 'kigali', 'RW', 'kigali', '3', '304', '3040402', '30404', '304040203', 'dumfite ikibazo tudusimba iturira imbuto ubufasha dushaka nukubona umuti wica udusimba iibiribwa bireke kwagirika', '', '2019_57down.jpg', '2019_90imag.jpg', '', '', 61, 1, '2019-08-12 07:17:02', 0, '', 'boris@yahoo.com', '0748272642', 'Agriculture', 'ubu turashaka ko ni birirwa bikura neza=====', 'aha ibiti byariwe nudusimba', 3413000.00, 790000.00, 0, 50),
+(62, 'karera', 'issa', 'patrick', 'kigali', 'RW', 'kigali', '3', '303', '3030403', '30304', '303040305', 'ndumfite ikibazo cyo kubura aho tugemurira ibirirwa twenze ibintu byinshi mudufashinje tukabona na ba investors', '', '2019_700210.jpg', '2019_27bean.jpg', '', '', 61, 0, '2019-08-12 07:24:37', 0, '', 'patrick@yahoo.com', '07846674', 'Agriculture', 'twenza ni binshimbo=====', 'ibi ni kirayi tweze cyane', 3140000.00, 100000.00, 0, 65),
+(63, 'muhoza', 'mose', 'queen', 'kigali', 'RW', 'kigali', '3', '306', '3061303', '30613', '306130304', 'ubu ndumfite ikibazo cyo kubura amazi yo kuhira umurima wacu dukomeza kogera umusaruro mudufashije tukogera umusaruro', '', '2019_60images.jpg', '2019_33imag.jpg', '', '', 61, 1, '2019-08-12 07:29:34', 0, '', 'shema@yahoo.com', '0784676465', 'Agriculture', 'ubu turi kurwana ni zuba=====', 'uyu numurima ndushaka kuhira umurima', 34900000.00, 780567.00, 7, 45),
+(64, 'zanabu', 'assiza', 'kora', 'kigali', 'RW', 'kigali', '3', '306', '3061104', '30611', '306110403', 'ndukeneye ihene tubashe kogera itugo no kubasha kogera isoko ryi nyama', '', '2019_10stea.jpg', '2019_64japa.jpg', '', '', 61, 1, '2019-08-12 07:34:59', 0, '', 'assiza@yahoo.com', '078349545', 'ubworonzi', 'ubu turashaka kubona amasoko=====', 'izi nin yama zihene', 10000000.00, 69000.00, 0, 50),
+(65, 'mani', 'mani', 'mani', 'mani', 'RW', 'kigali', '4', '402', '4020904', '40209', '402090403', 'inkwavu', '', '2019_18plots.jpg', '2019_19p586.jpg', '', '', 61, 5, '2019-08-13 12:36:36', 0, '', 'shema@yahoo.com', '0748474', 'ubworonzi', 'ibyo kujya=====', 'aho kuzigaburira', 5000.00, 280.00, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -2991,10 +3021,9 @@ CREATE TABLE `crowfundraising_comment_like` (
 --
 
 INSERT INTO `crowfundraising_comment_like` (`like_id_`, `like_on_`, `like_by_`) VALUES
-(1, 21, 61),
-(2, 19, 61),
-(6, 21, 66),
-(7, 19, 66);
+(17, 30, 61),
+(18, 34, 74),
+(19, 35, 69);
 
 -- --------------------------------------------------------
 
@@ -3013,8 +3042,52 @@ CREATE TABLE `crowfundraising_like` (
 --
 
 INSERT INTO `crowfundraising_like` (`like_id`, `like_on`, `like_by`) VALUES
-(5, 56, 61),
-(6, 56, 66);
+(13, 61, 61),
+(14, 63, 61),
+(15, 64, 61),
+(16, 65, 61),
+(17, 65, 61),
+(18, 65, 66),
+(19, 65, 74),
+(20, 65, 69);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `crowfund_donation`
+--
+
+CREATE TABLE `crowfund_donation` (
+  `donate_id` int(11) NOT NULL,
+  `fund_id0` int(11) NOT NULL,
+  `sent_to_user_id` int(11) NOT NULL,
+  `firstname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sentby_user_id` int(11) NOT NULL,
+  `sendby_firstname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sendby_lastname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `number_to_send` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `money_donate` float(10,2) NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_donate` date NOT NULL,
+  `created_on3` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `crowfund_donation`
+--
+
+INSERT INTO `crowfund_donation` (`donate_id`, `fund_id0`, `sent_to_user_id`, `firstname`, `lastname`, `sentby_user_id`, `sendby_firstname`, `sendby_lastname`, `number_to_send`, `money_donate`, `comment`, `date_donate`, `created_on3`) VALUES
+(16, 63, 61, 'faysal', 'shema', 61, 'faysal', 'shema', 'MTN:(+250) 0783566367 OR TIGO:(+250) 074925262672', 50.00, 'nice to donate', '2019-08-13', '2019-08-13 00:00:00'),
+(17, 63, 61, 'faysal', 'shema', 61, 'faysal', 'shema', 'MTN:(+250) 0783566367 OR TIGO:(+250) 074925262672', 70.00, 'ndashaka gukorana nawe', '2019-08-13', '2019-08-13 00:00:00'),
+(18, 63, 61, 'faysal', 'shema', 61, 'faysal', 'shema', 'MTN:(+250) 0783566367 OR TIGO:(+250) 074925262672', 70.00, 'komeza', '2019-08-13', '2019-08-13 00:00:00'),
+(19, 63, 61, 'faysal', 'shema', 61, 'faysal', 'shema', 'MTN:(+250) 0783566367 OR TIGO:(+250) 074925262672', 56.00, 'nice', '2019-08-13', '2019-08-13 11:09:54'),
+(20, 65, 61, 'faysal', 'shema', 61, 'faysal', 'shema', 'MTN:(+250) 0783566367 OR TIGO:(+250) 074925262672', 10.00, 'nice to donate', '2019-08-13', '2019-08-13 12:37:37'),
+(21, 65, 61, 'faysal', 'shema', 66, 'muhre', 'karim', 'MTN:(+250) 0783566367 OR TIGO:(+250) 074925262672', 70.00, 'nice to donate', '2019-08-13', '2019-08-13 12:38:27'),
+(22, 65, 61, 'faysal', 'shema', 74, 'jojo', 'jojo', 'MTN:(+250) 0783566367 OR TIGO:(+250) 074925262672', 200.00, '', '2019-08-13', '2019-08-13 12:39:29'),
+(23, 63, 61, 'faysal', 'shema', 61, 'faysal', 'shema', 'MTN:(+250) 0783566367 OR TIGO:(+250) 074925262672', 399.00, 'ndagushigikiye 100%', '2019-08-13', '2019-08-13 13:34:08'),
+(24, 63, 61, 'faysal', 'shema', 61, 'faysal', 'shema', 'MTN:(+250) 0783566367 OR TIGO:(+250) 074925262672', 399.00, 'ndagushigikiye 100%', '2019-08-13', '2019-08-13 13:34:08'),
+(25, 63, 61, 'faysal', 'shema', 61, 'faysal', 'shema', 'MTN:(+250) 0783566367 OR TIGO:(+250) 074925262672', 50.00, 'ndorera guhe', '2019-08-13', '2019-08-13 13:49:18');
 
 -- --------------------------------------------------------
 
@@ -3151,7 +3224,17 @@ INSERT INTO `employersdomestics` (`employers_id`, `firstname_`, `lastname_`, `ph
 
 CREATE TABLE `events` (
   `events_id` int(11) NOT NULL,
+  `retweet_events_id` int(11) NOT NULL,
+  `tweet_events_by` int(11) NOT NULL,
   `country` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `authors` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `province` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `districts` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sector` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cell` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `village` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name_place` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location_events` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `start_events` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -3161,7 +3244,12 @@ CREATE TABLE `events` (
   `photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `video` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `youtube` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `likes_counts` int(11) NOT NULL,
   `user_id3` int(11) NOT NULL,
+  `retweet_counts` int(11) NOT NULL,
+  `events_posted_on` datetime NOT NULL,
+  `events_retweet_Msg` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `events_post` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_on3` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -3169,18 +3257,61 @@ CREATE TABLE `events` (
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`events_id`, `country`, `name_place`, `location_events`, `start_events`, `date0`, `categories_events`, `additioninformation`, `photo`, `video`, `youtube`, `user_id3`, `created_on3`) VALUES
-(2, 'rwanda', '', '', '', '0000-00-00', 'Party', 'party', '2019_80fayz.jpg', '', '', 61, '2019-06-15 02:21:16'),
-(3, 'rwanda', '', '', '', '0000-00-00', 'Party', 'party', '2019_48gori.jpg', '', '', 61, '2019-06-15 03:01:35'),
-(4, 'rwanda', 'milles collins', '', '', '0000-00-00', 'Party', 'having fun', '2019_96head.jpg', '', '', 61, '2019-06-15 03:14:08'),
-(5, 'rwanda', 'milles collins', 'kimihurura', '07h', '0000-00-00', 'Party', 'having fun', '2019_18ramz.png', '', '', 61, '2019-06-15 03:28:53'),
-(6, 'rwanda', 'milles collins', 'kimihurura', '2019-06-12', '0000-00-00', 'Party', 'nice', '2019_44hear.jpg', '', '', 61, '2019-06-15 03:40:08'),
-(7, 'rwanda', 'milles collins', 'kimihurura', '2019-06-15', '0000-00-00', 'Party', 'n ice', '2019_100images.jpg', '', '', 61, '2019-06-15 03:41:13'),
-(8, 'rwanda', 'milles collins', 'kimihurura', '2019-06-16', '0000-00-00', 'Party', 'niice', '2019_61images.png', '', '', 61, '2019-06-15 03:41:42'),
-(9, 'rwanda', 'milles collins', 'kimihurura', '07h', '2019-06-15', 'Party', 'nice', '2019_89imag.jpg', '', '', 61, '2019-06-15 03:49:03'),
-(10, 'rwanda', 'milles collins', 'kimihurura', '07h', '2019-06-16', 'Party', 'n', '2019_28imag.jpg', '', '', 61, '2019-06-15 03:50:26'),
-(11, 'rwanda', 'milles collins', 'kimihurura', '07h', '2019-06-16', 'Party', 'gud', '2019_291.jpg', '', '', 61, '2019-06-15 03:59:15'),
-(12, 'rwanda', 'milles collins', 'kimihurura', '07h', '2019-06-16', 'Party', 'gud', '2019_341.jpg', '', '', 61, '2019-06-15 03:59:16');
+INSERT INTO `events` (`events_id`, `retweet_events_id`, `tweet_events_by`, `country`, `title`, `authors`, `photo_Title`, `province`, `districts`, `sector`, `cell`, `village`, `name_place`, `location_events`, `start_events`, `date0`, `categories_events`, `additioninformation`, `photo`, `video`, `youtube`, `likes_counts`, `user_id3`, `retweet_counts`, `events_posted_on`, `events_retweet_Msg`, `events_post`, `created_on3`) VALUES
+(4, 0, 0, 'rwanda', '', '', '', '', '', '', '', '', 'milles collins', '', '', '0000-00-00', 'Party', 'having fun', '2019_96head.jpg', '', '', 0, 61, 0, '0000-00-00 00:00:00', '', '', '2019-06-15 03:14:08'),
+(5, 0, 0, 'rwanda', '', '', '', '', '', '', '', '', 'milles collins', 'kimihurura', '07h', '0000-00-00', 'Party', 'having fun', '2019_18ramz.png', '', '', 0, 61, 0, '0000-00-00 00:00:00', '', '', '2019-06-15 03:28:53'),
+(10, 0, 0, 'rwanda', '', '', '', '', '', '', '', '', 'milles collins', 'kimihurura', '07h', '2019-06-16', 'Party', 'n', '2019_28imag.jpg', '', '', 0, 61, 0, '0000-00-00 00:00:00', '', '', '2019-06-15 03:50:26'),
+(11, 0, 0, 'rwanda', '', '', '', '', '', '', '', '', 'milles collins', 'kimihurura', '07h', '2019-06-16', 'Party', 'gud', '2019_291.jpg', '', '', 0, 61, 0, '0000-00-00 00:00:00', '', '', '2019-06-15 03:59:15'),
+(13, 0, 0, 'RW', '', '', 'music=====', '1', '102', '1020203', '10202', '102020303', 'lemigo', 'kimihurura', '09 h', '2019-08-12', 'Party', 'is all', '2019_27b753.jpg', '', '', 0, 61, 0, '0000-00-00 00:00:00', '', '', '2019-08-12 11:15:27'),
+(14, 0, 0, 'RW', 'WORKING PLACE', 'FAY', 'DE SIGN=====', '2', '202', '2020201', '20202', '202020106', 'LEMIGO', 'KIMIHURURA', '08 H', '2019-08-18', 'Party', 'WORKING AND PLAYING AND DANCING', '2019_45abst.jpg', '', '', 1, 61, 1, '0000-00-00 00:00:00', '', '', '2019-08-12 12:29:15'),
+(15, 0, 0, 'NO', 'my working on gym', 'kim', 'one push=====', '2', '201', '2010404', '20104', '201040404', 'stade', 'kamonyi', '8 h', '2019-08-19', 'Party', 'Click to share on Facebook (Opens in new window)Click to share on WhatsApp (Opens in new window)Click to share on Google+ (Opens in new window)Click to share on Twitter (Opens in new window)\r\nI am Marilyn, 40 years old. Graduated in bachelor of science and business administration. I have been 11 years worked here in hong kong. My first employer is a single mom with 6 years old daughter. I do housework chores and help the child and tutoring her home work.', '2019_61a2-d.jpg', '', '', 0, 61, 0, '0000-00-00 00:00:00', '', '', '2019-08-12 12:35:43'),
+(16, 14, 61, 'RW', 'WORKING PLACE', 'FAY', 'DE SIGN=====', '2', '202', '2020201', '20202', '202020106', 'LEMIGO', 'KIMIHURURA', '08 H', '2019-08-18', 'Party', 'WORKING AND PLAYING AND DANCING', '2019_45abst.jpg', '', '', 0, 61, 1, '2019-08-12 17:25:25', 'amak', 'posted', '2019-08-12 12:29:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events_comment`
+--
+
+CREATE TABLE `events_comment` (
+  `comment_id` int(11) NOT NULL,
+  `comment_on` int(11) NOT NULL,
+  `comment_by` int(11) NOT NULL,
+  `comment` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comment_at` datetime NOT NULL,
+  `likes_counts_` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events_comment_like`
+--
+
+CREATE TABLE `events_comment_like` (
+  `like_id_` int(11) NOT NULL,
+  `like_on_` int(11) NOT NULL,
+  `like_by_` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events_like`
+--
+
+CREATE TABLE `events_like` (
+  `like_id` int(11) NOT NULL,
+  `like_on` int(11) NOT NULL,
+  `like_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `events_like`
+--
+
+INSERT INTO `events_like` (`like_id`, `like_on`, `like_by`) VALUES
+(2, 14, 61);
 
 -- --------------------------------------------------------
 
@@ -3353,40 +3484,8 @@ CREATE TABLE `fundraising` (
 --
 
 INSERT INTO `fundraising` (`fund_id`, `firstname1`, `middlename1`, `lastname1`, `address1`, `country1`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `text`, `progress_payment`, `likes_counts`, `photo`, `other_photo`, `video`, `youtube`, `user_id2`, `created_on2`, `total_likes`, `comments`, `email1`, `telephone1`, `categories_fundraising`, `photo_Title`, `photo_Title_main`) VALUES
-(23, 'v', 'v', 'v', 'v', '0', 'v', 'v', 'v', 'v', 'v', 'v', 'v', '', 0, '2019_16fayz.jpg', '2019_64hear.jpg', '2019_45imag.jpg', 'v', 61, '0000-00-00 00:00:00', 0, '', 'v', 'v', '', '', ''),
-(24, 'c', 'd', 'd', 'sd', '0', 'z', 'c', 'c', 'z', 'c', 'c', 'c', '', 0, '2019_19ramp.jpg', '2019_82hear.jpg', '2019_89ramzy2.jpg', 'c', 61, '0000-00-00 00:00:00', 0, '', 'shemafaysal@gmail.com', 'c', 'education', '', ''),
-(25, 'a', 'a', 'a', 'a', '0', 'a', 'a', 'a', 'a', 'a', 'a', 'a', '', 0, '', '', '', 'a', 61, '2019-05-30 13:28:19', 0, '', 'a', 'a', 'medical', '', ''),
-(26, 'a', 'a', 'a', 'a', '0', 'a', 'a', 'a', 'a', 'a', 'a', 'a', '', 0, '', '', '', 'a', 61, '2019-05-30 13:28:47', 0, '', 'a', 'a', 'medical', '', ''),
-(27, 'a', 'a', 'a', 'a', '0', 'a', 'a', 'a', 'a', 'a', 'a', 'a', '', 0, '', '', '', 'a', 61, '2019-05-30 13:28:47', 0, '', 'a', 'a', 'medical', '', ''),
-(28, 'a', 'a', 'a', 'aa', '0', 'a', 'a', 'a', 'a', 'a', 'a', 'a', '', 0, '2019_85head.jpg', '2019_73hear.jpg', '2019_29hear.jpg', 'a', 61, '2019-05-30 13:29:16', 0, '', 'a', 'a', 'Select what types of helps you need', '', ''),
-(29, 'w', 'w', 'w', 'w', '0', 'w', 'w', 'w', 'w', 'w', 'w', 'w', '', 0, '2019_54hear.jpg', '2019_19hear.jpg', '2019_38imag.jpg', 'w', 61, '2019-05-30 13:34:51', 0, '', 'w', 'w', 'business', '', ''),
-(30, 'x', 'x', 'x', 'x', '0', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '', 0, '2019_86imag.jpg', '2019_43imag.jpg', '2019_89images.png', 'x', 61, '2019-05-30 13:36:21', 0, '', 'x', 'x', 'education', '', ''),
-(31, 'q', 'q', 'q', 'q', '0', 'q', 'q', 'q', 'q', 'q', 'q', 'q', '', 0, '', '', '', '', 61, '2019-05-31 06:49:14', 0, '', 'q', 'q', 'business', '', ''),
-(32, 'q', 'q', 'q', 'q', '0', 'q', 'q', 'q', 'q', 'q', 'q', 'q', '', 0, '2019_40f.jpg', '2019_74fayz.jpg', '', '', 61, '2019-05-31 06:51:50', 0, '', 'q', 'q', 'business', '', ''),
-(33, 'a', 'a', 'a', 'a', '0', 'a', 'a', 'a', 'a', 'a', 'a', 'a', '', 0, '2019_97gori.jpg', '2019_15ramp.jpg', '', '', 61, '2019-05-31 06:54:12', 0, '', 'a', 'a', 'business', '', ''),
-(34, 'z', 'z', 'z', 'z', '0', 'z', 'z', 'z', 'z', 'z', 'z', 'z', '', 0, '2019_62tree.jpg', '2019_53unti.png', '', '', 61, '2019-05-31 06:56:58', 0, '', 'z', 'z', 'business', '', ''),
-(35, 'd', 'd', 'd', 'd', '0', 'd', 'd', 'd', 'd', 'd', 'd', 'd', '', 0, '2019_40head.jpg', '2019_36images.png', '', '', 61, '2019-05-31 07:09:36', 0, '', 'd', 'd', 'business', '', ''),
-(36, 'x', 'x', 'x', 'x', '0', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '', 0, '2019_69head.jpg', '2019_15fayz.jpg', '', '', 61, '2019-05-31 07:20:30', 0, '', 'x', 'x', 'business', '', ''),
-(37, 'z', 'z', 'z', 'z', '0', 'z', 'z', 'z', 'z', 'z', 'z', 'z', '', 0, '2019_27suns.jpg', '2019_53suns.jpg', '', '', 61, '2019-05-31 07:24:12', 0, '', 'z', 'z', 'business', '', ''),
-(38, 'v', 'v', 'v', 'v', '0', 'v', 'v', 'v', 'v', 'v', 'v', 'v', '', 0, '2019_57f.jpg', '2019_31imag.jpg', '', '', 61, '2019-05-31 07:27:57', 0, '', 'v', 'v', 'business', '', ''),
-(39, 'c', 'c', 'c', 'c', '0', 'c', 'c', 'c', 'c', 'c', 'c', 'c', '', 0, '2019_78gori.jpg', '2019_90ramzya.jpg', '', '', 61, '2019-05-31 07:28:35', 0, '', 'c', 'c', 'business', '', ''),
-(40, 's', 's', 's', 's', '0', 's', 's', 's', 's', 's', 's', 's', '', 0, '2019_951.jpg', '2019_923.jpg', '', '', 61, '2019-05-31 07:59:41', 0, '', 's', 's', 'education', '', ''),
-(41, 'v', 'v', 'v', 'v', '0', 'v', 'v', 'v', 'v', 'v', 'v', 'v', '', 0, '2019_826147.jpg', '2019_58fay121.jpg', '', '', 61, '2019-05-31 08:06:09', 0, '', 'v', 'v', 'creative', '', ''),
-(42, 'x', 'x', 'x', 'x', '0', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '', 0, '2019_781.jpg', '2019_575220.jpg', '', '', 61, '2019-05-31 08:56:20', 0, '', 'x', 'x', 'community', '', ''),
-(43, 'cs', 'c', 'c', 'c', '0', 'c', 'c', 'c', 'c', 'c', 'c', 'c', '', 1, '2019_191.jpg', '2019_212.jpg=2019_633.jpg=2019_1005046.jpg=2019_305220.jpg=2019_475220.jpg=2019_975220.jpg=2019_476147.jpg=2019_79caus.jpg', '', '', 61, '2019-05-31 11:28:35', 0, '', 'c', 'c', 'business', '', ''),
-(44, 'b', 'b', 'b', 'b', '0', 'b', 'b', 'b', 'b', 'b', 'b', 'b', '', 1, '2019_19hear.jpg', '2019_12images.jpg', '', '', 61, '2019-06-01 06:52:06', 0, '', 'b', 'b', 'business', '', ''),
-(45, 'd', 'd', 'd', 'd', '0', 'd', 'd', 'd', 'd', 'd', 'd', 'd', '', 0, '2019_583.jpg', '2019_38f.jpg=2019_87fayz.jpg=2019_91fayz.jpg=2019_43head.jpg=2019_93hear.jpg=2019_61hear.jpg=2019_24images.png=2019_98imag.jpg=2019_42imag.jpg', '', '', 61, '2019-06-02 13:54:26', 0, '', 'd', 'd', 'community', '', ''),
-(46, 'q', 'q', 'q', 'q', '0', 'q', 'q', 'q', 'q', 'q', 'q', 'q', '', 0, '2019_52hear.jpg', '2019_26hear.jpg=2019_19imag.jpg', '', '', 61, '2019-06-02 13:56:23', 0, '', 'q', 'q', 'community', '', ''),
-(47, 'ee', 'e', 'e', 'e', '0', 'e', 'e', 'e', 'e', 'e', 'e', 'e', '', 0, '2019_70imag.jpg', '2019_15fayz.jpg=2019_21fayz.jpg', '', '', 61, '2019-06-02 13:58:02', 0, '', 'e', 'e', 'community', '', ''),
-(48, 'xc', 'c', 'c', 'c', '0', 'c', 'c', 'c', 'c', 'c', 'c', 'c', '', 0, '2019_73imag.jpg', '2019_90ramz.png=2019_39rwanda.jpg', '', '', 61, '2019-06-02 13:58:58', 0, '', 'c', 'c', 'community', '', ''),
-(49, 'r', 'r', 'r', 'r', '0', 'r', 'r', 'r', 'r', 'r', 'r', 'r', '', 0, '2019_40imag.jpg', '2019_60ramp.jpg=2019_38ramzy2.jpg', '', '', 61, '2019-06-02 13:59:34', 0, '', 'r', 'r', 'community', '', ''),
-(50, 't', 't', 't', 't', '0', 't', 't', 't', 't', 't', 't', 't', '', 0, '2019_13images.png', '2019_67suns.jpg', '', '', 61, '2019-06-02 14:00:06', 0, '', 't', 't', 'community', '', ''),
-(51, 'uu', 'u', 'u', 'u', '0', 'u', 'u', 'u', 'u', 'u', 'u', 'u', '', 0, '2019_99ramp.jpg', '2019_10ramzya.jpg', '', '', 61, '2019-06-02 14:00:36', 0, '', 'uu', 'u', 'community', '', ''),
-(52, 'cd', 'dd', 'd', 'd', '0', 'd', 'd', 'd', 'd', 'd', 'd', 'd', '', 0, '2019_36ramz.png', '2019_23tree.jpg', '', '', 61, '2019-06-02 14:01:04', 0, '', 'd', 'd', 'community', '', ''),
-(53, 'shema', 'shema', 'faysal', 'kigali', '0', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'rwaye umtima', '', 0, '2019_941.jpg', '2019_832.jpg=2019_193.jpg', '', '', 61, '2019-06-29 08:53:40', 0, '', 'shemafaysal@gmail.com', '07867424253', 'faith', 'ndi mugitanda=aha ndikugenda buhororor====', ''),
-(54, 'ronaldo', 'shema', 'faysal', 'kigali', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'ndarwaye', '', 0, '2019_655046.jpg', '2019_62caus.jpg=2019_26caus.jpg', '', '', 61, '2019-06-29 09:11:56', 0, '', 'shemafaysal@gmail.com', '07867424253', 'faith', 'no kwiga ntago niga====', 'nta mbaraga'),
-(55, 'x', 'c', 'x', 'sdfds', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'ndarwaye', '', 0, '2019_74fay1.jpg', '2019_26stoc.jpg=2019_52stoc.jpg', '', '', 61, '2019-06-29 09:15:23', 0, '', 'shemafaysal@gmail.com', '007068', 'faith', 'ndaguye====', 'ifoto yo mu mutwe'),
-(56, 'mani', 'mani', 'mani', 'kigali', 'RW', 'kigali', '1', '102', '1020803', '10208', '102080302', 'gudz', '', 0, '2019_80capt.png', '2019_30capt.png', '', '', 61, '2019-08-07 09:43:10', 0, '', 'mani@yahoo.com', '086875', 'competition', 'kumwitaho=====', 'ubufasha mubyerekeye guhoza umwana');
+(57, 'mujaba', 'sana', 'kosima', 'kigali', 'RW', 'kigalli', '1', '102', '1020803', '10208', '102080302', 'turasha guhuza bantu bandakora tugashinga business ibyerekeye no kugorera mu ma events tukabona naho gukorera', '', 1, '2019_47pina.jpg', '2019_18down.jpg', '', '', 61, '2019-08-12 07:43:59', 0, '', 'sana@yahoo.com', '07865654', 'business', 'tubona nkahantu heza nibyo dushaka=====', 'turashaka ubufasha bwo kubona aho gukorera'),
+(58, 'musoza', 'kosima', 'KARORI', 'KIGALI', 'RW', 'kigali', '2', '202', '2020601', '20206', '202060105', 'turashaka kubona umuntu udufasha mugukora business kuko ndumfite igishora twabuze nkumuntu udufasha mugukora business ibyiza mwadufasha', '', 1, '2019_75famlz.png', '2019_53fami.png', '', '', 61, '2019-08-12 07:52:24', 0, '', 'kosima@yahoo.com', '0787724367', 'business', 'turikorera=====', 'ndu mfite igishora ariko nta ideas');
 
 -- --------------------------------------------------------
 
@@ -3405,12 +3504,7 @@ CREATE TABLE `fundraising_comment_like` (
 --
 
 INSERT INTO `fundraising_comment_like` (`like_id_`, `like_on_`, `like_by_`) VALUES
-(10, 39, 66),
-(11, 38, 66),
-(12, 37, 66),
-(13, 31, 66),
-(14, 43, 66),
-(15, 42, 66);
+(18, 48, 61);
 
 -- --------------------------------------------------------
 
@@ -3429,8 +3523,8 @@ CREATE TABLE `fund_like` (
 --
 
 INSERT INTO `fund_like` (`like_id`, `like_on`, `like_by`) VALUES
-(54, 44, 66),
-(55, 43, 66);
+(57, 57, 61),
+(58, 58, 61);
 
 -- --------------------------------------------------------
 
@@ -4947,18 +5041,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `password`, `gender`, `chat`, `career`, `country`, `date_birth`, `date_registry`, `last_login`, `counts_login`, `forgotUsernameCounts`, `forgotUsernameCountsTimesHeCreates`, `forgotUsernameCountsTimesHeCreatespassword`, `profile_img`, `profile_img_crop`, `cover_img`, `background`, `language`, `color`, `education`, `diploma`, `skills`, `location`, `hobbys`, `followers`, `following`, `approval`, `company_education`, `type_of_business`, `address`, `size_of_people`, `companyname`, `overview`, `history`, `team`, `legal_structure`, `location_facilities`, `mission_statement`, `website`, `unemplyoment`, `categories_fields`, `phone`) VALUES
-(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'on', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-08-12 02:48:44', 402, 0, 10, 10, '911f.jpg', '', '702caus.jpg', 'chair', '', 'rose', 'lycee', 'project', 'web', 'BR', 'styuding', 8, 5, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
-(64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-08-11 08:23:52', 36, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
+(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'off', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-08-13 12:48:02', 412, 0, 10, 10, '911f.jpg', '', '702caus.jpg', 'chair', '', 'rose', 'lycee', 'project', 'web', 'BR', 'styuding', 8, 5, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
+(64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-08-13 12:43:44', 37, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
 (65, 'karisa', 'bosco', 'bosco', 'faysal@gmail.com', 'bosco', 'Male', '', '', 'RW', '2019-05-03', '2019-05-02', '2019-05-27 21:50:00', 8, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 2, 2, 'off', '', '', '', '', 'LAMBORGIN', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
-(66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-08-11 13:20:16', 97, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'chair', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
+(66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-08-13 12:37:54', 100, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'chair', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
 (67, 'musema', 'musema', 'musema', 'musemafaysal@gmail.com', 'musema', 'Male', '', '', 'RW', '2019-05-06', '2019-05-06', '2019-05-21 14:53:30', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 2, 'off', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
 (68, 'zidani', 'zidani', 'zidanii', 'zidani@gmail.com', 'zidani', 'Male', '', '', 'FR', '2019-05-06', '2019-05-22', '2019-05-30 11:54:50', 5, 0, 0, 0, '855fays.gif', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
-(69, 'rihana', 'rihana', 'rihana', 'rihana@gmail.com', 'rihana', 'Female', 'off', '', 'AF', '1988-03-18', '2019-06-02', '2019-08-09 09:33:48', 20, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 3, 3, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
+(69, 'rihana', 'rihana', 'rihana', 'rihana@gmail.com', 'rihana', 'Female', 'off', '', 'AF', '1988-03-18', '2019-06-02', '2019-08-13 12:42:24', 22, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 3, 3, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
 (70, 'patrick', 'patrick', 'patrick', 'patrick@gmail.com', 'patrick', 'Male', '', '', 'AS', '2019-06-04', '2019-06-02', '2019-06-02 14:47:57', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
 (71, 'saleh', 'saleh', 'saleh', 'saleh@gmail.com', 'saleh', 'Male', 'on', '', 'AQ', '2019-05-31', '2019-06-02', '2019-06-02 14:50:22', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
 (72, 'riri', 'aline', 'aline', 'aline@gmail.com', 'aline', 'Male', 'off', '', 'RW', '2019-07-01', '2019-07-01', '2019-07-02 08:52:01', 5, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
 (73, 'antonia', 'griezman', 'antonia', 'antonia@gmail.com', 'fafa', 'Male', 'off', '', 'FR', '2019-07-01', '2019-07-02', '2019-07-31 17:42:18', 3, 0, 0, 1, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
-(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-08-11 11:01:55', 9, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 1, 6, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
+(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-08-13 12:39:07', 10, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 1, 6, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
 (75, 'FAFA', 'FAFA', 'FAFA', 'FAFA@yahoo.com', 'FAFA', 'Male', 'off', '', '', '2019-08-03', '2019-08-03', '2019-08-03 04:29:40', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (76, 'riri', 'riri', 'riri', 'riri@yahoo.com', 'riri', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 06:58:18', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (77, 'mani', 'mani', 'mani', 'mani@yahoo.com', 'mani', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 07:00:29', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
@@ -17627,6 +17721,12 @@ ALTER TABLE `crowfundraising_like`
   ADD PRIMARY KEY (`like_id`);
 
 --
+-- Indexes for table `crowfund_donation`
+--
+ALTER TABLE `crowfund_donation`
+  ADD PRIMARY KEY (`donate_id`);
+
+--
 -- Indexes for table `districts`
 --
 ALTER TABLE `districts`
@@ -17650,6 +17750,24 @@ ALTER TABLE `employersdomestics`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`events_id`);
+
+--
+-- Indexes for table `events_comment`
+--
+ALTER TABLE `events_comment`
+  ADD PRIMARY KEY (`comment_id`);
+
+--
+-- Indexes for table `events_comment_like`
+--
+ALTER TABLE `events_comment_like`
+  ADD PRIMARY KEY (`like_id_`);
+
+--
+-- Indexes for table `events_like`
+--
+ALTER TABLE `events_like`
+  ADD PRIMARY KEY (`like_id`);
 
 --
 -- Indexes for table `follow`
@@ -17885,7 +18003,7 @@ ALTER TABLE `apply_job`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `blog_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `blog_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `blog_comment`
@@ -17897,13 +18015,13 @@ ALTER TABLE `blog_comment`
 -- AUTO_INCREMENT for table `blog_comment_like`
 --
 ALTER TABLE `blog_comment_like`
-  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `blog_like`
 --
 ALTER TABLE `blog_like`
-  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `car`
@@ -17921,31 +18039,37 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `comment_crowfunding`
 --
 ALTER TABLE `comment_crowfunding`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `comment_funding`
 --
 ALTER TABLE `comment_funding`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `crowfundraising`
 --
 ALTER TABLE `crowfundraising`
-  MODIFY `fund_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `fund_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `crowfundraising_comment_like`
 --
 ALTER TABLE `crowfundraising_comment_like`
-  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `crowfundraising_like`
 --
 ALTER TABLE `crowfundraising_like`
-  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `crowfund_donation`
+--
+ALTER TABLE `crowfund_donation`
+  MODIFY `donate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `domestics`
@@ -17963,7 +18087,25 @@ ALTER TABLE `employersdomestics`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `events_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `events_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `events_comment`
+--
+ALTER TABLE `events_comment`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `events_comment_like`
+--
+ALTER TABLE `events_comment_like`
+  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `events_like`
+--
+ALTER TABLE `events_like`
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `follow`
@@ -17987,19 +18129,19 @@ ALTER TABLE `football`
 -- AUTO_INCREMENT for table `fundraising`
 --
 ALTER TABLE `fundraising`
-  MODIFY `fund_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `fund_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `fundraising_comment_like`
 --
 ALTER TABLE `fundraising_comment_like`
-  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `fund_like`
 --
 ALTER TABLE `fund_like`
-  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `house`
