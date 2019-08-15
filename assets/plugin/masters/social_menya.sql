@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2019 at 02:03 AM
+-- Generation Time: Aug 15, 2019 at 01:24 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.2.20
 
@@ -173,7 +173,8 @@ CREATE TABLE `blog_comment` (
 INSERT INTO `blog_comment` (`comment_id`, `comment`, `comment_on`, `comment_by`, `comment_at`, `likes_counts_`) VALUES
 (2, 'amakuru', 5, 66, '2019-08-11 10:41:35', 3),
 (3, 'bite byawe', 5, 61, '2019-08-11 11:15:18', 0),
-(4, 'as', 5, 61, '2019-08-11 11:17:51', 1);
+(4, 'as', 5, 61, '2019-08-11 11:17:51', 1),
+(5, 'ewe', 23, 61, '2019-08-14 16:51:46', 0);
 
 -- --------------------------------------------------------
 
@@ -265,7 +266,7 @@ CREATE TABLE `car` (
 
 INSERT INTO `car` (`car_id`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `price`, `phone`, `country01`, `photo_Title_main`, `photo_Title`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `text`, `categories_car`, `discount`, `price_discount`, `banner`, `buy`, `user_id3`, `created_on3`) VALUES
 (3, 'fayzo', '2019_34001_.jpg', '2019_5601.jpg', '', '', '45300', '0787345243243', 'rwanda', 'imfite amabara meza', 'imfite amapine meza=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'ni ziza', 'car_For_sale', 4, 450.00, 'new', 'available', 61, '2019-07-05 21:39:22'),
-(4, 'fayzo', '2019_951.jpg', '2019_3401.jpg', '', '', '453000', '0787345243243', 'rwanda', 'irirukanka', 'imfite amabara meza=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud shape', 'car_For_sale', 42, 5450.00, 'great_deal', 'available', 61, '2019-07-05 21:40:29'),
+(4, 'fayzo', '2019_951.jpg', '2019_3401.jpg', '', '', '1', '0787345243243', 'rwanda', 'irirukanka', 'imfite amabara meza=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud shape', 'car_For_sale', 0, 0.00, 'new_arrival', 'available', 61, '2019-07-05 21:40:29'),
 (5, 'fayzo', '2019_65300x.jpg', '2019_871.jpg', '', '', '32424', '0787345243243', 'rwanda', 'imfite byose', 'irihuta=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud shape', 'car_For_sale', 78, 434.00, 'new_arrival', 'available', 61, '2019-07-05 21:41:24'),
 (6, 'fayzo', '2019_68911-.jpg', '2019_2801.jpg', '', '', '564500', '0787345243243', 'rwanda', 'imfite umutuku', 'irirukanka=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud shape', 'car_For_sale', 47, 3450.00, 'new_arrival', 'available', 61, '2019-07-05 21:43:11'),
 (7, 'fayzo', '2019_171.jpg', '2019_6701.jpg', '', '', '35300', '0787345243243', 'rwanda', 'gud coulor', 'nice pup=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'nice car', 'car_For_sale', 45, 43670.00, 'great_deal', 'available', 61, '2019-07-05 21:44:22'),
@@ -280,7 +281,8 @@ INSERT INTO `car` (`car_id`, `authors`, `photo`, `other_photo`, `video`, `youtub
 (16, 'fayzo', '2019_97indi.jpg', '2019_66img.jpg', '', '', '6500', '0787345243243', 'rwanda', 'nice', 'gud=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'motor_For_sale', 0, 0.00, 'great_deal', 'available', 61, '2019-07-05 21:54:06'),
 (17, 'fayzo', '2019_26001_.jpg', '2019_7071qy.jpg', '', '', '56400', '0787345243243', 'rwanda', 'igare', 'ririhuta=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud work', 'bicycle_For_sale', 0, 0.00, 'new', 'available', 61, '2019-07-05 21:55:35'),
 (18, 'fayzo', '2019_6671qy.jpg', '2019_89001_.jpg', '', '', '35600', '0787345243243', 'rwanda', 'nice bicycle', 'ririhuta=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'ririhuta', 'bicycle_For_sale', 0, 0.00, 'new', 'available', 61, '2019-07-05 21:56:28'),
-(19, 'fayzo', '2019_5096ah.jpg', '2019_271886.jpg', '', '', '4000', '0787345243243', 'rwanda', 'gud shape', 'ntacyo riraba=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'nivce', 'bicycle_For_sale', 0, 0.00, 'new_arrival', 'available', 61, '2019-07-05 21:57:34');
+(19, 'fayzo', '2019_5096ah.jpg', '2019_271886.jpg', '', '', '4000', '0787345243243', 'rwanda', 'gud shape', 'ntacyo riraba=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'nivce', 'bicycle_For_sale', 0, 0.00, 'new_arrival', 'available', 61, '2019-07-05 21:57:34'),
+(20, 'fay', '2019_272017.jpg', '2019_26cr-c.jpg', '', '', '899900', '0746945245', 'RW', 'it gud', 'it run fast=====', '', '3', '303', '3030403', '30304', '303040305', 'it is gud', 'car_For_sale', 0, 0.00, '', 'available', 61, '2019-08-14 17:47:22');
 
 -- --------------------------------------------------------
 
@@ -3282,6 +3284,13 @@ CREATE TABLE `events_comment` (
   `likes_counts_` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `events_comment`
+--
+
+INSERT INTO `events_comment` (`comment_id`, `comment_on`, `comment_by`, `comment`, `comment_at`, `likes_counts_`) VALUES
+(1, 14, 61, 'ikirori', '2019-08-14 05:40:30', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -3293,6 +3302,13 @@ CREATE TABLE `events_comment_like` (
   `like_on_` int(11) NOT NULL,
   `like_by_` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `events_comment_like`
+--
+
+INSERT INTO `events_comment_like` (`like_id_`, `like_on_`, `like_by_`) VALUES
+(1, 1, 61);
 
 -- --------------------------------------------------------
 
@@ -3396,7 +3412,7 @@ CREATE TABLE `food` (
 
 INSERT INTO `food` (`food_id`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `price`, `phone`, `country01`, `photo_Title_main`, `photo_Title`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `text`, `categories_food`, `code`, `quantity`, `discount`, `price_discount`, `banner`, `user_id3`, `created_on3`) VALUES
 (14, 'fa', '2019_431.jpg', '2019_253200.jpg', '', '', 4533.00, '0787345243243', 'rwanda', 'hamburg', 'tomates=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'nice', 'food', '9730rw', 1, 10, 5656.00, 'new', 61, '2019-07-05 21:59:51'),
-(15, 'fayzo', '2019_483200.jpg', '2019_625ad7.jpg', '', '', 45300.00, '0787345243243', 'rwanda', 'isosi', 'amakaroni=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'food', '973052f', 1, 5, 60785.00, 'great_deal', 61, '2019-07-05 22:01:49'),
+(15, 'fayzo', '2019_483200.jpg', '2019_625ad7.jpg', '', '', 0.00, '0787345243243', 'rwanda', 'isosi', 'amakaroni=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'food', '973052f', 1, 15, 0.00, 'great_deal', 61, '2019-07-05 22:01:49'),
 (16, 'fayzo', '2019_275ad7.jpg', '2019_740517.jpg', '', '', 8754.00, '0787345243243', 'rwanda', 'amakaroni', 'isosi=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'food', '97301e', 1, 8, 9000.00, 'new', 61, '2019-07-05 22:03:22'),
 (17, 'fayzo', '2019_681.5-.jpg', '2019_92imag.jpg', '', '', 453.00, '0787345243243', 'rwanda', 'ikinyobwa', 'coca=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'drink', '9730324', 1, 67, 500.00, 'new_arrival', 61, '2019-07-05 22:05:24'),
 (18, 'fayzo', '2019_9381vx.jpg', '2019_84417h.jpg', '', '', 500.00, '0787345243243', 'rwanda', 'fata', 'sprit=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'nice', 'drink', '425b', 1, 60, 600.00, 'new', 61, '2019-07-05 22:06:27'),
@@ -3407,7 +3423,9 @@ INSERT INTO `food` (`food_id`, `authors`, `photo`, `other_photo`, `video`, `yout
 (23, 'fayzo', '2019_35fres.jpg', '2019_573067.jpg', '', '', 45342.00, '0787345243243', 'rwanda', 'freze', 'freze=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'fruits', '452b', 1, 36, 45454.00, 'new', 61, '2019-07-05 22:13:53'),
 (24, 'fayzo', '2019_2514c3.jpg', '2019_752000.jpg', '', '', 453.00, '0787345243243', 'rwanda', 'igituguru', 'onion=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'vegetables', '9732df', 1, 1, 459.00, 'great_deal', 61, '2019-07-05 22:15:13'),
 (25, 'fayzo', '2019_5771fp.jpg', '2019_3171fp.jpg', '', '', 356.00, '0787345243243', 'rwanda', 'ibiriganya', 'nuko=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'vegetables', '5b', 1, 39, 400.00, 'new_arrival', 61, '2019-07-05 22:16:20'),
-(26, 'fayzo', '2019_7856-1.jpg', '2019_8656-1.jpg', '', '', 467600.00, '0787345243243', 'rwanda', 'bugali', 'chappati=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'food', '97301erws4', 1, 0, 0.00, 'new_arrival', 61, '2019-07-06 16:57:16');
+(26, 'fayzo', '2019_7856-1.jpg', '2019_8656-1.jpg', '', '', 467600.00, '0787345243243', 'rwanda', 'bugali', 'chappati=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'food', '97301erws4', 1, 0, 0.00, 'new_arrival', 61, '2019-07-06 16:57:16'),
+(27, '', '2019_315ad7.jpg', '2019_55650x.jpg', '', '', 8946.00, '06798547', 'RW', 'amakaroni', 'ifi=====', '', '4', '405', '4050302', '40503', '405030203', 'it is good', 'food', '565hbfgbh', 1, 64, 447700.00, '', 61, '2019-08-14 19:00:07'),
+(28, 'fs', '2019_415ad7.jpg', '2019_409-fo.jpg', '', '', 8000.00, '906978', 'AL', 'anaa', 'ifi=====', '', '4', '403', '4030403', '40304', '403040303', '5767', 'food', '47uhfh', 1, 10, 0.00, 'new', 61, '2019-08-14 19:06:18');
 
 -- --------------------------------------------------------
 
@@ -3476,16 +3494,19 @@ CREATE TABLE `fundraising` (
   `telephone1` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `categories_fundraising` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `photo_Title` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `photo_Title_main` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL
+  `photo_Title_main` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `donate_counts` int(11) NOT NULL,
+  `money_raising` float(10,2) NOT NULL,
+  `money_to_target` float(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `fundraising`
 --
 
-INSERT INTO `fundraising` (`fund_id`, `firstname1`, `middlename1`, `lastname1`, `address1`, `country1`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `text`, `progress_payment`, `likes_counts`, `photo`, `other_photo`, `video`, `youtube`, `user_id2`, `created_on2`, `total_likes`, `comments`, `email1`, `telephone1`, `categories_fundraising`, `photo_Title`, `photo_Title_main`) VALUES
-(57, 'mujaba', 'sana', 'kosima', 'kigali', 'RW', 'kigalli', '1', '102', '1020803', '10208', '102080302', 'turasha guhuza bantu bandakora tugashinga business ibyerekeye no kugorera mu ma events tukabona naho gukorera', '', 1, '2019_47pina.jpg', '2019_18down.jpg', '', '', 61, '2019-08-12 07:43:59', 0, '', 'sana@yahoo.com', '07865654', 'business', 'tubona nkahantu heza nibyo dushaka=====', 'turashaka ubufasha bwo kubona aho gukorera'),
-(58, 'musoza', 'kosima', 'KARORI', 'KIGALI', 'RW', 'kigali', '2', '202', '2020601', '20206', '202060105', 'turashaka kubona umuntu udufasha mugukora business kuko ndumfite igishora twabuze nkumuntu udufasha mugukora business ibyiza mwadufasha', '', 1, '2019_75famlz.png', '2019_53fami.png', '', '', 61, '2019-08-12 07:52:24', 0, '', 'kosima@yahoo.com', '0787724367', 'business', 'turikorera=====', 'ndu mfite igishora ariko nta ideas');
+INSERT INTO `fundraising` (`fund_id`, `firstname1`, `middlename1`, `lastname1`, `address1`, `country1`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `text`, `progress_payment`, `likes_counts`, `photo`, `other_photo`, `video`, `youtube`, `user_id2`, `created_on2`, `total_likes`, `comments`, `email1`, `telephone1`, `categories_fundraising`, `photo_Title`, `photo_Title_main`, `donate_counts`, `money_raising`, `money_to_target`) VALUES
+(57, 'mujaba', 'sana', 'kosima', 'kigali', 'RW', 'kigalli', '1', '102', '1020803', '10208', '102080302', 'turasha guhuza bantu bandakora tugashinga business ibyerekeye no kugorera mu ma events tukabona naho gukorera', '', 1, '2019_47pina.jpg', '2019_18down.jpg', '', '', 61, '2019-08-12 07:43:59', 0, '', 'sana@yahoo.com', '07865654', 'business', 'tubona nkahantu heza nibyo dushaka=====', 'turashaka ubufasha bwo kubona aho gukorera', 0, 0.00, 7134700.00),
+(58, 'musoza', 'kosima', 'KARORI', 'KIGALI', 'RW', 'kigali', '2', '202', '2020601', '20206', '202060105', 'turashaka kubona umuntu udufasha mugukora business kuko ndumfite igishora twabuze nkumuntu udufasha mugukora business ibyiza mwadufasha', '', 1, '2019_75famlz.png', '2019_53fami.png', '', '', 61, '2019-08-12 07:52:24', 0, '', 'kosima@yahoo.com', '0787724367', 'business', 'turikorera=====', 'ndu mfite igishora ariko nta ideas', 1, 100.00, 900400.00);
 
 -- --------------------------------------------------------
 
@@ -3505,6 +3526,35 @@ CREATE TABLE `fundraising_comment_like` (
 
 INSERT INTO `fundraising_comment_like` (`like_id_`, `like_on_`, `like_by_`) VALUES
 (18, 48, 61);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fundraising_donation`
+--
+
+CREATE TABLE `fundraising_donation` (
+  `donate_id` int(11) NOT NULL,
+  `fund_id0` int(11) NOT NULL,
+  `sent_to_user_id` int(11) NOT NULL,
+  `firstname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sentby_user_id` int(11) NOT NULL,
+  `sendby_firstname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sendby_lastname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `number_to_send` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `money_donate` float(10,2) NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_donate` date NOT NULL,
+  `created_on3` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `fundraising_donation`
+--
+
+INSERT INTO `fundraising_donation` (`donate_id`, `fund_id0`, `sent_to_user_id`, `firstname`, `lastname`, `sentby_user_id`, `sendby_firstname`, `sendby_lastname`, `number_to_send`, `money_donate`, `comment`, `date_donate`, `created_on3`) VALUES
+(26, 58, 61, 'faysal', 'shema', 61, 'faysal', 'shema', 'MTN:(+250) 0783566367 OR TIGO:(+250) 074925262672', 100.00, 'nice to donate', '2019-08-14', '2019-08-14 04:31:26');
 
 -- --------------------------------------------------------
 
@@ -3541,10 +3591,9 @@ CREATE TABLE `house` (
   `youtube` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `categories_house` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` float(10,2) NOT NULL,
   `phone` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `country01` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `city` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `province` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `districts` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sector` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -3564,28 +3613,29 @@ CREATE TABLE `house` (
 -- Dumping data for table `house`
 --
 
-INSERT INTO `house` (`house_id`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `text`, `categories_house`, `price`, `phone`, `country01`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `buy`, `discount`, `price_discount`, `banner`, `photo_Title_main`, `photo_Title`, `user_id3`, `created_on3`) VALUES
-(13, 'fayzo', '2019_576d46.jpg', '2019_85042b.jpg', '', '', 'nice', 'House_For_sale', '547890000', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 450.00, 'new', 'ni ziza', 'ni ziza imbere=====', 61, '2019-07-05 21:12:33'),
-(16, 'fayzo', '2019_332_gz.jpg', '2019_176d46.jpg', '', '', 'gud shape', 'House_For_sale', '56564000', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 45, 4520.00, 'new_arrival', 'ni nziza', 'hejuru=====', 61, '2019-07-05 21:13:40'),
-(17, 'fayzo', '2019_43042b.jpg', '2019_792_gz.jpg', '', '', 'gud', 'House_For_sale', '665000', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 45, 24350.00, 'great_deal', 'hejuru', 'hasi=====', 61, '2019-07-05 21:15:45'),
-(18, 'fayzo', '2019_58450_.jpg', '2019_96042b.jpg', '', '', 'nice', 'House_For_rent', '5350000', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 5, 4210.00, 'new', 'gud', 'shape=====', 61, '2019-07-05 21:16:56'),
-(19, 'fayzo', '2019_67450_.jpg', '2019_93450_.jpg', '', '', 'nice', 'House_For_rent', '23454600', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 20, 65360.00, 'new_arrival', 'gud house', 'amazu meza=====', 61, '2019-07-05 21:17:47'),
-(20, 'fayzo', '2019_482019.jpeg', '2019_15450_.jpg', '', '', 'gud', 'House_For_sale', '354500', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 49, 570.00, 'great_deal', 'ni ziza', 'iurubatse=====', 61, '2019-07-05 21:18:51'),
-(21, 'fayzo', '2019_924854.jpg', '2019_942019.jpeg', '', '', 'hi', 'House_For_rent', '57500', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 47, 680.00, 'new', 'pisini', 'parking=====', 61, '2019-07-05 21:19:44'),
-(22, 'fayzo', '2019_7520-2.jpg', '2019_861014.jpg', '', '', 'ikibaza', 'House_Land', '4500', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 50, 6780.00, 'new_arrival', 'heza', 'umurima=====', 61, '2019-07-05 21:20:44'),
-(23, 'fayzo', '2019_101014.jpg', '2019_581200.jpeg', '', '', 'ikibaza', 'House_Land', '36500', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 55, 5670.00, 'great_deal', 'ikibaza n425', 'ikibaza N45=====', 61, '2019-07-05 21:21:44'),
-(24, 'fayzo', '2019_981200.jpeg', '2019_656370.jpg', '', '', 'ikibaza', 'House_Land', '45346000', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 62, 560.00, 'great_deal', 'umuhanda', 'umurima=====', 61, '2019-07-05 21:22:28'),
-(25, 'fayzo', '2019_186370.jpg', '2019_183998.jpg', '', '', 'nice', 'House_Land', '5645600', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 13, 440.00, 'new', 'umurima', 'ishamba=====', 61, '2019-07-05 21:25:40'),
-(26, 'fayzo', '2019_7203e3.jpg', '2019_16dsc_.jpg', '', '', 'gud', 'Apartment_For_sale', '43536000', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 34, 80.00, 'new_arrival', 'irakodeshwa', 'imfite ibyumba byishi=====', 61, '2019-07-05 21:27:05'),
-(27, 'fayzo', '2019_672201.jpg', '2019_5603e3.jpg', '', '', 'inzu ya partment igurishwa', 'Apartment_For_sale', '2445000', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 11, 9060.00, 'new', 'ni nziza', 'imfite ubugari buri hejuru=====', 61, '2019-07-05 21:28:20'),
-(28, 'fayzo', '2019_8905-b.jpg', '2019_812201.jpg', '', '', 'nice', 'Apartment_For_sale', '24536800', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 34, 80.00, 'new', 'imfite pisini', 'nini=====', 61, '2019-07-05 21:29:13'),
-(29, 'fayzo', '2019_22apas.jpg', '2019_322201.jpg', '', '', 'imfite ibyumba byinshi', 'Apartment_For_rent', '453600', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 65, 1000.00, 'new_arrival', 'imfite ibyumba byinshi', '4 ibyumba na toillet=====', 61, '2019-07-05 21:31:16'),
-(30, 'fayzo', '2019_606449.jpg', '2019_84apas.jpg', '', '', 'hejuru', 'Apartment_For_rent', '45400', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 67, 70.00, 'great_deal', 'amataraa meza', 'parking nini=====', 61, '2019-07-05 21:32:11'),
-(31, 'fayzo', '2019_469148.jpg', '2019_536449.jpg', '', '', 'imfite byose', 'Apartment_For_rent', '54600', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 90, 450.00, 'new_arrival', 'imfite byose', 'waza ukirebere=====', 61, '2019-07-05 21:33:21'),
-(32, 'fayzo', '2019_100arie.jpg', '2019_23apas.jpg', '', '', 'nice', 'Apartment_For_rent', '345300', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 34, 45660.00, 'new', 'imfite ibiti', 'hejuru no hasi=====', 61, '2019-07-05 21:34:20'),
-(33, 'fayzo', '2019_20f296.jpg', '2019_48arie.jpg', '', '', 'nice', 'Offices_stores', '4466', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 534.00, 'new', 'gukorera', 'naha=====', 61, '2019-07-05 21:35:23'),
-(34, 'fayzo', '2019_98dsc_.jpg', '2019_51apas.jpg', '', '', 'gud shape', 'Offices_stores', '4353600', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 540.00, '', 'imfite byose', 'hejuru no haasi=====', 61, '2019-07-05 21:36:19'),
-(35, 'fayzo', '2019_89feat.jpg', '2019_50f296.jpg', '', '', 'gud', 'Offices_stores', '43500', '0787345243243', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 450.00, '', 'aho gukorera', 'imfite ibyumba byinshi=====', 61, '2019-07-05 21:37:35');
+INSERT INTO `house` (`house_id`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `text`, `categories_house`, `price`, `phone`, `country01`, `province`, `districts`, `sector`, `cell`, `village`, `buy`, `discount`, `price_discount`, `banner`, `photo_Title_main`, `photo_Title`, `user_id3`, `created_on3`) VALUES
+(13, 'fayzo', '2019_576d46.jpg', '2019_85042b.jpg', '', '', 'nice', 'House_For_sale', 5000.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 50, 10000.00, 'new', 'ni ziza', 'ni ziza imbere=====', 61, '2019-07-05 21:12:33'),
+(16, 'fayzo', '2019_332_gz.jpg', '2019_176d46.jpg', '', '', 'gud shape', 'House_For_sale', 50000.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 0.00, 'new', 'ni nziza', 'hejuru=====', 61, '2019-07-05 21:13:40'),
+(17, 'fayzo', '2019_43042b.jpg', '2019_792_gz.jpg', '', '', 'gud', 'House_For_sale', 665000.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'sold', 45, 24350.00, 'great_deal', 'hejuru', 'hasi=====', 61, '2019-07-05 21:15:45'),
+(18, 'fayzo', '2019_58450_.jpg', '2019_96042b.jpg', '', '', 'nice', 'House_For_rent', 5350000.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 5, 4210.00, 'new', 'gud', 'shape=====', 61, '2019-07-05 21:16:56'),
+(19, 'fayzo', '2019_67450_.jpg', '2019_93450_.jpg', '', '', 'nice', 'House_For_rent', 23454600.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 20, 65360.00, 'new_arrival', 'gud house', 'amazu meza=====', 61, '2019-07-05 21:17:47'),
+(20, 'fayzo', '2019_482019.jpeg', '2019_15450_.jpg', '', '', 'gud', 'House_For_sale', 354500.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'sold', 78, 570.00, 'great_deal', 'ni ziza', 'iurubatse=====', 61, '2019-07-05 21:18:51'),
+(21, 'fayzo', '2019_924854.jpg', '2019_942019.jpeg', '', '', 'hi', 'House_For_rent', 57500.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 47, 680.00, 'new', 'pisini', 'parking=====', 61, '2019-07-05 21:19:44'),
+(22, 'fayzo', '2019_7520-2.jpg', '2019_861014.jpg', '', '', 'ikibaza', 'House_Land', 4500.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 50, 6780.00, 'new_arrival', 'heza', 'umurima=====', 61, '2019-07-05 21:20:44'),
+(23, 'fayzo', '2019_101014.jpg', '2019_581200.jpeg', '', '', 'ikibaza', 'House_Land', 36500.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 55, 5670.00, 'great_deal', 'ikibaza n425', 'ikibaza N45=====', 61, '2019-07-05 21:21:44'),
+(24, 'fayzo', '2019_981200.jpeg', '2019_656370.jpg', '', '', 'ikibaza', 'House_Land', 45346000.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 62, 560.00, 'great_deal', 'umuhanda', 'umurima=====', 61, '2019-07-05 21:22:28'),
+(25, 'fayzo', '2019_186370.jpg', '2019_183998.jpg', '', '', 'nice', 'House_Land', 5645600.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 13, 440.00, 'new', 'umurima', 'ishamba=====', 61, '2019-07-05 21:25:40'),
+(26, 'fayzo', '2019_7203e3.jpg', '2019_16dsc_.jpg', '', '', 'gud', 'Apartment_For_sale', 43536000.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 34, 80.00, 'new_arrival', 'irakodeshwa', 'imfite ibyumba byishi=====', 61, '2019-07-05 21:27:05'),
+(27, 'fayzo', '2019_672201.jpg', '2019_5603e3.jpg', '', '', 'inzu ya partment igurishwa', 'Apartment_For_sale', 2445000.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 11, 9060.00, 'new', 'ni nziza', 'imfite ubugari buri hejuru=====', 61, '2019-07-05 21:28:20'),
+(28, 'fayzo', '2019_8905-b.jpg', '2019_812201.jpg', '', '', 'nice', 'Apartment_For_sale', 24536800.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 34, 80.00, 'new', 'imfite pisini', 'nini=====', 61, '2019-07-05 21:29:13'),
+(29, 'fayzo', '2019_22apas.jpg', '2019_322201.jpg', '', '', 'imfite ibyumba byinshi', 'Apartment_For_rent', 453600.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 65, 1000.00, 'new_arrival', 'imfite ibyumba byinshi', '4 ibyumba na toillet=====', 61, '2019-07-05 21:31:16'),
+(30, 'fayzo', '2019_606449.jpg', '2019_84apas.jpg', '', '', 'hejuru', 'Apartment_For_rent', 45400.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 67, 70.00, 'great_deal', 'amataraa meza', 'parking nini=====', 61, '2019-07-05 21:32:11'),
+(31, 'fayzo', '2019_469148.jpg', '2019_536449.jpg', '', '', 'imfite byose', 'Apartment_For_rent', 54600.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 90, 450.00, 'new_arrival', 'imfite byose', 'waza ukirebere=====', 61, '2019-07-05 21:33:21'),
+(32, 'fayzo', '2019_100arie.jpg', '2019_23apas.jpg', '', '', 'nice', 'Apartment_For_rent', 345300.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 34, 45660.00, 'new', 'imfite ibiti', 'hejuru no hasi=====', 61, '2019-07-05 21:34:20'),
+(33, 'fayzo', '2019_20f296.jpg', '2019_48arie.jpg', '', '', 'nice', 'Offices_stores', 4466.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 534.00, 'new', 'gukorera', 'naha=====', 61, '2019-07-05 21:35:23'),
+(34, 'fayzo', '2019_98dsc_.jpg', '2019_51apas.jpg', '', '', 'gud shape', 'Offices_stores', 4353600.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 540.00, '', 'imfite byose', 'hejuru no haasi=====', 61, '2019-07-05 21:36:19'),
+(35, 'fayzo', '2019_89feat.jpg', '2019_50f296.jpg', '', '', 'gud', 'Offices_stores', 43500.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 450.00, '', 'aho gukorera', 'imfite ibyumba byinshi=====', 61, '2019-07-05 21:37:35'),
+(36, 'fayzo', '2019_551807.jpg', '2019_241905.jpg', '', '', 'it is good shape', 'House_For_sale', 59997.00, '05984954', 'RW', '1', '102', '1020803', '10208', '102080302', 'available', 19, 70000.00, 'new', 'ni nziza', 'ifite na jardin=====', 61, '2019-08-14 12:59:54');
 
 -- --------------------------------------------------------
 
@@ -5041,13 +5091,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `password`, `gender`, `chat`, `career`, `country`, `date_birth`, `date_registry`, `last_login`, `counts_login`, `forgotUsernameCounts`, `forgotUsernameCountsTimesHeCreates`, `forgotUsernameCountsTimesHeCreatespassword`, `profile_img`, `profile_img_crop`, `cover_img`, `background`, `language`, `color`, `education`, `diploma`, `skills`, `location`, `hobbys`, `followers`, `following`, `approval`, `company_education`, `type_of_business`, `address`, `size_of_people`, `companyname`, `overview`, `history`, `team`, `legal_structure`, `location_facilities`, `mission_statement`, `website`, `unemplyoment`, `categories_fields`, `phone`) VALUES
-(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'off', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-08-13 12:48:02', 412, 0, 10, 10, '911f.jpg', '', '702caus.jpg', 'chair', '', 'rose', 'lycee', 'project', 'web', 'BR', 'styuding', 8, 5, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
+(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'off', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-08-14 15:40:30', 421, 0, 10, 10, '911f.jpg', '', '702caus.jpg', 'chair', '', 'rose', 'lycee', 'project', 'web', 'BR', 'styuding', 8, 5, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
 (64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-08-13 12:43:44', 37, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
 (65, 'karisa', 'bosco', 'bosco', 'faysal@gmail.com', 'bosco', 'Male', '', '', 'RW', '2019-05-03', '2019-05-02', '2019-05-27 21:50:00', 8, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 2, 2, 'off', '', '', '', '', 'LAMBORGIN', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
 (66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-08-13 12:37:54', 100, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'chair', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
 (67, 'musema', 'musema', 'musema', 'musemafaysal@gmail.com', 'musema', 'Male', '', '', 'RW', '2019-05-06', '2019-05-06', '2019-05-21 14:53:30', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 2, 'off', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
 (68, 'zidani', 'zidani', 'zidanii', 'zidani@gmail.com', 'zidani', 'Male', '', '', 'FR', '2019-05-06', '2019-05-22', '2019-05-30 11:54:50', 5, 0, 0, 0, '855fays.gif', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
-(69, 'rihana', 'rihana', 'rihana', 'rihana@gmail.com', 'rihana', 'Female', 'off', '', 'AF', '1988-03-18', '2019-06-02', '2019-08-13 12:42:24', 22, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 3, 3, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
+(69, 'rihana', 'rihana', 'rihana', 'rihana@gmail.com', 'rihana', 'Female', 'off', '', 'AF', '1988-03-18', '2019-06-02', '2019-08-14 19:13:19', 23, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 3, 3, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
 (70, 'patrick', 'patrick', 'patrick', 'patrick@gmail.com', 'patrick', 'Male', '', '', 'AS', '2019-06-04', '2019-06-02', '2019-06-02 14:47:57', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
 (71, 'saleh', 'saleh', 'saleh', 'saleh@gmail.com', 'saleh', 'Male', 'on', '', 'AQ', '2019-05-31', '2019-06-02', '2019-06-02 14:50:22', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
 (72, 'riri', 'aline', 'aline', 'aline@gmail.com', 'aline', 'Male', 'off', '', 'RW', '2019-07-01', '2019-07-01', '2019-07-02 08:52:01', 5, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
@@ -17800,6 +17850,12 @@ ALTER TABLE `fundraising_comment_like`
   ADD PRIMARY KEY (`like_id_`);
 
 --
+-- Indexes for table `fundraising_donation`
+--
+ALTER TABLE `fundraising_donation`
+  ADD PRIMARY KEY (`donate_id`);
+
+--
 -- Indexes for table `fund_like`
 --
 ALTER TABLE `fund_like`
@@ -18009,7 +18065,7 @@ ALTER TABLE `blog`
 -- AUTO_INCREMENT for table `blog_comment`
 --
 ALTER TABLE `blog_comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `blog_comment_like`
@@ -18027,7 +18083,7 @@ ALTER TABLE `blog_like`
 -- AUTO_INCREMENT for table `car`
 --
 ALTER TABLE `car`
-  MODIFY `car_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `car_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `comment`
@@ -18093,13 +18149,13 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `events_comment`
 --
 ALTER TABLE `events_comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `events_comment_like`
 --
 ALTER TABLE `events_comment_like`
-  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `events_like`
@@ -18117,7 +18173,7 @@ ALTER TABLE `follow`
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `football`
@@ -18138,6 +18194,12 @@ ALTER TABLE `fundraising_comment_like`
   MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT for table `fundraising_donation`
+--
+ALTER TABLE `fundraising_donation`
+  MODIFY `donate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
 -- AUTO_INCREMENT for table `fund_like`
 --
 ALTER TABLE `fund_like`
@@ -18147,7 +18209,7 @@ ALTER TABLE `fund_like`
 -- AUTO_INCREMENT for table `house`
 --
 ALTER TABLE `house`
-  MODIFY `house_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `house_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `jobs`
