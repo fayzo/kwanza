@@ -57,12 +57,11 @@ $(document).ready(function () {
         var price = $('#price');
         var phone = $('#phone');
         var country = $('#country');
-        var province = $('#province');
-        var districts = $('#districts');
-        var city = $('#city');
-        var sector = $('#sector');
-        var cell = $('#cell');
-        var village = $('#village');
+        var province = $('.provincecode');
+        var districts = $('.districtcode');
+        var sector = $('.sectorcode');
+        var cell = $('.codecell');
+        var village = $('.CodeVillage');
         var photo_Titleo0 = $('#photo-Titleo0');
         var photo_Title0 = $('#photo-Title0');
         var photo_Title1 = $('#photo-Title1');
@@ -72,7 +71,7 @@ $(document).ready(function () {
         var photo_Title5 = $('#photo-Title5');
 
         
-        if (isEmpty(country) && isEmpty(city) && isEmpty(province) && isEmpty(districts) &&
+        if (isEmpty(country) && isEmpty(province) && isEmpty(districts) &&
             isEmpty(sector) && isEmpty(cell) && isEmpty(village) && isEmpty(authors) && isEmpty(phone) &&
             isEmpty(categories_car) && isEmpty(price) && isEmpty(additioninformation) && isEmpty(photo) &&
             isEmpty(other_photo) && isEmpty(photo_Titleo0) && isEmpty(photo_Title0) && isEmpty(photo_Title1) &&

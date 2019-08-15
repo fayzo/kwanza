@@ -35,7 +35,7 @@
          </div> <!-- col -->
 
          <div class="col-md-6 " id="car-hides">
-            <?php echo $car->carList('car_For_sale',1); ?>
+            <?php echo $car->carList('car_For_sale',1,$user_id); ?>
          </div> <!-- col -->
 
          <div class="col-md-3">

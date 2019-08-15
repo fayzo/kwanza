@@ -27,7 +27,7 @@
          </div> <!-- col -->
 
          <div class="col-md-6 " id="house-hides">
-            <?php echo $house->houseList('House_For_sale',1); ?>
+            <?php echo $house->houseList('House_For_sale',1,$user_id); ?>
          </div> <!-- col -->
 
          <div class="col-md-3">

@@ -84,7 +84,7 @@
                 var sc = document.body;
                 sc.setAttribute("id", json.color);
                 
-                // console.log(json.admin_id + ", " + json.color);
+                console.log(json.user_id + ", " + json.color);
                 // console.log(xhr.responseText);
                 // location.reload();
                 // if (xhr.responseText.indexOf('color') >= 0) {
@@ -681,9 +681,9 @@
         }, false);
     }
 
-    function houseCategories(categories,id) {
+    function houseCategories(categories,id,user_id) {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'core/ajax_db/houseView_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
+        xhr.open('POST', 'core/ajax_db/houseView_FecthPaginat.php?pages=' + id + '&categories=' + categories + '&user_id=' + user_id, true);
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
@@ -711,9 +711,9 @@
         }, false);
     }
 
-    function carCategories(categories,id) {
+    function carCategories(categories,id,user_id) {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'core/ajax_db/carView_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
+        xhr.open('POST', 'core/ajax_db/carView_FecthPaginat.php?pages=' + id + '&categories=' + categories+ '&user_id=' + user_id, true);
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
@@ -741,9 +741,9 @@
         }, false);
     }
 
-    function foodCategories(categories,id) {
+    function foodCategories(categories,id,user_id) {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'core/ajax_db/foodView_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
+        xhr.open('POST', 'core/ajax_db/foodView_FecthPaginat.php?pages=' + id + '&categories=' + categories+ '&user_id=' + user_id, true);
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {

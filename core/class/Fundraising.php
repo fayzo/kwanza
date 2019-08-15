@@ -55,19 +55,21 @@ class Fundraising extends Home
                                 <?php } ?>
 
                                <h5 class="card-title text-dark m-1 pb-1 pl-2">Helps <?php echo $row['lastname'] ;?> </h5>
-                              <div class="progress " style="height: 6px;">
-                                <div class="progress-bar  bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                              <div class="progress " style="height: 10px;">
+                                  <?php echo $this->Users_donationMoneyRaising($row['money_raising'],$row['money_to_target']); ?>
+                                <!-- <div class="progress-bar  bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> -->
                               </div>
                         </div>
                     </div>
                     <div class="card" style="border-top-left-radius: 0px !important;border-top-right-radius: 0px !important;">
-                            <div class="card-body pl-1 pb-1">
-                              <span class="h5">500 Frw raised </span>
-                              <span class="text-muted"> Out of 5000 Frw</span>
-                              <p><?php echo $row['text'] ;?></p>
-                              <div class="float-right">
-                              <button type="button" id="fund-readmore" data-fund="<?php echo $row['fund_id'] ;?>" class="btn btn-primary" >+ Read more</button></div>
-                            </div>
+                            <div class="card-body pl-1 pt-0 pb-1">
+                              <span class="h5"><?php echo number_format($row['money_raising']); ?> Frw </span>
+                              <span class="text-muted">raised Out of <?php echo number_format($row['money_to_target']).' Frw'; ?></span>
+                              <p class="mt-2"><?php echo $row['text'] ;?></p>
+                              <div>
+                                <button type="button" class="btn btn-success btn-md float-left"><i class="fa fa-check-circle" style='font-size:15px;' aria-hidden="true"></i> Verified</button>
+                                <button type="button" id="fund-readmore" data-fund="<?php echo $row['fund_id'] ;?>" class="btn btn-primary float-right" >+ Read more</button></div>
+                              </div>
                     </div>
                 </div>
 
@@ -284,6 +286,40 @@ class Fundraising extends Home
                 </div>');
         }
     }
+
+      public function fundraising_donateUpdate($donate,$fund_id)
+    {
+        $mysqli= $this->database;
+        $query= "UPDATE fundraising SET donate_counts = donate_counts +1, money_raising = money_raising + $donate  WHERE fund_id= $fund_id ";
+        $mysqli->query($query);
+    }
+
+    public function recentFundraisingDonate($fund_id)
+    {
+        $mysqli= $this->database;
+        $query= "SELECT * FROM fundraising_donation LEFT JOIN users ON sentby_user_id=user_id WHERE fund_id0 = $fund_id ORDER BY created_on3 DESC";
+        $result= $mysqli->query($query);
+        $comments= array();
+        while ($row= $result->fetch_assoc()) {
+             $comments[] = $row;
+        }
+        return $comments;
+    }
+
+    public function CountFundraisingRaising($fund_id)
+    {
+      $db =$this->database;
+      $query="SELECT COUNT(*) FROM fundraising_donation WHERE fund_id0= $fund_id";
+      $sql= $db->query($query);
+      $row_Comment = $sql->fetch_array();
+      $total_Comment= array_shift($row_Comment);
+      $array= array(0,$total_Comment);
+      $total_Comment= array_sum($array);
+      echo $total_Comment;
+    }
+
+
+
 
 }
 

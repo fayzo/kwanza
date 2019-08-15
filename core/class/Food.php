@@ -164,7 +164,7 @@ class Food extends home {
     }
 
 
-     public function foodList($categories,$pages)
+     public function foodList($categories,$pages,$user_id)
     {
         $pages= $pages;
         $categories= $categories;
@@ -196,11 +196,11 @@ class Food extends home {
 
             <div class="nav-scroller  py-0" style="clear:right;height:2rem;">
                 <nav class="nav d-flex justify-content-between pb-0">
-                <a class="p-2" href="javascript:void(0)" onclick="foodCategories('food',1);">food<span class="badge badge-primary"><?php echo $this->foodcountPOSTS('food');?></span></a>
-                <a class="p-2" href="javascript:void(0)" onclick="foodCategories('drink',1);">beverage<span class="badge badge-primary"><?php echo $this->foodcountPOSTS('drink');?></span></a>
-                <a class="p-2" href="javascript:void(0)" onclick="foodCategories('fruits',1);">fruits<span class="badge badge-primary"><?php echo $this->foodcountPOSTS('fruits');?></span></a>
-                <a class="p-2" href="javascript:void(0)" onclick="foodCategories('vegetables',1);">vegetable<span class="badge badge-primary"><?php echo $this->foodcountPOSTS('vegetables');?></span></a>
-                <a class="p-2" href="javascript:void(0)" onclick="foodCategories('macedone',1);">macedone<span class="badge badge-primary"><?php echo $this->foodcountPOSTS('macedone');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="foodCategories('food',1,<?php echo $user_id ; ?>);">food<span class="badge badge-primary"><?php echo $this->foodcountPOSTS('food');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="foodCategories('drink',1,<?php echo $user_id ; ?>);">beverage<span class="badge badge-primary"><?php echo $this->foodcountPOSTS('drink');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="foodCategories('fruits',1,<?php echo $user_id ; ?>);">fruits<span class="badge badge-primary"><?php echo $this->foodcountPOSTS('fruits');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="foodCategories('vegetables',1,<?php echo $user_id ; ?>);">vegetable<span class="badge badge-primary"><?php echo $this->foodcountPOSTS('vegetables');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="foodCategories('macedone',1,<?php echo $user_id ; ?>);">macedone<span class="badge badge-primary"><?php echo $this->foodcountPOSTS('macedone');?></span></a>
                 </nav>
             </div> <!-- nav-scroller -->
         </div> <!-- card-header -->
@@ -251,8 +251,8 @@ class Food extends home {
                     <li class="time-label">
                         <?php if($food['discount'] != 0){ ?>
                           <?php echo $this->foodPercentageDiscount($food['discount']); ?>
-                        <?php }else { ?>
-                            <span class="bg-info text-light" style="position: absolute;font-size: 11px; padding: 2px; margin-left: 10px;"> 0% </span> 
+                        <?php }else { echo ''; ?>
+                            <!-- <span class="bg-info text-light" style="position: absolute;font-size: 11px; padding: 2px; margin-left: 10px;"> 0% </span>  -->
                         <?php } ?>
 
                         <div class="timeline-item card flex-md-row shadow-sm h-md-100 border-0">
@@ -282,12 +282,99 @@ class Food extends home {
                                 break;
                             
                         } ?>
-                          
                         </div>
                         <div class="card-body pt-0">
+                        <span id="response<?php echo $food['food_id']; ?>"></span>
                            <div class="mb-0">
                               <a class="text-primary float-left" href="javascript:void(0)" id="food-readmore" data-food="<?php echo $food['food_id']; ?>" ><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $food['photo_Title_main']; ?></a>
-                               <span class="float-right"> <?php if($food['price_discount'] != 0){ ?><span class="mr-2 text-danger " style="text-decoration: line-through;"><?php echo number_format($food['price_discount'], 2); ?> Frw</span> <?php } ?><span class="text-primary" > <?php echo number_format($food['price'], 2); ?> Frw</span></span>
+                               
+                               <?php if($user_id == $food['user_id3']){ ?>
+                                    <ul class="list-inline ml-2  float-right" style="list-style-type: none;">  
+
+                                            <li  class=" list-inline-item">
+                                                <ul class="showcartButt" style="list-style-type: none; margin:0px;" >
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                                                        <ul style="list-style-type: none; margin:0px; margin:0px;width:250px;text-align:center;" >
+                                                            <li style="list-style-type: none; margin:0px;"> 
+                                                            <label class="deletefood"  data-food="<?php echo $food["food_id"];?>"  data-user="<?php echo $food["user_id3"];?>">Delete </label>
+                                                            </li>
+
+                                                            <li style="list-style-type: none; margin:0px;"> 
+                                                            <label for="">
+                                                            <div class="form-row">
+                                                                <div class="col">
+                                                                        Banner
+                                                                        <div class="input-group">
+                                                                              <select class="form-control" name="banner" id="banner<?php echo $food["food_id"];?>">
+                                                                                <option value="<?php echo $food['banner']; ?>" selected><?php echo $food['banner']; ?></option>
+                                                                                <option value="new">New</option>
+                                                                                <option value="new_arrival">New arrival</option>
+                                                                                <option value="great_deal">Great deal</option>
+                                                                              </select>
+                                                                            <div class="input-group-append">
+                                                                                <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1" >banner</span>
+                                                                            </div>
+                                                                        </div> <!-- input-group -->
+                                                                </div>
+                                                            </div>
+                                                            </label>
+                                                            </li>
+
+                                                          <li style="list-style-type: none; margin:0px;"> 
+                                                            <label for="">
+                                                            <div class="form-row">
+                                                                <div class="col">
+                                                                    discount %
+                                                                    <div class="input-group">
+                                                                        <input  type="number" class="form-control form-control-sm" name="discount_change" id="discount_change<?php echo $food["food_id"];?>" value="<?php echo $food["discount"];?>">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1" >%</span>
+                                                                        </div>
+                                                                    </div> <!-- input-group -->
+                                                                </div>
+                                                            </div>
+                                                            </label>
+                                                            </li>
+                                                            
+                                                            <li style="list-style-type: none;"> 
+                                                            <label for="discount">
+                                                            <div class="form-row">
+                                                                <div class="col">
+                                                                    discount price
+                                                                    <div class="input-group">
+                                                                        <input  type="number" class="form-control form-control-sm" name="discount_price" id="discount_price<?php echo $food["food_id"];?>" value="<?php echo $food["price_discount"];?>">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1">$</span>
+                                                                        </div>
+                                                                    </div> <!-- input-group -->
+                                                                </div>
+                                                                <div class="col">
+                                                                        Price
+                                                                    <div class="col">
+                                                                        </div>
+                                                                    <div class="input-group">
+                                                                        <input  type="number" class="form-control form-control-sm" name="price" id="price<?php echo $food["food_id"];?>" value="<?php echo $food["price"];?>">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text" style="padding: 0px 10px;"
+                                                                                aria-label="Username" aria-describedby="basic-addon1" >$</span>
+                                                                        </div>
+                                                                    </div> <!-- input-group -->
+                                                                </div>
+                                                            </div>
+                                                            </label>
+                                                            </li>
+
+                                                            <li style="list-style-type: none;"> 
+                                                            <label for="discount" class="update-food-btn" data-food="<?php echo $food["food_id"];?>" data-user="<?php echo $food["user_id3"];?>">submit</label>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                    </ul>
+                                <?php } ?>
+                               <span class="float-right"> <?php if($food['price_discount'] != 0){ ?><span class="mr-2 text-danger " style="text-decoration: line-through;"><?php echo number_format($food['price_discount']); ?> Frw</span> <?php } ?><span class="text-primary" > <?php echo number_format($food['price']); ?> Frw</span></span>
                             </div> 
                             <div class="text-muted clear-float">
                                 <span class="float-left"><i class="fa fa-home" aria-hidden="true"></i>  <?php echo $categories; ?></span>
@@ -420,7 +507,99 @@ class Food extends home {
             break;
         }
 
-    } 
+    }
+
+     
+    public function food_getPopupTweet($user_id,$food_id,$food_user_id)
+    {
+        $mysqli= $this->database;
+        $result= $mysqli->query("SELECT * FROM users U Left JOIN food B ON B. user_id3 = u. user_id WHERE B. food_id = $food_id AND B. user_id3 = $food_user_id ");
+        // var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
+        while ($row= $result->fetch_array()) {
+            # code...
+            return $row;
+        }
+    }
+
+      
+    public function deleteLikesfood($tweet_id)
+    {
+        $mysqli= $this->database;
+        $query="DELETE B , L ,C ,R FROM events B 
+                        LEFT JOIN events_like L ON L. like_on = B. events_id 
+                        LEFT JOIN events_comment_like C ON C. like_on_ = B. events_id 
+                        LEFT JOIN events_comment R ON R. comment_on = B. events_id 
+                        WHERE B. events_id = '{$tweet_id}' and B. user_id3 = '{$user_id}' ";
+
+        $query1="SELECT * FROM events WHERE events_id = $tweet_id and user_id3 = $user_id ";
+
+        $result= $mysqli->query($query1);
+        $rows= $result->fetch_assoc();
+
+        if(!empty($rows['photo'])){
+            $photo=$rows['photo'].'='.$rows['other_photo'];
+            $expodefile = explode("=",$photo);
+            $fileActualExt= array();
+            for ($i=0; $i < count($expodefile); ++$i) { 
+                $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
+            }
+            $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+            if (array_diff($fileActualExt,$allower_ext) == false) {
+                $expode = explode("=",$photo);
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/events/';
+                for ($i=0; $i < count($expode); ++$i) { 
+                      unlink($uploadDir.$expode[$i]);
+                }
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp4') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/events/';
+                      unlink($uploadDir.$photo);
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp3') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/events/';
+                      unlink($uploadDir.$photo);
+            }
+        }
+
+        $query= $mysqli->query($query);
+        // var_dump("ERROR: Could not able to execute $query.".mysqli_error($mysqli));
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS DELETE</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail to delete !!!</strong>
+                </div>');
+        }
+    }
+
+    public function update_food($banner,$discount_change,$discount_price,$price,$food_id)
+    {
+        $mysqli= $this->database;
+        $query= "UPDATE food SET banner= '$banner', discount = $discount_change ,price_discount = $discount_price, price = $price WHERE food_id= $food_id ";
+        $mysqli->query($query);
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center" style="font-size:12px;padding:2px;">
+                    <button class="close" data-dismiss="alert" type="button" style="top:-6px;">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center" style="font-size:12px;padding:2px;">
+                    <button class="close" data-dismiss="alert" type="button"  style="top:-6px;">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail to Edit !!!</strong>
+                </div>');
+        }
+    }
+
 
 }
 

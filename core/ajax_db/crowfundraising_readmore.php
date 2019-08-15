@@ -220,7 +220,7 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
                                 <span class="description"><i class="fa fa-map-marker mr-1"></i> <?php echo $user['country1'] ;?> | <?php echo $user['city'] ;?> | <?php echo $user['districts'] ;?>  </span>
                             </div> <!-- /.user-block -->
 
-                            <h5 class="mt-3"> Recent Donation</h5>
+                            <h5 class="mt-3"> Recent Donation (<?php echo $crowfund->CountcrowFundraisingRaising($user['fund_id']); ?>)</h5>
                             <div class=" row mt-1">
                             <?php if (count($donates) > 6) { ?>
                                 
@@ -265,7 +265,7 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
                                         </div>
                                         </div>
                                         <span class="username">
-                                            <a href="<?php echo BASE_URL_PUBLIC.$donate['username'] ;?>"><?php echo number_format($donate['money_donate'],2); ?> Frw </a>
+                                            <a href="<?php echo BASE_URL_PUBLIC.$donate['username'] ;?>"><?php echo number_format($donate['money_donate'],2); ?> Frw <span class="float-right mr-2"><i class="fa fa-heart" ></i></span></a>
                                             <!-- //Jonathan Burke Jr. -->
                                         </span>
                                         <span class="description"><?php echo $donate['comment']; ?> </span>

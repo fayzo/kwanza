@@ -60,13 +60,14 @@ class Crowfund extends home {
                     <!-- Kogera umusaruro muguhinga -->
                     <p class="text-muted"><?php echo $row['text']; ?></p>
                     <!-- turashaka kongera umusaruro mu buhinzi tukabona ubufasha buhagije no kubona imbuto -->
-
-                    <div class="text-muted mb-1"><?php echo $categories; ?></div>
+                    <div class="text-muted mb-1"><?php echo $categories; ?>
+                        <span class="text-success px-1 float-right" style="border-radius:3px;font-size:11px;"><i class="fa fa-check-circle" aria-hidden="true"></i> Verified</span>
+                    </div>
                     <div class="card-text">
                     <!-- 40,000 -->
                         <span class="font-weight-bold"><?php echo number_format($row['money_raising']); ?> Frw</span>
                          Raised
-                        <div class="float-right"><?php echo $this->donationPercetangeMoneyRaimaing($row['money_raising'],$row['money_to_target']); ?> %</div>
+                        <span class="float-right"><?php echo $this->donationPercetangeMoneyRaimaing($row['money_raising'],$row['money_to_target']); ?> %</span>
                         <!-- 40 -->
                     </div>
                      <div class="progress clear-float " style="height: 10px;">
@@ -315,6 +316,18 @@ class Crowfund extends home {
         $mysqli= $this->database;
         $query= "UPDATE crowfundraising SET donate_counts = donate_counts +1, money_raising = money_raising + $donate  WHERE fund_id= $fund_id ";
         $mysqli->query($query);
+    }
+
+    public function CountcrowFundraisingRaising($fund_id)
+    {
+      $db =$this->database;
+      $query="SELECT COUNT(*) FROM crowfund_donation WHERE fund_id0= $fund_id";
+      $sql= $db->query($query);
+      $row_Comment = $sql->fetch_array();
+      $total_Comment= array_shift($row_Comment);
+      $array= array(0,$total_Comment);
+      $total_Comment= array_sum($array);
+      echo $total_Comment;
     }
 
 }

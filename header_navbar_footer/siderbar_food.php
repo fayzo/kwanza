@@ -29,7 +29,7 @@
          </div> <!-- col -->
 
          <div class="col-md-6 " id="food-hides">
-            <?php echo $food->foodList('food',1); ?>
+            <?php echo $food->foodList('food',1,$user_id); ?>
          </div> <!-- col -->
 
          <div class="col-md-3">

@@ -201,8 +201,8 @@ class Sale extends Home{
                               <div class="card-body">
                                   <div class="card-title"><?php echo $row["title"]; ?></div> <!-- product-title -->
                                   <div class="card-text product-price d-inline-block"> 
-                                    <?php if(800.00 != 0){ ?><span class="text-danger " style="text-decoration: line-through;"><?php echo number_format(8000000.00, 2); ?> Frw</span> <?php } ?> 
-                                   <div> <?php echo "$".number_format($row["price"], 2); ?> </div>
+                                    <?php if(800.00 != 0){ ?><span class="text-danger " style="text-decoration: line-through;"><?php echo number_format(8000000.00); ?> Frw</span> <?php } ?> 
+                                   <div> <?php echo "$".number_format($row["price"]); ?> </div>
                                   </div>
                                    <form method="post" id="form-cartitem<?php echo $row['code']; ?>add" class="float-right">
                                       <div class="cart-action">
@@ -343,7 +343,7 @@ class Sale extends Home{
                       echo $item["name"];
                     } ?></div>
                     </td>
-            				<td align="right"><?php echo "$ ". number_format($item_price,2); ?></td>
+            				<td align="right"><?php echo "$ ". number_format($item_price); ?></td>
             				<td align="center">
                                <form method="post" id="form-cartitem<?php echo $item['code']; ?>remove" >
                                         <input type="hidden" style="width:30px;" name="action" value="remove" />
@@ -361,7 +361,7 @@ class Sale extends Home{
             
             <tr>
             <td>Total:</td>
-            <td align="left" colspan="2"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+            <td align="left" colspan="2" ><strong><?php echo "$ ".number_format($total_price); ?></strong></td>
             </tr>
             </tbody>
             </table>		

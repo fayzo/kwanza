@@ -5,7 +5,7 @@
 
 class Car extends House {
 
-     public function carList($categories,$pages)
+     public function carList($categories,$pages,$user_id)
     {
         $pages= $pages;
         $categories= $categories;
@@ -32,11 +32,11 @@ class Car extends House {
 
             <div class="nav-scroller  py-0" style="clear:right;height:2rem;">
                 <nav class="nav d-flex justify-content-between pb-0">
-                <a class="p-2" href="javascript:void(0)" onclick="carCategories('car_For_sale',1);">Car For sale<span class="badge badge-primary"><?php echo $this->carcountPOSTS('car_For_sale');?></span></a>
-                <a class="p-2" href="javascript:void(0)" onclick="carCategories('car_For_rent',1);">Car For rent<span class="badge badge-primary"><?php echo $this->carcountPOSTS('car_For_rent');?></span></a>
-                <a class="p-2" href="javascript:void(0)" onclick="carCategories('camion_For_sale',1);">Camion For sale<span class="badge badge-primary"><?php echo $this->carcountPOSTS('camion_For_sale');?></span></a>
-                <a class="p-2" href="javascript:void(0)" onclick="carCategories('motor_For_sale',1);">Motor-cyle<span class="badge badge-primary"><?php echo $this->carcountPOSTS('motor_For_sale');?></span></a>
-                <a class="p-2" href="javascript:void(0)" onclick="carCategories('bicycle_For_sale',1);">Bicycle For sale<span class="badge badge-primary"><?php echo $this->carcountPOSTS('bicycle_For_sale');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="carCategories('car_For_sale',1,<?php echo $user_id ; ?>);">Car For sale<span class="badge badge-primary"><?php echo $this->carcountPOSTS('car_For_sale');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="carCategories('car_For_rent',1,<?php echo $user_id ; ?>);">Car For rent<span class="badge badge-primary"><?php echo $this->carcountPOSTS('car_For_rent');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="carCategories('camion_For_sale',1,<?php echo $user_id ; ?>);">Camion For sale<span class="badge badge-primary"><?php echo $this->carcountPOSTS('camion_For_sale');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="carCategories('motor_For_sale',1,<?php echo $user_id ; ?>);">Motor-cyle<span class="badge badge-primary"><?php echo $this->carcountPOSTS('motor_For_sale');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="carCategories('bicycle_For_sale',1,<?php echo $user_id ; ?>);">Bicycle For sale<span class="badge badge-primary"><?php echo $this->carcountPOSTS('bicycle_For_sale');?></span></a>
                 </nav>
             </div> <!-- nav-scroller -->
         </div> <!-- card-header -->
@@ -87,8 +87,8 @@ class Car extends House {
                         
                          <?php if($car['discount'] != 0){ ?>
                             <?php echo $this->PercentageDiscount($car['discount']); ?>
-                        <?php }else { ?>
-                            <span class="bg-info text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;margin-top: 40px;"> 0% </span> 
+                        <?php }else {  echo '';?>
+                            <!-- <span class="bg-info text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;margin-top: 40px;"> 0% </span>  -->
                         <?php } ?>
 
                         <div class="timeline-item card flex-md-row shadow-sm h-md-100 border-0">
@@ -121,9 +121,116 @@ class Car extends House {
                           
                         </div>
                         <div class="card-body pt-0">
+                        <span id="response<?php echo $car['car_id']; ?>"></span>
                            <div class="text-primary mb-0">
                               <a class="text-primary float-left" href="javascript:void(0)" id="car-readmore" data-car="<?php echo $car['car_id']; ?>" ><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $car['cell']."/".$car['sector']; ?></a>
-                               <span class="float-right"> <?php if($car['price_discount'] != 0){ ?><span class="mr-2 text-danger " style="text-decoration: line-through;"><?php echo number_format($car['price_discount'], 2); ?> Frw</span> <?php } ?><span class="text-primary" > <?php echo number_format($car['price'], 2); ?> Frw</span></span>
+                                
+                                <?php if($user_id == $car['user_id3']){ ?>
+                                    <ul class="list-inline ml-2  float-right" style="list-style-type: none;">  
+
+                                            <li  class=" list-inline-item">
+                                                <ul class="showcartButt" style="list-style-type: none; margin:0px;" >
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                                                        <ul style="list-style-type: none; margin:0px; margin:0px;width:250px;text-align:center;" >
+                                                            <li style="list-style-type: none; margin:0px;"> 
+                                                            <label class="deletecar"  data-car="<?php echo $car["car_id"];?>"  data-user="<?php echo $car["user_id3"];?>">Delete </label>
+                                                            </li>
+
+                                                            <li style="list-style-type: none; margin:0px;"> 
+                                                            <label for="">
+                                                            <div class="form-row">
+                                                                <div class="col">
+                                                                        Banner
+                                                                        <div class="input-group">
+                                                                              <select class="form-control" name="banner" id="banner<?php echo $car["car_id"];?>">
+                                                                                <option value="<?php echo $car['banner']; ?>" selected><?php echo $car['banner']; ?></option>
+                                                                                <option value="new">New</option>
+                                                                                <option value="new_arrival">New arrival</option>
+                                                                                <option value="great_deal">Great deal</option>
+                                                                              </select>
+                                                                            <div class="input-group-append">
+                                                                                <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1" >banner</span>
+                                                                            </div>
+                                                                        </div> <!-- input-group -->
+                                                                </div>
+                                                            </div>
+                                                            </label>
+                                                            </li>
+
+                                                          <li style="list-style-type: none; margin:0px;"> 
+                                                            <label for="">
+                                                            <div class="form-row">
+                                                                <div class="col">
+                                                                        Sale
+                                                                        <div class="input-group">
+                                                                              <select class="form-control" name="available" id="available<?php echo $car["car_id"];?>">
+                                                                              <?php if ($car['buy'] == 'available') { ?>
+                                                                                <option value="available" selected>Available</option>
+                                                                                <option value="sold">Sold</option>
+                                                                              <?php }else { ?>
+                                                                                <option value="sold" selected>Sold</option>
+                                                                                <option value="available">Available</option>
+                                                                              <?php } ?>
+                                                                              </select>
+                                                                            <div class="input-group-append">
+                                                                                <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1" >sale</span>
+                                                                            </div>
+                                                                        </div> <!-- input-group -->
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col">
+                                                                    discount %
+                                                                    <div class="input-group">
+                                                                        <input  type="number" class="form-control form-control-sm" name="discount_change" id="discount_change<?php echo $car["car_id"];?>" value="<?php echo $car["discount"];?>">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1" >%</span>
+                                                                        </div>
+                                                                    </div> <!-- input-group -->
+                                                                </div>
+                                                            </div>
+                                                            </label>
+                                                            </li>
+                                                            
+                                                            <li style="list-style-type: none;"> 
+                                                            <label for="discount">
+                                                            <div class="form-row">
+                                                                <div class="col">
+                                                                    discount price
+                                                                    <div class="input-group">
+                                                                        <input  type="number" class="form-control form-control-sm" name="discount_price" id="discount_price<?php echo $car["car_id"];?>" value="<?php echo $car["price_discount"];?>">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1">$</span>
+                                                                        </div>
+                                                                    </div> <!-- input-group -->
+                                                                </div>
+                                                                <div class="col">
+                                                                        Price
+                                                                    <div class="col">
+                                                                        </div>
+                                                                    <div class="input-group">
+                                                                        <input  type="number" class="form-control form-control-sm" name="price" id="price<?php echo $car["car_id"];?>" value="<?php echo $car["price"];?>">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text" style="padding: 0px 10px;"
+                                                                                aria-label="Username" aria-describedby="basic-addon1" >$</span>
+                                                                        </div>
+                                                                    </div> <!-- input-group -->
+                                                                </div>
+                                                            </div>
+                                                            </label>
+                                                            </li>
+
+                                                            <li style="list-style-type: none;"> 
+                                                            <label for="discount" class="update-car-btn" data-car="<?php echo $car["car_id"];?>" data-user="<?php echo $car["user_id3"];?>">submit</label>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                    </ul>
+                                <?php } ?>
+
+                               <span class="float-right"> <?php if($car['price_discount'] != 0){ ?><span class="mr-2 text-danger " style="text-decoration: line-through;"><?php echo number_format($car['price_discount']); ?> Frw</span> <?php } ?><span class="text-primary" > <?php echo number_format($car['price']); ?> Frw</span></span>
                             </div> 
                             <div class="text-muted clear-float">
                                 <span class="float-left"><i class="fa fa-home" aria-hidden="true"></i>  <?php echo $categories; ?></span>
@@ -191,6 +298,98 @@ class Car extends House {
         $row= $query->fetch_array();
         return $row;
     }
+
+     
+    public function car_getPopupTweet($user_id,$car_id,$car_user_id)
+    {
+        $mysqli= $this->database;
+        $result= $mysqli->query("SELECT * FROM users U Left JOIN car B ON B. user_id3 = u. user_id WHERE B. car_id = $car_id AND B. user_id3 = $car_user_id ");
+        // var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
+        while ($row= $result->fetch_array()) {
+            # code...
+            return $row;
+        }
+    }
+
+      
+    public function deleteLikescar($tweet_id)
+    {
+        $mysqli= $this->database;
+        $query="DELETE B , L ,C ,R FROM events B 
+                        LEFT JOIN events_like L ON L. like_on = B. events_id 
+                        LEFT JOIN events_comment_like C ON C. like_on_ = B. events_id 
+                        LEFT JOIN events_comment R ON R. comment_on = B. events_id 
+                        WHERE B. events_id = '{$tweet_id}' and B. user_id3 = '{$user_id}' ";
+
+        $query1="SELECT * FROM events WHERE events_id = $tweet_id and user_id3 = $user_id ";
+
+        $result= $mysqli->query($query1);
+        $rows= $result->fetch_assoc();
+
+        if(!empty($rows['photo'])){
+            $photo=$rows['photo'].'='.$rows['other_photo'];
+            $expodefile = explode("=",$photo);
+            $fileActualExt= array();
+            for ($i=0; $i < count($expodefile); ++$i) { 
+                $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
+            }
+            $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+            if (array_diff($fileActualExt,$allower_ext) == false) {
+                $expode = explode("=",$photo);
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/events/';
+                for ($i=0; $i < count($expode); ++$i) { 
+                      unlink($uploadDir.$expode[$i]);
+                }
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp4') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/events/';
+                      unlink($uploadDir.$photo);
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp3') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/events/';
+                      unlink($uploadDir.$photo);
+            }
+        }
+
+        $query= $mysqli->query($query);
+        // var_dump("ERROR: Could not able to execute $query.".mysqli_error($mysqli));
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS DELETE</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail to delete !!!</strong>
+                </div>');
+        }
+    }
+
+    public function update_car($banner,$available,$discount_change,$discount_price,$price,$car_id)
+    {
+        $mysqli= $this->database;
+        $query= "UPDATE car SET banner= '$banner', buy = '$available', discount = $discount_change ,price_discount = $discount_price, price = $price WHERE car_id= $car_id ";
+        $mysqli->query($query);
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center" style="font-size:12px;padding:2px;">
+                    <button class="close" data-dismiss="alert" type="button" style="top:-6px;">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center" style="font-size:12px;padding:2px;">
+                    <button class="close" data-dismiss="alert" type="button"  style="top:-6px;">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail to Edit !!!</strong>
+                </div>');
+        }
+    }
+
 }
 
 $car = new Car();

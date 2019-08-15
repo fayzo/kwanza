@@ -16,7 +16,8 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
     }
     $fund_id = $_POST['fund_id'];
     $user= $fundraising->fundFecthReadmore($fund_id);
-	$comment= $fundraising->comments($fund_id);
+    $comment= $fundraising->comments($fund_id);
+    $donates= $fundraising->recentFundraisingDonate($fund_id);
     $likes= $fundraising->Fundraisinglikes($user_id,$user['fund_id']);
     
     ?>
@@ -193,12 +194,13 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
 
                      </div> <!-- col-md-6  -->
                      <div class="col-md-6 pl-5">
-                            <span class="h5">5000 Frw Goal </span>
+                            <span><?php echo number_format($user['money_raising']).' Frw Raised out of<span class="float-right text-right"> '.number_format($user['money_to_target']).' Frw <span class="text-success">Goal </span></span>'; ?>  </span>
                             <div class="progress " style="height: 6px;">
-                                <div class="progress-bar  bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                  <?php echo $users->Users_donationMoneyRaising($user['money_raising'],$user['money_to_target']); ?>
+                                <!-- <div class="progress-bar  bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> -->
                             </div>
-                            <p>Raised by 30 people in 30 months</p>
-                            <button type="button" class="btn btn-primary">Donate Now</button><br>
+                            <p>Raised by <?php echo $user['donate_counts']; ?> people in 30 months <span class="float-right text-right"><?php echo $users->donationPercetangeMoneyRaimaing($user['money_raising'],$user['money_to_target']); ?> /100 %</span></p>
+                            <button type="button" class="btn btn-primary donation-fundraising-btn" data-user="<?php echo $user['user_id']; ?>" data-fund="<?php echo $user['fund_id']; ?>">Donate Now</button><br>
                             
                             <div class="user-block mt-3">
                                <div class="user-blockImgBorder">
@@ -218,28 +220,62 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
                                 <span class="description"><i class="fa fa-map-marker mr-1"></i> <?php echo $user['country1'] ;?> | <?php echo $user['city'] ;?> | <?php echo $user['districts'] ;?>  </span>
                             </div> <!-- /.user-block -->
 
-                            <h5 class="mt-3"> Recent Donation</h5>
+                            <h5 class="mt-3"> Recent Donation (<?php echo $fundraising->CountFundraisingRaising($user['fund_id']); ?>)</h5>
                             <div class=" row mt-1">
-                              <div class="col-md-12">
-                            
+                               <?php if (count($donates) > 6) { ?>
+                                
+                                <div class="col-md-12">
+                                <div style="height:380px;" class="large-2">
+                                    <?php  foreach ($donates as $donate) { ?> 
+                                
+                                    <div class="user-block mt-3">
+                                    <div class="user-blockImgBorder">
+                                        <div class="user-blockImg">
+                                            <?php if (!empty($donate['profile_img'])) {?>
+                                            <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $donate['profile_img'] ;?>" alt="User Image">
+                                            <?php  }else{ ?>
+                                                <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
+                                            <?php } ?>
+                                        </div>
+                                        </div>
+                                        <span class="username">
+                                            <a href="<?php echo BASE_URL_PUBLIC.$donate['username'] ;?>"><?php echo number_format($donate['money_donate']); ?> Frw <span class="float-right mr-2"><i class="fa fa-heart" ></i></span></a>
+                                            <!-- //Jonathan Burke Jr. -->
+                                        </span>
+                                        <span class="description"><?php echo $donate['comment']; ?> </span>
+                                        <span class="description">donated on <?php echo $users->timeAgo($donate['created_on3']) ;?></span>
+                                    </div> <!-- /.user-block -->
+                                    
+                                    <?php } ?>
+                                  </div><!-- /.col --> 
+                                </div><!-- /.col --> 
+                            <?php  }else{ ?>
+
+                             <div class="col-md-12">
+                            <?php  foreach ($donates as $donate) { ?> 
+                                
                                 <div class="user-block mt-3">
-                                   <div class="user-blockImgBorder">
-                                    <div class="user-blockImg">
-                                          <?php if (!empty($user['profile_img'])) {?>
-                                          <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $user['profile_img'] ;?>" alt="User Image">
-                                          <?php  }else{ ?>
-                                            <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
-                                          <?php } ?>
-                                    </div>
-                                    </div>
-                                    <span class="username">
-                                        <div class="font-weight-1">donated on <?php echo $users->timeAgo($user['created_on2']) ;?> <span class="float-right"><i class="fa fa-heart"></i> </span></div>
-                                        <a class='float-left mr-1' href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"> 100Frw </a>
-                                        <!-- //Jonathan Burke Jr. -->
-                                        <span class="description"> nice to donate keep up </span>
-                                    </span>
-                                </div> <!-- /.user-block -->
-                              </div><!-- /.col -->
+                                    <div class="user-blockImgBorder">
+                                        <div class="user-blockImg">
+                                            <?php if (!empty($donate['profile_img'])) {?>
+                                            <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $donate['profile_img'] ;?>" alt="User Image">
+                                            <?php  }else{ ?>
+                                                <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
+                                            <?php } ?>
+                                        </div>
+                                        </div>
+                                        <span class="username">
+                                            <a href="<?php echo BASE_URL_PUBLIC.$donate['username'] ;?>"><?php echo number_format($donate['money_donate'],2); ?> Frw <span class="float-right mr-2"><i class="fa fa-heart" ></i></span></a>
+                                            <!-- //Jonathan Burke Jr. -->
+                                        </span>
+                                        <span class="description"><?php echo $donate['comment']; ?> </span>
+                                        <span class="description">donated on <?php echo $users->timeAgo($donate['created_on3']) ;?></span>
+                                    </div> <!-- /.user-block -->
+                                    
+                                    <?php } ?>
+                                </div><!-- /.col --> 
+
+                            <?php  } ?>
 
                               <div class="col-md-12">
                               <h5 class="mt-3"> Comments (<?php echo $fundraising->CountFundraisingComment($user['fund_id']); ?>)</h5>
