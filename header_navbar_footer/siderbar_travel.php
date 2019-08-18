@@ -1,7 +1,14 @@
-      <header class="blog-header py-2 bg-light">
+      <header class="blog-header mt-3 py-2 bg-light">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-12 text-center">
+           <?php echo $home->links(); ?>
+          </div>
+        </div>
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4">
+          <?php if (isset($_SESSION['key'])) { ?>
            <button type="button" class="btn btn-light" id="add_blog" data-blog="<?php echo $_SESSION['key']; ?>" > + Add Blog </button>
+           <?php } ?>
           </div>
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="#">Travel</a>
@@ -34,7 +41,7 @@
         <button type="button" class="btn btn-light mt-2" id="add_blog" data-blog="< ?php echo $_SESSION['key']; ?>" > + Add Blog </button>
       </div>
     </div> -->
- 
+<div class="container-fluid mb-5">
       <div class="tab-content" id="nav-tabContent">
 
         <div class="tab-pane fade" id="list-Home" role="tabpanel" aria-labelledby="list-Design-list">
@@ -61,3 +68,4 @@
       <!-- tab-content -->
 </div>
 <!-- tabpanel -->                                                                                                                                   
+</div>

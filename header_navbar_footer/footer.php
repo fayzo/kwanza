@@ -73,6 +73,22 @@
                                src="<?php echo BASE_URL_LINK ;?>image/color/rose.png" width="30px"></a>
                        <a href="#" onclick="colors('chocolate',<?php echo $user_id;?>)"> <img
                                src="<?php echo BASE_URL_LINK ;?>image/color/chocolate.png" width="30px"></a>
+                       <a href="#" class="input-holder" onclick="colors('white',<?php echo $user_id;?>)">
+                            <button class="search-icon white-bg"></button>  </a>
+                       <a href="#" class="input-holder" onclick="colors('purple_white',<?php echo $user_id;?>)">
+                            <button class="search-icon purple-bg"></button>  </a>
+                       <a href="#" class="input-holder" onclick="colors('purple-blue',<?php echo $user_id;?>)">
+                            <button class="search-icon purple-blue"></button>  </a>
+                       <a href="#" class="input-holder" onclick="colors('purple-green',<?php echo $user_id;?>)">
+                            <button class="search-icon purple-green"></button>  </a>
+                       <a href="#" class="input-holder" onclick="colors('orange-white',<?php echo $user_id;?>)">
+                            <button class="search-icon orange-white"></button>  </a>
+                       <a href="#" class="input-holder" onclick="colors('purple-white',<?php echo $user_id;?>)">
+                            <button class="search-icon purple-white"></button>  </a>
+                       <a href="#" class="input-holder" onclick="colors('blue-water',<?php echo $user_id;?>)">
+                            <button class="search-icon blue-water"></button>  </a>
+                       <a href="#" class="input-holder" onclick="colors('blue-green',<?php echo $user_id;?>)">
+                            <button class="search-icon blue-green"></button>  </a>
                        <!-- <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#">Something else here</a> -->
                   </div>
@@ -92,12 +108,8 @@
                                src="<?php echo BASE_URL_LINK ;?>image/background_image/build2.jpg" width="155px"></a>
                        <a href="#" onclick="background('chair',<?php echo $user_id;?>)"> <img
                                src="<?php echo BASE_URL_LINK ;?>image/background_image/chair.jpg" width="155px"></a>
-                       <!-- <a href="#" onclick="background('purple',<?php echo $user_id;?>)"> <img
-                               src="<?php echo BASE_URL_LINK ;?>image/background-image/purple.png" ></a>
-                       <a href="#" onclick="background('rose',<?php echo $user_id ;?>)"> <img
-                               src="<?php echo BASE_URL_LINK ;?>image/background-image/rose.png" ></a>
-                       <a href="#" onclick="background('chocolate',<?php echo $user_id;?>)"> <img
-                               src="<?php echo BASE_URL_LINK ;?>image/background-image/chocolate.png" ></a> -->
+                       <a href="#" onclick="background('white-bg',<?php echo $user_id;?>)">
+                         <button class="search-icon white-bg" style="width:155px;"></button> </a>
                        <!-- <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#">Something else here</a> -->
                   </div>
@@ -378,6 +390,15 @@ $(function() {
             minutes + "m:" +
     	    seconds + "s";
         };
+        //   document.getElementById('clock').innerHTML =
+        //     week + " " +
+        //     month + " "+
+        //     days + ", " +
+        //     year + " " +"<br><span style='magrin-top:2px;'> "+
+        //     hours + "h:" + 
+        //     minutes + "m:" +
+    	//     seconds + "s </span>";
+        // };
 
        var interval = setInterval(function (){time();}, 1000);
 

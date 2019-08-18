@@ -1,7 +1,14 @@
-      <header class="blog-header py-3 bg-light">
+      <header class="blog-header mt-3 py-2 bg-light">
+         <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-12 text-center">
+           <?php echo $home->links(); ?>
+          </div>
+        </div>
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 pt-1">
-            <a class="text-muted" href="#">Subscribe</a>
+          <?php if (isset($_SESSION['key'])) { ?>
+            <button type="button" class="btn btn-light mt-2" id="add_movies" data-movies="<?php echo $_SESSION['key']; ?>" > + Add movies </button>
+           <?php } ?>
           </div>
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="#">Movies</a>
@@ -19,6 +26,7 @@
           </div>
         </div>
       </header>
+
 
 <div role="tabpanel">
       <div class="nav-scroller py-1 mb-2 bg-light">
@@ -39,9 +47,10 @@
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Africans_movies" role="tab" aria-controls="list-Africans_movies">Africans movies</a>
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Tv_series" role="tab" aria-controls="list-Tv_series">Tv series</a>
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Anime_series" role="tab" aria-controls="list-Anime_series">Anime series</a>
-           <button type="button" class="btn btn-light mt-2" id="add_movies" data-movies="<?php echo $_SESSION['key']; ?>" > + Add movies </button>
         </nav>
       </div>
+
+<div class="container-fluid mb-5">
 
        <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="list-Home" role="tabpanel" aria-labelledby="list-Home-list">
@@ -111,3 +120,4 @@
       <!-- tab-content -->
 </div>
 <!-- tabpanel -->
+</div>

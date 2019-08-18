@@ -84,7 +84,7 @@
                 <div class="row">
                     <div class="col-md-12 mb-4">
                         <div id="response-posts"></div>
-                        <div class="card">
+                        <div class="card  borders-tops ">
                             <div class="card-body message-color">
                                 <form method="post" id="post_form" enctype="multipart/form-data">
                                     <input type="hidden" name="id_posts" id="id_posts"
@@ -144,7 +144,7 @@
                     <div class="col-md-12 mb-4">
                         <div class="posted">
                         <!-- Box Comment -->
-                        <div class="card card-profile card1">
+                        <div class="card  borders-tops card-profile card1">
                             <div class="card-body">
 
                                 <?php echo $home->tweets( $_SESSION['key'],2)?>

@@ -1,7 +1,9 @@
-      <header class="blog-header py-3 bg-light">
+      <header class="blog-header mt-3 py-2 bg-light">
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 pt-1">
-            <a class="text-muted" href="#">Subscribe</a>
+          <?php if (isset($_SESSION['key'])) { ?>
+             <button type="button" class="btn btn-light mt-2" id="add_sports" data-sports="<?php echo $_SESSION['key']; ?>" > + Add sports </button>
+           <?php } ?>
           </div>
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="#">Sports</a>
@@ -28,9 +30,10 @@
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Basketball" role="tab" aria-controls="list-Basketball">Basketball</a>
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Volleyball" role="tab" aria-controls="list-Volleyball">Volleyball</a>
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Tenis" role="tab" aria-controls="list-Tenis">Tenis</a>
-           <button type="button" class="btn btn-light mt-2" id="add_sports" data-sports="<?php echo $_SESSION['key']; ?>" > + Add sports </button>
         </nav>
       </div>
+
+<div class="container-fluid mb-5">
 
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="list-Home" role="tabpanel" aria-labelledby="list-Home-list">
@@ -57,3 +60,4 @@
       <!-- tab-content -->
 </div>
 <!-- tabpanel -->
+</div>

@@ -1,5 +1,6 @@
 #green .navbar {
-  background-color: #36f92a;
+  /* background-color: #36f92a; */
+      background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%) !important;
 }
 #green .navbar .navbar-brand {
   color: #283b40;
@@ -19,7 +20,8 @@
   color: #ecdbff; 
 }
 #green .navbar .navbar-nav .nav-link {
-  color: #283b40;
+  /* color: #283b40; */
+  color: rgba(255,255,255,0.7);
   border-radius: .25rem;
   margin: 0 0.25em;
 }

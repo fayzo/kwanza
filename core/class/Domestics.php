@@ -7,7 +7,7 @@ class Domestics extends home {
 
      public function domesticshelpers()
    { ?>
-    <div class="card">
+    <div class="card borders-bottoms">
         <div class="card-header text-center">
             <h5><i>What are you looking for ?</i> </h5>
         </div>
@@ -15,8 +15,8 @@ class Domestics extends home {
            <div class="row">
 
                 <div class="col-md-6">
-                    <div class="card text-center shadow-lg more  loginTerms" >
-                      <div class="mt-4"><img class="img-fluid rounded-circle" src="<?php echo BASE_URL_LINK.'image/img/avatar2.png'; ?>" width="200px" heght="200px"></div>
+                    <div class="card borders-tops text-center shadow-lg more  loginTerms" >
+                      <div><img class="img-fluid mt-3 rounded-circle" src="<?php echo BASE_URL_LINK.'image/img/avatar2.png'; ?>" width="200px" heght="200px"></div>
                       <div class="card-body">
                         <a href="javascript:void(0);" class="h4  loginTerms"  >HELP</a>
                         <p class="card-text">Domestic Helper. Be in touch with our applicants online, set up interviews and find the most sitable domestic helper for your family </p>
@@ -25,8 +25,8 @@ class Domestics extends home {
                 </div>
 
                 <div class="col-md-6">
-                    <div class="card text-center shadow-lg more  loginTerms0" >
-                      <div class="mt-4"><img class="img-fluid rounded-circle" src="<?php echo BASE_URL_LINK.'image/img/avatar3.png'; ?>" width="200px" heght="200px"></div>
+                    <div class="card borders-tops text-center shadow-lg more  loginTerms0" >
+                      <div><img class="img-fluid mt-3 rounded-circle" src="<?php echo BASE_URL_LINK.'image/img/avatar3.png'; ?>" width="200px" heght="200px"></div>
                       <div class="card-body">
                         <a href="javascript:void(0);" class="h4 loginTerms0" >A JOB</a>
                         <p class="card-text">Domestic Helper. Be in touch with our applicants online, set up interviews and find the most sitable domestic helper for your family </p>
@@ -36,7 +36,7 @@ class Domestics extends home {
                
             </div> <!-- row -->
         </div> <!-- card-body -->
-    </div>
+    </div><!-- card -->
     
   <?php }
 

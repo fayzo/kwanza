@@ -159,7 +159,7 @@
 
                     <div class="col-md-12 mb-4">
                         <!-- Box Comment -->
-                        <div class="card card-profile card1">
+                        <div class="card borders-tops card-profile card1">
                             <div class="card-body">
                                     <?php echo $home->getUserTweet($profileData['user_id']) ;?>
                             </div>

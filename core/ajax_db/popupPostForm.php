@@ -10,7 +10,7 @@ $user = $home->userData($_SESSION['key']);
 <div class="popup-tweet-wrap">
 	<div class="wrap">
 		<div class="popwrap-inner">
-            <div class="card">
+            <div class="card borders-tops">
                 <span id="response-PostMessage"></span>
                 <div class="card-header">
                     <span class="closeDelete"><button class="closeTweetPopup"><i class="fa fa-times" aria-hidden="true"></i></button></span>

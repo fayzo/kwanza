@@ -1,7 +1,14 @@
-      <header class="blog-header py-3 bg-light">
+      <header class="blog-header mt-3 py-2 bg-light">
+         <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-12 text-center">
+           <?php echo $home->links(); ?>
+          </div>
+        </div>
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 pt-1">
-            <a class="text-muted" href="#">Subscribe</a>
+          <?php if (isset($_SESSION['key'])) { ?>
+           <button type="button" class="btn btn-light mt-2" id="add_rwandalandscapes" data-rwandalandscapes="<?php echo $_SESSION['key']; ?>" > + Add rwanda-Landscapes </button>
+           <?php } ?>
           </div>
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="#">Rwanda Entertainment</a>
@@ -28,9 +35,10 @@
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Music" role="tab" aria-controls="list-Music">Music</a>
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Film" role="tab" aria-controls="list-Film">Film</a>
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Model" role="tab" aria-controls="list-Model">Model</a>
-           <button type="button" class="btn btn-light mt-2" id="add_rwandalandscapes" data-rwandalandscapes="<?php echo $_SESSION['key']; ?>" > + Add rwanda-Landscapes </button>
         </nav>
       </div>
+
+<div class="container-fluid mb-5">
 
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="list-Home" role="tabpanel" aria-labelledby="list-Home-list">
@@ -57,3 +65,4 @@
       <!-- tab-content -->
 </div>
 <!-- tabpanel -->
+</div>

@@ -1,7 +1,14 @@
         <header class="blog-header  mt-3 py-2 mb-3 bg-light">
         <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-12 text-center">
+           <?php echo $home->links(); ?>
+          </div>
+        </div>
+        <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4">
+          <?php if (isset($_SESSION['key'])) { ?>
             <button type="button" class="btn btn-light" id="add_crowfund" data-crowfund="<?php echo $_SESSION['key']; ?>" > + Add Startup </button>
+           <?php } ?>
           </div>
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="#">Gushora Startup</a>

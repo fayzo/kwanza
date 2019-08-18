@@ -134,7 +134,7 @@ class Food extends home {
                       echo $item["name"];
                     } ?></div>
                     </td>
-            				<td align="right"><?php echo "$ ". number_format($item_price,2); ?></td>
+            				<td align="right"><?php echo "$ ". number_format($item_price); ?></td>
             				<td align="center">
                                 <form method="post" id="form-foodcartitem<?php echo $item['code']; ?>remove" >
                                         <input type="hidden" style="width:30px;" name="actions" value="remove" />
@@ -151,7 +151,7 @@ class Food extends home {
             
             <tr>
             <td>Total:</td>
-            <td align="left" colspan="2"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+            <td align="left" colspan="2"><strong><?php echo "$ ".number_format($total_price); ?></strong></td>
             </tr>
             </tbody>
             </table>		

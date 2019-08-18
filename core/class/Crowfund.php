@@ -24,7 +24,7 @@ class Crowfund extends home {
 
                <div class="col-md-3 mb-3">
             
-            <div class="card more" >
+            <div class="card borders-bottoms more" >
                 <img class="card-img-top" width="242px" id="crowfund-readmore" data-crowfund="<?php echo $row['fund_id'] ;?>" height="160px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/crowfund/<?php echo $row['photo'] ;?>" >
                 <div class="card-body">
                     <div class="p-0 font-weight-bold">Funding 

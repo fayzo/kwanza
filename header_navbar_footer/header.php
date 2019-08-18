@@ -11,6 +11,14 @@
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/navbar_rose.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/navbar_green.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/navbar_chocolate.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/navbar_white.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/navbar_purple_white.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/navbar_purple_white_.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/navbar_purple_blue.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/navbar_purple_green.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/navbar_orange_white.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/navbar_blue_water.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/navbar_blue_green.css" rel="stylesheet">
 
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/login.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/dropdown.css" rel="stylesheet">

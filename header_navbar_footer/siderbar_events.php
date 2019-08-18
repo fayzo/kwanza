@@ -1,9 +1,15 @@
       <header class="blog-header mt-3 py-2 bg-light">
+         <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-12 text-center">
+           <?php echo $home->links(); ?>
+          </div>
+        </div>
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 pt-1">
-            <!-- <a class="text-muted" href="#">Subscribe</a> -->
+          <?php if (isset($_SESSION['key'])) { ?>
             <button type="button" class="btn btn-light" id="add_events" data-events="<?php echo $_SESSION['key']; ?>" > + Add events </button>
-          </div>
+           <?php } ?>
+         </div>
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="#">Events</a>
           </div>

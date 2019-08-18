@@ -412,6 +412,7 @@ class Home extends Comment {
                     <li><h5 class="card-title"><a href="food.php">Foodzana</a></h5>
                     <li><h5 class="card-title"><a href="domestic.php">domestic Helpers</a></h5> </li>
                     <li><h5 class="card-title"><a href="school.php">school</a></h5> </li>
+                    <li><h5 class="card-title"><a href="members_earning.php">members earning</a></h5> </li>
                 </ul>
               
               <?php }else { ?>
@@ -435,6 +436,7 @@ class Home extends Comment {
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.food">Foodzana</a></h5>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.domestic">domestic Helpers</a></h5> </li>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.school">school</a></h5> </li>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.members_earning">members earning.php</a></h5> </li>
                 </ul>
                 <?php } ?>
             </div>
@@ -470,6 +472,7 @@ class Home extends Comment {
                     <li><h5><a href="food.php">Foodzana</a></h5>
                     <li><h5><a href="domestic.php">domestic Helpers</a></h5> </li>
                     <li><h5><a href="school.php">school</a></h5> </li>
+                    <li><h5><a href="members_earning.php">members earning.php</a></h5> </li>
                 </ul>
               <?php }else { ?>
                <ul>
@@ -492,10 +495,62 @@ class Home extends Comment {
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.food">Foodzana</a></h5>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.domestic">domestic Helpers</a></h5> </li>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.school">school</a></h5> </li>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.members_earning">members earning</a></h5> </li>
                 </ul>
                 <?php } ?>
             </div>
         </div>
+
+    <?php }
+
+      public function links(){ ?>
+            <?php if (isset($_SESSION['key'])) { ?>
+         <ul class="list-inline link-view">
+              <li class="list-inline-item"><a href="crowfund.php"><i class="fa fa-money" aria-hidden="true"></i> GushoraStartUp</a></li>
+              <li class="list-inline-item"><a href="fundraising.php"><i class="fa fa-heartbeat" aria-hidden="true"></i> Fundraising</a></li>
+              <li class="list-inline-item"><a href="Unemployment.php"><i class="fa fa-running    "></i> Unemployment</a></li>
+              <li class="list-inline-item"><a href="sale.php"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Sale</a></li>
+              <li class="list-inline-item"><a href="blog.php"><i class="fas fa-blogger    "></i> Blog</a></li>
+              <li class="list-inline-item"><a href="jobs0.php"><i class="fas fa-newspaper    "></i> Jobs</a></li>
+              <li class="list-inline-item"><a href="events.php"><i class="fas fa-envelope-open-text    "></i> Events</a></li>
+              <li class="list-inline-item"><a href="movies.php"><i class="fa fa-film" aria-hidden="true"></i> Movies</a></li>
+              <li class="list-inline-item"><a href="sports.php"><i class="fas fa-football-ball    "></i> Sports</a></li>
+              <li class="list-inline-item"><a href="news.php"><i class="fas fa-newspaper    "></i> news</a></li>
+              <li class="list-inline-item"><a href="entertainment.php"><i class="fa fa-microphone" aria-hidden="true"></i> Entertainment</a></li>
+              <li class="list-inline-item"><a href="rwandaPhotos.php"><i class="fa fa-map-marker" aria-hidden="true"></i> Rwanda-Landscape</a></li>
+              <li class="list-inline-item"><a href="Tembera.php"><i class="fa fa-safari" aria-hidden="true"></i> Tembera-ltd</a></li>
+              <li class="list-inline-item"><a href="hotelbooking.php"><i class="fas fa-hotel    "></i> Hotel-booking</a></li>
+              <li class="list-inline-item"><a href="house.php"><i class="fas fa-house-damage    "></i> House</a></li>
+              <li class="list-inline-item"><a href="car.php"><i class="fa fa-car" aria-hidden="true"></i> Car</a></li>
+              <li class="list-inline-item"><a href="food.php"><i class="fa fa-cutlery" aria-hidden="true"></i> Foodzana</a></li>
+              <li class="list-inline-item"><a href="domestic.php">domestic Helpers</a></li>
+              <li class="list-inline-item"><a href="school.php"><i class="fas fa-school    "></i> school</a></li>
+              <li class="list-inline-item"><a href="members_earning.php">members earning</a></li>
+            </ul>
+            <?php }else { ?>
+            <ul  class="list-inline link-view">
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.crowfund">GushoraStartUp</a> </li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.fundraising"> Fundraising</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.Unemployment"> Unemployment</a> </li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.sale">Sale</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.blog">Blog</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.jobs0">Jobs</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.events">Events</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.movies">Movies</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.sports">Sports</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.news">news</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.entertainment">Entertainment</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.rwandaPhotos">Rwanda-Landscape</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.Tembera">Tembera-ltd</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.hotelbooking">Hotel-booking</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.house">House</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.car">Car</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.food">Foodzana</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.domestic">domestic Helpers</a> </li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.school">school</a> </li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.members_earning">members earning</a> </li>
+            </ul>
+        <?php } ?>
 
     <?php }
 
@@ -2579,7 +2634,7 @@ class Home extends Comment {
                                 <!-- <div class="card mb-3"> -->
                                     <!-- <div class="card-body"> -->
                                    
-                                <div class="post">
+                                <div class="post ">
                                     <?php 
                                      if($retweet['retweet_id'] == $tweet["tweet_id"] || $tweet["retweet_id"] > 0){ ?>
                                       <span class="t-show-banner">

@@ -28,7 +28,7 @@ class Posts extends blog {
                                      # code... 
                                     //  echo var_dump($retweet['retweet_Msg']).'<br>';
                                 ?>
-                                <div class="card mb-3">
+                                <div class="card borders-tops mb-3">
                                     <div class="card-body">
                                    
                                 <div class="post">

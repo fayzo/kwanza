@@ -1,9 +1,14 @@
-      <header class="blog-header bg-light">
+      <header class="blog-header mt-3 py-2 bg-light">
         <div class="row flex-nowrap justify-content-between align-items-center">
-           <!-- <img src="< ?php echo BASE_URL_LINK.'image/img/banners.png' ;?>"> -->
-
+          <div class="col-12 text-center">
+           <?php echo $home->links(); ?>
+          </div>
+        </div>
+        <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 pt-1">
+          <?php if (isset($_SESSION['key'])) { ?>
             <button type="button" class="btn btn-light" id="add_food" data-food="<?php echo $_SESSION['key']; ?>" > + Add food </button>
+           <?php } ?>
           </div>
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="#">Food Delivery</a>
@@ -14,6 +19,7 @@
         </div>
       </header>
 
+<div class="container-fluid mb-5">
      <div class="row mt-4">
          <div class="col-md-3">
              <div class="card">
@@ -41,4 +47,5 @@
          </div> <!-- col -->
          
      </div>
+</div>
   

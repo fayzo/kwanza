@@ -61,13 +61,13 @@ class Fundraising extends Home
                               </div>
                         </div>
                     </div>
-                    <div class="card" style="border-top-left-radius: 0px !important;border-top-right-radius: 0px !important;">
+                    <div class="card borders-bottoms" style="border-top-left-radius: 0px !important;border-top-right-radius: 0px !important;">
                             <div class="card-body pl-1 pt-0 pb-1">
                               <span class="h5"><?php echo number_format($row['money_raising']); ?> Frw </span>
                               <span class="text-muted">raised Out of <?php echo number_format($row['money_to_target']).' Frw'; ?></span>
                               <p class="mt-2"><?php echo $row['text'] ;?></p>
                               <div>
-                                <button type="button" class="btn btn-success btn-md float-left"><i class="fa fa-check-circle" style='font-size:15px;' aria-hidden="true"></i> Verified</button>
+                                <span class="text-success float-left ml-2"><i class="fa fa-check-circle" style='font-size:15px;' aria-hidden="true"></i> Verified</span>
                                 <button type="button" id="fund-readmore" data-fund="<?php echo $row['fund_id'] ;?>" class="btn btn-primary float-right" >+ Read more</button></div>
                               </div>
                     </div>
