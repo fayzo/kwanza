@@ -662,6 +662,48 @@ class Users{
 
     }
 
+    public function updateReal($table,$fields=array(),$conditions=array())
+     {
+        $mysqli= $this->database;
+        $columns="";
+        $i= 1;
+        foreach ($fields as $key => $value) {
+            # code...
+            $columns .= "{$key} = '{$value}'";
+            if ($i++ < count($fields)) {
+                # code...
+                 $columns .= ',';
+            }
+        }
+
+        $sql = "UPDATE ";
+        $sql .= $table.' SET '.$columns;
+        $sql .= ' WHERE ';
+         $i = 0;
+         foreach($conditions as $key => $value){
+             $pre = ($i > 0)?' AND ':'';
+               $sql .= $pre.$key." = '".$value."'";
+             $i++;
+         }
+
+        $query= $mysqli->query($sql);
+        // var_dump($sql);
+         if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail input try again !!!</strong>
+                </div>');
+        }
+    }
+
      public function selects($table,$arrayselects=array(),$conditions = array())
      {
         $mysqli= $this->database;

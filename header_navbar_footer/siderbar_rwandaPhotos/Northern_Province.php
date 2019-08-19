@@ -1,5 +1,4 @@
 <!-- container-fuild -->
-<div class="container mb-5 mt-3">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="row mb-2">
@@ -44,5 +43,3 @@
         <!-- /.row -->
     </section>
     <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->

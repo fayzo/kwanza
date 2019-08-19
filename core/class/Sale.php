@@ -77,7 +77,7 @@ class Sale extends Home{
     <?php }
     }
 
-     public function cartList($categories,$pages)
+     public function cartList($categories,$pages,$user_id)
     {
         $pages= $pages;
         $categories= $categories;
@@ -172,7 +172,7 @@ class Sale extends Home{
                          <!-- <div class="col-md-3"> -->
 
                           <div class="card">
-                            <div class="card-img-top img-fuild" style="background: url('<?php echo BASE_URL_PUBLIC."uploads/sale/".$row["photo"]; ?>')no-repeat center center;background-size:cover;width: 250px;height:178px">
+                            <div class="card-img-top img-fuild" id="salePreview<?php echo $row['sale_id']; ?>" style="background: url('<?php echo BASE_URL_PUBLIC."uploads/sale/".$row["photo"]; ?>')no-repeat center center;background-size:cover;width: 250px;height:178px">
                                 <?php $banner = $row['banner'];
                                       switch ($banner) {
                                           case $banner == 'new':
@@ -187,22 +187,142 @@ class Sale extends Home{
                                               # code...
                                               echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival.png"  width="252px" height="178px" >';
                                               break;
-                                          case $banner == 'vegetables':
-                                              # code...
-                                              echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival5.png"  width="252px" height="178px" >';
-                                              break;
-                                          case $banner == 'macedone':
-                                              # code...
-                                              echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival5.png"  width="252px" height="178px" >';
-                                              break;
-                                          
+                                         default:
+                                                # code...
+                                                echo '';
+                                                break;  
                                       } ?>
                                 </div>
                               <div class="card-body">
-                                  <div class="card-title"><?php echo $row["title"]; ?></div> <!-- product-title -->
+                                 <div id="response<?php echo $row['sale_id']; ?>"></div>
+
+                                  <div class="card-title"><?php echo $row["title"]; ?>
+
+                                    <?php if($user_id == $row['user_id01']){ ?>
+                                    <ul class="list-inline ml-2  float-right" style="list-style-type: none;">  
+
+                                            <li  class=" list-inline-item">
+                                                <ul class="showcartButt" style="list-style-type: none; margin:0px;" >
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                                                        <ul style="list-style-type: none; margin:0px; margin:0px;width:250px;text-align:center;" >
+                                                            <li style="list-style-type: none; margin:0px;"> 
+                                                                 <label class="delete-sale"  data-sale="<?php echo $row["sale_id"];?>"  data-user="<?php echo $row["user_id01"];?>">Delete </label>
+                                                            </li>
+                                                            
+                                                            <li style="list-style-type: none; margin:0px;"> 
+                                                            <label >photo
+                                                                <form action="<?php echo BASE_URL_PUBLIC;?>core/ajax_db/sale_delete.php" method="post" id="form-photo<?php echo $row["sale_id"];?>" enctype="multipart/form-data">
+                                                                    <input type="hidden" name="sale_id" value="<?php echo $row["sale_id"];?>">
+                                                                    <input type="file" class="form-control-file" name="form-sale" id="form-sale" data-sale="<?php echo $row["sale_id"];?>"> <br>
+                                                                </form>
+                                                             </label>
+                                                            </li>
+
+                                                            <li style="list-style-type: none; margin:0px;"> 
+                                                            <label for="">
+                                                            <div class="form-row">
+                                                                <div class="col">
+                                                                        Banner
+                                                                        <div class="input-group">
+                                                                              <select class="form-control" name="banner" id="banner<?php echo $row["sale_id"];?>">
+                                                                                <option value="<?php echo $row['banner']; ?>" selected><?php echo $row['banner']; ?></option>
+                                                                                <option value="new">New</option>
+                                                                                <option value="new_arrival">New arrival</option>
+                                                                                <option value="great_deal">Great deal</option>
+                                                                                <option value="empty">empty</option>
+                                                                              </select>
+                                                                            <div class="input-group-append">
+                                                                                <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1" >banner</span>
+                                                                            </div>
+                                                                        </div> <!-- input-group -->
+                                                                </div>
+                                                            </div>
+                                                            </label>
+                                                            </li>
+
+                                                          <li style="list-style-type: none; margin:0px;"> 
+                                                            <label for="">
+                                                            <div class="form-row">
+                                                                <div class="col">
+                                                                        Sale
+                                                                        <div class="input-group">
+                                                                              <select class="form-control" name="available" id="available<?php echo $row["sale_id"];?>">
+                                                                              <?php if ($row['buy'] == 'available') { ?>
+                                                                                <option value="available" selected>Available</option>
+                                                                                <option value="sold">Sold</option>
+                                                                                <option value="empty">empty</option>
+                                                                              <?php }else { ?>
+                                                                                <option value="sold" selected>Sold</option>
+                                                                                <option value="available">Available</option>
+                                                                                <option value="empty">empty</option>
+                                                                              <?php } ?>
+                                                                              </select>
+                                                                            <div class="input-group-append">
+                                                                                <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1" >sale</span>
+                                                                            </div>
+                                                                        </div> <!-- input-group -->
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col">
+                                                                    discount %
+                                                                    <div class="input-group">
+                                                                        <input  type="number" class="form-control form-control-sm" name="discount_change" id="discount_change<?php echo $row["sale_id"];?>" value="<?php echo $row["discount"];?>">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1" >%</span>
+                                                                        </div>
+                                                                    </div> <!-- input-group -->
+                                                                </div>
+                                                            </div>
+                                                            </label>
+                                                            </li>
+                                                            
+                                                            <li style="list-style-type: none;"> 
+                                                            <label for="discount">
+                                                            <div class="form-row">
+                                                                <div class="col">
+                                                                    discount price
+                                                                    <div class="input-group">
+                                                                        <input  type="number" class="form-control form-control-sm" name="discount_price" id="discount_price<?php echo $row["sale_id"];?>" value="<?php echo $row["price_discount"];?>">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1">$</span>
+                                                                        </div>
+                                                                    </div> <!-- input-group -->
+                                                                </div>
+                                                                <div class="col">
+                                                                        Price
+                                                                    <div class="col">
+                                                                        </div>
+                                                                    <div class="input-group">
+                                                                        <input  type="number" class="form-control form-control-sm" name="price" id="price<?php echo $row["sale_id"];?>" value="<?php echo $row["price"];?>">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text" style="padding: 0px 10px;"
+                                                                                aria-label="Username" aria-describedby="basic-addon1" >$</span>
+                                                                        </div>
+                                                                    </div> <!-- input-group -->
+                                                                </div>
+                                                            </div>
+                                                            </label>
+                                                            </li>
+
+                                                            <li style="list-style-type: none;"> 
+                                                            <label for="discount" class="update-sale-btn" data-sale="<?php echo $row["sale_id"];?>" data-user="<?php echo $row["user_id01"];?>">submit</label>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                    </ul>
+                                <?php } ?>
+
+                                     <?php if($row['discount'] != 0){ ?>
+                                          <span class="float-right text-danger"><?php echo $row["discount"]; ?>%</span>
+                                     <?php } ?>
+
+                                  </div> <!-- product-title -->
                                   <div class="card-text product-price d-inline-block"> 
-                                    <?php if(800.00 != 0){ ?><span class="text-danger " style="text-decoration: line-through;"><?php echo number_format(8000000.00); ?> Frw</span> <?php } ?> 
-                                   <div> <?php echo "$".number_format($row["price"]); ?> </div>
+                                    <?php if($row['price_discount'] != 0){ ?><span class="text-danger " style="text-decoration: line-through;"><?php echo number_format($row['price_discount']); ?> Frw</span> <?php } ?> 
+                                   <div> <?php echo number_format($row["price"])." Frw"; ?> </div>
                                   </div>
                                    <form method="post" id="form-cartitem<?php echo $row['code']; ?>add" class="float-right">
                                       <div class="cart-action">
@@ -372,6 +492,93 @@ class Sale extends Home{
             <?php 
             } 
     }
+
+     public function update_sale($banner,$available,$discount_change,$discount_price,$price,$sale_id)
+    {
+        $mysqli= $this->database;
+        $query= "UPDATE sale SET banner= '$banner', buy = '$available', discount = $discount_change ,price_discount = $discount_price, price = $price WHERE sale_id= $sale_id ";
+        $mysqli->query($query);
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center" style="font-size:12px;padding:2px;">
+                    <button class="close" data-dismiss="alert" type="button" style="top:-6px;">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center" style="font-size:12px;padding:2px;">
+                    <button class="close" data-dismiss="alert" type="button"  style="top:-6px;">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail to Edit !!!</strong>
+                </div>');
+        }
+    }
+
+      public function sale_getPopupTweet($user_id,$sale_id,$car_user_id)
+    {
+        $mysqli= $this->database;
+        $result= $mysqli->query("SELECT * FROM users U Left JOIN sale B ON B. user_id01 = u. user_id WHERE B. sale_id = $sale_id AND B. user_id01 = $car_user_id ");
+        // var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
+        while ($row= $result->fetch_array()) {
+            # code...
+            return $row;
+        }
+    }
+      
+    public function deleteLikesSale($sale_id,$user_id)
+    {
+        $mysqli= $this->database;
+        $query="DELETE FROM sale WHERE sale_id = $sale_id ";
+
+        $query1="SELECT * FROM sale WHERE sale_id = $sale_id ";
+
+        $result= $mysqli->query($query1);
+        $rows= $result->fetch_assoc();
+
+        if(!empty($rows['photo'])){
+            $photo=$rows['photo'].'='.$rows['other_photo'];
+            $expodefile = explode("=",$photo);
+            $fileActualExt= array();
+            for ($i=0; $i < count($expodefile); ++$i) { 
+                $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
+            }
+            $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+            if (array_diff($fileActualExt,$allower_ext) == false) {
+                $expode = explode("=",$photo);
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/sale/';
+                for ($i=0; $i < count($expode); ++$i) { 
+                      unlink($uploadDir.$expode[$i]);
+                }
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp4') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/sale/';
+                      unlink($uploadDir.$photo);
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp3') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/sale/';
+                      unlink($uploadDir.$photo);
+            }
+        }
+
+        $query= $mysqli->query($query);
+        // var_dump("ERROR: Could not able to execute $query.".mysqli_error($mysqli));
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS DELETE</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail to delete !!!</strong>
+                </div>');
+        }
+    }
+
+
 }
 
 $sale = new Sale();

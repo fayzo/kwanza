@@ -123,7 +123,10 @@ class House extends Home {
                                 # code...
                                 echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival5.png" height="100px" width="100px">';
                                 break;
-                            
+                             default:
+                                # code...
+                                echo '';
+                                break;
                         } ?>
                           
                         </div>
@@ -155,6 +158,7 @@ class House extends Home {
                                                                                 <option value="new">New</option>
                                                                                 <option value="new_arrival">New arrival</option>
                                                                                 <option value="great_deal">Great deal</option>
+                                                                                <option value="empty">empty</option>
                                                                               </select>
                                                                             <div class="input-group-append">
                                                                                 <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1" >banner</span>
@@ -175,9 +179,11 @@ class House extends Home {
                                                                               <?php if ($house['buy'] == 'available') { ?>
                                                                                 <option value="available" selected>Available</option>
                                                                                 <option value="sold">Sold</option>
+                                                                                <option value="empty">empty</option>
                                                                               <?php }else { ?>
                                                                                 <option value="sold" selected>Sold</option>
                                                                                 <option value="available">Available</option>
+                                                                                <option value="empty">empty</option>
                                                                               <?php } ?>
                                                                               </select>
                                                                             <div class="input-group-append">
@@ -312,6 +318,10 @@ class House extends Home {
         case $variable == 'sold' :
             # code...
             return '<span class="bg-danger text-light" style="position: absolute;font-size: 11px; padding: 2px;margin-left: 10px;"> '.$variable.' </span> ';
+            break;
+         default:
+            # code...
+            echo '';
             break;
         }
     }

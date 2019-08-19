@@ -108,13 +108,9 @@ class Car extends House {
                                 # code...
                                 echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival.png" height="100px" width="100px">';
                                 break;
-                            case $banner == 'vegetables':
+                            default:
                                 # code...
-                                echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival5.png" height="100px" width="100px">';
-                                break;
-                            case $banner == 'macedone':
-                                # code...
-                                echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival5.png" height="100px" width="100px">';
+                                echo '';
                                 break;
                             
                         } ?>
@@ -148,6 +144,7 @@ class Car extends House {
                                                                                 <option value="new">New</option>
                                                                                 <option value="new_arrival">New arrival</option>
                                                                                 <option value="great_deal">Great deal</option>
+                                                                                <option value="empty">empty</option>
                                                                               </select>
                                                                             <div class="input-group-append">
                                                                                 <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1" >banner</span>
@@ -168,9 +165,11 @@ class Car extends House {
                                                                               <?php if ($car['buy'] == 'available') { ?>
                                                                                 <option value="available" selected>Available</option>
                                                                                 <option value="sold">Sold</option>
+                                                                                <option value="empty">empty</option>
                                                                               <?php }else { ?>
                                                                                 <option value="sold" selected>Sold</option>
                                                                                 <option value="available">Available</option>
+                                                                                <option value="empty">empty</option>
                                                                               <?php } ?>
                                                                               </select>
                                                                             <div class="input-group-append">

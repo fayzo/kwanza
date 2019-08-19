@@ -12,7 +12,7 @@ if (isset($_POST['domestic_id']) && !empty($_POST['domestic_id'])) {
     // $user= $domesticraising->domesticFecthReadmore($domestic_id);
      ?>
 <style>
-.active{
+.domestic-popup .active{
     color: #fff;
 }
 </style>

@@ -280,6 +280,10 @@ class Food extends home {
                                 # code...
                                 echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival5.png" height="100px" width="100px">';
                                 break;
+                            default:
+                                # code...
+                                echo '';
+                                break;
                             
                         } ?>
                         </div>
@@ -311,6 +315,7 @@ class Food extends home {
                                                                                 <option value="new">New</option>
                                                                                 <option value="new_arrival">New arrival</option>
                                                                                 <option value="great_deal">Great deal</option>
+                                                                                <option value="empty">empty</option>
                                                                               </select>
                                                                             <div class="input-group-append">
                                                                                 <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1" >banner</span>
@@ -453,6 +458,10 @@ class Food extends home {
         case $variable == 'sold' :
             # code...
             return '<span class="bg-danger text-light" style="position: absolute;font-size: 11px; padding: 2px; margin-left: 10px;"> '.$variable.' </span> ';
+            break;
+         default:
+            # code...
+            echo '';
             break;
         }
     }

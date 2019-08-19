@@ -9,7 +9,7 @@ if(!empty($_FILES['picture']['name'])){
 
     $id= $_POST['edit_profile'];
     $files = $_FILES['picture'];
-    $uploadDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/assets/image/users_profile_cover/';
+    $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/assets/image/users_profile_cover/';
     // $fileName = time().'_'.basename($_FILES['picture']['name']);
     $fileNames= basename($files['name']);
     $fileExt = explode('.', $fileNames);
@@ -49,7 +49,7 @@ if(!empty($_FILES['picture']['name'])){
      var_dump($update);
      var_dump($_FILES['picture']);
     //Load JavaScript function to show the upload status
-    $path= $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/assets/image/users_profile_cover/'.$fileName.'';
+    $path= $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/assets/image/users_profile_cover/'.$fileName.'';
     $strpos_countsTo = strpos($path, 'assets/image/users_profile_cover/'.$fileName.'');
     $path_replace= substr_replace($path,'', 0,$strpos_countsTo);
     echo '<script type="text/javascript">window.top.window.completeUpload(' . $result . ',\'' .$path_replace. '\');</script>  ';
@@ -61,7 +61,7 @@ if(!empty($_FILES['pictureLogo']['name'])){
 
     $id= $_POST['edit_profileLogo'];
     $files = $_FILES['pictureLogo'];
-    $uploadDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/assets/image/users_profile_cover/';
+    $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/assets/image/users_profile_cover/';
     // $fileName = time().'_'.basename($_FILES['picture']['name']);
     $fileNames= basename($files['name']);
     $fileExt = explode('.', $fileNames);
@@ -101,7 +101,7 @@ if(!empty($_FILES['pictureLogo']['name'])){
      var_dump($update);
      var_dump($_FILES['pictureLogo']);
     //Load JavaScript function to show the upload status
-    $path= $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/assets/image/users_profile_cover/'.$fileName.'';
+    $path= $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/assets/image/users_profile_cover/'.$fileName.'';
     $strpos_countsTo = strpos($path, 'assets/image/users_profile_cover/'.$fileName.'');
     $path_replace= substr_replace($path,'', 0,$strpos_countsTo);
     echo '<script type="text/javascript">window.top.window.completeUploadLogo(' . $result . ',\'' .$path_replace. '\');</script>  ';
@@ -111,7 +111,7 @@ if(!empty($_FILES['pictureLogo']['name'])){
 if(!empty($_FILES['cover_picture']['name'])){
     $id= $_POST['edit_cover'];
     $files = $_FILES['cover_picture'];
-    $uploadDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/assets/image/users_profile_cover/';
+    $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/assets/image/users_profile_cover/';
     // $coverName = time().'_'.basename($_FILES['cover_picture']['name']);
     $coverNames= basename($files['name']);
     $fileExt = explode('.', $coverNames);
@@ -151,12 +151,11 @@ if(!empty($_FILES['cover_picture']['name'])){
     var_dump($update);
     var_dump($_FILES['cover_picture']);
     //Load JavaScript function to show the upload status
-    $path= $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/assets/image/users_profile_cover/'.$coverName.'';
+    $path= $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/assets/image/users_profile_cover/'.$coverName.'';
     $strpos_countsTo = strpos($path, 'assets/image/users_profile_cover/'.$coverName.'');
     $path_replace= substr_replace($path,'', 0,$strpos_countsTo);
     echo '<script type="text/javascript">window.top.window.cover_completeUpload(' . $result . ',\'' .$path_replace. '\');</script>  ';
 }
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if($_REQUEST['CROP'] == 'CROP'){
@@ -164,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          $targ_w = $targ_h = 150;
          $jpeg_quality = 90;
          
-         $uploadDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/assets/image/users_profile_cover/';
+         $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/assets/image/users_profile_cover/';
          $src = $uploadDir.$_POST['src'];
          $files= $src;
          $filename = 'defaultprofileimage.png';

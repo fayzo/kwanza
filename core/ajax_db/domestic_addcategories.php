@@ -469,48 +469,8 @@ if (isset($_POST['loginTermsCondition']) && !empty($_POST['loginTermsCondition']
                               <input class="form-check-input" type="checkbox" name="photo" id="photo" value="images.jpg"> <img src="<?php echo BASE_URL_PUBLIC.'uploads/domesticsEmployers/images2.jpg'; ?>"  class="mt-3" with="100px" height="100px">
                             </label>
                           </div>
-                          </div>
-                      </div>
-
-                      <!-- <div class="form-row mt-2">
-                        <div class="col">
-                          <div class="form-group">
-                               <div class="btn btn-defaults btn-file" >
-                                   <i class="fa fa-paperclip"></i> Attachment
-                                   <input type="file" name="photo[]" id="photo" multiple>
-                                </div>
-                                <span>Upload one photo of proof</span><br>
-                                <span class="progress progress-hidex mt-1">
-                                        <span class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
-                                            style="width:0%;" id="prox" aria-valuenow="" aria-valuemin="0"
-                                            aria-valuemax="100"></span>
-                                </span>
-                               <small class="help-block">Max. 10MB</small>
-                           </div> 
                         </div>
-                        <div class="col">
-                             <div class="form-group">
-                               <div class="btn btn-defaults btn-file" >
-                                   <i class="fa fa-paperclip"></i> Attachment
-                                   <input type="file" name="otherphoto[]" id="other-photo"  multiple>
-                               </div>
-                               <span>Other photo</span>
-                               <small class="help-block">(e.g show us many photo.) </small><br>
-                                <span class="progress progress-hidec mt-1">
-                                        <span class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
-                                            style="width:0%;" id="proc" aria-valuenow="" aria-valuemin="0"
-                                            aria-valuemax="100"></span>
-                                </span>
-                               <small class="help-block">Max. 10MB</small>
-                           </div> 
-                        </div>
-                      </div> -->
-                      <!-- <span onclick="fundAddmoreVideo()" id="add-more" class="btn btn-primary btn-md ">+ add more</span>
-
-                    <div id="add-videohelp">
-                      
-                    </div> -->
-                    <!-- collapse addmore-->
+                    </div>
 
                  </div><!-- card-body end-->
                 <div class="card-footer text-center">

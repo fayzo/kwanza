@@ -16,7 +16,8 @@ if (isset($_GET['username']) == true && empty($_GET['username']) == false) {
         $saleV= $home->saleData($_SESSION['key']);
 
 		$notific= $notification->getNotificationCount($user_id);
-		$notification->notificationsView($user_id);
+        $notification->notificationsView($user_id);
+        
 	}else{
         $user_id= $profileData['user_id'];
 	}
@@ -27,6 +28,7 @@ if (isset($_GET['username']) == true && empty($_GET['username']) == false) {
         # code...
         header('Location: '.LOGIN.'');
     }
+
 }else{
 
      if (isset($_SERVER['REQUEST_URI']) == '/Blog_nyarwanda_CMS/jojo.crowfund' ||
@@ -97,7 +99,12 @@ if(!empty($user['language'])){
 <?php 
 echo $sale->cart_item(); 
 
-echo $food->Foodcart_item(); 
+echo $food->Foodcart_item();
+
+if (isset($_SESSION['employers'])){
+   $employers=$domestics->employersDomestics($_SESSION['employers'],$user_id);
+   $employersJobs= $domestics->employersNeedDomestics($user_id);
+}
 
 ?>
 <!DOCTYPE html>

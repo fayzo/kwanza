@@ -238,7 +238,9 @@
    <script src="<?php echo BASE_URL_LINK ;?>js/donation.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/house_delete.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/car_delete.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/sale_delete.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/food_delete.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/domesticsHelper_profile_add.js"></script>
    
    <!-- <script src="<?php echo BASE_URL_LINK ;?>js/add_post_ajax.js"></script> -->
    <script src="<?php echo BASE_URL_LINK ;?>js/manage_admins_ajax.js"></script>

@@ -40,8 +40,20 @@ class Domestics extends home {
     
   <?php }
 
-     public function employersNeedDomestics()
+     public function employersDomestics($employers_id,$user_di)
      {
+        $db =$this->database;
+        $query= $db->query("SELECT * FROM employersdomestics WHERE employers_id = $employers_id and user_id_= $user_di ");
+        $row= $query->fetch_array();
+        return $row;
+     }
+
+     public function employersNeedDomestics($user_id)
+     {
+        $db =$this->database;
+        $query= $db->query("SELECT * FROM domestics_employers_jobs WHERE user_id2= $user_id ");
+        $row= $query->fetch_array();
+        return $row;
 
      }
 

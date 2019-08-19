@@ -41,6 +41,7 @@
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/message.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/shopping_cart.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/blog.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/domestics.css" rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/jquery.Jcrop.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/image_scroll.css" rel="stylesheet" type="text/css" media="screen" />
@@ -801,9 +802,9 @@
         };
     }
 
-    function cartItemsCategories(categories,id) {
+    function cartItemsCategories(categories,id,user_id) {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'core/ajax_db/saleView_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
+        xhr.open('POST', 'core/ajax_db/saleView_FecthPaginat.php?pages=' + id + '&categories=' + categories+ '&user_id=' + user_id, true);
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {

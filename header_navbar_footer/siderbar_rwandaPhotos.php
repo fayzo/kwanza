@@ -1,4 +1,4 @@
-      <header class="blog-header py-3 bg-light">
+      <header class="blog-header mt-3 py-3 bg-light">
          <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-12 text-center">
            <?php echo $home->links(); ?>
@@ -25,6 +25,7 @@
         </div>
       </header>
 
+
 <div role="tabpanel">
       <div class="nav-scroller py-1 mb-2 bg-light">
         <nav class="nav d-flex justify-content-between" id="list-tab" role="tablist">
@@ -39,6 +40,8 @@
            <button type="button" class="btn btn-light mt-2" id="add_rwandalandscapes" data-rwandalandscapes="<?php echo $_SESSION['key']; ?>" > + Add rwanda-Landscapes </button>
         </nav>
       </div>
+
+<div class="container-fluid  mb-5">
 
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="list-Home" role="tabpanel" aria-labelledby="list-Home-list">
@@ -77,3 +80,4 @@
       <!-- tab-content -->
 </div>
 <!-- tabpanel -->
+</div>
