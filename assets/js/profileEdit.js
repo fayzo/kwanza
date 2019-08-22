@@ -1,6 +1,5 @@
 
 //  START OF UPLOAD IMAGE CONTENT
-
 $(document).ready(function () {
     //If BUSINESS LOGO image edit link is clicked
     $("#edit_linkUploadLogo").on('click', function (e) {
@@ -60,9 +59,43 @@ $(document).ready(function () {
             $("#cover_picUploadForm").submit();
         }
     });
+
+    $("#photo_change_domestics").on('click', function (e) {
+        e.preventDefault();
+        $("#change_domestics:hidden").trigger('click');
+    });
+
+    $("#change_domestics").on('change', function () {
+        var cover_image = $('#change_domestics').val();
+        var img_ex = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+        //validate file type
+        if (!img_ex.exec(cover_image)) {
+            alert('Please upload only .jpg/.jpeg/.png/.gif file.');
+            $('#change_domestics').val('');
+            return false;
+        } else {
+            $('#cover_uploadForm').hide();
+            $("#Form_change_domestics").submit();
+        }
+    });
 });
 
 // After completion of image upload process
+function domestics_completeUpload(success, fileName) {
+    if (success == $('#domestics_id').val()) {
+        $('#imagePreview').attr("src", "");
+        $('#imagePreview').attr("src", fileName);
+        $('#fileInput').attr("value", fileName);
+        console.log(success);
+        console.log(fileName);
+
+    } else {
+        alert('There was an error during file upload!');
+    }
+    return true;
+}
+
 function completeUpload(success, fileName) {
     if (success == $('#edit_profile').val()) {
         $('#imagePreview').attr("src", "");

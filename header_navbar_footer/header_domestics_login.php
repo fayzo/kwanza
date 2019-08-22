@@ -104,6 +104,14 @@ echo $food->Foodcart_item();
 if (isset($_SESSION['employers'])){
    $employers=$domestics->employersDomestics($_SESSION['employers'],$user_id);
    $employersJobs= $domestics->employersNeedDomestics($user_id);
+   $employersViewDomestics= $domestics->DomesticsfetchAllViewEmployers();
+   $employersPosts= $domestics->employersFecthall($user_id);
+}
+
+if (isset($_SESSION['domestics'])){
+    $employers=$domestics->Domestics_($_SESSION['domestics'],$user_id);
+    $domesticsViewJobx= $domestics->fetchAllDomestics();
+    $domesticsProfile= $domestics->employersNeedDomestics($user_id);
 }
 
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2019 at 01:24 AM
+-- Generation Time: Aug 22, 2019 at 02:26 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.2.20
 
@@ -282,7 +282,7 @@ INSERT INTO `car` (`car_id`, `authors`, `photo`, `other_photo`, `video`, `youtub
 (17, 'fayzo', '2019_26001_.jpg', '2019_7071qy.jpg', '', '', '56400', '0787345243243', 'rwanda', 'igare', 'ririhuta=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud work', 'bicycle_For_sale', 0, 0.00, 'new', 'available', 61, '2019-07-05 21:55:35'),
 (18, 'fayzo', '2019_6671qy.jpg', '2019_89001_.jpg', '', '', '35600', '0787345243243', 'rwanda', 'nice bicycle', 'ririhuta=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'ririhuta', 'bicycle_For_sale', 0, 0.00, 'new', 'available', 61, '2019-07-05 21:56:28'),
 (19, 'fayzo', '2019_5096ah.jpg', '2019_271886.jpg', '', '', '4000', '0787345243243', 'rwanda', 'gud shape', 'ntacyo riraba=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'nivce', 'bicycle_For_sale', 0, 0.00, 'new_arrival', 'available', 61, '2019-07-05 21:57:34'),
-(20, 'fay', '2019_272017.jpg', '2019_26cr-c.jpg', '', '', '899900', '0746945245', 'RW', 'it gud', 'it run fast=====', '', '3', '303', '3030403', '30304', '303040305', 'it is gud', 'car_For_sale', 0, 0.00, '', 'available', 61, '2019-08-14 17:47:22');
+(20, 'fay', '2019_272017.jpg', '2019_26cr-c.jpg', '', '', '899900', '0746945245', 'RW', 'it gud', 'it run fast=====', '', '3', '303', '3030403', '30304', '303040305', 'it is gud', 'car_For_sale', 0, 0.00, 'empty', 'available', 61, '2019-08-14 17:47:22');
 
 -- --------------------------------------------------------
 
@@ -3157,7 +3157,6 @@ CREATE TABLE `domestics` (
   `phone_` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `country_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `photo_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `other_photo_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `text_` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `gender` char(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cpassword` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -3165,6 +3164,22 @@ CREATE TABLE `domestics` (
   `status` char(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `looking_for` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `experience_of_work` int(11) NOT NULL,
+  `available_from` date NOT NULL,
+  `religion` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `born_date` char(3) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `experience_skills` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cooking_skills` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `other_skills` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_of_work` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `working_place` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `couple_family` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `duties_work` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `school` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `start` date NOT NULL,
+  `end` date NOT NULL,
+  `study` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location_province` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location_districts` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location_sector` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -3178,8 +3193,46 @@ CREATE TABLE `domestics` (
 -- Dumping data for table `domestics`
 --
 
-INSERT INTO `domestics` (`domestics_id`, `firstname_`, `lastname_`, `phone_`, `country_`, `photo_`, `other_photo_`, `text_`, `gender`, `cpassword`, `password`, `status`, `email`, `username`, `location_province`, `location_districts`, `location_sector`, `location_cell`, `location_village`, `user_id_`, `created_on_`) VALUES
-(30, 'ruzindana', 'eric', '03680482477', 'rwanda', '2019_74capt.png', '2019_52capt.png', 'dcsdc', 'Female', 'fafa', 'fafa', 'Married', 'hemafaysal@gmail.com', 'fayz', 'Northern province', 'Gatsibo', 'Bugeshi', 'rutondo', 'henza', 64, '2019-07-17 11:57:03');
+INSERT INTO `domestics` (`domestics_id`, `firstname_`, `lastname_`, `phone_`, `country_`, `photo_`, `text_`, `gender`, `cpassword`, `password`, `status`, `email`, `username`, `looking_for`, `experience_of_work`, `available_from`, `religion`, `born_date`, `experience_skills`, `cooking_skills`, `other_skills`, `date_of_work`, `working_place`, `couple_family`, `duties_work`, `school`, `start`, `end`, `study`, `location_province`, `location_districts`, `location_sector`, `location_cell`, `location_village`, `user_id_`, `created_on_`) VALUES
+(30, 'ruzindana', 'eric', '03680482477', 'rwanda', '695boyz.png', 'dcsdc', 'Female', 'fafa', 'fafa', 'Married', 'hemafaysal@gmail.com', 'fayz', '', 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 'Northern province', 'Gatsibo', 'Bugeshi', 'rutondo', 'henza', 64, '2019-07-17 11:57:03'),
+(31, 'muhre', 'karim', '03680482477', 'rwanda', '2019_25baby.png', 'am unemployment', 'Male', 'karim', 'karim', 'Single', 'karim@gmail.com', 'karim', '', 0, '0000-00-00', '', '000', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 'East province', 'Gakenke', 'Bugarama', 'Rugando', 'gasange', 66, '2019-08-19 20:35:29'),
+(34, 'jojo', 'jojo', '03680482477', 'rwanda', '2019_72fam2.png', 'hahahz', 'Male', 'jojo', 'jojo', 'Single', 'jojo@gmail.com', 'jojo', '', 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '3', '302', '30204', '3020403', '302040304', 74, '2019-08-20 17:04:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `domestics_employers_jobs`
+--
+
+CREATE TABLE `domestics_employers_jobs` (
+  `jobs_id` int(11) NOT NULL,
+  `family_type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `looking_for` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `language_speak` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `province` int(11) NOT NULL,
+  `districts` int(11) NOT NULL,
+  `sector` int(11) NOT NULL,
+  `cell` int(11) NOT NULL,
+  `village` int(11) NOT NULL,
+  `required_skills` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `salary_accomodation` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cooking_skills` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `main_duties` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `other_skills` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `additioninformation` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_on2` datetime NOT NULL,
+  `user_id2` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `domestics_employers_jobs`
+--
+
+INSERT INTO `domestics_employers_jobs` (`jobs_id`, `family_type`, `status_type`, `country`, `looking_for`, `language_speak`, `province`, `districts`, `sector`, `cell`, `village`, `required_skills`, `salary_accomodation`, `cooking_skills`, `main_duties`, `other_skills`, `additioninformation`, `created_on2`, `user_id2`) VALUES
+(1, 'African family', 'single', 'RW', 'domestics helper', 'kinyarwanda=kiswahili', 1, 102, 10208, 1020803, 102080302, 'cooking=Housekeeping', 'Monthly Salary to be discussed=Accomodation Private room', 'African foods=Western foods', 'Western foods=Northern foods', 'Pet care=Car wash', 'Know to take care children , knows to cook ,knows to watch car ,knows to take care older', '2019-08-19 04:18:43', 61),
+(2, 'Western family', 'single', 'DZ', 'domestics helper', 'kinyarwanda=kiswahili', 3, 302, 30204, 3020404, 302040404, 'cooking=Housekeeping=Pet care', 'Monthly Salary to be discussed=Accomodation Private room=Day off To be discussed', 'African foods=Western foods', 'African foods=Western foods', 'Pet care=Car wash', 'Keffiyeh blog actually fashion axe vegan, irony biodiesel. Cold-pressed hoodie chillwput a Keffiyeh blog actually fashion axe vegan, irony biodiesel. Cold-pressed hoodie chillwav put a', '2019-08-20 01:20:09', 69);
 
 -- --------------------------------------------------------
 
@@ -3216,7 +3269,8 @@ CREATE TABLE `employersdomestics` (
 
 INSERT INTO `employersdomestics` (`employers_id`, `firstname_`, `lastname_`, `phone_`, `country_`, `photo_`, `text_`, `gender`, `cpassword`, `password`, `status`, `email`, `username`, `location_province`, `location_districts`, `location_sector`, `location_cell`, `location_village`, `user_id_`, `created_on_`) VALUES
 (29, 'ruzindana', 'eric', '03680482477', 'rwanda', 'images.jpg', 'uruyu', 'Female', 'fafa', 'fafa', 'Married', 'hemafaysal@gmail.com', 'fayz', 'Southern province', 'Gasabo', 'Burega', 'Rutsiro', 'kamuhima', 64, '2019-07-17 11:56:10'),
-(30, 'faysal', 'shema', '03680482477', 'rwanda', 'images.jpg', 'fafaf', 'Male', 'fafa', 'fafa', 'Single', 'shemafaysal@gmail.com', 'fayzo', 'West province', 'Gatsibo', 'Bugarama', 'Rutsiro', 'Kicukiro', 61, '2019-07-17 14:07:23');
+(30, 'faysal', 'shema', '03680482477', 'rwanda', '20.png', 'fafaf', 'Male', 'fafa', 'fafa', 'Single', 'shemafaysal@gmail.com', 'fayzo', 'West province', 'Gatsibo', 'Bugarama', 'Rutsiro', 'Kicukiro', 61, '2019-07-17 14:07:23'),
+(31, 'rihana', 'rihana', '03680482477', 'rwanda', '19.png', 'gud', 'Female', 'rihana', 'rihana', 'Single', 'rihana@gmail.com', 'rihana', '2', '203', '20303', '2030302', '203030202', 69, '2019-08-19 20:58:00');
 
 -- --------------------------------------------------------
 
@@ -3412,7 +3466,7 @@ CREATE TABLE `food` (
 
 INSERT INTO `food` (`food_id`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `price`, `phone`, `country01`, `photo_Title_main`, `photo_Title`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `text`, `categories_food`, `code`, `quantity`, `discount`, `price_discount`, `banner`, `user_id3`, `created_on3`) VALUES
 (14, 'fa', '2019_431.jpg', '2019_253200.jpg', '', '', 4533.00, '0787345243243', 'rwanda', 'hamburg', 'tomates=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'nice', 'food', '9730rw', 1, 10, 5656.00, 'new', 61, '2019-07-05 21:59:51'),
-(15, 'fayzo', '2019_483200.jpg', '2019_625ad7.jpg', '', '', 0.00, '0787345243243', 'rwanda', 'isosi', 'amakaroni=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'food', '973052f', 1, 15, 0.00, 'great_deal', 61, '2019-07-05 22:01:49'),
+(15, 'fayzo', '2019_483200.jpg', '2019_625ad7.jpg', '', '', 15000.00, '0787345243243', 'rwanda', 'isosi', 'amakaroni=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'food', '973052f', 1, 45, 20000.00, 'new_arrival', 61, '2019-07-05 22:01:49'),
 (16, 'fayzo', '2019_275ad7.jpg', '2019_740517.jpg', '', '', 8754.00, '0787345243243', 'rwanda', 'amakaroni', 'isosi=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'food', '97301e', 1, 8, 9000.00, 'new', 61, '2019-07-05 22:03:22'),
 (17, 'fayzo', '2019_681.5-.jpg', '2019_92imag.jpg', '', '', 453.00, '0787345243243', 'rwanda', 'ikinyobwa', 'coca=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'drink', '9730324', 1, 67, 500.00, 'new_arrival', 61, '2019-07-05 22:05:24'),
 (18, 'fayzo', '2019_9381vx.jpg', '2019_84417h.jpg', '', '', 500.00, '0787345243243', 'rwanda', 'fata', 'sprit=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'nice', 'drink', '425b', 1, 60, 600.00, 'new', 61, '2019-07-05 22:06:27'),
@@ -3424,8 +3478,8 @@ INSERT INTO `food` (`food_id`, `authors`, `photo`, `other_photo`, `video`, `yout
 (24, 'fayzo', '2019_2514c3.jpg', '2019_752000.jpg', '', '', 453.00, '0787345243243', 'rwanda', 'igituguru', 'onion=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'vegetables', '9732df', 1, 1, 459.00, 'great_deal', 61, '2019-07-05 22:15:13'),
 (25, 'fayzo', '2019_5771fp.jpg', '2019_3171fp.jpg', '', '', 356.00, '0787345243243', 'rwanda', 'ibiriganya', 'nuko=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'vegetables', '5b', 1, 39, 400.00, 'new_arrival', 61, '2019-07-05 22:16:20'),
 (26, 'fayzo', '2019_7856-1.jpg', '2019_8656-1.jpg', '', '', 467600.00, '0787345243243', 'rwanda', 'bugali', 'chappati=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'food', '97301erws4', 1, 0, 0.00, 'new_arrival', 61, '2019-07-06 16:57:16'),
-(27, '', '2019_315ad7.jpg', '2019_55650x.jpg', '', '', 8946.00, '06798547', 'RW', 'amakaroni', 'ifi=====', '', '4', '405', '4050302', '40503', '405030203', 'it is good', 'food', '565hbfgbh', 1, 64, 447700.00, '', 61, '2019-08-14 19:00:07'),
-(28, 'fs', '2019_415ad7.jpg', '2019_409-fo.jpg', '', '', 8000.00, '906978', 'AL', 'anaa', 'ifi=====', '', '4', '403', '4030403', '40304', '403040303', '5767', 'food', '47uhfh', 1, 10, 0.00, 'new', 61, '2019-08-14 19:06:18');
+(27, '', '2019_315ad7.jpg', '2019_55650x.jpg', '', '', 8946.00, '06798547', 'RW', 'amakaroni', 'ifi=====', '', '4', '405', '4050302', '40503', '405030203', 'it is good', 'food', '565hbfgbh', 1, 64, 447700.00, 'empty', 61, '2019-08-14 19:00:07'),
+(28, 'fs', '2019_415ad7.jpg', '2019_409-fo.jpg', '', '', 8000.00, '906978', 'AL', 'anaa', 'ifi=====', '', '4', '403', '4030403', '40304', '403040303', 'hhahaha', 'food', '47uhfh', 1, 10, 0.00, 'empty', 61, '2019-08-14 19:06:18');
 
 -- --------------------------------------------------------
 
@@ -3635,7 +3689,7 @@ INSERT INTO `house` (`house_id`, `authors`, `photo`, `other_photo`, `video`, `yo
 (33, 'fayzo', '2019_20f296.jpg', '2019_48arie.jpg', '', '', 'nice', 'Offices_stores', 4466.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 534.00, 'new', 'gukorera', 'naha=====', 61, '2019-07-05 21:35:23'),
 (34, 'fayzo', '2019_98dsc_.jpg', '2019_51apas.jpg', '', '', 'gud shape', 'Offices_stores', 4353600.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 540.00, '', 'imfite byose', 'hejuru no haasi=====', 61, '2019-07-05 21:36:19'),
 (35, 'fayzo', '2019_89feat.jpg', '2019_50f296.jpg', '', '', 'gud', 'Offices_stores', 43500.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 450.00, '', 'aho gukorera', 'imfite ibyumba byinshi=====', 61, '2019-07-05 21:37:35'),
-(36, 'fayzo', '2019_551807.jpg', '2019_241905.jpg', '', '', 'it is good shape', 'House_For_sale', 59997.00, '05984954', 'RW', '1', '102', '1020803', '10208', '102080302', 'available', 19, 70000.00, 'new', 'ni nziza', 'ifite na jardin=====', 61, '2019-08-14 12:59:54');
+(36, 'fayzo', '2019_551807.jpg', '2019_241905.jpg', '', '', 'it is good shape', 'House_For_sale', 59997.00, '05984954', 'RW', '1', '102', '1020803', '10208', '102080302', 'empty', 0, 0.00, 'empty', 'ni nziza', 'ifite na jardin=====', 61, '2019-08-14 12:59:54');
 
 -- --------------------------------------------------------
 
@@ -4081,6 +4135,9 @@ CREATE TABLE `sale` (
   `title` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `code` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double(10,2) NOT NULL,
+  `price_discount` int(11) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `buy` char(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quantity` int(11) NOT NULL,
   `phone` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -4105,19 +4162,19 @@ CREATE TABLE `sale` (
 -- Dumping data for table `sale`
 --
 
-INSERT INTO `sale` (`sale_id`, `title`, `code`, `price`, `quantity`, `phone`, `photo`, `other_photo`, `video`, `youtube`, `text`, `categories_sale`, `user_id01`, `created_on01`, `country01`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `banner`) VALUES
-(2, 'inkweto', 'inkweto', 445.00, 0, '0787345243243', '2019_86air-.jpg', '2019_63air-.jpg=2019_12air-.jpg', '', '', 'nice one', 'clothes', 61, '2019-06-11 06:30:42', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
-(3, 'samsung', 'igisavi', 4000.00, 0, '0787345243243', '2019_3671p8.jpg', '2019_380302.jpg', '', '', 'nice', 'sports', 61, '2019-06-11 06:39:30', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
-(4, 'style', '9098', 400.00, 0, '0787345243243', '2019_372367.jpg', '2019_64set-.jpg=2019_33sigm.jpg', '', '', 'good', 'health_beauty', 61, '2019-06-11 13:13:26', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
-(5, 'FinePix Pro2 3D Camera', '3DcAM01', 1500.00, 0, '0787345243243', '2019_74camera.jpg', '2019_74camera.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:49:02', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
-(6, 'EXP Portable Hard Drive', 'USB02', 800.00, 0, '0787345243243', '2019_46exte.jpg', '2019_24exte.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:50:23', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
-(7, 'Luxury Ultra thin Wrist Watch', 'wristWear03', 300.00, 0, '0787345243243', '2019_90watch.jpg', '2019_38watch.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:51:28', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new_arrival'),
-(8, 'XP 1155 Intel Core Laptop', 'LPN45', 800.00, 0, '0787345243243', '2019_39laptop.jpg', '2019_33laptop.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:52:34', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new_arrival'),
-(9, 'isahani', 'xfg54', 2464.00, 0, '0787345243243', '2019_6131enum.jpg', '2019_8071p8.jpg', '', '', 'is in good shape', 'home_garden', 61, '2019-07-01 16:31:57', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
-(10, 'isahani', 'xfg54', 2464.00, 0, '0787345243243', '2019_3731enum.jpg', '2019_2571p8.jpg', '', '', 'is in good shape', 'home_garden', 61, '2019-07-01 16:32:05', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
-(11, 'isafiriya', 'wte54', 4635.00, 0, '0787345243243', '2019_6851qs.jpg', '2019_7551xj.jpg', '', '', 'fgf', 'home_garden', 61, '2019-07-01 16:36:10', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
-(12, 'isafiriya', 'wte54', 4635.00, 0, '0787345243243', '2019_6251qs.jpg', '2019_2351xj.jpg', '', '', 'fgf', 'home_garden', 61, '2019-07-01 16:36:17', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
-(13, 'car', 'sf53', 4000.00, 0, '0787345243243', '2019_820032.jpeg', '2019_560032.jpeg', '', '', 'fdg', 'car', 61, '2019-07-01 16:37:30', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new');
+INSERT INTO `sale` (`sale_id`, `title`, `code`, `price`, `price_discount`, `discount`, `buy`, `quantity`, `phone`, `photo`, `other_photo`, `video`, `youtube`, `text`, `categories_sale`, `user_id01`, `created_on01`, `country01`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `banner`) VALUES
+(2, 'inkweto', 'inkweto', 445.00, 0, 0, '', 0, '0787345243243', '2019_86air-.jpg', '2019_63air-.jpg=2019_12air-.jpg', '', '', 'nice one', 'clothes', 61, '2019-06-11 06:30:42', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(3, 'samsung', 'igisavi', 4000.00, 0, 0, '', 0, '0787345243243', '2019_3671p8.jpg', '2019_380302.jpg', '', '', 'nice', 'sports', 61, '2019-06-11 06:39:30', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(4, 'style', '9098', 400.00, 0, 0, '', 0, '0787345243243', '2019_372367.jpg', '2019_64set-.jpg=2019_33sigm.jpg', '', '', 'good', 'health_beauty', 61, '2019-06-11 13:13:26', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(5, 'FinePix Pro2 3D Camera', '3DcAM01', 1500.00, 0, 0, '', 0, '0787345243243', '2019_74camera.jpg', '2019_74camera.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:49:02', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(6, 'EXP Portable Hard Drive', 'USB02', 490000.00, 50000, 9, 'sold', 0, '0787345243243', '2019_46exte.jpg', '2019_24exte.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:50:23', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(7, 'Luxury Ultra thin Wrist Watch', 'wristWear03', 4000.00, 58000, 23, 'sold', 0, '0787345243243', '617fami.png', '2019_38watch.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:51:28', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'empty'),
+(8, 'XP 1155 Intel Core Laptop', 'LPN45', 800.00, 0, 0, '', 0, '0787345243243', '2019_39laptop.jpg', '2019_33laptop.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:52:34', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new_arrival'),
+(9, 'isahani', 'xfg54', 2464.00, 0, 0, '', 0, '0787345243243', '2019_6131enum.jpg', '2019_8071p8.jpg', '', '', 'is in good shape', 'home_garden', 61, '2019-07-01 16:31:57', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(10, 'isahani', 'xfg54', 2464.00, 0, 0, '', 0, '0787345243243', '2019_3731enum.jpg', '2019_2571p8.jpg', '', '', 'is in good shape', 'home_garden', 61, '2019-07-01 16:32:05', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(11, 'isafiriya', 'wte54', 4635.00, 0, 0, '', 0, '0787345243243', '2019_6851qs.jpg', '2019_7551xj.jpg', '', '', 'fgf', 'home_garden', 61, '2019-07-01 16:36:10', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(12, 'isafiriya', 'wte54', 4635.00, 0, 0, '', 0, '0787345243243', '2019_6251qs.jpg', '2019_2351xj.jpg', '', '', 'fgf', 'home_garden', 61, '2019-07-01 16:36:17', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(13, 'car', 'sf53', 4000.00, 0, 0, '', 0, '0787345243243', '2019_820032.jpeg', '2019_560032.jpeg', '', '', 'fdg', 'car', 61, '2019-07-01 16:37:30', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new');
 
 -- --------------------------------------------------------
 
@@ -5060,7 +5117,7 @@ CREATE TABLE `users` (
   `cover_img` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `background` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `language` char(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `color` char(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `color` char(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `education` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
   `diploma` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
   `skills` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -5091,18 +5148,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `password`, `gender`, `chat`, `career`, `country`, `date_birth`, `date_registry`, `last_login`, `counts_login`, `forgotUsernameCounts`, `forgotUsernameCountsTimesHeCreates`, `forgotUsernameCountsTimesHeCreatespassword`, `profile_img`, `profile_img_crop`, `cover_img`, `background`, `language`, `color`, `education`, `diploma`, `skills`, `location`, `hobbys`, `followers`, `following`, `approval`, `company_education`, `type_of_business`, `address`, `size_of_people`, `companyname`, `overview`, `history`, `team`, `legal_structure`, `location_facilities`, `mission_statement`, `website`, `unemplyoment`, `categories_fields`, `phone`) VALUES
-(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'off', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-08-14 15:40:30', 421, 0, 10, 10, '911f.jpg', '', '702caus.jpg', 'chair', '', 'rose', 'lycee', 'project', 'web', 'BR', 'styuding', 8, 5, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
-(64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-08-13 12:43:44', 37, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
+(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'off', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-08-21 00:34:59', 454, 0, 10, 10, '907baby3.png', '', '702caus.jpg', 'chair', '', 'purple-green', 'lycee', 'project', 'web', 'BR', 'styuding', 8, 5, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
+(64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-08-21 00:35:54', 54, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
 (65, 'karisa', 'bosco', 'bosco', 'faysal@gmail.com', 'bosco', 'Male', '', '', 'RW', '2019-05-03', '2019-05-02', '2019-05-27 21:50:00', 8, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 2, 2, 'off', '', '', '', '', 'LAMBORGIN', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
-(66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-08-13 12:37:54', 100, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'chair', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
+(66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-08-20 01:17:10', 103, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'chair', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
 (67, 'musema', 'musema', 'musema', 'musemafaysal@gmail.com', 'musema', 'Male', '', '', 'RW', '2019-05-06', '2019-05-06', '2019-05-21 14:53:30', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 2, 'off', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
 (68, 'zidani', 'zidani', 'zidanii', 'zidani@gmail.com', 'zidani', 'Male', '', '', 'FR', '2019-05-06', '2019-05-22', '2019-05-30 11:54:50', 5, 0, 0, 0, '855fays.gif', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
-(69, 'rihana', 'rihana', 'rihana', 'rihana@gmail.com', 'rihana', 'Female', 'off', '', 'AF', '1988-03-18', '2019-06-02', '2019-08-14 19:13:19', 23, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 3, 3, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
+(69, 'rihana', 'rihana', 'rihana', 'rihana@gmail.com', 'rihana', 'Female', 'off', '', 'AF', '1988-03-18', '2019-06-02', '2019-08-20 01:18:22', 25, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 3, 3, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
 (70, 'patrick', 'patrick', 'patrick', 'patrick@gmail.com', 'patrick', 'Male', '', '', 'AS', '2019-06-04', '2019-06-02', '2019-06-02 14:47:57', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
 (71, 'saleh', 'saleh', 'saleh', 'saleh@gmail.com', 'saleh', 'Male', 'on', '', 'AQ', '2019-05-31', '2019-06-02', '2019-06-02 14:50:22', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
 (72, 'riri', 'aline', 'aline', 'aline@gmail.com', 'aline', 'Male', 'off', '', 'RW', '2019-07-01', '2019-07-01', '2019-07-02 08:52:01', 5, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
 (73, 'antonia', 'griezman', 'antonia', 'antonia@gmail.com', 'fafa', 'Male', 'off', '', 'FR', '2019-07-01', '2019-07-02', '2019-07-31 17:42:18', 3, 0, 0, 1, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
-(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-08-13 12:39:07', 10, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 1, 6, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
+(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-08-20 17:57:02', 15, 0, 0, 0, '', '', '', 'chair', '', 'green', '', '', '', '', '', 1, 6, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
 (75, 'FAFA', 'FAFA', 'FAFA', 'FAFA@yahoo.com', 'FAFA', 'Male', 'off', '', '', '2019-08-03', '2019-08-03', '2019-08-03 04:29:40', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (76, 'riri', 'riri', 'riri', 'riri@yahoo.com', 'riri', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 06:58:18', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (77, 'mani', 'mani', 'mani', 'mani@yahoo.com', 'mani', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 07:00:29', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
@@ -17790,6 +17847,12 @@ ALTER TABLE `domestics`
   ADD PRIMARY KEY (`domestics_id`);
 
 --
+-- Indexes for table `domestics_employers_jobs`
+--
+ALTER TABLE `domestics_employers_jobs`
+  ADD PRIMARY KEY (`jobs_id`);
+
+--
 -- Indexes for table `employersdomestics`
 --
 ALTER TABLE `employersdomestics`
@@ -18131,13 +18194,19 @@ ALTER TABLE `crowfund_donation`
 -- AUTO_INCREMENT for table `domestics`
 --
 ALTER TABLE `domestics`
-  MODIFY `domestics_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `domestics_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT for table `domestics_employers_jobs`
+--
+ALTER TABLE `domestics_employers_jobs`
+  MODIFY `jobs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `employersdomestics`
 --
 ALTER TABLE `employersdomestics`
-  MODIFY `employers_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `employers_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `events`

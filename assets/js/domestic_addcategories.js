@@ -189,11 +189,16 @@ $(document).ready(function () {
         var video = $('#video');
         var youtube = $('#youtube');
         var gender = $('#gender');
-        var location_province = $('#location_province');
-        var location_districts = $('#location_districts');
-        var location_Sector = $('#location_sectors');
-        var location_cell = $('#location_cell');
-        var location_village = $('#location_village');
+        var location_province = $('.provincecode');
+        var location_districts = $('.districtcode');
+        var location_Sector = $('.sectorcode');
+        var location_cell = $('.codecell');
+        var location_village = $('.CodeVillage');
+        // var location_province = $('#location_province');
+        // var location_districts = $('#location_districts');
+        // var location_Sector = $('#location_sectors');
+        // var location_cell = $('#location_cell');
+        // var location_village = $('#location_village');
         var username = $('#usernam');
         var status = $('#status');
         var password= $('#password');
@@ -295,15 +300,18 @@ $(document).ready(function () {
         var country = $('#country');
         var additioninformation = $('#addition-information');
         var photo = $('#photo');
-        var other_photo = $('#other-photo');
-        var video = $('#video');
-        var youtube = $('#youtube');
         var gender = $('#gender');
-        var location_province = $('#location_province');
-        var location_districts = $('#location_districts');
-        var location_Sector = $('#location_sectors');
-        var location_cell = $('#location_cell');
-        var location_village = $('#location_village');
+        var location_province = $('.provincecode');
+        var location_districts = $('.districtcode');
+        var location_Sector = $('.sectorcode');
+        var location_cell = $('.codecell');
+        var location_village = $('.CodeVillage');
+
+        // var location_province = $('#location_province');
+        // var location_districts = $('#location_districts');
+        // var location_Sector = $('#location_sectors');
+        // var location_cell = $('#location_cell');
+        // var location_village = $('#location_village');
         var username = $('#usernam');
         var status = $('#status');
         var email = $('#email');
@@ -314,10 +322,10 @@ $(document).ready(function () {
             isEmpty(location_Sector) && isEmpty(location_cell) && isEmpty(location_village) &&
             isEmpty(gender) && isEmpty(additioninformation) && isEmpty(firstname) && isEmpty(lastname) &&
             isEmpty(phone) && isEmpty(username) && isEmpty(email) && isEmpty(password) && isEmpty(cpassword) &&
-            isEmpty(status) && isEmpty(gender) && isEmpty(photo) && isEmpty(other_photo) && isEmpty(video) && isEmpty(youtube)) {
+            isEmpty(status) && isEmpty(gender) && isEmpty(photo)) {
 
             var extensions1 = $('#photo').val().split('.').pop().toLowerCase();
-            var extensions2 = $('#other-photo').val().split('.').pop().toLowerCase();
+            // var extensions2 = $('#other-photo').val().split('.').pop().toLowerCase();
 
             if (jQuery.inArray(extensions1, ['gif', 'png', 'jpg', 'mp4', 'mp3', 'jpeg', 'bmp', 'pdf', 'doc', 'ppt', 'docx', 'xlsx', 'xls', 'zip']) == -1) {
                 $("#responseSubmitdomestics").html('Invalid Image File').fadeIn();
@@ -326,14 +334,14 @@ $(document).ready(function () {
                 }, 4000);
                 $('#photo').val('');
                 return false;
-            } else if (jQuery.inArray(extensions2, ['gif', 'png', 'jpg', 'mp4', 'mp3', 'jpeg', 'bmp', 'pdf', 'doc', 'ppt', 'docx', 'xlsx', 'xls', 'zip']) == -1) {
-                $("#responseSubmitdomestics").html('Invalid Image File').fadeIn();
-                setInterval(function () {
-                    $("#responseSubmitdomestics").fadeOut();
-                }, 4000);
-                $('#other-photo').val('');
-                return false;
-            } else {
+            // } else if (jQuery.inArray(extensions2, ['gif', 'png', 'jpg', 'mp4', 'mp3', 'jpeg', 'bmp', 'pdf', 'doc', 'ppt', 'docx', 'xlsx', 'xls', 'zip']) == -1) {
+            //     $("#responseSubmitdomestics").html('Invalid Image File').fadeIn();
+            //     setInterval(function () {
+            //         $("#responseSubmitdomestics").fadeOut();
+            //     }, 4000);
+            //     $('#other-photo').val('');
+            //     return false;
+            }else {
                 $.ajax({
                     url: 'core/ajax_db/domestic_addcategories.php',
                     method: "POST",

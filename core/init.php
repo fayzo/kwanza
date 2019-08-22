@@ -59,5 +59,5 @@ define('BASE_URL_PRIVATE', 'http://localhost:80/Blog_nyarwanda_CMS/private');
 define( 'NO_PROFILE_IMAGE_URL', 'image/users_profile_cover/defaultprofileimage.png');
 define( 'NO_COVER_IMAGE_URL', 'image/users_profile_cover/defaultCoverImage.png');
 // END_PRIVATE_URL_VIEW
+// <!-- use PHP Version 5.6.1 > 7.2.20  -->
 ?>
-<!-- use PHP Version 5.6.1 > 7.2.20  -->

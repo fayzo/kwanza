@@ -55,6 +55,23 @@
 <?php include "header_navbar_footer/header.php"?>
 <?php include "header_navbar_footer/navbar.php"?>
 
+        <header class="blog-header mt-3 py-2 mb-3 bg-light">
+          <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-12 text-center">
+           <?php echo $home->links(); ?>
+          </div>
+        </div>
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-4">
+          </div>
+          <div class="col-4 text-center">
+            <a class="blog-header-logo text-dark" href="#">Jobs</a>
+          </div>
+          <div class="col-4 d-flex justify-content-end align-items-center">
+           
+          </div>
+        </div>
+      </header>
 <!-- container-fuild -->
 <div class="container mb-5 mt-3">
     <!-- Content Header (Page header) -->

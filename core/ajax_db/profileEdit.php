@@ -157,7 +157,57 @@ if(!empty($_FILES['cover_picture']['name'])){
     echo '<script type="text/javascript">window.top.window.cover_completeUpload(' . $result . ',\'' .$path_replace. '\');</script>  ';
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+if(!empty($_FILES['change_domestics']['name'])){
+    $id= $_POST['domestics_id'];
+    $files = $_FILES['change_domestics'];
+    $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/domestics/';
+    // $coverName = time().'_'.basename($_FILES['cover_picture']['name']);
+    $coverNames= basename($files['name']);
+    $fileExt = explode('.', $coverNames);
+    $fileActualExt = strtolower(end($fileExt));
+
+    $coverName = (strlen($coverNames) > 10)? 
+    strtolower(rand(100,1000).substr($coverNames,0,4).".".$fileActualExt):
+    strtolower(rand(100,1000).$coverNames);
+   	$fileTmpName = $files['tmp_name'];
+    $targetPath = $uploadDir.$coverName;
+    // $path="image\users_profile_cover";
+    // chdir($path);
+    // $targetPath = getcwd().DIRECTORY_SEPARATOR.$coverName;
+    // FILES TO DELETE ON ITS DESTINATIONS
+    move_uploaded_file($_FILES['change_domestics']['tmp_name'], $targetPath);
+        // FILES TO DELETE ON ITS DESTINATIONS
+        $query= $db->query("SELECT photo_ FROM domestics WHERE domestics_id= $id ");
+        $rows= $query->fetch_assoc();
+        $files= $uploadDir.$rows['photo_'];
+        // $files= getcwd().DIRECTORY_SEPARATOR.$rows['cover_img'];
+		$covername = 'defaultCoverImage.png';
+
+		if (file_exists($files) == true && $covername == $rows['photo_']) { 
+              link($files);
+            //   echo "<script>alert('file was uploaded')</script>";
+            }else{
+                unlink($files);
+                // echo "<script>alert('file deleted')</script>";
+         }
+        $update = $db->query("UPDATE domestics SET photo_ = '".$coverName."' WHERE domestics_id= $id");
+        
+        //Update status
+        if($update){
+            $result = $id ;
+            // $result = 2;
+        }
+    // var_dump($update);
+    // var_dump($_FILES['cover_picture']);
+    //Load JavaScript function to show the upload status
+    $path= $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/domestics/'.$coverName.'';
+    $strpos_countsTo = strpos($path, 'uploads/domestics/'.$coverName.'');
+    $path_replace= substr_replace($path,'', 0,$strpos_countsTo);
+    echo '<script type="text/javascript">window.top.window.domestics_completeUpload(' . $result . ',\'' .$path_replace. '\');</script>  ';
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_REQUEST['CROP']) ) {
     if($_REQUEST['CROP'] == 'CROP'){
 
          $targ_w = $targ_h = 150;

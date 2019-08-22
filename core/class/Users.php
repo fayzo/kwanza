@@ -107,7 +107,6 @@ class Users{
                 </div>');
         }
     }
-
     
      public function employersdomesticslogin($username,$email,$password,$datetime)
     {

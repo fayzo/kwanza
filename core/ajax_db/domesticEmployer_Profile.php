@@ -3,13 +3,10 @@ session_start();
 include('../init.php');
 $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpath($_SERVER['SCRIPT_FILENAME']));
 
-if (isset($_POST['employer_id']) && !empty($_POST['employer_id'])) {
-      if (isset($_SESSION['key'])) {
-        # code...
-        $user_id= $_SESSION['key'];
-    }
-    $employer_id = $_POST['employer_id'];
-    // $user= $domesticEmployerraising->domesticEmployerFecthReadmore($employer_id);
+if (isset($_POST['jobs_id']) && !empty($_POST['jobs_id'])) {
+    $user_id= $_POST['user_id'];
+    $jobs_id = $_POST['jobs_id'];
+    $row= $domestics->employersFetchReadmore($user_id,$jobs_id);
      ?>
 <style>
 .img-popup-body img {
@@ -48,16 +45,16 @@ if (isset($_POST['employer_id']) && !empty($_POST['employer_id'])) {
                     <div class="col-12">
                         <div class="card card-widget widget-user" style="height:150px;">
                             <!-- Add the bg color to the header using any of the bg-* classes -->
-                            <?php if (!empty($profileData['cover_img'])) { ?>
+                            <!-- < ?php if (!empty($profileData['cover_img'])) { ?>
                                 <div class="widget-user-header text-white"
-                                    style="background: url('<?php echo BASE_URL_LINK."image/users_profile_cover/".$profileData['cover_img'] ;?>')no-repeat center center;background-size:cover;">
-                            <?php }else{ ?>
+                                    style="background: url('< ?php echo BASE_URL_LINK."image/users_profile_cover/".$profileData['cover_img'] ;?>')no-repeat center center;background-size:cover;">
+                            < ?php }else{ ?> -->
                                 <div class="widget-user-header text-white"
                                     style="background: url('<?php echo BASE_URL_LINK.NO_COVER_IMAGE_URL ;?>')no-repeat center center;background-size:cover;">
-                        <?php  } ?>
-                                <h3 class="widget-user-username">Western family looking for helper</h3> 
-                                <div class="widget-user-desc">British family</div>
-                                <h5 class="widget-user-desc mt-2"><span class="btn btn-success mr-3">FULL TIME</span><span><i class="fa fa-map-marker"> Gasabo</i></span></h5>
+                        <!-- < ?php  } ?> -->
+                                <h3 class="widget-user-username"><?php echo $row['family_type']; ?> looking for helper</h3> 
+                                <div class="widget-user-desc"><?php echo $row['family_type']; ?></div>
+                                <h5 class="widget-user-desc mt-2"><span class="btn btn-success mr-3">FULL TIME</span><span><i class="fa fa-map-marker"> </i> <?php echo $row['namedistrict']; ?></span></h5>
                             </div>
 
                         </div>
@@ -71,21 +68,24 @@ if (isset($_POST['employer_id']) && !empty($_POST['employer_id'])) {
 
             <div class="row mb-3" style="background:#fff">
                 <div class="col-md-2 ">
-                        <img style="position:absolute; top:-40px;width: 120px; height: auto;border: 3px solid #ffffff;"" class="rounded-circle" src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Avatar">
+                        <img style="position:absolute; top:-40px;width: 120px; height: auto;border: 3px solid #ffffff;" class="rounded-circle shadow-lg" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/<?php echo $row['photo_']; ?>" alt="User Avatar">
                 </div>
                 <div class="col-md-1-3 mr-3 p-2 ">
                     <h4 class="mt-4">Require skills</h4>
-                    <div>Cooking</div>
-                    <div>Housekeeping</div>
-                    <div>Pet care</div>
+                    <?php $require= explode('=',$row['required_skills']);
+                    for ($i=0; $i < count($require); $i++) { ?>
+                        <div><?php echo $require[$i]; ?> </div>
+                     <?php } ?>
+                    <!-- <div>Housekeeping</div>
+                    <div>Pet care</div> -->
                 </div>
                 <div class="col-md-1-3 border-left mr-4 p-2 ">
                     <h4 class="mt-4">Family Type</h4>
-                    <div>Couple</div>
+                    <div><?php echo $row['status_type']; ?></div>
                 </div>
                 <div class="col-md-1-3 border-left mr-4 p-2 ">
                     <h4 class="mt-4">Looking For</h4>
-                    <div>Domestics Helpers</div>
+                    <div><?php echo $row['looking_for']; ?></div>
                      <div>Christian</div>
                 </div>
                 <div class="col-md-1-3 border-left mr-4 p-2 ">
@@ -95,7 +95,9 @@ if (isset($_POST['employer_id']) && !empty($_POST['employer_id'])) {
                 </div>
                 <div class="col-md-1-3 border-left mr-4 p-2 ">
                     <h4 class="mt-4">Location</h4>
-                    <div>Gasabo</div>
+                    <div><?php echo $row['namedistrict']; ?> district</div>
+                    <div><?php echo $row['namesector']; ?> Sector</div>
+                    <div><?php echo $row['nameCell']; ?> cell</div>
                 </div>
             </div>
 
@@ -123,9 +125,10 @@ if (isset($_POST['employer_id']) && !empty($_POST['employer_id'])) {
 
               <section class="container" >
              <h3>Overview</h3>
-           <div class=" border-1 shadow-lg">
+           <div class=" border-1 shadow-lg p-2">
              
-                             <p>Keffiyeh blog actually fashion axe vegan, irony biodiesel. Cold-pressed hoodie chillwave
+                             <p><?php echo $row['additioninformation']; ?>
+                                 Keffiyeh blog actually fashion axe vegan, irony biodiesel. Cold-pressed hoodie chillwave
                                  put a
                                  bird
                                  on it aesthetic, bitters brunch meggings vegan iPhone. Dreamcatcher vegan scenester
@@ -154,35 +157,50 @@ if (isset($_POST['employer_id']) && !empty($_POST['employer_id'])) {
                         
                         <ul class="list-group border shadow-lg" style="height: 270px;">
                             <li class="list-group-items active">Salary & Accomodation<div><i class="fa fa-star text-light" aria-hidden="true"></i><i class="fa fa-star text-light" aria-hidden="true"></i><i class="fa fa-star text-light" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></div></li>
-                            <li class="list-group-item border-0"># <span style="font-weight: 700;">Monthly Salary </span> to be discussed</li>
+                            <?php $salary= explode('=',$row['salary_accomodation']);
+                            for ($i=0; $i < count($salary); $i++) { ?>
+                                <li class="list-group-item border-0"># <?php echo $salary[$i]; ?></li>
+                            <?php } ?>
+                            <!-- <li class="list-group-item border-0"># <span style="font-weight: 700;">Monthly Salary </span> to be discussed</li>
                             <li class="list-group-item border-0"># Accomodation Private room</li>
-                            <li class="list-group-item border-0"># <a style="font-weight: 700;">Day off</a> To be discussed</li>
-                            <li class="list-group-item border-0"># Working Status any Sitution</li>
+                            <li class="list-group-item border-0"># <a style="font-weight: 700;">Day off</a> To be discussed</li> -->
                         </ul>
                     </div><!-- col -->
                     <div class="col-md-3">
                         <ul class="list-group border shadow-lg" style="height: 270px;">
                             <li class="list-group-items active">Cooking Skills <div><i class="fa fa-star text-light" aria-hidden="true"></i><i class="fa fa-star text-light" aria-hidden="true"></i><i class="fa fa-star text-light" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></div></li>
-                            <li class="list-group-item border-0"># Afican food</li>
+                            <?php $cooking= explode('=',$row['cooking_skills']);
+                            for ($i=0; $i < count($cooking); $i++) { ?>
+                                <li class="list-group-item border-0"># <?php echo $cooking[$i]; ?></li>
+                            <?php } ?>
+                            <!-- <li class="list-group-item border-0"># Afican food</li>
                             <li class="list-group-item border-0"># bread </li>
-                            <li class="list-group-item border-0"># sambusa</li>
+                            <li class="list-group-item border-0"># sambusa</li> -->
                         </ul>
                     </div><!-- col -->
                     <div class="col-md-3">
                         <ul class="list-group border shadow-lg" style="height: 270px;">
                             <li class="list-group-items active">Main Duties <div><i class="fa fa-star text-light" aria-hidden="true"></i><i class="fa fa-star text-light" aria-hidden="true"></i><i class="fa fa-star text-light" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></div></li>
-                            <li class="list-group-item  border-0"># Baby Care</li>
+                            <?php $duties= explode('=',$row['main_duties']);
+                            for ($i=0; $i < count($duties); $i++) { ?>
+                                <li class="list-group-item border-0"># <?php echo $duties[$i]; ?></li>
+                            <?php } ?>
+                            <!-- <li class="list-group-item  border-0"># Baby Care</li>
                             <li class="list-group-item  border-0"># Child Care</li>
                             <li class="list-group-item  border-0"># Groceries</li>
-                            <li class="list-group-item  border-0"># Housekeeping</li>
+                            <li class="list-group-item  border-0"># Housekeeping</li> -->
                         </ul>
                     </div><!-- col -->
                     
                      <div class="col-md-3">
                         <ul class="list-group border shadow-lg" style="height: 270px;">
                             <li class="list-group-items active">Other required skills <div><i class="fa fa-star text-light" aria-hidden="true"></i><i class="fa fa-star text-light" aria-hidden="true"></i><i class="fa fa-star text-light" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></div></li>
-                            <li class="list-group-item border-0"># Car wash</li>
-                            <li class="list-group-item border-0"># Housework</li>
+                             <?php $other= explode('=',$row['other_skills']);
+                            for ($i=0; $i < count($other); $i++) { ?>
+                                <li class="list-group-item border-0"># <?php echo $other[$i]; ?></li>
+                            <?php } ?>
+                            <!-- <li class="list-group-item border-0"># Car wash</li>
+                            <li class="list-group-item border-0"># Housework</li> -->
                         </ul>
                     </div><!-- col -->
                 </div>
@@ -192,175 +210,7 @@ if (isset($_POST['employer_id']) && !empty($_POST['employer_id'])) {
             <div style="height: 25px;background:white;"></div>
 
             <div class="container">
-            <div class="card border-1  shadow-lg mb-3">
-                <div class="card-header p-1">
-                    <!-- < ?php echo $_SESSION['domesticsEmployers'];?> -->
-                    <h5>Recent jobs for Domestics Helpers <button type="button" class="btn btn-primary">MORE JOB OFFERS VIEW MORE >>></button> </h5>
-                </div>
-                <div class="card-body">
-                       <div class="row">
-                        <div class="col-md-8">
-                            <div class="card flex-md-row h-md-100 border-0 mb-3">
-                                    <img class="card-img-left flex-auto d-none d-lg-block" height="40px" width="40px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/images.jpg" alt="Card image cap">
-                                <div class="card-body d-flex flex-column align-items-start pt-0">
-                                    <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">Musanze Family looking for Helper</a>
-                                    </h5>
-                                    <div class="text-muted">Created on 10 MAY </div>
-                                    <div class="text-muted mb-1">Musanze District/ kanombe Sector/ Majyambere cell</div>
-                                    <div>Know to take care children , knows to cook ,knows to watch car ,knows to take care older</div>
-                                </div><!-- card-body -->
-                            </div><!-- card -->
-                        </div>
-                        <div class="col-md-2">
-                           <h5 class="mt-4 text-muted"><i class="fa fa-map-marker" aria-hidden="true"></i> Musanze</h5>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" name="" id="" class="btn btn-success btn-md btn-block mt-4"> FULL TIME</button>
-                        </div>
-                    </div>
-                   
-                <hr class="bg-info mt-0 mb-1" style="width:95%;">
-                       <div class="row">
-                        <div class="col-md-8">
-                            <div class="card flex-md-row h-md-100 border-0 mb-3">
-                                    <img class="card-img-left flex-auto d-none d-lg-block" height="40px" width="40px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/images.jpg" alt="Card image cap">
-                                <div class="card-body d-flex flex-column align-items-start pt-0">
-                                    <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">Musanze Family looking for Helper</a>
-                                    </h5>
-                                    <div class="text-muted">Created on 10 MAY </div>
-                                    <div class="text-muted mb-1">Musanze District/ kanombe Sector/ Majyambere cell</div>
-                                    <div>Know to take care children , knows to cook ,knows to watch car ,knows to take care older</div>
-                                </div><!-- card-body -->
-                            </div><!-- card -->
-                        </div>
-                        <div class="col-md-2">
-                           <h5 class="mt-4 text-muted"><i class="fa fa-map-marker" aria-hidden="true"></i> Musanze</h5>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" name="" id="" class="btn btn-success btn-md btn-block mt-4"> FULL TIME</button>
-                        </div>
-                    </div>
-                   
-                <hr class="bg-info mt-0 mb-1" style="width:95%;">
-                       <div class="row">
-                        <div class="col-md-8">
-                            <div class="card flex-md-row h-md-100 border-0 mb-3">
-                                    <img class="card-img-left flex-auto d-none d-lg-block" height="40px" width="40px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/images.jpg" alt="Card image cap">
-                                <div class="card-body d-flex flex-column align-items-start pt-0">
-                                    <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">Musanze Family looking for Helper</a>
-                                    </h5>
-                                    <div class="text-muted">Created on 10 MAY </div>
-                                    <div class="text-muted mb-1">Musanze District/ kanombe Sector/ Majyambere cell</div>
-                                    <div>Know to take care children , knows to cook ,knows to watch car ,knows to take care older</div>
-                                </div><!-- card-body -->
-                            </div><!-- card -->
-                        </div>
-                        <div class="col-md-2">
-                           <h5 class="mt-4 text-muted"><i class="fa fa-map-marker" aria-hidden="true"></i> Musanze</h5>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" name="" id="" class="btn btn-success btn-md btn-block mt-4"> FULL TIME</button>
-                        </div>
-                    </div>
-                   
-                <hr class="bg-info mt-0 mb-1" style="width:95%;">
-                       <div class="row">
-                        <div class="col-md-8">
-                            <div class="card flex-md-row h-md-100 border-0 mb-3">
-                                    <img class="card-img-left flex-auto d-none d-lg-block" height="40px" width="40px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/images.jpg" alt="Card image cap">
-                                <div class="card-body d-flex flex-column align-items-start pt-0">
-                                    <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">Musanze Family looking for Helper</a>
-                                    </h5>
-                                    <div class="text-muted">Created on 10 MAY </div>
-                                    <div class="text-muted mb-1">Musanze District/ kanombe Sector/ Majyambere cell</div>
-                                    <div>Know to take care children , knows to cook ,knows to watch car ,knows to take care older</div>
-                                </div><!-- card-body -->
-                            </div><!-- card -->
-                        </div>
-                        <div class="col-md-2">
-                           <h5 class="mt-4 text-muted"><i class="fa fa-map-marker" aria-hidden="true"></i> Musanze</h5>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" name="" id="" class="btn btn-success btn-md btn-block mt-4"> FULL TIME</button>
-                        </div>
-                    </div>
-                   
-                <hr class="bg-info mt-0 mb-1" style="width:95%;">
-                       <div class="row">
-                        <div class="col-md-8">
-                            <div class="card flex-md-row h-md-100 border-0 mb-3">
-                                    <img class="card-img-left flex-auto d-none d-lg-block" height="40px" width="40px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/images.jpg" alt="Card image cap">
-                                <div class="card-body d-flex flex-column align-items-start pt-0">
-                                    <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">Musanze Family looking for Helper</a>
-                                    </h5>
-                                    <div class="text-muted">Created on 10 MAY </div>
-                                    <div class="text-muted mb-1">Musanze District/ kanombe Sector/ Majyambere cell</div>
-                                    <div>Know to take care children , knows to cook ,knows to watch car ,knows to take care older</div>
-                                </div><!-- card-body -->
-                            </div><!-- card -->
-                        </div>
-                        <div class="col-md-2">
-                           <h5 class="mt-4 text-muted"><i class="fa fa-map-marker" aria-hidden="true"></i> Musanze</h5>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" name="" id="" class="btn btn-success btn-md btn-block mt-4"> FULL TIME</button>
-                        </div>
-                    </div>
-                   
-                <hr class="bg-info mt-0 mb-1" style="width:95%;">
-                       <div class="row">
-                        <div class="col-md-8">
-                            <div class="card flex-md-row h-md-100 border-0 mb-3">
-                                    <img class="card-img-left flex-auto d-none d-lg-block" height="40px" width="40px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/images.jpg" alt="Card image cap">
-                                <div class="card-body d-flex flex-column align-items-start pt-0">
-                                    <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">Musanze Family looking for Helper</a>
-                                    </h5>
-                                    <div class="text-muted">Created on 10 MAY </div>
-                                    <div class="text-muted mb-1">Musanze District/ kanombe Sector/ Majyambere cell</div>
-                                    <div>Know to take care children , knows to cook ,knows to watch car ,knows to take care older</div>
-                                </div><!-- card-body -->
-                            </div><!-- card -->
-                        </div>
-                        <div class="col-md-2">
-                           <h5 class="mt-4 text-muted"><i class="fa fa-map-marker" aria-hidden="true"></i> Musanze</h5>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" name="" id="" class="btn btn-success btn-md btn-block mt-4"> FULL TIME</button>
-                        </div>
-                    </div>
-                   
-                <hr class="bg-info mt-0 mb-1" style="width:95%;">
-                       <div class="row">
-                        <div class="col-md-8">
-                            <div class="card flex-md-row h-md-100 border-0 mb-3">
-                                    <img class="card-img-left flex-auto d-none d-lg-block" height="40px" width="40px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/images.jpg" alt="Card image cap">
-                                <div class="card-body d-flex flex-column align-items-start pt-0">
-                                    <h5 class="text-primary mb-0">
-                                    <a class="text-primary" href="javascript:void(0)"  id="districts-view">Musanze Family looking for Helper</a>
-                                    </h5>
-                                    <div class="text-muted">Created on 10 MAY </div>
-                                    <div class="text-muted mb-1">Musanze District/ kanombe Sector/ Majyambere cell</div>
-                                    <div>Know to take care children , knows to cook ,knows to watch car ,knows to take care older</div>
-                                </div><!-- card-body -->
-                            </div><!-- card -->
-                        </div>
-                        <div class="col-md-2">
-                           <h5 class="mt-4 text-muted"><i class="fa fa-map-marker" aria-hidden="true"></i> Musanze</h5>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" name="" id="" class="btn btn-success btn-md btn-block mt-4"> FULL TIME</button>
-                        </div>
-                    </div>
-                   
-                <hr class="bg-info mt-0 mb-1" style="width:95%;">
-                </div><!-- card-body -->
-            </div>
+                            <?php echo $domestics->recentViewReadmore($user_id); ?>
             </div>
 
 

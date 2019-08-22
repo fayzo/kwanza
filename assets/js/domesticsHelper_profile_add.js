@@ -42,6 +42,28 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on('click', '#edit-domestics-profile', function (e) {
+        e.stopPropagation();
+        var domestics_id_edit = $(this).data('domestics');
+        var user = $(this).data('user');
+
+        $.ajax({
+            url: 'core/ajax_db/domesticHelper_Profile.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                domestics_id_edit: domestics_id_edit,
+                user: user,
+            }, success: function (response) {
+                $(".popupTweet").html(response);
+                $(".close-imagePopup").click(function () {
+                    $(".domestic-popup").hide();
+                });
+                console.log(response);
+            }
+        });
+    });
+
     $(document).on('click', '#form-employers-photo0', function (e) {
         e.stopPropagation();
         var photo = document.forms["form-employers-photo"]["photo"];
