@@ -184,7 +184,7 @@ class Domestics extends home {
 
             <?php foreach ($fetch as $domesticsViewJobs) { ?>
 
-                      <div class="card flex-md-row h-md-100 border-0 mb-3">
+                      <div class="card flex-md-row h-md-100 mb-3 border-top-0 border-left-0 shadow-lg border-right-0 borders-bottoms">
                               <img class="card-img-left flex-auto d-none d-lg-block" height="40px" width="40px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/<?php echo $domesticsViewJobs['photo_']; ?>" alt="Card image cap">
                           <div class="card-body pt-0">
                                 <h5 class="text-primary mb-0">
@@ -198,7 +198,6 @@ class Domestics extends home {
                                 <!-- <div>Know to take care children , knows to cook ,knows to watch car ,knows to take care older</div> -->
                           </div><!-- card-body -->
                       </div><!-- card -->
-                      <hr class="bg-info mt-0 mb-1" style="width:95%;">
 
                <?php }  ?>
               </div><!-- card-body -->

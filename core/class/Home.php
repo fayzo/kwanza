@@ -368,6 +368,7 @@ class Home extends Comment {
                          </ul>
                     </li>
                     <li><h5><a href="Unemployment.php"> Unemployment</a></h5> </li>
+                    <li><h5><a href="career_profession.php">Professional</a></h5> </li>
                     <li><h5 class="card-title"><a href="sale.php">Sale</a></h5>
                         <ul>
                               <li><h5 class="card-title"><a href="sale.php">Electronics</a></h5></li>
@@ -420,6 +421,7 @@ class Home extends Comment {
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.crowfund">GushoraStartUp</a></h5> </li>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.fundraising"> Fundraising</a></h5></li>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.Unemployment"> Unemployment</a></h5> </li>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.career_profession"> Professional</a></h5> </li>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.sale">Sale</a></h5></li>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.blog">Blog</a></h5></li>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.jobs0">Jobs</a></h5></li>
@@ -456,6 +458,7 @@ class Home extends Comment {
                     <li><h5><a href="crowfund.php">GushoraStartUp</a></h5> </li>
                     <li><h5><a href="fundraising.php"> Fundraising</a></h5> </li>
                     <li><h5><a href="Unemployment.php"> Unemployment</a></h5> </li>
+                    <li><h5><a href="career_profession.php"> Professional</a></h5> </li>
                     <li><h5><a href="sale.php">Sale</a></h5> </li>
                     <li><h5><a href="blog.php">Blog</a></h5> </li>
                     <li><h5><a href="jobs0.php">Jobs</a></h5></li>
@@ -479,6 +482,7 @@ class Home extends Comment {
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.crowfund">GushoraStartUp</a></h5> </li>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.fundraising"> Fundraising</a></h5></li>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.Unemployment"> Unemployment</a></h5> </li>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.career_profession"> Professional</a></h5> </li>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.sale">Sale</a></h5></li>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.blog">Blog</a></h5></li>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.jobs0">Jobs</a></h5></li>
@@ -509,6 +513,7 @@ class Home extends Comment {
               <li class="list-inline-item"><a href="crowfund.php"><i class="fa fa-money" aria-hidden="true"></i> GushoraStartUp</a></li>
               <li class="list-inline-item"><a href="fundraising.php"><i class="fa fa-heartbeat" aria-hidden="true"></i> Fundraising</a></li>
               <li class="list-inline-item"><a href="Unemployment.php"><i class="fa fa-running    "></i> Unemployment</a></li>
+              <li class="list-inline-item"><a href="career_profession.php"><i class="fa fa-career"></i>  Professional</a></li>
               <li class="list-inline-item"><a href="sale.php"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Sale</a></li>
               <li class="list-inline-item"><a href="blog.php"><i class="fas fa-blogger    "></i> Blog</a></li>
               <li class="list-inline-item"><a href="jobs0.php"><i class="fas fa-newspaper    "></i> Jobs</a></li>

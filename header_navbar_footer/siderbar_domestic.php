@@ -6,9 +6,6 @@
         </div>
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 ">
-          <?php if (isset($_SESSION['key'])) { ?>
-            <button type="button" class="btn btn-light" id="add_car" data-car="<?php echo $_SESSION['key']; ?>" > + Add car </button>
-           <?php } ?>
           </div>
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="#">City maid</a>

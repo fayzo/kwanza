@@ -22,11 +22,12 @@
 
         <div class="col-2">
 
+        <div class="sticky-top">
+
         <div class="list-group mb-3" id="list-tab" role="tablist">
             <a class="list-group-item list-group-item-action active" id="list-Business-list" href="#list-home" data-toggle="tab" role="tab" aria-controls="list-Community" >Home</a>
             <a class="list-group-item list-group-item-action" id="list-Community-list" href="#list-profile" data-toggle="tab"  role="tab" aria-controls="list-Community" >profile</a>
             <a class="list-group-item list-group-item-action" id="list-Community-list" href="#list-inbox" data-toggle="tab"  role="tab"  aria-controls="list-Community">Inbox  <span class="float-right badge badge-primary">35</a>
-            <a class="list-group-item list-group-item-action" id="add_employers_profile" href="javascript:void();" data-toggle="tab"  role="tab" aria-controls="list-Community">Request domestics</a>
         </div>
 
         <div class="card">
@@ -74,6 +75,7 @@
                 <div class="card-text">Available FROM 03 Aug 2019</div>
             </div>
         </div><!-- card -->
+        </div><!--sticky -->
         </div><!-- col-3 -->
         <div class="col-7 ">
           <div class="tab-content" id="nav-tabContent">
@@ -98,17 +100,16 @@
                 <div class="card-body">
                     <?php foreach ($domesticsViewJobx as $domesticsViewJobs) { ?>
 
-                            <div class="card flex-md-row h-md-100 border-0 mb-3 shadow-lg">
+                            <div class="card flex-md-row h-md-100 mb-3 border-top-0 border-left-0 shadow-lg border-right-0 borders-bottoms">
                                     <img class="card-img-left flex-auto d-none d-lg-block" height="80px" width="80px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domesticsEmployers/<?php echo $domesticsViewJobs['photo_']; ?>" alt="Card image cap">
                                 <div class="card-body pt-0">
                                     <a class="text-primary h5" href="javascript:void(0)" id="employers-view"  data-user="<?php echo $domesticsViewJobs['user_id2']; ?>" data-employer="<?php echo $domesticsViewJobs['jobs_id']; ?>" ><?php echo $domesticsViewJobs['family_type']; ?> looking for Helper</a>
-                                    <div class="float-right"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $domesticsViewJobs['namedistrict']; ?>  <span class="text-success ml-2"> FULL-TIME</span></div>
+                                    <div class="float-right"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $domesticsViewJobs['namedistrict']; ?>  <span style="border-radius:3px;font-weight:500;" class="btn-success p-1 ml-2"> FULL TIME</span></div>
                                     <div class="text-muted">Created on <?php echo $users->timeAgo($domesticsViewJobs['created_on2']); ?></div>
                                     <div class="text-muted mb-1" style="font-size:12px;"><?php echo $domesticsViewJobs['namedistrict']; ?> District/ <?php echo $domesticsViewJobs['namesector']; ?> Sector/ <?php echo $domesticsViewJobs['nameCell']; ?> cell</div>
                                     <div><?php echo $domesticsViewJobs['additioninformation']; ?></div>
                                 </div><!-- card-body -->
                             </div><!-- card -->
-                         <hr class="bg-info mt-0 mb-1" style="width:95%;">
 
                     <?php } ?>
 

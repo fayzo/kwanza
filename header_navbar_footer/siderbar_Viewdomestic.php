@@ -6,9 +6,6 @@
         </div>
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4">
-            <?php if (isset($_SESSION['employers'])) { ?>
-                 <button type="button" class="btn btn-light" id="add_employers_profile" data-employers="<?php echo $_SESSION['employers']; ?>" > + Add domestics request helpers </button>
-           <?php } ?>
           </div>
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="#">Recruiting Domestics Helpers</a>
@@ -23,12 +20,15 @@
 
     <div class="row">
 
-        <div class="col-3">
+        <div class="col-2">
         <div class="list-group mb-3" id="list-tab" role="tablist">
             <a class="list-group-item list-group-item-action active" id="list-Business-list" href="#list-home" data-toggle="tab" role="tab" aria-controls="list-Community" >Home</a>
             <a class="list-group-item list-group-item-action" id="list-Community-list" href="#list-profile" data-toggle="tab"  role="tab" aria-controls="list-Community" >profile</a>
+            <a class="list-group-item list-group-item-action" id="list-Community-list" href="#list-posted" data-toggle="tab"  role="tab"  aria-controls="list-Community">Posted jobs <span class="float-right badge badge-primary">35</a>
             <a class="list-group-item list-group-item-action" id="list-Community-list" href="#list-inbox" data-toggle="tab"  role="tab"  aria-controls="list-Community">Inbox  <span class="float-right badge badge-primary">35</a>
-            <a class="list-group-item list-group-item-action" id="add_employers_profile" href="javascript:void();" data-toggle="tab"  role="tab" aria-controls="list-Community">Request domestics</a>
+            <?php if (isset($_SESSION['employers'])) { ?>
+            <a class="list-group-item list-group-item-action" id="add_employers_profile" data-employers="<?php echo $_SESSION['employers']; ?>" href="javascript:void();" data-toggle="tab"  role="tab" aria-controls="list-Community">Request domestics</a>
+           <?php } ?>
         </div>
 
         <div class="card">
@@ -38,17 +38,17 @@
             <div class="card-body employers">
 
                 <div class="img-relative">
-                    <div class="profile-upload">
+                    <div class="profile-upload" style="height:100%;width:120px;">
                         <!-- Hidden upload form -->
-                        <iframe id="uploadTarget" name="uploadTarget" src="#" style="width:0;height:0;border:0px solid black;" __idm_frm__="12"></iframe>
+                        <!-- <iframe id="uploadTarget" name="uploadTarget" src="#" style="width:0;height:0;border:0px solid black;" __idm_frm__="12"></iframe> -->
                         <!-- Profile image -->
-                        <div class="text-center img-placeholder">
+                        <!-- <div class="text-center img-placeholder">
                             <h4>Update image</h4>
-                        </div>
+                        </div> -->
                         <!-- Image update link -->
-                        <a href="javascript:void(0);" class="img-upload-iconLinks" id="photo_change_employers" data-employer="<?php echo $_SESSION['employers']; ?>" data-user="<?php echo $employers['user_id_']; ?>">
-                            <i class="fa fa-camera" aria-hidden="true"></i> </a>
-                            <img class="rounded-circle shadow-lg" id="imagePreview" src="<?php echo BASE_URL_PUBLIC.'uploads/domesticsEmployers/'.$employers['photo_']; ?>">
+                        <!-- <a href="javascript:void(0);" class="img-upload-iconLinks" id="photo_change_employers" data-employer="<?php echo $_SESSION['employers']; ?>" data-user="<?php echo $employers['user_id_']; ?>">
+                            <i class="fa fa-camera" aria-hidden="true"></i> </a> -->
+                            <img class="rounded-circle shadow-lg" style="height:100%;width:120px;" id="imagePreview" src="<?php echo BASE_URL_PUBLIC.'uploads/domesticsEmployers/'.$employers['photo_']; ?>">
                     </div>
                 </div>
 
@@ -70,7 +70,8 @@
             </div><!-- card -->
 
         </div>
-        <div class="col-6">
+
+        <div class="col-7">
 
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
@@ -94,7 +95,7 @@
                     <?php foreach ($employersViewDomestics as $row) {
                         # code... ?>
 
-                            <div class="card flex-md-row shadow-sm h-md-100 border-top-0 border-left-0 border-right-0 mb-3  borders-bottoms">
+                            <div class="card flex-md-row shadow-sm h-md-100 border-top-0 border-left-0 shadow-lg border-right-0 mb-3  borders-bottoms">
                                  <div class="card card-img-left flex-auto d-none d-lg-block border-0">
                                     <img class="img-fluid" height="80px" width="80px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/domestics/<?php echo $row['photo_']; ?>" alt="Card image cap">
                                     <div class="card-body text-center p-0">
@@ -125,6 +126,10 @@
 
             <div class="tab-pane fade " id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
             <?php include "siderbar_viewEmployersprofile/profile.php"?>
+            </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
+
+            <div class="tab-pane fade " id="list-posted" role="tabpanel" aria-labelledby="list-profile-list">
+            <?php include "siderbar_viewEmployersprofile/posted_jobs.php"?>
             </div> <!-- END-OF A LINK OF DASH_BOARD ID=#  -->
 
             <div class="tab-pane fade" id="list-inbox" role="tabpanel" aria-labelledby="list-inbox-list">
