@@ -244,7 +244,7 @@
 }
 
 .post ul button i {
-    font-size: 17px;
+    /* font-size: 17px; */
     color: #007bff;
     transition: all 200ms ease-in;
 }

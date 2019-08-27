@@ -224,6 +224,7 @@
    <script src="<?php echo BASE_URL_LINK ;?>js/domestic_addcategories.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/crowfund_addcategories.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/hotel_addcategories.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/motel_addcategories.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/unemplyoment_message.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/school_add.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/crowfund_addomments.js"></script>
@@ -241,6 +242,7 @@
    <script src="<?php echo BASE_URL_LINK ;?>js/sale_delete.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/food_delete.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/domesticsHelper_profile_add.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/post_second_like.js"></script>
    
    <!-- <script src="<?php echo BASE_URL_LINK ;?>js/add_post_ajax.js"></script> -->
    <script src="<?php echo BASE_URL_LINK ;?>js/manage_admins_ajax.js"></script>
@@ -527,7 +529,7 @@ $('.price_range').jRange({
     step: 50,
     scale: [0,100,200,300,400,500],
     format: '%s USD',
-    width: 300,
+    width: 200,
     showLabels: true,
     isRange : true,
     theme: "theme-blue",
@@ -541,6 +543,37 @@ $('.price_range').jRange({
             $.ajax({
                 type: 'POST',
                 url: 'core/ajax_db/hotel_add.php',
+                data:'price_range='+price_range,
+                beforeSend: function () {
+                    $('.container').css("opacity", ".5");
+                },
+                success: function (html) {
+                    $('#productContainer').html(html);
+                    $('.container').css("opacity", "");
+                }
+            });
+    });
+    
+$('.price_range0').jRange({
+    from: 0,
+    to: 500,
+    step: 50,
+    scale: [0,100,200,300,400,500],
+    format: '%s USD',
+    width: 200,
+    showLabels: true,
+    isRange : true,
+    theme: "theme-blue",
+    onstatechange: function(){
+           $('.price_range0').change();
+        }
+});
+
+  $('.price_range0').change(function(){
+          var price_range = $('.price_range0').val();
+            $.ajax({
+                type: 'POST',
+                url: 'core/ajax_db/motel_add.php',
                 data:'price_range='+price_range,
                 beforeSend: function () {
                     $('.container').css("opacity", ".5");

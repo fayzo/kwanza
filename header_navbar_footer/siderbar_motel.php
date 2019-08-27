@@ -7,11 +7,11 @@
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4">
           <?php if (isset($_SESSION['key'])) { ?>
-            <button type="button" class="btn btn-light" id="add_hotel" data-hotel="<?php echo $_SESSION['key']; ?>" value="add_hotel"> + Add hotel </button>
+            <button type="button" class="btn btn-light" id="add_motel" data-motel="<?php echo $_SESSION['key']; ?>" value="add_motel"> + Add motel </button>
            <?php } ?>
           </div>
           <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="#">Hotel Booking</a>
+            <a class="blog-header-logo text-dark" href="#">Motel Booking</a>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
           </div>
@@ -20,10 +20,16 @@
 
 <div class="container-fluid mb-5">
     <div class="row mt-3">
-      <div class="col-md-9" id="hotel-view">
-              <?php echo $hotel->hotelList(1,'featured',$user_id); ?>
+      <div class="col-md-9" id="motel-view">
+              <?php echo $motel->motelList(1,'featured',$user_id); ?>
       </div>
       <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Title</h4>
+                    <p class="card-text">Text</p>
+                </div>
+            </div>
       </div>
     </div>
 </div>

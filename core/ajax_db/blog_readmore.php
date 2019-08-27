@@ -16,7 +16,7 @@ if (isset($_POST['blog_id']) && !empty($_POST['blog_id'])) {
     }
     $blog_id = $_POST['blog_id'];
     $user= $blog->BlogReadmore($blog_id);
-    $comment= $blog->comments($blog_id);
+    $comment= $blog->commentsBlog($blog_id);
      ?>
 <style>
 .img-popup-bodys {

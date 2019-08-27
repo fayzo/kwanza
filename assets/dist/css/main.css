@@ -62,7 +62,8 @@
     color:rgb(34, 31, 31);
 }
 
-#black  .form-control {
+#black .form-control,
+#black textarea {
   color: #cad3dc !important;
   background-color: #352d31 !important;
   border: 1px solid #635b5f61 !important;

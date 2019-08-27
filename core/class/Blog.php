@@ -403,7 +403,7 @@ class Blog extends Home{
         return $stmt->execute();
     }
     
-      public function comments($tweet_id)
+      public function commentsBlog($tweet_id)
     {
         $mysqli= $this->database;
         $query= "SELECT * FROM blog_comment LEFT JOIN users ON comment_by=user_id LEFT JOIN blog ON comment_on=blog_id  WHERE comment_on = $tweet_id ORDER BY comment_at DESC";

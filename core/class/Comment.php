@@ -3,18 +3,52 @@
        header('Location: ../../404.html');
  }
 
-class Comment extends Users
+class Comment extends Post_like
 {
     public function comments($tweet_id)
     {
         $mysqli= $this->database;
-        $query= "SELECT * FROM comment LEFT JOIN users ON comment_by=user_id WHERE comment_on = $tweet_id ";
+        $query= "SELECT * FROM comment LEFT JOIN users ON comment_by=user_id WHERE comment_on = $tweet_id ORDER BY comment_at DESC ";
         $result= $mysqli->query($query);
         $comments= array();
         while ($row= $result->fetch_assoc()) {
              $comments[] = $row;
         }
         return $comments;
+    }
+    
+    public function CountsComment($tweet_id){
+      $db =$this->database;
+      $query="SELECT COUNT(*) FROM comment WHERE comment_on= $tweet_id";
+      $sql= $db->query($query);
+      $row_Comment = $sql->fetch_array();
+      $total_Comment= array_shift($row_Comment);
+      $array= array(0,$total_Comment);
+      $total_Comment= array_sum($array);
+      echo $total_Comment;
+    }
+
+    public function comments_second($tweet_id)
+    {
+        $mysqli= $this->database;
+        $query= "SELECT * FROM post_comment LEFT JOIN users ON comment_by_=user_id WHERE comment_on_ = $tweet_id ORDER BY comment_at_ DESC ";
+        $result= $mysqli->query($query);
+        $comments= array();
+        while ($row= $result->fetch_assoc()) {
+             $comments[] = $row;
+        }
+        return $comments;
+    }
+    
+    public function CountsComment_second($tweet_id){
+      $db =$this->database;
+      $query="SELECT COUNT(*) FROM post_comment WHERE comment_on_= $tweet_id";
+      $sql= $db->query($query);
+      $row_Comment = $sql->fetch_array();
+      $total_Comment= array_shift($row_Comment);
+      $array= array(0,$total_Comment);
+      $total_Comment= array_sum($array);
+      echo $total_Comment;
     }
 
     public function delete($table,$array)
@@ -82,10 +116,13 @@ class Comment extends Users
     public function deleteLikesNotificatPosts($tweet_id,$user_id)
     {
         $mysqli= $this->database;
-        $query="DELETE T , N ,L ,C ,R FROM tweets T 
+        $query="DELETE T ,C ,G ,H ,J ,N ,L ,R FROM tweets T 
+                        LEFT JOIN comment C ON C. comment_on = T. tweet_id 
+                        LEFT JOIN post_like G ON G. like_on_ = C. comment_id 
+                        LEFT JOIN post_dislike H ON H. like_on_ = C. comment_id 
+                        LEFT JOIN post_comment J ON J. comment_on_ = C. comment_id   
                         LEFT JOIN notification N ON N. target = T. tweet_id 
                         LEFT JOIN likes L ON L. like_on = T. tweet_id 
-                        LEFT JOIN comment C ON C. comment_on = T. tweet_id 
                         LEFT JOIN trends R ON R. target = T. tweet_id 
                         WHERE T. tweet_id = '{$tweet_id}' and T. tweetBy = '{$user_id}' ";
 

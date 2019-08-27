@@ -3,17 +3,17 @@
        header('Location: ../../404.html');
  }
 
-class Hotel extends Food{
+class Motel extends Food{
 
-    public function hotelReadmore($hotel_id)
+    public function motelReadmore($motel_id)
     {
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM users U Left JOIN rwandahotel R ON R. user_id_ = u. user_id WHERE R. hotel_id = '$hotel_id' ");
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN rwandamotel R ON R. user_id_ = u. user_id WHERE R. motel_id = '$motel_id' ");
         $row= $query->fetch_array();
         return $row;
     }
 
-    public function hotelList($pages,$categories,$user_id)
+    public function motelList($pages,$categories,$user_id)
     {
         $pages= $pages;
         $categories= $categories;
@@ -26,9 +26,9 @@ class Hotel extends Food{
 
         $mysqli= $this->database;
         if($categories == 'featured'){
-            $query= $mysqli->query("SELECT * FROM rwandahotel ORDER BY rand() Limit $showpages,6");
+            $query= $mysqli->query("SELECT * FROM rwandamotel ORDER BY rand() Limit $showpages,6");
         }else{
-            $query= $mysqli->query("SELECT * FROM rwandahotel WHERE location_province= '{$categories}' ORDER BY rand() Limit $showpages,6");
+            $query= $mysqli->query("SELECT * FROM rwandamotel WHERE location_province= '{$categories}' ORDER BY rand() Limit $showpages,6");
         }
         ?>
         <div class="row">
@@ -260,6 +260,7 @@ class Hotel extends Food{
             </div><!-- col -->
 
             <div class="col-md-9">
+            
             <div class="card card-primary">
                 <div class="card-header main-active">
 
@@ -269,9 +270,9 @@ class Hotel extends Food{
                         <small>Price Per night</small>
                      </div>
                      <div class="col-md-4">
-                         <h5  class="text-center">Rwanda Hotels </h5>
+                         <h5  class="text-center">Rwanda Motels </h5>
                           <div class="filter-panel mt-4">
-                              <p><input type="hidden" id="price" class="price_range" value="0,500" /></p>
+                              <p><input type="hidden" id="price" class="price_range0" value="0,500" /></p>
                               <!-- <input type="button" onclick="filterProducts()" value="FILTER" /> -->
                           </div>
                      </div>
@@ -281,7 +282,7 @@ class Hotel extends Food{
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i> </span>
                             </div>
-                            <input type="text" class="form-control searchHotel"  aria-describedby="helpId" placeholder="Search Accountant, finance ,enginneer">
+                            <input type="text" class="form-control searchmotel"  aria-describedby="helpId" placeholder="Search Accountant, finance ,enginneer">
                         </div>
                     </form>
 
@@ -305,22 +306,21 @@ class Hotel extends Food{
                    </div>
                     <div class="nav-scroller py-0" style="clear:right;height:2rem;">
                         <nav class="nav d-flex justify-content-between pb-0"  >
-                            <a class="p-2" href="javascript:void(0)" onclick="hotelCategories('featured',1,<?php echo $user_id ;?>);" >All Hotel<span class="badge badge-primary"><?php echo $this->hotelcountPOSTS('featured');?></span></a>
-                            <a class="p-2" href="javascript:void(0)" onclick="hotelCategories('kigali city',1,<?php echo $user_id ;?>);" >kigali city<span class="badge badge-primary"><?php echo $this->hotelcountPOSTS('kigali city');?></span></a>
-                            <a class="p-2" href="javascript:void(0)" onclick="hotelCategories('Northern province',1,<?php echo $user_id ;?>);" >Northern province<span class="badge badge-primary"><?php echo $this->hotelcountPOSTS('Northern province');?></span></a>
-                            <a class="p-2" href="javascript:void(0)" onclick="hotelCategories('East province',1,<?php echo $user_id ;?>);" >East province<span class="badge badge-primary"><?php echo $this->hotelcountPOSTS('East province');?></span></a>
-                            <a class="p-2" href="javascript:void(0)" onclick="hotelCategories('West province',1,<?php echo $user_id ;?>);" >West province<span class="badge badge-primary"><?php echo $this->hotelcountPOSTS('West province');?></span></a>
-                            <a class="p-2" href="javascript:void(0)" onclick="hotelCategories('Southern province',1,<?php echo $user_id ;?>);" >Southern province<span class="badge badge-primary"><?php echo $this->hotelcountPOSTS('Southern province');?></span></a>
+                            <a class="p-2" href="javascript:void(0)" onclick="motelCategories('featured',1,<?php echo $user_id; ?>);" >All motel<span class="badge badge-primary"><?php echo $this->motelcountPOSTS('featured');?></span></a>
+                            <a class="p-2" href="javascript:void(0)" onclick="motelCategories('kigali city',1,<?php echo $user_id; ?>);" >kigali city<span class="badge badge-primary"><?php echo $this->motelcountPOSTS('kigali city');?></span></a>
+                            <a class="p-2" href="javascript:void(0)" onclick="motelCategories('Northern province',1,<?php echo $user_id; ?>);" >Northern province<span class="badge badge-primary"><?php echo $this->motelcountPOSTS('Northern province');?></span></a>
+                            <a class="p-2" href="javascript:void(0)" onclick="motelCategories('East province',1,<?php echo $user_id; ?>);" >East province<span class="badge badge-primary"><?php echo $this->motelcountPOSTS('East province');?></span></a>
+                            <a class="p-2" href="javascript:void(0)" onclick="motelCategories('West province',1,<?php echo $user_id; ?>);" >West province<span class="badge badge-primary"><?php echo $this->motelcountPOSTS('West province');?></span></a>
+                            <a class="p-2" href="javascript:void(0)" onclick="motelCategories('Southern province',1,<?php echo $user_id; ?>);" >Southern province<span class="badge badge-primary"><?php echo $this->motelcountPOSTS('Southern province');?></span></a>
                         </nav>
                     </div> <!-- nav-scroller -->
                 </div>
                 <div class="card-body">
-                <span class="hotel-show"></span>
+                <span class="motel-show"></span>
                   <div id="productContainer">
                   <table class="table table-hover table-inverse">
-                    
-                          <tbody>
-            <ul class="timeline timeline-inverse"> 
+                  <tbody>
+                <ul class="timeline timeline-inverse"> 
                <?php while($row= $query->fetch_array()) { ?>
                 <li class="time-label">
                     <?php if($row['discount'] != 0){ ?>
@@ -332,8 +332,8 @@ class Hotel extends Food{
 
                     <div class="col-md-6">
                        <div class="card flex-md-row h-md-100 border-0 mb-3">
-                            <!-- <img class="card-img-left flex-auto d-none d-lg-block" height="120px" width="120px" src="< ?php echo BASE_URL_PUBLIC.'uploads/Rwandahotel/'.$row['photo_']; ?>" alt="Card image cap"> -->
-                          <div class='card-img-left flex-auto d-none d-lg-block' style="background: url('<?php echo BASE_URL_PUBLIC.'uploads/Rwandahotel/'.$row['photo_']; ?>')no-repeat center center;background-size:cover;height:120px;width:120px">
+                              <!-- <img class="card-img-left flex-auto d-none d-lg-block" height="120px" width="120px" src="< ?php echo BASE_URL_PUBLIC.'uploads/Rwandamotel/'.$row['photo_']; ?>" alt="Card image cap"> -->
+                          <div class='card-img-left flex-auto d-none d-lg-block' style="background: url('<?php echo BASE_URL_PUBLIC.'uploads/Rwandamotel/'.$row['photo_']; ?>')no-repeat center center;background-size:cover;height:120px;width:120px">
                         <?php $banner = $row['banner'];
                         switch ($banner) {
                             case $banner == 'new':
@@ -365,7 +365,7 @@ class Hotel extends Food{
                         </div>
                             <div class="card-body d-flex flex-column align-items-start pt-0">
                               <h5 class="text-primary mb-0">
-                              <a class="text-primary" href="javascript:void(0)"  id="hotel-readmore" data-hotel="<?php echo $row['hotel_id']; ?>"><?php echo $row['title_']; ?></a>
+                              <a class="text-primary" href="javascript:void(0)"  id="motel-readmore" data-motel="<?php echo $row['motel_id']; ?>"><?php echo $row['title_']; ?></a>
                               </h5>
                               <div class="text-warning"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-half-o" aria-hidden="true"></i> <i class="fa fa-star-half-o" aria-hidden="true"></i></div>
                               <div class="text-left text-muted mb-1"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $row['location_districts'].' districts/'.$row['location_Sector'].' sector'; ?></div>
@@ -386,17 +386,16 @@ class Hotel extends Food{
                     </div>
 
                      <div class="col-md-2">
-                          <?php if($row['price_discount'] != 0){ ?><h5 class="mt-4 text-danger text-right mb-0" style="text-decoration: line-through;"> US<i class="fa fa-usd" aria-hidden="true"></i><?php echo number_format($row['price_discount']); ?></h5><?php } ?>
-                          <h5 class="mt-2 text-success text-right mb-0"> US<i class="fa fa-usd" aria-hidden="true"></i><?php echo number_format($row['price']); ?></h5>
+                        <?php if($row['price_discount'] != 0){ ?><h5 class="mt-4 text-danger text-right mb-0" style="text-decoration: line-through;"> US<i class="fa fa-usd" aria-hidden="true"></i><?php echo number_format($row['price_discount']); ?></h5><?php } ?>
+                        <h5 class="mt-2 text-success text-right mb-0"> US<i class="fa fa-usd" aria-hidden="true"></i><?php echo number_format($row['price']); ?></h5>
                           <div class="text-muted text-right mt-0">Per night</div> 
                       </div>
                       <div class="col-md-2 text-center">
-                           <h5 class="text-muted" style="margin-top: 1.5rem!important;"> Good <span class="badge badge-primary"><?php echo $row['ranges']; ?></span></h5>
+                           <h5 class="mt-4 text-muted "> Good <span class="badge badge-primary"><?php echo $row['ranges']; ?></span></h5>
                       </div>
                       <div class="col-md-2">
-                      <button type="button" name="" id="" class="btn btn-primary btn-md btn-block" style="margin-top: 1.5rem!important;"><i class="fa fa-check" aria-hidden="true"></i> Book Now</button>
-                        
-                        <?php if($user_id == $row['user_id_']){ ?>
+                      <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-4"><i class="fa fa-check" aria-hidden="true"></i> Book Now</button>
+                      <?php if($user_id == $row['user_id_']){ ?>
                                     <ul class="list-inline ml-2  float-right" style="list-style-type: none;">  
 
                                             <li  class=" list-inline-item">
@@ -492,8 +491,7 @@ class Hotel extends Food{
                 <i class="fa fa-clock-o bg-info text-light"></i>
             </li>
         </ul>
-
- </tbody>
+</tbody>
 </table>
                     </div><!-- productContainer -->
                   </div><!-- card-body -->
@@ -502,9 +500,9 @@ class Hotel extends Food{
         </div><!-- row -->
         <?php
          if($categories == 'featured'){
-            $query1= $mysqli->query("SELECT COUNT(*) FROM rwandahotel ");
+            $query1= $mysqli->query("SELECT COUNT(*) FROM rwandamotel ");
         }else{
-            $query1= $mysqli->query("SELECT COUNT(*) FROM rwandahotel WHERE location_province= '{$categories}' ");
+            $query1= $mysqli->query("SELECT COUNT(*) FROM rwandamotel WHERE location_province= '{$categories}' ");
         }
 
         $row_Paginaion = $query1->fetch_array();
@@ -516,16 +514,16 @@ class Hotel extends Food{
          <nav>
              <ul class="pagination justify-content-center mt-3">
                  <?php if ($pages > 1) { ?>
-                     <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="hotelCategories('<?php echo $categories; ?>',<?php echo $pages-1; ?>)">Previous</a></li>
+                     <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="motelCategories('<?php echo $categories; ?>',<?php echo $pages-1; ?>)">Previous</a></li>
                  <?php } ?>
                  <?php for ($i=1; $i <= $post_Perpage; $i++) { 
                          if ($i == $pages) { ?>
-                      <li class="page-item active"><a href="javascript:void(0)"  class="page-link" onclick="hotelCategories('<?php echo $categories; ?>',<?php echo $i; ?>)" ><?php echo $i; ?> </a></li>
+                      <li class="page-item active"><a href="javascript:void(0)"  class="page-link" onclick="motelCategories('<?php echo $categories; ?>',<?php echo $i; ?>)" ><?php echo $i; ?> </a></li>
                       <?php }else{ ?>
-                     <li class="page-item"><a href="javascript:void(0)"  class="page-link" onclick="hotelCategories('<?php echo $categories; ?>',<?php echo $i; ?>)" ><?php echo $i; ?> </a></li>
+                     <li class="page-item"><a href="javascript:void(0)"  class="page-link" onclick="motelCategories('<?php echo $categories; ?>',<?php echo $i; ?>)" ><?php echo $i; ?> </a></li>
                  <?php } } ?>
                  <?php if ($pages+1 <= $post_Perpage) { ?>
-                     <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="hotelCategories('<?php echo $categories; ?>',<?php echo $pages+1; ?>)">Next</a></li>
+                     <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="motelCategories('<?php echo $categories; ?>',<?php echo $pages+1; ?>)">Next</a></li>
                  <?php } ?>
              </ul>
          </nav>
@@ -533,13 +531,13 @@ class Hotel extends Food{
 
    <?php }
 
-       public function hotelcountPOSTS($categories)
+       public function motelcountPOSTS($categories)
     {
         $mysqli =$this->database;
           if($categories == 'featured'){
-            $sql= $mysqli->query("SELECT COUNT(*) FROM rwandahotel ");
+            $sql= $mysqli->query("SELECT COUNT(*) FROM rwandamotel ");
         }else{
-            $sql= $mysqli->query("SELECT COUNT(*) FROM rwandahotel WHERE location_province= '{$categories}' ");
+            $sql= $mysqli->query("SELECT COUNT(*) FROM rwandamotel WHERE location_province= '{$categories}' ");
         }
         $row_post = $sql->fetch_array();
         $total_post= array_shift($row_post);
@@ -549,5 +547,5 @@ class Hotel extends Food{
     }
 }
 
-$hotel = new Hotel();
+$motel = new Motel();
 ?>

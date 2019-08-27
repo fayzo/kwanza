@@ -23,12 +23,12 @@ class Posts extends blog {
                                 $retweet= $this->checkRetweet($tweet['tweet_id'],$user_id);
                                 $user= $this->userData($retweet['retweet_by']);
                                 $comment= $this->comments($tweet['tweet_id']);
-                                // var_dump( $comments);
-
+                                // var_dump($comment);
+                                // var_dump($tweet['tweet_id']);
                                      # code... 
                                     //  echo var_dump($retweet['retweet_Msg']).'<br>';
                                 ?>
-                                <div class="card borders-tops mb-3">
+                                <div class="card borders-tops mb-3" id="userComment_<?php echo $tweet["tweet_id"]; ?>"> 
                                     <div class="card-body">
                                    
                                 <div class="post">
@@ -359,7 +359,7 @@ class Posts extends blog {
                                         <span class="username tooltips">
                                            <ul><li >
                                             <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
-                                             <ul><li><?php echo Follow::tooltipProfile($tweet['user_id'],$tweet['user_id'],$tweet['user_id']); ?></li></ul>
+                                             <ul><li><?php echo Follow::tooltipProfile($tweet['user_id'],$user_id,$tweet['user_id']); ?></li></ul>
                                             </li></ul>
                                         </span>
                                         <span class="description">Shared publicly - <?php echo $this->timeAgo($tweet['posted_on']); ?></span>
@@ -534,7 +534,7 @@ class Posts extends blog {
                                          <span style="float:right">
                                     
                                           <li  class=" list-inline-item"><button class="comments-btn text-sm" data-target="#a<?php echo  $tweet["tweet_id"];?>" data-toggle="collapse">
-                                              <i class="fa fa-comments-o mr-1"></i> Comments (5)
+                                              <i class="fa fa-comments-o mr-1"></i> Comments (<?php echo $this->CountsComment($tweet["tweet_id"]); ?>)
                                           </button></li>
                                         
 
@@ -555,16 +555,32 @@ class Posts extends blog {
                                          </span>
                                 </ul>
 
+                                <div class="input-group">
+                                    <input class="form-control form-control-sm" id="commentHome<?php echo $tweet['tweet_id'];?>" type="text"
+                                        name="comment"  placeholder="Reply to  <?php echo $tweet['username'] ;?>" >
+                                    <div class="input-group-append">
+                                        <span class="input-group-text btn" style="padding: 0px 10px;" 
+                                            aria-label="Username" aria-describedby="basic-addon1" id="post_HomeComment"  data-tweet="<?php echo $tweet['tweet_id'];?>">
+                                            <span class="fa fa-arrow-right text-muted" ></span>
+                                        </span>
+                                    </div>
+                                </div> <!-- input-group -->
+
                                    <div class="card collapse hide" id="a<?php echo  $tweet["tweet_id"];?>">
-                                      <div class="card-body">
+                                      <div class="card-body" style="padding-right:0">
                                         <?php if (!empty($comment)) { ?>
-                                         <div class="direct-chat-message direct-chat-messageS">
-                                          <h5><i>Comments</i></h5>
-                                         <span class="commentsHome" id="commentsHome">
-                                           <?php foreach ($comment as $comments) { ?>
+                                        <h5><i>Comments (<?php echo $this->CountsComment($tweet["tweet_id"]); ?>)</i></h5>
+                                        <span id='responseDeletePostSeconds0'></span>
+
+                                         <div class="direct-chat-message direct-chat-messageS large-2" >
+                                         <span class="commentsHome" id="commentsHome<?php echo $tweet['tweet_id'];?>">
+                                           <?php foreach ($comment as $comments) { 
+                                               $second_likes= $this->Like_second($user_id,$comments['comment_id']);
+                                               $dislikes= $this->dislike($user_id,$comments['comment_id']);
+                                               ?>
                                                 <!-- Conversations are loaded here -->
                                                   <!-- Message. Default to the left -->
-                                                    <div class="direct-chat-msg">
+                                                    <div class="direct-chat-msg" id="userComment0<?php echo $comments['comment_id']; ?>">
                                                         <div class="direct-chat-info clearfix">
                                                             <span class="direct-chat-name float-left"><?php echo $comments["username"] ;?></span>
                                                             <span class="direct-chat-timestamp float-right"><?php echo $this->timeAgo($comments['comment_at']); ?></span>
@@ -578,28 +594,34 @@ class Posts extends blog {
                                                         <!-- /.direct-chat-img -->
                                                         <div class="direct-chat-text">
                                                          <?php echo  $this->getTweetLink($comments["comment"]) ;?>
-                                                        </div>
                                                       <!-- /.direct-chat-text -->
-                                                      <ul class="mt-3 list-inline" style="list-style-type: none; margin-bottom:10px;">  
-                                                                  
-                                                        <?php if($likes['like_on'] == $comments['comment_id']){ ?>
-                                                            <li  class=" list-inline-item"><button class="unlike-btn text-sm" data-tweet="<?php echo $comments['comment_id']; ?>"  >
-                                                            <i class="fa fa-thumbs-up mr-1" style="color: red"> <span class="likescounter"><?php echo $comments['likes_counts'] ;?></span></i>
-                                                                Like</button></li>
+                                                      <ul class="list-inline clear-float" style="list-style-type: none; margin-bottom:0;">  
+                                                       
+                                                        <?php if($second_likes['like_on_'] == $comments['comment_id']) { ?>
+                                                                <li  class=" list-inline-item"><button class="unlike-second-btn text-sm" data-comment="<?php echo $comments['comment_id']; ?>" data-user="<?php echo $comments['comment_by']; ?>" >
+                                                                <i class="fa fa-heart-o mr-1" style="color: red"> <span class="likescounter_"><?php echo $comments['likes_counts_'];?> </span></i> like</button></li>
+                                                        <?php }else{ ?>
+                                                                <li  class=" list-inline-item"><button  class="like-second-btn text-sm" data-comment="<?php echo $comments['comment_id']; ?>"  data-user="<?php echo $comments['comment_by']; ?>" >
+                                                                <i class="fa fa-heart-o mr-1" > <span class="likescounter_">  <?php if ($comments['likes_counts_'] > 0){ echo $comments['likes_counts_'];}else{ echo '';} ?></span></i> like</button></li>
+                                                        <?php } ?>
+
+                                                        <?php if($dislikes['like_on_'] == $comments['comment_id']){ ?>
+                                                            <li  class=" list-inline-item"><button class="undislike-btn text-sm"  data-comment="<?php echo $comments['comment_id']; ?>" data-user="<?php echo $comments['comment_by']; ?>" >
+                                                            <i class="fa fa-thumbs-o-down R mr-1" style="color: green"> <span class="dislikescounter"><?php echo $comments['dislikes_counts_'] ;?></span></i>
+                                                                unlike</button></li>
                                     
                                                          <?php }else{ ?>
-                                                               <li  class=" list-inline-item"> <button class="like-btn text-sm" data-tweet="<?php echo $comments['comment_id']; ?>"  >
-                                                                <i class="fa fa-thumbs-o-up mr-1"> <span class="likescounter"><?php if ($tweet['likes_counts'] > 0){ echo $tweet['likes_counts'];}else{ echo '';} ?></span></i>
-                                                                    Like</button></li>
+                                                               <li  class=" list-inline-item"> <button class="dislike-btn text-sm"  data-comment="<?php echo $comments['comment_id']; ?>" data-user="<?php echo $comments['comment_by']; ?>" >
+                                                                <i class="fa fa-thumbs-o-down R mr-1"> <span class="dislikescounter"><?php if ($comments['dislikes_counts_'] > 0){ echo $comments['dislikes_counts_'];}else{ echo '';} ?></span></i>
+                                                                    unlike</button></li>
                                                          <?php } ?>
                             
-                                                           <span style="float:right">
+                                                        <span style="float:right">
                                                                               
                                                         <li  class=" list-inline-item"><button class="comments-btn text-sm" data-target="#a<?php echo  $comments["comment_id"] ;?>" data-toggle="collapse">
-                                                            <i class="fa fa-comments-o mr-1"></i> Comments (5)
+                                                            <i class="fa fa-comments-o mr-1"></i> Comments  (<?php echo $this->CountsComment_second($comments["comment_id"]); ?>)
                                                         </button></li>
                                                                      
-                            
                                                             <?php if ($comments["comment_by"] == $user_id){ ?>
                                                                <li  class=" list-inline-item">
                                                                    <ul class="deleteButt" style="list-style-type: none; margin:0px;" >
@@ -607,7 +629,7 @@ class Posts extends blog {
                                                                           <a href="javascript:void(0)" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                                                                            <ul style="list-style-type: none; margin:0px;" >
 					                            	    	                <li style="list-style-type: none; margin:0px;"> 
-                                                 	    	                    <label class="deleteCommentPost" data-tweet="<?php echo  $comments["comment_id"];?>"  data-user="<?php echo $comments["comment_by"];?>" >Delete </label>
+                                                 	    	                    <label class="deleteCommentPostSeconds0" data-comment="<?php echo  $comments["comment_id"];?>"  data-user="<?php echo $comments["comment_by"];?>" >Delete </label>
                                                                               </li>
                                                                           </ul>
                                                                        </li>
@@ -616,40 +638,74 @@ class Posts extends blog {
                                                             <?php }else{ echo '';}?>
                                                             </span>
                                                         </ul>
-                            
-                                                    <div class="card collapse hide border-bottom-0" id="a<?php echo  $comments["comment_id"];?>" >
-                                                        <div class="card-body">
-                                                          <!-- Conversations are loaded here -->
-                                                          <div class="direct-chat-message">
-                                                            <!-- Message. Default to the left -->
-                                                              <div class="direct-chat-msg">
-                                                                  <div class="direct-chat-info clearfix">
-                                                                      <span class="direct-chat-name float-left">Alexander Pierce</span>
-                                                                      <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
-                                                                  </div>
-                                                                  <!-- /.direct-chat-info -->
-                                                                         <?php if (!empty($comments['profile_img'])) {?>
-                                                                          <img class="direct-chat-img" src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $comments['profile_img'] ;?>" alt="message user image">
-                                                                         <?php  }else{ ?>
-                                                                          <img class="direct-chat-img" src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="message user image">
-                                                                         <?php } ?>
-                                                                  <!-- /.direct-chat-img -->
-                                                                  <div class="direct-chat-text">
-                                                                    Is this template really for free? That's unbelievable!
-                                                                  </div> <!-- /.direct-chat-text -->
-                                                               </div> <!-- /.direct-chat-msg -->
-                                                           </div> <!-- /.direct-chat-message -->
-                                                        </div> <!-- /.card-body-->
-                            
-                                                         <div class="card-footer p-0 border-top-0 border-bottom-0">
+                                                    </div>
+                                                    
+                                                    <div class="card collapse hide border-bottom-0 ml-5" id="a<?php echo $comments["comment_id"];?>" >
+                                                        <div class="card-header pb-0 px-0">
                                                             <div class="input-group">
-                                                                 <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
-                                                                 <div class="input-group-append">
-                                                                     <span class="input-group-text btn" onclick="#" aria-label="Username" aria-describedby="basic-addon1"><span
-                                                                             class="fa fa-arrow-right text-muted"></span></span>
-                                                                 </div>
-                                                             </div>
-                                                         </div>
+                                                                <input class="form-control form-control-sm" id="commentHomeSecond<?php echo $comments["comment_id"];?>" type="text"
+                                                                    name="comment"  placeholder="Reply to  <?php echo $comments['username'] ;?>" >
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text btn" style="padding: 0px 10px;" 
+                                                                        aria-label="Username" aria-describedby="basic-addon1" id="post_HomeCommentSecond"  data-comment="<?php echo $comments['comment_id'];?>">
+                                                                        <span class="fa fa-arrow-right text-muted" ></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div> <!-- input-group -->
+                                                        </div>
+                                                        <div class="card-body" style="padding-right:0">
+                                                            <?php 
+                                                             $comment_second= $this->comments_second($comments['comment_id']);
+                                                            if (!empty($comment_second)) { ?>
+                                                            <h5><i>Comments (<?php echo $this->CountsComment_second($comments["comment_id"]); ?>)</i></h5>
+                                                            <span id='responseDeletePostSecond'></span>
+                                                            <div class="direct-chat-message direct-chat-messageS large-2" >
+                                                            <span class="commentsHome" id="commentsHomeSecond<?php echo $comments['comment_id'];?>">
+                                                            <?php foreach ($comment_second as $comments0) { ?>
+                                                                    <!-- Conversations are loaded here -->
+                                                                    <!-- Message. Default to the left -->
+                                                                        <div class="direct-chat-msg" id="userComment<?php echo $comments0["comment_id_"]; ?>" >
+                                                                            <div class="direct-chat-info clearfix">
+                                                                                <span class="direct-chat-name float-left"><?php echo $comments0["username"] ;?></span>
+                                                                                <span class="direct-chat-timestamp float-right"><?php echo $this->timeAgo($comments0['comment_at_']); ?></span>
+                                                                            </div>
+                                                                            <!-- /.direct-chat-info -->
+                                                                            <?php if (!empty($comments0["profile_img"])) { ?>
+                                                                            <img class="direct-chat-img" src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $comments0["profile_img"] ;?>" alt="message user image">
+                                                                            <?php  }else{ ?>
+                                                                            <img class="direct-chat-img" src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="message user image">
+                                                                            <?php } ?>
+                                                                            <!-- /.direct-chat-img -->
+                                                                            <div class="direct-chat-text">
+                                                                                <?php echo  $this->getTweetLink($comments0["comment_"]) ;?>
+                                                                                 <!-- /.direct-chat-text -->
+                                                                                <ul class="list-inline float-right" style="list-style-type: none; margin-bottom:0;">  
+
+                                                                                        <?php if ($comments0["comment_by_"] == $user_id){ ?>
+                                                                                        <li  class=" list-inline-item">
+                                                                                            <ul class="deleteButt" style="list-style-type: none; margin:0px;" >
+                                                                                                <li>
+                                                                                                    <a href="javascript:void(0)" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                                                                                                    <ul style="list-style-type: none; margin:0px;" >
+                                                                                                        <li style="list-style-type: none; margin:0px;"> 
+                                                                                                            <label class="deleteCommentPostSecondDelete" data-comment="<?php echo  $comments0["comment_id_"];?>"  data-user="<?php echo $comments0["comment_by_"];?>" >Delete </label>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </li>
+                                                                                        <?php }else{ echo '';}?>
+                                                                                        </span>
+                                                                                    </ul>
+                                                                            </div>
+                                                                        </div> <!-- /.direct-chat-messg -->
+                                                                  
+                                                                <?php } ?>
+                                                            </span>
+                                                        </div> <!-- /.direct-chat-message -->
+                                                      <?php } ?>
+
+                                                    </div> <!-- /.card-body-->
                                                     </div> <!-- /.card collapse -->
                                                    </div> <!-- /.direct-chat-msg -->
                                           <?php } ?>
@@ -659,16 +715,6 @@ class Posts extends blog {
                                       </div> <!-- /.card-body-->
                                     </div> <!-- /.card collapse -->
 
-                                      <div class="input-group">
-                                          <input class="form-control form-control-sm" id="commentHome" type="text" data-tweet="<?php echo $tweet['tweet_id'];?>"
-                                              name="comment"  placeholder="Reply to  <?php echo $tweet['username'] ;?>" onkeypress="myFunction()" onkeyup="keyupFunction()">
-                                          <div class="input-group-append">
-                                            <span class="input-group-text btn" style="padding: 0px 10px;" 
-                                                  aria-label="Username" aria-describedby="basic-addon1" id="post_HomeComment" >
-                                                  <span class="fa fa-arrow-right text-muted" ></span>
-                                            </span>
-                                          </div>
-                                      </div> <!-- input-group -->
                                 </div>
                                 <!-- /.post -->
                              </div>

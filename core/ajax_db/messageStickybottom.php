@@ -406,7 +406,7 @@ if (isset($_POST['DeleteChatpopup']) && !empty($_POST['DeleteChatpopup'])) {
     $user_id= $_SESSION['key'];
     $message_from= $_POST['DeleteChatpopup'];
     ?>
-    <div class="alert alert-success alert-dismissible fade show text-center">
+    <div class="alert alert-success alert-dismissible fade show text-center" style="margin-top: 20px;">
          <button class="close" data-dismiss="alert" type="button">
              <span>&times;</span>
          </button>

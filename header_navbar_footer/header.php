@@ -854,9 +854,9 @@
         };
     }
    
-     function  hotelCategories(categories,id) {
+     function  hotelCategories(categories,id,user_id) {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'core/ajax_db/hotel_FecthPaginat.php?pages=' + id + '&categories=' + categories, true);
+        xhr.open('POST', 'core/ajax_db/hotel_FecthPaginat.php?pages=' + id + '&categories=' + categories+ '&user_id=' + user_id, true);
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
@@ -864,6 +864,36 @@
                 switch (categories) {
                     case categories:
                          var pagination = document.getElementById('hotel-view');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+   
+     function  motelCategories(categories,id,user_id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'core/ajax_db/motel_FecthPaginat.php?pages=' + id + '&categories=' + categories+ '&user_id=' + user_id, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (categories) {
+                    case categories:
+                         var pagination = document.getElementById('motel-view');
                          pagination.innerHTML = xhr.responseText;
                         break;
                 }

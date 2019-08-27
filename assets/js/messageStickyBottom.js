@@ -136,7 +136,8 @@ $(document).ready(function () {
             });
             
             $(document).on('click', '.cancel', function () {
-                $('.message-delt').hide();
+                // $('.message-delt').hide();
+                $('.alert-dismissible').hide();
             });
 
             $(document).on('click', '.delete', function () {

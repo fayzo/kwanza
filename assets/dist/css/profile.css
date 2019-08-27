@@ -20,6 +20,36 @@ input#crop {
     color: #ffffff;
 }
 
+#orange-white .theme-blue .scale ins,
+#purple-white .theme-blue .scale ins,
+#purple_white .theme-blue .scale ins,
+#white .theme-blue .scale ins,
+#yellow .theme-blue .scale ins,
+#orange-white .slider-container .back-bar .pointer-label,
+#purple-white .slider-container .back-bar .pointer-label,
+#purple_white .slider-container .back-bar .pointer-label,
+#white .slider-container .back-bar .pointer-label,
+#yellow .slider-container .back-bar .pointer-label,
+#orange-white .theme-blue .back-bar .pointer-label,
+#purple_white .theme-blue .back-bar .pointer-label,
+#white .theme-blue .back-bar .pointer-label,
+#yellow .theme-blue .back-bar .pointer-label,
+#orange-white .card-primary:not(.card-outline) .card-header a,
+#purple_white .card-primary:not(.card-outline) .card-header a,
+#white .card-primary:not(.card-outline) .card-header a,
+#yellow .card-primary:not(.card-outline) .card-header a,
+#purple-white .card-primary:not(.card-outline) .card-header a {
+    color: #061f25;
+    background: none;
+}
+.card-primary:not(.card-outline) .theme-blue .scale ins,
+.card-primary:not(.card-outline) .card-header .slider-container .back-bar .pointer-label,
+.card-primary:not(.card-outline) .card-header,
+.card-primary:not(.card-outline) .card-header a {
+    color: #ffffff;
+    background: none;
+}
+
 /* .card-primary.card-outline {
     border-top: 3px solid #007bff;
 } */

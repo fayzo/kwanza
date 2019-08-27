@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2019 at 02:26 AM
+-- Generation Time: Aug 25, 2019 at 06:50 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.2.20
 
@@ -148,7 +148,7 @@ INSERT INTO `blog` (`blog_id`, `created_on3`, `user_id3`, `retweet_blog_id`, `tw
 (19, '2019-08-12 08:31:31', 61, 0, 61, 'Technology', 'HARRY POTTER', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'murisa', '2019_18a2-d.jpg', '2019_36abst.jpg', '', '', '', '', 0, 0, '', '', ''),
 (20, '2019-08-12 08:41:58', 61, 0, 61, 'history', 'Title of a longer featured blog post', 'Click to share on Facebook (Opens in new window)Click to share on WhatsApp (Opens in new window)Click to share on Google+ (Opens in new window)Click to share on Twitter (Opens in new window)\r\nI am Marilyn, 40 years old. Graduated in bachelor of science and business administration. I have been 11 years worked here in hong kong. My first employer is a single mom with 6 years old daughter. I do housework chores and help the child and tutoring her home work.', 'fax', '2019_510a50.png', '2019_705-ye.jpg', '', '', '', '', 1, 0, '', '', ''),
 (22, '2019-08-12 08:59:38', 61, 0, 61, 'history', 'My Skills And Experiences', 'Click to share on Facebook (Opens in new window)Click to share on WhatsApp (Opens in new window)Click to share on Google+ (Opens in new window)Click to share on Twitter (Opens in new window)\r\nI am Marilyn, 40 years old. Graduated in bachelor of science and business administration. I have been 11 years worked here in hong kong. My first employer is a single mom with 6 years old daughter. I do housework chores and help the child and tutoring her home work.', 'hope', '2019_561099.jpg', '2019_48a2-d.jpg', '', '', '', '', 1, 0, '', '', ''),
-(23, '2019-08-12 09:37:37', 61, 0, 61, 'Technology', 'English Filipino', 'Click to share on Facebook (Opens in new window)Click to share on WhatsApp (Opens in new window)Click to share on Google+ (Opens in new window)Click to share on Twitter (Opens in new window)\r\nI am Marilyn, 40 years old. Graduated in bachelor of science and business administration. I have been 11 years worked here in hong kong. My first employer is a single mom with 6 years old daughter. I do housework chores and help the child and tutoring her home work.', 'jojo', '2019_42b753.jpg', '2019_585-ye.jpg=2019_764778.jpg=2019_100a2-d.jpg=2019_50abst.jpg=2019_16b753.jpg', '', '', 'concert', 'june=may=double=sign=music=', 0, 0, '', '', ''),
+(23, '2019-08-12 09:37:37', 61, 0, 61, 'Technology', 'English Filipino', 'Click to share on Facebook (Opens in new window)Click to share on WhatsApp (Opens in new window)Click to share on Google+ (Opens in new window)Click to share on Twitter (Opens in new window)\r\nI am Marilyn, 40 years old. Graduated in bachelor of science and business administration. I have been 11 years worked here in hong kong. My first employer is a single mom with 6 years old daughter. I do housework chores and help the child and tutoring her home work.', 'jojo', '2019_42b753.jpg', '2019_585-ye.jpg=2019_764778.jpg=2019_100a2-d.jpg=2019_50abst.jpg=2019_16b753.jpg', '', '', 'concert', 'june=may=double=sign=music=', 1, 0, '', '', ''),
 (24, '2019-08-12 09:37:38', 61, 0, 61, 'Technology', 'English Filipino', 'Click to share on Facebook (Opens in new window)Click to share on WhatsApp (Opens in new window)Click to share on Google+ (Opens in new window)Click to share on Twitter (Opens in new window)\r\nI am Marilyn, 40 years old. Graduated in bachelor of science and business administration. I have been 11 years worked here in hong kong. My first employer is a single mom with 6 years old daughter. I do housework chores and help the child and tutoring her home work.', 'jojo', '2019_58b753.jpg', '2019_325-ye.jpg=2019_564778.jpg=2019_43a2-d.jpg=2019_21abst.jpg=2019_16b753.jpg', '', '', 'concert', 'june=may=double=sign=music=', 0, 0, '', '', '');
 
 -- --------------------------------------------------------
@@ -174,7 +174,8 @@ INSERT INTO `blog_comment` (`comment_id`, `comment`, `comment_on`, `comment_by`,
 (2, 'amakuru', 5, 66, '2019-08-11 10:41:35', 3),
 (3, 'bite byawe', 5, 61, '2019-08-11 11:15:18', 0),
 (4, 'as', 5, 61, '2019-08-11 11:17:51', 1),
-(5, 'ewe', 23, 61, '2019-08-14 16:51:46', 0);
+(5, 'ewe', 23, 61, '2019-08-14 16:51:46', 0),
+(6, 'amakkuru', 24, 66, '2019-08-24 11:44:41', 0);
 
 -- --------------------------------------------------------
 
@@ -224,7 +225,8 @@ INSERT INTO `blog_like` (`like_id`, `like_on`, `like_by`) VALUES
 (11, 7, 61),
 (12, 7, 66),
 (14, 20, 61),
-(15, 22, 61);
+(15, 22, 61),
+(17, 23, 61);
 
 -- --------------------------------------------------------
 
@@ -2877,20 +2879,21 @@ CREATE TABLE `comment` (
   `comment` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `comment_on` int(11) NOT NULL,
   `comment_by` int(11) NOT NULL,
-  `comment_at` datetime NOT NULL
+  `comment_at` datetime NOT NULL,
+  `likes_counts_` int(11) NOT NULL,
+  `dislikes_counts_` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `comment`
 --
 
-INSERT INTO `comment` (`comment_id`, `comment`, `comment_on`, `comment_by`, `comment_at`) VALUES
-(4, 'nice', 334, 61, '2019-06-26 09:22:46'),
-(5, ',mm', 343, 61, '2019-07-03 14:41:18'),
-(6, 'gud', 334, 61, '2019-07-30 15:39:34'),
-(8, 'uraho', 334, 61, '2019-07-30 18:07:01'),
-(10, 'gus', 419, 61, '2019-08-07 09:53:19'),
-(11, 'sd', 419, 61, '2019-08-07 09:53:31');
+INSERT INTO `comment` (`comment_id`, `comment`, `comment_on`, `comment_by`, `comment_at`, `likes_counts_`, `dislikes_counts_`) VALUES
+(1, 'amakuru', 421, 61, '2019-08-25 07:53:56', 1, 1),
+(2, 'amakuru', 413, 61, '2019-08-25 08:07:13', 0, 0),
+(3, 'amakuru', 413, 61, '2019-08-25 08:07:14', 0, 0),
+(4, 'bite', 413, 61, '2019-08-25 08:07:35', 0, 0),
+(5, 'amakuru', 420, 61, '2019-08-25 08:10:03', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -3268,7 +3271,7 @@ CREATE TABLE `employersdomestics` (
 --
 
 INSERT INTO `employersdomestics` (`employers_id`, `firstname_`, `lastname_`, `phone_`, `country_`, `photo_`, `text_`, `gender`, `cpassword`, `password`, `status`, `email`, `username`, `location_province`, `location_districts`, `location_sector`, `location_cell`, `location_village`, `user_id_`, `created_on_`) VALUES
-(29, 'ruzindana', 'eric', '03680482477', 'rwanda', 'images.jpg', 'uruyu', 'Female', 'fafa', 'fafa', 'Married', 'hemafaysal@gmail.com', 'fayz', 'Southern province', 'Gasabo', 'Burega', 'Rutsiro', 'kamuhima', 64, '2019-07-17 11:56:10'),
+(29, 'ruzindana', 'eric', '03680482477', 'rwanda', '25.png', 'uruyu', 'Female', 'fafa', 'fafa', 'Married', 'hemafaysal@gmail.com', 'fayz', 'Southern province', 'Gasabo', 'Burega', 'Rutsiro', 'kamuhima', 64, '2019-07-17 11:56:10'),
 (30, 'faysal', 'shema', '03680482477', 'rwanda', '20.png', 'fafaf', 'Male', 'fafa', 'fafa', 'Single', 'shemafaysal@gmail.com', 'fayzo', 'West province', 'Gatsibo', 'Bugarama', 'Rutsiro', 'Kicukiro', 61, '2019-07-17 14:07:23'),
 (31, 'rihana', 'rihana', '03680482477', 'rwanda', '19.png', 'gud', 'Female', 'rihana', 'rihana', 'Single', 'rihana@gmail.com', 'rihana', '2', '203', '20303', '2030302', '203030202', 69, '2019-08-19 20:58:00');
 
@@ -3478,8 +3481,8 @@ INSERT INTO `food` (`food_id`, `authors`, `photo`, `other_photo`, `video`, `yout
 (24, 'fayzo', '2019_2514c3.jpg', '2019_752000.jpg', '', '', 453.00, '0787345243243', 'rwanda', 'igituguru', 'onion=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'vegetables', '9732df', 1, 1, 459.00, 'great_deal', 61, '2019-07-05 22:15:13'),
 (25, 'fayzo', '2019_5771fp.jpg', '2019_3171fp.jpg', '', '', 356.00, '0787345243243', 'rwanda', 'ibiriganya', 'nuko=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'vegetables', '5b', 1, 39, 400.00, 'new_arrival', 61, '2019-07-05 22:16:20'),
 (26, 'fayzo', '2019_7856-1.jpg', '2019_8656-1.jpg', '', '', 467600.00, '0787345243243', 'rwanda', 'bugali', 'chappati=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'food', '97301erws4', 1, 0, 0.00, 'new_arrival', 61, '2019-07-06 16:57:16'),
-(27, '', '2019_315ad7.jpg', '2019_55650x.jpg', '', '', 8946.00, '06798547', 'RW', 'amakaroni', 'ifi=====', '', '4', '405', '4050302', '40503', '405030203', 'it is good', 'food', '565hbfgbh', 1, 64, 447700.00, 'empty', 61, '2019-08-14 19:00:07'),
-(28, 'fs', '2019_415ad7.jpg', '2019_409-fo.jpg', '', '', 8000.00, '906978', 'AL', 'anaa', 'ifi=====', '', '4', '403', '4030403', '40304', '403040303', 'hhahaha', 'food', '47uhfh', 1, 10, 0.00, 'empty', 61, '2019-08-14 19:06:18');
+(27, '', '2019_315ad7.jpg', '2019_55650x.jpg', '', '', 8946.00, '06798547', 'RW', 'amakaroni', 'ifi=====', '', '4', '405', '4050302', '40503', '405030203', 'it is good', 'food', '565hbfgbh', 1, 64, 447700.00, 'new_arrival', 61, '2019-08-14 19:00:07'),
+(28, 'fs', '2019_415ad7.jpg', '2019_409-fo.jpg', '', '', 8000.00, '906978', 'AL', 'anaa', 'ifi=====', '', '4', '403', '4030403', '40304', '403040303', 'hhahaha', 'food', '47uhfh', 1, 10, 0.00, 'great_deal', 61, '2019-08-14 19:06:18');
 
 -- --------------------------------------------------------
 
@@ -3689,7 +3692,7 @@ INSERT INTO `house` (`house_id`, `authors`, `photo`, `other_photo`, `video`, `yo
 (33, 'fayzo', '2019_20f296.jpg', '2019_48arie.jpg', '', '', 'nice', 'Offices_stores', 4466.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 534.00, 'new', 'gukorera', 'naha=====', 61, '2019-07-05 21:35:23'),
 (34, 'fayzo', '2019_98dsc_.jpg', '2019_51apas.jpg', '', '', 'gud shape', 'Offices_stores', 4353600.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 540.00, '', 'imfite byose', 'hejuru no haasi=====', 61, '2019-07-05 21:36:19'),
 (35, 'fayzo', '2019_89feat.jpg', '2019_50f296.jpg', '', '', 'gud', 'Offices_stores', 43500.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 450.00, '', 'aho gukorera', 'imfite ibyumba byinshi=====', 61, '2019-07-05 21:37:35'),
-(36, 'fayzo', '2019_551807.jpg', '2019_241905.jpg', '', '', 'it is good shape', 'House_For_sale', 59997.00, '05984954', 'RW', '1', '102', '1020803', '10208', '102080302', 'empty', 0, 0.00, 'empty', 'ni nziza', 'ifite na jardin=====', 61, '2019-08-14 12:59:54');
+(36, 'fayzo', '2019_551807.jpg', '2019_241905.jpg', '', '', 'it is good shape', 'House_For_sale', 59997.00, '05984954', 'RW', '1', '102', '1020803', '10208', '102080302', 'sold', 0, 0.00, 'new', 'ni nziza', 'ifite na jardin=====', 61, '2019-08-14 12:59:54');
 
 -- --------------------------------------------------------
 
@@ -3756,11 +3759,9 @@ INSERT INTO `likes` (`like_id`, `like_by`, `like_on`) VALUES
 (7, 66, 408),
 (8, 61, 411),
 (9, 66, 406),
-(10, 61, 416),
-(11, 61, 419),
 (12, 0, 418),
-(13, 0, 417),
-(14, 66, 419);
+(13, 61, 413),
+(14, 61, 421);
 
 -- --------------------------------------------------------
 
@@ -3971,18 +3972,69 @@ INSERT INTO `notification` (`notification_id`, `notification_for`, `notification
 (110, 61, 66, 406, 'likes', '2019-07-31 19:22:09', 1),
 (111, 61, 66, 406, 'retweet', '2019-07-31 19:22:20', 1),
 (112, 61, 66, 406, 'retweet', '2019-07-31 19:22:20', 1),
-(113, 66, 61, 415, 'mention', '2019-07-31 22:31:09', 1),
-(114, 61, 66, 416, 'mention', '2019-07-31 22:38:03', 1),
-(115, 66, 61, 417, 'mention', '2019-07-31 22:38:55', 1),
-(116, 66, 61, 416, 'likes', '2019-07-31 22:39:01', 1),
-(117, 66, 61, 416, 'retweet', '2019-07-31 22:39:07', 1),
-(118, 66, 61, 416, 'retweet', '2019-07-31 22:39:07', 1),
-(119, 61, 66, 419, 'mention', '2019-07-31 22:41:17', 1),
-(120, 66, 61, 419, 'likes', '2019-07-31 22:42:40', 1),
 (121, 66, 0, 418, 'likes', '2019-08-02 03:40:37', 1),
-(122, 61, 0, 417, 'likes', '2019-08-02 03:40:42', 1),
-(123, 66, 61, 419, 'retweet', '2019-08-07 08:47:28', 1),
-(124, 66, 61, 419, 'retweet', '2019-08-07 08:47:28', 1);
+(122, 66, 61, 413, 'likes', '2019-08-25 08:07:04', 0),
+(123, 66, 61, 421, 'likes', '2019-08-25 08:19:25', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post_comment`
+--
+
+CREATE TABLE `post_comment` (
+  `comment_id_` int(11) NOT NULL,
+  `comment_` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comment_on_` int(11) NOT NULL,
+  `comment_by_` int(11) NOT NULL,
+  `comment_at_` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `post_comment`
+--
+
+INSERT INTO `post_comment` (`comment_id_`, `comment_`, `comment_on_`, `comment_by_`, `comment_at_`) VALUES
+(1, 'bite', 1, 61, '2019-08-25 07:54:16'),
+(2, 'uraho', 1, 61, '2019-08-25 08:15:37');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post_dislike`
+--
+
+CREATE TABLE `post_dislike` (
+  `like_id_` int(11) NOT NULL,
+  `like_on_` int(11) NOT NULL,
+  `like_by_` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `post_dislike`
+--
+
+INSERT INTO `post_dislike` (`like_id_`, `like_on_`, `like_by_`) VALUES
+(1, 1, 61);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post_like`
+--
+
+CREATE TABLE `post_like` (
+  `like_id_` int(11) NOT NULL,
+  `like_on_` int(11) NOT NULL,
+  `like_by_` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `post_like`
+--
+
+INSERT INTO `post_like` (`like_id_`, `like_on_`, `like_by_`) VALUES
+(1, 1, 61);
 
 -- --------------------------------------------------------
 
@@ -4063,6 +4115,9 @@ CREATE TABLE `rwandahotel` (
   `title_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `author_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` int(11) NOT NULL,
+  `price_discount` float(10,2) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `banner` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ranges` double(10,2) NOT NULL,
   `text_` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `photo_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -4084,10 +4139,10 @@ CREATE TABLE `rwandahotel` (
 -- Dumping data for table `rwandahotel`
 --
 
-INSERT INTO `rwandahotel` (`hotel_id`, `title_`, `author_`, `price`, `ranges`, `text_`, `photo_`, `other_photo_`, `video_`, `youtube_`, `country`, `location_province`, `location_districts`, `location_Sector`, `location_cell`, `location_village`, `phone_`, `user_id_`, `created_on_`) VALUES
-(26, 'milles collins', 'jean damour', 189, 6.50, 'gud', '2019_37cs-1.jpg', '2019_14cs-1.jpg=2019_61cs-2.jpg=2019_37cs-3.jpg=2019_13cs-5.jpg=2019_44cs-6.jpg=2019_11cs-7.jpg', '', '', 'RW', 'kigali city', 'Gasabo', 'Boneza', 'Kicukiro', 'amajyambere', '07874254254', 61, '2019-07-21 12:23:51'),
-(27, 'milles collins', 'jean damour', 189, 6.50, 'gud', '2019_83cs-1.jpg', '2019_54cs-1.jpg=2019_50cs-2.jpg=2019_31cs-3.jpg=2019_78cs-5.jpg=2019_88cs-6.jpg=2019_10cs-7.jpg', '', '', 'RW', 'kigali city', 'Gasabo', 'Boneza', 'Kicukiro', 'amajyambere', '07874254254', 61, '2019-07-21 12:24:00'),
-(28, 'milles collins', 'jean damour', 189, 6.50, 'gud', '2019_42cs-1.jpg', '2019_54cs-1.jpg=2019_85cs-2.jpg=2019_74cs-3.jpg=2019_32cs-5.jpg=2019_50cs-6.jpg=2019_37cs-7.jpg', '', '', 'RW', 'kigali city', 'Gasabo', 'Boneza', 'Kicukiro', 'amajyambere', '07874254254', 61, '2019-07-21 12:24:04');
+INSERT INTO `rwandahotel` (`hotel_id`, `title_`, `author_`, `price`, `price_discount`, `discount`, `banner`, `ranges`, `text_`, `photo_`, `other_photo_`, `video_`, `youtube_`, `country`, `location_province`, `location_districts`, `location_Sector`, `location_cell`, `location_village`, `phone_`, `user_id_`, `created_on_`) VALUES
+(26, 'milles collins', 'jean damour', 189, 340.00, 6, 'new_arrival', 6.50, 'gud', '2019_37cs-1.jpg', '2019_14cs-1.jpg=2019_61cs-2.jpg=2019_37cs-3.jpg=2019_13cs-5.jpg=2019_44cs-6.jpg=2019_11cs-7.jpg', '', '', 'RW', 'kigali city', 'Gasabo', 'Boneza', 'Kicukiro', 'amajyambere', '07874254254', 61, '2019-07-21 12:23:51'),
+(27, 'milles collins', 'jean damour', 189, 2420.00, 14, 'new', 6.50, 'gud', '2019_83cs-1.jpg', '2019_54cs-1.jpg=2019_50cs-2.jpg=2019_31cs-3.jpg=2019_78cs-5.jpg=2019_88cs-6.jpg=2019_10cs-7.jpg', '', '', 'RW', 'kigali city', 'Gasabo', 'Boneza', 'Kicukiro', 'amajyambere', '07874254254', 61, '2019-07-21 12:24:00'),
+(28, 'milles collins', 'jean damour', 189, 4250.00, 46, 'great_deal', 6.50, 'gud', '2019_42cs-1.jpg', '2019_54cs-1.jpg=2019_85cs-2.jpg=2019_74cs-3.jpg=2019_32cs-5.jpg=2019_50cs-6.jpg=2019_37cs-7.jpg', '', '', 'RW', 'kigali city', 'Gasabo', 'Boneza', 'Kicukiro', 'amajyambere', '07874254254', 61, '2019-07-21 12:24:04');
 
 -- --------------------------------------------------------
 
@@ -4123,6 +4178,44 @@ CREATE TABLE `rwandalandscapes` (
 INSERT INTO `rwandalandscapes` (`landscape_id`, `title_`, `author_`, `categories_of_landscapes`, `text_`, `photo_`, `other_photo_`, `video_`, `youtube_`, `country`, `location_province`, `location_districts`, `location_Sector`, `location_cell`, `location_village`, `phone_`, `user_id_`, `created_on_`) VALUES
 (25, 'gud', 'fay', 'Kigali-city', 'gud', '2019_23capt.png', '2019_10capt.png', '', '', 'AL', '1', '102', '10208', '1020803', '102080302', '087554r', 61, '2019-07-29 11:16:29'),
 (26, 'niv', 'fa', 'Province', 'guid', '2019_561.jpg', '2019_291prev.jpg', '', '', 'PS', '2', '201', '20101', '2010101', '201010102', '342343', 61, '2019-07-29 11:56:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rwandamotel`
+--
+
+CREATE TABLE `rwandamotel` (
+  `motel_id` int(11) NOT NULL,
+  `title_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `author_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` float(10,2) NOT NULL,
+  `price_discount` float(10,2) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `banner` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ranges` double(10,2) NOT NULL,
+  `text_` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `other_photo_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `video_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `youtube_` varchar(2002) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_province` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_districts` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_Sector` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_cell` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_village` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id_` int(11) NOT NULL,
+  `created_on_` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `rwandamotel`
+--
+
+INSERT INTO `rwandamotel` (`motel_id`, `title_`, `author_`, `price`, `price_discount`, `discount`, `banner`, `ranges`, `text_`, `photo_`, `other_photo_`, `video_`, `youtube_`, `country`, `location_province`, `location_districts`, `location_Sector`, `location_cell`, `location_village`, `phone_`, `user_id_`, `created_on_`) VALUES
+(29, 'romalo', 'fayzo', 170.00, 100.00, 10, 'new_arrival', 7.00, 'it is gud', '2019_98fam0.png', '2019_97fami.png', '', '', 'RW', 'Northern province', 'Gasabo', 'Bugarama', 'muhobe', 'kamuhima', '0787384312', 61, '2019-08-25 12:12:58');
 
 -- --------------------------------------------------------
 
@@ -5079,14 +5172,11 @@ INSERT INTO `tweets` (`tweet_id`, `status`, `tweetBy`, `retweet_id`, `retweet_by
 (410, '@karim', 61, 408, 66, '', 1, 1, '2019-07-31 19:09:10', 'gud'),
 (411, '@fayzo', 66, 0, 0, '', 1, 1, '2019-07-31 19:09:24', ''),
 (412, '@fayzo', 66, 411, 61, '', 1, 1, '2019-07-31 19:15:25', 'gud'),
-(413, '@fayzo', 66, 0, 0, '', 0, 0, '2019-07-31 19:21:45', ''),
+(413, '@fayzo', 66, 0, 0, '', 1, 0, '2019-07-31 19:21:45', ''),
 (414, '@karim', 61, 406, 66, '', 1, 1, '2019-07-31 19:22:20', 'ggs'),
-(415, '@karim', 61, 0, 0, '', 0, 0, '2019-07-31 22:31:09', ''),
-(416, '@fayzo\nbite', 66, 0, 0, '', 1, 1, '2019-07-31 22:38:03', ''),
-(417, '@karim', 61, 0, 0, '', 1, 0, '2019-07-31 22:38:55', ''),
 (418, '@fayzo\nbite', 66, 416, 61, '', 2, 1, '2019-07-31 22:39:07', 'gyud'),
-(419, '@fayzo', 66, 0, 0, '', 2, 1, '2019-07-31 22:41:17', ''),
-(420, '@fayzo', 66, 419, 61, '', 1, 1, '2019-08-07 08:47:28', 'gudz');
+(420, '@fayzo', 66, 419, 61, '', 1, 1, '2019-08-07 08:47:28', 'gudz'),
+(421, '@fayzo', 66, 419, 66, '', 3, 2, '2019-08-24 11:29:33', 'bite');
 
 -- --------------------------------------------------------
 
@@ -5148,10 +5238,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `password`, `gender`, `chat`, `career`, `country`, `date_birth`, `date_registry`, `last_login`, `counts_login`, `forgotUsernameCounts`, `forgotUsernameCountsTimesHeCreates`, `forgotUsernameCountsTimesHeCreatespassword`, `profile_img`, `profile_img_crop`, `cover_img`, `background`, `language`, `color`, `education`, `diploma`, `skills`, `location`, `hobbys`, `followers`, `following`, `approval`, `company_education`, `type_of_business`, `address`, `size_of_people`, `companyname`, `overview`, `history`, `team`, `legal_structure`, `location_facilities`, `mission_statement`, `website`, `unemplyoment`, `categories_fields`, `phone`) VALUES
-(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'off', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-08-21 00:34:59', 454, 0, 10, 10, '907baby3.png', '', '702caus.jpg', 'chair', '', 'purple-green', 'lycee', 'project', 'web', 'BR', 'styuding', 8, 5, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
-(64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-08-21 00:35:54', 54, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
+(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'off', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-08-25 15:31:17', 478, 0, 10, 10, '907baby3.png', '', '702caus.jpg', 'chair', '', 'blue', 'lycee', 'project', 'web', 'BR', 'styuding', 8, 5, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
+(64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-08-24 12:07:23', 61, 0, 0, 0, '', '', '', 'chair', '', 'purple-green', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
 (65, 'karisa', 'bosco', 'bosco', 'faysal@gmail.com', 'bosco', 'Male', '', '', 'RW', '2019-05-03', '2019-05-02', '2019-05-27 21:50:00', 8, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 2, 2, 'off', '', '', '', '', 'LAMBORGIN', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
-(66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-08-20 01:17:10', 103, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'chair', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
+(66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-08-25 03:41:08', 109, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'chair', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
 (67, 'musema', 'musema', 'musema', 'musemafaysal@gmail.com', 'musema', 'Male', '', '', 'RW', '2019-05-06', '2019-05-06', '2019-05-21 14:53:30', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 2, 'off', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
 (68, 'zidani', 'zidani', 'zidanii', 'zidani@gmail.com', 'zidani', 'Male', '', '', 'FR', '2019-05-06', '2019-05-22', '2019-05-30 11:54:50', 5, 0, 0, 0, '855fays.gif', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
 (69, 'rihana', 'rihana', 'rihana', 'rihana@gmail.com', 'rihana', 'Female', 'off', '', 'AF', '1988-03-18', '2019-06-02', '2019-08-20 01:18:22', 25, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 3, 3, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
@@ -5159,7 +5249,7 @@ INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `p
 (71, 'saleh', 'saleh', 'saleh', 'saleh@gmail.com', 'saleh', 'Male', 'on', '', 'AQ', '2019-05-31', '2019-06-02', '2019-06-02 14:50:22', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
 (72, 'riri', 'aline', 'aline', 'aline@gmail.com', 'aline', 'Male', 'off', '', 'RW', '2019-07-01', '2019-07-01', '2019-07-02 08:52:01', 5, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
 (73, 'antonia', 'griezman', 'antonia', 'antonia@gmail.com', 'fafa', 'Male', 'off', '', 'FR', '2019-07-01', '2019-07-02', '2019-07-31 17:42:18', 3, 0, 0, 1, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
-(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-08-20 17:57:02', 15, 0, 0, 0, '', '', '', 'chair', '', 'green', '', '', '', '', '', 1, 6, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
+(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-08-20 17:57:02', 15, 0, 0, 0, '', '', '', 'chair', '', 'purple', '', '', '', '', '', 1, 6, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
 (75, 'FAFA', 'FAFA', 'FAFA', 'FAFA@yahoo.com', 'FAFA', 'Male', 'off', '', '', '2019-08-03', '2019-08-03', '2019-08-03 04:29:40', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (76, 'riri', 'riri', 'riri', 'riri@yahoo.com', 'riri', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 06:58:18', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (77, 'mani', 'mani', 'mani', 'mani@yahoo.com', 'mani', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 07:00:29', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
@@ -17967,6 +18057,24 @@ ALTER TABLE `notification`
   ADD PRIMARY KEY (`notification_id`);
 
 --
+-- Indexes for table `post_comment`
+--
+ALTER TABLE `post_comment`
+  ADD PRIMARY KEY (`comment_id_`);
+
+--
+-- Indexes for table `post_dislike`
+--
+ALTER TABLE `post_dislike`
+  ADD PRIMARY KEY (`like_id_`);
+
+--
+-- Indexes for table `post_like`
+--
+ALTER TABLE `post_like`
+  ADD PRIMARY KEY (`like_id_`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -17996,6 +18104,12 @@ ALTER TABLE `rwandahotel`
 --
 ALTER TABLE `rwandalandscapes`
   ADD PRIMARY KEY (`landscape_id`);
+
+--
+-- Indexes for table `rwandamotel`
+--
+ALTER TABLE `rwandamotel`
+  ADD PRIMARY KEY (`motel_id`);
 
 --
 -- Indexes for table `sale`
@@ -18128,7 +18242,7 @@ ALTER TABLE `blog`
 -- AUTO_INCREMENT for table `blog_comment`
 --
 ALTER TABLE `blog_comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `blog_comment_like`
@@ -18140,7 +18254,7 @@ ALTER TABLE `blog_comment_like`
 -- AUTO_INCREMENT for table `blog_like`
 --
 ALTER TABLE `blog_like`
-  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `car`
@@ -18152,7 +18266,7 @@ ALTER TABLE `car`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `comment_crowfunding`
@@ -18314,7 +18428,25 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `notification_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `notification_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+
+--
+-- AUTO_INCREMENT for table `post_comment`
+--
+ALTER TABLE `post_comment`
+  MODIFY `comment_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `post_dislike`
+--
+ALTER TABLE `post_dislike`
+  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `post_like`
+--
+ALTER TABLE `post_like`
+  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -18339,6 +18471,12 @@ ALTER TABLE `rwandahotel`
 --
 ALTER TABLE `rwandalandscapes`
   MODIFY `landscape_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `rwandamotel`
+--
+ALTER TABLE `rwandamotel`
+  MODIFY `motel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `sale`
@@ -18422,7 +18560,7 @@ ALTER TABLE `tutorial`
 -- AUTO_INCREMENT for table `tweets`
 --
 ALTER TABLE `tweets`
-  MODIFY `tweet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=421;
+  MODIFY `tweet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=422;
 
 --
 -- AUTO_INCREMENT for table `users`
