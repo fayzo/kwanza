@@ -239,6 +239,8 @@
    <script src="<?php echo BASE_URL_LINK ;?>js/donation.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/house_delete.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/car_delete.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/motel_delete.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/hotel_delete.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/sale_delete.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/food_delete.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/domesticsHelper_profile_add.js"></script>
@@ -540,10 +542,12 @@ $('.price_range').jRange({
 
   $('.price_range').change(function(){
           var price_range = $('.price_range').val();
+          var user_id = $('.price_range-user_id').val();
+
             $.ajax({
                 type: 'POST',
                 url: 'core/ajax_db/hotel_add.php',
-                data:'price_range='+price_range,
+                data:'price_range='+price_range+'&user_id='+user_id,
                 beforeSend: function () {
                     $('.container').css("opacity", ".5");
                 },
@@ -571,10 +575,12 @@ $('.price_range0').jRange({
 
   $('.price_range0').change(function(){
           var price_range = $('.price_range0').val();
+          var user_id = $('.price_range-user_id').val();
+
             $.ajax({
                 type: 'POST',
                 url: 'core/ajax_db/motel_add.php',
-                data:'price_range='+price_range,
+                data:'price_range='+price_range+'&user_id='+user_id,
                 beforeSend: function () {
                     $('.container').css("opacity", ".5");
                 },

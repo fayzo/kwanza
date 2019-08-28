@@ -38,33 +38,50 @@ class Motel extends Food{
                         <div class="card-header text-center main-active p-1">
                             <h5 class="card-title">Search</h5>
                         </div>
-                        <div class="card-body">
-                            <div class="form-row">
+                        <div class="card-body bg-warning">
+                           <div class="form-row">
                             <div class="col">
                                 <label for="">Destination</label>
-                                <input type="text"
-                                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="Rwanda">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                     <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Rwanda">
+                                </div>
                             </div>
                             <div class="col">
                                 <label for="">Check-in date</label>
-                                <input type="date"
-                                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="Rwanda">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-calendar mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                     <input type="date" class="form-control" name="" id="" aria-describedby="helpId">
+                                </div>
                             </div>
                             <div class="col">
                                 <label for="">Check-out date</label>
-                                <input type="date"
-                                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="Rwanda">
+                                 <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-calendar mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                     <input type="date" class="form-control" name="" id="" aria-describedby="helpId">
+                                </div>
                             </div>
                             </div>
                             <div class="form-group">
                                 <label for="">Night-stay</label>
-                                <select class="form-control" name="" id="">
-                                <option>1 adult</option>
-                                <option>2 adults</option>
-                                <option>3 adults</option>
-                                <option>4 adults</option>
-                                <option>5 adults</option>
-                                </select>
+                                 <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-bed mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                    <select class="form-control" name="" id="">
+                                        <option>1 adult</option>
+                                        <option>2 adults</option>
+                                        <option>3 adults</option>
+                                        <option>4 adults</option>
+                                        <option>5 adults</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
@@ -271,6 +288,7 @@ class Motel extends Food{
                      </div>
                      <div class="col-md-4">
                          <h5  class="text-center">Rwanda Motels </h5>
+                         <input type="hidden" class="price_range-user_id" value="<?php echo $user_id; ?>" />
                           <div class="filter-panel mt-4">
                               <p><input type="hidden" id="price" class="price_range0" value="0,500" /></p>
                               <!-- <input type="button" onclick="filterProducts()" value="FILTER" /> -->
@@ -318,6 +336,8 @@ class Motel extends Food{
                 <div class="card-body">
                 <span class="motel-show"></span>
                   <div id="productContainer">
+                <?php if($query->num_rows > 0){ ?>
+
                   <table class="table table-hover table-inverse">
                   <tbody>
                 <ul class="timeline timeline-inverse"> 
@@ -328,10 +348,8 @@ class Motel extends Food{
                     <?php }else { echo ''; ?>
                         <!-- <span class="bg-info text-light" style="position: absolute;font-size: 11px; padding: 2px; margin-left: 10px;"> 0% </span>  -->
                     <?php } ?>
-                <div class="row timeline-item">
-
-                    <div class="col-md-6">
-                       <div class="card flex-md-row h-md-100 border-0 mb-3">
+                
+                       <div class=" timeline-item card flex-md-row h-md-100  border-top-0 border-left-0 border-right-0 mb-3 borders-bottoms pb-2">
                               <!-- <img class="card-img-left flex-auto d-none d-lg-block" height="120px" width="120px" src="< ?php echo BASE_URL_PUBLIC.'uploads/Rwandamotel/'.$row['photo_']; ?>" alt="Card image cap"> -->
                           <div class='card-img-left flex-auto d-none d-lg-block' style="background: url('<?php echo BASE_URL_PUBLIC.'uploads/Rwandamotel/'.$row['photo_']; ?>')no-repeat center center;background-size:cover;height:120px;width:120px">
                         <?php $banner = $row['banner'];
@@ -363,7 +381,11 @@ class Motel extends Food{
                             
                         } ?>
                         </div>
-                            <div class="card-body d-flex flex-column align-items-start pt-0">
+                        <div class="card-body pt-0">
+                            <span id="response<?php echo $row["motel_id"];?>"></span>
+                         <div class="row">
+                            <div class="col-md-6 pr-0">
+
                               <h5 class="text-primary mb-0">
                               <a class="text-primary" href="javascript:void(0)"  id="motel-readmore" data-motel="<?php echo $row['motel_id']; ?>"><?php echo $row['title_']; ?></a>
                               </h5>
@@ -381,20 +403,19 @@ class Motel extends Food{
                                 <i class="fa fa-car" aria-hidden="true"></i>
                                 <i class="fa fa-wifi" aria-hidden="true"></i>
                               </div>
-                          </div><!-- card-body -->
-                      </div><!-- card -->
-                    </div>
+                          </div><!-- col -->
+                      
 
-                     <div class="col-md-2">
+                     <div class="col-md-2 p-0">
                         <?php if($row['price_discount'] != 0){ ?><h5 class="mt-4 text-danger text-right mb-0" style="text-decoration: line-through;"> US<i class="fa fa-usd" aria-hidden="true"></i><?php echo number_format($row['price_discount']); ?></h5><?php } ?>
                         <h5 class="mt-2 text-success text-right mb-0"> US<i class="fa fa-usd" aria-hidden="true"></i><?php echo number_format($row['price']); ?></h5>
                           <div class="text-muted text-right mt-0">Per night</div> 
                       </div>
-                      <div class="col-md-2 text-center">
+                      <div class="col-md-2 text-center pr-0">
                            <h5 class="mt-4 text-muted "> Good <span class="badge badge-primary"><?php echo $row['ranges']; ?></span></h5>
                       </div>
-                      <div class="col-md-2">
-                      <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-4"><i class="fa fa-check" aria-hidden="true"></i> Book Now</button>
+                      <div class="col-md-2 pr-0">
+                      <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-4"><i class="fa fa-check text-white" aria-hidden="true"></i> Book Now</button>
                       <?php if($user_id == $row['user_id_']){ ?>
                                     <ul class="list-inline ml-2  float-right" style="list-style-type: none;">  
 
@@ -404,7 +425,7 @@ class Motel extends Food{
                                                         <a href="javascript:void(0)" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                                                         <ul style="list-style-type: none; margin:0px; margin:0px;width:250px;text-align:center;" >
                                                             <li style="list-style-type: none; margin:0px;"> 
-                                                            <label class="deletefood"  data-food="<?php echo $row["hotel_id"];?>"  data-user="<?php echo $row["user_id_"];?>">Delete </label>
+                                                            <label class="deletemotel"  data-motel="<?php echo $row["motel_id"];?>"  data-user="<?php echo $row["user_id_"];?>">Delete </label>
                                                             </li>
 
                                                             <li style="list-style-type: none; margin:0px;"> 
@@ -413,7 +434,7 @@ class Motel extends Food{
                                                                 <div class="col">
                                                                         Banner
                                                                         <div class="input-group">
-                                                                              <select class="form-control" name="banner" id="banner<?php echo $row["hotel_id"];?>">
+                                                                              <select class="form-control" name="banner" id="banner<?php echo $row["motel_id"];?>">
                                                                                 <option value="<?php echo $row['banner']; ?>" selected><?php echo $row['banner']; ?></option>
                                                                                 <option value="new">New</option>
                                                                                 <option value="new_arrival">New arrival</option>
@@ -435,7 +456,7 @@ class Motel extends Food{
                                                                 <div class="col">
                                                                     discount %
                                                                     <div class="input-group">
-                                                                        <input  type="number" class="form-control form-control-sm" name="discount_change" id="discount_change<?php echo $row["hotel_id"];?>" value="<?php echo $row["discount"];?>">
+                                                                        <input  type="number" class="form-control form-control-sm" name="discount_change" id="discount_change<?php echo $row["motel_id"];?>" value="<?php echo $row["discount"];?>">
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1" >%</span>
                                                                         </div>
@@ -451,7 +472,7 @@ class Motel extends Food{
                                                                 <div class="col">
                                                                     discount price
                                                                     <div class="input-group">
-                                                                        <input  type="number" class="form-control form-control-sm" name="discount_price" id="discount_price<?php echo $row["hotel_id"];?>" value="<?php echo $row["price_discount"];?>">
+                                                                        <input  type="number" class="form-control form-control-sm" name="discount_price" id="discount_price<?php echo $row["motel_id"];?>" value="<?php echo $row["price_discount"];?>">
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1">$</span>
                                                                         </div>
@@ -462,7 +483,7 @@ class Motel extends Food{
                                                                     <div class="col">
                                                                         </div>
                                                                     <div class="input-group">
-                                                                        <input  type="number" class="form-control form-control-sm" name="price" id="price<?php echo $row["hotel_id"];?>" value="<?php echo $row["price"];?>">
+                                                                        <input  type="number" class="form-control form-control-sm" name="price" id="price<?php echo $row["motel_id"];?>" value="<?php echo $row["price"];?>">
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text" style="padding: 0px 10px;"
                                                                                 aria-label="Username" aria-describedby="basic-addon1" >$</span>
@@ -474,7 +495,7 @@ class Motel extends Food{
                                                             </li>
 
                                                             <li style="list-style-type: none;"> 
-                                                            <label for="discount" class="update-food-btn" data-food="<?php echo $row["hotel_id"];?>" data-user="<?php echo $row["user_id_"];?>">submit</label>
+                                                            <label for="discount" class="update-motel-btn" data-motel="<?php echo $row["motel_id"];?>" data-user="<?php echo $row["user_id_"];?>">submit</label>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -482,9 +503,11 @@ class Motel extends Food{
                                             </li>
                                     </ul>
                                 <?php } ?>
-                    </div>
-                    <hr class="bg-info mt-0 mb-1 " style="width:95%;">
+                  </div><!-- col -->
                 </div><!-- row -->
+              </div><!-- card-body -->
+            </div><!-- card -->
+
             </li>
                <?php } ?>
             <li>
@@ -493,6 +516,10 @@ class Motel extends Food{
         </ul>
 </tbody>
 </table>
+<?php }else{
+  echo 'No Hotels';
+} ?>
+
                     </div><!-- productContainer -->
                   </div><!-- card-body -->
               </div><!-- card -->
@@ -544,6 +571,92 @@ class Motel extends Food{
         $array= array(0,$total_post);
         $total_posts= array_sum($array);
         echo $total_posts;
+    }
+
+    
+    public function motel_getPopupTweet($user_id,$motel_id,$motel_user_id)
+    {
+        $mysqli= $this->database;
+        $result= $mysqli->query("SELECT * FROM users U Left JOIN rwandamotel B ON B. user_id_ = u. user_id WHERE B. motel_id = $motel_id AND B. user_id_ = $motel_user_id ");
+        // var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
+        while ($row= $result->fetch_array()) {
+            # code...
+            return $row;
+        }
+    }
+
+    public function update_motel($banner,$discount_change,$discount_price,$price,$motel_id)
+    {
+        $mysqli= $this->database;
+        $query= "UPDATE rwandamotel SET banner= '$banner', discount = $discount_change ,price_discount = $discount_price, price = $price WHERE motel_id= $motel_id ";
+        $mysqli->query($query);
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center" style="font-size:12px;padding:2px;">
+                    <button class="close" data-dismiss="alert" type="button" style="top:-6px;">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center" style="font-size:12px;padding:2px;">
+                    <button class="close" data-dismiss="alert" type="button"  style="top:-6px;">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail to Edit !!!</strong>
+                </div>');
+        }
+    }
+     
+    public function deleteLikesMotel($motel_id,$user_id)
+    {
+        $mysqli= $this->database;
+        $query="DELETE FROM rwandamotel WHERE motel_id = $motel_id and user_id_ = $user_id ";
+
+        $query1="SELECT * FROM rwandamotel WHERE motel_id = $motel_id and user_id_ = $user_id ";
+
+        $result= $mysqli->query($query1);
+        $rows= $result->fetch_assoc();
+
+        if(!empty($rows['photo_'])){
+            $photo=$rows['photo_'].'='.$rows['other_photo_'];
+            $expodefile = explode("=",$photo);
+            $fileActualExt= array();
+            for ($i=0; $i < count($expodefile); ++$i) { 
+                $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
+            }
+            $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+            if (array_diff($fileActualExt,$allower_ext) == false) {
+                $expode = explode("=",$photo);
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/Rwandamotel/';
+                for ($i=0; $i < count($expode); ++$i) { 
+                      unlink($uploadDir.$expode[$i]);
+                }
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp4') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/Rwandamotel/';
+                      unlink($uploadDir.$photo);
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp3') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/Rwandamotel/';
+                      unlink($uploadDir.$photo);
+            }
+        }
+
+        $query= $mysqli->query($query);
+        // var_dump("ERROR: Could not able to execute $query.".mysqli_error($mysqli));
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS DELETE</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail to delete !!!</strong>
+                </div>');
+        }
     }
 }
 

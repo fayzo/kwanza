@@ -25,54 +25,7 @@
 
              <div class="col-md-3 mb-3">
                  <!-- Profile Image -->
-                 <div class="info-box mb-3">
-                     <div class="info-inner">
-                         <div class="info-in-head">
-                             <!-- PROFILE-COVER-IMAGE -->
-                             <img src="<?php echo BASE_URL_LINK ;?>image/img/photo1.png"> </div>
-                         <!-- info in head end -->
-                         <div class="info-in-body">
-                             <div class="in-b-box">
-                                 <div class="in-b-img">
-                                     <!-- PROFILE-IMAGE -->
-                                     <img src="<?php echo BASE_URL_LINK ;?>image/img/user1-128x128.jpg"> </div>
-                             </div><!--  in b box end-->
-                             <div class="info-body-name">
-                                 <div class="in-b-name">
-                                     <div><a href="<?php echo PROFILE ;?>">Nina Mcintire</a></div>
-                                     <span><small><a href="<?php echo PROFILE ;?>">Software Engineer</a></small></span>
-                                 </div><!-- in b name end-->
-                             </div><!-- info body name end-->
-                         </div><!-- info in body end-->
-                         <div class="info-in-footer">
-                             <div class="number-wrapper">
-                                 <div class="num-box">
-                                     <div class="num-head">
-                                         POSTS
-                                     </div>
-                                     <div class="num-body">
-                                         19 </div>
-                                 </div>
-                                 <div class="num-box">
-                                     <div class="num-head">
-                                         FOLLOWING
-                                     </div>
-                                     <div class="num-body">
-                                         <span class="count-following">3</span>
-                                     </div>
-                                 </div>
-                                 <div class="num-box">
-                                     <div class="num-head">
-                                         FOLLOWERS
-                                     </div>
-                                     <div class="num-body">
-                                         <span class="count-followers">3</span>
-                                     </div>
-                                 </div>
-                             </div><!-- mumber wrapper-->
-                         </div><!-- info in footer -->
-                     </div><!-- info inner end -->
-                 </div><!-- info box -->
+                 <?php echo $home->userProfile($user_id); ?>
              </div>
              <!-- /.col -->
 

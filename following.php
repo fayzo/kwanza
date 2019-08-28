@@ -92,65 +92,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <!-- Profile Image -->
-                        <div class="info-box mb-3">
-                            <div class="info-inner">
-                                <div class="info-in-head">
-                                    <!-- PROFILE-COVER-IMAGE -->
-                                     <?php if (!empty($profileData['cover_img'])) {?>
-                                      <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $profileData['cover_img'] ;?>" alt="User Image">
-                                      <?php  }else{ ?>
-                                        <img src="<?php echo BASE_URL_LINK.NO_COVER_IMAGE_URL ;?>"  alt="User Image">
-                                      <?php } ?>
-                                </div>
-                                <!-- info in head end -->
-                                <div class="info-in-body">
-                                    <div class="in-b-box">
-                                        <div class="in-b-img">
-                                            <!-- PROFILE-IMAGE -->
-                                             <?php if (!empty($profileData['profile_img'])) {?>
-                                              <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $profileData['profile_img'] ;?>"  alt="User Image">
-                                              <?php  }else{ ?>
-                                                <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
-                                              <?php } ?>
-                                        </div>
-                                    </div><!--  in b box end-->
-                                    <div class="info-body-name">
-                                        <div class="in-b-name">
-                                            <div><a href="<?php echo PROFILE ;?>"><?php echo $profileData['firstname']." ".$profileData['lastname'] ;?></a></div> <!-- Nina Mcintire -->
-                                            <span><small><a href="<?php echo PROFILE ;?>"><?php echo $profileData['career'] ;?></a></small></span>
-                                        </div><!-- in b name end-->
-                                    </div><!-- info body name end-->
-                                </div><!-- info in body end-->
-                                <div class="info-in-footer">
-                                    <div class="number-wrapper">
-                                        <div class="num-box">
-                                            <div class="num-head">
-                                                POSTS
-                                            </div>
-                                            <div class="num-body">
-                                               <?php echo $home->countsPosts($user_id);?>
-                                            </div>
-                                        </div>
-                                        <div class="num-box">
-                                            <div class="num-head">
-                                                FOLLOWING
-                                            </div>
-                                            <div class="num-body">
-                                                <span class="count-following"><?php echo $profileData['following'] ;?></span>
-                                            </div>
-                                        </div>
-                                        <div class="num-box">
-                                            <div class="num-head">
-                                                FOLLOWERS
-                                            </div>
-                                            <div class="num-body">
-                                                <span class="count-followers"><?php echo $profileData['followers'] ;?></span>
-                                            </div>
-                                        </div>
-                                    </div><!-- mumber wrapper-->
-                                </div><!-- info in footer -->
-                            </div><!-- info inner end -->
-                        </div><!-- info box -->
+                        <?php echo $home->userProfile($user_id); ?>
                     </div><!-- col  -->
 
                     <div class="col-md-12 mb-3">

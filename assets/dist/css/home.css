@@ -125,7 +125,7 @@
 /* home message post */
 .message-color {
     background-color: #4c52440e;
-    padding-bottom: 0rem;
+    /* padding-bottom: 0rem; */
 }
 
 .card-body textarea {

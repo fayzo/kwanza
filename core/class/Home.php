@@ -875,6 +875,71 @@ class Home extends Comment {
         return $contacts; // Return the $contacts array
     }
 
+    public function userProfile($user_id)
+    {
+        $user= $this->userData($user_id);
+    ?>
+       <div class="info-box mb-3">
+                    <div class="info-inner">
+                        <div class="info-in-head">
+                            <!-- PROFILE-COVER-IMAGE -->
+                             <?php if (!empty($user['cover_img'])) {?>
+                              <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $user['cover_img'] ;?>" alt="User Image">
+                              <?php  }else{ ?>
+                                <img src="<?php echo BASE_URL_LINK.NO_COVER_IMAGE_URL ;?>"  alt="User Image">
+                              <?php } ?>
+                        </div>
+                        <!-- info in head end -->
+                        <div class="info-in-body">
+                            <div class="in-b-box">
+                                <div class="in-b-img">
+                                    <!-- PROFILE-IMAGE -->
+                                     <?php if (!empty($user['profile_img'])) {?>
+                                      <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $user['profile_img'] ;?>"  alt="User Image">
+                                      <?php  }else{ ?>
+                                        <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
+                                      <?php } ?>
+                                </div>
+                            </div><!--  in b box end-->
+                            <div class="info-body-name">
+                                <div class="in-b-name">
+                                    <div><a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $user['firstname']." ".$user['lastname'] ;?></a></div> <!-- Nina Mcintire -->
+                                    <span><small><a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $user['career'] ;?></a></small></span>
+                                </div><!-- in b name end-->
+                            </div><!-- info body name end-->
+                        </div><!-- info in body end-->
+                        <div class="info-in-footer">
+                            <div class="number-wrapper">
+                                <div class="num-box">
+                                    <div class="num-head">
+                                       POSTS
+                                    </div>
+                                    <div class="num-body">
+                                       <?php echo $this->countsPosts($user_id);?>
+                                    </div>
+                                </div>
+                                <div class="num-box">
+                                    <div class="num-head">
+                                       FOLLOWING
+                                    </div>
+                                    <div class="num-body">
+                                        <span class="count-following"><?php echo $user['following'] ;?></span>
+                                    </div>
+                                </div>
+                                <div class="num-box">
+                                    <div class="num-head">
+                                      FOLLOWERS
+                                    </div>
+                                    <div class="num-body">
+                                        <span class="count-followers"><?php echo $user['followers'] ;?></span>
+                                    </div>
+                                </div>
+                            </div><!-- mumber wrapper-->
+                        </div><!-- info in footer -->
+                    </div><!-- info inner end -->
+                </div><!-- info box -->
+<?php }
+
     public function landscapeSearchJobs($search)
     {
         $mysqli= $this->database;
@@ -1755,7 +1820,7 @@ class Home extends Comment {
                                     </div>
 
                                     <div class="card retweetcolor t-show-popup more" data-tweet="<?php echo $tweet["tweet_id"];?>">
-                                      <div class="card-body ">
+                                      <div class="card-body">
 
                                         <?php 
                                               $filename = $tweet['tweet_image'];
@@ -2771,7 +2836,7 @@ class Home extends Comment {
                                     </div>
 
                                     <div class="card retweetcolor t-show-popup more" data-tweet="<?php echo $tweet["tweet_id"];?>">
-                                      <div class="card-body ">
+                                      <div class="card-body">
                                         <?php if (!empty($tweet['tweet_image'])) {
                                      			    $expode = explode("=",$tweet['tweet_image']); 
                                                     $count = count($expode); ?>

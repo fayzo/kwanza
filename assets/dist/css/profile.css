@@ -345,11 +345,22 @@ input#crop {
 
 /* IMAGE JOBS HOVER */
 .jobHover:hover {
-    background: #999;
+    /* background: #999; */
+    background: #f6f6f6;
 }
 .jobHover:hover span {
-    background: #999;
+    /* background: #999; */
+    background: #f6f6f6;
     color: #191717;
+}
+#black .jobHover:hover {
+    /* background: #999; */
+    background: #3a3636;
+}
+#black .jobHover:hover span {
+    /* background: #999; */
+    background: #3a3636;
+    color: #999;
 }
 .user-jobImgBorder {
     float: left;

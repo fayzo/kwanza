@@ -4,7 +4,7 @@ include('../init.php');
 $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpath($_SERVER['SCRIPT_FILENAME']));
 
 if(isset($_POST['price_range'])){
-    $user_id= $_SESSION['key'];
+    $user_id= $_POST['user_id'];
     //Include database configuration file
     
     //set conditions for filter by price range
@@ -23,25 +23,21 @@ if(isset($_POST['price_range'])){
     
     if($query->num_rows > 0){
         echo "<h4 style='padding: 0px 10px;text-align:center;'>FROM <span style='color:red;'> $priceRangeArr[0] US$ </span> TO <span style='color:red;'> $priceRangeArr[1] US$</span> </h4> 
-           <ul class='timeline timeline-inverse'> ";
+            "; ?>
+            <ul class="timeline timeline-inverse">
+            
+               <?php while($row= $query->fetch_array()) { ?>
 
-        while($row = $query->fetch_assoc()){
-    ?>
-
-             
-                <li class="time-label">
+                  <li class="time-label">
                     <?php if($row['discount'] != 0){ ?>
                         <?php echo $food->foodPercentageDiscount($row['discount']); ?>
                     <?php }else { echo ''; ?>
                         <!-- <span class="bg-info text-light" style="position: absolute;font-size: 11px; padding: 2px; margin-left: 10px;"> 0% </span>  -->
                     <?php } ?>
-                <div class="row timeline-item">
-
-                  
-                    <div class="col-md-6">
-                       <div class="card flex-md-row h-md-100 border-0 mb-3">
-                              <!-- <img class="card-img-left flex-auto d-none d-lg-block" height="80px" width="80px" src="< ?php echo BASE_URL_PUBLIC.'uploads/Rwandamotel/'.$row['photo_']; ?>" alt="Card image cap"> -->
-                         <div class='card-img-left flex-auto d-none d-lg-block' style="background: url('<?php echo BASE_URL_PUBLIC.'uploads/Rwandamotel/'.$row['photo_']; ?>')no-repeat center center;background-size:cover;height:120px;width:120px">
+                
+                       <div class=" timeline-item card flex-md-row h-md-100  border-top-0 border-left-0 border-right-0 mb-3 borders-bottoms pb-2">
+                              <!-- <img class="card-img-left flex-auto d-none d-lg-block" height="120px" width="120px" src="< ?php echo BASE_URL_PUBLIC.'uploads/Rwandamotel/'.$row['photo_']; ?>" alt="Card image cap"> -->
+                          <div class='card-img-left flex-auto d-none d-lg-block' style="background: url('<?php echo BASE_URL_PUBLIC.'uploads/Rwandamotel/'.$row['photo_']; ?>')no-repeat center center;background-size:cover;height:120px;width:120px">
                         <?php $banner = $row['banner'];
                         switch ($banner) {
                             case $banner == 'new':
@@ -71,7 +67,11 @@ if(isset($_POST['price_range'])){
                             
                         } ?>
                         </div>
-                            <div class="card-body d-flex flex-column align-items-start pt-0">
+                        <div class="card-body pt-0">
+                            <span id="response<?php echo $row["motel_id"];?>"></span>
+                         <div class="row">
+                            <div class="col-md-6 pr-0">
+
                               <h5 class="text-primary mb-0">
                               <a class="text-primary" href="javascript:void(0)"  id="motel-readmore" data-motel="<?php echo $row['motel_id']; ?>"><?php echo $row['title_']; ?></a>
                               </h5>
@@ -89,22 +89,20 @@ if(isset($_POST['price_range'])){
                                 <i class="fa fa-car" aria-hidden="true"></i>
                                 <i class="fa fa-wifi" aria-hidden="true"></i>
                               </div>
+                          </div><!-- col -->
+                      
 
-                          </div><!-- card-body -->
-                      </div><!-- card -->
-                    </div>
-
-                     <div class="col-md-2">
-                         <?php if($row['price_discount'] != 0){ ?><h5 class="mt-4 text-danger text-right mb-0" style="text-decoration: line-through;"> US<i class="fa fa-usd" aria-hidden="true"></i><?php echo number_format($row['price_discount']); ?></h5><?php } ?>
+                     <div class="col-md-2 p-0">
+                        <?php if($row['price_discount'] != 0){ ?><h5 class="mt-4 text-danger text-right mb-0" style="text-decoration: line-through;"> US<i class="fa fa-usd" aria-hidden="true"></i><?php echo number_format($row['price_discount']); ?></h5><?php } ?>
                         <h5 class="mt-2 text-success text-right mb-0"> US<i class="fa fa-usd" aria-hidden="true"></i><?php echo number_format($row['price']); ?></h5>
                           <div class="text-muted text-right mt-0">Per night</div> 
                       </div>
-                      <div class="col-md-2 text-center">
+                      <div class="col-md-2 text-center pr-0">
                            <h5 class="mt-4 text-muted "> Good <span class="badge badge-primary"><?php echo $row['ranges']; ?></span></h5>
                       </div>
-                      <div class="col-md-2">
-                      <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-4"><i class="fa fa-check" aria-hidden="true"></i> Book Now</button>
-                       <?php if($user_id == $row['user_id_']){ ?>
+                      <div class="col-md-2 pr-0">
+                      <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-4"><i class="fa fa-check text-white" aria-hidden="true"></i> Book Now</button>
+                      <?php if($user_id == $row['user_id_']){ ?>
                                     <ul class="list-inline ml-2  float-right" style="list-style-type: none;">  
 
                                             <li  class=" list-inline-item">
@@ -113,7 +111,7 @@ if(isset($_POST['price_range'])){
                                                         <a href="javascript:void(0)" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                                                         <ul style="list-style-type: none; margin:0px; margin:0px;width:250px;text-align:center;" >
                                                             <li style="list-style-type: none; margin:0px;"> 
-                                                            <label class="deletefood"  data-food="<?php echo $row["hotel_id"];?>"  data-user="<?php echo $row["user_id_"];?>">Delete </label>
+                                                            <label class="deletemotel"  data-motel="<?php echo $row["motel_id"];?>"  data-user="<?php echo $row["user_id_"];?>">Delete </label>
                                                             </li>
 
                                                             <li style="list-style-type: none; margin:0px;"> 
@@ -122,7 +120,7 @@ if(isset($_POST['price_range'])){
                                                                 <div class="col">
                                                                         Banner
                                                                         <div class="input-group">
-                                                                              <select class="form-control" name="banner" id="banner<?php echo $row["hotel_id"];?>">
+                                                                              <select class="form-control" name="banner" id="banner<?php echo $row["motel_id"];?>">
                                                                                 <option value="<?php echo $row['banner']; ?>" selected><?php echo $row['banner']; ?></option>
                                                                                 <option value="new">New</option>
                                                                                 <option value="new_arrival">New arrival</option>
@@ -144,7 +142,7 @@ if(isset($_POST['price_range'])){
                                                                 <div class="col">
                                                                     discount %
                                                                     <div class="input-group">
-                                                                        <input  type="number" class="form-control form-control-sm" name="discount_change" id="discount_change<?php echo $row["hotel_id"];?>" value="<?php echo $row["discount"];?>">
+                                                                        <input  type="number" class="form-control form-control-sm" name="discount_change" id="discount_change<?php echo $row["motel_id"];?>" value="<?php echo $row["discount"];?>">
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1" >%</span>
                                                                         </div>
@@ -160,7 +158,7 @@ if(isset($_POST['price_range'])){
                                                                 <div class="col">
                                                                     discount price
                                                                     <div class="input-group">
-                                                                        <input  type="number" class="form-control form-control-sm" name="discount_price" id="discount_price<?php echo $row["hotel_id"];?>" value="<?php echo $row["price_discount"];?>">
+                                                                        <input  type="number" class="form-control form-control-sm" name="discount_price" id="discount_price<?php echo $row["motel_id"];?>" value="<?php echo $row["price_discount"];?>">
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1">$</span>
                                                                         </div>
@@ -171,7 +169,7 @@ if(isset($_POST['price_range'])){
                                                                     <div class="col">
                                                                         </div>
                                                                     <div class="input-group">
-                                                                        <input  type="number" class="form-control form-control-sm" name="price" id="price<?php echo $row["hotel_id"];?>" value="<?php echo $row["price"];?>">
+                                                                        <input  type="number" class="form-control form-control-sm" name="price" id="price<?php echo $row["motel_id"];?>" value="<?php echo $row["price"];?>">
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text" style="padding: 0px 10px;"
                                                                                 aria-label="Username" aria-describedby="basic-addon1" >$</span>
@@ -183,7 +181,7 @@ if(isset($_POST['price_range'])){
                                                             </li>
 
                                                             <li style="list-style-type: none;"> 
-                                                            <label for="discount" class="update-food-btn" data-food="<?php echo $row["hotel_id"];?>" data-user="<?php echo $row["user_id_"];?>">submit</label>
+                                                            <label for="discount" class="update-motel-btn" data-motel="<?php echo $row["motel_id"];?>" data-user="<?php echo $row["user_id_"];?>">submit</label>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -191,17 +189,18 @@ if(isset($_POST['price_range'])){
                                             </li>
                                     </ul>
                                 <?php } ?>
-                    </div>
-                    <hr class="bg-info mt-0 mb-1 " style="width:95%;">
+                  </div><!-- col -->
                 </div><!-- row -->
+              </div><!-- card-body -->
+            </div><!-- card -->
+
             </li>
                <?php } ?>
             <li>
                 <i class="fa fa-clock-o bg-info text-light"></i>
             </li>
         </ul>
-    <?php
-    }else{
+<?php }else{
         echo 'motel(s) not found';
         // echo 'Product(s) not found';
     }
@@ -209,29 +208,29 @@ if(isset($_POST['price_range'])){
 
 
 if (isset($_POST['search']) && !empty($_POST['search'])) {
-    $user_id= $_SESSION['key'];
+    $user_id= $_POST['user_id'];
     $search= $users->test_input($_POST['search']);
     $result= $home->searchmotel($search);
+
     echo '<h4 style="padding: 0px 10px;">'.$_POST['search'].'</h4> 
     <ul class="timeline timeline-inverse"> ';
+    
+    if(count($result) > 0){
 
      if (is_array($result) || is_object($result)){
 
      foreach ($result as $row) { ?>
 
-                <li class="time-label">
+                   <li class="time-label">
                     <?php if($row['discount'] != 0){ ?>
                         <?php echo $food->foodPercentageDiscount($row['discount']); ?>
                     <?php }else { echo ''; ?>
                         <!-- <span class="bg-info text-light" style="position: absolute;font-size: 11px; padding: 2px; margin-left: 10px;"> 0% </span>  -->
                     <?php } ?>
-                <div class="row timeline-item">
-
-
-                    <div class="col-md-6">
-                       <div class="card flex-md-row h-md-100 border-0 mb-3">
-                              <!-- <img class="card-img-left flex-auto d-none d-lg-block" height="80px" width="80px" src="< ?php echo BASE_URL_PUBLIC.'uploads/Rwandamotel/'.$row['photo_']; ?>" alt="Card image cap"> -->
-                         <div class='card-img-left flex-auto d-none d-lg-block' style="background: url('<?php echo BASE_URL_PUBLIC.'uploads/Rwandamotel/'.$row['photo_']; ?>')no-repeat center center;background-size:cover;height:120px;width:120px">
+                
+                       <div class=" timeline-item card flex-md-row h-md-100  border-top-0 border-left-0 border-right-0 mb-3 borders-bottoms pb-2">
+                              <!-- <img class="card-img-left flex-auto d-none d-lg-block" height="120px" width="120px" src="< ?php echo BASE_URL_PUBLIC.'uploads/Rwandamotel/'.$row['photo_']; ?>" alt="Card image cap"> -->
+                          <div class='card-img-left flex-auto d-none d-lg-block' style="background: url('<?php echo BASE_URL_PUBLIC.'uploads/Rwandamotel/'.$row['photo_']; ?>')no-repeat center center;background-size:cover;height:120px;width:120px">
                         <?php $banner = $row['banner'];
                         switch ($banner) {
                             case $banner == 'new':
@@ -261,7 +260,11 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
                             
                         } ?>
                         </div>
-                            <div class="card-body d-flex flex-column align-items-start pt-0">
+                        <div class="card-body pt-0">
+                            <span id="response<?php echo $row["motel_id"];?>"></span>
+                         <div class="row">
+                            <div class="col-md-6 pr-0">
+
                               <h5 class="text-primary mb-0">
                               <a class="text-primary" href="javascript:void(0)"  id="motel-readmore" data-motel="<?php echo $row['motel_id']; ?>"><?php echo $row['title_']; ?></a>
                               </h5>
@@ -279,22 +282,20 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
                                 <i class="fa fa-car" aria-hidden="true"></i>
                                 <i class="fa fa-wifi" aria-hidden="true"></i>
                               </div>
+                          </div><!-- col -->
+                      
 
-                          </div><!-- card-body -->
-                      </div><!-- card -->
-                    </div>
-
-                     <div class="col-md-2">
-                         <?php if($row['price_discount'] != 0){ ?><h5 class="mt-4 text-danger text-right mb-0" style="text-decoration: line-through;"> US<i class="fa fa-usd" aria-hidden="true"></i><?php echo number_format($row['price_discount']); ?></h5><?php } ?>
+                     <div class="col-md-2 p-0">
+                        <?php if($row['price_discount'] != 0){ ?><h5 class="mt-4 text-danger text-right mb-0" style="text-decoration: line-through;"> US<i class="fa fa-usd" aria-hidden="true"></i><?php echo number_format($row['price_discount']); ?></h5><?php } ?>
                         <h5 class="mt-2 text-success text-right mb-0"> US<i class="fa fa-usd" aria-hidden="true"></i><?php echo number_format($row['price']); ?></h5>
                           <div class="text-muted text-right mt-0">Per night</div> 
                       </div>
-                      <div class="col-md-2 text-center">
+                      <div class="col-md-2 text-center pr-0">
                            <h5 class="mt-4 text-muted "> Good <span class="badge badge-primary"><?php echo $row['ranges']; ?></span></h5>
                       </div>
-                      <div class="col-md-2">
-                      <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-4"><i class="fa fa-check" aria-hidden="true"></i> Book Now</button>
-                       <?php if($user_id == $row['user_id_']){ ?>
+                      <div class="col-md-2 pr-0">
+                      <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-4"><i class="fa fa-check text-white" aria-hidden="true"></i> Book Now</button>
+                      <?php if($user_id == $row['user_id_']){ ?>
                                     <ul class="list-inline ml-2  float-right" style="list-style-type: none;">  
 
                                             <li  class=" list-inline-item">
@@ -303,7 +304,7 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
                                                         <a href="javascript:void(0)" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                                                         <ul style="list-style-type: none; margin:0px; margin:0px;width:250px;text-align:center;" >
                                                             <li style="list-style-type: none; margin:0px;"> 
-                                                            <label class="deletefood"  data-food="<?php echo $row["hotel_id"];?>"  data-user="<?php echo $row["user_id_"];?>">Delete </label>
+                                                            <label class="deletemotel"  data-motel="<?php echo $row["motel_id"];?>"  data-user="<?php echo $row["user_id_"];?>">Delete </label>
                                                             </li>
 
                                                             <li style="list-style-type: none; margin:0px;"> 
@@ -312,7 +313,7 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
                                                                 <div class="col">
                                                                         Banner
                                                                         <div class="input-group">
-                                                                              <select class="form-control" name="banner" id="banner<?php echo $row["hotel_id"];?>">
+                                                                              <select class="form-control" name="banner" id="banner<?php echo $row["motel_id"];?>">
                                                                                 <option value="<?php echo $row['banner']; ?>" selected><?php echo $row['banner']; ?></option>
                                                                                 <option value="new">New</option>
                                                                                 <option value="new_arrival">New arrival</option>
@@ -334,7 +335,7 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
                                                                 <div class="col">
                                                                     discount %
                                                                     <div class="input-group">
-                                                                        <input  type="number" class="form-control form-control-sm" name="discount_change" id="discount_change<?php echo $row["hotel_id"];?>" value="<?php echo $row["discount"];?>">
+                                                                        <input  type="number" class="form-control form-control-sm" name="discount_change" id="discount_change<?php echo $row["motel_id"];?>" value="<?php echo $row["discount"];?>">
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1" >%</span>
                                                                         </div>
@@ -350,7 +351,7 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
                                                                 <div class="col">
                                                                     discount price
                                                                     <div class="input-group">
-                                                                        <input  type="number" class="form-control form-control-sm" name="discount_price" id="discount_price<?php echo $row["hotel_id"];?>" value="<?php echo $row["price_discount"];?>">
+                                                                        <input  type="number" class="form-control form-control-sm" name="discount_price" id="discount_price<?php echo $row["motel_id"];?>" value="<?php echo $row["price_discount"];?>">
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text" style="padding: 0px 10px;" aria-label="Username" aria-describedby="basic-addon1">$</span>
                                                                         </div>
@@ -361,7 +362,7 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
                                                                     <div class="col">
                                                                         </div>
                                                                     <div class="input-group">
-                                                                        <input  type="number" class="form-control form-control-sm" name="price" id="price<?php echo $row["hotel_id"];?>" value="<?php echo $row["price"];?>">
+                                                                        <input  type="number" class="form-control form-control-sm" name="price" id="price<?php echo $row["motel_id"];?>" value="<?php echo $row["price"];?>">
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text" style="padding: 0px 10px;"
                                                                                 aria-label="Username" aria-describedby="basic-addon1" >$</span>
@@ -373,7 +374,7 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
                                                             </li>
 
                                                             <li style="list-style-type: none;"> 
-                                                            <label for="discount" class="update-food-btn" data-food="<?php echo $row["hotel_id"];?>" data-user="<?php echo $row["user_id_"];?>">submit</label>
+                                                            <label for="discount" class="update-motel-btn" data-motel="<?php echo $row["motel_id"];?>" data-user="<?php echo $row["user_id_"];?>">submit</label>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -381,9 +382,11 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
                                             </li>
                                     </ul>
                                 <?php } ?>
-                    </div>
-                    <hr class="bg-info mt-0 mb-1 " style="width:95%;">
+                  </div><!-- col -->
                 </div><!-- row -->
+              </div><!-- card-body -->
+            </div><!-- card -->
+            
             </li>
                <?php } ?>
             <li>
@@ -392,5 +395,9 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
         </ul>
                       
         <?php } 
+    }else{
+        echo 'motel(s) not found';
+        // echo 'Product(s) not found';
+    }
 } 
 ?>

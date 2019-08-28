@@ -11,65 +11,7 @@
 
             <div class="col-md-3 mb-3">
                 <!-- Profile Image -->
-                <div class="info-box mb-3">
-                    <div class="info-inner">
-                        <div class="info-in-head">
-                            <!-- PROFILE-COVER-IMAGE -->
-                             <?php if (!empty($user['cover_img'])) {?>
-                              <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $user['cover_img'] ;?>" alt="User Image">
-                              <?php  }else{ ?>
-                                <img src="<?php echo BASE_URL_LINK.NO_COVER_IMAGE_URL ;?>"  alt="User Image">
-                              <?php } ?>
-                        </div>
-                        <!-- info in head end -->
-                        <div class="info-in-body">
-                            <div class="in-b-box">
-                                <div class="in-b-img">
-                                    <!-- PROFILE-IMAGE -->
-                                     <?php if (!empty($user['profile_img'])) {?>
-                                      <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $user['profile_img'] ;?>"  alt="User Image">
-                                      <?php  }else{ ?>
-                                        <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
-                                      <?php } ?>
-                                </div>
-                            </div><!--  in b box end-->
-                            <div class="info-body-name">
-                                <div class="in-b-name">
-                                    <div><a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $user['firstname']." ".$user['lastname'] ;?></a></div> <!-- Nina Mcintire -->
-                                    <span><small><a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $user['career'] ;?></a></small></span>
-                                </div><!-- in b name end-->
-                            </div><!-- info body name end-->
-                        </div><!-- info in body end-->
-                        <div class="info-in-footer">
-                            <div class="number-wrapper">
-                                <div class="num-box">
-                                    <div class="num-head">
-                                        POSTS
-                                    </div>
-                                    <div class="num-body">
-                                       <?php echo $home->countsPosts($user_id);?>
-                                    </div>
-                                </div>
-                                <div class="num-box">
-                                    <div class="num-head">
-                                        FOLLOWING
-                                    </div>
-                                    <div class="num-body">
-                                        <span class="count-following"><?php echo $user['following'] ;?></span>
-                                    </div>
-                                </div>
-                                <div class="num-box">
-                                    <div class="num-head">
-                                        FOLLOWERS
-                                    </div>
-                                    <div class="num-body">
-                                        <span class="count-followers"><?php echo $user['followers'] ;?></span>
-                                    </div>
-                                </div>
-                            </div><!-- mumber wrapper-->
-                        </div><!-- info in footer -->
-                    </div><!-- info inner end -->
-                </div><!-- info box -->
+                <?php echo $home->userProfile($user_id); ?>
 
                 <!-- jobs -->
                 <div class="sticky-top" style="top: -175px;">
@@ -85,7 +27,7 @@
                     <div class="col-md-12 mb-4">
                         <div id="response-posts"></div>
                         <div class="card  borders-tops ">
-                            <div class="card-body message-color">
+                            <div class="card-body message-color" style="padding-bottom: 0rem;">
                                 <form method="post" id="post_form" enctype="multipart/form-data">
                                     <input type="hidden" name="id_posts" id="id_posts"
                                         value="<?php echo $_SESSION['key'];?>">
@@ -145,7 +87,7 @@
                         <div class="posted">
                         <!-- Box Comment -->
                         <div class="card  borders-tops card-profile card1">
-                            <div class="card-body">
+                            <div class="card-body message-color">
 
                                 <?php echo $home->tweets( $_SESSION['key'],2)?>
                                 <!-- Post -->

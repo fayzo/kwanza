@@ -1,4 +1,4 @@
-      <header class="blog-header mt-3 py-2 bg-light">
+      <header class="blog-header mt-3 py-2 bg-light message-color">
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-12 text-center">
            <?php echo $home->links(); ?>
@@ -20,10 +20,10 @@
 
 <div class="container-fluid mb-5">
     <div class="row mt-3">
-      <div class="col-md-9" id="motel-view">
+      <div class="col-md-10" id="motel-view">
               <?php echo $motel->motelList(1,'featured',$user_id); ?>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-2">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Title</h4>

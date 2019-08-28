@@ -38,33 +38,50 @@ class Hotel extends Food{
                         <div class="card-header text-center main-active p-1">
                             <h5 class="card-title">Search</h5>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body bg-warning">
                             <div class="form-row">
                             <div class="col">
                                 <label for="">Destination</label>
-                                <input type="text"
-                                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="Rwanda">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                     <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Rwanda">
+                                </div>
                             </div>
                             <div class="col">
                                 <label for="">Check-in date</label>
-                                <input type="date"
-                                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="Rwanda">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-calendar mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                     <input type="date" class="form-control" name="" id="" aria-describedby="helpId">
+                                </div>
                             </div>
                             <div class="col">
                                 <label for="">Check-out date</label>
-                                <input type="date"
-                                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="Rwanda">
+                                 <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-calendar mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                     <input type="date" class="form-control" name="" id="" aria-describedby="helpId">
+                                </div>
                             </div>
                             </div>
                             <div class="form-group">
                                 <label for="">Night-stay</label>
-                                <select class="form-control" name="" id="">
-                                <option>1 adult</option>
-                                <option>2 adults</option>
-                                <option>3 adults</option>
-                                <option>4 adults</option>
-                                <option>5 adults</option>
-                                </select>
+                                 <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-bed mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                    <select class="form-control" name="" id="">
+                                        <option>1 adult</option>
+                                        <option>2 adults</option>
+                                        <option>3 adults</option>
+                                        <option>4 adults</option>
+                                        <option>5 adults</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
@@ -94,7 +111,7 @@ class Hotel extends Food{
                     <div class="card-header text-center main-active p-1">
                         <h5 class="card-title">Filter by:</h5>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body message-color">
                     <h5> Your budget</h5>
                         <div class="form-row">
                             <div class="col">
@@ -270,6 +287,7 @@ class Hotel extends Food{
                      </div>
                      <div class="col-md-4">
                          <h5  class="text-center">Rwanda Hotels </h5>
+                         <input type="hidden" class="price_range-user_id" value="<?php echo $user_id; ?>" />
                           <div class="filter-panel mt-4">
                               <p><input type="hidden" id="price" class="price_range" value="0,500" /></p>
                               <!-- <input type="button" onclick="filterProducts()" value="FILTER" /> -->
@@ -314,11 +332,12 @@ class Hotel extends Food{
                         </nav>
                     </div> <!-- nav-scroller -->
                 </div>
-                <div class="card-body">
+                <div class="card-body message-color">
                 <span class="hotel-show"></span>
                   <div id="productContainer">
+                <?php if($query->num_rows > 0){ ?>
+
                   <table class="table table-hover table-inverse">
-                    
                           <tbody>
             <ul class="timeline timeline-inverse"> 
                <?php while($row= $query->fetch_array()) { ?>
@@ -328,10 +347,8 @@ class Hotel extends Food{
                     <?php }else { echo ''; ?>
                         <!-- <span class="bg-info text-light" style="position: absolute;font-size: 11px; padding: 2px; margin-left: 10px;"> 0% </span>  -->
                     <?php } ?>
-                <div class="row timeline-item">
-
-                    <div class="col-md-6">
-                       <div class="card flex-md-row h-md-100 border-0 mb-3">
+               
+                       <div class="timeline-item card flex-md-row h-md-100 border-top-0 border-left-0 border-right-0 mb-3 borders-bottoms pb-2 mb-3">
                             <!-- <img class="card-img-left flex-auto d-none d-lg-block" height="120px" width="120px" src="< ?php echo BASE_URL_PUBLIC.'uploads/Rwandahotel/'.$row['photo_']; ?>" alt="Card image cap"> -->
                           <div class='card-img-left flex-auto d-none d-lg-block' style="background: url('<?php echo BASE_URL_PUBLIC.'uploads/Rwandahotel/'.$row['photo_']; ?>')no-repeat center center;background-size:cover;height:120px;width:120px">
                         <?php $banner = $row['banner'];
@@ -363,7 +380,11 @@ class Hotel extends Food{
                             
                         } ?>
                         </div>
-                            <div class="card-body d-flex flex-column align-items-start pt-0">
+                        <div class="card-body pt-0">
+                            <span id="response<?php echo $row["hotel_id"];?>"></span>
+                            <div class="row">
+                            <div class="col-md-6 pr-0">
+
                               <h5 class="text-primary mb-0">
                               <a class="text-primary" href="javascript:void(0)"  id="hotel-readmore" data-hotel="<?php echo $row['hotel_id']; ?>"><?php echo $row['title_']; ?></a>
                               </h5>
@@ -381,20 +402,18 @@ class Hotel extends Food{
                                 <i class="fa fa-car" aria-hidden="true"></i>
                                 <i class="fa fa-wifi" aria-hidden="true"></i>
                               </div>
-                          </div><!-- card-body -->
-                      </div><!-- card -->
-                    </div>
+                          </div><!-- col -->
 
-                     <div class="col-md-2">
+                     <div class="col-md-2 p-0">
                           <?php if($row['price_discount'] != 0){ ?><h5 class="mt-4 text-danger text-right mb-0" style="text-decoration: line-through;"> US<i class="fa fa-usd" aria-hidden="true"></i><?php echo number_format($row['price_discount']); ?></h5><?php } ?>
                           <h5 class="mt-2 text-success text-right mb-0"> US<i class="fa fa-usd" aria-hidden="true"></i><?php echo number_format($row['price']); ?></h5>
                           <div class="text-muted text-right mt-0">Per night</div> 
                       </div>
-                      <div class="col-md-2 text-center">
+                      <div class="col-md-2 text-center pr-0">
                            <h5 class="text-muted" style="margin-top: 1.5rem!important;"> Good <span class="badge badge-primary"><?php echo $row['ranges']; ?></span></h5>
                       </div>
-                      <div class="col-md-2">
-                      <button type="button" name="" id="" class="btn btn-primary btn-md btn-block" style="margin-top: 1.5rem!important;"><i class="fa fa-check" aria-hidden="true"></i> Book Now</button>
+                      <div class="col-md-2 pr-0">
+                      <button type="button" name="" id="" class="btn btn-primary btn-md btn-block" style="margin-top: 1.5rem!important;"><i class="fa fa-check text-white" aria-hidden="true"></i> Book Now</button>
                         
                         <?php if($user_id == $row['user_id_']){ ?>
                                     <ul class="list-inline ml-2  float-right" style="list-style-type: none;">  
@@ -405,7 +424,7 @@ class Hotel extends Food{
                                                         <a href="javascript:void(0)" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                                                         <ul style="list-style-type: none; margin:0px; margin:0px;width:250px;text-align:center;" >
                                                             <li style="list-style-type: none; margin:0px;"> 
-                                                            <label class="deletefood"  data-food="<?php echo $row["hotel_id"];?>"  data-user="<?php echo $row["user_id_"];?>">Delete </label>
+                                                            <label class="deletehotel"  data-hotel="<?php echo $row["hotel_id"];?>"  data-user="<?php echo $row["user_id_"];?>">Delete </label>
                                                             </li>
 
                                                             <li style="list-style-type: none; margin:0px;"> 
@@ -475,7 +494,7 @@ class Hotel extends Food{
                                                             </li>
 
                                                             <li style="list-style-type: none;"> 
-                                                            <label for="discount" class="update-food-btn" data-food="<?php echo $row["hotel_id"];?>" data-user="<?php echo $row["user_id_"];?>">submit</label>
+                                                            <label for="discount" class="update-hotel-btn" data-hotel="<?php echo $row["hotel_id"];?>" data-user="<?php echo $row["user_id_"];?>">submit</label>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -483,9 +502,10 @@ class Hotel extends Food{
                                             </li>
                                     </ul>
                                 <?php } ?>
-                    </div>
-                    <hr class="bg-info mt-0 mb-1 " style="width:95%;">
-                </div><!-- row -->
+                          </div><!-- col -->
+                         </div><!-- row -->
+                        </div><!-- card-body -->
+                      </div><!-- card -->
             </li>
                <?php } ?>
             <li>
@@ -495,6 +515,9 @@ class Hotel extends Food{
 
  </tbody>
 </table>
+<?php }else{
+  echo 'No Hotels';
+} ?>
                     </div><!-- productContainer -->
                   </div><!-- card-body -->
               </div><!-- card -->
@@ -546,6 +569,92 @@ class Hotel extends Food{
         $array= array(0,$total_post);
         $total_posts= array_sum($array);
         echo $total_posts;
+    }
+
+       
+    public function hotel_getPopupTweet($user_id,$hotel_id,$hotel_user_id)
+    {
+        $mysqli= $this->database;
+        $result= $mysqli->query("SELECT * FROM users U Left JOIN rwandahotel B ON B. user_id_ = u. user_id WHERE B. hotel_id = $hotel_id AND B. user_id_ = $hotel_user_id ");
+        // var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
+        while ($row= $result->fetch_array()) {
+            # code...
+            return $row;
+        }
+    }
+
+    public function update_hotel($banner,$discount_change,$discount_price,$price,$hotel_id)
+    {
+        $mysqli= $this->database;
+        $query= "UPDATE rwandahotel SET banner= '$banner', discount = $discount_change ,price_discount = $discount_price, price = $price WHERE hotel_id= $hotel_id ";
+        $mysqli->query($query);
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center" style="font-size:12px;padding:2px;">
+                    <button class="close" data-dismiss="alert" type="button" style="top:-6px;">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center" style="font-size:12px;padding:2px;">
+                    <button class="close" data-dismiss="alert" type="button"  style="top:-6px;">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail to Edit !!!</strong>
+                </div>');
+        }
+    }
+     
+    public function deleteLikesHotel($hotel_id,$user_id)
+    {
+        $mysqli= $this->database;
+        $query="DELETE FROM rwandahotel WHERE hotel_id = $hotel_id and user_id_ = $user_id ";
+
+        $query1="SELECT * FROM rwandahotel WHERE hotel_id = $hotel_id and user_id_ = $user_id ";
+
+        $result= $mysqli->query($query1);
+        $rows= $result->fetch_assoc();
+
+        if(!empty($rows['photo_'])){
+            $photo=$rows['photo_'].'='.$rows['other_photo_'];
+            $expodefile = explode("=",$photo);
+            $fileActualExt= array();
+            for ($i=0; $i < count($expodefile); ++$i) { 
+                $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
+            }
+            $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+            if (array_diff($fileActualExt,$allower_ext) == false) {
+                $expode = explode("=",$photo);
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/Rwandahotel/';
+                for ($i=0; $i < count($expode); ++$i) { 
+                      unlink($uploadDir.$expode[$i]);
+                }
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp4') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/Rwandahotel/';
+                      unlink($uploadDir.$photo);
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp3') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/Rwandahotel/';
+                      unlink($uploadDir.$photo);
+            }
+        }
+
+        $query= $mysqli->query($query);
+        // var_dump("ERROR: Could not able to execute $query.".mysqli_error($mysqli));
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS DELETE</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail to delete !!!</strong>
+                </div>');
+        }
     }
 }
 

@@ -139,12 +139,16 @@ $(document).ready(function () {
             $('#productContainer').show();
         }
         var searching = $(this).val();
+        var user_id = $('.price_range-user_id').val();
+
         $.ajax({
             url: 'core/ajax_db/hotel_add.php',
             method: 'POST',
             dataType: 'text',
             data: {
                 search: searching,
+                user_id: user_id
+
             }, success: function (response) {
                 $(".hotel-show").html(response);
                 console.log(response);
