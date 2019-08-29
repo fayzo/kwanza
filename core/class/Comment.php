@@ -82,15 +82,15 @@ class Comment extends Post_like
             $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
             if (array_diff($fileActualExt,$allower_ext) == false) {
                 $expode = explode("=",$rows['tweet_image']);
-                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/posts/';
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/posts/';
                 for ($i=0; $i < count($expode); ++$i) { 
                       unlink($uploadDir.$expode[$i]);
                 }
             }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp4') {
-                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/posts/';
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/posts/';
                       unlink($uploadDir.$rows['tweet_image']);
             }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp3') {
-                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/posts/';
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/posts/';
                       unlink($uploadDir.$rows['tweet_image']);
             }
         }
@@ -140,15 +140,15 @@ class Comment extends Post_like
             $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
             if (array_diff($fileActualExt,$allower_ext) == false) {
                 $expode = explode("=",$rows['tweet_image']);
-                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/posts/';
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/posts/';
                 for ($i=0; $i < count($expode); ++$i) { 
                       unlink($uploadDir.$expode[$i]);
                 }
             }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp4') {
-                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/posts/';
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/posts/';
                       unlink($uploadDir.$rows['tweet_image']);
             }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp3') {
-                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'Blog_nyarwanda_CMS/uploads/posts/';
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/posts/';
                       unlink($uploadDir.$rows['tweet_image']);
             }
         }
