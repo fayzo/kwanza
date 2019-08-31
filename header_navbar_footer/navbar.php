@@ -219,8 +219,8 @@
       <div class="nav-item">
          <a href="#" id="siderbarResponsive" onclick="openNav()" class="nav-link float-right pt-3"><i class="fa fa-gears"></i></a>
         <a class="nav-link float-right" id="login-please" data-login="1" href="javascript:void()">
-        <span style="text-transform:capitalize" id="welcome-json"></span>, Do you Have an account ? 
-        <i style="font-size: 22px;" class="fa fa-expeditedssl"></i> Login <span class="sr-only">(current)</span>
+        <span style="text-transform:capitalize" id="welcome-json"></span>,Have an account ? 
+        <i style="font-size: 22px;" class="fa fa-expeditedssl"></i> Login OR Sign-up<span class="sr-only">(current)</span>
         </a>
       </div>
   </div>

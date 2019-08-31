@@ -1126,7 +1126,32 @@
         font-size: 13px;
     }
     html,body { font-size: 12px; }
-    </style>
+</style>
+<!-- image-gallery10 -->
+ <style>
+    	#image-gallery10{
+			list-style: none outside none;
+		    padding-left: 0;
+            margin: 0;
+		}
+        .demo .item{
+            margin-bottom: 60px;
+        }
+		.content-slider li{
+		    background-color: #ed3020;
+		    text-align: center;
+		    color: #FFF;
+		}
+		.content-slider h3 {
+		    margin: 0;
+		    padding: 70px 0;
+		}
+		.demo{
+			width: 800px;
+		}
+</style>
+<!-- END image-gallery10 -->
+
 </head>
 
 <body class="<?php echo $user['language']." ".$user['background']; ?>" style="padding-top:5rem;" id="<?php echo $user['color']; ?>">

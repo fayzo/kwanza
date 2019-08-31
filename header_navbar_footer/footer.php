@@ -619,7 +619,26 @@ $('.price_range0').jRange({
 //     });
 
 </script>
-
+ <script>
+    	 $(document).ready(function() {
+			$("#content-slider").lightSlider({
+                loop:true,
+                keyPress:true
+            });
+            $('#image-gallery10').lightSlider({
+                gallery:true,
+                item:1,
+                thumbItem:9,
+                slideMargin: 0,
+                speed:500,
+                auto:true,
+                loop:true,
+                onSliderLoad: function() {
+                    $('#image-gallery10').removeClass('cS-hidden');
+                }  
+            });
+		});
+    </script>
     <!-- #endregion Jssor Slider End -->
    </body>
 

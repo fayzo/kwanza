@@ -44,19 +44,7 @@
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Computer_science" role="tab" aria-controls="list-Computer_science">Computer science</a>
         </nav>
       </div>
-  <!-- </div>
-
-<div role="tabpanel">
-  <div class="row">
-    <div class="col-4 col-md-2 col-lg-2 py-3 px-2">
-      <div class="list-group sticky-top" id="list-tab" role="tablist">
-        <a class="list-group-item list-group-item-action active" id="list-History-list" data-toggle="tab" href="#list-History" role="tab" aria-controls="list-History">History</a>
-        <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="tab" href="#list-Science" role="tab" aria-controls="list-Science">Science</a>
-        <a class="list-group-item list-group-item-action" id="list-Sports-list" data-toggle="tab" href="#list-Computer_science" role="tab" aria-controls="list-Computer_science">Computer science</a>
-        <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="tab" href="#list-Politics" role="tab" aria-controls="list-Politics">Politics</a>
-        <button type="button" class="btn btn-light mt-2" id="add_blog" data-blog="< ?php echo $_SESSION['key']; ?>" > + Add Blog </button>
-      </div>
-    </div> -->
+ 
    <div class="container-fluid mb-5">
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="list-Technology" role="tabpanel" aria-labelledby="list-Technology-list">
