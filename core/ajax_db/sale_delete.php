@@ -116,10 +116,10 @@ if (isset($_POST['showpopupdelete']) && !empty($_POST['showpopupdelete'])) {
 <?php
 }
 
-if(!empty($_FILES['form']['name'])){
+if(!empty($_FILES['update-form-sale']['name'])){
 
     $id= $_POST['sale_id'];
-    $files = $_FILES['form'];
+    $files = $_FILES['update-form-sale'];
     $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/sale/';
     // $fileName = time().'_'.basename($_FILES['form']['name']);
     $fileNames= basename($files['name']);
@@ -135,7 +135,7 @@ if(!empty($_FILES['form']['name'])){
     // chdir($path);
     // $targetPath = getcwd().DIRECTORY_SEPARATOR.$fileName;
     // FILES TO DELETE ON ITS DESTINATIONS
-    move_uploaded_file($_FILES['form']['tmp_name'], $targetPath);
+    move_uploaded_file($files['tmp_name'], $targetPath);
         // FILES TO DELETE ON ITS DESTINATIONS
         $query= $db->query("SELECT photo FROM sale WHERE sale_id= $id ");
         $rows= $query->fetch_assoc();
@@ -163,6 +163,6 @@ if(!empty($_FILES['form']['name'])){
     $path= $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/sale/'.$fileName.'';
     $strpos_countsTo = strpos($path, 'uploads/sale/'.$fileName.'');
     $path_replace= substr_replace($path,'', 0,$strpos_countsTo);
-    echo '<script type="text/javascript">window.top.window.sale_upload(' . $result . ',\'' .$path_replace. '\');</script>  ';
+    echo '<script type="text/javascript">window.top.window.saleUpload(' . $result . ',\'' .$path_replace. '\');</script>  ';
 }
 ?>

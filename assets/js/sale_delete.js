@@ -79,7 +79,7 @@ $(document).ready(function () {
         });
     });
 
-    $(document).on('change','#form-sale', function (e) {
+    $(document).on('change', '#update-form-sale', function (e) {
         e.preventDefault();
         var sale_id = $(this).data('sale');
         var image = $(this).val();
@@ -92,16 +92,17 @@ $(document).ready(function () {
             return false;
         } else {
             $('#form-photo'+sale_id).submit();
+            // console.log(image);
         }
         
     });
 
 });
 
-function sale_upload(success, fileName) {
+function saleUpload(success, fileName) {
     if (success) {
-        $('#salePreview'+success).attr("src", "background: url("+fileName+")no-repeat center center;background-size:cover;width: 250px;height:178px");
-        $('#salePreview'+success).attr("src", fileName);
+        $('#salePreview' + success).attr("style", 'background: url(<?php echo BASE_URL_PUBLIC.uploads/sale/' + fileName +'; ?>)no-repeat center center;background-size:cover;width: 250px;height:178px');
+        // $('#salePreview'+success).attr("src", fileName);
         // $('#fileInput').attr("value", fileName);
         console.log(success);
         console.log(fileName);

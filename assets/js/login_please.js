@@ -20,4 +20,19 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on('click', '#logout-please', function (e) {
+        e.stopPropagation();
+
+        $.ajax({
+            url: 'core/ajax_db/logout_.php',
+            method: 'POST',
+            dataType: 'text',
+           
+            success: function (response) {
+                location.reload();
+                console.log(response);
+            }
+        });
+    });
+
 });

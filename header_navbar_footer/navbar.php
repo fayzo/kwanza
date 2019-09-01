@@ -11,9 +11,9 @@
   <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
     <ul class="navbar-nav notif">
       <?php if (isset($_SESSION['key'])){?>
-     <li class="nav-item">
+     <!-- <li class="nav-item">
         <button type="button" class="btn btn-outline-primary"><a class="nav-link more p-0" href="#">Menya</a></button>
-     </li>
+     </li> -->
      <li class="nav-item">
         <button type="button" class="btn btn-outline-primary ml-2"><a class="nav-link more p-0" href="<?php echo HOME ;?>"><i style="font-size: 22px;" class="fa fa-home nav-link p-0"></i> <?php echo $lang['home'];?> <span class="sr-only">(current)</span></a></button>
      </li>
@@ -203,7 +203,8 @@
                   <a href="<?php echo BASE_URL_PUBLIC.$user['username'];?>" class="btn btn-info btn-sm">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?php echo LOGOUT;?>" class="btn btn-danger btn-sm ">Sign out</a>
+                  <!-- <a href="< ?php echo LOGOUT;?>" class="btn btn-danger btn-sm ">Sign out</a> -->
+                  <a href="javascript:void(0)" id="logout-please" class="btn btn-danger btn-sm ">Sign out</a>
                 </div>
               </li>
             </ul>

@@ -214,7 +214,7 @@ class Sale extends Home{
                                                             <label >photo
                                                                 <form action="<?php echo BASE_URL_PUBLIC;?>core/ajax_db/sale_delete.php" method="post" id="form-photo<?php echo $row["sale_id"];?>" enctype="multipart/form-data">
                                                                     <input type="hidden" name="sale_id" value="<?php echo $row["sale_id"];?>">
-                                                                    <input type="file" class="form-control-file" name="form-sale" id="form-sale" data-sale="<?php echo $row["sale_id"];?>"> <br>
+                                                                    <input type="file" class="form-control-file" name="update-form-sale" id="update-form-sale" data-sale="<?php echo $row["sale_id"];?>"> <br>
                                                                 </form>
                                                              </label>
                                                             </li>

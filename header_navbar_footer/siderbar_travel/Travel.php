@@ -268,7 +268,7 @@
 <div class="h5 mb-2">List of safari you want to view:</div>
                 <div class="row">
                     <?php for ($i=1; $i < 13; ++$i) { ?>
-                            <div class="col-md-6 mb-2">
+                            <div class="col-md-6 mb-3">
                             
                                     <div class="card" style="border-bottom-left-radius: 0px !important;border-bottom-right-radius: 0px !important;">
                                         <img class="card-img-top" height="244px" src="<?php echo BASE_URL_LINK.'image/park_travel/'.$i.'.jpg';?>" >
@@ -276,13 +276,36 @@
                                             <span class="btn btn-light"><span style="font-size: 14px" class="material-icons p-0 m-0"> trending_up</span> trending</span>
                                         </div>
                                         <div style="position: absolute;bottom: 0px; right: 0;left:0px;background-color: #cfd3d6a1">
-                                            <h5 class="card-title text-dark m-1 pb-1 pl-2">Helps </h5>
+                                            <h5 class="card-title text-dark m-1 pb-1 pl-2">Akagera Park</h5>
                                         </div>
                                     </div>
-                                    <div class="card borders-bottoms" style="border-top-left-radius: 0px !important;border-top-right-radius: 0px !important;">
-                                        <p>fgadfadfadff</p>
-                                        <p>fgadfadfadff</p>
-                                        <p>fgadfadfadff</p>
+                                    <div class="card borders-bottoms pl-2" style="border-top-left-radius: 0px !important;border-top-right-radius: 0px !important;">
+                                        <div class='h5'><span class="font-weight-bold">Internation</span> 
+                                            <span class="text-success">$ 1000 </span>
+                                            <span class="text-muted">per person</span>
+                                        </div>
+                                        <div class='h5'><span class="font-weight-bold">Non Eastern african</span>  
+                                            <span class="text-success">$ 500 </span>
+                                            <span class="text-muted">per person</span>
+                                        </div>
+                                        <div class='h5'><span class="font-weight-bold">Eastern african</span>   
+                                            <span class="text-success">$ 100 </span>
+                                            <span class="text-muted">per person</span>
+                                        </div>
+                                        <div class="h5"><span class="font-weight-bold">Vehicle tour </span>can take up 7 Peolpe </div>
+                                        <div class="h5">You wiil visit Nyungwe park and other areas</div>
+                                        <div style="border-top:1px solid #c5b8b8;width:100%;text-align:center;margin:auto;"></div>
+                                            <div class="row mt-2">
+                                                <div class="col-md-4">
+                                                    
+                                                </div>
+                                                <div class="col-md-8 h5">
+                                                    Park Tour Ltd
+                                                     <span class="text-warning"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-half-o" aria-hidden="true"></i> <i class="fa fa-star-half-o" aria-hidden="true"></i> </span>
+                                                    <div><i class="fa fa-eye" aria-hidden="true"></i> 100 000 Reviews</div>
+                                                </div>
+                                                
+                                            </div>
                                     </div>
 
                             </div><!-- /.col -->
