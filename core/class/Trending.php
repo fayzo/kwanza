@@ -18,7 +18,7 @@ class Trending extends Home
                   <div class="card-header main-active p-1">
                         <h5 class="card-title text-center"><i> HashTags</i></h5>
                   </div>
-                    <div class="card-body text-center">
+                    <div class="card-body text-center message-color">
       <?php  while ($trend= $result->fetch_array()) { ?>
                     <!-- /.card-header -->
                         <strong><a href="<?php echo BASE_URL_PUBLIC.$trend['hashtag'].'.hashtag' ;?>" >#<?php echo $trend['hashtag'] ;?></a></strong>

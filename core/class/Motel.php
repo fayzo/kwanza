@@ -38,7 +38,7 @@ class Motel extends Food{
                         <div class="card-header text-center main-active p-1">
                             <h5 class="card-title">Search</h5>
                         </div>
-                        <div class="card-body bg-warning">
+                        <div class="card-body bg-warning text-dark">
                            <div class="form-row">
                             <div class="col">
                                 <label for="">Destination</label>

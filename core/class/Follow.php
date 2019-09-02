@@ -285,7 +285,7 @@ class Follow extends Home
                      <div class="card-header main-active text-center">
                            <i> WHO TO FOLLOW </i>
                      </div>
-                     <div class="card-body">';
+                     <div class="card-body message-color">';
                      while ($whoTofollow=$result->fetch_array()) {
             echo '        <div class="row">
                               <div class="col-md-3 mb-3">

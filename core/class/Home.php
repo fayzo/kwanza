@@ -86,7 +86,7 @@ class Home extends Comment {
             <h5 class="card-title text-center"><i> Jobs</i></h5>
         </div>
         <!-- /.card-header -->
-        <div class="card-body">
+        <div class="card-body message-color">
         <div class="row">
           <?php while($jobs= $query->fetch_array()) { ?>
 
@@ -102,7 +102,8 @@ class Home extends Comment {
                    </div>
                    </div>
                    <span class="username">
-                       <a style="padding-right:3px;" href="#">Job Title: <?php echo $this->htmlspecialcharss($jobs['job_title']) ;?></a> 
+                   <!-- Job Title:  -->
+                       <a style="padding-right:3px;" href="#"><?php echo $this->htmlspecialcharss($jobs['job_title']) ;?></a> 
                    </span>
                    <span class="description"><?php echo $this->htmlspecialcharss($jobs['companyname']); ?> || <i class="flag-icon flag-icon-<?php echo strtolower($jobs['location']) ;?> h4 mb-0"
                             id="<?php echo strtolower( $jobs['location']) ;?>" title="us"></i></span>
@@ -165,7 +166,7 @@ class Home extends Comment {
             </div> <!-- nav-scroller -->
         </div> <!-- /.card-header -->
 
-        <div class="card-body">
+        <div class="card-body message-color">
         <span class="job-show"></span>
         <div class="job-hide">
           <?php while($jobs= $query->fetch_array()) { ?>
@@ -263,7 +264,7 @@ class Home extends Comment {
             </div> <!-- nav-scroller -->
         </div> <!-- /.card-header -->
 
-        <div class="card-body">
+        <div class="card-body message-color">
         <span class="job-show"></span>
         <div class="job-hide row">
             <div class="col-md-6 large-2 ">
@@ -347,7 +348,7 @@ class Home extends Comment {
             <div class="card-header main-active p-1">
               <h5 class="card-title"><i> Options</i></h5>
             </div>
-            <div class="card-body options-list">
+            <div class="card-body options-list message-color">
 
             <?php if (isset($_SESSION['key'])) { ?>
                 <ul>
@@ -880,7 +881,7 @@ class Home extends Comment {
         $user= $this->userData($user_id);
     ?>
        <div class="info-box mb-3">
-                    <div class="info-inner">
+                    <div class="info-inner message-color">
                         <div class="info-in-head">
                             <!-- PROFILE-COVER-IMAGE -->
                              <?php if (!empty($user['cover_img'])) {?>

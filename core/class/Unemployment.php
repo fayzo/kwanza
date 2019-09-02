@@ -50,8 +50,8 @@ class Unemployment extends Home {
                 </div>
               </form>
 
-            <div class="nav-scroller py-0" style="clear:right;height:3.4rem;overflow-x:auto;"> 
-                <nav class="nav d-flex justify-content-between pb-0"  >
+            <div class="nav-scroller py-0" style="clear:right;height:3.4rem;"> 
+                <nav class="nav d-flex justify-content-between pb-0  horizontal-large-2"  >
                 <a class="p-2" href="javascript:void(0)" onclick="unemploymentCategories('Featured',1);" >Featured<span class="badge badge-primary"><?php echo $this->unemplyomentcountPOSTS('Featured');?></span></a>
                 <a class="p-2" href="javascript:void(0)" onclick="unemploymentCategories('accountant',1);" >accountant<span class="badge badge-primary"><?php echo $this->unemplyomentcountPOSTS('accountant');?></span></a>
                 <a class="p-2" href="javascript:void(0)" onclick="unemploymentCategories('finance',1);" >finace<span class="badge badge-primary"><?php echo $this->unemplyomentcountPOSTS('finance');?></span></a>

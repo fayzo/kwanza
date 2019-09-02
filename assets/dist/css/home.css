@@ -6,7 +6,7 @@
     background: #fff;
     border-radius: 5px;
     overflow: auto;
-    /* border: 1px solid #e3e3e3; */
+    border: 1px solid #e3e3e3;
 }
 #black .info-box {
     background: #272323;

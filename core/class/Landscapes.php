@@ -336,7 +336,7 @@ class Landscapes extends Home{
         <div class="job-hide">
 
           <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="form" id="form" >
-        <div class="form-row mb-2 pt-2 pb-2" style="background:#faebd7;">
+        <div class="form-row mb-2 pt-2 pb-2" style="background:#b9b6b22b;">
             <div class="col">
                 <label for="" class="text-dark">Province</label>
                  <div class="input-group">
@@ -391,7 +391,7 @@ class Landscapes extends Home{
 
         <div id="landscapes-hide">
 
-        <h5 class="text-dark text-center" style="background:#faebd7;padding:10px;"><i><?php echo $row3['provincename'];?> Landscapes</i></h5>
+        <h5 class="text-center" style="background:#b9b6b22b;padding:10px;"><i><?php echo $row3['provincename'];?> Landscapes</i></h5>
             <?php
                 $row1= $query1->fetch_array();
                 $total= array_shift($row1);
@@ -528,7 +528,8 @@ class Landscapes extends Home{
         </div>
         </form>
 
-        <h5 class="text-dark text-center" style="background:#faebd7;padding:10px;"><i><?php echo $categories;?> Landscapes</i></h5>
+        <h5 class="text-dark text-center" style="background:#b9b6b22b;padding:10px;"><i><?php echo $categories;?> Landscapes</i></h5>
+         <!-- faebd7 -->
             <?php
                 $row1= $query1->fetch_array();
                 $total= array_shift($row1);
