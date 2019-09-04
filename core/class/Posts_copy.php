@@ -3,22 +3,22 @@
        header('Location: ../../404.html');
  }
 
-class Posts extends blog {
+class Posts_copy extends blog {
    
 
     public function tweets($user_id,$limit)
     {
         $mysqli= $this->database;
         // $sql="SELECT * FROM tweets T LEFT JOIN users U ON T. tweetBy= U. user_id LEFT JOIN blog B ON B. tweet_blog_by = U. user_id WHERE T. tweetBy = $user_id AND T. retweet_id='0' AND B. blog_post = 'posted' OR T. tweetBy= U. user_id AND T. retweet_by != $user_id AND B. blog_post= 'posted' AND T. tweetBy IN (SELECT receiver FROM follow WHERE sender= $user_id) ORDER BY T. tweet_id DESC LIMIT $limit ";
-        $sql="SELECT * FROM tweets T LEFT JOIN users U ON T. tweetBy= U. user_id WHERE T. tweetBy = $user_id AND T. retweet_id='0' OR T. tweetBy= U. user_id AND T. retweet_by != $user_id AND T. tweetBy IN (SELECT receiver FROM follow WHERE sender= $user_id) ORDER BY T. tweet_id DESC LIMIT $limit ";
+        $sql="SELECT * FROM tweets T LEFT JOIN users U ON T. tweetBy= U. user_id WHERE T. tweetBy = $user_id AND T. retweet_id='0' OR T. tweetBy= U. user_id AND T. retweet_by != $user_id AND T. tweetBy IN (SELECT receiver FROM follow WHERE sender= $user_id) ORDER BY T. tweet_id DESC LIMIT $limit";
         $query= $mysqli->query($sql);
         $tweets=array();
         while ($row= $query->fetch_assoc()) {
             # code...
              $tweets[]= $row;
         }
-
-                               foreach ($tweets as $tweet) {
+    
+                        foreach ($tweets as $tweet) {
                                 $likes= $this->likes($user_id,$tweet['tweet_id']);
                                 $retweet= $this->checkRetweet($tweet['tweet_id'],$user_id);
                                 $user= $this->userData($retweet['retweet_by']);
@@ -357,7 +357,7 @@ class Posts extends blog {
                                         </div>
                                         </div>
                                         <span class="username tooltips">
-                                             <?php if($user_id != $tweet['user_id']) { ?> 
+                                            <?php if($user_id != $tweet['user_id']) { ?> 
                                                 <ul><li>
                                                     <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
                                                     <ul><li><?php echo Follow::tooltipProfile($tweet['user_id'],$user_id,$tweet['user_id']); ?></li></ul>
@@ -726,10 +726,12 @@ class Posts extends blog {
                               <!-- /.card-body -->
                             </div>
                             <!-- /.card-end -->
-                                <?php }
+                    <?php } 
+
+
                 } 
 } 
-$posts= new Posts();
+$posts_copy= new Posts_copy();
 
 /*
 ===========================================

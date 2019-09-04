@@ -16,7 +16,7 @@ if (isset($_POST['events_id']) && !empty($_POST['events_id'])) {
     }
     $events_id = $_POST['events_id'];
     $user= $events->EventsReadmore($events_id);
-    $comment= $events->comments($events_id);
+    $comment= $events->Events_comments($events_id);
      ?>
 <style>
 .img-popup-bodys {

@@ -26,6 +26,6 @@
     <!-- col -->
       
       <div class="col-4 col-md-4 col-lg-4 px-4">
-          <?php echo $blog-> BlogRecent_Articles('history',$user_id); ?>
+          <?php echo $blog->BlogRecent_Articles('history',$user_id); ?>
     </div> <!-- col -->
 </div> <!-- row -->

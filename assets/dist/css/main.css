@@ -45,13 +45,21 @@
 
 #black .card .list-group-item {
   background-color: rgb(56, 55, 55);
+  color: #c3bebe;
 }
 
 #black .card .list-group-item-action:hover {
-  background-color: rgb(175, 174, 174);
+  background-color: #2e2828;
    color: #171718; 
 }
 
+#black .sportx .list-group-item-action {
+  color: #c3bebe !important;
+}
+
+.sportx .list-group-item-action {
+  color: #171718 !important;
+}
 #black .retweetcolor {
     background-color:#3a3636;
 }
@@ -225,15 +233,15 @@
 #rose .colorlightLINK{
   color:  #d2c6c6f7;
 }
-#rose .card .user-block a, 
-#blue .card .user-block a,
-#green .card .user-block a,
-#purple .card .user-block a,
-#purple-blue .card .user-block a,
-#purple-green .card .user-block a,
-#blue-water .card .user-block a,
-#blue-green .card .user-block a,
-#chocolate .card .user-block a {
+#rose .job-popup .card .user-block a, 
+#blue .job-popup .card .user-block a,
+#green .job-popup .card .user-block a,
+#purple .job-popup .card .user-block a,
+#purple-blue .job-popup .card .user-block a,
+#purple-green .job-popup .card .user-block a,
+#blue-water .job-popup .card .user-block a,
+#blue-green .job-popup .card .user-block a,
+#chocolate .job-popup .card .user-block a {
     color: black;
 }
 

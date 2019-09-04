@@ -94,7 +94,7 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content job-popup">
 
           <div class="row">
             <div class="col-md-12 mb-4" id="jobs-hides" >

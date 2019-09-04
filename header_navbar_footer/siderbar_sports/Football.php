@@ -22,15 +22,19 @@
         </div><!-- col -->
 
         <div class="col-md-6">
+           
             <div class="card">
                  <div id="Football-view">
-                      <?php echo $football->currentDatefootballMatch(0); ?>
+                      <?php  
+                      $date = strtotime("0 day"); 
+                      echo $football->currentDatefootballMatch(0,date('y-m-d', $date),date('Y-m-d', $date));
+                      ?>
                 </div>
             </div> <!-- card -->
         </div> <!-- col -->
 
         <div class="col-md-3">
-             <div class="card">
+             <div class="card mb-3">
           <div class="card-header text-center main-active">
               <div class="h5">Football Scores Tables</div>
           </div>
@@ -85,6 +89,92 @@
            </table>
           </div><!-- card-body -->
       </div><!-- card -->
+
+        <div class="card mb-3">
+                <div class="card-header text-center  py-1 main-active">
+                    <div class="h5">Match Fixture</div>
+                </div>
+                <div class="card-body sportx">
+                 <div style="background:#b9b6b22b;padding:7px;">
+                        <span style="text-decoration:underline"> Football</span>
+                   </div>
+                    <div class="FOOT">
+                        <div class="float-right">June 12</div>
+                        <div> Azam league - GROUP A</div>
+                    </div>  
+                    
+                    <ul class="list-group clear-float mb-2">
+                        <div class="list-group-item list-group-item-action" >
+                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+                                <div class="float-left btn btn-success btn-sm text-white">FT</div>
+                                <div class="text-center">Kiyovu <span class="text-success">3-2</span> APR FC</div>
+                        </div>
+                        <div class="list-group-item list-group-item-action" >
+                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+                                 <div class="float-left btn btn-success btn-sm text-white">FT</div>
+                                 <div class="text-center">AMAGAJU <span class="text-success">0-0</span> APR FC</div>
+                        </div>
+                        <div class="list-group-item list-group-item-action" >
+                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+                               <div class="float-left btn btn-success btn-sm text-white">FT</div>
+                                 <div class="text-center">RAYON SP <span class="text-success">6-2</span> APR FC</div>
+                        </div>
+                    </ul>
+                   <div style="background:#b9b6b22b;padding:7px;">
+                     <span style="text-decoration:underline">Basketball</span>
+                   </div>
+                    <div class="FOOT">
+                        <div class="float-right">June 12</div>
+                        <div> Azam league - GROUP A</div>
+                    </div>  
+                    
+                     
+                    <ul class="list-group clear-float mb-2">
+                       <div class="list-group-item list-group-item-action" >
+                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+                                <div class="float-left btn btn-success btn-sm text-white">FT</div>
+                                <div class="text-center">Kiyovu <span class="text-success">3-2</span> APR FC</div>
+                        </div>
+                        <div class="list-group-item list-group-item-action" >
+                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+                                 <div class="float-left btn btn-success btn-sm text-white">FT</div>
+                                 <div class="text-center">AMAGAJU <span class="text-success">0-0</span> APR FC</div>
+                        </div>
+                        <div class="list-group-item list-group-item-action" >
+                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+                               <div class="float-left btn btn-success btn-sm text-white">FT</div>
+                                 <div class="text-center">RAYON SP <span class="text-success">3-6</span> APR FC</div>
+                        </div>
+                    </ul>
+                  <div style="background:#b9b6b22b;padding:7px;">
+                     <span style="text-decoration:underline"> Volleyball</span>
+                   </div>
+                    <div class="FOOT">
+                        <div class="float-right">June 12</div>
+                        <div> Azam league - GROUP A</div>
+                    </div>  
+                    
+                       
+                    <ul class="list-group clear-float mb-2">
+                      <div class="list-group-item list-group-item-action" >
+                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+                                <div class="float-left btn btn-success btn-sm text-white">FT</div>
+                                <div class="text-center">Kiyovu <span class="text-success">3-2</span> APR FC</div>
+                        </div>
+                        <div class="list-group-item list-group-item-action" >
+                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+                                 <div class="float-left btn btn-success btn-sm text-white">FT</div>
+                                 <div class="text-center">AMAGAJU <span class="text-success">0-2</span> APR FC</div>
+                        </div>
+                        <div class="list-group-item list-group-item-action" >
+                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
+                               <div class="float-left btn btn-success btn-sm text-white">FT</div>
+                                 <div class="text-center">RAYON SP <span class="text-success">3-22</span> APR FC</div>
+                        </div>
+                    </ul>
+                    <a class="float-right" href="javascript:void(0)">View more Match >>></a>
+                </div><!-- card-body -->
+            </div><!-- card -->
 
         </div><!-- col -->
         

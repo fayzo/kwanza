@@ -102,3 +102,20 @@
 .timeline-inverse>li>.timeline-item>.timeline-header {
     border-bottom-color: #ddd;
 }
+
+/* RECENT NEWS */
+/* RECENT NEWS */
+
+.recent-news .timeline:before {
+    left: 11px;
+}
+.recent-news .timeline>li>.timeline-item {
+    margin-left: 45px;
+}
+.recent-news .timeline>li>.fa,
+.recent-news .timeline>li>.glyphicon,
+.recent-news .timeline>li>.ion {
+    font-size: 13px;
+    left: 1px;
+
+}

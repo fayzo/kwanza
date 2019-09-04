@@ -7,6 +7,8 @@ if (isset($_POST['fetchPost']) && !empty($_POST['fetchPost'])) {
     $user_id= $_SESSION['key'];
     $limit= (int) trim($_POST['fetchPost']);
     // echo  $limit;
-    $posts->tweets($user_id,$limit);
+    // $posts->tweets($user_id,$limit);
+    // $posts_copy->tweets($user_id,$limit);
+    $Posts_copyDraft->tweets($user_id,$limit);
 }
 ?>

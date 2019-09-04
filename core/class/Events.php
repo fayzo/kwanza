@@ -274,7 +274,7 @@ class Events extends Home{
         return $row;
     }
 
-    public function comments($tweet_id)
+    public function Events_comments($tweet_id)
     {
         $mysqli= $this->database;
         $query= "SELECT * FROM events_comment LEFT JOIN users ON comment_by=user_id LEFT JOIN events ON comment_on=events_id  WHERE comment_on = $tweet_id ORDER BY comment_at DESC";
@@ -510,5 +510,23 @@ class Events extends Home{
 }
 
 $events = new Events();
+/*
+===========================================
+         Notice
+===========================================
+# You are free to run the software as you wish
+# You are free to help yourself study the source code and change to do what you wish
+# You are free to help your neighbor copy and distribute the software
+# You are free to help community create and distribute modified version as you wish
 
+We promote Open Source Software by educating developers (Beginners)
+use PHP Version 5.6.1 > 7.3.20  
+===========================================
+         For more information contact
+=========================================== 
+Kigali - Rwanda
+Tel : (250)787384312 / (250)787384312
+E-mail : shemafaysal@gmail.com
+
+*/
 ?>

@@ -12,7 +12,7 @@
             <div class="col-md-3 mb-3">
                 <!-- Profile Image -->
                 <?php echo $home->userProfile($user_id); ?>
-
+               
                 <!-- jobs -->
                 <div class="sticky-top" style="top: -175px;">
                 <?php echo $home->jobsfetch() ;?>
@@ -89,7 +89,7 @@
                         <div class="card  borders-tops card-profile card1">
                             <div class="card-body message-color">
 
-                                <?php echo $home->tweets( $_SESSION['key'],2)?>
+                                <?php echo $home->tweets( $_SESSION['key'],15)?>
                                 <!-- Post -->
                                 
                                 <!-- Post -->
@@ -187,6 +187,10 @@
                 <div class="row">
                     <div class="col-md-12 mb-3">
                        <?php echo $follow->whoTofollow($user_id,$user_id) ;?>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                     <?php echo $home->recent_News(); ?>
                     </div>
 
                     <!-- <div class="col-md-12 mb-3"> -->

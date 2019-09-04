@@ -11,7 +11,7 @@ if (isset($_POST['comments']) && !empty($_POST['comments'])) {
     if (!empty($commentz)) {
         # code...
         $home->createsComment('comment_funding',array('comment' => $commentz,'comment_on' => $fund_id,'comment_by' => $user_id,'comment_at' => date('Y-m-d H:i:s')));
-        $commentx= $fundraising->comments($fund_id);
+        $commentx= $fundraising->Fundraising_comments($fund_id);
 		 # code..
 		foreach ($commentx as $user) { 
             $likes= $fundraising->Fundraising_comment_like($user_id,$user['comment_id']); ?>

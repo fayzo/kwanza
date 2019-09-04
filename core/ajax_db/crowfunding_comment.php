@@ -11,7 +11,7 @@ if (isset($_POST['comments']) && !empty($_POST['comments'])) {
     if (!empty($commentz)) {
         # code...
         $home->createsComment('comment_crowfunding',array('comment' => $commentz,'comment_on' => $crowfund_id,'comment_by' => $user_id,'comment_at' => date('Y-m-d H:i:s')));
-        $commentx= $crowfund->comments($crowfund_id);
+        $commentx= $crowfund->Crownfund_comments($crowfund_id);
 		 # code..
 		foreach ($commentx as $user) { 
                 $likes= $crowfund->Crowfundraising_comment_like($user_id,$user['comment_id']);

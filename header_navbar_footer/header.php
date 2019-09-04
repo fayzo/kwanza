@@ -389,10 +389,10 @@
         }, false);
     }
 
-    function Football_FecthRequest(id) {
+    function Football_FecthRequest(id,currentdate,futuredate) {
         var xhr = new XMLHttpRequest();
         // Add any event handlers here...
-        xhr.open('POST', 'core/ajax_db/football_FecthPaginat.php?pages=' + id , true);
+        xhr.open('POST', 'core/ajax_db/football_FecthPaginat.php?Footpages=' + id +'&currentdate=' + currentdate +'&futuredate=' + futuredate , true);
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
@@ -400,6 +400,102 @@
                 switch (id) {
                     case id:
                          var pagination = document.getElementById('Football-view');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                   
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
+    function Basketball_FecthRequest(id,currentdate,futuredate) {
+        var xhr = new XMLHttpRequest();
+        // Add any event handlers here...
+        xhr.open('POST', 'core/ajax_db/football_FecthPaginat.php?Basketpages=' + id +'&currentdate=' + currentdate +'&futuredate=' + futuredate , true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (id) {
+                    case id:
+                         var pagination = document.getElementById('Basketball-view');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                   
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
+    function Volleyball_FecthRequest(id,currentdate,futuredate) {
+        var xhr = new XMLHttpRequest();
+        // Add any event handlers here...
+        xhr.open('POST', 'core/ajax_db/football_FecthPaginat.php?Volleypages=' + id +'&currentdate=' + currentdate +'&futuredate=' + futuredate , true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (id) {
+                    case id:
+                         var pagination = document.getElementById('Volleyball-view');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                   
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
+    function Tenis_FecthRequest(id,currentdate,futuredate) {
+        var xhr = new XMLHttpRequest();
+        // Add any event handlers here...
+        xhr.open('POST', 'core/ajax_db/football_FecthPaginat.php?Tenispages=' + id +'&currentdate=' + currentdate +'&futuredate=' + futuredate , true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (id) {
+                    case id:
+                         var pagination = document.getElementById('Tenisball-view');
                          pagination.innerHTML = xhr.responseText;
                         break;
                    

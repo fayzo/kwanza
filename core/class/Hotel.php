@@ -38,7 +38,7 @@ class Hotel extends Food{
                         <div class="card-header text-center main-active p-1">
                             <h5 class="card-title">Search</h5>
                         </div>
-                        <div class="card-body bg-warning">
+                        <div class="card-body bg-warning text-dark">
                             <div class="form-row">
                             <div class="col">
                                 <label for="">Destination</label>
@@ -659,4 +659,24 @@ class Hotel extends Food{
 }
 
 $hotel = new Hotel();
+
+/*
+===========================================
+         Notice
+===========================================
+# You are free to run the software as you wish
+# You are free to help yourself study the source code and change to do what you wish
+# You are free to help your neighbor copy and distribute the software
+# You are free to help community create and distribute modified version as you wish
+
+We promote Open Source Software by educating developers (Beginners)
+use PHP Version 5.6.1 > 7.3.20  
+===========================================
+         For more information contact
+=========================================== 
+Kigali - Rwanda
+Tel : (250)787384312 / (250)787384312
+E-mail : shemafaysal@gmail.com
+
+*/
 ?>

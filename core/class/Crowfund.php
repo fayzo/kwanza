@@ -3,7 +3,7 @@
        header('Location: ../../404.html');
  }
 
-class Crowfund extends home {
+class Crowfund extends Fundraising {
 
      public function crowfundraisings($pages,$categories,$user_id)
     {
@@ -56,10 +56,12 @@ class Crowfund extends home {
                     </div>
 
                     <hr>
-                    <a href="javascript:void(0);"  id="crowfund-readmore" data-crowfund="<?php echo $row['fund_id'] ;?>" class="card-text h5"><?php echo $row['photo_Title_main'] ;?></a>
-                    <!-- Kogera umusaruro muguhinga -->
-                    <p class="text-muted"><?php echo $row['text']; ?></p>
-                    <!-- turashaka kongera umusaruro mu buhinzi tukabona ubufasha buhagije no kubona imbuto -->
+                     <div style="height:115px;">
+                        <a href="javascript:void(0);"  id="crowfund-readmore" data-crowfund="<?php echo $row['fund_id'] ;?>" class="card-text h5"><?php echo $row['photo_Title_main'] ;?></a>
+                        <!-- Kogera umusaruro muguhinga -->
+                        <p class="text-muted"><?php echo $row['text']; ?></p>
+                        <!-- turashaka kongera umusaruro mu buhinzi tukabona ubufasha buhagije no kubona imbuto -->
+                    </div>                      
                     <div class="text-muted mb-1"><?php echo $categories; ?>
                         <span class="text-success px-1 float-right" style="border-radius:3px;font-size:11px;"><i class="fa fa-check-circle" aria-hidden="true"></i> Verified</span>
                     </div>
@@ -123,7 +125,7 @@ class Crowfund extends home {
         return $row;
     }
 
-      public function comments($tweet_id)
+      public function Crownfund_comments($tweet_id)
     {
         $mysqli= $this->database;
         $query= "SELECT * FROM comment_crowfunding LEFT JOIN users ON comment_by=user_id WHERE comment_on = $tweet_id ORDER BY comment_at DESC";
@@ -330,7 +332,105 @@ class Crowfund extends home {
       echo $total_Comment;
     }
 
+     public function Post_crowfundraisings($categories,$user_id)
+    {
+        $mysqli= $this->database;
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN crowfundraising C ON C. user_id2 = u. user_id WHERE C. categories_crowfundraising ='$categories'  ORDER BY created_on2 Desc Limit 0,4");
+        ?>
+            <div class="row mt-3">
+        <?php while($row= $query->fetch_array()) { 
+              $likes= $this->Crowfundraisinglikes($user_id,$row['fund_id']); ?>
+
+               <div class="col-md-6 mb-3">
+            
+            <div class="card borders-bottoms more" >
+                <img class="card-img-top" width="242px" id="crowfund-readmore" data-crowfund="<?php echo $row['fund_id'] ;?>" height="160px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/crowfund/<?php echo $row['photo'] ;?>" >
+                <div class="card-body">
+                    <div class="p-0 font-weight-bold">Funding 
+
+                        <?php if($user_id == $row['user_id2']){ ?>
+                         <ul class="list-inline mb-0  float-right" style="list-style-type: none;">  
+
+                                <li  class=" list-inline-item">
+                                    <ul class="deleteButt" style="list-style-type: none; margin:0px;" >
+                                        <li>
+                                            <a href="javascript:void(0)" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                                            <ul style="list-style-type: none; margin:0px;" >
+                                                <li style="list-style-type: none; margin:0px;"> 
+                                                  <label class="deleteCrowfund"  data-fund="<?php echo $row["fund_id"];?>"  data-user="<?php echo $row["user_id2"];?>">Delete </label>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                        </ul>
+                        <?php } ?>
+
+                        <?php if($likes['like_on'] == $row['fund_id']){ ?>
+                            <span <?php if(isset($_SESSION['key'])){ echo 'class="unlike-crowfundraising-btn more float-right text-sm  mr-2"'; }else{ echo 'id="login-please" class="more float-right" data-login="1"'; } ?> data-fund="<?php echo $row['fund_id']; ?>"  data-user="<?php echo $row['user_id']; ?>"><span class="likescounter "><?php echo $row['likes_counts'] ;?></span> <i class="fa fa-heart"  ></i></span>
+                        <?php }else{ ?>
+                            <span <?php if(isset($_SESSION['key'])){ echo 'class="like-crowfundraising-btn more float-right text-sm mr-2"'; }else{ echo 'id="login-please" class="more float-right"  data-login="1"'; } ?> data-fund="<?php echo $row['fund_id']; ?>"  data-user="<?php echo $row['user_id']; ?>" ><span class="likescounter"> <?php if ($row['likes_counts'] > 0){ echo $row['likes_counts'];}else{ echo '';} ?></span> <i class="fa fa-heart-o" ></i> </span>
+                        <?php } ?>
+                     
+                    </div>
+
+                    <hr>
+                    <div style="height:115px;">
+                        <a href="javascript:void(0);"  id="crowfund-readmore" data-crowfund="<?php echo $row['fund_id'] ;?>" class="card-text h5"><?php echo $row['photo_Title_main'] ;?></a>
+                        <!-- Kogera umusaruro muguhinga -->
+                        <p class="text-muted"><?php echo $row['text']; ?></p>
+                        <!-- turashaka kongera umusaruro mu buhinzi tukabona ubufasha buhagije no kubona imbuto -->
+                    </div>    
+                        
+                        <div class="text-muted mb-1"><?php echo $categories; ?>
+                            <span class="text-success px-1 float-right" style="border-radius:3px;font-size:11px;"><i class="fa fa-check-circle" aria-hidden="true"></i> Verified</span>
+                        </div>
+                        <div class="card-text">
+                        <!-- 40,000 -->
+                            <span class="font-weight-bold"><?php echo number_format($row['money_raising']); ?> Frw</span>
+                            Raised
+                            <span class="float-right"><?php echo $this->donationPercetangeMoneyRaimaing($row['money_raising'],$row['money_to_target']); ?> %</span>
+                            <!-- 40 -->
+                        </div>
+                        <div class="progress clear-float " style="height: 10px;">
+                            <?php echo $this->Users_donationMoneyRaising($row['money_raising'],$row['money_to_target']); ?>
+                        </div>
+                    <div class="clear-float">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <span class="text-muted"><?php echo $this->timeAgo($row['created_on2']); ?></span>
+                        <span class="text-muted float-right text-right">out of <?php echo number_format($row['money_to_target']).' Frw'; ?></span>
+                        <!-- 13 days Left -->
+                    </div>
+                </div>
+            </div> <!-- card -->
+                 
+        </div> <!-- col -->
+
+        <?php } ?>
+    </div>
+
+
+   <?php  }
 }
 
 $crowfund = new Crowfund;
+/*
+===========================================
+         Notice
+===========================================
+# You are free to run the software as you wish
+# You are free to help yourself study the source code and change to do what you wish
+# You are free to help your neighbor copy and distribute the software
+# You are free to help community create and distribute modified version as you wish
+
+We promote Open Source Software by educating developers (Beginners)
+use PHP Version 5.6.1 > 7.3.20  
+===========================================
+         For more information contact
+=========================================== 
+Kigali - Rwanda
+Tel : (250)787384312 / (250)787384312
+E-mail : shemafaysal@gmail.com
+
+*/
 ?>

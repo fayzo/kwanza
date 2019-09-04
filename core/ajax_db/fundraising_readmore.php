@@ -16,7 +16,7 @@ if (isset($_POST['fund_id']) && !empty($_POST['fund_id'])) {
     }
     $fund_id = $_POST['fund_id'];
     $user= $fundraising->fundFecthReadmore($fund_id);
-    $comment= $fundraising->comments($fund_id);
+    $comment= $fundraising->Fundraising_comments($fund_id);
     $donates= $fundraising->recentFundraisingDonate($fund_id);
     $likes= $fundraising->Fundraisinglikes($user_id,$user['fund_id']);
     

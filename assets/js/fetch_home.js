@@ -33,7 +33,7 @@ $(document).ready(function () {
                 }, success: function (response) {
                     $('.posted').html(response);
                     $('#loader').hide();
-
+                    // console.log(response);
                 }
             });
         }

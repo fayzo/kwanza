@@ -3,7 +3,7 @@
        header('Location: ../../404.html');
  }
 
-class Blog extends Home{
+class Blog extends Crowfund{
 
     public function blogs($pages,$categories,$user_id){
         $pages= $pages;
@@ -620,9 +620,119 @@ class Blog extends Home{
       echo $total_Comment;
     }
 
+    public function Post_Blog($user_id)
+    { 
+      $mysqli= $this->database;
+      $query= $mysqli->query("SELECT * FROM users U Left JOIN blog B ON B. user_id3 = u. user_id WHERE B. created_on3  > DATE_SUB(NOW(), INTERVAL 1 MONTH) and B. blog_post != 'posted' ORDER BY B. created_on3 Desc , rand() Limit 5");
+          //  SECOND	, MINUTE, HOUR, DAY, WEEK	, MONTH	, QUARTER	, YEAR,
+      
+        if($query->num_rows != 0){
+      ?>
+
+       <div class="row mt-2 mb-2">
+        <?php while($row= $query->fetch_array()) { 
+
+              $retweet= $this->checkBlogRetweet($row['blog_id'],$user_id);
+              $likes= $this->Bloglikes($user_id,$row['blog_id']);
+
+          ?>
+
+        <div class="col-md-12">
+          <div class="card flex-md-row mb-4 border-0 h-md-250" style="box-shadow:0 0 0.5ch 0.5ch rgba(35, 35, 32, 0.15);">
+            <img class="card-img-left flex-auto " width="200px" height="250px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/Blog/<?php echo $row['photo'] ;?>" alt="Card image cap">
+            <div class="card-body d-flex flex-column align-items-start">
+              <h4 style="font-family: Playfair Display, Georgia, Times New Roman, serif;text-align:left;">
+               <a class="text-primary text-left" href="javascript:void(0)" id="blog-readmore" data-blog="<?php echo $row['blog_id'] ;?>">
+                <?php 
+                    if (strlen($row["title"]) > 36) {
+                      echo $row["title"] = substr($row["text"],0,36).'... ';
+                    }else{
+                      echo $row["title"];
+                    } ?></a>
+              </h4>
+              <div class="mb-1 text-muted">Created on <?php echo $this->timeAgo($row['created_on3']) ;?> By <?php echo $row['authors'] ;?> </div>
+              <p class="mb-auto"> 
+                <?php 
+                    if (strlen($row["text"]) > 174) {
+                      echo $row["text"] = substr($row["text"],0,174).'... <span class="mb-0"><a href="javascript:void(0)" id="blog-readmore" data-blog="'.$row['blog_id'].'" class="text-muted" style"font-weight: 500 !important;">Continue reading >>> </a></span>';
+                    }else{
+                      echo $row["text"];
+                    } ?> 
+              </p>
+                  <ul class="list-inline mb-0" style="list-style-type: none;">  
+
+                      <?php if($row['blog_id'] == $retweet['retweet_blog_id']){ ?>
+                              <li class=" list-inline-item"><button <?php if(isset($_SESSION['key'])){ echo 'class="share-btn blog-retweeted0 text-sm mr-2" data-blog="'.$row['blog_id'].'"  data-user="'.$row['user_id3'].'"'; }else{ echo 'id="login-please" data-login="1"'; } ?>  >
+                              <i class="fa fa-share green mr-1" style="color: green"> <span class="retweetcounter"><?php echo $retweet['retweet_counts'] ;?> </span></i></button></li>
+                      <?php }else{ ?>
+                              <li class=" list-inline-item"><button <?php if(isset($_SESSION['key'])){ echo 'class="share-btn blog-retweet0 text-sm mr-2" data-blog="'.$row['blog_id'].'"  data-user="'.$row['user_id3'].'"'; }else{ echo 'id="login-please"  data-login="1"'; } ?>  >
+                              <i class="fa fa-share mr-1" > <span class="retweetcounter">  <?php if ($row['retweet_counts'] > 0){ echo $row['retweet_counts'];}else{ echo '';} ?></span></i>
+                              <!-- < ?php if($retweet["retweet_counts"] > 0){ echo '<i class="fa fa-share mr-1" style="color: green"> <span class="retweetcounter">'.$retweet["retweet_counts"].'</span></i>' ; }else{ echo '<i class="fa fa-share mr-1"> <span class="retweetcounter">'.$retweet["retweet_counts"].'</span></i>';} ?> -->
+                              </button></li>
+                      <?php } ?>
+
+                      <?php if($likes['like_on'] == $row['blog_id']){ ?>
+                            <li  class=" list-inline-item"><button <?php if(isset($_SESSION['key'])){ echo 'class="unlike-blog-btn text-sm  mr-2"'; }else{ echo 'id="login-please"  data-login="1"'; } ?> data-blog="<?php echo $row['blog_id']; ?>" data-user="<?php echo $row['user_id']; ?>">
+                            <i class="fa fa-heart-o mr-1" style="color: red"> <span class="likescounter"><?php echo $row['likes_counts'] ;?> </span></i></button></li>
+                      <?php }else{ ?>
+                            <li  class=" list-inline-item"><button <?php if(isset($_SESSION['key'])){ echo 'class="like-blog-btn text-sm  mr-2"'; }else{ echo 'id="login-please" data-login="1"'; } ?> data-blog="<?php echo $row['blog_id']; ?>" data-user="<?php echo $row['user_id']; ?>">
+                            <i class="fa fa-heart-o mr-1" > <span class="likescounter">  <?php if ($row['likes_counts'] > 0){ echo $row['likes_counts'];}else{ echo '';} ?></span></i></button></li>
+                      <?php } ?>
+
+                            <span class='text-right float-right'>
+                        
+                              <li  class="list-inline-item"><button class="comments-btn text-sm" >
+                                  <i class="fa fa-comments-o mr-1"></i> (<?php echo $this->CountBlogComment($row['blog_id']); ?>)
+                              </button></li>
+
+                         <?php if($user_id == $row['user_id3']){ ?>
+
+                                <li  class=" list-inline-item">
+                                    <ul class="deleteButt" style="list-style-type: none; margin:0px;" >
+                                        <li>
+                                            <a href="javascript:void(0)" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                                            <ul style="list-style-type: none; margin:0px;" >
+                                                <li style="list-style-type: none; margin:0px;"> 
+                                                  <label class="deleteblog"  data-blog="<?php echo $row["blog_id"];?>"  data-user="<?php echo $row["user_id3"];?>">Delete </label>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                         <?php } ?>
+                              </span>
+                        </ul>
+            </div>
+          </div>
+          </div>
+
+      <?php } ?>
+    </div>
+<?php  }
+
+  }
+
 
 }
 
 $blog = new Blog();
+/*
+===========================================
+         Notice
+===========================================
+# You are free to run the software as you wish
+# You are free to help yourself study the source code and change to do what you wish
+# You are free to help your neighbor copy and distribute the software
+# You are free to help community create and distribute modified version as you wish
 
+We promote Open Source Software by educating developers (Beginners)
+use PHP Version 5.6.1 > 7.3.20  
+===========================================
+         For more information contact
+=========================================== 
+Kigali - Rwanda
+Tel : (250)787384312 / (250)787384312
+E-mail : shemafaysal@gmail.com
+
+*/
 ?>

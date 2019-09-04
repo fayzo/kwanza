@@ -17,7 +17,7 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
     $crowfund_id = $_POST['crowfund_id'];
     $user= $crowfund->crowfundFecthReadmore($crowfund_id,$user_id);
     $donates= $crowfund->recentDonate($crowfund_id);
-    $comment= $crowfund->comments($crowfund_id);
+    $comment= $crowfund->Crownfund_comments($crowfund_id);
     $likes= $crowfund->Crowfundraisinglikes($user_id,$user['fund_id']);
 
 ?>

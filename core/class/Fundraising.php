@@ -3,7 +3,7 @@
        header('Location: ../../404.html');
  }
 
-class Fundraising extends Home
+class Fundraising extends Follow
 {
     public function fundraisings($pages,$categories,$user_id)
     {
@@ -112,7 +112,7 @@ class Fundraising extends Home
         return $row;
     }
 
-      public function comments($tweet_id)
+      public function Fundraising_comments($tweet_id)
     {
         $mysqli= $this->database;
         $query= "SELECT * FROM comment_funding LEFT JOIN users ON comment_by=user_id LEFT JOIN fundraising ON comment_on=fund_id Left JOIN fundraising_comment_like ON comment_id =like_on_  WHERE comment_on = $tweet_id ORDER BY comment_at DESC";
@@ -325,3 +325,23 @@ class Fundraising extends Home
 }
 
 $fundraising = new Fundraising();
+/*
+===========================================
+         Notice
+===========================================
+# You are free to run the software as you wish
+# You are free to help yourself study the source code and change to do what you wish
+# You are free to help your neighbor copy and distribute the software
+# You are free to help community create and distribute modified version as you wish
+
+We promote Open Source Software by educating developers (Beginners)
+use PHP Version 5.6.1 > 7.3.20  
+===========================================
+         For more information contact
+=========================================== 
+Kigali - Rwanda
+Tel : (250)787384312 / (250)787384312
+E-mail : shemafaysal@gmail.com
+
+*/
+?>

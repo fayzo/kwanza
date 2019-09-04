@@ -168,7 +168,7 @@ class Follow extends Home
                         <!-- Add the bg color to the header using any of the bg-* classes -->
                          '.((!empty($following['cover_img']))?
                            '<div class="user-header-follow text-white" style="background: url('.BASE_URL_LINK."image/users_profile_cover/".$following['cover_img'].') center center;background-size: cover; overflow: hidden; width: 100%;">'
-                          :'<div class="user-header-follow text-white" style="background: url('.BASE_URL_LINK.NO_PROFILE_IMAGE_URL.') center center;background-size: cover; overflow: hidden; width: 100%;">' ).'
+                          :'<div class="user-header-follow text-white" style="background: url('.BASE_URL_LINK.NO_COVER_IMAGE_URL.') center center;background-size: cover; overflow: hidden; width: 100%;">' ).'
                         </div>
                         <div class="user-image-follow">
                           '.((!empty($following['profile_img']))?
@@ -205,7 +205,7 @@ class Follow extends Home
                         <!-- Add the bg color to the header using any of the bg-* classes -->
                          '.((!empty($following['cover_img']))?
                            '<div class="user-header-follow text-white" style="background: url('.BASE_URL_LINK."image/users_profile_cover/".$following['cover_img'].') center center;background-size: cover; overflow: hidden; width: 100%;">'
-                          :'<div class="user-header-follow text-white" style="background: url('.BASE_URL_LINK.NO_PROFILE_IMAGE_URL.') center center;background-size: cover; overflow: hidden; width: 100%;">').'
+                          :'<div class="user-header-follow text-white" style="background: url('.BASE_URL_LINK.NO_COVER_IMAGE_URL.') center center;background-size: cover; overflow: hidden; width: 100%;">').'
                         </div>
                         <div class="user-image-follow">
                           '.((!empty($following['profile_img']))?
@@ -463,7 +463,63 @@ class Follow extends Home
         
     <?php }
 
+     public function Post_FollowingLists($user_id,$follow_id)
+    {
+       $mysqli= $this->database;
+       $query= "SELECT * FROM users WHERE user_id != $user_id AND user_id NOT IN (SELECT receiver FROM follow WHERE sender = $user_id ) ORDER BY rand() LIMIT 6";
+       $result=$mysqli->query($query);
+       while ($following=$result->fetch_array()) {
+           # code...
+           echo '
+                <div class="col-md-4 mb-3">
+                    <!-- Widget: user widget style 1 -->
+                    <div class="card card-follow user-follow">
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                         '.((!empty($following['cover_img']))?
+                           '<div class="user-header-follow text-white" style="background: url('.BASE_URL_LINK."image/users_profile_cover/".$following['cover_img'].') center center;background-size: cover; overflow: hidden; width: 100%;">'
+                          :'<div class="user-header-follow text-white" style="background: url('.BASE_URL_LINK.NO_COVER_IMAGE_URL.') center center;background-size: cover; overflow: hidden; width: 100%;">' ).'
+                        </div>
+                        <div class="user-image-follow">
+                          '.((!empty($following['profile_img']))?
+                               ' <img class="rounded-circle elevation-2"
+                                    src="'.BASE_URL_LINK."image/users_profile_cover/".$following['profile_img'].'">'
+                              :' <img class="rounded-circle elevation-2" src="'.BASE_URL_LINK.NO_PROFILE_IMAGE_URL.'" />' ).'
+                             <span> '.$this->lengthsOfusers($following['date_registry']).'</span>
+                        </div>
+                        <div class="card-footer">
+                            <h5 class="user-username-follow m-1 "><a href="'.BASE_URL_PUBLIC.$following['username'].'">'.$following['username'].'</a></h5>
+                            <h5 class="user-username-follow m-1"><small>'.((!empty($following['career']))? $this->getTweetLink($following['career']):'no career').'</small></h5>
+                            <span>'.$this->followBtn($following['user_id'],$user_id,$follow_id).'</span>
+                        </div>
+                        <!-- /.footer -->
+                    </div>
+                    <!-- /. card widget-user -->
+                </div>
+                <!-- col --> ';
+       }
+
+    }
+
 }
 
 $follow = new follow();
+/*
+===========================================
+         Notice
+===========================================
+# You are free to run the software as you wish
+# You are free to help yourself study the source code and change to do what you wish
+# You are free to help your neighbor copy and distribute the software
+# You are free to help community create and distribute modified version as you wish
+
+We promote Open Source Software by educating developers (Beginners)
+use PHP Version 5.6.1 > 7.3.20  
+===========================================
+         For more information contact
+=========================================== 
+Kigali - Rwanda
+Tel : (250)787384312 / (250)787384312
+E-mail : shemafaysal@gmail.com
+
+*/
 ?>

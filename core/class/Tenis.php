@@ -3,9 +3,9 @@
        header('Location: ../../404.html');
  }
 
-class Football extends Home{
+class Tenis extends Home{
     
-    public function footballRecent_news($categories)
+    public function TenisRecent_news($categories)
     {
         $mysqli= $this->database;
         $query= $mysqli->query("SELECT * FROM users U Left JOIN sports S ON S. user_id3 = u. user_id WHERE S. categories_sports ='$categories' and created_on3  > DATE_SUB(NOW(), INTERVAL 1 MONTH) ORDER BY created_on3 Desc , rand() Limit 5");
@@ -14,7 +14,7 @@ class Football extends Home{
         ?>
        <div class="card d-none d-lg-block">
         <div class="card-header main-active">
-          <h5>Recent Football News</h5>
+          <h5>Recent Tenis News</h5>
         </div>
         <div class="card-body px-2">
             <div class="row">
@@ -49,7 +49,7 @@ class Football extends Home{
     <?php } 
     }
 
-    public function currentDatefootballMatch($day,$currentdate,$futuredate)
+    public function currentDateTenisMatch($day,$currentdate,$futuredate)
     {
         // if($day === 0){
         //   $dayz= 1;
@@ -58,7 +58,7 @@ class Football extends Home{
         // }
         $mysqli= $this->database;
         // $query= $mysqli->query("SELECT * FROM football WHERE SUBDATE(NOW(), INTERVAL $dayz DAY ) = date_of_match ORDER BY date_of_match Desc Limit 3");
-        $query= $mysqli->query("SELECT * FROM football WHERE date_of_match BETWEEN '$currentdate' AND '$futuredate'  ORDER BY date_of_match Desc Limit 3");
+        $query= $mysqli->query("SELECT * FROM tenis WHERE date_of_match BETWEEN '$currentdate' AND '$futuredate'  ORDER BY date_of_match Desc Limit 3");
             //  SECOND	, MINUTE, HOUR, DAY, WEEK	, MONTH	, QUARTER	, YEAR,
             // var_dump('ERROR: Could not able to execute $sql.'.mysqli_error($mysqli));
             // var_dump($day);
@@ -72,17 +72,17 @@ class Football extends Home{
                        $date = strtotime("-$i day"); 
                        $date1 = strtotime("-$i day"); 
                         if (-$i == $day) { ?>
-                    <li class="page-item active"><a class="page-link px-1  text-light" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo -$i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php echo date('M d', $date); ?></a></li>
+                    <li class="page-item active"><a class="page-link px-1  text-light" href="javascript:void(0)" onclick="Tenis_FecthRequest(<?php echo -$i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php echo date('M d', $date); ?></a></li>
                 <?php }else{ ?>
-                       <li class="page-item"><a class="page-link px-1  text-dark" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo -$i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')"><?php echo date('M d', $date);  ?></a></li>
+                       <li class="page-item"><a class="page-link px-1  text-dark" href="javascript:void(0)" onclick="Tenis_FecthRequest(<?php echo -$i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')"><?php echo date('M d', $date);  ?></a></li>
                 <?php } } ?>
                 <?php for ($i= 0; $i < 7; $i++) { 
                        $date = strtotime("+$i day");
                        $date1 = strtotime("+$i day"); 
                          if ($i == $day) { ?>
-                    <li class="page-item active"><a class="page-link px-1  text-light" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo $i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php if ($i === 0) { echo 'Today';}else{ echo date('M d', $date); } ?></a></li>
+                    <li class="page-item active"><a class="page-link px-1  text-light" href="javascript:void(0)" onclick="Tenis_FecthRequest(<?php echo $i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php if ($i === 0) { echo 'Today';}else{ echo date('M d', $date); } ?></a></li>
                 <?php }else{ ?>
-                    <li class="page-item"><a class="page-link px-1  text-dark" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo $i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php echo date('M d', $date);  ?></a></li>
+                    <li class="page-item"><a class="page-link px-1  text-dark" href="javascript:void(0)" onclick="Tenis_FecthRequest(<?php echo $i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php echo date('M d', $date);  ?></a></li>
                 <?php } } ?>
                 </ul>
             </nav>
@@ -124,17 +124,17 @@ class Football extends Home{
                        $date = strtotime("-$i day"); 
                        $date1 = strtotime("-$i day"); 
                         if (-$i == $day) { ?>
-                    <li class="page-item active"><a class="page-link px-1  text-light" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo -$i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php echo date('M d', $date); ?></a></li>
+                    <li class="page-item active"><a class="page-link px-1  text-light" href="javascript:void(0)" onclick="Tenis_FecthRequest(<?php echo -$i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php echo date('M d', $date); ?></a></li>
                 <?php }else{ ?>
-                       <li class="page-item"><a class="page-link px-1  text-dark" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo -$i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')"><?php echo date('M d', $date);  ?></a></li>
+                       <li class="page-item"><a class="page-link px-1  text-dark" href="javascript:void(0)" onclick="Tenis_FecthRequest(<?php echo -$i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')"><?php echo date('M d', $date);  ?></a></li>
                 <?php } } ?>
                 <?php for ($i= 0; $i < 7; $i++) { 
                        $date = strtotime("+$i day");
                        $date1 = strtotime("+$i day"); 
                          if ($i == $day) { ?>
-                    <li class="page-item active"><a class="page-link px-1  text-light" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo $i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php if ($i === 0) { echo 'Today';}else{ echo date('M d', $date); } ?></a></li>
+                    <li class="page-item active"><a class="page-link px-1  text-light" href="javascript:void(0)" onclick="Tenis_FecthRequest(<?php echo $i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php if ($i === 0) { echo 'Today';}else{ echo date('M d', $date); } ?></a></li>
                 <?php }else{ ?>
-                    <li class="page-item"><a class="page-link px-1  text-dark" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo $i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php echo date('M d', $date);  ?></a></li>
+                    <li class="page-item"><a class="page-link px-1  text-dark" href="javascript:void(0)" onclick="Tenis_FecthRequest(<?php echo $i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php echo date('M d', $date);  ?></a></li>
                 <?php } } ?>
                 </ul>
             </nav>
@@ -169,7 +169,8 @@ class Football extends Home{
 
  
 }
-$football = new Football();
+
+$tenis = new Tenis();
 /*
 ===========================================
          Notice
