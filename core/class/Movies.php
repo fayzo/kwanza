@@ -16,7 +16,7 @@ class Movies extends Home{
                 <div class="col-md-3 mb-2">
                   <div class="card more" id="movies_watchvideo" data-movies="<?php echo $row['movies_id'];?> ">
                     <img class="card-img" src="<?php echo BASE_URL_PUBLIC."uploads/movies/".$row['photo'] ;?>" width="103px" height="152px" >
-                    <div class="card-footer bg-white py-0  text-center">
+                    <div class="card-footer py-0  text-center">
                       <div style="border-bottom: 1px #d6cccc solid;" class="text-primary"><?php echo $row['title_movies'] ;?></div>
                       <div style="font-size:9px"><i class="fa fa-eye" aria-hidden="true"></i> 30 000 000 </div>
                     </div><!-- card-footer -->
@@ -51,7 +51,7 @@ class Movies extends Home{
                 <div class="col-md-3 mb-2">
                   <div class="card more" id="movies_watchvideo" data-movies="<?php echo $row['movies_id'];?> ">
                     <img class="card-img" src="<?php echo BASE_URL_PUBLIC."uploads/movies/".$row['photo'] ;?>" width="103px" height="152px" >
-                    <div class="card-footer bg-white py-0  text-center">
+                    <div class="card-footer py-0  text-center">
                       <div style="border-bottom: 1px #d6cccc solid;" class="text-primary"><?php echo $row['title_movies'] ;?></div>
                       <div style="font-size:9px"><i class="fa fa-eye" aria-hidden="true"></i> 30 000 000 </div>
                     </div><!-- card-footer -->
@@ -115,7 +115,7 @@ class Movies extends Home{
                 <div class="col-md-3 mb-2">
                   <div class="card more" id="movies_watchvideo" data-movies="<?php echo $row['movies_id'];?> ">
                     <img class="card-img" src="<?php echo BASE_URL_PUBLIC."uploads/movies/".$row['photo'] ;?>" width="103px" height="152px" >
-                    <div class="card-footer bg-white py-0  text-center">
+                    <div class="card-footer py-0  text-center">
                       <div style="border-bottom: 1px #d6cccc solid;" class="text-primary"><?php echo $row['title_movies'] ;?></div>
                       <div style="font-size:9px"><i class="fa fa-eye" aria-hidden="true"></i> 30 000 000 </div>
                     </div><!-- card-footer -->
@@ -160,12 +160,12 @@ class Movies extends Home{
       $mysqli= $this->database;
       $query= $mysqli->query("SELECT * FROM movies WHERE  title_movies = title_movies  ORDER BY created_on3 Asc Limit 0,20 ");
       ?>
-        <ul class="list-group mb-5 " style="list-style-type: none;">
+        <ul class="list-group mb-5 card" style="list-style-type: none;">
         <a class="list-group-item list-group-item-action text-center py-1 main-active" href="javascript:void(0)"><h5><i> You May Also Liked</i></h5></a>
         <?php while($row= $query->fetch_array()){ ?>
 
     
-       <li class="movies-dropdown" >
+       <li class="movies-dropdown sportx" >
         <ul><li>
          <a class="list-group-item list-group-item-action" href="javascript:void(0)"  id="movies_watchvideo" data-movies="<?php echo $row['movies_id'];?> "> <?php echo $row['title_movies']; ?></a>
               <ul><li>
@@ -214,7 +214,7 @@ class Movies extends Home{
 
               <div class="card more" id="movies_watchvideo" data-movies="<?php echo $row['movies_id'];?> ">
                 <img class="card-img" src="<?php echo BASE_URL_PUBLIC."uploads/movies/".$row['photo'] ;?>" width="203px" height="252px" >
-                <div class="card-footer bg-white py-0  text-center">
+                <div class="card-footer py-0  text-center">
                   <div style="border-bottom: 1px #d6cccc solid;" class="text-primary"><?php echo $row['title_movies'] ;?></div>
                   <div style="font-size:9px"><i class="fa fa-eye" aria-hidden="true"></i> 30 000 000 </div>
                 </div><!-- card-footer -->
@@ -299,7 +299,7 @@ class Movies extends Home{
          </div> <!-- card -->
          </div><!-- col -->
 
-         <div class="col-md-3 mb-2">
+         <div class="col-md-3 mb-2 sportx">
            <?php echo $this->moviesMayLike0(); ?>
          </div><!-- col -->
 
@@ -342,11 +342,11 @@ class Movies extends Home{
       $mysqli= $this->database;
       $query= $mysqli->query("SELECT * FROM movies WHERE  title_movies = title_movies  ORDER BY created_on3 Asc Limit 0,10 ");
       ?>
-        <ul class="list-group mb-5 " style="list-style-type: none;">
+        <ul class="list-group mb-5 card " style="list-style-type: none;">
         <a class="list-group-item list-group-item-action text-center py-1 main-active" href="javascript:void(0)"><h5><i> Most Watchest Movies</i></h5></a>
         <?php while($row= $query->fetch_array()){ ?>
     
-       <li class="movies-dropdown" >
+       <li class="movies-dropdown sportx" >
         <ul><li>
          <a class="list-group-item list-group-item-action" href="javascript:void(0)"  id="movies_watchvideo" data-movies="<?php echo $row['movies_id'];?> "> =>  <?php echo $row['title_movies']; ?><div><i class="fa fa-eye" aria-hidden="true"></i> 23 000 000 Viewers</div></a>
               <ul><li>

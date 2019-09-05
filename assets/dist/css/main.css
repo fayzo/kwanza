@@ -1,6 +1,18 @@
 /* .sticky-top{
    z-index: 1029 !important;
 } */
+
+.card {
+    border-radius: 5px !important;
+    border-top: none !important;
+    border-left: none !important;
+}
+
+.card-header {
+   border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+}
+
 .dropdown-menu {
     /* left: -60% !important; */
     padding: none !important;
@@ -44,7 +56,7 @@
 }
 
 #black .card .list-group-item {
-  background-color: rgb(56, 55, 55);
+  background-color: #272323;
   color: #c3bebe;
 }
 

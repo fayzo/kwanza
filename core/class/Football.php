@@ -139,7 +139,7 @@ class Football extends Home{
                 </ul>
             </nav>
         </div> <!-- card-header -->
-        <div class="card-body">
+        <div class="card-body sportx">
         <div class="card">
           <div class="card-header main-active">
               <div class="float-right">June 12</div>

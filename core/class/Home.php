@@ -3783,7 +3783,7 @@ class Home extends Comment {
                 </div>
                 <div class="card-body sportx">
                  <div style="background:#b9b6b22b;padding:7px;">
-                        <span style="text-decoration:underline"> Football</span>
+                        <span style="text-decoration:underline;color:#007bff;font-weight:500;" class="h5"> Football</span>
                    </div>
                     <div class="FOOT">
                         <div class="float-right">June 12</div>
@@ -3823,7 +3823,7 @@ class Home extends Comment {
                         </div>
                     </ul>
                    <div style="background:#b9b6b22b;padding:7px;">
-                     <span style="text-decoration:underline">Basketball</span>
+                     <span style="text-decoration:underline;color:#007bff;font-weight:500;" class="h5">Basketball</span>
                    </div>
                     <div class="FOOT">
                         <div class="float-right">June 12</div>
@@ -3864,7 +3864,7 @@ class Home extends Comment {
                         </div>
                     </ul>
                   <div style="background:#b9b6b22b;padding:7px;">
-                     <span style="text-decoration:underline"> Volleyball</span>
+                     <span style="text-decoration:underline;color:#007bff;font-weight:500;" class="h5"> Volleyball</span>
                    </div>
                     <div class="FOOT">
                         <div class="float-right">June 12</div>
@@ -3914,7 +3914,7 @@ class Home extends Comment {
                 </div>
                 <div class="card-body sportx">
                  <div style="background:#b9b6b22b;padding:7px;">
-                        <span style="text-decoration:underline"> Football</span>
+                        <span style="text-decoration:underline;;color:#007bff;" class="h5"> Football</span>
                    </div>
                     <div class="FOOT">
                         <div class="float-right">June 12</div>
@@ -3939,7 +3939,7 @@ class Home extends Comment {
                         </div>
                     </ul>
                    <div style="background:#b9b6b22b;padding:7px;">
-                     <span style="text-decoration:underline">Basketball</span>
+                     <span style="text-decoration:underline;;color:#007bff;" class="h5">Basketball</span>
                    </div>
                     <div class="FOOT">
                         <div class="float-right">June 12</div>
@@ -3965,7 +3965,7 @@ class Home extends Comment {
                         </div>
                     </ul>
                   <div style="background:#b9b6b22b;padding:7px;">
-                     <span style="text-decoration:underline"> Volleyball</span>
+                     <span style="text-decoration:underline;;color:#007bff;" class="h5"> Volleyball</span>
                    </div>
                     <div class="FOOT">
                         <div class="float-right">June 12</div>

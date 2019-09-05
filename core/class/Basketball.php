@@ -145,7 +145,7 @@ class Basketball extends Home{
               <div class="float-right">June 12</div>
               <div> Azam league - GROUP A</div>
           </div>
-            <div class="card-body p-0">
+            <div class="card-body sportx p-0">
               <!-- LIST GROUP WITH LINKS -->
               <ul class="list-group">
 

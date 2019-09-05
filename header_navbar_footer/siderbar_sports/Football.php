@@ -34,7 +34,7 @@
         </div> <!-- col -->
 
         <div class="col-md-3">
-             <div class="card mb-3">
+        <div class="card mb-3">
           <div class="card-header text-center main-active">
               <div class="h5">Football Scores Tables</div>
           </div>

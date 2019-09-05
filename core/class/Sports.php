@@ -22,7 +22,7 @@ class Sports extends Home{
         $row1= $query1->fetch_array()
         ?>
 
-        <div id="slider4" class="carousel slide mb-5" data-ride="carousel">
+        <div id="slider4" class="carousel slide mb-3" data-ride="carousel">
           <ol class="carousel-indicators">
             <li class="active" data-target="#slider4" data-slide-to="0"></li>
             <?php  for($i=2;$i <= $countRow->num_rows ; ++$i) {  ?>
