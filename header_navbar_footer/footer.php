@@ -245,6 +245,7 @@
    <script src="<?php echo BASE_URL_LINK ;?>js/food_delete.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/domesticsHelper_profile_add.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/post_second_like.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/football_readmore.js"></script>
    
    <!-- <script src="<?php echo BASE_URL_LINK ;?>js/add_post_ajax.js"></script> -->
    <script src="<?php echo BASE_URL_LINK ;?>js/manage_admins_ajax.js"></script>

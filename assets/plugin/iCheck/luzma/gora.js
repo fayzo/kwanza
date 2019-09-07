@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2019 at 01:16 AM
+-- Generation Time: Sep 07, 2019 at 04:09 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.2.20
 
@@ -3156,40 +3156,40 @@ CREATE TABLE `districts` (
 
 INSERT INTO `districts` (`districtcode`, `namedistrict`, `provincecode`) VALUES
 ('100', '-- Select Districts --', '1'),
-('101', 'NYARUGENGE', '1'),
-('102', 'GASABO', '1'),
-('103', 'KICUKIRO', '1'),
+('101', 'Nyarugenge', '1'),
+('102', 'Gasabo', '1'),
+('103', 'Kicukiro', '1'),
 ('200', '-- Select Districts --', '2'),
-('201', 'NYANZA', '2'),
-('202', 'GISAGARA', '2'),
-('203', 'NYARUGURU', '2'),
-('204', 'HUYE', '2'),
-('205', 'NYAMAGABE', '2'),
-('206', 'RUHANGO', '2'),
-('207', 'MUHANGA', '2'),
-('208', 'KAMONYI', '2'),
+('201', 'Nyanza', '2'),
+('202', 'Gisagara', '2'),
+('203', 'Nyaruguru', '2'),
+('204', 'Huye', '2'),
+('205', 'Nyamagabe', '2'),
+('206', 'Ruhango', '2'),
+('207', 'Muhanga', '2'),
+('208', 'Kamonyi', '2'),
 ('300', '-- Select Districts --', '3'),
-('301', 'KARONGI', '3'),
-('302', 'RUTSIRO', '3'),
-('303', 'RUBAVU', '3'),
-('304', 'NYABIHU', '3'),
-('305', 'NGORORERO', '3'),
-('306', 'RUSIZI', '3'),
-('307', 'NYAMASHEKE', '3'),
+('301', 'Karongi', '3'),
+('302', 'Rutsiro', '3'),
+('303', 'Rubavu', '3'),
+('304', 'Nyabihu', '3'),
+('305', 'Ngorero', '3'),
+('306', 'RUsizi', '3'),
+('307', 'Nyamasheke', '3'),
 ('400', '-- Select Districts --', '4'),
-('401', 'RULINDO', '4'),
-('402', 'GAKENKE', '4'),
-('403', 'MUSANZE', '4'),
-('404', 'BURERA', '4'),
-('405', 'GICUMBI', '4'),
+('401', 'Rulindo', '4'),
+('402', 'Gakenke', '4'),
+('403', 'Musanze', '4'),
+('404', 'Burera', '4'),
+('405', 'Gicumbi', '4'),
 ('500', '-- Select Districts --', '5'),
-('501', 'RWAMAGANA', '5'),
-('502', 'NYAGATARE', '5'),
-('503', 'GATSIBO', '5'),
-('504', 'KAYONZA', '5'),
-('505', 'KIREHE', '5'),
-('506', 'NGOMA', '5'),
-('507', 'BUGESERA', '5');
+('501', 'Rwamagana', '5'),
+('502', 'Nyagatare', '5'),
+('503', 'Gatsibo', '5'),
+('504', 'Kayonza', '5'),
+('505', 'Kirehe', '5'),
+('506', 'Ngoma', '5'),
+('507', 'Bugesera', '5');
 
 -- --------------------------------------------------------
 
@@ -3541,17 +3541,25 @@ INSERT INTO `food` (`food_id`, `authors`, `photo`, `other_photo`, `video`, `yout
 
 CREATE TABLE `football` (
   `football_id` int(11) NOT NULL,
-  `match_game` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Home_game` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Away_game` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `score_game` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `goals_player_name_match` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `goal_player_id_match` int(11) NOT NULL,
   `counts_goals` int(11) NOT NULL,
   `counts_drows` int(11) NOT NULL,
   `counts_points` int(11) NOT NULL,
   `date_of_match` date NOT NULL,
+  `time_of_match` time NOT NULL,
   `created_on3` datetime NOT NULL,
   `user_id3` int(11) NOT NULL,
   `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `location_of_match` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `province` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `district` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sector` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cell` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `village` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `home_team_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `away_team_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -3560,12 +3568,45 @@ CREATE TABLE `football` (
 -- Dumping data for table `football`
 --
 
-INSERT INTO `football` (`football_id`, `match_game`, `goals_player_name_match`, `goal_player_id_match`, `counts_goals`, `counts_drows`, `counts_points`, `date_of_match`, `created_on3`, `user_id3`, `text`, `location_of_match`, `home_team_photo`, `away_team_photo`) VALUES
-(1, 'rayon-sports', '', 0, 0, 0, 0, '2019-08-29', '2019-06-17 10:42:40', 61, 'ibintu nu buryohe itike ni 1000 frw kwijira', '10pm at stadium', '2019_58imag.jpg', '2019_10imag.jpg'),
-(2, 'kiyovu ?-? sports', '', 0, 0, 0, 0, '2019-08-30', '2019-06-18 14:58:28', 61, 'kwijira bizaba bishushe', '10pm at stadium', '2019_35ligh.jpg', '2019_33imag.jpg'),
-(3, 'apr', '', 0, 0, 0, 0, '2019-09-01', '2019-07-13 15:38:37', 64, 'nice', 'kimironko', '2019_63map-.png', '2019_49capt.png'),
-(4, 'apr', '', 0, 0, 0, 0, '2019-09-02', '2019-07-13 15:41:38', 64, 'rtw', 'rt', '2019_64capt.png', '2019_16capt.png'),
-(5, 'arsenal-apr', '', 0, 0, 0, 0, '2019-09-03', '2019-09-03 09:04:35', 61, 'birashushe', 'amahoro', '2019_48baby2.png', '2019_70baby3.png');
+INSERT INTO `football` (`football_id`, `Home_game`, `Away_game`, `score_game`, `goals_player_name_match`, `goal_player_id_match`, `counts_goals`, `counts_drows`, `counts_points`, `date_of_match`, `time_of_match`, `created_on3`, `user_id3`, `text`, `location_of_match`, `province`, `district`, `sector`, `cell`, `village`, `home_team_photo`, `away_team_photo`) VALUES
+(1, 'rayon', 'apr', '3-5', '', 0, 0, 0, 0, '2019-08-29', '08:18:09', '2019-06-17 10:42:40', 61, 'ibintu nu buryohe itike ni 1000 frw kwijira', '10pm at stadium', '', '', '', '', '', '2019_58imag.jpg', '2019_10imag.jpg'),
+(2, 'kiyovu ', 'mukura', '1-1', '', 0, 0, 0, 0, '2019-08-30', '05:13:07', '2019-06-18 14:58:28', 61, 'kwijira bizaba bishushe', '10pm at stadium', '', '', '', '', '', '2019_35ligh.jpg', '2019_33imag.jpg'),
+(3, 'apr', 'intersec', '0-2', '', 0, 0, 0, 0, '2019-09-01', '07:14:07', '2019-07-13 15:38:37', 64, 'nice', 'kimironko', '', '', '', '', '', '2019_63map-.png', '2019_49capt.png'),
+(4, 'apr', 'kiyovu', '2-3', '', 0, 0, 0, 0, '2019-09-02', '03:09:06', '2019-07-13 15:41:38', 64, 'rtw', 'rt', '', '', '', '', '', '2019_64capt.png', '2019_16capt.png'),
+(5, 'arsenal', 'apr', '1-1', '', 0, 0, 0, 0, '2019-09-03', '15:09:14', '2019-09-03 09:04:35', 61, 'birashushe', 'amahoro', '', '', '', '', '', '2019_48baby2.png', '2019_70baby3.png'),
+(6, 'apr', 'police', '?-?', '', 0, 0, 0, 0, '2019-09-05', '07:08:09', '2019-09-05 10:09:17', 61, 'sdfefgse', 'amahoro', '2', '201', '2010203', '20102', '201020303', '2019_497.jpg', '2019_593.jpg'),
+(7, 'JUVENTUS', 'AS ROMA', '?-?', '', 0, 0, 0, 0, '2019-09-06', '07:03:06', '2019-09-05 10:41:11', 61, '2000 FRW', 'amahoro', '1', '102', '10208', '10208', '', '2019_9911.jpg', '2019_4113.jpg'),
+(8, 'MONACO', 'PSG', '?-?', '', 0, 0, 0, 0, '2019-09-07', '03:06:00', '2019-09-05 10:46:02', 61, 'HELLO', 'amahoro', '2', '201', '2010104 ', '20101', '201010404', '2019_7518.jpg', '2019_7025.jpg'),
+(9, 'JUVENTUS', 'police', '?-?', '', 0, 0, 0, 0, '2019-09-08', '09:08:10', '2019-09-05 10:51:29', 61, 'gud', 'amahoro', '2', '201', '20102', '2010203', '201020303', '2019_505.jpg', '2019_807.jpg'),
+(10, 'BARCELONA', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-09', '12:58:00', '2019-09-05 11:13:40', 61, 'NICE', 'amahoro', '1', '102', '10202', '1020202', '102020202', '2019_428.jpg', '2019_945.jpg'),
+(11, 'MONACO', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-10', '13:59:00', '2019-09-05 11:16:09', 61, 'HOW ARE U', 'amahoro', '2', '201', '20101', '2010102', '201010204', '2019_3222.jpg', '2019_7120.jpg'),
+(12, 'MONACO', 'AS ROMA', '?-?', '', 0, 0, 0, 0, '2019-09-06', '10:11:17', '2019-09-05 13:34:06', 61, '3000 frw', 'amahoro', '2', '201', '20102', '2010201', '201020103', '2019_839.jpg', '2019_1313.jpg'),
+(13, 'BARCELONA', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-06', '13:59:00', '2019-09-05 13:35:47', 61, 'ds', 'amahoro', '1', '101', '10102', '1010202', '101020203', '2019_894.jpg', '2019_748.jpg'),
+(14, 'MANU', 'CHE,LSEA', '?-?', '', 0, 0, 0, 0, '2019-09-07', '13:59:00', '2019-09-06 09:03:23', 61, 'NICE', 'amahoro', '1', '101', '10102', '1010202', '101020203', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `football_lineup_table`
+--
+
+CREATE TABLE `football_lineup_table` (
+  `score_id` int(11) NOT NULL,
+  `football_team` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `team_total_points` int(11) NOT NULL,
+  `team_total_goal` int(11) NOT NULL,
+  `team_total_draw` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `football_lineup_table`
+--
+
+INSERT INTO `football_lineup_table` (`score_id`, `football_team`, `team_total_points`, `team_total_goal`, `team_total_draw`) VALUES
+(1, 'APR', 12, 4, 3),
+(2, 'RAYON SPORT', 22, 4, 1),
+(3, 'KIYOVU', 13, 2, 3),
+(4, 'INTERSEC', 11, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -5344,7 +5385,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `password`, `gender`, `chat`, `career`, `country`, `date_birth`, `date_registry`, `last_login`, `counts_login`, `forgotUsernameCounts`, `forgotUsernameCountsTimesHeCreates`, `forgotUsernameCountsTimesHeCreatespassword`, `profile_img`, `profile_img_crop`, `cover_img`, `background`, `language`, `color`, `education`, `diploma`, `skills`, `location`, `hobbys`, `followers`, `following`, `approval`, `company_education`, `type_of_business`, `address`, `size_of_people`, `companyname`, `overview`, `history`, `team`, `legal_structure`, `location_facilities`, `mission_statement`, `website`, `unemplyoment`, `categories_fields`, `phone`) VALUES
-(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'off', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-09-03 16:45:58', 511, 0, 10, 10, '112baby3.png', '', '702caus.jpg', 'chair', '', 'purple', 'lycee', 'project', 'web', 'BR', 'styuding', 9, 6, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
+(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'off', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-09-06 08:36:40', 514, 0, 10, 10, '112baby3.png', '', '702caus.jpg', 'chair', '', 'purple', 'lycee', 'project', 'web', 'BR', 'styuding', 9, 6, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
 (64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-09-02 13:13:36', 62, 0, 0, 0, '', '', '', 'chair', '', 'purple-green', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
 (65, 'karisa', 'bosco', 'bosco', 'faysal@gmail.com', 'bosco', 'Male', '', '', 'RW', '2019-05-03', '2019-05-02', '2019-05-27 21:50:00', 8, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 2, 2, 'off', '', '', '', '', 'LAMBORGIN', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
 (66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-09-02 13:13:10', 114, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'chair', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
@@ -18139,6 +18180,12 @@ ALTER TABLE `football`
   ADD PRIMARY KEY (`football_id`);
 
 --
+-- Indexes for table `football_lineup_table`
+--
+ALTER TABLE `football_lineup_table`
+  ADD PRIMARY KEY (`score_id`);
+
+--
 -- Indexes for table `fundraising`
 --
 ALTER TABLE `fundraising`
@@ -18528,7 +18575,13 @@ ALTER TABLE `food`
 -- AUTO_INCREMENT for table `football`
 --
 ALTER TABLE `football`
-  MODIFY `football_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `football_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `football_lineup_table`
+--
+ALTER TABLE `football_lineup_table`
+  MODIFY `score_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `fundraising`

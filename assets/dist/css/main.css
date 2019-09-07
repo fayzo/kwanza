@@ -60,6 +60,15 @@
   color: #c3bebe;
 }
 
+#black .list-group-item {
+  background-color: #272323;
+  color: #c3bebe;
+}
+
+#black .table tbody tr:hover {
+ background-color: #444242d1;
+}
+
 #black .card .list-group-item-action:hover {
   background-color: #2e2828;
    color: #171718; 

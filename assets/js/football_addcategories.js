@@ -46,34 +46,42 @@ $(document).ready(function () {
     $(document).on('click', '#form-football', function (e) {
         // event.preventDefault();
         e.stopPropagation();
-        var match_game = $('#match_game');
+        var Home_game = $('#Home_game');
+        var Away_game = $('#Away_game');
+        var score_game = $('#score_game');
         var date_of_match = $('#date_of_match');
+        var time_of_match = $('#time_of_match');
         var location_of_match = $('#location_of_match');
+        var province = $('.provincecode');
+        var districts = $('.districtcode');
+        var sector = $('.sectorcode');
+        var cell = $('.codecell');
+        var village = $('.CodeVillage');
         var additioninformation = $('#addition-information');
-        var photo = $('#photo');
-        var other_photo = $('#other-photo');
+        // var photo = $('#photo');
+        // var other_photo = $('#other-photo');
 
-        if (isEmpty(match_game) && isEmpty(date_of_match) && isEmpty(location_of_match) && isEmpty(additioninformation) && 
-            isEmpty(photo) && isEmpty(other_photo)) {
+        if (isEmpty(Home_game) && isEmpty(score_game) && isEmpty(Away_game) && isEmpty(date_of_match) && isEmpty(time_of_match) && isEmpty(location_of_match) && isEmpty(province) &&
+            isEmpty(districts) && isEmpty(sector) && isEmpty(cell) && isEmpty(village) &&  isEmpty(additioninformation)) {
+                // isEmpty(photo) && isEmpty(other_photo)
+            // var extensions3 = $('#photo').val().split('.').pop().toLowerCase();
+            // var extensions4 = $('#other-photo').val().split('.').pop().toLowerCase();
 
-            var extensions3 = $('#photo').val().split('.').pop().toLowerCase();
-            var extensions4 = $('#other-photo').val().split('.').pop().toLowerCase();
-
-            if (jQuery.inArray(extensions3, ['gif', 'png', 'jpg', 'mp4', 'mp3', 'jpeg', 'bmp', 'pdf', 'doc', 'ppt', 'docx', 'xlsx', 'xls', 'zip']) == -1) {
-                $("#responseSubmitfootball").html('Invalid Image File').fadeIn();
-                setInterval(function () {
-                    $("#responseSubmitfootball").fadeOut();
-                }, 4000);
-                $('#photo').val('');
-                return false;
-            } else if (jQuery.inArray(extensions4, ['gif', 'png', 'jpg', 'mp4', 'mp3', 'jpeg', 'bmp', 'pdf', 'doc', 'ppt', 'docx', 'xlsx', 'xls', 'zip']) == -1) {
-                $("#responseSubmitfootball").html('Invalid Image File').fadeIn();
-                setInterval(function () {
-                    $("#responseSubmitfootball").fadeOut();
-                }, 4000);
-                $('#other-photo').val('');
-                return false;
-            } else {
+            // if (jQuery.inArray(extensions3, ['gif', 'png', 'jpg', 'mp4', 'mp3', 'jpeg', 'bmp', 'pdf', 'doc', 'ppt', 'docx', 'xlsx', 'xls', 'zip']) == -1) {
+            //     $("#responseSubmitfootball").html('Invalid Image File').fadeIn();
+            //     setInterval(function () {
+            //         $("#responseSubmitfootball").fadeOut();
+            //     }, 4000);
+            //     $('#photo').val('');
+            //     return false;
+            // } else if (jQuery.inArray(extensions4, ['gif', 'png', 'jpg', 'mp4', 'mp3', 'jpeg', 'bmp', 'pdf', 'doc', 'ppt', 'docx', 'xlsx', 'xls', 'zip']) == -1) {
+            //     $("#responseSubmitfootball").html('Invalid Image File').fadeIn();
+            //     setInterval(function () {
+            //         $("#responseSubmitfootball").fadeOut();
+            //     }, 4000);
+            //     $('#other-photo').val('');
+            //     return false;
+            // } else {
                 $.ajax({
                     url: 'core/ajax_db/football_addcategories.php',
                     method: "POST",
@@ -116,7 +124,7 @@ $(document).ready(function () {
                     }
                 });
                 return false;
-            }
+            // }
         }
     });
 

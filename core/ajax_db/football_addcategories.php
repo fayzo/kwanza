@@ -5,6 +5,8 @@ $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpat
 
 if (isset($_POST['football_view']) && !empty($_POST['football_view'])) {
     $user_id= $_SESSION['key'];
+    $get_province = mysqli_query($db,"SELECT * FROM provinces");   
+
      ?>
 
 <div class="football-popup">
@@ -26,19 +28,92 @@ if (isset($_POST['football_view']) && !empty($_POST['football_view'])) {
                       <input type="hidden" name="user_id" value="<?php echo $user_id ;?>">
                       <div class="form-row">
                         <div class="col">
-                          <input type="text" class="form-control" name="match_game" id="match_game" placeholder="match game">
+                          <input type="text" class="form-control" name="Home_game" id="Home_game" placeholder="Home game">
                         </div>
                         <div class="col">
+                          <input type="text" class="form-control" name="score_game" id="score_game" placeholder="?-?">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" name="Away_game" id="Away_game" placeholder="Away game">
+                        </div>
+                     
+                        <div class="col">
                           <input type="date" class="form-control" name="date_of_match"  id="date_of_match" placeholder="date of match">
+                        </div>
+                     
+                        <div class="col">
+                          <input type="time" class="form-control" name="time_of_match"  id="time_of_match" >
                         </div>
                         <div class="col">
                           <input type="text" class="form-control" name="location_of_match"  id="location_of_match" placeholder="location of match 10PM AT STADIUM AMAHORO">
                         </div>
                       </div>
+                       <div class="form-row mt-2">
+                        <div class="col">
+                                <label for="">Province</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                    <select name="provincecode"  id="provincecode" onchange="showResult();" class="form-control provincecode">
+                                        <option value="">----Select province----</option>
+                                        <?php while($show_province = mysqli_fetch_array($get_province)) { ?>
+                                        <option value="<?php echo $show_province['provincecode'] ?>"><?php echo $show_province['provincename'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for=""> District</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                    <select class="form-control districtcode" name="districtcode" id="districtcode" onchange="showResult2();" >
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="Sector" >Sector</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                    <select class="form-control sectorcode" name="sectorcode" id="sectorcode"  onchange="showResult3();">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="Cell" >Cell</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                    <select name="codecell" id="codecell" class="form-control codecell" onchange="showResult4();">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                             <div class="col">
+                                <label for="Village">Village</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
+                                    </div>
+                                      <select name="CodeVillage" id="CodeVillage" class="form-control CodeVillage">
+                                          <option> </option>
+                                      </select>
+                                </div>
+                             </div>
+                          </div>
+
                       <div class="form-group mt-2">
                         <textarea class="form-control" name="additioninformation" id="addition-information" placeholder="tell us about the match and how much the tickets and Try to summarize People can understand" rows="3"></textarea>
                       </div>
-
+<!-- 
                       <div class="form-row mt-2">
                         <div class="col">
                           <div class="form-group">
@@ -72,7 +147,7 @@ if (isset($_POST['football_view']) && !empty($_POST['football_view'])) {
                                <small class="help-block">Max. 10MB</small>
                            </div> 
                         </div>
-                      </div>
+                      </div> -->
 
                  </div><!-- card-body end-->
                 <div class="card-footer text-center">
@@ -98,21 +173,30 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
     $user_id= $_POST['user_id'];
     $datetime= date('Y-m-d H-i-s');
 
-    $photo= $_FILES['photo'];
-    $other_photo= $_FILES['otherphoto'];
+    // $photo= $_FILES['photo'];
+    // $other_photo= $_FILES['otherphoto'];
 
-    $match_game = $users->test_input($_POST['match_game']);
+    $Home_game = $users->test_input($_POST['Home_game']);
+    $Away_game = $users->test_input($_POST['Away_game']);
+    $score = $users->test_input($_POST['score_game']);
     $date_of_match = $users->test_input($_POST['date_of_match']);
+    $time_of_match = $users->test_input($_POST['time_of_match']);
+
+    $province =  $users->test_input($_POST['provincecode']);
+    $districts =  $users->test_input($_POST['districtcode']);
+    $cell = $users->test_input($_POST['codecell']);
+    $sector =  $users->test_input($_POST['sectorcode']);
+    $village =  $users->test_input($_POST['CodeVillage']);
+
     $location_of_match = $users->test_input($_POST['location_of_match']);
     $additioninformation = $users->test_input($_POST['additioninformation']);
 
-	if (!empty($match_game)) {
+	if (!empty($Home_game)) {
 
-        if (!empty($photo['name'][0])) {
-			# code...
-			$photo_ = $home->uploadFootballFile($photo);
-            $other_photo_ = $home->uploadFootballFile($other_photo);
-		}
+        // if (!empty($photo['name'][0])) {
+		// 	$photo_ = $home->uploadFootballFile($photo);
+        //     $other_photo_ = $home->uploadFootballFile($other_photo);
+		// }
 
 		if (strlen($additioninformation) > 1000) {
 			exit('<div class="alert alert-danger alert-dismissible fade show text-center">
@@ -123,13 +207,21 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
 		}
 
 	$users->Postsjobscreates('football',array( 
-	'match_game'=> $match_game,
-	'date_of_match'=> $date_of_match,
-	'location_of_match'=> $location_of_match, 
-    'text'=> $additioninformation,
-    'home_team_photo'=> $photo_, 
-	'away_team_photo'=> $other_photo_, 
-    'user_id3'=> $user_id,
-    'created_on3'=> $datetime ));
+      'Home_game' => $Home_game,
+      'Away_game' => $Away_game,
+      'score_game' => $score,
+      'date_of_match'=> $date_of_match,
+      'time_of_match'=> $time_of_match,
+      'location_of_match'=> $location_of_match,
+      'province'=> $province,
+      'district'=> $districts,
+      'sector'=> $sector,
+      'cell'=> $cell,
+      'village'=> $village, 
+      'text'=> $additioninformation,
+    //   'home_team_photo'=> $photo_, 
+    //   'away_team_photo'=> $other_photo_, 
+      'user_id3'=> $user_id,
+      'created_on3'=> $datetime ));
     }
 } ?> 

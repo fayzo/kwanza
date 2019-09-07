@@ -22,160 +22,34 @@
         </div><!-- col -->
 
         <div class="col-md-6">
-           
-            <div class="card">
-                 <div id="Football-view">
-                      <?php  
-                      $date = strtotime("0 day"); 
-                      echo $football->currentDatefootballMatch(0,date('y-m-d', $date),date('Y-m-d', $date));
-                      ?>
+            <div class="row">
+                <div class="col-md-3 p-0">
+                    <div class="list-group sticky-top" id="list-tab" role="tablist">
+                        <a class="list-group-item list-group-item-action active text-center" id="list-Business-list" onclick="" data-toggle="tab" role="tab" aria-controls="list-Community" >Home </a>
+                        <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="" data-toggle="tab"  role="tab" aria-controls="list-Community">Azam league</a>
+                        <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="" data-toggle="tab"  role="tab"  aria-controls="list-Community">Kagame cup</a>
+                        <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="" data-toggle="tab"  role="tab" aria-controls="list-Community"> Amahoro league </a>
+                        <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="" data-toggle="tab"  role="tab" aria-controls="list-Community">  U-16</a>
+                        <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="" data-toggle="tab"  role="tab" aria-controls="list-Community">  U-18</a>
+                        <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="" data-toggle="tab"  role="tab" aria-controls="list-Community">  U-20</a>
+                    </div>
                 </div>
-            </div> <!-- card -->
+                 <div class="col-md-9 p-0">
+                    <div class="card">
+                        <div id="Football-view">
+                            <?php  
+                            $date = strtotime("0 day"); 
+                            echo $football->currentDatefootballMatch(0,date('y-m-d', $date),date('Y-m-d', $date));
+                            ?>
+                        </div>
+                    </div> <!-- card -->
+                </div> <!-- col -->
+            </div> <!-- row -->
         </div> <!-- col -->
 
         <div class="col-md-3">
-        <div class="card mb-3">
-          <div class="card-header text-center main-active">
-              <div class="h5">Football Scores Tables</div>
-          </div>
-          <div class="card-body">
-           <table class="table table-sm table-hover table-striped">
-               <thead>
-                   <tr>
-                       <th></th>
-                       <th>Championship</th>
-                       <th>P</th>
-                       <th>GD</th>
-                       <th>PTS</th>
-                   </tr>
-               </thead>
-               <tbody>
-                   <tr>
-                       <td class="bg-success">1</td>
-                       <td>Apr</td>
-                       <td>43</td>
-                       <td>50</td>
-                       <td>98</td>
-                   </tr>
-                   <tr>
-                       <td class="bg-success">2</td>
-                       <td>Rayon</td>
-                       <td>34</td>
-                       <td>79</td>
-                       <td>90</td>
-                   </tr>
-                   <tr>
-                       <td>3</td>
-                       <td>Mukura</td>
-                       <td>34</td>
-                       <td>79</td>
-                       <td>90</td>
-                   </tr>
-                   <tr>
-                       <td>4</td>
-                       <td>As kigali</td>
-                       <td>34</td>
-                       <td>79</td>
-                       <td>90</td>
-                   </tr>
-                   <tr>
-                       <td class="bg-danger">5</td>
-                       <td>etellsec</td>
-                       <td>34</td>
-                       <td>79</td>
-                       <td>90</td>
-                   </tr>
-               </tbody>
-           </table>
-          </div><!-- card-body -->
-      </div><!-- card -->
-
-        <div class="card mb-3">
-                <div class="card-header text-center  py-1 main-active">
-                    <div class="h5">Match Fixture</div>
-                </div>
-                <div class="card-body sportx">
-                 <div style="background:#b9b6b22b;padding:7px;">
-                        <span style="text-decoration:underline"> Football</span>
-                   </div>
-                    <div class="FOOT">
-                        <div class="float-right">June 12</div>
-                        <div> Azam league - GROUP A</div>
-                    </div>  
-                    
-                    <ul class="list-group clear-float mb-2">
-                        <div class="list-group-item list-group-item-action" >
-                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                                <div class="float-left btn btn-success btn-sm text-white">FT</div>
-                                <div class="text-center">Kiyovu <span class="text-success">3-2</span> APR FC</div>
-                        </div>
-                        <div class="list-group-item list-group-item-action" >
-                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                                 <div class="float-left btn btn-success btn-sm text-white">FT</div>
-                                 <div class="text-center">AMAGAJU <span class="text-success">0-0</span> APR FC</div>
-                        </div>
-                        <div class="list-group-item list-group-item-action" >
-                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                               <div class="float-left btn btn-success btn-sm text-white">FT</div>
-                                 <div class="text-center">RAYON SP <span class="text-success">6-2</span> APR FC</div>
-                        </div>
-                    </ul>
-                   <div style="background:#b9b6b22b;padding:7px;">
-                     <span style="text-decoration:underline">Basketball</span>
-                   </div>
-                    <div class="FOOT">
-                        <div class="float-right">June 12</div>
-                        <div> Azam league - GROUP A</div>
-                    </div>  
-                    
-                     
-                    <ul class="list-group clear-float mb-2">
-                       <div class="list-group-item list-group-item-action" >
-                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                                <div class="float-left btn btn-success btn-sm text-white">FT</div>
-                                <div class="text-center">Kiyovu <span class="text-success">3-2</span> APR FC</div>
-                        </div>
-                        <div class="list-group-item list-group-item-action" >
-                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                                 <div class="float-left btn btn-success btn-sm text-white">FT</div>
-                                 <div class="text-center">AMAGAJU <span class="text-success">0-0</span> APR FC</div>
-                        </div>
-                        <div class="list-group-item list-group-item-action" >
-                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                               <div class="float-left btn btn-success btn-sm text-white">FT</div>
-                                 <div class="text-center">RAYON SP <span class="text-success">3-6</span> APR FC</div>
-                        </div>
-                    </ul>
-                  <div style="background:#b9b6b22b;padding:7px;">
-                     <span style="text-decoration:underline"> Volleyball</span>
-                   </div>
-                    <div class="FOOT">
-                        <div class="float-right">June 12</div>
-                        <div> Azam league - GROUP A</div>
-                    </div>  
-                    
-                       
-                    <ul class="list-group clear-float mb-2">
-                      <div class="list-group-item list-group-item-action" >
-                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                                <div class="float-left btn btn-success btn-sm text-white">FT</div>
-                                <div class="text-center">Kiyovu <span class="text-success">3-2</span> APR FC</div>
-                        </div>
-                        <div class="list-group-item list-group-item-action" >
-                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                                 <div class="float-left btn btn-success btn-sm text-white">FT</div>
-                                 <div class="text-center">AMAGAJU <span class="text-success">0-2</span> APR FC</div>
-                        </div>
-                        <div class="list-group-item list-group-item-action" >
-                                <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                               <div class="float-left btn btn-success btn-sm text-white">FT</div>
-                                 <div class="text-center">RAYON SP <span class="text-success">3-22</span> APR FC</div>
-                        </div>
-                    </ul>
-                    <a class="float-right" href="javascript:void(0)">View more Match >>></a>
-                </div><!-- card-body -->
-            </div><!-- card -->
-
+          <?php echo $football->footballMatchLineup(); ?>
+          <?php echo $football->footballMatchFixture(); ?>
         </div><!-- col -->
         
     </div>

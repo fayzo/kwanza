@@ -36,16 +36,17 @@
      left: 50%;
      margin-left: -45px;
 }
+
 .user-follow .user-image-follow span {
      position: absolute;
      top: 72px;
-     /* left: 22%; */
-     margin-left: 28px;
+     left: 32%;
+     /* margin-left: 28px; */
 }
 
 .user-follow .user-image-follow > img {
     width: 90px;
-    height: auto;
+    height: 90px;
     border: 3px solid #ffffff;
 }
 .user-follow .user-image-follow > .elevation-2 {

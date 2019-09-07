@@ -276,8 +276,8 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
     // $village = $users->test_input($_POST['village']);
     $province =  $users->test_input($_POST['provincecode']);
     $districts =  $users->test_input($_POST['districtcode']);
-    $cell =  $users->test_input($_POST['sectorcode']);
-    $sector =  $users->test_input($_POST['codecell']);
+    $cell = $users->test_input($_POST['codecell']);
+    $sector =  $users->test_input($_POST['sectorcode']);
     $village =  $users->test_input($_POST['CodeVillage']);
     $additioninformation = $users->test_input($_POST['additioninformation']);
     $categories_fundraising=  $users->test_input($_POST['categories_fundraising']);

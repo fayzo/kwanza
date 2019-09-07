@@ -189,8 +189,10 @@
                        <?php echo $follow->whoTofollow($user_id,$user_id) ;?>
                     </div>
 
-                    <div class="col-md-12 mb-3">
+                    <div class="col-md-12">
                      <?php echo $home->recent_News(); ?>
+                       <?php echo $football->footballMatchLineup(); ?>
+                        <?php echo $football->footballMatchFixture(); ?>
                     </div>
 
                     <!-- <div class="col-md-12 mb-3"> -->
