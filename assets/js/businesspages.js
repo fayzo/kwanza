@@ -32,13 +32,13 @@ function BusinessEdits(rowID, type) {
             rowID: rowID
         }, success: function (response) {
                 $("#id_business").val(rowID);
-                $("#The-company-name").val(decodeHtmlEntities(response.companyname).replace(/(<([^>]+)>)/ig,""));
-                $("#The-company-overview").val(decodeHtmlEntities(response.overview).replace(/(<([^>]+)>)/ig,""));
-                $("#company-history").val(decodeHtmlEntities(response.history).replace(/(<([^>]+)>)/ig,""));
-                $("#management-team").val(decodeHtmlEntities(response.team).replace(/(<([^>]+)>)/ig,""));
-                $("#legal-structure").val(decodeHtmlEntities(response.legal_structure).replace(/(<([^>]+)>)/ig,""));
-                $("#location-place").val(decodeHtmlEntities(response.location_facilities).replace(/(<([^>]+)>)/ig,""));
-                $("#mission-statement").val(decodeHtmlEntities(response.mission_statement).replace(/(<([^>]+)>)/ig,""));
+                $("#The-company-name").val(response.companyname);
+                $("#The-company-overview").val(response.overview);
+                $("#company-history").val(response.history);
+                $("#management-team").val(response.team);
+                $("#legal-structure").val(response.legal_structure);
+                $("#location-place").val(response.location_facilities);
+                $("#mission-statement").val(response.mission_statement);
                 $("#website").val(response.website);
 
                 $("#Businesspages").attr('value', 'update').attr('onclick', "ajax_requestsBusiness('update_Row')").show();

@@ -102,6 +102,7 @@
                 </div> <!-- card -->
 
             <?php echo $football->footballMatchLineup(); ?>
+            <?php echo $football->footballMatchFixture(); ?>
 
     </div> 
     <!-- col -->

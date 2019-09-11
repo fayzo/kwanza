@@ -75,7 +75,7 @@ if (isset($_REQUEST['user_id']) && !empty($_REQUEST['user_id'])) {
 
                     <div class="card">
                         <div class="card-header text-center">
-                            <h4 class="card-title">Donate to Mr(s)</h4>
+                            <h4 class="card-title">Invest to Mr(s)</h4>
                         </div>
                         <div class="card-body">
                             <form method="post">

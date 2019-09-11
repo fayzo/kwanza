@@ -7,7 +7,9 @@
     border-top: none !important;
     border-left: none !important;
 }
-
+.sportx .table td, .table th {
+  padding: .1rem !important;
+}
 .card-header {
    border-top-left-radius: 5px !important;
     border-top-right-radius: 5px !important;

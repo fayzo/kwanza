@@ -30,7 +30,6 @@
             <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="cartItemsCategories('health_beauty',1,<?php echo $user_id; ?>);" data-toggle="tab"  role="tab" aria-controls="list-Community">Health  <span class="float-right badge badge-primary"><?php echo $sale->cartcountPOSTS('health_beauty');?></span></a>
             <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="cartItemsCategories('home_garden',1,<?php echo $user_id; ?>);" data-toggle="tab"  role="tab" aria-controls="list-Community">Home  <span class="float-right badge badge-primary"><?php echo $sale->cartcountPOSTS('home_garden');?></span></a>
           </div>
-
       </div>
 
       <div class="col-8 col-md-10 col-lg-10 ">

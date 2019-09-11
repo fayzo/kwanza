@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2019 at 04:09 AM
+-- Generation Time: Sep 11, 2019 at 04:51 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.2.20
 
@@ -304,23 +304,6 @@ CREATE TABLE `car` (
 --
 
 INSERT INTO `car` (`car_id`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `price`, `phone`, `country01`, `photo_Title_main`, `photo_Title`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `text`, `categories_car`, `discount`, `price_discount`, `banner`, `buy`, `user_id3`, `created_on3`) VALUES
-(3, 'fayzo', '2019_34001_.jpg', '2019_5601.jpg', '', '', '45300', '0787345243243', 'rwanda', 'imfite amabara meza', 'imfite amapine meza=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'ni ziza', 'car_For_sale', 4, 450.00, 'new', 'available', 61, '2019-07-05 21:39:22'),
-(4, 'fayzo', '2019_951.jpg', '2019_3401.jpg', '', '', '1', '0787345243243', 'rwanda', 'irirukanka', 'imfite amabara meza=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud shape', 'car_For_sale', 0, 0.00, 'new_arrival', 'available', 61, '2019-07-05 21:40:29'),
-(5, 'fayzo', '2019_65300x.jpg', '2019_871.jpg', '', '', '32424', '0787345243243', 'rwanda', 'imfite byose', 'irihuta=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud shape', 'car_For_sale', 78, 434.00, 'new_arrival', 'available', 61, '2019-07-05 21:41:24'),
-(6, 'fayzo', '2019_68911-.jpg', '2019_2801.jpg', '', '', '564500', '0787345243243', 'rwanda', 'imfite umutuku', 'irirukanka=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud shape', 'car_For_sale', 47, 3450.00, 'new_arrival', 'available', 61, '2019-07-05 21:43:11'),
-(7, 'fayzo', '2019_171.jpg', '2019_6701.jpg', '', '', '35300', '0787345243243', 'rwanda', 'gud coulor', 'nice pup=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'nice car', 'car_For_sale', 45, 43670.00, 'great_deal', 'available', 61, '2019-07-05 21:44:22'),
-(8, 'fayzo', '2019_871200.jpg', '2019_67001_.jpg', '', '', '34200', '0787345243243', 'rwanda', 'nice', 'imfite moter yirukanka=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'car_For_rent', 25, 560.00, 'new', 'available', 61, '2019-07-05 21:45:31'),
-(9, 'fayzo', '2019_381984.jpg', '2019_311984.jpg', '', '', '23400', '0787345243243', 'rwanda', 'ni shanje', 'irihuta=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'ggud', 'car_For_rent', 14, 7470.00, 'new', 'available', 61, '2019-07-05 21:46:24'),
-(10, 'fayzo', '2019_111984.jpg', '2019_221984.jpg', '', '', '5643000', '0787345243243', 'rwanda', 'nice car', 'moter yayo ninziza=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'car_For_rent', 11, 7480.00, 'new', 'available', 61, '2019-07-05 21:47:26'),
-(11, 'fayzo', '2019_1009108.jpg', '2019_192872.jpg', '', '', '45300', '0787345243243', 'rwanda', 'nice', 'irihuta=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud shape', 'camion_For_sale', 34, 79690.00, 'great_deal', 'available', 61, '2019-07-05 21:48:45'),
-(12, 'fayzo', '2019_862872.jpg', '2019_839108.jpg', '', '', '35000', '0787345243243', 'rwanda', 'imfite ibar nziza', 'nice moter=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'camion_For_sale', 45, 75950.00, 'great_deal', 'available', 61, '2019-07-05 21:49:44'),
-(13, 'fayzo', '2019_212987.jpg', '2019_632872.jpg', '', '', '35300', '0787345243243', 'rwanda', 'nice', 'nice=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'camion_For_sale', 54, 4540.00, 'new', 'available', 61, '2019-07-05 21:50:34'),
-(14, 'fayzo', '2019_415c06.jpg', '2019_1919-s.jpg', '', '', '45300', '0787345243243', 'rwanda', 'irirukanka', 'nice=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'motor_For_sale', 45, 350.00, 'new', 'available', 61, '2019-07-05 21:51:55'),
-(15, 'fayzo', '2019_60g400.jpg', '2019_37chin.jpg', '', '', '4600', '0787345243243', 'rwanda', 'irirukanka', 'nice=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gid', 'motor_For_sale', 3, 450.00, 'great_deal', 'available', 61, '2019-07-05 21:53:06'),
-(16, 'fayzo', '2019_97indi.jpg', '2019_66img.jpg', '', '', '6500', '0787345243243', 'rwanda', 'nice', 'gud=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud', 'motor_For_sale', 0, 0.00, 'great_deal', 'available', 61, '2019-07-05 21:54:06'),
-(17, 'fayzo', '2019_26001_.jpg', '2019_7071qy.jpg', '', '', '56400', '0787345243243', 'rwanda', 'igare', 'ririhuta=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'gud work', 'bicycle_For_sale', 0, 0.00, 'new', 'available', 61, '2019-07-05 21:55:35'),
-(18, 'fayzo', '2019_6671qy.jpg', '2019_89001_.jpg', '', '', '35600', '0787345243243', 'rwanda', 'nice bicycle', 'ririhuta=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'ririhuta', 'bicycle_For_sale', 0, 0.00, 'new', 'available', 61, '2019-07-05 21:56:28'),
-(19, 'fayzo', '2019_5096ah.jpg', '2019_271886.jpg', '', '', '4000', '0787345243243', 'rwanda', 'gud shape', 'ntacyo riraba=====', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'nivce', 'bicycle_For_sale', 0, 0.00, 'new_arrival', 'available', 61, '2019-07-05 21:57:34'),
 (20, 'fay', '2019_272017.jpg', '2019_26cr-c.jpg', '', '', '899900', '0746945245', 'RW', 'it gud', 'it run fast=====', '', '3', '303', '3030403', '30304', '303040305', 'it is gud', 'car_For_sale', 0, 0.00, 'empty', 'available', 61, '2019-08-14 17:47:22');
 
 -- --------------------------------------------------------
@@ -3573,16 +3556,118 @@ INSERT INTO `football` (`football_id`, `Home_game`, `Away_game`, `score_game`, `
 (2, 'kiyovu ', 'mukura', '1-1', '', 0, 0, 0, 0, '2019-08-30', '05:13:07', '2019-06-18 14:58:28', 61, 'kwijira bizaba bishushe', '10pm at stadium', '', '', '', '', '', '2019_35ligh.jpg', '2019_33imag.jpg'),
 (3, 'apr', 'intersec', '0-2', '', 0, 0, 0, 0, '2019-09-01', '07:14:07', '2019-07-13 15:38:37', 64, 'nice', 'kimironko', '', '', '', '', '', '2019_63map-.png', '2019_49capt.png'),
 (4, 'apr', 'kiyovu', '2-3', '', 0, 0, 0, 0, '2019-09-02', '03:09:06', '2019-07-13 15:41:38', 64, 'rtw', 'rt', '', '', '', '', '', '2019_64capt.png', '2019_16capt.png'),
-(5, 'arsenal', 'apr', '1-1', '', 0, 0, 0, 0, '2019-09-03', '15:09:14', '2019-09-03 09:04:35', 61, 'birashushe', 'amahoro', '', '', '', '', '', '2019_48baby2.png', '2019_70baby3.png'),
-(6, 'apr', 'police', '?-?', '', 0, 0, 0, 0, '2019-09-05', '07:08:09', '2019-09-05 10:09:17', 61, 'sdfefgse', 'amahoro', '2', '201', '2010203', '20102', '201020303', '2019_497.jpg', '2019_593.jpg'),
-(7, 'JUVENTUS', 'AS ROMA', '?-?', '', 0, 0, 0, 0, '2019-09-06', '07:03:06', '2019-09-05 10:41:11', 61, '2000 FRW', 'amahoro', '1', '102', '10208', '10208', '', '2019_9911.jpg', '2019_4113.jpg'),
-(8, 'MONACO', 'PSG', '?-?', '', 0, 0, 0, 0, '2019-09-07', '03:06:00', '2019-09-05 10:46:02', 61, 'HELLO', 'amahoro', '2', '201', '2010104 ', '20101', '201010404', '2019_7518.jpg', '2019_7025.jpg'),
+(5, 'arsenal', 'apr', '?-?', '', 0, 0, 0, 0, '2019-09-03', '15:09:14', '2019-09-03 09:04:35', 61, 'birashushe', 'amahoro', '', '', '', '', '', '2019_48baby2.png', '2019_70baby3.png'),
+(6, 'apr', 'police', '4-4', '', 0, 0, 0, 0, '2019-09-05', '07:08:09', '2019-09-05 10:09:17', 61, 'sdfefgse', 'amahoro', '2', '201', '2010203', '20102', '201020303', '2019_497.jpg', '2019_593.jpg'),
+(7, 'JUVENTUS', 'AS ROMA', '2-3', '', 0, 0, 0, 0, '2019-09-06', '07:03:06', '2019-09-05 10:41:11', 61, '2000 FRW', 'amahoro', '1', '102', '10208', '10208', '', '2019_9911.jpg', '2019_4113.jpg'),
+(8, 'MONACO', 'PSG', '0-3', '', 0, 0, 0, 0, '2019-09-07', '03:06:00', '2019-09-05 10:46:02', 61, 'HELLO', 'amahoro', '2', '201', '2010104 ', '20101', '201010404', '2019_7518.jpg', '2019_7025.jpg'),
 (9, 'JUVENTUS', 'police', '?-?', '', 0, 0, 0, 0, '2019-09-08', '09:08:10', '2019-09-05 10:51:29', 61, 'gud', 'amahoro', '2', '201', '20102', '2010203', '201020303', '2019_505.jpg', '2019_807.jpg'),
 (10, 'BARCELONA', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-09', '12:58:00', '2019-09-05 11:13:40', 61, 'NICE', 'amahoro', '1', '102', '10202', '1020202', '102020202', '2019_428.jpg', '2019_945.jpg'),
 (11, 'MONACO', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-10', '13:59:00', '2019-09-05 11:16:09', 61, 'HOW ARE U', 'amahoro', '2', '201', '20101', '2010102', '201010204', '2019_3222.jpg', '2019_7120.jpg'),
-(12, 'MONACO', 'AS ROMA', '?-?', '', 0, 0, 0, 0, '2019-09-06', '10:11:17', '2019-09-05 13:34:06', 61, '3000 frw', 'amahoro', '2', '201', '20102', '2010201', '201020103', '2019_839.jpg', '2019_1313.jpg'),
-(13, 'BARCELONA', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-06', '13:59:00', '2019-09-05 13:35:47', 61, 'ds', 'amahoro', '1', '101', '10102', '1010202', '101020203', '2019_894.jpg', '2019_748.jpg'),
-(14, 'MANU', 'CHE,LSEA', '?-?', '', 0, 0, 0, 0, '2019-09-07', '13:59:00', '2019-09-06 09:03:23', 61, 'NICE', 'amahoro', '1', '101', '10102', '1010202', '101020203', '', '');
+(12, 'MONACO', 'AS ROMA', '1-1', '', 0, 0, 0, 0, '2019-09-06', '10:11:17', '2019-09-05 13:34:06', 61, '3000 frw', 'amahoro', '2', '201', '20102', '2010201', '201020103', '2019_839.jpg', '2019_1313.jpg'),
+(13, 'BARCELONA', 'REAL MADRID', '3-4', '', 0, 0, 0, 0, '2019-09-06', '13:59:00', '2019-09-05 13:35:47', 61, 'ds', 'amahoro', '1', '101', '10102', '1010202', '101020203', '2019_894.jpg', '2019_748.jpg'),
+(14, 'MANU', 'CHE,LSEA', '3-5', '', 0, 0, 0, 0, '2019-09-07', '13:59:00', '2019-09-06 09:03:23', 61, 'NICE', 'amahoro', '1', '101', '10102', '1010202', '101020203', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `football_amahoro_league`
+--
+
+CREATE TABLE `football_amahoro_league` (
+  `amahoro_league_id` int(11) NOT NULL,
+  `Home_game` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Away_game` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `score_game` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `goals_player_name_match` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `goal_player_id_match` int(11) NOT NULL,
+  `counts_goals` int(11) NOT NULL,
+  `counts_drows` int(11) NOT NULL,
+  `counts_points` int(11) NOT NULL,
+  `date_of_match` date NOT NULL,
+  `time_of_match` time NOT NULL,
+  `created_on3` datetime NOT NULL,
+  `user_id3` int(11) NOT NULL,
+  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_of_match` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `province` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `district` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sector` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cell` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `village` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `home_team_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `away_team_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `football_amahoro_league`
+--
+
+INSERT INTO `football_amahoro_league` (`amahoro_league_id`, `Home_game`, `Away_game`, `score_game`, `goals_player_name_match`, `goal_player_id_match`, `counts_goals`, `counts_drows`, `counts_points`, `date_of_match`, `time_of_match`, `created_on3`, `user_id3`, `text`, `location_of_match`, `province`, `district`, `sector`, `cell`, `village`, `home_team_photo`, `away_team_photo`) VALUES
+(1, 'rayon', 'apr', '3-5', '', 0, 0, 0, 0, '2019-08-29', '08:18:09', '2019-06-17 10:42:40', 61, 'ibintu nu buryohe itike ni 1000 frw kwijira', '10pm at stadium', '', '', '', '', '', '2019_58imag.jpg', '2019_10imag.jpg'),
+(2, 'kiyovu ', 'mukura', '1-1', '', 0, 0, 0, 0, '2019-08-30', '05:13:07', '2019-06-18 14:58:28', 61, 'kwijira bizaba bishushe', '10pm at stadium', '', '', '', '', '', '2019_35ligh.jpg', '2019_33imag.jpg'),
+(3, 'apr', 'intersec', '0-2', '', 0, 0, 0, 0, '2019-09-01', '07:14:07', '2019-07-13 15:38:37', 64, 'nice', 'kimironko', '', '', '', '', '', '2019_63map-.png', '2019_49capt.png'),
+(4, 'apr', 'kiyovu', '2-3', '', 0, 0, 0, 0, '2019-09-02', '03:09:06', '2019-07-13 15:41:38', 64, 'rtw', 'rt', '', '', '', '', '', '2019_64capt.png', '2019_16capt.png'),
+(5, 'arsenal', 'apr', '?-?', '', 0, 0, 0, 0, '2019-09-03', '15:09:14', '2019-09-03 09:04:35', 61, 'birashushe', 'amahoro', '', '', '', '', '', '2019_48baby2.png', '2019_70baby3.png'),
+(6, 'apr', 'police', '4-4', '', 0, 0, 0, 0, '2019-09-05', '07:08:09', '2019-09-05 10:09:17', 61, 'sdfefgse', 'amahoro', '2', '201', '2010203', '20102', '201020303', '2019_497.jpg', '2019_593.jpg'),
+(7, 'JUVENTUS', 'AS ROMA', '2-3', '', 0, 0, 0, 0, '2019-09-06', '07:03:06', '2019-09-05 10:41:11', 61, '2000 FRW', 'amahoro', '1', '102', '10208', '10208', '', '2019_9911.jpg', '2019_4113.jpg'),
+(8, 'MONACO', 'PSG', '0-3', '', 0, 0, 0, 0, '2019-09-07', '03:06:00', '2019-09-05 10:46:02', 61, 'HELLO', 'amahoro', '2', '201', '2010104 ', '20101', '201010404', '2019_7518.jpg', '2019_7025.jpg'),
+(9, 'JUVENTUS', 'police', '?-?', '', 0, 0, 0, 0, '2019-09-08', '09:08:10', '2019-09-05 10:51:29', 61, 'gud', 'amahoro', '2', '201', '20102', '2010203', '201020303', '2019_505.jpg', '2019_807.jpg'),
+(10, 'BARCELONA', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-09', '12:58:00', '2019-09-05 11:13:40', 61, 'NICE', 'amahoro', '1', '102', '10202', '1020202', '102020202', '2019_428.jpg', '2019_945.jpg'),
+(11, 'MONACO', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-10', '13:59:00', '2019-09-05 11:16:09', 61, 'HOW ARE U', 'amahoro', '2', '201', '20101', '2010102', '201010204', '2019_3222.jpg', '2019_7120.jpg'),
+(12, 'MONACO', 'AS ROMA', '1-1', '', 0, 0, 0, 0, '2019-09-06', '10:11:17', '2019-09-05 13:34:06', 61, '3000 frw', 'amahoro', '2', '201', '20102', '2010201', '201020103', '2019_839.jpg', '2019_1313.jpg'),
+(13, 'BARCELONA', 'REAL MADRID', '3-4', '', 0, 0, 0, 0, '2019-09-06', '13:59:00', '2019-09-05 13:35:47', 61, 'ds', 'amahoro', '1', '101', '10102', '1010202', '101020203', '2019_894.jpg', '2019_748.jpg'),
+(14, 'MANU', 'CHE,LSEA', '3-5', '', 0, 0, 0, 0, '2019-09-07', '13:59:00', '2019-09-06 09:03:23', 61, 'NICE', 'amahoro', '1', '101', '10102', '1010202', '101020203', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `football_kagame_cup`
+--
+
+CREATE TABLE `football_kagame_cup` (
+  `kagame_cup_id` int(11) NOT NULL,
+  `Home_game` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Away_game` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `score_game` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `goals_player_name_match` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `goal_player_id_match` int(11) NOT NULL,
+  `counts_goals` int(11) NOT NULL,
+  `counts_drows` int(11) NOT NULL,
+  `counts_points` int(11) NOT NULL,
+  `date_of_match` date NOT NULL,
+  `time_of_match` time NOT NULL,
+  `created_on3` datetime NOT NULL,
+  `user_id3` int(11) NOT NULL,
+  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_of_match` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `province` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `district` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sector` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cell` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `village` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `home_team_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `away_team_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `football_kagame_cup`
+--
+
+INSERT INTO `football_kagame_cup` (`kagame_cup_id`, `Home_game`, `Away_game`, `score_game`, `goals_player_name_match`, `goal_player_id_match`, `counts_goals`, `counts_drows`, `counts_points`, `date_of_match`, `time_of_match`, `created_on3`, `user_id3`, `text`, `location_of_match`, `province`, `district`, `sector`, `cell`, `village`, `home_team_photo`, `away_team_photo`) VALUES
+(1, 'rayon', 'apr', '3-5', '', 0, 0, 0, 0, '2019-08-29', '08:18:09', '2019-06-17 10:42:40', 61, 'ibintu nu buryohe itike ni 1000 frw kwijira', '10pm at stadium', '', '', '', '', '', '2019_58imag.jpg', '2019_10imag.jpg'),
+(2, 'kiyovu ', 'mukura', '1-1', '', 0, 0, 0, 0, '2019-08-30', '05:13:07', '2019-06-18 14:58:28', 61, 'kwijira bizaba bishushe', '10pm at stadium', '', '', '', '', '', '2019_35ligh.jpg', '2019_33imag.jpg'),
+(3, 'apr', 'intersec', '0-2', '', 0, 0, 0, 0, '2019-09-01', '07:14:07', '2019-07-13 15:38:37', 64, 'nice', 'kimironko', '', '', '', '', '', '2019_63map-.png', '2019_49capt.png'),
+(4, 'apr', 'kiyovu', '2-3', '', 0, 0, 0, 0, '2019-09-02', '03:09:06', '2019-07-13 15:41:38', 64, 'rtw', 'rt', '', '', '', '', '', '2019_64capt.png', '2019_16capt.png'),
+(5, 'arsenal', 'apr', '?-?', '', 0, 0, 0, 0, '2019-09-03', '15:09:14', '2019-09-03 09:04:35', 61, 'birashushe', 'amahoro', '', '', '', '', '', '2019_48baby2.png', '2019_70baby3.png'),
+(6, 'apr', 'police', '4-4', '', 0, 0, 0, 0, '2019-09-05', '07:08:09', '2019-09-05 10:09:17', 61, 'sdfefgse', 'amahoro', '2', '201', '2010203', '20102', '201020303', '2019_497.jpg', '2019_593.jpg'),
+(7, 'JUVENTUS', 'AS ROMA', '2-3', '', 0, 0, 0, 0, '2019-09-06', '07:03:06', '2019-09-05 10:41:11', 61, '2000 FRW', 'amahoro', '1', '102', '10208', '10208', '', '2019_9911.jpg', '2019_4113.jpg'),
+(8, 'MONACO', 'PSG', '0-3', '', 0, 0, 0, 0, '2019-09-07', '03:06:00', '2019-09-05 10:46:02', 61, 'HELLO', 'amahoro', '2', '201', '2010104 ', '20101', '201010404', '2019_7518.jpg', '2019_7025.jpg'),
+(9, 'JUVENTUS', 'police', '?-?', '', 0, 0, 0, 0, '2019-09-08', '09:08:10', '2019-09-05 10:51:29', 61, 'gud', 'amahoro', '2', '201', '20102', '2010203', '201020303', '2019_505.jpg', '2019_807.jpg'),
+(10, 'BARCELONA', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-09', '12:58:00', '2019-09-05 11:13:40', 61, 'NICE', 'amahoro', '1', '102', '10202', '1020202', '102020202', '2019_428.jpg', '2019_945.jpg'),
+(11, 'MONACO', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-10', '13:59:00', '2019-09-05 11:16:09', 61, 'HOW ARE U', 'amahoro', '2', '201', '20101', '2010102', '201010204', '2019_3222.jpg', '2019_7120.jpg'),
+(12, 'MONACO', 'AS ROMA', '1-1', '', 0, 0, 0, 0, '2019-09-06', '10:11:17', '2019-09-05 13:34:06', 61, '3000 frw', 'amahoro', '2', '201', '20102', '2010201', '201020103', '2019_839.jpg', '2019_1313.jpg'),
+(13, 'BARCELONA', 'REAL MADRID', '3-4', '', 0, 0, 0, 0, '2019-09-06', '13:59:00', '2019-09-05 13:35:47', 61, 'ds', 'amahoro', '1', '101', '10102', '1010202', '101020203', '2019_894.jpg', '2019_748.jpg'),
+(14, 'MANU', 'CHE,LSEA', '3-5', '', 0, 0, 0, 0, '2019-09-07', '13:59:00', '2019-09-06 09:03:23', 61, 'NICE', 'amahoro', '1', '101', '10102', '1010202', '101020203', '', '');
 
 -- --------------------------------------------------------
 
@@ -3607,6 +3692,159 @@ INSERT INTO `football_lineup_table` (`score_id`, `football_team`, `team_total_po
 (2, 'RAYON SPORT', 22, 4, 1),
 (3, 'KIYOVU', 13, 2, 3),
 (4, 'INTERSEC', 11, 4, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `football_u_16`
+--
+
+CREATE TABLE `football_u_16` (
+  `u_16_id` int(11) NOT NULL,
+  `Home_game` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Away_game` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `score_game` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `goals_player_name_match` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `goal_player_id_match` int(11) NOT NULL,
+  `counts_goals` int(11) NOT NULL,
+  `counts_drows` int(11) NOT NULL,
+  `counts_points` int(11) NOT NULL,
+  `date_of_match` date NOT NULL,
+  `time_of_match` time NOT NULL,
+  `created_on3` datetime NOT NULL,
+  `user_id3` int(11) NOT NULL,
+  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_of_match` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `province` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `district` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sector` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cell` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `village` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `home_team_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `away_team_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `football_u_16`
+--
+
+INSERT INTO `football_u_16` (`u_16_id`, `Home_game`, `Away_game`, `score_game`, `goals_player_name_match`, `goal_player_id_match`, `counts_goals`, `counts_drows`, `counts_points`, `date_of_match`, `time_of_match`, `created_on3`, `user_id3`, `text`, `location_of_match`, `province`, `district`, `sector`, `cell`, `village`, `home_team_photo`, `away_team_photo`) VALUES
+(1, 'rayon', 'apr', '3-5', '', 0, 0, 0, 0, '2019-08-29', '08:18:09', '2019-06-17 10:42:40', 61, 'ibintu nu buryohe itike ni 1000 frw kwijira', '10pm at stadium', '', '', '', '', '', '2019_58imag.jpg', '2019_10imag.jpg'),
+(2, 'kiyovu ', 'mukura', '1-1', '', 0, 0, 0, 0, '2019-08-30', '05:13:07', '2019-06-18 14:58:28', 61, 'kwijira bizaba bishushe', '10pm at stadium', '', '', '', '', '', '2019_35ligh.jpg', '2019_33imag.jpg'),
+(3, 'apr', 'intersec', '0-2', '', 0, 0, 0, 0, '2019-09-01', '07:14:07', '2019-07-13 15:38:37', 64, 'nice', 'kimironko', '', '', '', '', '', '2019_63map-.png', '2019_49capt.png'),
+(4, 'apr', 'kiyovu', '2-3', '', 0, 0, 0, 0, '2019-09-02', '03:09:06', '2019-07-13 15:41:38', 64, 'rtw', 'rt', '', '', '', '', '', '2019_64capt.png', '2019_16capt.png'),
+(5, 'arsenal', 'apr', '?-?', '', 0, 0, 0, 0, '2019-09-03', '15:09:14', '2019-09-03 09:04:35', 61, 'birashushe', 'amahoro', '', '', '', '', '', '2019_48baby2.png', '2019_70baby3.png'),
+(6, 'apr', 'police', '4-4', '', 0, 0, 0, 0, '2019-09-05', '07:08:09', '2019-09-05 10:09:17', 61, 'sdfefgse', 'amahoro', '2', '201', '2010203', '20102', '201020303', '2019_497.jpg', '2019_593.jpg'),
+(7, 'JUVENTUS', 'AS ROMA', '2-3', '', 0, 0, 0, 0, '2019-09-06', '07:03:06', '2019-09-05 10:41:11', 61, '2000 FRW', 'amahoro', '1', '102', '10208', '10208', '', '2019_9911.jpg', '2019_4113.jpg'),
+(8, 'MONACO', 'PSG', '0-3', '', 0, 0, 0, 0, '2019-09-07', '03:06:00', '2019-09-05 10:46:02', 61, 'HELLO', 'amahoro', '2', '201', '2010104 ', '20101', '201010404', '2019_7518.jpg', '2019_7025.jpg'),
+(9, 'JUVENTUS', 'police', '?-?', '', 0, 0, 0, 0, '2019-09-08', '09:08:10', '2019-09-05 10:51:29', 61, 'gud', 'amahoro', '2', '201', '20102', '2010203', '201020303', '2019_505.jpg', '2019_807.jpg'),
+(10, 'BARCELONA', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-09', '12:58:00', '2019-09-05 11:13:40', 61, 'NICE', 'amahoro', '1', '102', '10202', '1020202', '102020202', '2019_428.jpg', '2019_945.jpg'),
+(11, 'MONACO', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-10', '13:59:00', '2019-09-05 11:16:09', 61, 'HOW ARE U', 'amahoro', '2', '201', '20101', '2010102', '201010204', '2019_3222.jpg', '2019_7120.jpg'),
+(12, 'MONACO', 'AS ROMA', '1-1', '', 0, 0, 0, 0, '2019-09-06', '10:11:17', '2019-09-05 13:34:06', 61, '3000 frw', 'amahoro', '2', '201', '20102', '2010201', '201020103', '2019_839.jpg', '2019_1313.jpg'),
+(13, 'BARCELONA', 'REAL MADRID', '3-4', '', 0, 0, 0, 0, '2019-09-06', '13:59:00', '2019-09-05 13:35:47', 61, 'ds', 'amahoro', '1', '101', '10102', '1010202', '101020203', '2019_894.jpg', '2019_748.jpg'),
+(14, 'MANU', 'CHE,LSEA', '3-5', '', 0, 0, 0, 0, '2019-09-07', '13:59:00', '2019-09-06 09:03:23', 61, 'NICE', 'amahoro', '1', '101', '10102', '1010202', '101020203', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `football_u_18`
+--
+
+CREATE TABLE `football_u_18` (
+  `u_18_id` int(11) NOT NULL,
+  `Home_game` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Away_game` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `score_game` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `goals_player_name_match` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `goal_player_id_match` int(11) NOT NULL,
+  `counts_goals` int(11) NOT NULL,
+  `counts_drows` int(11) NOT NULL,
+  `counts_points` int(11) NOT NULL,
+  `date_of_match` date NOT NULL,
+  `time_of_match` time NOT NULL,
+  `created_on3` datetime NOT NULL,
+  `user_id3` int(11) NOT NULL,
+  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_of_match` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `province` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `district` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sector` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cell` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `village` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `home_team_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `away_team_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `football_u_18`
+--
+
+INSERT INTO `football_u_18` (`u_18_id`, `Home_game`, `Away_game`, `score_game`, `goals_player_name_match`, `goal_player_id_match`, `counts_goals`, `counts_drows`, `counts_points`, `date_of_match`, `time_of_match`, `created_on3`, `user_id3`, `text`, `location_of_match`, `province`, `district`, `sector`, `cell`, `village`, `home_team_photo`, `away_team_photo`) VALUES
+(1, 'rayon', 'apr', '3-5', '', 0, 0, 0, 0, '2019-08-29', '08:18:09', '2019-06-17 10:42:40', 61, 'ibintu nu buryohe itike ni 1000 frw kwijira', '10pm at stadium', '', '', '', '', '', '2019_58imag.jpg', '2019_10imag.jpg'),
+(2, 'kiyovu ', 'mukura', '1-1', '', 0, 0, 0, 0, '2019-08-30', '05:13:07', '2019-06-18 14:58:28', 61, 'kwijira bizaba bishushe', '10pm at stadium', '', '', '', '', '', '2019_35ligh.jpg', '2019_33imag.jpg'),
+(3, 'apr', 'intersec', '0-2', '', 0, 0, 0, 0, '2019-09-01', '07:14:07', '2019-07-13 15:38:37', 64, 'nice', 'kimironko', '', '', '', '', '', '2019_63map-.png', '2019_49capt.png'),
+(4, 'apr', 'kiyovu', '2-3', '', 0, 0, 0, 0, '2019-09-02', '03:09:06', '2019-07-13 15:41:38', 64, 'rtw', 'rt', '', '', '', '', '', '2019_64capt.png', '2019_16capt.png'),
+(5, 'arsenal', 'apr', '?-?', '', 0, 0, 0, 0, '2019-09-03', '15:09:14', '2019-09-03 09:04:35', 61, 'birashushe', 'amahoro', '', '', '', '', '', '2019_48baby2.png', '2019_70baby3.png'),
+(6, 'apr', 'police', '4-4', '', 0, 0, 0, 0, '2019-09-05', '07:08:09', '2019-09-05 10:09:17', 61, 'sdfefgse', 'amahoro', '2', '201', '2010203', '20102', '201020303', '2019_497.jpg', '2019_593.jpg'),
+(7, 'JUVENTUS', 'AS ROMA', '2-3', '', 0, 0, 0, 0, '2019-09-06', '07:03:06', '2019-09-05 10:41:11', 61, '2000 FRW', 'amahoro', '1', '102', '10208', '10208', '', '2019_9911.jpg', '2019_4113.jpg'),
+(8, 'MONACO', 'PSG', '0-3', '', 0, 0, 0, 0, '2019-09-07', '03:06:00', '2019-09-05 10:46:02', 61, 'HELLO', 'amahoro', '2', '201', '2010104 ', '20101', '201010404', '2019_7518.jpg', '2019_7025.jpg'),
+(9, 'JUVENTUS', 'police', '?-?', '', 0, 0, 0, 0, '2019-09-08', '09:08:10', '2019-09-05 10:51:29', 61, 'gud', 'amahoro', '2', '201', '20102', '2010203', '201020303', '2019_505.jpg', '2019_807.jpg'),
+(10, 'BARCELONA', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-09', '12:58:00', '2019-09-05 11:13:40', 61, 'NICE', 'amahoro', '1', '102', '10202', '1020202', '102020202', '2019_428.jpg', '2019_945.jpg'),
+(11, 'MONACO', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-10', '13:59:00', '2019-09-05 11:16:09', 61, 'HOW ARE U', 'amahoro', '2', '201', '20101', '2010102', '201010204', '2019_3222.jpg', '2019_7120.jpg'),
+(12, 'MONACO', 'AS ROMA', '1-1', '', 0, 0, 0, 0, '2019-09-06', '10:11:17', '2019-09-05 13:34:06', 61, '3000 frw', 'amahoro', '2', '201', '20102', '2010201', '201020103', '2019_839.jpg', '2019_1313.jpg'),
+(13, 'BARCELONA', 'REAL MADRID', '3-4', '', 0, 0, 0, 0, '2019-09-06', '13:59:00', '2019-09-05 13:35:47', 61, 'ds', 'amahoro', '1', '101', '10102', '1010202', '101020203', '2019_894.jpg', '2019_748.jpg'),
+(14, 'MANU', 'CHE,LSEA', '3-5', '', 0, 0, 0, 0, '2019-09-07', '13:59:00', '2019-09-06 09:03:23', 61, 'NICE', 'amahoro', '1', '101', '10102', '1010202', '101020203', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `football_u_20`
+--
+
+CREATE TABLE `football_u_20` (
+  `u_20_id` int(11) NOT NULL,
+  `Home_game` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Away_game` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `score_game` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `goals_player_name_match` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `goal_player_id_match` int(11) NOT NULL,
+  `counts_goals` int(11) NOT NULL,
+  `counts_drows` int(11) NOT NULL,
+  `counts_points` int(11) NOT NULL,
+  `date_of_match` date NOT NULL,
+  `time_of_match` time NOT NULL,
+  `created_on3` datetime NOT NULL,
+  `user_id3` int(11) NOT NULL,
+  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location_of_match` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `province` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `district` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sector` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cell` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `village` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `home_team_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `away_team_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `football_u_20`
+--
+
+INSERT INTO `football_u_20` (`u_20_id`, `Home_game`, `Away_game`, `score_game`, `goals_player_name_match`, `goal_player_id_match`, `counts_goals`, `counts_drows`, `counts_points`, `date_of_match`, `time_of_match`, `created_on3`, `user_id3`, `text`, `location_of_match`, `province`, `district`, `sector`, `cell`, `village`, `home_team_photo`, `away_team_photo`) VALUES
+(1, 'rayon', 'apr', '3-5', '', 0, 0, 0, 0, '2019-08-29', '08:18:09', '2019-06-17 10:42:40', 61, 'ibintu nu buryohe itike ni 1000 frw kwijira', '10pm at stadium', '', '', '', '', '', '2019_58imag.jpg', '2019_10imag.jpg'),
+(2, 'kiyovu ', 'mukura', '1-1', '', 0, 0, 0, 0, '2019-08-30', '05:13:07', '2019-06-18 14:58:28', 61, 'kwijira bizaba bishushe', '10pm at stadium', '', '', '', '', '', '2019_35ligh.jpg', '2019_33imag.jpg'),
+(3, 'apr', 'intersec', '0-2', '', 0, 0, 0, 0, '2019-09-01', '07:14:07', '2019-07-13 15:38:37', 64, 'nice', 'kimironko', '', '', '', '', '', '2019_63map-.png', '2019_49capt.png'),
+(4, 'apr', 'kiyovu', '2-3', '', 0, 0, 0, 0, '2019-09-02', '03:09:06', '2019-07-13 15:41:38', 64, 'rtw', 'rt', '', '', '', '', '', '2019_64capt.png', '2019_16capt.png'),
+(5, 'arsenal', 'apr', '?-?', '', 0, 0, 0, 0, '2019-09-03', '15:09:14', '2019-09-03 09:04:35', 61, 'birashushe', 'amahoro', '', '', '', '', '', '2019_48baby2.png', '2019_70baby3.png'),
+(6, 'apr', 'police', '4-4', '', 0, 0, 0, 0, '2019-09-05', '07:08:09', '2019-09-05 10:09:17', 61, 'sdfefgse', 'amahoro', '2', '201', '2010203', '20102', '201020303', '2019_497.jpg', '2019_593.jpg'),
+(7, 'JUVENTUS', 'AS ROMA', '2-3', '', 0, 0, 0, 0, '2019-09-06', '07:03:06', '2019-09-05 10:41:11', 61, '2000 FRW', 'amahoro', '1', '102', '10208', '10208', '', '2019_9911.jpg', '2019_4113.jpg'),
+(8, 'MONACO', 'PSG', '0-3', '', 0, 0, 0, 0, '2019-09-07', '03:06:00', '2019-09-05 10:46:02', 61, 'HELLO', 'amahoro', '2', '201', '2010104 ', '20101', '201010404', '2019_7518.jpg', '2019_7025.jpg'),
+(9, 'JUVENTUS', 'police', '?-?', '', 0, 0, 0, 0, '2019-09-08', '09:08:10', '2019-09-05 10:51:29', 61, 'gud', 'amahoro', '2', '201', '20102', '2010203', '201020303', '2019_505.jpg', '2019_807.jpg'),
+(10, 'BARCELONA', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-09', '12:58:00', '2019-09-05 11:13:40', 61, 'NICE', 'amahoro', '1', '102', '10202', '1020202', '102020202', '2019_428.jpg', '2019_945.jpg'),
+(11, 'MONACO', 'REAL MADRID', '?-?', '', 0, 0, 0, 0, '2019-09-10', '13:59:00', '2019-09-05 11:16:09', 61, 'HOW ARE U', 'amahoro', '2', '201', '20101', '2010102', '201010204', '2019_3222.jpg', '2019_7120.jpg'),
+(12, 'MONACO', 'AS ROMA', '1-1', '', 0, 0, 0, 0, '2019-09-06', '10:11:17', '2019-09-05 13:34:06', 61, '3000 frw', 'amahoro', '2', '201', '20102', '2010201', '201020103', '2019_839.jpg', '2019_1313.jpg'),
+(13, 'BARCELONA', 'REAL MADRID', '3-4', '', 0, 0, 0, 0, '2019-09-06', '13:59:00', '2019-09-05 13:35:47', 61, 'ds', 'amahoro', '1', '101', '10102', '1010202', '101020203', '2019_894.jpg', '2019_748.jpg'),
+(14, 'MANU', 'CHE,LSEA', '3-5', '', 0, 0, 0, 0, '2019-09-07', '13:59:00', '2019-09-06 09:03:23', 61, 'NICE', 'amahoro', '1', '101', '10102', '1010202', '101020203', '', '');
 
 -- --------------------------------------------------------
 
@@ -3762,28 +4000,7 @@ CREATE TABLE `house` (
 --
 
 INSERT INTO `house` (`house_id`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `text`, `categories_house`, `price`, `phone`, `country01`, `province`, `districts`, `sector`, `cell`, `village`, `buy`, `discount`, `price_discount`, `banner`, `photo_Title_main`, `photo_Title`, `user_id3`, `created_on3`) VALUES
-(13, 'fayzo', '2019_576d46.jpg', '2019_85042b.jpg', '', '', 'nice', 'House_For_sale', 5000.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 50, 10000.00, 'new', 'ni ziza', 'ni ziza imbere=====', 61, '2019-07-05 21:12:33'),
-(16, 'fayzo', '2019_332_gz.jpg', '2019_176d46.jpg', '', '', 'gud shape', 'House_For_sale', 50000.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 0.00, 'new', 'ni nziza', 'hejuru=====', 61, '2019-07-05 21:13:40'),
-(17, 'fayzo', '2019_43042b.jpg', '2019_792_gz.jpg', '', '', 'gud', 'House_For_sale', 665000.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'sold', 45, 24350.00, 'great_deal', 'hejuru', 'hasi=====', 61, '2019-07-05 21:15:45'),
-(18, 'fayzo', '2019_58450_.jpg', '2019_96042b.jpg', '', '', 'nice', 'House_For_rent', 5350000.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 5, 4210.00, 'new', 'gud', 'shape=====', 61, '2019-07-05 21:16:56'),
-(19, 'fayzo', '2019_67450_.jpg', '2019_93450_.jpg', '', '', 'nice', 'House_For_rent', 23454600.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 20, 65360.00, 'new_arrival', 'gud house', 'amazu meza=====', 61, '2019-07-05 21:17:47'),
-(20, 'fayzo', '2019_482019.jpeg', '2019_15450_.jpg', '', '', 'gud', 'House_For_sale', 354500.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'sold', 78, 570.00, 'great_deal', 'ni ziza', 'iurubatse=====', 61, '2019-07-05 21:18:51'),
-(21, 'fayzo', '2019_924854.jpg', '2019_942019.jpeg', '', '', 'hi', 'House_For_rent', 57500.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 47, 680.00, 'new', 'pisini', 'parking=====', 61, '2019-07-05 21:19:44'),
-(22, 'fayzo', '2019_7520-2.jpg', '2019_861014.jpg', '', '', 'ikibaza', 'House_Land', 4500.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 50, 6780.00, 'new_arrival', 'heza', 'umurima=====', 61, '2019-07-05 21:20:44'),
-(23, 'fayzo', '2019_101014.jpg', '2019_581200.jpeg', '', '', 'ikibaza', 'House_Land', 36500.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 55, 5670.00, 'great_deal', 'ikibaza n425', 'ikibaza N45=====', 61, '2019-07-05 21:21:44'),
-(24, 'fayzo', '2019_981200.jpeg', '2019_656370.jpg', '', '', 'ikibaza', 'House_Land', 45346000.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 62, 560.00, 'great_deal', 'umuhanda', 'umurima=====', 61, '2019-07-05 21:22:28'),
-(25, 'fayzo', '2019_186370.jpg', '2019_183998.jpg', '', '', 'nice', 'House_Land', 5645600.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 13, 440.00, 'new', 'umurima', 'ishamba=====', 61, '2019-07-05 21:25:40'),
-(26, 'fayzo', '2019_7203e3.jpg', '2019_16dsc_.jpg', '', '', 'gud', 'Apartment_For_sale', 43536000.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 34, 80.00, 'new_arrival', 'irakodeshwa', 'imfite ibyumba byishi=====', 61, '2019-07-05 21:27:05'),
-(27, 'fayzo', '2019_672201.jpg', '2019_5603e3.jpg', '', '', 'inzu ya partment igurishwa', 'Apartment_For_sale', 2445000.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 11, 9060.00, 'new', 'ni nziza', 'imfite ubugari buri hejuru=====', 61, '2019-07-05 21:28:20'),
-(28, 'fayzo', '2019_8905-b.jpg', '2019_812201.jpg', '', '', 'nice', 'Apartment_For_sale', 24536800.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 34, 80.00, 'new', 'imfite pisini', 'nini=====', 61, '2019-07-05 21:29:13'),
-(29, 'fayzo', '2019_22apas.jpg', '2019_322201.jpg', '', '', 'imfite ibyumba byinshi', 'Apartment_For_rent', 453600.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 65, 1000.00, 'new_arrival', 'imfite ibyumba byinshi', '4 ibyumba na toillet=====', 61, '2019-07-05 21:31:16'),
-(30, 'fayzo', '2019_606449.jpg', '2019_84apas.jpg', '', '', 'hejuru', 'Apartment_For_rent', 45400.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 67, 70.00, 'great_deal', 'amataraa meza', 'parking nini=====', 61, '2019-07-05 21:32:11'),
-(31, 'fayzo', '2019_469148.jpg', '2019_536449.jpg', '', '', 'imfite byose', 'Apartment_For_rent', 54600.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 90, 450.00, 'new_arrival', 'imfite byose', 'waza ukirebere=====', 61, '2019-07-05 21:33:21'),
-(32, 'fayzo', '2019_100arie.jpg', '2019_23apas.jpg', '', '', 'nice', 'Apartment_For_rent', 345300.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 34, 45660.00, 'new', 'imfite ibiti', 'hejuru no hasi=====', 61, '2019-07-05 21:34:20'),
-(33, 'fayzo', '2019_20f296.jpg', '2019_48arie.jpg', '', '', 'nice', 'Offices_stores', 4466.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 534.00, 'new', 'gukorera', 'naha=====', 61, '2019-07-05 21:35:23'),
-(34, 'fayzo', '2019_98dsc_.jpg', '2019_51apas.jpg', '', '', 'gud shape', 'Offices_stores', 4353600.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 540.00, '', 'imfite byose', 'hejuru no haasi=====', 61, '2019-07-05 21:36:19'),
-(35, 'fayzo', '2019_89feat.jpg', '2019_50f296.jpg', '', '', 'gud', 'Offices_stores', 43500.00, '0787345243243', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'available', 0, 450.00, '', 'aho gukorera', 'imfite ibyumba byinshi=====', 61, '2019-07-05 21:37:35'),
-(36, 'fayzo', '2019_551807.jpg', '2019_241905.jpg', '', '', 'it is good shape', 'House_For_sale', 59997.00, '05984954', 'RW', '1', '102', '1020803', '10208', '102080302', 'sold', 0, 0.00, 'new', 'ni nziza', 'ifite na jardin=====', 61, '2019-08-14 12:59:54');
+(36, 'fayzo', '2019_551807.jpg', '2019_241905.jpg', '', '', 'it is good shape', 'House_For_sale', 59997.00, '05984954', 'RW', '1', '102', '10208', '1020803', '102080302', 'sold', 0, 0.00, 'new', 'ni nziza', 'ifite na jardin=====', 61, '2019-08-14 12:59:54');
 
 -- --------------------------------------------------------
 
@@ -3822,7 +4039,9 @@ INSERT INTO `jobs` (`job_id`, `job_title`, `job_summary`, `responsibilities_duti
 (27, 'Accounts Payable Specialist', '<p>\n\n<div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>\n\n<div><p>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessaryï»¿</p></div></li><li>\n\n<di', '<p><ul><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\n\n<br></li><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</', '<h1><b>niceï»¿</b><b></b></h1><p><ul><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\n\n</li><li><p>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial r', 64, '<p><small>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\n\n</small><br></p><p>\n\n<div><div>Perform monthly', 'Featured', '<p><ul><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewi', 'goood', '2019-07-12 17:46:31', 'on'),
 (28, 'Senior Staff Accountant', '<p><div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li>\r\n<li><div><p>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessaryï»¿</p></div></li>\r\n</ul></di', '<p><ul><li>\r\n\r\n<div><div>xPerform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\r\n\r\n<br></li><li>\r\n\r\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as nece', '<h1><b>niceï»¿</b><b></b></h1><p><ul><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\n\n</li><li><p>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial r', 64, '<p><small>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\n\n</small><br></p><p>\n\n<div><div>Perform monthly', 'Featured', '<p><ul><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewi', 'goood', '2019-07-12 17:46:58', 'on'),
 (29, 'amakuru', '<p><ul><li>adad</li><li>adad</li><li>adada</li><li>adad</li><li>adad</li><li>ad</li></ul></p>', '<p><ul><li>ama</li><li>abab</li><li>abab</li><li>abab</li><li>abab</li><li>abab</li></ul></p>', '<p><ul><li>dadad</li><li>dada</li><li>dad</li><li>dada</li><li>dadadvad</li><li>dafaav</li></ul></p>', 64, '<p><ul><li>adfadfad</li><li>adfafadf</li><li>afadfadf</li><li>dfadf</li><li>fadfadf</li><li>dfadfad</li><li>adfadbd</li></ul></p>', 'Tenders', '<p><ul><li>vsfbfvsfa</li><li>afavabfs</li><li>adfadvdafadfa</li><li>adfadvazc</li><li>adfadfadfad</li><li>vadvadfzcfz</li><li>adfdvv</li></ul></p>', 'dvadvf', '2019-07-12 18:25:40', 'on'),
-(30, 'Accountant', '<p>\n\n<div><div><ul><li>Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to-day bookkeeping. Weâ€™re an energetic company and are looking for a passionate individual to join our organization and revitalize our record keeping and bring more organization to our day to day financials.</li><li>Weâ€™re looking for an organized and drive', '<p>\n\n<div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly a', '<p>\n\n<div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary Perform monthly, quarterly and annua', 64, '<p>\n\n<div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly and annual accounting activi', 'Tenders', '<p>\n\n<div><ul><li><i>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing', 'Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/su', '2019-07-12 18:35:34', 'on');
+(30, 'Accountant', '<p>\n\n<div><div><ul><li>Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to-day bookkeeping. Weâ€™re an energetic company and are looking for a passionate individual to join our organization and revitalize our record keeping and bring more organization to our day to day financials.</li><li>Weâ€™re looking for an organized and drive', '<p>\n\n<div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly a', '<p>\n\n<div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary Perform monthly, quarterly and annua', 64, '<p>\n\n<div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly and annual accounting activi', 'Tenders', '<p>\n\n<div><ul><li><i>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing', 'Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/su', '2019-07-12 18:35:34', 'on'),
+(31, 'finance', '<p><ul><li>bite</li><li>amakuru</li><li>uraho</li><li>waramutse</li></ul></p>', '<p><ul><li>uraho</li><li>uraho</li><li>uraho</li></ul></p>', '<h1>umunota umwe fata</h1><p><ul><li>ubwoba</li><li>urwanwa</li></ul></p>', 61, '<p>uraho bebe</p><p><p><p><ul><li>never whenï»¿</li></ul><p><blockquote>hoya rwinoï»¿</blockquote></p></p><p>ï»¿<br></p></p></p>', 'Consultancy', '2019-09-09', 'www.urwego.com', '2019-09-09 14:44:05', 'on'),
+(32, 'finance', '<p><ul><li>bite</li><li>amakuru</li><li>uraho</li><li>waramutse</li></ul></p>', '<p><ul><li>uraho</li><li>uraho</li><li>uraho</li></ul></p>', '<h1>umunota umwe fata</h1><p><ul><li>ubwoba</li><li>urwanwa</li></ul></p>', 61, '<p>uraho bebe</p><p><p><p><ul><li>never whenï»¿</li></ul><p><blockquote>hoya rwinoï»¿</blockquote></p></p><p>ï»¿<br></p></p></p>', 'Consultancy', '2019-09-09', 'www.urwego.com', '2019-09-09 14:44:05', 'on');
 
 -- --------------------------------------------------------
 
@@ -3853,7 +4072,8 @@ INSERT INTO `likes` (`like_id`, `like_by`, `like_on`) VALUES
 (12, 0, 418),
 (13, 61, 413),
 (14, 61, 421),
-(15, 83, 426);
+(15, 83, 426),
+(16, 61, 429);
 
 -- --------------------------------------------------------
 
@@ -4390,6 +4610,8 @@ CREATE TABLE `school` (
   `video_` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `youtube_` varchar(2002) COLLATE utf8mb4_unicode_ci NOT NULL,
   `country` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title_main` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location_province` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location_districts` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location_Sector` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -4404,14 +4626,8 @@ CREATE TABLE `school` (
 -- Dumping data for table `school`
 --
 
-INSERT INTO `school` (`school_id`, `title_`, `author_`, `categories_of_school`, `type_of_school`, `text_`, `photo_`, `other_photo_`, `video_`, `youtube_`, `country`, `location_province`, `location_districts`, `location_Sector`, `location_cell`, `location_village`, `phone_`, `user_id_`, `created_on_`) VALUES
-(1, 'lycee de kigali', 'gatete', 'Kigali-city', 'College School', 'gud', '2019_80capt.png', '2019_27capt.png', '', '', 'RW', 'kigali city', 'Gasabo', 'Kimihurura', 'Rugando', 'gasange', '078745646', 61, '2019-07-15 09:05:01'),
-(2, 'IFAK', 'gatete', 'Province', 'College School', 'gud', '2019_268512.jpg', '2019_248557.jpg', '', '', 'RW', 'kigali city', 'Gasabo', 'Kimihurura', 'Rugando', 'gasange', '05673784', 61, '2019-07-15 09:44:54'),
-(3, 'APADE', 'MASABO', 'Religion School', 'College School', 'nice', '2019_43images.jpg', '2019_15imag.jpg', '', '', 'AX', 'kigali city', 'Gasabo', 'Kimihurura', 'Rugando', 'gasange', '03457248', 61, '2019-07-15 09:48:55'),
-(4, 'maternitte', 'hice', 'Religion School', 'kindergarden School', 'gud', '2019_67capt.png', '2019_92mode.jpg', '', '', 'AX', 'kigali city', 'Gasabo', 'Kimihurura', 'Rugando', 'gasange', '0799353452', 61, '2019-07-15 09:51:29'),
-(5, 'upc kigali', 'fayzo', 'Public School', 'kindergarden School', 'gud', '2019_81down.png', '2019_608557.jpg', '', '', 'AO', 'kigali city', 'Gasabo', 'Kibangu', 'Rugando', 'amajyambere', '07856353', 61, '2019-07-15 09:54:25'),
-(6, 'upc kigali', 'fayzo', 'Public School', 'College School', 'gud', '2019_59down.png', '2019_358557.jpg', '', '', 'AO', 'kigali city', 'Gasabo', 'Kibangu', 'Rugando', 'amajyambere', '07856353', 61, '2019-07-15 09:54:28'),
-(7, 'obege', 'karim', 'Public School', 'kindergarden School', 'amakuru', '2019_77capt.png', '2019_898557.jpg', '', '', 'RW', '1', '102', '10208', '1020803', '102080302', '07863524', 61, '2019-07-28 08:47:27');
+INSERT INTO `school` (`school_id`, `title_`, `author_`, `categories_of_school`, `type_of_school`, `text_`, `photo_`, `other_photo_`, `video_`, `youtube_`, `country`, `photo_Title_main`, `photo_Title`, `location_province`, `location_districts`, `location_Sector`, `location_cell`, `location_village`, `phone_`, `user_id_`, `created_on_`) VALUES
+(7, 'obege', 'karim', 'Public School', 'kindergarden School', 'amakuru', '2019_77capt.png', '2019_81down.png', '', '', 'RW', '', '', '1', '102', '10208', '1020803', '102080302', '07863524', 61, '2019-07-28 08:47:27');
 
 -- --------------------------------------------------------
 
@@ -5323,7 +5539,8 @@ INSERT INTO `tweets` (`tweet_id`, `status`, `tweetBy`, `retweet_id`, `retweet_by
 (425, 'Hotel Transylvania', 61, 424, 66, '2019_58vlc-.mp4', 2, 1, '2019-08-28 04:35:54', 'iyi niyo video'),
 (426, 'hey.', 83, 0, 0, '', 1, 0, '2019-09-03 16:05:51', ''),
 (427, 'you are intelligent', 84, 0, 0, '', 0, 0, '2019-09-03 16:37:27', ''),
-(428, 'you are intelligent', 84, 0, 0, '', 0, 0, '2019-09-03 16:37:28', '');
+(428, 'you are intelligent', 84, 0, 0, '', 0, 0, '2019-09-03 16:37:28', ''),
+(429, 'firstname\nlastname', 61, 0, 0, '', 1, 0, '2019-09-09 11:03:54', '');
 
 -- --------------------------------------------------------
 
@@ -5385,7 +5602,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `password`, `gender`, `chat`, `career`, `country`, `date_birth`, `date_registry`, `last_login`, `counts_login`, `forgotUsernameCounts`, `forgotUsernameCountsTimesHeCreates`, `forgotUsernameCountsTimesHeCreatespassword`, `profile_img`, `profile_img_crop`, `cover_img`, `background`, `language`, `color`, `education`, `diploma`, `skills`, `location`, `hobbys`, `followers`, `following`, `approval`, `company_education`, `type_of_business`, `address`, `size_of_people`, `companyname`, `overview`, `history`, `team`, `legal_structure`, `location_facilities`, `mission_statement`, `website`, `unemplyoment`, `categories_fields`, `phone`) VALUES
-(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'off', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-09-06 08:36:40', 514, 0, 10, 10, '112baby3.png', '', '702caus.jpg', 'chair', '', 'purple', 'lycee', 'project', 'web', 'BR', 'styuding', 9, 6, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
+(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'on', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-09-09 14:10:27', 516, 0, 10, 10, '112baby3.png', '', '702caus.jpg', 'white-bg', '', 'purple', 'lycee', 'project', 'web', 'BR', 'styuding', 9, 6, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
 (64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-09-02 13:13:36', 62, 0, 0, 0, '', '', '', 'chair', '', 'purple-green', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
 (65, 'karisa', 'bosco', 'bosco', 'faysal@gmail.com', 'bosco', 'Male', '', '', 'RW', '2019-05-03', '2019-05-02', '2019-05-27 21:50:00', 8, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 2, 2, 'off', '', '', '', '', 'LAMBORGIN', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
 (66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-09-02 13:13:10', 114, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'chair', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
@@ -5396,7 +5613,7 @@ INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `p
 (71, 'saleh', 'saleh', 'saleh', 'saleh@gmail.com', 'saleh', 'Male', 'on', '', 'AQ', '2019-05-31', '2019-06-02', '2019-06-02 14:50:22', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
 (72, 'riri', 'aline', 'aline', 'aline@gmail.com', 'aline', 'Male', 'off', '', 'RW', '2019-07-01', '2019-07-01', '2019-07-02 08:52:01', 5, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
 (73, 'antonia', 'griezman', 'antonia', 'antonia@gmail.com', 'fafa', 'Male', 'off', '', 'FR', '2019-07-01', '2019-07-02', '2019-07-31 17:42:18', 3, 0, 0, 1, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
-(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-08-20 17:57:02', 15, 0, 0, 0, '', '', '', 'chair', '', 'purple', '', '', '', '', '', 1, 6, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
+(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-08-20 17:57:02', 15, 0, 0, 0, '', '', '', 'white-bg', '', 'purple', '', '', '', '', '', 1, 6, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
 (75, 'FAFA', 'FAFA', 'FAFA', 'FAFA@yahoo.com', 'FAFA', 'Male', 'off', '', '', '2019-08-03', '2019-08-03', '2019-08-03 04:29:40', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (76, 'riri', 'riri', 'riri', 'riri@yahoo.com', 'riri', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 06:58:18', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (77, 'mani', 'mani', 'mani', 'mani@yahoo.com', 'mani', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 07:00:29', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
@@ -18180,10 +18397,40 @@ ALTER TABLE `football`
   ADD PRIMARY KEY (`football_id`);
 
 --
+-- Indexes for table `football_amahoro_league`
+--
+ALTER TABLE `football_amahoro_league`
+  ADD PRIMARY KEY (`amahoro_league_id`);
+
+--
+-- Indexes for table `football_kagame_cup`
+--
+ALTER TABLE `football_kagame_cup`
+  ADD PRIMARY KEY (`kagame_cup_id`);
+
+--
 -- Indexes for table `football_lineup_table`
 --
 ALTER TABLE `football_lineup_table`
   ADD PRIMARY KEY (`score_id`);
+
+--
+-- Indexes for table `football_u_16`
+--
+ALTER TABLE `football_u_16`
+  ADD PRIMARY KEY (`u_16_id`);
+
+--
+-- Indexes for table `football_u_18`
+--
+ALTER TABLE `football_u_18`
+  ADD PRIMARY KEY (`u_18_id`);
+
+--
+-- Indexes for table `football_u_20`
+--
+ALTER TABLE `football_u_20`
+  ADD PRIMARY KEY (`u_20_id`);
 
 --
 -- Indexes for table `fundraising`
@@ -18578,10 +18825,40 @@ ALTER TABLE `football`
   MODIFY `football_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT for table `football_amahoro_league`
+--
+ALTER TABLE `football_amahoro_league`
+  MODIFY `amahoro_league_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `football_kagame_cup`
+--
+ALTER TABLE `football_kagame_cup`
+  MODIFY `kagame_cup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT for table `football_lineup_table`
 --
 ALTER TABLE `football_lineup_table`
   MODIFY `score_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `football_u_16`
+--
+ALTER TABLE `football_u_16`
+  MODIFY `u_16_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `football_u_18`
+--
+ALTER TABLE `football_u_18`
+  MODIFY `u_18_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `football_u_20`
+--
+ALTER TABLE `football_u_20`
+  MODIFY `u_20_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `fundraising`
@@ -18617,13 +18894,13 @@ ALTER TABLE `house`
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `job_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `job_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `like_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `like_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -18785,7 +19062,7 @@ ALTER TABLE `tutorial`
 -- AUTO_INCREMENT for table `tweets`
 --
 ALTER TABLE `tweets`
-  MODIFY `tweet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=429;
+  MODIFY `tweet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=430;
 
 --
 -- AUTO_INCREMENT for table `users`

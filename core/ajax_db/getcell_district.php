@@ -21,14 +21,14 @@ if (isset($_REQUEST['sectorcode']) && !empty($_REQUEST['sectorcode'])) {
 }
 
 if (isset($_POST['cell']) && !empty($_POST['cell'])) {
-	$query= $db->query("SELECT * FROM school S Left JOIN cells C ON S. location_cell = C. sectorcode WHERE S. type_of_school= '{$_POST['type_of_school']}' and S. location_province= '{$_POST['province']}' and S. location_districts= '{$_POST['district']}' and S. location_Sector= '{$_POST['sector']}' and S. location_cell= '{$_POST['cell']}' ORDER BY S. created_on_ Desc , rand() Limit 0,5");
+	$query= $db->query("SELECT * FROM school S Left JOIN cells C ON S. location_cell = C. sectorcode WHERE S. location_province= '{$_POST['province']}' and S. location_districts= '{$_POST['district']}' and S. location_Sector= '{$_POST['sector']}' and S. location_cell= '{$_POST['cell']}' ORDER BY S. created_on_ Desc , rand() Limit 0,5");
 	$query0= $db->query("SELECT * FROM school S 
 						Left JOIN provinces P ON S. location_province = P. provincecode
 						Left JOIN districts D ON S. location_districts = D. districtcode
 						Left JOIN sectors T ON S. location_Sector = T. sectorcode
 						Left JOIN cells C ON S. location_cell = C. codecell
 						Left JOIN vilages V ON S. location_village = V. CodeVillage
-	 WHERE S. type_of_school= '{$_POST['type_of_school']}' and S. location_province= '{$_POST['province']}' and S. location_districts= '{$_POST['district']}' and S. location_Sector= '{$_POST['sector']}' and S. location_cell= '{$_POST['cell']}' ORDER BY S. created_on_ Desc , rand() Limit 0,5");
+	 WHERE S. location_province= '{$_POST['province']}' and S. location_districts= '{$_POST['district']}' and S. location_Sector= '{$_POST['sector']}' and S. location_cell= '{$_POST['cell']}' ORDER BY S. created_on_ Desc , rand() Limit 0,5");
 	$row0= $query0->fetch_assoc();
 	// var_dump($query);
 	if ($query->num_rows > 0) {

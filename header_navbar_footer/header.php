@@ -421,6 +421,70 @@
         }, false);
     }
 
+    function Football_Home_FecthRequest(champion,id,currentdate,futuredate) {
+        var xhr = new XMLHttpRequest();
+        // Add any event handlers here...
+        xhr.open('POST', 'core/ajax_db/football_home_siderbar.php?champion=' + champion + '&Footpages=' + id +'&currentdate=' + currentdate +'&futuredate=' + futuredate , true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (id) {
+                    case id:
+                         var pagination = document.getElementById('Football-view');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                   
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
+    function football_shampion(football) {
+        var xhr = new XMLHttpRequest();
+        // Add any event handlers here...footbal_home_siderbar
+        xhr.open('POST', 'core/ajax_db/football_home_siderbar.php?football=' + football , true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (football) {
+                    case football:
+                         var pagination = document.getElementById('Football-view');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                   
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
     function Basketball_FecthRequest(id,currentdate,futuredate) {
         var xhr = new XMLHttpRequest();
         // Add any event handlers here...
@@ -1179,6 +1243,26 @@
         var params = '&type_of_school='+type_of_school+'&province='+province+'&district='+district+'&sector='+sector+'&cell='+cell,
 		http=new XMLHttpRequest();
 		http.open("POST","core/ajax_db/getcell.php",true);
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		http.send(params);
+		http.onreadystatechange = function() 
+		{
+            // Call a function when the cell changes.
+			
+		document.getElementById("cell-hide").innerHTML=http.responseText;
+				
+		}		
+    }
+    
+    function showResultCell_province(){
+        var province = document.getElementById('provincecode').value;
+        var district = document.getElementById('districtcode').value;
+        var sector = document.getElementById('sectorcode').value;
+        var cell = document.getElementById('codecell').value;
+        var location_province = document.getElementById('location_province').value;
+        var params = '&location_province='+location_province+'&province='+province+'&district='+district+'&sector='+sector+'&cell='+cell,
+		http=new XMLHttpRequest();
+		http.open("POST","core/ajax_db/getcell_district.php",true);
 		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 		http.send(params);
 		http.onreadystatechange = function() 

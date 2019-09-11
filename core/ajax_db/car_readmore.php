@@ -4,11 +4,17 @@ include('../init.php');
 $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpath($_SERVER['SCRIPT_FILENAME']));
 
 if (isset($_POST['car_id']) && !empty($_POST['car_id'])) {
-    $user_id= $_SESSION['key'];
-    if (isset($_SESSION['key'])) {
+     if (isset($_SESSION['key'])) {
         # code...
         $user_id= $_SESSION['key'];
+    }else {
+        # code...
+        $username= $users->test_input('jojo');
+        $uprofileId= $home->usersNameId($username);
+        $profileData= $home->userData($uprofileId['user_id']);
+        $user_id= $profileData['user_id'];
     }
+    
     $car_id = $_POST['car_id'];
     $user= $car->carReadmore($car_id);
      ?>
@@ -46,7 +52,8 @@ if (isset($_POST['car_id']) && !empty($_POST['car_id'])) {
 
                    <div class="row reusercolor ">
                        <div class="col-md-12">
-                            <h5 class="text-center  black-bg h4 mb-2"><?php echo $user['categories_car']." in ".$user['province']." Location ".$user['cell']."/".$user['sector']." at ".$user['price']." Frw"; ?></h5>
+                            <h5 class="text-center black-bg h4 mb-2"><?php echo $user['categories_car']." in ".$user['provincename']." Location ".$user['namedistrict']."/".$user['namesector']." at ".$user['price']." Frw"; ?></h5>
+
                        </div>
                        <div class="col-md-1-12 ">
                            <div id="jssor_3" style="position:relative;margin:0;top:0px;left:0px;width:840px;height:380px;overflow:hidden;visibility:hidden;">

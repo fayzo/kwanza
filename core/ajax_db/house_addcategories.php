@@ -228,8 +228,8 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
     $country = $users->test_input($_POST['country']);
     $province =  $users->test_input($_POST['provincecode']);
     $districts =  $users->test_input($_POST['districtcode']);
-    $cell =  $users->test_input($_POST['sectorcode']);
-    $sector =  $users->test_input($_POST['codecell']);
+    $cell=  $users->test_input($_POST['codecell']);
+    $sector =  $users->test_input($_POST['sectorcode']);
     $village =  $users->test_input($_POST['CodeVillage']);
  
   if (!empty($_POST['photo-Titleo0'])) {

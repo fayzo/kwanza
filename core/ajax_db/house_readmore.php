@@ -4,7 +4,17 @@ include('../init.php');
 $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpath($_SERVER['SCRIPT_FILENAME']));
 
 if (isset($_POST['house_id']) && !empty($_POST['house_id'])) {
-    $user_id= $_SESSION['key'];
+    if (isset($_SESSION['key'])) {
+        # code...
+        $user_id= $_SESSION['key'];
+    }else {
+        # code...
+        $username= $users->test_input('jojo');
+        $uprofileId= $home->usersNameId($username);
+        $profileData= $home->userData($uprofileId['user_id']);
+        $user_id= $profileData['user_id'];
+    }
+    
     $house_id = $_POST['house_id'];
     $user= $house->houseReadmore($house_id);
      ?>
@@ -62,7 +72,11 @@ if (isset($_POST['house_id']) && !empty($_POST['house_id'])) {
 
                    <div class="row reusercolor p-2">
                        <div class="col-md-12">
-                            <h5 class="text-center black-bg h4 mb-2"><?php echo $user['categories_house']." in ".$user['province']." Location ".$user['cell']."/".$user['sector']." at ".$user['price']." Frw"; ?></h5>
+                            <h5 class="text-center black-bg h4 mb-2"><?php echo $user['categories_house']." in ".$user['provincename']." Location ".$user['namedistrict']."/".$user['namesector']." at ".$user['price']." Frw"; ?></h5>
+                             <!-- < ?php echo $house['provincename']; ?> /  -->
+                                <!-- < ?php echo $house['namedistrict']; ?> District/  -->
+                                <!-- < ?php echo $house['namesector']; ?> Sector/  -->
+                                <!-- < ?php echo $house['nameCell']; ?> Cell  -->
                        </div>
 
                        <div class="col-md-6">

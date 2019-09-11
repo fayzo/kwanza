@@ -1,18 +1,18 @@
-      <header class="blog-header mt-3 py-3 bg-light">
+      <header class="blog-header mt-3 py-2 bg-light">
          <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-12 text-center">
            <?php echo $home->links(); ?>
           </div>
         </div>
         <div class="row flex-nowrap justify-content-between align-items-center">
-          <div class="col-4 pt-1">
-            <a class="text-muted" href="#">Subscribe</a>
+          <div class="col-4 ">
+           <button type="button" class="btn btn-light mt-2" id="add_rwandalandscapes" data-rwandalandscapes="<?php echo $_SESSION['key']; ?>" > + Add rwanda-Landscapes </button>
           </div>
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="#">Rwanda Landscapes</a>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
-           <form class="form-inline">
+           <!-- <form class="form-inline">
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i> </span>
@@ -20,7 +20,7 @@
                     <input type="text" class="form-control" name="searches" id="searches" aria-describedby="helpId"
                         placeholder="Search">
                 </div>
-              </form>
+              </form> -->
           </div>
         </div>
       </header>
@@ -37,7 +37,6 @@
            <a class="p-2 text-muted" data-toggle="tab" href="#list-East" role="tab" aria-controls="list-East">East Province</a>
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Southern" role="tab" aria-controls="list-Southern">Southern Province</a>
            <a class="p-2 text-muted" data-toggle="tab" href="#list-Uburanga" role="tab" aria-controls="list-Uburanga">Uburanga</a>
-           <button type="button" class="btn btn-light mt-2" id="add_rwandalandscapes" data-rwandalandscapes="<?php echo $_SESSION['key']; ?>" > + Add rwanda-Landscapes </button>
         </nav>
       </div>
 

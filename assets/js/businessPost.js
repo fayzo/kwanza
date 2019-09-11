@@ -86,17 +86,24 @@ function PostsEdits(rowID, businessID, type) {
                 $(".view-body").fadeIn();
                 $("#id_posts0").val(rowID);
                 $("#businessID_id0").val(businessID);
-                $(".job-title0").html(decodeHtmlEntities(response.job_title).replace(/(<([^>]+)>)/ig, ""));
-                $(".job-summary0").html(decodeHtmlEntities(response.job_summary).replace(/(<([^>]+)>)/ig, ""));
-                $(".responsibilities-duties0").html(decodeHtmlEntities(response.responsibilities_duties).replace(/(<([^>]+)>)/ig, ""));
-                $(".qualifications-skills0").html(decodeHtmlEntities(response.qualifications_skills).replace(/(<([^>]+)>)/ig, ""));
-                $(".categories_jobs0").html(decodeHtmlEntities(response.categories_jobs).replace(/(<([^>]+)>)/ig, ""));
-                $(".terms-conditions0").html(decodeHtmlEntities(response.conditions).replace(/(<([^>]+)>)/ig, ""));
-                $(".deadlin0e").html(decodeHtmlEntities(response.deadline).replace(/(<([^>]+)>)/ig, ""));
+                $(".job-title0").html(response.job_title);
+                $(".job-summary0").html(response.job_summary);
+                $(".responsibilities-duties0").html(response.responsibilities_duties);
+                $(".qualifications-skills0").html(response.qualifications_skills);
+                $(".categories_jobs0").html(response.categories_jobs);
+                $(".terms-conditions0").html(response.conditions);
+                $(".deadlin0e").html(response.deadline);
+                // $(".job-title0").html(decodeHtmlEntities(response.job_title).replace(/(<([^>]+)>)/ig, ""));
+                // $(".job-summary0").html(decodeHtmlEntities(response.job_summary).replace(/(<([^>]+)>)/ig, ""));
+                // $(".responsibilities-duties0").html(decodeHtmlEntities(response.responsibilities_duties).replace(/(<([^>]+)>)/ig, ""));
+                // $(".qualifications-skills0").html(decodeHtmlEntities(response.qualifications_skills).replace(/(<([^>]+)>)/ig, ""));
+                // $(".categories_jobs0").html(decodeHtmlEntities(response.categories_jobs).replace(/(<([^>]+)>)/ig, ""));
+                // $(".terms-conditions0").html(decodeHtmlEntities(response.conditions).replace(/(<([^>]+)>)/ig, ""));
+                // $(".deadlin0e").html(decodeHtmlEntities(response.deadline).replace(/(<([^>]+)>)/ig, ""));
                 $(".website0").html(response.website);
                 $("#posts").fadeOut();
 
-            } else {
+            }else {
                 $(".edit-body").fadeIn();
                 $(".view-body").fadeOut();
                 $("#id_posts").val(rowID);

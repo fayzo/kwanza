@@ -30,7 +30,7 @@ if (isset($_POST['football_id']) && !empty($_POST['football_id'])) {
                 <div class="card-header main-active">
                     <div class="float-right">  
                         <?php 
-                        $now = strtotime('0 day');
+                        $now = strtotime('+0 day');
                         $month = strtotime($row['date_of_match']);
                             echo date('M d', $month); ?>
                     </div>
@@ -42,12 +42,12 @@ if (isset($_POST['football_id']) && !empty($_POST['football_id'])) {
                         <div class="list-group-item list-group-item-action more" >
                             <div class="sa">
                                 <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
-                                <?php if (date('M d', $now) > date('M d', $month)) { ?>
+                                <?php if (date('M d', $now) > $row['date_of_match']) { ?>
                                     <div class="float-left btn btn-success btn-sm text-white">FT</div>
                                 <?php } else { ?>
-                                    <div class="float-left text-danger"> <?php echo $row['time_of_match']; ?></div>
+                                  <div class="text-danger"> <?php echo date('h:i A',strtotime($row['time_of_match'])); ?></div>
                                 <?php } ?>
-                                <div class="text-center" style="font-weight:500;text-transform: uppercase;" ><?php echo $row['Home_game']; ?>  <span class="text-danger"><?php echo $row['score_game']; ?></span>  <?php echo $row['Away_game']; ?></div>
+                                <div class="text-center" style="font-weight:500;text-transform: uppercase;" ><?php echo $row['Home_game']; ?> <?php if(date('Y-m-d',$now) > $row['date_of_match']){ echo '<span class="text-success">'.(($row['score_game'] == '?-?')?'0-0':$row['score_game']).'</span>'; }else{ echo '<span class="text-danger">'.$row['score_game'].'</span>' ; } ?> <?php echo $row['Away_game']; ?></div>
                             </div>
                         </div>
                     </ul>

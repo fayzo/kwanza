@@ -64,8 +64,8 @@ class Football extends Home{
             // var_dump('ERROR: Could not able to execute $sql.'.mysqli_error($mysqli));
             // var_dump($day);
             // var_dump($query);
-        if($query->num_rows != 0){
         ?>
+
         <div class="card-header main-active p-1"  style="border-bottom: 2px #fff solid;">
              <nav>
                  <ul class="pagination justify-content-center m-0 ">
@@ -73,17 +73,17 @@ class Football extends Home{
                        $date = strtotime("-$i day"); 
                        $date1 = strtotime("-$i day"); 
                         if (-$i == $day) { ?>
-                    <li class="page-item active"><a class="page-link px-1  text-light" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo -$i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php echo date('M d', $date); ?></a></li>
+                    <li class="page-item active"><a class="page-link px-1  text-light" href="javascript:void(0)" onclick="Football_Home_FecthRequest('azam_league',<?php echo -$i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php echo date('M d', $date); ?></a></li>
                 <?php }else{ ?>
-                       <li class="page-item"><a class="page-link px-1 main-active" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo -$i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')"><?php echo date('M d', $date);  ?></a></li>
+                       <li class="page-item"><a class="page-link px-1 main-active" href="javascript:void(0)" onclick="Football_Home_FecthRequest('azam_league',<?php echo -$i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')"><?php echo date('M d', $date);  ?></a></li>
                 <?php } } ?>
                 <?php for ($i= 0; $i < 5; $i++) { 
                        $date = strtotime("+$i day");
                        $date1 = strtotime("+$i day"); 
                          if ($i == $day) { ?>
-                    <li class="page-item active"><a class="page-link px-1  text-light" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo $i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php if ($i === 0) { echo 'Today';}else{ echo date('M d', $date); } ?></a></li>
+                    <li class="page-item active"><a class="page-link px-1  text-light" href="javascript:void(0)" onclick="Football_Home_FecthRequest('azam_league',<?php echo $i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php if ($i === 0) { echo 'Today';}else{ echo date('M d', $date); } ?></a></li>
                 <?php }else{ ?>
-                    <li class="page-item"><a class="page-link px-1 main-active" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo $i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php echo date('M d', $date);  ?></a></li>
+                    <li class="page-item"><a class="page-link px-1 main-active" href="javascript:void(0)" onclick="Football_Home_FecthRequest('azam_league',<?php echo $i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php echo date('M d', $date);  ?></a></li>
                 <?php } } ?>
                 </ul>
             </nav>
@@ -105,21 +105,24 @@ class Football extends Home{
               <div> Azam league - GROUP A</div>
           </div>
             <div class="card-body sportx p-0">
+
+            <?php   if($query->num_rows != 0){ ?>
+            
               <!-- LIST GROUP WITH LINKS -->
               <table class="table table-striped table-hover table-inverse ">
                 <tbody>
                   <?php while ($row= $query->fetch_assoc()) { ?>
                         <tr class="more footballMatch_Readmore" data-footballmatchread="<?php echo $row['football_id']; ?>" >
-                            <td style="width:10px;">
+                            <td >
                               <?php $datex = strtotime("+0 day");
                               if (date('Y-m-d',$datex) > $row['date_of_match']) { ?>
                                 <div class=" btn btn-success btn-sm text-white">FT</div>
                               <?php } else { ?>
-                                  <div class="text-danger"> <?php echo $row['time_of_match']; ?></div>
+                                  <div class="text-danger"> <?php echo date('h:i A',strtotime($row['time_of_match'])); ?></div>
                               <?php } ?>
                             </td>
                             <td class="text-right" style="text-transform: uppercase;width:35%;"><?php echo $row['Home_game']; ?> </td>
-                            <td class="text-center"><?php if($row['score_game'] == '?-?'){ echo '<span class="text-danger">'.$row['score_game'].'</span>'; }else{ echo '<span class="text-success">'.$row['score_game'].'</span>' ; }  ?> </td>
+                            <td class="text-center"><?php if(date('Y-m-d',$datex) > $row['date_of_match']){ echo '<span class="text-success">'.(($row['score_game'] == '?-?')?'0-0':$row['score_game']).'</span>'; }else{ echo '<span class="text-danger">'.$row['score_game'].'</span>' ; }  ?> </td>
                             <td class="text-left" style="text-transform: uppercase;width:35%;">
                                 <?php echo $row['Away_game']; ?>
                                 <div class="float-right"><i class="fa fa-star" aria-hidden="true"></i></div>
@@ -130,44 +133,8 @@ class Football extends Home{
                 </tbody>
               </table>
 
-              </div><!-- card-body -->
-            </div> <!-- card-body -->
-            <div class="card-footer text-muted">
-            </div> <!-- card-footer -->
-        </div> <!-- card -->
-
     <?php }else { ?>
 
-     <div class="card-header main-active p-1" style="border-bottom: 2px #fff solid;">
-             <nav>
-                 <ul class="pagination justify-content-center m-0">
-                <?php for ($i= 5; $i > 0; $i--) { 
-                       $date = strtotime("-$i day"); 
-                       $date1 = strtotime("-$i day"); 
-                        if (-$i == $day) { ?>
-                    <li class="page-item active"><a class="page-link px-1  text-light" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo -$i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php echo date('M d', $date); ?></a></li>
-                <?php }else{ ?>
-                       <li class="page-item"><a class="page-link px-1 main-active" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo -$i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')"><?php echo date('M d', $date);  ?></a></li>
-                <?php } } ?>
-                <?php for ($i= 0; $i < 5; $i++) { 
-                       $date = strtotime("+$i day");
-                       $date1 = strtotime("+$i day"); 
-                         if ($i == $day) { ?>
-                    <li class="page-item active"><a class="page-link px-1  text-light" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo $i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php if ($i === 0) { echo 'Today';}else{ echo date('M d', $date); } ?></a></li>
-                <?php }else{ ?>
-                    <li class="page-item"><a class="page-link px-1 main-active" href="javascript:void(0)" onclick="Football_FecthRequest(<?php echo $i; ?>,'<?php echo date('Y-m-d', $date); ?>','<?php echo date('Y-m-d', $date1); ?>')" ><?php echo date('M d', $date);  ?></a></li>
-                <?php } } ?>
-                </ul>
-            </nav>
-        </div> <!-- card-header -->
-        <div class="card-body sportx p-0">
-        <div class="card">
-          <div class="card-header main-active">
-              <div class="float-right">June 12</div>
-              <div> Azam league - GROUP A</div>
-          </div>
-            <div class="card-body p-0">
-              <!-- LIST GROUP WITH LINKS -->
               <ul class="list-group">
 
                   <div class="list-group-item list-group-item-action" >
@@ -177,16 +144,13 @@ class Football extends Home{
                   </div>
 
               </ul>
-              </div><!-- card-body -->
+           
+     <?php } ?>
             </div> <!-- card-body -->
-            <div class="card-footer text-muted">
-            </div> <!-- card-footer -->
+        </div> <!-- card -->
         </div> <!-- card -->
 
-      
-     <?php }
-
-    }
+    <?php }
     
     public function footballFecthReadmore($football_id){
         $mysqli= $this->database;
@@ -282,8 +246,8 @@ class Football extends Home{
             Left JOIN sectors T ON F. sector = T. sectorcode
             Left JOIN cells C ON F. cell = C. codecell
             Left JOIN vilages V ON F. village = V. CodeVillage 
-      WHERE F. date_of_match < DATE_SUB(NOW(), INTERVAL 1 DAY) ORDER BY F. date_of_match Desc Limit 3");
-
+      WHERE F. date_of_match < DATE_SUB(CURDATE(), INTERVAL 0 DAY) ORDER BY F. date_of_match Desc Limit 3");
+      
       ?>
     
          <div class="card mb-3">
@@ -309,7 +273,7 @@ class Football extends Home{
                                       if (date('Y-m-d',$datex) > $row['date_of_match']) { ?>
                                         <div class="float-left btn btn-success btn-sm text-white">FT</div>
                                       <?php } else { ?>
-                                          <div class="float-left text-danger"> <?php echo $row['time_of_match']; ?></div>
+                                          <div class="float-left text-danger"> <?php echo date('h:i A',strtotime($row['time_of_match'])); ?></div>
                                       <?php } ?>
                                     </td>
                                     <td class="text-right" style="text-transform: uppercase;"><?php echo $row['Home_game']; ?> </td>
@@ -390,7 +354,7 @@ class Football extends Home{
             Left JOIN sectors T ON F. sector = T. sectorcode
             Left JOIN cells C ON F. cell = C. codecell
             Left JOIN vilages V ON F. village = V. CodeVillage 
-      WHERE F. date_of_match > NOW() ORDER BY F. date_of_match Asc Limit 3"); ?>
+      WHERE F. date_of_match >=  CURDATE() ORDER BY F. date_of_match Asc Limit 3"); ?>
     
          <div class="card mb-3">
                 <div class="card-header text-center  py-1 main-active">
@@ -410,17 +374,17 @@ class Football extends Home{
                        <tbody>
                           <?php while ($row= $query->fetch_assoc()) { ?>
                                 <tr class="more footballMatch_Readmore" data-footballmatchread="<?php echo $row['football_id']; ?>" >
-                                    <td >
+                                    <td style="width:10px;">
                                       <?php $datex = strtotime("+0 day");
                                       if (date('Y-m-d',$datex) > $row['date_of_match']) { ?>
                                         <div class="float-left btn btn-success btn-sm text-white">FT</div>
                                       <?php } else { ?>
-                                          <div class="float-left text-danger"> <?php echo $row['time_of_match']; ?></div>
+                                          <div class="float-left text-danger"> <?php echo date('h:i A',strtotime($row['time_of_match'])); ?></div>
                                       <?php } ?>
                                     </td>
-                                    <td class="text-right" style="text-transform: uppercase;"><?php echo $row['Home_game']; ?> </td>
-                                    <td class="text-center"><span class="text-danger"><?php if($row['score_game'] == '?-?'){ echo $row['score_game']; }else{ echo '0-0' ; }  ?></span>  </td>
-                                    <td class="text-left" style="text-transform: uppercase;">
+                                    <td class="text-right" style="text-transform: uppercase;width:30%;"><?php echo $row['Home_game']; ?> </td>
+                                    <td class="text-center" style="width:20%;"><span class="text-danger"><?php if($row['score_game'] == '?-?'){ echo $row['score_game']; }else{ echo '0-0' ; }  ?></span>  </td>
+                                    <td class="text-left" style="text-transform: uppercase;width:30%;">
                                         <?php echo $row['Away_game']; ?>
                                     </td>
                                 </tr>

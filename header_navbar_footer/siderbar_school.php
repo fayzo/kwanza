@@ -19,10 +19,10 @@
         </div>
       </header>
 
-<div class="container-fluid mb-5">
+<div class="container-fluid mb-3 pt-3 ">
 
-    <div class="row mt-3">
-      <div class="col-3 col-md-3 col-lg-3 py-3 px-2">
+    <div class="row">
+      <div class="col-3 col-md-3 col-lg-3">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Title</h4>
@@ -35,11 +35,11 @@
             </div> <!-- card -->
       </div>
 
-      <div class="col-6 col-md-6 col-lg-6 mt-3 " id="jobs-hides">
-            <?php echo $school->schoolList(1,'kigali city'); ?>
+      <div class="col-6 col-md-6 col-lg-6" id="jobs-hides">
+            <?php echo $school->schoolList(1,1); ?>
       </div>
 
-      <div class="col-md-3 mt-3 ">
+      <div class="col-md-3">
         <span id="responseSubmititerm"> </span>
         <div id="responseSubmitcartiterm">
           <div class="card">

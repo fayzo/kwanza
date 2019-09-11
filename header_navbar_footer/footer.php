@@ -110,6 +110,12 @@
                                src="<?php echo BASE_URL_LINK ;?>image/background_image/chair.jpg" width="155px"></a>
                        <a href="#" onclick="background('white-bg',<?php echo $user_id;?>)">
                          <button class="search-icon white-bg" style="width:155px;"></button> </a>
+                       <a href="#" onclick="background('rose-bg',<?php echo $user_id;?>)">
+                         <button class="search-icon rose-bg" style="width:155px;"></button> </a>
+                       <a href="#" onclick="background('blue-bg',<?php echo $user_id;?>)">
+                         <button class="search-icon blue-bg" style="width:155px;"></button> </a>
+                       <a href="#" onclick="background('pink-bg',<?php echo $user_id;?>)">
+                         <button class="search-icon pink-bg" style="width:155px;"></button> </a>
                        <!-- <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#">Something else here</a> -->
                   </div>

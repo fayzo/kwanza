@@ -24,14 +24,15 @@
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-3 p-0">
-                    <div class="list-group sticky-top" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action active text-center" id="list-Business-list" onclick="" data-toggle="tab" role="tab" aria-controls="list-Community" >Home </a>
-                        <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="" data-toggle="tab"  role="tab" aria-controls="list-Community">Azam league</a>
-                        <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="" data-toggle="tab"  role="tab"  aria-controls="list-Community">Kagame cup</a>
-                        <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="" data-toggle="tab"  role="tab" aria-controls="list-Community"> Amahoro league </a>
-                        <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="" data-toggle="tab"  role="tab" aria-controls="list-Community">  U-16</a>
-                        <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="" data-toggle="tab"  role="tab" aria-controls="list-Community">  U-18</a>
-                        <a class="list-group-item list-group-item-action" id="list-Community-list" onclick="" data-toggle="tab"  role="tab" aria-controls="list-Community">  U-20</a>
+                    <div class="list-group" id="list-tab" role="tablist">
+                    <!-- <div class="list-group sticky-top" id="list-tab" role="tablist" style="top:50px;"> -->
+                        <a class="list-group-item list-group-item-action active text-center more" id="list-Business-list" onclick="football_shampion('Football Home');" data-toggle="tab" role="tab" aria-controls="list-Community" >Home </a>
+                        <a class="list-group-item list-group-item-action more" id="list-Community-list" onclick="football_shampion('Azam league');" data-toggle="tab"  role="tab" aria-controls="list-Community">Azam league</a>
+                        <a class="list-group-item list-group-item-action more" id="list-Community-list" onclick="football_shampion('Kagame cup');" data-toggle="tab"  role="tab"  aria-controls="list-Community">Kagame cup</a>
+                        <a class="list-group-item list-group-item-action more" id="list-Community-list" onclick="football_shampion('Amahoro league');" data-toggle="tab"  role="tab" aria-controls="list-Community"> Amahoro league </a>
+                        <a class="list-group-item list-group-item-action more" id="list-Community-list" onclick="football_shampion('U-16');" data-toggle="tab"  role="tab" aria-controls="list-Community">  U-16</a>
+                        <a class="list-group-item list-group-item-action more" id="list-Community-list" onclick="football_shampion('U-18');" data-toggle="tab"  role="tab" aria-controls="list-Community">  U-18</a>
+                        <a class="list-group-item list-group-item-action more" id="list-Community-list" onclick="football_shampion('U-20');" data-toggle="tab"  role="tab" aria-controls="list-Community">  U-20</a>
                     </div>
                 </div>
                  <div class="col-md-9 p-0">
@@ -39,7 +40,8 @@
                         <div id="Football-view">
                             <?php  
                             $date = strtotime("0 day"); 
-                            echo $football->currentDatefootballMatch(0,date('y-m-d', $date),date('Y-m-d', $date));
+                            // echo $football->currentDatefootballMatch(0,date('y-m-d', $date),date('Y-m-d', $date));
+                            echo $football_home->currentDatefootball_homeMatch(0,date('Y-m-d', $date),date('Y-m-d', $date));
                             ?>
                         </div>
                     </div> <!-- card -->

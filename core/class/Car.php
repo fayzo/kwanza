@@ -16,7 +16,13 @@ class Car extends House {
             $showpages = ($pages*10)-10;
         }
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM car WHERE categories_car ='$categories' ORDER BY buy='sold' ,rand() Desc Limit $showpages,10");
+        $query= $mysqli->query("SELECT * FROM car H
+            Left JOIN provinces P ON H. province = P. provincecode
+            Left JOIN districts M ON H. districts = M. districtcode
+            Left JOIN sectors T ON H. sector = T. sectorcode
+            Left JOIN cells C ON H. cell = C. codecell
+            Left JOIN vilages V ON H. village = V. CodeVillage 
+        WHERE H. categories_car ='$categories' ORDER BY H. buy='sold' ,rand() Desc Limit $showpages,10");
         ?>
         <div class="card card-primary mb-3 ">
          <div class="card-header main-active p-1">
@@ -119,7 +125,13 @@ class Car extends House {
                         <div class="card-body pt-0">
                         <span id="response<?php echo $car['car_id']; ?>"></span>
                            <div class="text-primary mb-0">
-                              <a class="text-primary float-left" href="javascript:void(0)" id="car-readmore" data-car="<?php echo $car['car_id']; ?>" ><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $car['cell']."/".$car['sector']; ?></a>
+                              <a class="text-primary float-left" href="javascript:void(0)" id="car-readmore" data-car="<?php echo $car['car_id']; ?>" ><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <!-- < ?php echo $house['provincename']; ?> /  -->
+                                <?php echo $car['namedistrict']; ?> District/ 
+                                <?php echo $car['namesector']; ?> Sector
+                                <!-- < ?php echo $house['nameCell']; ?> Cell  -->
+                               
+                               </a>
                                 
                                 <?php if($user_id == $car['user_id3']){ ?>
                                     <ul class="list-inline ml-2  float-right" style="list-style-type: none;">  
@@ -293,7 +305,13 @@ class Car extends House {
       public function carReadmore($car_id)
     {
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM users U Left JOIN car C ON C. user_id3 = u. user_id WHERE C. car_id = '$car_id' ");
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN car C ON C. user_id3 = u. user_id 
+            Left JOIN provinces P ON C. province = P. provincecode
+            Left JOIN districts M ON C. districts = M. districtcode
+            Left JOIN sectors T ON C. sector = T. sectorcode
+            Left JOIN cells L ON C. cell = L. codecell
+            Left JOIN vilages V ON C. village = V. CodeVillage 
+        WHERE C. car_id = '$car_id' ");
         $row= $query->fetch_array();
         return $row;
     }

@@ -390,7 +390,13 @@ if (isset($_POST['village_id']) && !empty($_POST['village_id'])) {
     $user_id= $_SESSION['key'];
     $village_id = $_POST['village_id'];
     $mysqli= $db;
-    $query0= $mysqli->query("SELECT * FROM rwandalandscapes WHERE landscape_id='{$village_id}'");
+    $query0= $mysqli->query("SELECT * FROM rwandalandscapes S
+    	        Left JOIN provinces P ON S. location_province = P. provincecode
+                Left JOIN districts D ON S. location_districts = D. districtcode
+                Left JOIN sectors T ON S. location_Sector = T. sectorcode
+                Left JOIN cells C ON S. location_cell = C. codecell
+                Left JOIN vilages V ON S. location_village = V. CodeVillage
+    WHERE S. landscape_id='{$village_id}'");
     $row0= $query0->fetch_array();
     $query= $mysqli->query("SELECT * FROM rwandalandscapes WHERE landscape_id='{$village_id}'");
      ?>
@@ -405,7 +411,7 @@ if (isset($_POST['village_id']) && !empty($_POST['village_id'])) {
     
                 <div class="card">
                     <div class="card-header text-center">
-                        <h5><i><?php echo $row0['location_village']." Village"; ?></i></h5>
+                        <h5><i><?php echo $row0['VillageName']." Village"; ?></i></h5>
                     </div>
                     <div class="card-body">
                       <div class="row">

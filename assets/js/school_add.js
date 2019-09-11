@@ -132,4 +132,25 @@ $(document).on('click', '#form-school', function (e) {
             }
         });
     });
+
+    $(document).on('click', '#school-readmore', function (e) {
+        e.stopPropagation();
+        var school_id = $(this).data('school');
+
+        $.ajax({
+            url: 'core/ajax_db/school_readmore.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                school_id: school_id,
+            }, success: function (response) {
+                $(".popupTweet").html(response);
+                $(".close-imagePopup").click(function () {
+                    $(".school-popup").hide();
+                });
+                console.log(response);
+            }
+        });
+    });
+
 });

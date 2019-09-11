@@ -183,7 +183,7 @@
                                
                               <div class="form-group">
                                     <select class="form-control" name="categories_jobs" id="categories_jobs">
-                                      <option class="categories_jobsx" value="">Select what types of latest_movies</option>
+                                      <option class="categories_jobsx" value="">Select what types of jobs</option>
                                       <option value="Featured">Featured</option>
                                       <option value="Tenders">Tenders</option>
                                       <option value="Consultancy">Consultancy</option>
@@ -214,8 +214,8 @@
                                    <textarea class="form-control terms-conditions" id="editor4" placeholder="Qualifications and Skills"  rows="4"></textarea>
                                </div>
                                <div class="form-group">
-                                   <label for="Pages Body">Deadline to submit</label>
-                                   <textarea class="form-control deadline" id="editor5" placeholder="Deadline to submit"  rows="4"></textarea>
+                                    <label for="Pages Body">Deadline to submit</label>
+                                    <input type="date" class="form-control deadline" placeholder="Deadline to submit">
                                </div>
                                <div class="form-group">
                                    <label for="Pages Body">Apply to website</label>
@@ -290,7 +290,7 @@
                                    
                               <div class="form-group">
                                     <select class="form-control" name="categories_jobs1" id="categories_jobs1">
-                                      <option value="">Select what types of latest_movies</option>
+                                      <option value="">Select what types of jobs</option>
                                       <option value="Featured">Featured</option>
                                       <option value="Tenders">Tenders</option>
                                       <option value="Consultancy">Consultancy</option>
@@ -322,7 +322,8 @@
                                </div>
                                <div class="form-group">
                                    <label for="Pages Body">Deadline to submit</label>
-                                   <textarea class="form-control textarea deadline1" id="editor11" placeholder="Deadline to submit"  rows="4"></textarea>
+                                    <input type="date" class="form-control deadline1" placeholder="Deadline to submit">
+                                   <!-- <textarea class="form-control textarea deadline1" id="editor11" placeholder="Deadline to submit"  rows="4"></textarea> -->
                                </div>
                                <div class="form-group">
                                    <label for="Pages Body">Apply to website</label>

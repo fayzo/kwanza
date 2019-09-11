@@ -7,12 +7,8 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="<?php echo HOME ;?>">Home</a></li>
-                      <?php if (isset($_SESSION['key'])){ ?>
-                      <?php if ($user['user_id'] === $_SESSION['key']) { ?>
-                    <li class="breadcrumb-item"><span id="messagePopup" class="more" data-user="<?php echo $user['user_id'];?>"><a href="javascript:void(0);" ><i style="font-size: 20px;" class="fa fa-envelope-o"></i> Message </a></span></li>
-                    <?php } } ?>
-                    <li class="breadcrumb-item active"><i><a href="<?php echo PROFILE ;?>"> User Profile</a></i></li>
+                    <li class="breadcrumb-item">Province</li>
+                    <li class="breadcrumb-item">View</li>
                 </ol>
             </div>
         </div>
