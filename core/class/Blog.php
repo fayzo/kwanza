@@ -233,7 +233,7 @@ class Blog extends Crowfund{
                    <a class="text-primary" href="javascript:void(0)" id="blog-readmore" data-blog="<?php echo $row['blog_id']; ?> ">
                     <?php 
                     if (strlen($row["title"]) > 73) {
-                      echo $row["title"] = substr($row["text"],0,73).'... ';
+                      echo $row["title"] = substr($row["title"],0,73).'... ';
                     }else{
                       echo $row["title"];
                     } ?></a>

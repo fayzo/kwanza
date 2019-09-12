@@ -50,6 +50,7 @@
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/slick-themeg.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/jquery.range.css"  rel="stylesheet">
     <link href="<?php echo BASE_URL_LINK ;?>dist/css/lightslider.css"  rel="stylesheet"  />
+    <link href="<?php echo BASE_URL_LINK ;?>dist/css/slideText.css"  rel="stylesheet"  />
     
     <!-- <link href="<?php echo BASE_URL_LINK ;?>dist/css/AdminLTE.css" rel="stylesheet"> -->
 

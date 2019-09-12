@@ -249,7 +249,7 @@ class Football extends Home{
       WHERE F. date_of_match < DATE_SUB(CURDATE(), INTERVAL 0 DAY) ORDER BY F. date_of_match Desc Limit 3");
       
       ?>
-    
+    <!-- < ?php if ($query->num_rows != 0) { ?> -->
          <div class="card mb-3">
                 <div class="card-header text-center  py-1 main-active">
                     <div class="h5">Match Fixture</div>
@@ -260,7 +260,7 @@ class Football extends Home{
                    </div>
 
                     <div class="FOOT">
-                        <div class="float-right">June 12</div>
+                        <div class="float-right"><?php $da = strtotime("-1 day"); echo date('M d',$da); ?></div>
                         <div> Azam league - GROUP A</div>
                     </div>  
 
@@ -343,7 +343,8 @@ class Football extends Home{
                     <!-- javascript:void(0) -->
                 </div><!-- card-body -->
             </div><!-- card -->
-  <?php }
+     <?php } 
+    //  }
 
  
     public function footballMatch_Up_Coming(){ 
@@ -355,6 +356,8 @@ class Football extends Home{
             Left JOIN cells C ON F. cell = C. codecell
             Left JOIN vilages V ON F. village = V. CodeVillage 
       WHERE F. date_of_match >=  CURDATE() ORDER BY F. date_of_match Asc Limit 3"); ?>
+
+    <!-- < ?php if ($query->num_rows != 0) { ?> -->
     
          <div class="card mb-3">
                 <div class="card-header text-center  py-1 main-active">
@@ -450,6 +453,7 @@ class Football extends Home{
                 </div><!-- card-body -->
             </div><!-- card -->
   <?php }
+  // }
 
 }
 $football = new Football();

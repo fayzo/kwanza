@@ -15,6 +15,7 @@ include('class/Blog.php');
 include('class/Posts.php');
 include('class/Posts_copy.php');
 include('class/Posts_copyDraft.php');
+include('class/Post_home.php');
 include('class/Movies.php');
 include('class/Events.php');
 include('class/Sports.php');

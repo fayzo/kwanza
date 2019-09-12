@@ -89,7 +89,7 @@
                         <div class="card  borders-tops card-profile card1">
                             <div class="card-body message-color">
 
-                                <?php echo $home->tweets( $_SESSION['key'],15)?>
+                                <?php echo $posts_home->tweets($_SESSION['key'],15); ?>
                                 <!-- Post -->
                                 
                                 <!-- Post -->
@@ -190,7 +190,7 @@
                     </div>
 
                     <div class="col-md-12">
-                     <?php echo $home->recent_News(); ?>
+                     <?php echo $news->home_recent_News(); ?>
                        <?php echo $football->footballMatchLineup(); ?>
                         <?php echo $football->footballMatchFixture(); ?>
                     </div>

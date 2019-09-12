@@ -4,7 +4,6 @@
  }
 
 class Posts_copyDraft extends blog {
-   
 
     public function tweets($user_id,$limit)
     {
@@ -728,11 +727,10 @@ class Posts_copyDraft extends blog {
                             </div>
                             <!-- /.card-end -->
                                 <?php } ?>
-
-                        <div class="row">
-                            <?php  $this->Post_FollowingLists($user_id,$user_id); ?>
-                        </div>
-
+                 
+                                <div class="row">
+                                    <?php  $this->Post_FollowingLists($user_id,$user_id); ?>
+                                </div>
 
    <?php     
         $mysqli= $this->database;
