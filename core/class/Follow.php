@@ -3,7 +3,7 @@
        header('Location: ../../404.html');
  }
 
-class Follow extends Home
+class Follow extends Events
 {
     public function checkfollow($follow_id,$user_id)
     {
@@ -466,12 +466,25 @@ class Follow extends Home
      public function Post_FollowingLists($user_id,$follow_id)
     {
        $mysqli= $this->database;
-       $query= "SELECT * FROM users WHERE user_id != $user_id AND user_id NOT IN (SELECT receiver FROM follow WHERE sender = $user_id ) ORDER BY rand() LIMIT 6";
-       $result=$mysqli->query($query);
-       while ($following=$result->fetch_array()) {
+       $query= "SELECT * FROM users WHERE user_id != $user_id AND user_id NOT IN (SELECT receiver FROM follow WHERE sender = $user_id ) ORDER BY rand() LIMIT 9";
+       $result=$mysqli->query($query); 
+        //Columns must be a factor of 12 (1,2,3,4,6,12)
+        $numOfCols = 3;
+        $rowCount = 0;
+        $bootstrapColWidth = 12 / $numOfCols;
+       ?>
+       <div class="slide-text">
+        <div class="slideshow-container">
+
+        <div class="dot-container h5">
+          <a href="<?php echo WHOTOFOLLOW; ?>">View more Follows >>>></a> 
+        </div>
+
+        <div class="row mySlidesx mySlidesx_">
+     <?php  while ($following=$result->fetch_array()) {
            # code...
            echo '
-                <div class="col-md-4 mb-3">
+                <div class="col-md-4">
                     <!-- Widget: user widget style 1 -->
                     <div class="card card-follow user-follow">
                         <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -496,9 +509,22 @@ class Follow extends Home
                     <!-- /. card widget-user -->
                 </div>
                 <!-- col --> ';
-       }
-
-    }
+                $rowCount++;
+                if($rowCount % $numOfCols == 0) echo '</div><div class="row mySlidesx mySlidesx_">';
+       } ?>
+        </div>
+        <!-- Next/prev buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+        <!-- Dots/bullets/indicators -->
+        <div class="dot-container">
+            <span class="dot dot_" onclick="currentSlide(1)"></span>
+            <span class="dot dot_" onclick="currentSlide(2)"></span>
+            <span class="dot dot_" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+ <?php }
 
 }
 

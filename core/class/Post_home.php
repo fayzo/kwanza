@@ -15,6 +15,7 @@ class Posts_home extends blog {
             # code...
              $tweets[]= $row;
         }
+                                   $this->Post_Jobs('Agriculture',$user_id);
 
                                foreach ($tweets as $tweet) {
                                 $likes= $this->likes($user_id,$tweet['tweet_id']);
@@ -341,7 +342,7 @@ class Posts_home extends blog {
                                       </div><!-- card-body -->
                                     </div><!-- card -->
 
-                                <?php } else { ?> 
+                                <?php }else { ?> 
 
                                     <div class="user-block">
                                         <div class="user-blockImgBorder">
@@ -375,7 +376,7 @@ class Posts_home extends blog {
                                     for ($i=0; $i < count($expodefile); ++$i) { 
                                         $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
                                     }
-                                    $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+                                    $allower_ext = array('jpeg','peg','jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
                                     if (array_diff($fileActualExt,$allower_ext) == false) {
                                         $expode = explode("=",$tweet['tweet_image']);
                                         $count = count($expode); ?>
@@ -717,9 +718,7 @@ class Posts_home extends blog {
                                 <!-- /.post -->
 
                          <?php } ?>
-                                <div class="row">
                                     <?php $this->Post_FollowingLists($user_id,$user_id); ?>
-                                </div>
               
     <?php 
 
@@ -782,7 +781,7 @@ class Posts_home extends blog {
                                               for ($i=0; $i < count($expodefile); ++$i) { 
                                                   $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
                                               }
-                                              $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+                                              $allower_ext = array('jpeg','peg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
                                               if (array_diff($fileActualExt,$allower_ext) == false) {
                                      			$expode = explode("=",$tweet['tweet_image']); 
                                                 $count = count($expode); ?>
@@ -1091,7 +1090,7 @@ class Posts_home extends blog {
                                     for ($i=0; $i < count($expodefile); ++$i) { 
                                         $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
                                     }
-                                    $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+                                    $allower_ext = array('jpeg','peg','jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
                                     if (array_diff($fileActualExt,$allower_ext) == false) {
                                         $expode = explode("=",$tweet['tweet_image']);
                                         $count = count($expode); ?>
@@ -1433,9 +1432,8 @@ class Posts_home extends blog {
                                 <!-- /.post -->
 
                          <?php } ?>
-                                <div class="row">
-                                    <?php  $this->Post_FollowingLists($user_id,$user_id); ?>
-                                </div>
+                               
+                                    <?php  $this->Post_EventsLists($user_id,$user_id); ?>
     <?php }
 
 } 

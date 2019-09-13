@@ -3,12 +3,15 @@
   position: relative;
   /* background: #f1f1f1f1; */
 }
+.slide-text{
+  margin-bottom: 10px;
+}
 
 /* Slides */
 .mySlidesx {
   display: none;
-  padding: 40px;
-  text-align: center;
+  padding: 20px 30px 20px 30px;
+  /* text-align: center; */
 }
 
 /* Next & previous buttons */
@@ -42,8 +45,9 @@
 /* The dot/bullet/indicator container */
 .dot-container {
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   background: #ddd;
+  color: #717171;
 }
 
 /* The dots/bullets/indicators */

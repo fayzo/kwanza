@@ -507,6 +507,63 @@ class Events extends Home{
         }
     }
 
+      public function Post_EventsLists($user_id,$follow_id)
+    {
+       $mysqli= $this->database;
+        //  $query= $mysqli->query("SELECT * FROM events LEFT JOIN users ON user_id= user_id3 WHERE 
+        // date0 >=  CURDATE() AND events_post != 'posted' ORDER BY date0  Desc Limit 9");
+        $query= $mysqli->query("SELECT * FROM events E LEFT JOIN users U ON U. user_id= E. user_id3 WHERE E. events_post != 'posted' ORDER BY E. created_on3 Desc Limit 9 ");
+        //Columns must be a factor of 12 (1,2,3,4,6,12)
+        // var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
+        $numOfCols = 3;
+        $rowCount = 0;
+        $bootstrapColWidth = 12 / $numOfCols;
+        if ($query->num_rows != 0) {
+          # code...
+       ?>
+       <div class="slide-text">
+        <div class="slideshow-container">
+
+        <div class="dot-container h5">
+          <a href="<?php echo WHOTOFOLLOW; ?>">View more Events >>>></a> 
+        </div>
+
+        <div class="row mySlidesx mySlidesx0 text-center">
+     <?php  while ($events=$query->fetch_array()) {
+           # code...
+           echo '
+                <div class="col-md-4">
+                   <div class="card more" id="events-readmore" data-events="'.$events['events_id'].'">
+                     <img class="card-img-top" src="'.BASE_URL_PUBLIC."uploads/events/".$events['photo'].'">
+                     <div class="card-body p-0">
+                        <div class="black-bg" style="padding:4px;border-radius:3px;font-size:9px;">
+                            <div>Avenue:'.$events['location_events']."/ ".$events['name_place'].'</div>
+                            <div>start events:'.$events['start_events']."/ ".$events['date0'].'</div>
+                            <div>Posted on '.$events['created_on3'].'</div>
+                        </div>
+                     </div>
+                   </div>
+                </div>
+                <!-- col --> ';
+                $rowCount++;
+                if($rowCount % $numOfCols == 0) echo '</div><div class="row mySlidesx mySlidesx0 text-center">';
+       } ?>
+         
+        </div>
+        <!-- Next/prev buttons -->
+        <a class="prev" onclick="plusSlides0(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides0(1)">&#10095;</a>
+      </div>
+        <!-- Dots/bullets/indicators -->
+        <div class="dot-container">
+            <span class="dot dot0" onclick="currentSlide0(1)"></span>
+            <span class="dot dot0" onclick="currentSlide0(2)"></span>
+            <span class="dot dot0" onclick="currentSlide0(3)"></span>
+        </div>
+    </div>
+ <?php }
+  }
+
 }
 
 $events = new Events();

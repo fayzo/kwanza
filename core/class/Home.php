@@ -140,7 +140,14 @@ class Home extends Comment {
             $showpages = ($pages*10)-10;
         }
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM  users U Left JOIN  jobs J ON J. business_id = U. user_id WHERE J.categories_jobs ='$categories' AND J. turn = 'on' ORDER BY rand() Desc Limit $showpages,10");
+        if ($categories == 'Featured') {
+            # code...
+             $query= $mysqli->query("SELECT * FROM  users U Left JOIN  jobs J ON J. business_id = U. user_id WHERE J. turn = 'on' ORDER BY rand() Desc Limit $showpages,10");
+        } else {
+            # code...
+             $query= $mysqli->query("SELECT * FROM  users U Left JOIN  jobs J ON J. business_id = U. user_id WHERE J.categories_jobs ='$categories' AND J. turn = 'on' ORDER BY rand() Desc Limit $showpages,10");
+        }
+        
         ?>
         <div class="card card-primary mb-1 ">
         <div class="card-header main-active p-1">
@@ -238,7 +245,15 @@ class Home extends Comment {
             $showpages = ($pages*10)-10;
         }
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM  users U Left JOIN  jobs J ON J. business_id = U. user_id WHERE J.categories_jobs ='$categories' AND J. turn = 'on' ORDER BY rand() Desc Limit $showpages,10");
+
+        if ($categories == 'Featured') {
+            # code...
+             $query= $mysqli->query("SELECT * FROM  users U Left JOIN  jobs J ON J. business_id = U. user_id WHERE J. turn = 'on' ORDER BY rand() Desc Limit $showpages,10");
+        } else {
+            # code...
+             $query= $mysqli->query("SELECT * FROM  users U Left JOIN  jobs J ON J. business_id = U. user_id WHERE J.categories_jobs ='$categories' AND J. turn = 'on' ORDER BY rand() Desc Limit $showpages,10");
+        }
+
         ?>
         <div class="card card-primary mb-1 ">
         <div class="card-header main-active p-1">
@@ -333,13 +348,87 @@ class Home extends Comment {
       public function jobscountPOSTS($categories)
     {
         $db =$this->database;
-        $sql= $db->query("SELECT COUNT(*) FROM jobs WHERE categories_jobs ='$categories' AND turn = 'on'");
+        if ($categories == 'Featured') {
+            # code...
+              $sql= $db->query("SELECT COUNT(*) FROM jobs WHERE turn = 'on'");
+        } else {
+            # code...
+            $sql= $db->query("SELECT COUNT(*) FROM jobs WHERE categories_jobs ='$categories' AND turn = 'on'");
+        }
+        
         $row_post = $sql->fetch_array();
         $total_post= array_shift($row_post);
         $array= array(0,$total_post);
         $total_posts= array_sum($array);
         echo $total_posts;
     }
+
+      public function Post_Jobs($categories,$user_id)
+    {
+        $mysqli= $this->database;
+        $query= $mysqli->query("SELECT * FROM  users U Left JOIN  jobs J ON J. business_id = U. user_id WHERE J.turn = 'on' ORDER BY rand() LIMIT 6");
+        //Columns must be a factor of 12 (1,2,3,4,6,12)
+        $numOfCols = 2;
+        $rowCount = 0;
+        $bootstrapColWidth = 12 / $numOfCols;
+       ?>
+       <div class="slide-text bg-light">
+        <div class="slideshow-container message-color">
+
+        <div class="dot-container h5">
+          <a href="<?php echo WHOTOFOLLOW; ?>">View more Jobs >>>></a> 
+        </div>
+
+        <div class="row mySlidesx mySlidesx2">
+
+        <?php while($jobs= $query->fetch_array()) { ?>
+
+        <div class="col-md-6">
+          <div class="card border-bottom jobHovers more borders-bottoms" data-job="<?php echo $jobs['job_id'];?>"  data-business="<?php echo $jobs['business_id'];?>">
+          
+            <div class="card-body px-0">
+               <div class="user-block mb-2 jobHover" >
+                   <div class="user-jobImgBorder">
+                   <div class="user-jobImg">
+                         <?php if (!empty($jobs['profile_img'])) {?>
+                         <img src="<?php echo BASE_URL_LINK ;?>image/users_profile_cover/<?php echo $jobs['profile_img'] ;?>" alt="User Image">
+                         <?php  }else{ ?>
+                           <img src="<?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="User Image">
+                         <?php } ?>
+                   </div>
+                   </div>
+                   <span class="username">
+                   <!-- Job Title:  -->
+                       <a style="padding-right:3px;" href="#"><?php echo $this->htmlspecialcharss($jobs['job_title']) ;?></a> 
+                   </span>
+                   <span class="description"><?php echo $this->htmlspecialcharss($jobs['companyname']); ?> || <i class="flag-icon flag-icon-<?php echo strtolower($jobs['location']) ;?> h4 mb-0"
+                            id="<?php echo strtolower( $jobs['location']) ;?>" title="us"></i></span>
+                   <span class="description">Shared public - <?php echo $this->timeAgo($jobs['created_on']); ?></span>
+                   <span class="description">Deadline -  <?php echo $this->htmlspecialcharss($jobs['deadline']); ?></span>
+               </div>
+            </div>
+
+          </div>
+        </div> <!-- col -->
+
+       <?php     $rowCount++;
+                if($rowCount % $numOfCols == 0) echo '</div><div class="row mySlidesx mySlidesx2">';
+         } ?>
+
+        </div>
+        <!-- Next/prev buttons -->
+        <a class="prev" onclick="plusSlides2(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides2(1)">&#10095;</a>
+      </div>
+        <!-- Dots/bullets/indicators -->
+        <div class="dot-container">
+            <span class="dot dot2" onclick="currentSlide2(1)"></span>
+            <span class="dot dot2" onclick="currentSlide2(2)"></span>
+            <span class="dot dot2" onclick="currentSlide2(3)"></span>
+        </div>
+    </div>
+
+   <?php  }
 
 
     public function options(){ ?>
@@ -965,7 +1054,7 @@ class Home extends Comment {
 
         $fileExt = explode('.', $filename);
         $fileActualExt = strtolower(end($fileExt));
-        $allower_ext = array('jpeg', 'jpg', 'png'); // valid extensions
+        $allower_ext = array('jpeg','peg','jpg', 'png'); // valid extensions
 
         if (in_array($fileActualExt,$allower_ext) == true) {
             # code...
@@ -2270,7 +2359,7 @@ class Home extends Comment {
                                     for ($i=0; $i < count($expodefile); ++$i) { 
                                         $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
                                     }
-                                    $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+                                    $allower_ext = array('jpeg','peg','jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
                                     if (array_diff($fileActualExt,$allower_ext) == false) {
                                     // if (!empty($tweet['tweet_image'])) {
                                         $expode = explode("=",$tweet['tweet_image']);

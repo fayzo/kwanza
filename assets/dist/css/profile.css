@@ -309,6 +309,7 @@ input#crop {
 
 .users-list>li {
     width: 25%;
+    /* height: 25%; */
     float: left;
     padding: 10px;
     text-align: center;

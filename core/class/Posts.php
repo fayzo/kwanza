@@ -69,7 +69,7 @@ class Posts extends blog {
                                               for ($i=0; $i < count($expodefile); ++$i) { 
                                                   $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
                                               }
-                                              $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+                                              $allower_ext = array('jpeg', 'peg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
                                               if (array_diff($fileActualExt,$allower_ext) == false) {
                                      			$expode = explode("=",$tweet['tweet_image']); 
                                                 $count = count($expode); ?>
@@ -376,7 +376,7 @@ class Posts extends blog {
                                     for ($i=0; $i < count($expodefile); ++$i) { 
                                         $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
                                     }
-                                    $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+                                    $allower_ext = array('jpeg', 'peg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
                                     if (array_diff($fileActualExt,$allower_ext) == false) {
                                     // if (!empty($tweet['tweet_image'])) {
                                         $expode = explode("=",$tweet['tweet_image']);

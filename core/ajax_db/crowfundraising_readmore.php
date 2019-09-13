@@ -14,6 +14,7 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
         $profileData= $home->userData($uprofileId['user_id']);
         $user_id= $profileData['user_id'];
     }
+    
     $crowfund_id = $_POST['crowfund_id'];
     $user= $crowfund->crowfundFecthReadmore($crowfund_id,$user_id);
     $donates= $crowfund->recentDonate($crowfund_id);

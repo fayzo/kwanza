@@ -62,8 +62,8 @@ if (isset($_POST['job_id']) && !empty($_POST['job_id'])) {
                         </div>
                       </div>
 
-                        <p class="card-text">job-id -<?php echo $job_id ;?></p>
-                        <p class="card-text">business-id -<?php echo $business_id ;?></p>
+                        <!-- <p class="card-text">job-id -< ?php echo $job_id ;?></p>
+                        <p class="card-text">business-id -< ?php echo $business_id ;?></p> -->
                         <h4 >Job Title: <?php echo $user['job_title'] ;?> </h4>
                           <hr>
                       

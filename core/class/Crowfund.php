@@ -335,13 +335,25 @@ class Crowfund extends Fundraising {
      public function Post_crowfundraisings($categories,$user_id)
     {
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM users U Left JOIN crowfundraising C ON C. user_id2 = u. user_id WHERE C. categories_crowfundraising ='$categories'  ORDER BY created_on2 Desc Limit 0,4");
-        ?>
-            <div class="row mt-3">
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN crowfundraising C ON C. user_id2 = u. user_id ORDER BY created_on2 Desc Limit 6");
+        //Columns must be a factor of 12 (1,2,3,4,6,12)
+        $numOfCols = 2;
+        $rowCount = 0;
+        $bootstrapColWidth = 12 / $numOfCols;
+       ?>
+       <div class="slide-text">
+        <div class="slideshow-container">
+
+        <div class="dot-container h5">
+          <a href="<?php echo WHOTOFOLLOW; ?>">View more Crowfundraising >>>></a> 
+        </div>
+
+        <div class="row mySlidesx mySlidesx1">
+
         <?php while($row= $query->fetch_array()) { 
               $likes= $this->Crowfundraisinglikes($user_id,$row['fund_id']); ?>
 
-               <div class="col-md-6 mb-3">
+               <div class="col-md-6">
             
             <div class="card borders-bottoms more" >
                 <img class="card-img-top" width="242px" id="crowfund-readmore" data-crowfund="<?php echo $row['fund_id'] ;?>" height="160px" src="<?php echo BASE_URL_PUBLIC ;?>uploads/crowfund/<?php echo $row['photo'] ;?>" >
@@ -405,10 +417,22 @@ class Crowfund extends Fundraising {
             </div> <!-- card -->
                  
         </div> <!-- col -->
+       <?php     $rowCount++;
+                if($rowCount % $numOfCols == 0) echo '</div><div class="row mySlidesx mySlidesx1">';
+         } ?>
 
-        <?php } ?>
+        </div>
+        <!-- Next/prev buttons -->
+        <a class="prev" onclick="plusSlides1(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides1(1)">&#10095;</a>
+      </div>
+        <!-- Dots/bullets/indicators -->
+        <div class="dot-container">
+            <span class="dot dot1" onclick="currentSlide1(1)"></span>
+            <span class="dot dot1" onclick="currentSlide1(2)"></span>
+            <span class="dot dot1" onclick="currentSlide1(3)"></span>
+        </div>
     </div>
-
 
    <?php  }
 }

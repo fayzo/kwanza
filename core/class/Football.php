@@ -345,7 +345,6 @@ class Football extends Home{
             </div><!-- card -->
      <?php } 
     //  }
-
  
     public function footballMatch_Up_Coming(){ 
       $mysqli= $this->database;
