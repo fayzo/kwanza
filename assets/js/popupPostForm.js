@@ -68,7 +68,8 @@ $(document).ready(function () {
             }
         } else {
             var extensions = $('#file').val().split('.').pop().toLowerCase();
-            if (jQuery.inArray(extensions, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+            if (jQuery.inArray(extensions, ['gif', 'png', 'jpg', 'mp4', 'mp3', 'jpeg', 'bmp', 'pdf', 'doc', 'ppt', 'docx', 'xlsx', 'xls', 'zip']) == -1) {
+
                 $("#response-PostMessage").html('Invalid Image File').fadeIn();
                 setInterval(function () {
                     $("#response-PostMessage").fadeOut();
