@@ -7,8 +7,18 @@ if (isset($_POST['showpimage']) && !empty($_POST['showpimage'])) {
     $user_id= $_SESSION['key'];
     $tweet_id=$_POST['showpimage'];
     $getid="";
-    $tweet= $home->getPopupTweet($user_id,$tweet_id,$getid); ?>
-    
+    $tweet= $home->getPopupTweet($user_id,$tweet_id,$getid); 
+
+$filename = $tweet['tweet_image'];
+$expodefile = explode("=",$tweet['tweet_image']);
+$fileActualExt= array();
+for ($i=0; $i < count($expodefile); ++$i) { 
+$fileActualExt[]= strtolower(substr($expodefile[$i],-3));
+}
+
+$allower_ext = array('jpeg','peg','jpg', 'png', 'gif'); // valid extensions
+if (array_diff($fileActualExt,$allower_ext) == false) { ?>
+
     <div class="img-popup">
       <div class="wrap6">
         <span class="colose">
@@ -77,5 +87,6 @@ if (isset($_POST['showpimage']) && !empty($_POST['showpimage'])) {
     </div><!-- img-popup ends-->
 
 <?php }
+}
 ?>
 

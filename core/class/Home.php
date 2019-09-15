@@ -1114,6 +1114,8 @@ class Home extends Comment {
                      strtolower(date('Y').'_'.rand(10,100).$fileName);
 
             $valued[] = $filenames;
+            $fileSize[] = $size;
+
 
             $targetFilePath = $targetDir . $filenames;
             
@@ -1128,8 +1130,33 @@ class Home extends Comment {
         
         # Build the values
         $filenamedb = implode("=", $valued);
+        $fileSizex[] = implode("=", $fileSize);
+
         return  $filenamedb;
 
+    }
+
+    public function uploadSize($file)
+    {
+        foreach($file['name'] as $key => $value){
+            $size  = $file['size'][$key];
+            $type  = $file['type'][$key];
+            $error = $file['error'][$key];
+            // File upload path
+            // if ($size > 2000000) {
+            //     exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+            //             <button class="close" data-dismiss="alert" type="button">
+            //                 <span>&times;</span>
+            //             </button>
+            //             <strong>Size is too long !!!</strong> </div>');
+            //     }
+            $fileSize[] = $size;
+            
+        }
+        
+        # Build the values
+        $fileSizex= implode("=", $fileSize);
+        return  $fileSizex;
     }
 
     public function uploadAlbumImage($file)
@@ -2073,7 +2100,7 @@ class Home extends Comment {
         $query="SELECT * FROM tweets WHERE retweet_id= ?  AND retweet_by= ? OR tweet_id=? AND retweet_by=? ";
         $stmt->prepare($query);
         $stmt->bind_param('iiii', $tweet_id, $user_id, $tweet_id, $user_id);
-        $stmt->bind_result($tweet_idd, $status, $tweetBy, $retweet_idd, $retweet_by, $tweet_image,
+        $stmt->bind_result($tweet_idd, $status, $tweetBy, $retweet_idd, $retweet_by, $tweet_image,$tweet_size,
         $likes_counts, $retweet_counts, $posted_on, $retweet_msg);
         $stmt->execute();
         $CountRetweet= array();
@@ -2086,6 +2113,7 @@ class Home extends Comment {
              "retweet_id" => $retweet_idd,
              "retweet_by" => $retweet_by,
              "tweet_image" => $tweet_image,
+             "tweet_image_size" => $tweet_size,
              "likes_counts" => $likes_counts,
              "retweet_counts" => $retweet_counts,
              "posted_on" => $posted_on,

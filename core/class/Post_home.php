@@ -68,14 +68,14 @@ class Posts_home extends blog {
                                                   $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
                                               }
   
-                                               $allower_ext = array('jpeg','peg','jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt','docx','xlsx'); // valid extensions
+                                               $allower_ext = array('jpeg','peg','jpg', 'png', 'gif', 'bmp', 'pdf' , 'ocx','lsx', 'ppt','docx','xlsx'); // valid extensions
                                     if (array_diff($fileActualExt,$allower_ext) == false) {
                                      			$expode = explode("=",$tweet['tweet_image']); 
                                                 $count = count($expode); 
                                  $docx= array('jpg','jpeg','peg','png','gif','pdf');
                                  $pdf= array('jpg','jpeg','peg','png','gif');
                                  $image= array('pdf','doc','ocx','lsx'); ?>
-
+                                
                                 <?php if(array_diff($fileActualExt,$image)) { ?>
 
                                           <div class="row">
@@ -147,9 +147,11 @@ class Posts_home extends blog {
                                                                            '): $tatus;
                                                              echo $post;
                                                             }else{
+
+                                                            echo '<div class="text-center p-0 m-0 imageViewPopup mailbox-attachment-icon"  data-tweet="'.$tweet["tweet_id"].'" ><span style="text-decoration:none;" 
+                                                                    ><i class="fa fa-photo" style="font-size:50px;"></i></span></div>'; 
                                                             
-                                                              echo '<div class="text-center p-0 m-0 imageViewPopup"  data-tweet="'.$tweet["tweet_id"].'" ><span style="text-decoration:none;color:#333333;" 
-                                                                                ><i class="fa fa-photo" style="font-size:50px;"></i></span></div>';                                                             } ?>
+                                                            } ?>
                                                              </span>
                                                         </div><!-- col -->
                                                         
@@ -165,7 +167,7 @@ class Posts_home extends blog {
                                                   $splice= array_splice($expode,0,2);
                                                   for ($i=0; $i < count($splice); ++$i) { ?>
 
-                                                    <div class="col-md-12 ">
+                                                    <div class="col-md-6 ">
                                                         <span class="mailbox-attachment-icon"><i class="fa fa-file-word-o"></i></span>
                                                         <div class="mailbox-attachment-info main-active">
                                                             <a href="<?php echo BASE_URL_PUBLIC."uploads/posts/".pathinfo($splice[$i])['basename'] ;?>" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i>
@@ -213,8 +215,9 @@ class Posts_home extends blog {
                                                                 echo $post;
                                                             //  <i class="fa fa-camera-retro" aria-hidden="true"></i>
                                                             }else{
-                                                                echo '<div class="text-center p-0 m-0 imageViewPopup"  data-tweet="'.$tweet["tweet_id"].'" ><span style="text-decoration:none;color:#333333;" 
-                                                                                ><i class="fa fa-camera-retro main-active" style="font-size:50px;"></i></span></div>';                                                             } ?>
+                                                                echo '<div class="text-center p-0 m-0 imageViewPopup mailbox-attachment-icon"  data-tweet="'.$tweet["tweet_id"].'" ><span style="text-decoration:none;" 
+                                                                                ><i class="fa fa-file-word-o" style="font-size:50px;"></i></span></div>'; 
+                                                            } ?>
                                                                 </span>
                                                         </div><!-- col -->
                                                         
@@ -277,9 +280,10 @@ class Posts_home extends blog {
                                                                 echo $post;
                                                             //  <i class="fa fa-camera-retro" aria-hidden="true"></i>
                                                             }else{
-                                                                echo '<div class="text-center p-0 m-0 imageViewPopup"  data-tweet="'.$tweet["tweet_id"].'" ><span style="text-decoration:none;color:#333333;" 
-                                                                                ><i class="fa fa-camera-retro main-active" style="font-size:50px;"></i></span></div>';                                                             } ?>
-                                                                </span>
+                                                                echo '<div class="text-center p-0 m-0 imageViewPopup mailbox-attachment-icon"  data-tweet="'.$tweet["tweet_id"].'" ><span style="text-decoration:none;" 
+                                                                                ><i class="fa fa-file-pdf-o" style="font-size:50px;"></i></span></div>'; 
+                                                            } ?>
+                                                             </span>
                                                         </div><!-- col -->
                                                         
                                                     </div><!-- row -->
@@ -975,8 +979,9 @@ class Posts_home extends blog {
 
                                     <div class="row mb-2" >
                                     <div class="col-12" >
-                                    <video controls poster="<?php echo BASE_URL_PUBLIC."uploads/posts/".$tweet['tweet_image'] ;?>" width="500px" height="280px">
-                                        <source src="<?php echo BASE_URL_PUBLIC."uploads/posts/".$tweet['tweet_image'] ;?>" type="video/mp4"> 
+                                        <?php $expode = explode("=",$tweet['tweet_image']); ?>
+                                    <video controls poster="<?php echo BASE_URL_PUBLIC."uploads/posts/".$expode[0] ;?>" width="500px" height="280px">
+                                        <source src="<?php echo BASE_URL_PUBLIC."uploads/posts/".$expode[0];?>" type="video/mp4"> 
                                         <!-- <source src="video/boatride.webm" type="video/webm">  -->
                                             <!-- fallback content here -->
                                     </video>
@@ -1246,7 +1251,7 @@ class Posts_home extends blog {
                                 
                                      # code... 
                                 ?>
-                                   
+                                  
                                 <div class="post">
                                     <?php 
                                      if($retweet['retweet_id'] == $tweet["tweet_id"] || $tweet["retweet_id"] > 0){ ?>
@@ -1288,14 +1293,14 @@ class Posts_home extends blog {
                                                   $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
                                               }
   
-                                               $allower_ext = array('jpeg','peg','jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt','docx','xlsx'); // valid extensions
+                                               $allower_ext = array('jpeg','peg','jpg', 'png', 'gif', 'bmp', 'pdf' , 'ocx','lsx', 'ppt','docx','xlsx'); // valid extensions
                                     if (array_diff($fileActualExt,$allower_ext) == false) {
                                      			$expode = explode("=",$tweet['tweet_image']); 
                                                 $count = count($expode); 
                                  $docx= array('jpg','jpeg','peg','png','gif','pdf');
                                  $pdf= array('jpg','jpeg','peg','png','gif');
                                  $image= array('pdf','doc','ocx','lsx'); ?>
-
+                                
                                 <?php if(array_diff($fileActualExt,$image)) { ?>
 
                                           <div class="row">
@@ -1367,9 +1372,11 @@ class Posts_home extends blog {
                                                                            '): $tatus;
                                                              echo $post;
                                                             }else{
+
+                                                            echo '<div class="text-center p-0 m-0 imageViewPopup mailbox-attachment-icon"  data-tweet="'.$tweet["tweet_id"].'" ><span style="text-decoration:none;" 
+                                                                    ><i class="fa fa-photo" style="font-size:50px;"></i></span></div>'; 
                                                             
-                                                              echo '<div class="text-center p-0 m-0 imageViewPopup"  data-tweet="'.$tweet["tweet_id"].'" ><span style="text-decoration:none;color:#333333;" 
-                                                                                ><i class="fa fa-photo" style="font-size:50px;"></i></span></div>';                                                             } ?>
+                                                            } ?>
                                                              </span>
                                                         </div><!-- col -->
                                                         
@@ -1385,7 +1392,7 @@ class Posts_home extends blog {
                                                   $splice= array_splice($expode,0,2);
                                                   for ($i=0; $i < count($splice); ++$i) { ?>
 
-                                                    <div class="col-md-12 ">
+                                                    <div class="col-md-6 ">
                                                         <span class="mailbox-attachment-icon"><i class="fa fa-file-word-o"></i></span>
                                                         <div class="mailbox-attachment-info main-active">
                                                             <a href="<?php echo BASE_URL_PUBLIC."uploads/posts/".pathinfo($splice[$i])['basename'] ;?>" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i>
@@ -1433,8 +1440,9 @@ class Posts_home extends blog {
                                                                 echo $post;
                                                             //  <i class="fa fa-camera-retro" aria-hidden="true"></i>
                                                             }else{
-                                                                echo '<div class="text-center p-0 m-0 imageViewPopup"  data-tweet="'.$tweet["tweet_id"].'" ><span style="text-decoration:none;color:#333333;" 
-                                                                                ><i class="fa fa-camera-retro main-active" style="font-size:50px;"></i></span></div>';                                                             } ?>
+                                                                echo '<div class="text-center p-0 m-0 imageViewPopup mailbox-attachment-icon"  data-tweet="'.$tweet["tweet_id"].'" ><span style="text-decoration:none;" 
+                                                                                ><i class="fa fa-file-word-o" style="font-size:50px;"></i></span></div>'; 
+                                                            } ?>
                                                                 </span>
                                                         </div><!-- col -->
                                                         
@@ -1497,9 +1505,10 @@ class Posts_home extends blog {
                                                                 echo $post;
                                                             //  <i class="fa fa-camera-retro" aria-hidden="true"></i>
                                                             }else{
-                                                                echo '<div class="text-center p-0 m-0 imageViewPopup"  data-tweet="'.$tweet["tweet_id"].'" ><span style="text-decoration:none;color:#333333;" 
-                                                                                ><i class="fa fa-camera-retro main-active" style="font-size:50px;"></i></span></div>';                                                             } ?>
-                                                                </span>
+                                                                echo '<div class="text-center p-0 m-0 imageViewPopup mailbox-attachment-icon"  data-tweet="'.$tweet["tweet_id"].'" ><span style="text-decoration:none;" 
+                                                                                ><i class="fa fa-file-pdf-o" style="font-size:50px;"></i></span></div>'; 
+                                                            } ?>
+                                                             </span>
                                                         </div><!-- col -->
                                                         
                                                     </div><!-- row -->
@@ -2195,8 +2204,9 @@ class Posts_home extends blog {
 
                                     <div class="row mb-2" >
                                     <div class="col-12" >
-                                    <video controls poster="<?php echo BASE_URL_PUBLIC."uploads/posts/".$tweet['tweet_image'] ;?>" width="500px" height="280px">
-                                        <source src="<?php echo BASE_URL_PUBLIC."uploads/posts/".$tweet['tweet_image'] ;?>" type="video/mp4"> 
+                                        <?php $expode = explode("=",$tweet['tweet_image']); ?>
+                                    <video controls poster="<?php echo BASE_URL_PUBLIC."uploads/posts/".$expode[0] ;?>" width="500px" height="280px">
+                                        <source src="<?php echo BASE_URL_PUBLIC."uploads/posts/".$expode[0];?>" type="video/mp4"> 
                                         <!-- <source src="video/boatride.webm" type="video/webm">  -->
                                             <!-- fallback content here -->
                                     </video>

@@ -10,15 +10,15 @@
         <div class="row">
 
             <div class="col-md-3 mb-3">
+                <div class="mb-2">
+                    <?php echo $home->userProfile($user_id); ?>
+                </div>
+                <?php echo $trending->trends(); ?>
                 <!-- Profile Image -->
-                <?php echo $home->userProfile($user_id); ?>
-               
-                <!-- jobs -->
-                <div class="sticky-top" style="top: -175px;">
-                <?php echo $home->jobsfetch() ;?>
+                 <div class="sticky-top" style="top:53px;">
+                        <?php echo $home->jobsfetch() ;?>
                 </div>
                 <!-- jobs -->
-                  
             </div>
             <!-- /.col -->
 
@@ -194,22 +194,9 @@
                        <?php echo $football->footballMatchLineup(); ?>
                         <?php echo $football->footballMatchFixture(); ?>
                     </div>
-
-                    <!-- <div class="col-md-12 mb-3"> -->
-                        <!-- hastTag Me Box -->
-                           <!-- < ?php echo $trending->trends(); ?> -->
-                    <!-- </div> -->
-                    <!-- /.col -->
-                   <!-- <div class="col-md-12 mb-3" style="top: 1px;">
-                       < ?php echo $home->options(); ?>
-                   </div> -->
-                    <!-- /.col -->
                 </div>
                 <!-- /.row -->
                  <div class="sticky-top " style="top: 52px;">
-                        <div class="mb-2">
-                           <?php echo $trending->trends(); ?>
-                        </div>
                        <?php echo $home->options(); ?>
                 </div>
             </div>

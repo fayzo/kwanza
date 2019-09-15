@@ -56,9 +56,11 @@ if (isset($_POST['key']) == 'textarea'){
 	$files= $_FILES['files'];
 
 	if (!empty($status) || !empty(array_filter($files['name'])) ) {
+
 		if (!empty($files['name'][0])) {
 			# code...
 			$tweetimages = $home->uploadPostsImage($files);
+			$tweetSize = $home->uploadSize($files);
 		}
 
 		if (strlen($status) > 200) {
@@ -74,6 +76,7 @@ if (isset($_POST['key']) == 'textarea'){
                         'status' => $status, 
                         'tweetBy' => $user_id, 
                         'tweet_image' => $tweetimages, 
+                        'tweet_image_size' => $tweetSize, 
                         'posted_on' => date('Y-m-d H-i-s')
                     ));
 

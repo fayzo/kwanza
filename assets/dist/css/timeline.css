@@ -95,7 +95,7 @@
 
 .timeline-inverse>li>.timeline-item {
     background: #f8f9fa;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     box-shadow: none;
 }
 

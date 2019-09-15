@@ -79,7 +79,7 @@ class Comment extends Post_like
             for ($i=0; $i < count($expodefile); ++$i) { 
                 $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
             }
-            $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+            $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','ocx','lsx'); // valid extensions
             if (array_diff($fileActualExt,$allower_ext) == false) {
                 $expode = explode("=",$rows['tweet_image']);
                 $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/posts/';
@@ -137,7 +137,7 @@ class Comment extends Post_like
             for ($i=0; $i < count($expodefile); ++$i) { 
                 $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
             }
-            $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+            $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','ocx','lsx'); // valid extensions
             if (array_diff($fileActualExt,$allower_ext) == false) {
                 $expode = explode("=",$rows['tweet_image']);
                 $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/posts/';
