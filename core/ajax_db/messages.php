@@ -89,9 +89,9 @@ if (isset($_POST['showMessage']) && !empty($_POST['showMessage'])) {
 			   </div><!-- message-recent END-->
 			   </div><!-- message-body END-->
 			</div><!-- card-body END-->
-				<div class="border-top-0 bg-white">
+				<!-- <div class="border-top-0 bg-white">
         	        	<span class="float-right btn btn-primary m-2"> Next </span>
-				</div><!-- card FOOTER END-->
+				</div>card FOOTER END -->
         </div><!-- MESSGAE send ENDS-->
          
          

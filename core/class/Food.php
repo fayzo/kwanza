@@ -290,8 +290,7 @@ class Food extends home {
                         <div class="card-body pt-0">
                         <span id="response<?php echo $food['food_id']; ?>"></span>
                            <div class="mb-0">
-                              <a class="text-primary float-left" href="javascript:void(0)" id="food-readmore" data-food="<?php echo $food['food_id']; ?>" ><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $food['photo_Title_main']; ?></a>
-                               
+                              <a class="text-primary float-left" href="javascript:void(0)" id="food-readmore" data-food="<?php echo $food['food_id']; ?>" ><?php echo $food['photo_Title_main']; ?></a>
                                <?php if($user_id == $food['user_id3']){ ?>
                                     <ul class="list-inline ml-2  float-right" style="list-style-type: none;">  
 
@@ -382,7 +381,7 @@ class Food extends home {
                                <span class="float-right"> <?php if($food['price_discount'] != 0){ ?><span class="mr-2 text-danger " style="text-decoration: line-through;"><?php echo number_format($food['price_discount']); ?> Frw</span> <?php } ?><span class="text-primary" > <?php echo number_format($food['price']); ?> Frw</span></span>
                             </div> 
                             <div class="text-muted clear-float">
-                                <span class="float-left"><i class="fa fa-home" aria-hidden="true"></i>  <?php echo $categories; ?></span>
+                                <span class="float-left"><i class="fa fa-cutlery" aria-hidden="true"></i>  <?php echo $categories; ?></span>
                                 <span class="float-right mr-5"><i class="fa fa-heart" aria-hidden="true"></i></span></div>
                             <div class="text-muted clear-float">
                                 <span><i class="fa fa-clock-o mt-1" aria-hidden="true"></i> Created on <?php echo $this->timeAgo($food['created_on3'])." By ".$food['authors']; ?></span>

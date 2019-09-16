@@ -3,7 +3,7 @@
        header('Location: ../../404.html');
  }
 
-class Events extends Home{
+class Events extends Football_home{
 
     public function eventsList($pages,$categories,$user_id)
     {
@@ -525,7 +525,7 @@ class Events extends Home{
         <div class="slideshow-container">
 
         <div class="dot-container h5">
-          <a href="<?php echo WHOTOFOLLOW; ?>">View more Events >>>></a> 
+          <a href="<?php echo EVENTS; ?>">View more Events >>>></a> 
         </div>
 
         <div class="row mySlidesx mySlidesx0 text-center">

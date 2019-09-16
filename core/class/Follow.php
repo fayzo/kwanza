@@ -383,7 +383,11 @@ class Follow extends Events
                           </div> ';
                       }
                       
-            echo '  </div>
+            echo ' 
+                     </div>
+                     <div class="card-footer text-center">
+                         <a href="'.NETWORK.'">View more >>></a>
+                     </div>
                  </div>';
     }
 
@@ -477,7 +481,7 @@ class Follow extends Events
         <div class="slideshow-container">
 
         <div class="dot-container h5">
-          <a href="<?php echo WHOTOFOLLOW; ?>">View more Follows >>>></a> 
+          <a href="<?php echo NETWORK; ?>">View more to Follows >>>></a> 
         </div>
 
         <div class="row mySlidesx mySlidesx_">
@@ -524,6 +528,83 @@ class Follow extends Events
             <span class="dot dot_" onclick="currentSlide(3)"></span>
         </div>
     </div>
+ <?php }
+
+     public function Network_FollowingLists($user_id,$follow_id)
+    {
+       $mysqli= $this->database;
+       $query= "SELECT * FROM users WHERE user_id != $user_id AND user_id NOT IN (SELECT receiver FROM follow WHERE sender = $user_id ) ORDER BY rand() ";
+       $result=$mysqli->query($query); 
+        //Columns must be a factor of 12 (1,2,3,4,6,12)
+        $numOfCols = 4;
+        $rowCount = 0;
+       ?>
+        <div class="card mb-3">
+          <div class="card-header">
+              <h5>More suggestions for you</h5>
+              <hr>
+               <ul class="nav nav-pills">
+                    <li class="nav-item"><a class="nav-link  active" href="#people"
+                        data-toggle="tab">people</a> </li>
+                    <li class="nav-item"><a class="nav-link" href="#groups"
+                        data-toggle="tab">Groups</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pages"
+                        data-toggle="tab">Pages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#business"
+                        data-toggle="tab">Firms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#hashtag"
+                        data-toggle="tab">#hashtag</a></li>
+                </ul>
+          </div>
+    </div>
+    <!-- card -->
+    <div class="tab-content">
+        <div class="tab-pane active " id="people">
+        <div class="row mb-3">
+     <?php  while ($following=$result->fetch_array()) {
+           # code...
+           echo '
+                <div class="col-md-3 mb-2">
+                    <!-- Widget: user widget style 1 -->
+                    <div class="card card-follow user-follow">
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                         '.((!empty($following['cover_img']))?
+                           '<div class="user-header-follow text-white" style="background: url('.BASE_URL_LINK."image/users_profile_cover/".$following['cover_img'].') center center;background-size: cover; overflow: hidden; width: 100%;">'
+                          :'<div class="user-header-follow text-white" style="background: url('.BASE_URL_LINK.NO_COVER_IMAGE_URL.') center center;background-size: cover; overflow: hidden; width: 100%;">' ).'
+                        </div>
+                        <div class="user-image-follow">
+                          '.((!empty($following['profile_img']))?
+                               ' <img class="rounded-circle elevation-2"
+                                    src="'.BASE_URL_LINK."image/users_profile_cover/".$following['profile_img'].'">'
+                              :' <img class="rounded-circle elevation-2" src="'.BASE_URL_LINK.NO_PROFILE_IMAGE_URL.'" />' ).'
+                             <span> '.$this->lengthsOfusers($following['date_registry']).'</span>
+                        </div>
+                        <div class="card-footer">
+                            <h5 class="user-username-follow m-1 "><a href="'.BASE_URL_PUBLIC.$following['username'].'">'.$following['username'].'</a></h5>
+                            <h5 class="user-username-follow m-1"><small>'.((!empty($following['career']))? $this->getTweetLink($following['career']):'no career').'</small></h5>
+                            <span>'.$this->followBtn($following['user_id'],$user_id,$follow_id).'</span>
+                        </div>
+                        <!-- /.footer -->
+                    </div>
+                    <!-- /. card widget-user -->
+                </div>
+                <!-- col --> ';
+                $rowCount++;
+                if($rowCount % $numOfCols == 0) echo '</div><div class="row mb-3">';
+       } ?>
+             </div>
+             <!-- row -->
+        </div> 
+        <div class="tab-pane" id="groups">
+           Groups
+        </div> 
+        <div class="tab-pane" id="pages">
+           pages
+        </div> 
+        <!-- tab-panel -->
+        </div> 
+        <!-- tab-panel -->
+
  <?php }
 
 }

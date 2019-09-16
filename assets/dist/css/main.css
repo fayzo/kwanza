@@ -688,3 +688,8 @@ position: absolute;
 .link-view li a:hover {
   color: rgb(82, 46, 211);
 }
+
+.header-option{
+  background: #b9b6b22b;
+    padding: 7px;
+}

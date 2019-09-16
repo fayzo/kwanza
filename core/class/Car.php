@@ -244,7 +244,7 @@ class Car extends House {
                                <span class="float-right"> <?php if($car['price_discount'] != 0){ ?><span class="mr-2 text-danger " style="text-decoration: line-through;"><?php echo number_format($car['price_discount']); ?> Frw</span> <?php } ?><span class="text-primary" > <?php echo number_format($car['price']); ?> Frw</span></span>
                             </div> 
                             <div class="text-muted clear-float">
-                                <span class="float-left"><i class="fa fa-home" aria-hidden="true"></i>  <?php echo $categories; ?></span>
+                                <span class="float-left"><i class="fa fa-car" aria-hidden="true"></i>  <?php echo $categories; ?></span>
                                 <span class="float-right mr-5"><i class="fa fa-heart" aria-hidden="true"></i></span></div>
                             <div class="text-muted clear-float">
                                 <span><i class="fa fa-clock-o" aria-hidden="true"></i> Created on <?php echo $this->timeAgo($car['created_on3'])." By ".$car['authors']; ?></span>

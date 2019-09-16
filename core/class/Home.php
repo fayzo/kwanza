@@ -117,7 +117,7 @@ class Home extends Comment {
         </div>
           </div> <!-- /.card-body -->
            <div class="card-footer text-center">
-            <a href="<?php echo JOBS;?>"><i> View all Jobs</i></a>
+            <a href="<?php echo JOBS;?>">View all Jobs</a>
            </div> <!-- /.card-footer -->
        </div>
        <!-- /.card -->
@@ -372,11 +372,11 @@ class Home extends Comment {
         $rowCount = 0;
         $bootstrapColWidth = 12 / $numOfCols;
        ?>
-       <div class="slide-text bg-light">
-        <div class="slideshow-container message-color">
+       <div class="slide-text card retweetcolor">
+        <div class="slideshow-container">
 
         <div class="dot-container h5">
-          <a href="<?php echo WHOTOFOLLOW; ?>">View more Jobs >>>></a> 
+          <a href="<?php echo JOBS; ?>">View more Jobs >>>></a> 
         </div>
 
         <div class="row mySlidesx mySlidesx2">
@@ -384,7 +384,7 @@ class Home extends Comment {
         <?php while($jobs= $query->fetch_array()) { ?>
 
         <div class="col-md-6">
-          <div class="card border-bottom jobHovers more borders-bottoms" data-job="<?php echo $jobs['job_id'];?>"  data-business="<?php echo $jobs['business_id'];?>">
+          <div class="card border-bottom jobHovers more borders-bottoms shadow-lg" data-job="<?php echo $jobs['job_id'];?>"  data-business="<?php echo $jobs['business_id'];?>">
           
             <div class="card-body px-0">
                <div class="user-block mb-2 jobHover" >
@@ -397,15 +397,17 @@ class Home extends Comment {
                          <?php } ?>
                    </div>
                    </div>
-                   <span class="username">
+                   <span class="username mt-2">
                    <!-- Job Title:  -->
                        <a style="padding-right:3px;" href="#"><?php echo $this->htmlspecialcharss($jobs['job_title']) ;?></a> 
                    </span>
                    <span class="description"><?php echo $this->htmlspecialcharss($jobs['companyname']); ?> || <i class="flag-icon flag-icon-<?php echo strtolower($jobs['location']) ;?> h4 mb-0"
                             id="<?php echo strtolower( $jobs['location']) ;?>" title="us"></i></span>
-                   <span class="description">Shared public - <?php echo $this->timeAgo($jobs['created_on']); ?></span>
-                   <span class="description">Deadline -  <?php echo $this->htmlspecialcharss($jobs['deadline']); ?></span>
                </div>
+               <div class="px-3 clear-float">
+                   <div class="description">Shared public - <?php echo $this->timeAgo($jobs['created_on']); ?></div>
+                   <div class="description">Deadline -  <?php echo $this->htmlspecialcharss($jobs['deadline']); ?></div>
+                </div>
             </div>
 
           </div>
@@ -3567,26 +3569,37 @@ class Home extends Comment {
             <ul class="timeline timeline-inverse">
             <?php while ($row = $query->fetch_assoc()) {
             ?>
+            <?php 
+                $file = $row['album_image'];
+                $expode = explode("=",$file);
+                $fileActualExt= array();
+                for ($i=0; $i < count($expode); ++$i) { 
+                    $fileActualExt[]= strtolower(substr($expode[$i],-3));
+                }
+                $allower_ext = array('peg','jpeg', 'jpg', 'png','pdf' , 'doc','docx','ocx', 'lsx','xlsx','xls','zip'); // valid extensions
+                                
+                if (array_diff($fileActualExt,$allower_ext) == false) { ?>
+
             <li class="time-label">
                 <span class="bg-success text-light" style="position: absolute;left: 10px;"><?php echo $this->timeAgo($row['created_on']); ?></span>
-                <i class="fa fa-photo bg-primary text-light" style="top:50px;"></i>
+                <?php
+                $docx= array('jpg','jpeg','peg','png','gif','pdf');
+                $pdf= array('jpg','jpeg','peg','png','gif');
+                $image= array('pdf','doc','ocx','lsx'); ?>
+
+                <?php if(array_diff($fileActualExt,$image)) { ?>
+                        <i class="fa fa-photo bg-primary text-light" style="top:50px;"></i>
+                <?php }
+                if (array_diff($fileActualExt,$pdf)) { ?>
+                        <i class="fa fa-file-pdf-o bg-primary text-light" style="top:50px;"></i>
+                <?php }
+                if (array_diff($fileActualExt,$docx)) { ?>
+                        <i class="fa fa-file-word-o bg-primary text-light" style="top:50px;"></i>
+                <?php } ?>
 
             <ul class="timeline-item mailbox-attachments clearfix list-inline mb-2">
 
-                            <?php 
-                                 $file = $row['album_image'];
-                                 $expode = explode("=",$file);
-                                 $fileActualExt= array();
-                                 for ($i=0; $i < count($expode); ++$i) { 
-                                     $fileActualExt[]= strtolower(substr($expode[$i],-3));
-                                    }
-                                 $fileActualExt[]= 'docx';
-                                 $fileActualExt[]= 'xlsx';
-                                 $allower_ext = array('peg','jpeg', 'jpg', 'png','pdf' , 'doc','docx','ocx', 'lsx','xlsx','xls','zip'); // valid extensions
-                                
-                 if (array_diff($fileActualExt,$allower_ext) == false) {
-
-                     for ($i=0; $i < count($expode); ++$i) { ?>
+                   <?php  for ($i=0; $i < count($expode); ++$i) { ?>
 
                              <li  class="list-inline-item">
 
@@ -3633,12 +3646,13 @@ class Home extends Comment {
                                  </div>
                      <?php } ?>
                           </li>
+                    <?php }  ?>
 
-                    <?php } } ?>
                 </ul>
                 <hr class="main-active" style="width:80%" >
                 </li> <!-- END timeline item -->
-   <?php } ?>
+                    <?php } 
+               } ?>
                 <li >
                     <i class="fa fa-clock-o bg-info text-light"></i>
                 </li>

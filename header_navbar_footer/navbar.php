@@ -29,6 +29,9 @@
       <li class="nav-item">
         <button type="button" class="btn btn-outline-primary ml-2"><a class="nav-link p-0 m-0" href="<?php echo JOBS;?>"><i style="font-size: 22px;" class="fa fa-star nav-link p-0 m-0"></i> Jobs </a></button>
       </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-outline-primary ml-2"><a class="nav-link p-0 m-0" href="<?php echo NETWORK;?>"><i style="font-size: 22px;" class="fa fa-users nav-link p-0 m-0"></i> Network </a></button>
+      </li>
       <?php if($_SESSION['approval'] === 'on'){ ?>
         <li class="nav-item">
            <button type="button" class="btn btn-outline-primary ml-2"><a class="nav-link more p-0 m-0" href="<?php echo INDEXX ;?>"><i style="font-size: 22px;" class="fa fa-cog nav-link p-0"></i> Dashboard <span class="sr-only">(current)</span></a></button>

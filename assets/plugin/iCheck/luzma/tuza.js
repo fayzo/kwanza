@@ -4,6 +4,7 @@ include('class/Users.php');
 include('class/Post_like.php');
 include('class/Comment.php');
 include('class/Home.php');
+include('class/Football_home.php');
 include('class/Events.php');
 include('class/Follow.php');
 include('class/Message.php');
@@ -20,7 +21,6 @@ include('class/Post_home.php');
 include('class/Movies.php');
 include('class/Sports.php');
 include('class/Football.php');
-include('class/Football_home.php');
 include('class/Football_kagame_cup.php');
 include('class/Football_amahoro_league.php');
 include('class/Football_u_16.php');
@@ -57,6 +57,7 @@ define('LOGOUT_PRIVATE', 'http://localhost:80/Blog_nyarwanda_CMS/private/include
 // END SETTING FILE
 define('HOME', 'http://localhost:80/Blog_nyarwanda_CMS/home.php');
 define('ACTIVITIES', 'http://localhost:80/Blog_nyarwanda_CMS/activities.php');
+define('NETWORK', 'http://localhost:80/Blog_nyarwanda_CMS/network.php');
 define('INDEXX', 'http://localhost:80/Blog_nyarwanda_CMS/indexx.php');
 define('SHOPPING', 'http://localhost:80/Blog_nyarwanda_CMS/shopping.php');
 define('FOLLOWERS', 'http://localhost:80/Blog_nyarwanda_CMS/followers.php');
@@ -64,8 +65,10 @@ define('FOLLOWING', 'http://localhost:80/Blog_nyarwanda_CMS/following.php');
 define('PROFILE', 'http://localhost:80/Blog_nyarwanda_CMS/profile.php');
 define('PROFILE_EDIT', 'http://localhost:80/Blog_nyarwanda_CMS/profileEdit.php');
 define('HASHTAG', 'http://localhost:80/Blog_nyarwanda_CMS/hashtag.php');
-define('JOBS', 'http://localhost:80/Blog_nyarwanda_CMS/jobs.php');
+define('JOBS', 'http://localhost:80/Blog_nyarwanda_CMS/jobs0.php');
 define('NOTIFICATION', 'http://localhost:80/Blog_nyarwanda_CMS/NOTIFICATION.php');
+define('EVENTS', 'http://localhost:80/Blog_nyarwanda_CMS/events.php');
+define('SPORTS', 'http://localhost:80/Blog_nyarwanda_CMS/sports.php');
 define('SETTINGS', 'http://localhost:80/Blog_nyarwanda_CMS/settings.php');
 // PRIVATE_URL_VIEW
 define('BASE_URL_PUBLIC', 'http://localhost:80/Blog_nyarwanda_CMS/');

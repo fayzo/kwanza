@@ -83,7 +83,7 @@ if(!empty($data['language'])){
                     	$tweets = $trending->getTweetsTrendbyhastag($hashtag);
                     	// echo var_dump($tweets);
                     	foreach ($tweets as $tweet) {
-                    	     if (!empty($tweet['tweet_image'])) {
+                            if (!empty($tweet['tweet_image'])) {
                                 # code...
                                 $likes= $Posts_copyDraft->likes($user_id,$tweet['tweet_id']);
                                 $retweet= $Posts_copyDraft->checkRetweet($tweet['tweet_id'],$user_id);
@@ -1301,8 +1301,23 @@ if(!empty($data['language'])){
                             </div>
                             <!-- /.card-end -->
                     
-                      <?php }
-                        } ?>
+                      <!-- < ?php  }else { ?>
+                          <div class="container">
+                              <div class="row">
+                                  <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header main-active py-2 text-center">
+                                            <h4 class="card-title">No photos</h4>
+                                        </div>
+                                        <img class="card-img-top" src="< ?php echo BASE_URL_LINK.NO_PROFILE_IMAGE_URL ;?>" alt="">
+                                    </div>
+                                  </div>
+                                  
+                              </div>
+                          </div>
+                     < ?php }  -->
+                     <?php } 
+                     } ?>
                     <!-- TWEETS IMAGES -->
                     <?php 
                     elseif (strpos($_SERVER['REQUEST_URI'],'.users')):?>
