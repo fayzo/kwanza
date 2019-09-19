@@ -31,6 +31,7 @@ if (isset($_POST['landscapes_view']) && !empty($_POST['landscapes_view'])) {
                         <script src="<?php echo BASE_URL_LINK ;?>dist/js/country.js"></script>
 
                         <div class="col">
+                                <label >Country</label>
                             <div id="myCountry"></div>
                         </div>
                         <!-- <div class="col">
@@ -40,7 +41,7 @@ if (isset($_POST['landscapes_view']) && !empty($_POST['landscapes_view'])) {
                             <div id="myDistricts"></div>
                         </div> -->
                             <div class="col">
-                                <label for="" class="text-dark">Province</label>
+                                <label for="" >Province</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -54,7 +55,7 @@ if (isset($_POST['landscapes_view']) && !empty($_POST['landscapes_view'])) {
                                 </div>
                             </div>
                             <div class="col">
-                                <label for="" class="text-dark"> District</label>
+                                <label for="" > District</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -65,7 +66,7 @@ if (isset($_POST['landscapes_view']) && !empty($_POST['landscapes_view'])) {
                                 </div>
                             </div>
                             <div class="col">
-                                <label for="Sector" class="text-dark">Sector</label>
+                                <label for="Sector" >Sector</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -76,7 +77,7 @@ if (isset($_POST['landscapes_view']) && !empty($_POST['landscapes_view'])) {
                                 </div>
                             </div>
                             <div class="col">
-                                <label for="Cell" class="text-dark">Cell</label>
+                                <label for="Cell" >Cell</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>

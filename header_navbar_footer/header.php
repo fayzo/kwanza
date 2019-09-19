@@ -422,6 +422,38 @@
         }, false);
     }
 
+    function follow_FecthRequest(id,user_id,follow_id) {
+        var xhr = new XMLHttpRequest();
+        // Add any event handlers here...
+        xhr.open('POST', 'core/ajax_db/follow_FecthPaginat.php?pages=' + id +'&user_id=' + user_id +'&follow_id=' + follow_id , true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (id) {
+                    case id:
+                         var pagination = document.getElementById('Follow-view');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                   
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
     function Football_Home_FecthRequest(champion,id,currentdate,futuredate) {
         var xhr = new XMLHttpRequest();
         // Add any event handlers here...

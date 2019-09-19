@@ -103,7 +103,7 @@
                  <!-- Box Comment -->
                  <div class="card borders-tops card-profile card1">
                      <div class="card-body">
-                             <?php echo $home->getUserTweet($profileData['user_id']) ;?>
+                             <?php echo $home->getUserTweet($profileData['user_id'],$user_id) ;?>
                      </div>
                      <!-- /.card-body -->
                  </div>

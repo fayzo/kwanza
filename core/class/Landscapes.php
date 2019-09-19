@@ -336,9 +336,9 @@ class Landscapes extends Home{
         <div class="job-hide">
 
           <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="form" id="form" >
-        <div class="form-row mb-2 pt-2 pb-2" style="background:#b9b6b22b;">
+        <div class="form-row mb-2 pt-2 pb-2 bg-getcell">
             <div class="col">
-                <label for="" class="text-dark">Province</label>
+                <label for="">Province</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -352,7 +352,7 @@ class Landscapes extends Home{
                 </div>
             </div>
             <div class="col">
-                <label for="" class="text-dark"> District</label>
+                <label for=""> District</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -363,7 +363,7 @@ class Landscapes extends Home{
                 </div>
             </div>
             <div class="col">
-                <label for="Sector" class="text-dark">Sector</label>
+                <label for="Sector">Sector</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -374,7 +374,7 @@ class Landscapes extends Home{
                 </div>
             </div>
             <div class="col">
-                <label for="Cell" class="text-dark">Cell</label>
+                <label for="Cell">Cell</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -391,14 +391,14 @@ class Landscapes extends Home{
 
         <div id="landscapes-hide">
 
-        <h5 class="text-center" style="background:#b9b6b22b;padding:10px;"><i><?php echo $row3['provincename'];?> Landscapes</i></h5>
+        <h5 class="text-center bg-getcell"><i><?php echo $row3['provincename'];?> Landscapes</i></h5>
             <?php
                 $row1= $query1->fetch_array();
                 $total= array_shift($row1);
                 $array= array(0,$total);
                 $totals= array_sum($array);
 
-                $District= '<div style="background:#b9b6b22b;padding:10px;"><span class="h5 text-success">'.$row3['provincename'].' </span> has '.$totals.' Districts are :  ';
+                $District= '<div class="bg-getcell"><span class="h5 text-success">'.$row3['provincename'].' </span> has '.$totals.' Districts are :  ';
                 $i= 0;
                 $Districts='';
                 
@@ -418,7 +418,7 @@ class Landscapes extends Home{
                     <h5 class="text-primary mb-0">
                     <a class="text-primary" href="javascript:void(0)"  id="districts-view" data-districts="<?php echo $row['location_districts'] ;?>"><?php echo $row['namedistrict'] ;?> Districts</a>
                     </h5>
-                    <div class="text-muted"><?php 	echo ''.$row['provincename'].' Province/ '.$row['namedistrict'].' district/ '.$row['namesector'].' Sector' ;?></div>
+                    <div class="text-muted"><?php 	echo ''.$row['provincename'].'/ '.$row['namedistrict'].' district/ '.$row['namesector'].' Sector' ;?></div>
                     <div class="text-muted"><?php 	echo ''.$row['nameCell'].' Cell/ '.$row['VillageName'].' Village' ;?></div>
                     <div class="text-muted">Created on <?php echo $row['created_on_'] ;?> By <?php echo $row['author_'] ;?> </div>
                     <p class="card-text mb-1">vIEW Different Landscapes of <?php echo $row['location_districts'] ;?> Districts</p>
@@ -479,7 +479,7 @@ class Landscapes extends Home{
           <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="form" id="form" >
         <div class="form-row mb-2 pt-2 pb-2" style="background:#faebd7;">
             <div class="col">
-                <label for="" class="text-dark">Province</label>
+                <label for="">Province</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -493,7 +493,7 @@ class Landscapes extends Home{
                 </div>
             </div>
             <div class="col">
-                <label for="" class="text-dark"> District</label>
+                <label for=""> District</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -504,7 +504,7 @@ class Landscapes extends Home{
                 </div>
             </div>
             <div class="col">
-                <label for="Sector" class="text-dark">Sector</label>
+                <label for="Sector">Sector</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -515,7 +515,7 @@ class Landscapes extends Home{
                 </div>
             </div>
             <div class="col">
-                <label for="Cell" class="text-dark">Cell</label>
+                <label for="Cell">Cell</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>

@@ -36,7 +36,8 @@
       </div>
 
       <div class="col-6 col-md-6 col-lg-6" id="jobs-hides">
-            <?php echo $school->schoolList(1,1); ?>
+            <!-- < ?php echo $school->schoolList(1,1); ?> -->
+            <?php echo $school->schoolList0(1,'kindergarden School'); ?>
       </div>
 
       <div class="col-md-3">

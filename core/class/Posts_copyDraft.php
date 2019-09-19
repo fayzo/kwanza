@@ -502,15 +502,16 @@ class Posts_copyDraft extends blog {
                                         </div>
                                         </div>
                                         <span class="username tooltips">
+                                        
                                            <?php if($user_id != $tweet['user_id']) { ?> 
-                                                <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
-                                            <?php }else{ ?>
                                                 <ul><li>
                                                     <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
                                                     <ul><li><?php echo Follow::tooltipProfile($tweet['user_id'],$user_id,$tweet['user_id']); ?></li></ul>
                                                     </li>
                                                 </ul>
-                                            <?php } ?> 
+                                                <?php }else{ ?>
+                                                    <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
+                                                <?php } ?> 
                                         </span>
                                         <span class="description">Shared publicly - <?php echo $this->timeAgo($tweet['posted_on']); ?></span>
                                     </div>
@@ -1737,15 +1738,16 @@ class Posts_copyDraft extends blog {
                                         </div>
                                         </div>
                                         <span class="username tooltips">
+                                          
                                            <?php if($user_id != $tweet['user_id']) { ?> 
-                                                <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
-                                            <?php }else{ ?>
                                                 <ul><li>
                                                     <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
                                                     <ul><li><?php echo Follow::tooltipProfile($tweet['user_id'],$user_id,$tweet['user_id']); ?></li></ul>
                                                     </li>
                                                 </ul>
-                                            <?php } ?> 
+                                                <?php }else{ ?>
+                                                    <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
+                                                <?php } ?> 
                                         </span>
                                         <span class="description">Shared publicly - <?php echo $this->timeAgo($tweet['posted_on']); ?></span>
                                     </div>
@@ -2975,15 +2977,16 @@ class Posts_copyDraft extends blog {
                                         </div>
                                         </div>
                                         <span class="username tooltips">
+                                          
                                            <?php if($user_id != $tweet['user_id']) { ?> 
-                                                <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
-                                            <?php }else{ ?>
                                                 <ul><li>
                                                     <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
                                                     <ul><li><?php echo Follow::tooltipProfile($tweet['user_id'],$user_id,$tweet['user_id']); ?></li></ul>
                                                     </li>
                                                 </ul>
-                                            <?php } ?> 
+                                                <?php }else{ ?>
+                                                    <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
+                                                <?php } ?> 
                                         </span>
                                         <span class="description">Shared publicly - <?php echo $this->timeAgo($tweet['posted_on']); ?></span>
                                     </div>
@@ -4210,15 +4213,16 @@ class Posts_copyDraft extends blog {
                                         </div>
                                         </div>
                                         <span class="username tooltips">
+                                           
                                            <?php if($user_id != $tweet['user_id']) { ?> 
-                                                <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
-                                            <?php }else{ ?>
                                                 <ul><li>
                                                     <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
                                                     <ul><li><?php echo Follow::tooltipProfile($tweet['user_id'],$user_id,$tweet['user_id']); ?></li></ul>
                                                     </li>
                                                 </ul>
-                                            <?php } ?> 
+                                                <?php }else{ ?>
+                                                    <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
+                                                <?php } ?> 
                                         </span>
                                         <span class="description">Shared publicly - <?php echo $this->timeAgo($tweet['posted_on']); ?></span>
                                     </div>
@@ -5458,15 +5462,16 @@ class Posts_copyDraft extends blog {
                                         </div>
                                         </div>
                                         <span class="username tooltips">
+                                          
                                            <?php if($user_id != $tweet['user_id']) { ?> 
-                                                <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
-                                            <?php }else{ ?>
                                                 <ul><li>
                                                     <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
                                                     <ul><li><?php echo Follow::tooltipProfile($tweet['user_id'],$user_id,$tweet['user_id']); ?></li></ul>
                                                     </li>
                                                 </ul>
-                                            <?php } ?> 
+                                                <?php }else{ ?>
+                                                    <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
+                                                <?php } ?> 
                                         </span>
                                         <span class="description">Shared publicly - <?php echo $this->timeAgo($tweet['posted_on']); ?></span>
                                     </div>
@@ -6694,15 +6699,16 @@ class Posts_copyDraft extends blog {
                                         </div>
                                         </div>
                                         <span class="username tooltips">
+                                          
                                            <?php if($user_id != $tweet['user_id']) { ?> 
-                                                <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
-                                            <?php }else{ ?>
                                                 <ul><li>
                                                     <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
                                                     <ul><li><?php echo Follow::tooltipProfile($tweet['user_id'],$user_id,$tweet['user_id']); ?></li></ul>
                                                     </li>
                                                 </ul>
-                                            <?php } ?> 
+                                                <?php }else{ ?>
+                                                    <a href="<?php echo BASE_URL_PUBLIC.$tweet['username'] ;?>" ><?php echo $tweet['firstname']." ".$tweet['lastname'] ;?></a>
+                                                <?php } ?> 
                                         </span>
                                         <span class="description">Shared publicly - <?php echo $this->timeAgo($tweet['posted_on']); ?></span>
                                     </div>

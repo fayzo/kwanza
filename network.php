@@ -22,8 +22,8 @@
             </div>
             <!-- /.col -->
 
-            <div class="col-md-9">
-                      <?php $follow->Network_FollowingLists($user_id,$user['user_id']); ?>
+            <div class="col-md-9" id="Follow-view">
+                      <?php $follow->Network_FollowingLists(1,$user_id,$user['user_id']); ?>
             </div>
             <!-- /.col-md-6 -->
            

@@ -38,7 +38,7 @@ class Trending extends Home
     public function getTweetsTrendbyhastag($hashtag)
     {
        $mysqli= $this->database;
-       $query= "SELECT * FROM tweets LEFT JOIN users ON tweetBy= user_id WHERE status LIKE '%#".$hashtag."%' OR retweet_Msg LIKE '%#".$hashtag."%' ";
+       $query= "SELECT * FROM tweets LEFT JOIN users ON tweetBy= user_id WHERE status LIKE '%#".$hashtag."%' OR retweet_Msg LIKE '%#".$hashtag."%' ORDER BY posted_on DESC";
        $result= $mysqli->query($query);
        $tweets_hashtag = array();
        while ($row = $result->fetch_assoc()) {

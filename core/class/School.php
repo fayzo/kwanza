@@ -68,11 +68,11 @@ class School extends Home {
         <div class="card-body">
         <span class="school-show"></span>
         <div class="school-hide">
-        <h5 class="card-title text-center " style="background:#faebd7;padding:10px;"><i><?php echo $categories;?></i></h5>
+        <h5 class="card-title text-center bg-getcell" ><i><?php echo $categories;?></i></h5>
 
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="form" id="form" >
         <input type="hidden" name="type_of_school" id="type_of_school" value="<?php echo $categories;?>">
-        <div class="form-row mb-3">
+        <div class="form-row mb-3 bg-getcell">
             <div class="col">
                 <label for="">Province</label>
                  <div class="input-group">
@@ -242,10 +242,10 @@ class School extends Home {
         <div class="card-body">
         <span class="school-show"></span>
         <div class="school-hide">
-        <h5 class="card-title text-center"  style="background:#faebd7;padding:10px;"><i><?php echo $row_province['provincename'];?></i></h5>
+        <h5 class="card-title text-center bg-getcell"><i><?php echo $row_province['provincename'];?></i></h5>
             <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="form" id="form" >
             <input type="hidden" name="location_province" id="location_province" value="<?php echo $categories;?>">
-            <div class="form-row mb-3">
+            <div class="form-row mb-3 bg-getcell">
                 <div class="col">
                     <label for="">Province</label>
                     <div class="input-group">

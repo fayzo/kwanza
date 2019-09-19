@@ -398,7 +398,7 @@ if (isset($_POST['showMessage1']) && !empty($_POST['showMessage1'])) {
          <?php foreach ($Msg as $Message ) {?>
 					<!--Direct Messages-->
 				
-				<li id="messageID<?php echo $Message['user_id'];?>"> <!-- start message -->
+				<li id="messageID<?php echo $Message['user_id'];?>" class="people-message" data-user="<?php echo $Message['user_id'];?>"> <!-- start message -->
                     <a href="#">
                       <div class="pull-left" style="position:relative;">
 						  	<?php if (!empty($Message['profile_img'])) { ?>
@@ -414,8 +414,9 @@ if (isset($_POST['showMessage1']) && !empty($_POST['showMessage1'])) {
 							<?php } ?>
                       </div>
                       <h4>
-						<span class="people-message" data-user="<?php echo $Message['user_id'];?>" > <?php echo $Message['username'];?> </span>
-                        <small><span class="deleteMessage more" data-user="<?php echo $_SESSION["key"]; ?>" data-message="<?php echo $Message["user_id"]; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></span> <i class="fa fa-clock-o"></i> <?php echo $users->timeAgo($Message['message_on']);?></small>
+						<span> <?php echo $Message['username'];?> </span>
+                        <small><span><i class="fa fa-trash" aria-hidden="true"></i></span> <i class="fa fa-clock-o"></i> <?php echo $users->timeAgo($Message['message_on']);?></small>
+                        <!-- <small><span class="deleteMessage more" data-user="< ?php echo $_SESSION["key"]; ?>" data-message="< ?php echo $Message["user_id"]; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></span> <i class="fa fa-clock-o"></i> < ?php echo $users->timeAgo($Message['message_on']);?></small> -->
                       </h4>
                       <p><?php echo $Message['message'];?></p>
                     </a>

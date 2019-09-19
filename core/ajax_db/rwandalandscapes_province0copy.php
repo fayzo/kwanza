@@ -44,9 +44,9 @@ if (isset($_POST['province']) && !empty($_POST['province'])) {
         <span class="landscapes-show"></span>
         <div class="landscapes-hide">
            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="form" id="form" >
-        <div class="form-row mb-2 pt-2 pb-2" style="background:#faebd7;">
+        <div class="form-row mb-2 pt-2 pb-2 bg-getcell">
             <div class="col">
-                <label for="" class="text-dark">Province</label>
+                <label for="" >Province</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -60,7 +60,7 @@ if (isset($_POST['province']) && !empty($_POST['province'])) {
                 </div>
             </div>
             <div class="col">
-                <label for="" class="text-dark"> District</label>
+                <label for="" > District</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -71,7 +71,7 @@ if (isset($_POST['province']) && !empty($_POST['province'])) {
                 </div>
             </div>
             <div class="col">
-                <label for="Sector" class="text-dark">Sector</label>
+                <label for="Sector" >Sector</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -82,7 +82,7 @@ if (isset($_POST['province']) && !empty($_POST['province'])) {
                 </div>
             </div>
             <div class="col">
-                <label for="Cell" class="text-dark">Cell</label>
+                <label for="Cell" >Cell</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -98,14 +98,14 @@ if (isset($_POST['province']) && !empty($_POST['province'])) {
 if ($query->num_rows > 0) { ?>
         <div id="landscapes-hide">
 
-        <h5 class="text-dark text-center"   style="background:#faebd7;padding:10px;"><i><?php echo $row3['provincename'];?> Landscapes</i></h5>
+        <h5 class=" text-center bg-getcell"><i><?php echo $row3['provincename'];?> Landscapes</i></h5>
             <?php
                 $row1= $query1->fetch_array();
                 $total= array_shift($row1);
                 $array= array(0,$total);
                 $totals= array_sum($array);
 
-                $District= '<div style="background:#b9b6b22b;padding:10px;"><span class="h5 text-success">'.$row3['provincename'].' </span> has '.$totals.' Districts are :  ';
+                $District= '<div class="bg-getcell h5 mt-2"><span class="text-success">'.$row3['provincename'].' </span> has '.$totals.' Districts are :  ';
                 $i= 0;
                 $Districts='';
                 
@@ -126,7 +126,7 @@ if ($query->num_rows > 0) { ?>
                     <h5 class="text-primary mb-0">
                     <a class="text-primary" href="javascript:void(0)"  id="districts-view" data-districts="<?php echo $row['location_districts'] ;?>"><?php echo $row['namedistrict'] ;?> Districts</a>
                     </h5>
-                     <div class="text-muted"><?php 	echo ''.$row['provincename'].' Province/ '.$row['namedistrict'].' district/ '.$row['namesector'].' Sector' ;?></div>
+                     <div class="text-muted"><?php 	echo ''.$row['provincename'].' / '.$row['namedistrict'].' district/ '.$row['namesector'].' Sector' ;?></div>
                      <div class="text-muted"><?php 	echo ''.$row['nameCell'].' Cell/ '.$row['VillageName'].' Village' ;?></div>
 
                     <div class="text-muted">Created on <?php echo $row['created_on_'] ;?> By <?php echo $row['author_'] ;?> </div>
@@ -145,7 +145,6 @@ if ($query->num_rows > 0) { ?>
 <?php  }
 
 if (isset($_POST['districts']) && !empty($_POST['districts'])) {
-    $user_id= $_SESSION['key'];
     $categories= $_POST['districts'];
 
     $mysqli= $db;
@@ -186,9 +185,9 @@ if (isset($_POST['districts']) && !empty($_POST['districts'])) {
          <span class="landscapes-show"></span>
           <div class="landscapes-hide">
              <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="form" id="form" >
-        <div class="form-row mb-2 pt-2 pb-2" style="background:#faebd7;">
+        <div class="form-row mb-2 pt-2 pb-2 bg-getcell">
             <div class="col">
-                <label for="" class="text-dark">Province</label>
+                <label for="" >Province</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -202,7 +201,7 @@ if (isset($_POST['districts']) && !empty($_POST['districts'])) {
                 </div>
             </div>
             <div class="col">
-                <label for="" class="text-dark"> District</label>
+                <label for="" > District</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -213,7 +212,7 @@ if (isset($_POST['districts']) && !empty($_POST['districts'])) {
                 </div>
             </div>
             <div class="col">
-                <label for="Sector" class="text-dark">Sector</label>
+                <label for="Sector" >Sector</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -224,7 +223,7 @@ if (isset($_POST['districts']) && !empty($_POST['districts'])) {
                 </div>
             </div>
             <div class="col">
-                <label for="Cell" class="text-dark">Cell</label>
+                <label for="Cell" >Cell</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -240,9 +239,9 @@ if (isset($_POST['districts']) && !empty($_POST['districts'])) {
 if ($query->num_rows > 0) { ?>
         <div id="landscapes-hide">
 
-          <div style="background:#faebd7;padding:10px;">
+          <div class="bg-getcell">
             <button type="button" class="btn btn-primary btn-sm  float-left" id="province-view" data-province="<?php echo $bck['location_province'] ;?>" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back </button>
-            <h5 class="text-dark text-center"><i> <?php echo $row3['namedistrict']; ?> Districts Landscapes</i></h5>
+            <h5 class=" text-center"><i> <?php echo $row3['namedistrict']; ?> Districts Landscapes</i></h5>
           </div>
             <?php
                 $row1= $query1->fetch_array();
@@ -250,7 +249,7 @@ if ($query->num_rows > 0) { ?>
                 $array= array(0,$total);
                 $totals= array_sum($array);
 
-                $District= '<div style="background:#b9b6b22b;padding:10px;"><span class="h5 text-success">'.$row3['namedistrict'].' Districts</span> has '.$totals.' Sectors are :  ';
+                $District= '<div class="bg-getcell h5 mt-2"><span class="text-success">'.$row3['namedistrict'].' Districts</span> has '.$totals.' Sectors are :  ';
                 $i= 0;
                 $Districts='';
                 
@@ -272,7 +271,7 @@ if ($query->num_rows > 0) { ?>
                    <h5 class="text-primary mb-0">
                   <a class="text-primary" href="javascript:void(0)"  id="sector-view" data-sector="<?php echo $row['location_Sector'] ;?>"> <?php echo $row['namesector'] ;?> Sector</a>
                    </h5>
-                   <div class="text-muted"><?php 	echo ''.$row['provincename'].' Province/ '.$row['namedistrict'].' district/ '.$row['namesector'].' Sector' ;?></div>
+                   <div class="text-muted"><?php 	echo ''.$row['provincename'].' / '.$row['namedistrict'].' district/ '.$row['namesector'].' Sector' ;?></div>
                    <div class="text-muted"><?php 	echo ''.$row['nameCell'].' Cell/ '.$row['VillageName'].' Village' ;?></div>
 
                    <div class="text-muted">Created on <?php echo $row['created_on_'] ;?> By <?php echo $row['author_'] ;?> </div>
@@ -333,9 +332,9 @@ if (isset($_POST['sector']) && !empty($_POST['sector'])) {
          <span class="landscapes-show"></span>
           <div class="landscapes-hide" >
              <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="form" id="form" >
-        <div class="form-row mb-2 pt-2 pb-2" style="background:#faebd7;">
+        <div class="form-row mb-2 pt-2 pb-2 bg-getcell">
             <div class="col">
-                <label for="" class="text-dark">Province</label>
+                <label for="" >Province</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -349,7 +348,7 @@ if (isset($_POST['sector']) && !empty($_POST['sector'])) {
                 </div>
             </div>
             <div class="col">
-                <label for="" class="text-dark"> District</label>
+                <label for="" > District</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -360,7 +359,7 @@ if (isset($_POST['sector']) && !empty($_POST['sector'])) {
                 </div>
             </div>
             <div class="col">
-                <label for="Sector" class="text-dark">Sector</label>
+                <label for="Sector" >Sector</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -371,7 +370,7 @@ if (isset($_POST['sector']) && !empty($_POST['sector'])) {
                 </div>
             </div>
             <div class="col">
-                <label for="Cell" class="text-dark">Cell</label>
+                <label for="Cell" >Cell</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -388,9 +387,9 @@ if ($query->num_rows > 0) { ?>
 
         <div id="landscapes-hide">
 
-          <div style="background:#faebd7;padding:10px;">
+          <div class="bg-getcell">
             <button type="button" class="btn btn-primary btn-sm  float-left" id="districts-view" data-districts="<?php echo $bck['location_districts'] ;?>" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back </button>
-            <h5 class="text-dark text-center"><i> <?php echo $row3['namesector']; ?> Sector Landscapes</i></h5>
+            <h5 class=" text-center"><i> <?php echo $row3['namesector']; ?> Sector Landscapes</i></h5>
           </div>
           <?php
                 $row1= $query1->fetch_array();
@@ -398,7 +397,7 @@ if ($query->num_rows > 0) { ?>
                 $array= array(0,$total);
                 $totals= array_sum($array);
 
-                $District= '<div style="background:#b9b6b22b;padding:10px;"><span class="h5 text-danger">'.$row3['namesector'].' Sectors</span> has '.$totals.' Cell are :  ';
+                $District= '<div class="bg-getcell h5 mt-2"><span class="text-danger">'.$row3['namesector'].' Sectors</span> has '.$totals.' Cell are :  ';
                 $i= 0;
                 $Districts='';
                 while($conditionz= $query0->fetch_assoc()){
@@ -419,7 +418,7 @@ if ($query->num_rows > 0) { ?>
                    <h5 class="text-primary mb-0">
                   <a class="text-primary" href="javascript:void(0)"  id="cell-view" data-cell="<?php echo $row['location_cell'] ;?>"> <?php echo $row['nameCell'] ;?> Cell</a>
                    </h5>
-                   <div class="text-muted"><?php 	echo ''.$row['provincename'].' Province/ '.$row['namedistrict'].' district/ '.$row['namesector'].' Sector' ;?></div>
+                   <div class="text-muted"><?php 	echo ''.$row['provincename'].' / '.$row['namedistrict'].' district/ '.$row['namesector'].' Sector' ;?></div>
                    <div class="text-muted"><?php 	echo ''.$row['nameCell'].' Cell/ '.$row['VillageName'].' Village' ;?></div>
 
                    <div class="text-muted">Created on <?php echo $row['created_on_'] ;?> By <?php echo $row['author_'] ;?> </div>
@@ -485,9 +484,9 @@ if (isset($_POST['cell']) && !empty($_POST['cell'])) {
          <span class="landscapes-show"></span>
           <div class="landscapes-hide" >
                   <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="form" id="form" >
-        <div class="form-row mb-2 pt-2 pb-2" style="background:#faebd7;">
+        <div class="form-row mb-2 pt-2 pb-2 bg-getcell">
             <div class="col">
-                <label for="" class="text-dark">Province</label>
+                <label for="" >Province</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -501,7 +500,7 @@ if (isset($_POST['cell']) && !empty($_POST['cell'])) {
                 </div>
             </div>
             <div class="col">
-                <label for="" class="text-dark"> District</label>
+                <label for="" > District</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -512,7 +511,7 @@ if (isset($_POST['cell']) && !empty($_POST['cell'])) {
                 </div>
             </div>
             <div class="col">
-                <label for="Sector" class="text-dark">Sector</label>
+                <label for="Sector" >Sector</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -523,7 +522,7 @@ if (isset($_POST['cell']) && !empty($_POST['cell'])) {
                 </div>
             </div>
             <div class="col">
-                <label for="Cell" class="text-dark">Cell</label>
+                <label for="Cell" >Cell</label>
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
@@ -538,9 +537,9 @@ if (isset($_POST['cell']) && !empty($_POST['cell'])) {
 
           <div id="landscapes-hide">
 
-          <div style="background:#faebd7;padding:10px;">
+          <div class="bg-getcell">
             <button type="button" class="btn btn-primary btn-sm  float-left" id="sector-view" data-sector="<?php echo $bck['location_Sector'] ;?>" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back </button>
-            <h5 class="text-dark text-center"><i> <?php echo $row3['nameCell']; ?> Cell Landscapes</i></h5>
+            <h5 class=" text-center"><i> <?php echo $row3['nameCell']; ?> Cell Landscapes</i></h5>
           </div>
            <?php
                 $row1= $query1->fetch_array();
@@ -548,7 +547,7 @@ if (isset($_POST['cell']) && !empty($_POST['cell'])) {
                 $array= array(0,$total);
                 $totals= array_sum($array);
 
-                $District= '<div style="background:#b9b6b22b;padding:10px;"><span class="h5 text-warning">'.$row3['nameCell'].' cells</span> has '.$totals.' Villages are :  ';
+                $District= '<div class="bg-getcell h5 mt-2"><span class="text-warning">'.$row3['nameCell'].' cells</span> has '.$totals.' Villages are :  ';
                 $i= 0;
                 $Districts='';
                 while($conditionz= $query0->fetch_assoc()){
@@ -569,7 +568,7 @@ if (isset($_POST['cell']) && !empty($_POST['cell'])) {
                    <h5 class="text-primary mb-0">
                   <a class="text-primary" href="javascript:void(0)"  id="village-readmore" data-village="<?php echo $row['landscape_id'] ;?>"> <?php echo $row['VillageName'] ;?> Village</a>
                 </h5>
-                   <div class="text-muted"><?php 	echo ''.$row['provincename'].' Province/ '.$row['namedistrict'].' district/ '.$row['namesector'].' Sector' ;?></div>
+                   <div class="text-muted"><?php 	echo ''.$row['provincename'].' / '.$row['namedistrict'].' district/ '.$row['namesector'].' Sector' ;?></div>
                    <div class="text-muted"><?php 	echo ''.$row['nameCell'].' Cell/ '.$row['VillageName'].' Village' ;?></div>
                    <div class="text-muted">Created on <?php echo $row['created_on_'] ;?> By <?php echo $row['author_'] ;?> </div>
                    <p class="card-text mb-1"><?php echo $row['text_'] ;?> </p>
@@ -639,9 +638,9 @@ if (isset($_POST['cell0']) && !empty($_POST['cell0'])) {
          <span class="landscapes-show"></span>
           <div class="landscapes-hide"  id="landscapes-hide">
           
-          <div style="background:#faebd7;padding:10px;">
+          <div class="bg-getcell">
             <button type="button" class="btn btn-primary btn-sm  float-left" id="sector-view" data-sector="<?php echo $bck['location_Sector'] ;?>" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back </button>
-            <h5 class="text-dark text-center"><i> <?php echo $row3['nameCell']; ?> Cell Landscapes</i></h5>
+            <h5 class=" text-center"><i> <?php echo $row3['nameCell']; ?> Cell Landscapes</i></h5>
           </div>
            <?php
                 $row1= $query1->fetch_array();
@@ -649,7 +648,7 @@ if (isset($_POST['cell0']) && !empty($_POST['cell0'])) {
                 $array= array(0,$total);
                 $totals= array_sum($array);
 
-                $District= '<div style="background:#b9b6b22b;padding:10px;"><span class="h5 text-warning">'.$row3['nameCell'].' cells</span> has '.$totals.' Villages are :  ';
+                $District= '<div class="bg-getcell h5 mt-2"><span class="text-warning">'.$row3['nameCell'].' cells</span> has '.$totals.' Villages are :  ';
                 $i= 0;
                 $Districts='';
                 while($conditionz= $query0->fetch_assoc()){
@@ -670,7 +669,7 @@ if (isset($_POST['cell0']) && !empty($_POST['cell0'])) {
                    <h5 class="text-primary mb-0">
                   <a class="text-primary" href="javascript:void(0)"  id="village-readmore" data-village="<?php echo $row['landscape_id'] ;?>"> <?php echo $row['VillageName'] ;?> Village</a>
                 </h5>
-                   <div class="text-muted"><?php 	echo ''.$row['provincename'].' Province/ '.$row['namedistrict'].' district/ '.$row['namesector'].' Sector' ;?></div>
+                   <div class="text-muted"><?php 	echo ''.$row['provincename'].' / '.$row['namedistrict'].' district/ '.$row['namesector'].' Sector' ;?></div>
                    <div class="text-muted"><?php 	echo ''.$row['nameCell'].' Cell/ '.$row['VillageName'].' Village' ;?></div>
                    <div class="text-muted">Created on <?php echo $row['created_on_'] ;?> By <?php echo $row['author_'] ;?> </div>
                    <p class="card-text mb-1"><?php echo $row['text_'] ;?> </p>

@@ -18,7 +18,8 @@
                       <?php if ($user['user_id'] === $_SESSION['key']) { ?>
                     <li class="breadcrumb-item"><span id="messagePopup" class="more" data-user="<?php echo $user['user_id'];?>"><a href="javascript:void(0);" ><i style="font-size: 20px;" class="fa fa-envelope-o"></i> Message </a></span></li>
                     <?php } } ?>
-                    <li class="breadcrumb-item active"><i><a href="<?php echo PROFILE ;?>"> User Profile</a></i></li>
+                    <li class="breadcrumb-item active"><i><a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL_PUBLIC.$user['username'] ;?>'"> User Profile</a></i></li>
+                    <li class="breadcrumb-item active"><i><a href="javascript:void(0);" class="price-jobs" data-pricejob="1"> Post a jobs</a></i></li>
                 </ol>
             </div>
         </div>

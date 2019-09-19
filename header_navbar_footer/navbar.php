@@ -27,7 +27,7 @@
         <button type="button" class="btn btn-outline-primary ml-2"><a class="nav-link p-0 m-0" href="<?php echo BASE_URL_PUBLIC ;?>i.notifications" ><i style="font-size: 22px;" class="fa fa-bell nav-link p-0 m-0"></i> Notification <span id="notification"><?php if( $notific['totalnotification'] > 0){echo '<span class="span-i">'.$notific['totalnotification'].'</span>'; } ?></span></a></button>
       </li>
       <li class="nav-item">
-        <button type="button" class="btn btn-outline-primary ml-2"><a class="nav-link p-0 m-0" href="<?php echo JOBS;?>"><i style="font-size: 22px;" class="fa fa-star nav-link p-0 m-0"></i> Jobs </a></button>
+        <button type="button" class="btn btn-outline-primary ml-2"><a class="nav-link p-0 m-0" href="<?php echo JOBSS;?>"><i style="font-size: 22px;" class="fa fa-star nav-link p-0 m-0"></i> Jobs </a></button>
       </li>
       <li class="nav-item">
         <button type="button" class="btn btn-outline-primary ml-2"><a class="nav-link p-0 m-0" href="<?php echo NETWORK;?>"><i style="font-size: 22px;" class="fa fa-users nav-link p-0 m-0"></i> Network </a></button>

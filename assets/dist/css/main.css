@@ -4,7 +4,7 @@
 
 .card {
     border-radius: 5px !important;
-    border-top: none !important;
+    /* border-top: none !important; */
     border-left: none !important;
 }
 .sportx .table td, .table th {
@@ -676,10 +676,13 @@ position: absolute;
 /* EVENTS POST COLOR AVENUE */
 #black .black-bg{
    background:  #3a3636;
+   padding: 10px;
 }
 
 .black-bg{
     background: #0a0a0a12;
+   padding: 10px;
+
 }
 
 .link-view li a {
@@ -692,4 +695,9 @@ position: absolute;
 .header-option{
   background: #b9b6b22b;
     padding: 7px;
+}
+
+.bg-getcell{
+  background:#b9b6b22b;
+  padding:10px;
 }

@@ -52,7 +52,7 @@ if (isset($_POST['car_id']) && !empty($_POST['car_id'])) {
 
                    <div class="row reusercolor ">
                        <div class="col-md-12">
-                            <h5 class="text-center black-bg h4 mb-2"><?php echo $user['categories_car']." in ".$user['provincename']." Location ".$user['namedistrict']."/".$user['namesector']." at ".$user['price']." Frw"; ?></h5>
+                            <h5 class="text-center black-bg h4 mb-2"><?php echo $user['categories_car']." in ".$user['provincename']." Location ".$user['namedistrict']."/".$user['namesector']." at ".number_format($user['price'])." Frw"; ?></h5>
 
                        </div>
                        <div class="col-md-1-12 ">

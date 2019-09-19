@@ -42,10 +42,11 @@ if(!empty($data['language'])){
 <!-- container-fuild -->
 <div class="container mb-5 mt-4">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <section class="content-header main-active">
         <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1><i><?php echo '#'.$hashtag.' hashtag' ; ?></i></h1>
+            <div class="col-sm-6 ">
+                <span  class="float-left h1"><?php echo 'Hashtag' ; ?></span>
+                <span  class="float-right h1"><i><?php echo '#'.$hashtag ; ?></i></span>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">

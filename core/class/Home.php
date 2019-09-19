@@ -372,7 +372,7 @@ class Home extends Comment {
         $rowCount = 0;
         $bootstrapColWidth = 12 / $numOfCols;
        ?>
-       <div class="slide-text card retweetcolor">
+       <div class="slide-text card retweetcolor borders-tops">
         <div class="slideshow-container">
 
         <div class="dot-container h5">
@@ -445,7 +445,7 @@ class Home extends Comment {
                 <ul>
                     <li><h5 class="card-title"><a href="crowfund.php">GushoraStartUp</a></h5> </li>
                     <li><h5 class="card-title"><a href="fundraising.php"> Fundraising</a></h5>
-                         <ul>
+                         <!-- <ul>
                               <li><h5 class="card-title"><a href="fundraising.php#list-Education">Education</a></h5></li>
                               <li><h5 class="card-title"><a href="fundraising.php#list-Emergency">Emergency</a></h5></li>
                               <li><h5 class="card-title"><a href="fundraising.php#list-Faith">Faith</a></h5></li>
@@ -457,12 +457,12 @@ class Home extends Comment {
                               <li><h5 class="card-title"><a href="fundraising.php#list-Business">Business</a></h5></li>
                               <li><h5 class="card-title"><a href="fundraising.php#list-Animals">Animals</a></h5></li>
                               <li><h5 class="card-title"><a href="fundraising.php#list-Nonprofit">Nonprofit</a></h5></li>
-                         </ul>
+                         </ul> -->
                     </li>
                     <li><h5><a href="Unemployment.php"> Unemployment</a></h5> </li>
                     <li><h5><a href="career_profession.php">Professional</a></h5> </li>
                     <li><h5 class="card-title"><a href="sale.php">Sale</a></h5>
-                        <ul>
+                        <!-- <ul>
                               <li><h5 class="card-title"><a href="sale.php">Electronics</a></h5></li>
                               <li><h5 class="card-title"><a href="sale.php">Health & Beauty</a></h5></li>
                               <li><h5 class="card-title"><a href="sale.php">Clothes</a></h5></li>
@@ -471,10 +471,10 @@ class Home extends Comment {
                               <li><h5 class="card-title"><a href="sale.php">Sports</a></h5></li>
                               <li><h5 class="card-title"><a href="sale.php">cars</a></h5></li>
                               <li><h5 class="card-title"><a href="sale.php">Food</a></h5></li>
-                         </ul>
+                         </ul> -->
                     </li>
                     <li><h5 class="card-title"><a href="blog.php">Blog</a></h5>
-                        <ul>
+                        <!-- <ul>
                               <li><h5 class="card-title"><a href="blog.php#list-Technology">Technology</a></h5></li>
                               <li><h5 class="card-title"><a href="blog.php#list-Design">Design</a></h5></li>
                               <li><h5 class="card-title"><a href="blog.php#list-Culture">Culture</a></h5></li>
@@ -489,7 +489,7 @@ class Home extends Comment {
                               <li><h5 class="card-title"><a href="blog.php#list-Computer_science">Computer science</a></h5></li>
                               <li><h5 class="card-title"><a href="blog.php#list-Story">Story</a></h5></li>
                               <li><h5 class="card-title"><a href="blog.php#list-Politics">Politics</a></h5></li>
-                         </ul>
+                         </ul> -->
                     </li>
                     <li><h5 class="card-title"><a href="jobs0.php">Jobs</a></h5></li>
                     <li><h5 class="card-title"><a href="events.php">Events</a></h5>
@@ -1005,7 +1005,7 @@ class Home extends Comment {
                             <div class="number-wrapper">
                                 <div class="num-box">
                                     <div class="num-head">
-                                       POSTS
+                                            <a href="<?php echo BASE_URL_PUBLIC.$user['username'].'.posts' ;?>"> POSTS</a>
                                     </div>
                                     <div class="num-body">
                                        <?php echo $this->countsPosts($user_id);?>
@@ -1013,7 +1013,7 @@ class Home extends Comment {
                                 </div>
                                 <div class="num-box">
                                     <div class="num-head">
-                                       FOLLOWING
+                                          <a href="<?php echo BASE_URL_PUBLIC.$user['username'].'.following' ;?>"> FOLLOWING</a>
                                     </div>
                                     <div class="num-body">
                                         <span class="count-following"><?php echo $user['following'] ;?></span>
@@ -1021,7 +1021,7 @@ class Home extends Comment {
                                 </div>
                                 <div class="num-box">
                                     <div class="num-head">
-                                      FOLLOWERS
+                                          <a href="<?php echo BASE_URL_PUBLIC.$user['username'].'.followers' ;?>">FOLLOWERS</a>
                                     </div>
                                     <div class="num-body">
                                         <span class="count-followers"><?php echo $user['followers'] ;?></span>
@@ -1780,6 +1780,42 @@ class Home extends Comment {
 
     }
 
+    public function uploadentertainmentFile($file)
+    {
+
+        $insertValuesSQL ="";
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/entertainment/';
+        $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
+        
+        foreach($file['name'] as $key => $value){
+            // File upload path
+            $fileName = basename($file['name'][$key]);
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+
+             $filenames = (strlen($fileName) > 10)? 
+                     strtolower(date('Y').'_'.rand(10,100).substr($fileName,0,4).".".$fileActualExt):
+                     strtolower(date('Y').'_'.rand(10,100).$fileName);
+
+            $valued[] = $filenames;
+
+            $targetFilePath = $targetDir . $filenames;
+            
+            // Check whether file type is valid
+            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+            if(in_array($fileType, $allowTypes)){
+                // Upload file to server
+                $fileTmpName = $file["tmp_name"];
+                move_uploaded_file($fileTmpName[$key], $targetFilePath);
+            }
+        }
+        
+        # Build the values
+        $filenamedb = implode("=", $valued);
+        return  $filenamedb;
+
+    }
+
     public function uploadRwandahotelFile($file)
     {
 
@@ -2195,7 +2231,7 @@ class Home extends Comment {
         return $totals;
     }
 
-     public function getUserTweet($user_id)
+     public function getUserTweet($user_id,$user_idSession)
     {
         $mysqli= $this->database;
         $stmt = $mysqli->stmt_init();
@@ -3234,7 +3270,7 @@ class Home extends Comment {
                                           </button></li>
                                         
 
-                                         <?php if ($tweet["tweetBy"] == $user_id){ ?>
+                                         <?php if ($tweet["tweetBy"] == $user_idSession){ ?>
                                             <li  class=" list-inline-item">
                                                 <ul class="deleteButt" style="list-style-type: none; margin:0px;" >
                                                     <li>

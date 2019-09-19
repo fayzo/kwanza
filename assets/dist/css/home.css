@@ -106,12 +106,16 @@
     float: left;
 }
 
-.num-head {
+.num-head a{
     font-family: Helvetica;
-    font-weight: 400;
+    font-weight: 700;
     text-decoration: none;
     font-size: 10px;
     color: #9b9b9b;
+}
+.num-head a:hover{
+    text-decoration: underline;
+    color: #007bff;
 }
 
 .num-body {

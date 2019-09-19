@@ -7,14 +7,14 @@
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 pt-1">
           <?php if (isset($_SESSION['key'])) { ?>
-           <button type="button" class="btn btn-light mt-2" id="add_rwandalandscapes" data-rwandalandscapes="<?php echo $_SESSION['key']; ?>" > + Add rwanda-Landscapes </button>
+           <button type="button" class="btn btn-light mt-2" id="add_entertainment" data-entertainment="<?php echo $_SESSION['key']; ?>" > + Add entertainments </button>
            <?php } ?>
           </div>
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="#">Rwanda Entertainment</a>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
-           <form class="form-inline">
+           <!-- <form class="form-inline">
                  <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i> </span>
@@ -22,7 +22,7 @@
                     <input type="text" class="form-control" name="searches" id="searches" aria-describedby="helpId"
                         placeholder="Search">
                 </div>
-              </form>
+              </form> -->
           </div>
         </div>
       </header>

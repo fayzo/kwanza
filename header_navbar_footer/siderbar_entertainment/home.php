@@ -18,73 +18,7 @@
           <div class="col-md-9">
             <div class="row">
                 <div class="col-md-12">
-
-              <div id="jssor_8" style="position:relative;margin:0 auto;top:0px;left:0px;width:980px;height:380px;overflow:hidden;visibility:hidden;">
-                    <!-- Loading Screen -->
-                    <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-                        <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="<?php echo BASE_URL_LINK;?>image/users_profile_cover/spin.svg" />
-                    </div>
-                    <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
-                        <div>
-                            <img data-u="image" src="<?php echo BASE_URL_LINK.'image/img/img/045.jpg' ;?>" width="96px" height="auto" />
-                            <div data-u="thumb">
-                                <img data-u="thumb" class="i" src="<?php echo BASE_URL_LINK.'image/img/img/045.jpg' ;?>" />
-                                <span class="ti">Title</span><br />
-                                <span class="d">Slide Description</span>
-                            </div>
-                        </div>
-                        <div>
-                            <img data-u="image" src="<?php echo BASE_URL_LINK.'image/img/img/046.jpg' ;?>" width="96px" height="auto" />
-                            <div data-u="thumb">
-                                <img data-u="thumb" class="i" src="<?php echo BASE_URL_LINK.'image/img/img/046.jpg' ;?>" />
-                                <span class="ti">Title</span><br />
-                                <span class="d">Slide Description</span>
-                            </div>
-                        </div>
-                        <div>
-                            <img data-u="image"  src="<?php echo BASE_URL_LINK.'image/img/img/047.jpg' ;?>" width="96px" height="auto" />
-                            <div data-u="thumb">
-                                <img data-u="thumb" class="i" src="<?php echo BASE_URL_LINK.'image/img/img/047.jpg' ;?>" />
-                                <span class="ti">Title</span><br />
-                                <span class="d">Slide Description</span>
-                            </div>
-                        </div>
-                        <div>
-                            <img data-u="image"  src="<?php echo BASE_URL_LINK.'image/img/img/048.jpg' ;?>" width="96px" height="auto" />
-                            <div data-u="thumb">
-                                <img data-u="thumb" class="i" src="<?php echo BASE_URL_LINK.'image/img/img/048.jpg' ;?>" />
-                                <span class="ti">Title</span><br />
-                                <span class="d">Slide Description</span>
-                            </div>
-                        </div>
-                        <div>
-                            <img data-u="image"  src="<?php echo BASE_URL_LINK.'image/img/img/049.jpg' ;?>" width="96px" height="auto" />
-                            <div data-u="thumb">
-                                <img data-u="thumb" class="i" src="<?php echo BASE_URL_LINK.'image/img/img/049.jpg' ;?>" />
-                                <span class="ti">Title</span><br />
-                                <span class="d">Slide Description</span>
-                            </div>
-                        </div>
-                       
-                    </div>
-                    <!-- Thumbnail Navigator -->
-                    <div data-u="thumbnavigator" class="jssort121" style="position:absolute;left:0px;top:0px;width:268px;height:380px;overflow:hidden;cursor:default;" data-autocenter="2" data-scale-left="0.75">
-                        <div data-u="slides">
-                            <div data-u="prototype" class="p" style="width:268px;height:68px;">
-                                <div data-u="thumbnailtemplate" class="t"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Bullet Navigator -->
-                    <div data-u="navigator" class="jssorb111" style="position:absolute;bottom:12px;right:12px;" data-scale="0.5">
-                        <div data-u="prototype" class="i" style="width:24px;height:24px;font-size:12px;line-height:24px;">
-                            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;">
-                                <circle class="b" cx="8000" cy="8000" r="3000"></circle>
-                            </svg>
-                            <div data-u="numbertemplate" class="n"></div>
-                        </div>
-                    </div>
-                </div>
+                    <?php echo $entertainment->carousel_entertainment(); ?>
                 <script type="text/javascript">jssor_8_slider_init();</script>
                 <!-- #endregion Jssor Slider End -->
             </div><!-- col-md-12 -->
@@ -97,64 +31,12 @@
                     <h5><i> Recently News of entertainment</i> </h5>
                   </div>
                   <div class="card-body">
-                
-                 <!-- The timeline -->
-                <ul class="timeline timeline-inverse">
-                    <li class="time-label">
-                        <span class="bg-success text-light" style="position: absolute;font-size: 11px; padding: 2px; margin-left: 9px;"> 10:30' </span>
-
-                        <div class="timeline-item card flex-md-row shadow-sm h-md-100 border-0">
-                        <img class="card-img-left flex-auto d-none d-lg-block" height="100px" width="100px" src="<?php echo BASE_URL_LINK.'image/img/img/046.jpg' ;?>" alt="Card image cap">
-                        <div class="card-body d-flex flex-column align-items-start pt-0">
-                            <h5 class="text-primary mb-0">
-                        <a class="text-primary" href="javascript:void(0)" id="news-readmore" data-news="354" > One more for good measure</a>
-                            </h5>
-                            <div class="text-muted">Created on By 30 May </div>
-                            <p class="card-text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at e... Continue reading... </p>
-
-                        </div><!-- card-body -->
-                        </div><!-- card -->
-
-                        </li>
-                        <!-- END timeline item -->
-                    <li class="time-label">
-                        <span class="bg-success text-light" style="position: absolute;font-size: 11px; padding: 2px; margin-left: 9px;"> 10:30' </span>
-
-                        <div class="timeline-item card flex-md-row shadow-sm h-md-100 border-0">
-                        <img class="card-img-left flex-auto d-none d-lg-block" height="100px" width="100px" src="<?php echo BASE_URL_LINK.'image/img/img/046.jpg' ;?>" alt="Card image cap">
-                        <div class="card-body d-flex flex-column align-items-start pt-0">
-                            <h5 class="text-primary mb-0">
-                        <a class="text-primary" href="javascript:void(0)" id="news-readmore" data-news="354" > One more for good measure</a>
-                            </h5>
-                            <div class="text-muted">Created on By 30 May </div>
-                            <p class="card-text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at e... Continue reading... </p>
-
-                        </div><!-- card-body -->
-                        </div><!-- card -->
-
-                        </li>
-                        <!-- END timeline item -->
-                    <li class="time-label">
-                        <span class="bg-success text-light" style="position: absolute;font-size: 11px; padding: 2px; margin-left: 9px;"> 10:30' </span>
-
-                        <div class="timeline-item card flex-md-row shadow-sm h-md-100 border-0">
-                        <img class="card-img-left flex-auto d-none d-lg-block" height="100px" width="100px" src="<?php echo BASE_URL_LINK.'image/img/img/046.jpg' ;?>" alt="Card image cap">
-                        <div class="card-body d-flex flex-column align-items-start pt-0">
-                            <h5 class="text-primary mb-0">
-                        <a class="text-primary" href="javascript:void(0)" id="news-readmore" data-news="354" > One more for good measure</a>
-                            </h5>
-                            <div class="text-muted">Created on By 30 May </div>
-                            <p class="card-text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at e... Continue reading... </p>
-
-                        </div><!-- card-body -->
-                        </div><!-- card -->
-
-                        </li>
-                        <!-- END timeline item -->
-                        <li >
+                  <ul class="timeline timeline-inverse">
+                           <?php echo $entertainment->entertainmentList($user_id)?>
+                        <li>
                             <i class="fa fa-clock-o bg-info text-light"></i>
                         </li>
-                </ul>
+                    </ul>
                   </div><!-- card-body -->
               </div> <!-- card -->
               </div>

@@ -111,7 +111,7 @@ class Hotel extends Food{
                     <div class="card-header text-center main-active p-1">
                         <h5 class="card-title">Filter by:</h5>
                     </div>
-                    <div class="card-body message-color text-dark">
+                    <div class="card-body message-color">
                     <h5> Your budget</h5>
                         <div class="form-row">
                             <div class="col">

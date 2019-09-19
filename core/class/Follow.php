@@ -340,7 +340,7 @@ class Follow extends Events
                                                     <div class="number-wrapper">
                                                         <div class="num-box">
                                                             <div class="num-head">
-                                                                POSTS
+                                                              <a href="'.BASE_URL_PUBLIC.$whoTofollow['username'].'posts'.'"> POSTS </a>
                                                             </div>
                                                             <div class="num-body">
                                                                '.self::countsPostss($whoTofollow['user_id']).'
@@ -348,7 +348,7 @@ class Follow extends Events
                                                         </div>
                                                         <div class="num-box">
                                                             <div class="num-head">
-                                                                FOLLOWING
+                                                                <a href="'.BASE_URL_PUBLIC.$whoTofollow['username'].'following'.'">FOLLOWING </a>
                                                             </div>
                                                             <div class="num-body">
                                                                 <span class="count-following">'.$whoTofollow['following'].'</span>
@@ -356,7 +356,7 @@ class Follow extends Events
                                                         </div>
                                                         <div class="num-box">
                                                             <div class="num-head">
-                                                                FOLLOWERS
+                                                               <a href="'.BASE_URL_PUBLIC.$whoTofollow['username'].'followers'.'"> FOLLOWERS </a>
                                                             </div>
                                                             <div class="num-body">
                                                                 <span class="count-followers">'.$whoTofollow['followers'].'</span>
@@ -394,7 +394,7 @@ class Follow extends Events
     static public function tooltipProfile($whoTofollow,$user_id,$follow_id)
     {
         $mysqli= self::$databases;
-        $sql="SELECT * FROM users WHERE user_id = '{$user_id}' ";
+        $sql="SELECT * FROM users WHERE user_id = '{$follow_id}' ";
         $query= $mysqli->query($sql);
         $user= $query->fetch_assoc(); ?>
 
@@ -530,10 +530,17 @@ class Follow extends Events
     </div>
  <?php }
 
-     public function Network_FollowingLists($user_id,$follow_id)
+     public function Network_FollowingLists($pages,$user_id,$follow_id)
     {
+        $pages= $pages;
+        
+        if($pages === 0 || $pages < 1){
+            $showpages = 0 ;
+        }else{
+            $showpages = ($pages*12)-12;
+        }
        $mysqli= $this->database;
-       $query= "SELECT * FROM users WHERE user_id != $user_id AND user_id NOT IN (SELECT receiver FROM follow WHERE sender = $user_id ) ORDER BY rand() ";
+       $query= "SELECT * FROM users WHERE user_id != $user_id AND user_id NOT IN (SELECT receiver FROM follow WHERE sender = $user_id ) ORDER BY rand() LIMIT $showpages,12";
        $result=$mysqli->query($query); 
         //Columns must be a factor of 12 (1,2,3,4,6,12)
         $numOfCols = 4;
@@ -594,6 +601,34 @@ class Follow extends Events
        } ?>
              </div>
              <!-- row -->
+        <?php 
+        $query1= $mysqli->query("SELECT COUNT(*) FROM users WHERE user_id != $user_id AND user_id NOT IN (SELECT receiver FROM follow WHERE sender = $user_id )");
+        // var_dump('Error'.$query1.mysqli_error($mysqli));
+        $row_Paginaion = $query1->fetch_array();
+        $total_Paginaion = array_shift($row_Paginaion);
+        $post_Perpages = $total_Paginaion/12;
+        $post_Perpage = ceil($post_Perpages); ?>
+
+    <?php if($post_Perpage > 1){ ?>
+    <nav>
+        <ul class="pagination justify-content-center">
+            <?php if ($pages > 1) { ?>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="follow_FecthRequest(<?php echo $pages-1; ?>,<?php echo $user_id; ?>,<?php  echo $follow_id; ?>)">Previous</a></li>
+            <?php } ?>
+            <?php for ($i=1; $i <= $post_Perpage; $i++) { 
+                    if ($i == $pages) { ?>
+                 <li class="page-item active"><a href="javascript:void(0)"  class="page-link" onclick="follow_FecthRequest(<?php echo $i; ?>,<?php echo $user_id; ?>,<?php  echo $follow_id; ?>)" ><?php echo $i; ?> </a></li>
+                 <?php }else{ ?>
+                <li class="page-item"><a href="javascript:void(0)"  class="page-link" onclick="follow_FecthRequest(<?php echo $i; ?>,<?php echo $user_id; ?>,<?php  echo $follow_id; ?>)" ><?php echo $i; ?> </a></li>
+            <?php } } ?>
+            <?php if ($pages+1 <= $post_Perpage) { ?>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="follow_FecthRequest(<?php echo $pages+1; ?>,<?php echo $user_id; ?>,<?php  echo $follow_id; ?>)">Next</a></li>
+            <?php } ?>
+        </ul>
+    </nav>
+
+       <?php } ?>
+
         </div> 
         <div class="tab-pane" id="groups">
            Groups

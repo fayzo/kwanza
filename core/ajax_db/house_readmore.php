@@ -72,7 +72,7 @@ if (isset($_POST['house_id']) && !empty($_POST['house_id'])) {
 
                    <div class="row reusercolor p-2">
                        <div class="col-md-12">
-                            <h5 class="text-center black-bg h4 mb-2"><?php echo $user['categories_house']." in ".$user['provincename']." Location ".$user['namedistrict']."/".$user['namesector']." at ".$user['price']." Frw"; ?></h5>
+                            <h5 class="text-center black-bg h4 mb-2"><?php echo $user['categories_house']." in ".$user['provincename']." Location ".$user['namedistrict']."/".$user['namesector']." at ".number_format($user['price'])." Frw"; ?></h5>
                              <!-- < ?php echo $house['provincename']; ?> /  -->
                                 <!-- < ?php echo $house['namedistrict']; ?> District/  -->
                                 <!-- < ?php echo $house['namesector']; ?> Sector/  -->
