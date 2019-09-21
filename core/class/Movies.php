@@ -277,7 +277,7 @@ class Movies extends Home{
              if(array_diff($fileActualExt,$allower_ext) == false) { ?>
                       <div class="mb-2" >
                            <video controls preload="metadata" width="545px" height="300px" preload="none">
-                               <source src="<?php echo BASE_URL_PUBLIC."uploads/movies/2019_50vlc-.mp4" ;?>" type="video/mp4"> 
+                               <source src="<?php echo BASE_URL_PUBLIC."uploads/movies/".$row['video'] ;?>" type="video/mp4"> 
                               <!-- fallback content here 
                               poster="< ?php echo BASE_URL_PUBLIC."uploads/posts/".$tweet['tweet_image'] ;?>"
                               object-fit="contain"

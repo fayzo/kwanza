@@ -16,13 +16,13 @@ if (isset($_POST['post_jobs']) && !empty($_POST['post_jobs'])) {
         	<div class="img-popup-body">
 
 
-            <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-            <h1 class="display-4">Pricing</h1>
-            <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
-            </div>
-
-            <div class="container">
+           
                 <div class="card">
+                  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                      <h1 class="display-4">Pricing</h1>
+                      <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+                  </div>
+
                 <div class="card-body">
 
                     <div class="card-deck mb-3 text-center">
@@ -79,7 +79,6 @@ if (isset($_POST['post_jobs']) && !empty($_POST['post_jobs'])) {
                       <p class="mb-1"><?php echo $users->copyright(2018); ?></p>
                 </div>
             </div>
-            </div>
 
            </div><!-- img-popup-body -->
         </div><!-- user-show-popup-box -->
@@ -100,14 +99,13 @@ if (isset($_POST['payment_jobs_jobs']) && !empty($_POST['payment_jobs_jobs'])) {
         	<div class="img-popup-body">
 
 
-            <div class="py-5 text-center">
-                <img class="d-block mx-auto mb-4" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-                <h2>Checkout form</h2>
-                <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
-            </div>
-
-            <div class="container">
-                <div class="card">
+            
+            <div class="card">
+              <div class="py-5 text-center">
+                  <img class="d-block mx-auto mb-4" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+                  <h2>Checkout form</h2>
+                  <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+              </div>
                 <div class="card-body">
 
                 
@@ -277,7 +275,6 @@ if (isset($_POST['payment_jobs_jobs']) && !empty($_POST['payment_jobs_jobs'])) {
                 <div class="card-footer text-center">
                       <p class="mb-1"><?php echo $users->copyright(2018); ?></p>
                 </div>
-            </div>
             </div>
 
            </div><!-- img-popup-body -->

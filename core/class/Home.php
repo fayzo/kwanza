@@ -459,7 +459,9 @@ class Home extends Comment {
                               <li><h5 class="card-title"><a href="fundraising.php#list-Nonprofit">Nonprofit</a></h5></li>
                          </ul> -->
                     </li>
+                    <?php if($_SESSION['approval'] === 'on'){ ?>
                     <li><h5><a href="Unemployment.php"> Unemployment</a></h5> </li>
+                    <?php } ?>
                     <li><h5><a href="career_profession.php">Professional</a></h5> </li>
                     <li><h5 class="card-title"><a href="sale.php">Sale</a></h5>
                         <!-- <ul>
@@ -473,6 +475,7 @@ class Home extends Comment {
                               <li><h5 class="card-title"><a href="sale.php">Food</a></h5></li>
                          </ul> -->
                     </li>
+                    <li><h5 class="card-title"><a href="gurisha.php">Gurisha</a></h5>
                     <li><h5 class="card-title"><a href="blog.php">Blog</a></h5>
                         <!-- <ul>
                               <li><h5 class="card-title"><a href="blog.php#list-Technology">Technology</a></h5></li>
@@ -503,6 +506,7 @@ class Home extends Comment {
                     <li><h5 class="card-title"><a href="motel.php">motel</a></h5>
                     <li><h5 class="card-title"><a href="house.php">House</a></h5>
                     <li><h5 class="card-title"><a href="car.php">Car</a></h5>
+                    <li><h5 class="card-title"><a href="icyamunara.php">Cyamunara</a></h5>
                     <li><h5 class="card-title"><a href="food.php">Foodzana</a></h5>
                     <li><h5 class="card-title"><a href="domestic.php">domestic Helpers</a></h5> </li>
                     <li><h5 class="card-title"><a href="school.php">school</a></h5> </li>
@@ -513,9 +517,9 @@ class Home extends Comment {
                <ul>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.crowfund">GushoraStartUp</a></h5> </li>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.fundraising"> Fundraising</a></h5></li>
-                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.Unemployment"> Unemployment</a></h5> </li>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.career_profession"> Professional</a></h5> </li>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.sale">Sale</a></h5></li>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.gurisha">Gurisha</a></h5></li>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.blog">Blog</a></h5></li>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.jobs0">Jobs</a></h5></li>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.events">Events</a></h5>
@@ -529,6 +533,7 @@ class Home extends Comment {
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.motel">motel Rent</a></h5>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.house">House</a></h5>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.car">Car</a></h5>
+                    <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.icyamunara"></a></h5>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.food">Foodzana</a></h5>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.domestic">domestic Helpers</a></h5> </li>
                     <li><h5 class="card-title "><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.school">school</a></h5> </li>
@@ -551,9 +556,12 @@ class Home extends Comment {
                 <ul>
                     <li><h5><a href="crowfund.php">GushoraStartUp</a></h5> </li>
                     <li><h5><a href="fundraising.php"> Fundraising</a></h5> </li>
+                    <?php if($_SESSION['approval'] === 'on'){ ?>
                     <li><h5><a href="Unemployment.php"> Unemployment</a></h5> </li>
+                    <?php } ?>
                     <li><h5><a href="career_profession.php"> Professional</a></h5> </li>
                     <li><h5><a href="sale.php">Sale</a></h5> </li>
+                    <li><h5><a href="gurisha.php">Gurisha</a></h5> </li>
                     <li><h5><a href="blog.php">Blog</a></h5> </li>
                     <li><h5><a href="jobs0.php">Jobs</a></h5></li>
                     <li><h5><a href="events.php">Events</a></h5>
@@ -567,6 +575,7 @@ class Home extends Comment {
                     <li><h5><a href="motel.php">Motel Rent</a></h5>
                     <li><h5><a href="house.php">House</a></h5>
                     <li><h5><a href="car.php">Car</a></h5>
+                    <li><h5><a href="icyamunara.php">Cyamunara</a></h5>
                     <li><h5><a href="food.php">Foodzana</a></h5>
                     <li><h5><a href="domestic.php">domestic Helpers</a></h5> </li>
                     <li><h5><a href="school.php">school</a></h5> </li>
@@ -576,9 +585,9 @@ class Home extends Comment {
                <ul>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.crowfund">GushoraStartUp</a></h5> </li>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.fundraising"> Fundraising</a></h5></li>
-                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.Unemployment"> Unemployment</a></h5> </li>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.career_profession"> Professional</a></h5> </li>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.sale">Sale</a></h5></li>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.gurisha">Gurisha</a></h5></li>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.blog">Blog</a></h5></li>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.jobs0">Jobs</a></h5></li>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.events">Events</a></h5>
@@ -592,6 +601,7 @@ class Home extends Comment {
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.motel">Motel</a></h5>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.house">House</a></h5>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.car">Car</a></h5>
+                    <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.icyamunara">Cyamunara</a></h5>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.food">Foodzana</a></h5>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.domestic">domestic Helpers</a></h5> </li>
                     <li><h5 class="card-title"><a class="alink" href="<?php echo BASE_URL_PUBLIC; ?>jojo.school">school</a></h5> </li>
@@ -608,9 +618,12 @@ class Home extends Comment {
          <ul class="list-inline link-view">
               <li class="list-inline-item"><a href="crowfund.php"><i class="fa fa-money" aria-hidden="true"></i> GushoraStartUp</a></li>
               <li class="list-inline-item"><a href="fundraising.php"><i class="fa fa-heartbeat" aria-hidden="true"></i> Fundraising</a></li>
+                    <?php if($_SESSION['approval'] === 'on'){ ?>
               <li class="list-inline-item"><a href="Unemployment.php"><i class="fa fa-running    "></i> Unemployment</a></li>
+                    <?php } ?>
               <li class="list-inline-item"><a href="career_profession.php"><i class="fa fa-career"></i>  Professional</a></li>
               <li class="list-inline-item"><a href="sale.php"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Sale</a></li>
+              <li class="list-inline-item"><a href="gurisha.php"><i class="fa fa-shopping-basket" aria-hidden="true"></i> gurisha</a></li>
               <li class="list-inline-item"><a href="blog.php"><i class="fas fa-blogger    "></i> Blog</a></li>
               <li class="list-inline-item"><a href="jobs0.php"><i class="fas fa-newspaper    "></i> Jobs</a></li>
               <li class="list-inline-item"><a href="events.php"><i class="fas fa-envelope-open-text    "></i> Events</a></li>
@@ -624,6 +637,7 @@ class Home extends Comment {
               <li class="list-inline-item"><a href="motel.php"><i class="fas fa-hotel    "></i> Motel</a></li>
               <li class="list-inline-item"><a href="house.php"><i class="fas fa-house-damage    "></i> House</a></li>
               <li class="list-inline-item"><a href="car.php"><i class="fa fa-car" aria-hidden="true"></i> Car</a></li>
+              <li class="list-inline-item"><a href="icyamunara.php"><i class="fa fa-car" aria-hidden="true"></i> Cyamunara</a></li>
               <li class="list-inline-item"><a href="food.php"><i class="fa fa-cutlery" aria-hidden="true"></i> Foodzana</a></li>
               <li class="list-inline-item"><a href="domestic.php">domestic Helpers</a></li>
               <li class="list-inline-item"><a href="school.php"><i class="fas fa-school    "></i> school</a></li>
@@ -633,9 +647,9 @@ class Home extends Comment {
             <ul  class="list-inline link-view">
                 <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.crowfund">GushoraStartUp</a> </li>
                 <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.fundraising"> Fundraising</a></li>
-                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.Unemployment"> Unemployment</a> </li>
                 <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.career_profession"> Career Professional</a> </li>
                 <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.sale">Sale</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.gurisha">Gurisha</a></li>
                 <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.blog">Blog</a></li>
                 <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.jobs0">Jobs</a></li>
                 <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.events">Events</a></li>
@@ -649,6 +663,7 @@ class Home extends Comment {
                 <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.motel">motel Rent</a></li>
                 <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.house">House</a></li>
                 <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.car">Car</a></li>
+                <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.icyamunara">Cyamunara</a></li>
                 <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.food">Foodzana</a></li>
                 <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.domestic">domestic Helpers</a> </li>
                 <li class="list-inline-item"><a href="<?php echo BASE_URL_PUBLIC; ?>jojo.school">school</a> </li>

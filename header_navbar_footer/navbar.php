@@ -20,12 +20,15 @@
       <li class="nav-item">
         <button type="button" class="btn btn-outline-primary addPostBtn ml-2"><a class="nav-link more p-0" href="#"><i style="font-size: 22px;" class="fa fa-pencil nav-link p-0 m-0"></i> Post</a></button>
       </li>
+    <?php if (isset($_SESSION['HELLO'])) { ?>
       <li class="nav-item">
          <button type="button" id='messagePopup' class="btn btn-outline-primary ml-2"><a class="nav-link more p-0" href="#"><i style="font-size: 22px;"  class="fa fa-envelope nav-link p-0 m-0"  aria-hidden="true"></i> Messages<span id="messages"><?php if( $notific['totalmessage'] > 0){echo '<span class="span-i">'.$notific['totalmessage'].'</span>'; } ?></span></a></button>
       </li>
       <li class="nav-item">
         <button type="button" class="btn btn-outline-primary ml-2"><a class="nav-link p-0 m-0" href="<?php echo BASE_URL_PUBLIC ;?>i.notifications" ><i style="font-size: 22px;" class="fa fa-bell nav-link p-0 m-0"></i> Notification <span id="notification"><?php if( $notific['totalnotification'] > 0){echo '<span class="span-i">'.$notific['totalnotification'].'</span>'; } ?></span></a></button>
       </li>
+    <?php } ?>
+      
       <li class="nav-item">
         <button type="button" class="btn btn-outline-primary ml-2"><a class="nav-link p-0 m-0" href="<?php echo JOBSS;?>"><i style="font-size: 22px;" class="fa fa-star nav-link p-0 m-0"></i> Jobs </a></button>
       </li>

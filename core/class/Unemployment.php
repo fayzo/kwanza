@@ -54,7 +54,7 @@ class Unemployment extends Home {
                 <nav class="nav d-flex justify-content-between pb-0  horizontal-large-2"  >
                 <a class="p-2" href="javascript:void(0)" onclick="unemploymentCategories('Featured',1);" >Featured<span class="badge badge-primary"><?php echo $this->unemplyomentcountPOSTS('Featured');?></span></a>
                 <a class="p-2" href="javascript:void(0)" onclick="unemploymentCategories('accountant',1);" >accountant<span class="badge badge-primary"><?php echo $this->unemplyomentcountPOSTS('accountant');?></span></a>
-                <a class="p-2" href="javascript:void(0)" onclick="unemploymentCategories('finance',1);" >finace<span class="badge badge-primary"><?php echo $this->unemplyomentcountPOSTS('finance');?></span></a>
+                <a class="p-2" href="javascript:void(0)" onclick="unemploymentCategories('finance',1);" >finance<span class="badge badge-primary"><?php echo $this->unemplyomentcountPOSTS('finance');?></span></a>
                 <a class="p-2" href="javascript:void(0)" onclick="unemploymentCategories('management',1);" >management<span class="badge badge-primary"><?php echo $this->unemplyomentcountPOSTS('management');?></span></a>
                 <a class="p-2" href="javascript:void(0)" onclick="unemploymentCategories('computer_enginnering',1);" >computer_enginnering<span class="badge badge-primary"><?php echo $this->unemplyomentcountPOSTS('computer_enginnering');?></span></a>
                 <a class="p-2" href="javascript:void(0)" onclick="unemploymentCategories('mechanical_enginnering',1);" >mechanical_enginnering<span class="badge badge-primary"><?php echo $this->unemplyomentcountPOSTS('mechanical_enginnering');?></span></a>

@@ -971,6 +971,7 @@
                 $(".progress-navbar").fadeOut();
             }, 2000);
         }, false);
+
     }
 
     function xxda(requests,formx, id) {

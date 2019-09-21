@@ -59,6 +59,9 @@
 #black .card a i{
    color: #181717f7;
 }
+#black .card a h5 i{
+   color: #c3bebe;
+}
 
 #black .card .list-group-item {
   background-color: #272323;

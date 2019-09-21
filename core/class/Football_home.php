@@ -3,7 +3,7 @@
        header('Location: ../../404.html');
  }
 
-class Football_home extends Home{
+class Football_home extends Icyamunara{
     
     public function currentDatefootball_homeMatch($day,$currentdate,$futuredate)
     {

@@ -19,6 +19,13 @@ input#crop {
 .card-primary:not(.card-outline) .card-header a {
     color: #ffffff;
 }
+.nav-scroller a:hover{
+	box-shadow: inset 0px -4px 0px 0px #62e727;
+}
+.card-header a:hover{
+	box-shadow: inset 0px -4px 0px 0px #62e727;
+}
+
 
 #orange-white .theme-blue .scale ins,
 #purple-white .theme-blue .scale ins,
