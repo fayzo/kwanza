@@ -63,6 +63,7 @@ define('ACTIVITIES', 'http://localhost:80/Blog_nyarwanda_CMS/activities.php');
 define('NETWORK', 'http://localhost:80/Blog_nyarwanda_CMS/network.php');
 define('INDEXX', 'http://localhost:80/Blog_nyarwanda_CMS/indexx.php');
 define('SHOPPING', 'http://localhost:80/Blog_nyarwanda_CMS/shopping.php');
+define('GURA', 'http://localhost:80/Blog_nyarwanda_CMS/gura.php');
 define('FOLLOWERS', 'http://localhost:80/Blog_nyarwanda_CMS/followers.php');
 define('FOLLOWING', 'http://localhost:80/Blog_nyarwanda_CMS/following.php');
 define('PROFILE', 'http://localhost:80/Blog_nyarwanda_CMS/profile.php');

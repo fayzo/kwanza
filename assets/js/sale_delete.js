@@ -47,6 +47,7 @@ $(document).ready(function () {
         e.preventDefault();
         var sale_id = $(this).data('sale');
         var user_id = $(this).data('user');
+        var title = $('#title' + sale_id).val();
         var available = $('#available' + sale_id).val();
         var discount_change = $('#discount_change' + sale_id).val();
         var discount_price = $('#discount_price' + sale_id).val();
@@ -60,6 +61,7 @@ $(document).ready(function () {
             data: {
                 sale_id: sale_id,
                 user_id: user_id,
+                title: title,
                 available: available,
                 discount_change: discount_change,
                 discount_price: discount_price,
@@ -99,9 +101,9 @@ $(document).ready(function () {
 
 });
 
-function saleUpload(success, fileName) {
+function saleuploadz(success, fileName) {
     if (success) {
-        $('#salePreview' + success).attr("style", 'background: url(<?php echo BASE_URL_PUBLIC.uploads/sale/' + fileName +'; ?>)no-repeat center center;background-size:cover;width: 250px;height:178px');
+        $('#salePreview' + success).attr("src",fileName);
         // $('#salePreview'+success).attr("src", fileName);
         // $('#fileInput').attr("value", fileName);
         console.log(success);

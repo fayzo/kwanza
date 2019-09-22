@@ -563,7 +563,9 @@ button.retweeted>.fa-retweet {
 }
 
 .showcartButt li ul li {
-    background: white;
+    /* background: white; */
+    color: white;
+    background: #717155;
     border-radius: 4px;
     position: relative;
     top: -5px;

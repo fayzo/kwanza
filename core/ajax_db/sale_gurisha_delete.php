@@ -13,20 +13,20 @@ if (isset($_POST['available']) && !empty($_POST['available'])) {
 	$discount_price= $_POST['discount_price'];
 	$price= $_POST['price'];
 	$banner= $_POST['banner'];
-    $sale->update_sale($banner,$title,$available,$discount_change,$discount_price,$price,$sale_id);
+    $gurisha->update_gurisha_sale($banner,$title,$available,$discount_change,$discount_price,$price,$sale_id);
 }
 
 if (isset($_POST['deleteTweetHome']) && !empty($_POST['deleteTweetHome'])) {
     $user_id= $_SESSION['key'];
 	$sale_id= $_POST['deleteTweetHome'];
-    $sale->deleteLikesSale($sale_id,$user_id);
+    $gurisha->delete_gurisha_LikesSale($sale_id,$user_id);
 }
 
 if (isset($_POST['showpopupdelete']) && !empty($_POST['showpopupdelete'])) {
     $user_id= $_SESSION['key'];
 	$sale_id= $_POST['showpopupdelete'];
 	$car_user_id= $_POST['deleteEvents'];
-    $cars=$sale->sale_getPopupTweet($user_id,$sale_id,$car_user_id);
+    $cars=$gurisha->sale_gurisha_getPopupTweet($user_id,$sale_id,$car_user_id);
     ?>
     <div class="sale-popup">
       <div class="wrap5">
@@ -58,7 +58,7 @@ if (isset($_POST['showpopupdelete']) && !empty($_POST['showpopupdelete'])) {
                                     <span class="description">Shared publicly - <?php echo $users->timeAgo($cars['created_on01']); ?></span>
                             </div> <!-- user-block -->
                       </div> 
-                           <div class="card-img-top img-fuild" id="salePreview<?php echo $cars['sale_id']; ?>" style="background: url('<?php echo BASE_URL_PUBLIC."uploads/sale/".$cars["photo"]; ?>')no-repeat center center;background-size:cover;width: 260px;height:178px">
+                           <div class="card-img-top img-fuild" id="salePreview<?php echo $cars['sale_id']; ?>" style="background: url('<?php echo BASE_URL_PUBLIC."uploads/sale-gurisha/".$cars["photo"]; ?>')no-repeat center center;background-size:cover;width: 260px;height:178px">
                                 <?php $banner = $cars['banner'];
                                       switch ($banner) {
                                           case $banner == 'new':
@@ -101,7 +101,7 @@ if (isset($_POST['showpopupdelete']) && !empty($_POST['showpopupdelete'])) {
                                           <input type="hidden" style="width:30px;" name="action" value="add" />
                                           <input type="hidden" style="width:30px;" name="code" value="<?php echo $cars['code']; ?>" />
                                           <input type="text" class="product-quantity" style="width:30px;" name="quantity" value="1" size="2" readonly/>
-                                          <input type="button" onclick="cart_add('add','<?php echo 'form-cartitem'.$cars['code'].'add'; ?>','<?php echo $cars['code']; ?>');" value="Add to Cart" class="btnAddAction" />
+                                          <input type="button" onclick="cart_gurisha_add('add','<?php echo 'form-cartitem'.$cars['code'].'add'; ?>','<?php echo $cars['code']; ?>');" value="Add to Cart" class="btnAddAction" />
                                       </div>
                                   </form>
                               </div><!-- card-body -->
@@ -109,7 +109,7 @@ if (isset($_POST['showpopupdelete']) && !empty($_POST['showpopupdelete'])) {
                       
                 </div><!-- card-body -->
                 <div class="card-footer"><!-- card-footer -->
-                <button class="delete-it-sale  btn btn-primary btn-md float-right ml-3" type="submit">Delete</button>
+                <button class="delete-it-sale-gurisha  btn btn-primary btn-md float-right ml-3" type="submit">Delete</button>
                 <button class="cancel-it btn btn-info btn-md  float-right">Cancel</button>
                 </div><!-- card-footer -->
             </div><!-- card end -->
@@ -120,11 +120,11 @@ if (isset($_POST['showpopupdelete']) && !empty($_POST['showpopupdelete'])) {
 <?php
 }
 
-if(!empty($_FILES['update-form-sale']['name'])){
+if(!empty($_FILES['update-form-sale-gurisha']['name'])){
 
     $id= $_POST['sale_id'];
-    $files = $_FILES['update-form-sale'];
-    $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/sale/';
+    $files = $_FILES['update-form-sale-gurisha'];
+    $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/sale-gurisha/';
     // $fileName = time().'_'.basename($_FILES['form']['name']);
     $fileNames= basename($files['name']);
     $fileExt = explode('.', $fileNames);
@@ -141,7 +141,7 @@ if(!empty($_FILES['update-form-sale']['name'])){
     // FILES TO DELETE ON ITS DESTINATIONS
     move_uploaded_file($files['tmp_name'], $targetPath);
         // FILES TO DELETE ON ITS DESTINATIONS
-        $query= $db->query("SELECT photo FROM sale WHERE sale_id= $id ");
+        $query= $db->query("SELECT photo FROM sale_gurisha WHERE sale_id= $id ");
         $rows= $query->fetch_assoc();
         $files= $uploadDir.$rows['photo'];
         // $files= getcwd().DIRECTORY_SEPARATOR.$rows['profile_img'];
@@ -153,7 +153,7 @@ if(!empty($_FILES['update-form-sale']['name'])){
                 unlink($files);
                 // echo "<script>alert('file deleted')</script>";
          }
-        $update = $db->query("UPDATE sale SET photo = '{$fileName}' WHERE sale_id = $id");
+        $update = $db->query("UPDATE sale_gurisha SET photo = '{$fileName}' WHERE sale_id = $id");
         
         //Update status
         if($update){
@@ -164,8 +164,8 @@ if(!empty($_FILES['update-form-sale']['name'])){
     //  var_dump($update);
     //  var_dump($_FILES['form']);
     //Load JavaScript function to show the upload status
-    $path= $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/sale/'.$fileName.'';
-    $strpos_countsTo = strpos($path, 'uploads/sale/'.$fileName.'');
+    $path= $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/sale-gurisha/'.$fileName.'';
+    $strpos_countsTo = strpos($path, 'uploads/sale-gurisha/'.$fileName.'');
     $path_replace= substr_replace($path,'', 0,$strpos_countsTo);
     echo '<script type="text/javascript">window.top.window.saleuploadz(' . $result . ',\'' .$path_replace. '\');</script>  ';
 }

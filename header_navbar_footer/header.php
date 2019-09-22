@@ -1026,12 +1026,65 @@
         }, false);
     }
 
+    function cart_gurisha_ItemsCategories(categories,id,user_id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'core/ajax_db/sale_gurisha_View_FecthPaginat.php?pages=' + id + '&categories=' + categories+ '&user_id=' + user_id, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                switch (categories) {
+                    case categories:
+                         var pagination = document.getElementById('sale-hides');
+                         pagination.innerHTML = xhr.responseText;
+                        break;
+                }
+            }
+        };
+          xhr.addEventListener('progress',function(e){
+             var progress= Math.round((e.loaded/e.total)*100);
+             $('.progress-navbar').show();
+             $('#progress_width').css('width',progress +'%');
+             $('#progress_width').html(progress +'%');
+         }, false);
+
+        xhr.addEventListener('load', function (e) { 
+            $('.progress-bar').removeClass('bg-info').addClass('bg-danger').html('<span> completed  <span class="fa fa-check"></span></span>');
+            setInterval(function () {
+                $(".progress-navbar").fadeOut();
+            }, 2000);
+        }, false);
+    }
+
     function cart_add(requests,formx, id) {
         var xhr = new XMLHttpRequest();
         var form = document.getElementById(formx);
         var formData = new FormData(form);
         // Add any event handlers here...
         xhr.open('POST', 'sale.php?action=' + requests + '&code=' + id, true);
+        xhr.send(formData);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                $("#responseSubmititerm").html('<div class="alert alert-success alert-dismissible fade show text-center">'+
+                     '<button class="close" data-dismiss="alert" type="button">'+
+                         '<span>&times;</span>'+
+                     '</button> <strong>SUCCESS</strong>'+' </div>');
+                var forms = document.getElementById('responseSubmitcartiterm');
+                 setInterval(function () {
+                    $("#responseSubmititerm").fadeOut();
+                            }, 2000);
+                forms.innerHTML = xhr.responseText;
+            }
+        };
+    }
+   
+
+    function cart_gurisha_add(requests,formx, id) {
+        var xhr = new XMLHttpRequest();
+        var form = document.getElementById(formx);
+        var formData = new FormData(form);
+        // Add any event handlers here...
+        xhr.open('POST', 'gurisha.php?action_gurisha=' + requests + '&code=' + id, true);
         xhr.send(formData);
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {

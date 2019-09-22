@@ -101,6 +101,9 @@ echo $sale->cart_item();
 
 echo $food->Foodcart_item();
 
+echo $gurisha->cart_gurisha_item();
+
+
 if (isset($_SESSION['employers'])){
    $employers=$domestics->employersDomestics($_SESSION['employers'],$user_id);
    $employersJobs= $domestics->employersNeedDomestics($user_id);

@@ -45,6 +45,11 @@
            <button type="button" class="btn btn-outline-primary ml-2"><a class="nav-link more p-0 m-0" href="<?php echo SHOPPING ;?>"><i style="font-size: 22px;" class="fa fa-shopping-cart nav-link p-0"></i> shopping <span class="sr-only">(current)</span></a></button>
         </li>
       <?php  } ?>
+      <?php if(isset($_SESSION["cart_item_gurisha"])){ ?>
+        <li class="nav-item">
+           <button type="button" class="btn btn-outline-primary ml-2"><a class="nav-link more p-0 m-0" href="<?php echo GURA ;?>"><i style="font-size: 22px;" class="fa fa-shopping-cart nav-link p-0"></i> gura-shop <span class="sr-only">(current)</span></a></button>
+        </li>
+      <?php  } ?>
       <?php if(isset($_SESSION['key']) && $_SESSION['key'] === $jobs['business_id'] ||  $_SESSION['key'] === $fundraisingV['user_id2'] || $_SESSION['key'] === $eventV['user_id3'] || $_SESSION['key'] === $blogV['user_id3'] || $_SESSION['key'] === $saleV['user_id01']){ ?>
         <li class="nav-item">
            <button type="button" class="btn btn-outline-primary ml-2"><a class="nav-link more p-0 m-0" href="<?php echo ACTIVITIES ;?>"><i style="font-size: 22px;" class="fa fa-telegram nav-link p-0"></i> activities <span class="sr-only">(current)</span></a></button>

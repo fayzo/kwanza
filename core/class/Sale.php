@@ -163,40 +163,50 @@ class Sale extends Home{
                         </div>
 
                 <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 pr-0">
                     
           <?php while($row= $query->fetch_array()) { ?>
 
-                         <div class="mr-2 mb-3 float-left" style="width: 252px;">
+                         <div class="mr-3 mb-3 float-left" style="width: 260px;">
                         <!-- //   width: 252px;height:178px -->
                          <!-- <div class="col-md-3"> -->
 
                           <div class="card">
-                            <div class="card-img-top img-fuild" id="salePreview<?php echo $row['sale_id']; ?>" style="background: url('<?php echo BASE_URL_PUBLIC."uploads/sale/".$row["photo"]; ?>')no-repeat center center;background-size:cover;width: 250px;height:178px">
+                             <div class="card-img-top img-fuild" id="sale_gurishaPreview<?php echo $row['sale_id']; ?>" style="width:260px;height:178px;text-align: center;z-index:1;">
+                                 <img src="<?php echo BASE_URL_PUBLIC."uploads/sale/".$row["photo"]; ?>" height="178px">
+                            </div>
+                            <div class="card-img-top img-fuild" id="sale_gurishaPreview<?php echo $row['sale_id']; ?>" style="position:absolute;z-index:2;">
+
                                 <?php $banner = $row['banner'];
                                       switch ($banner) {
                                           case $banner == 'new':
                                               # code...
-                                              echo '<img style="margin-left: -20px;" src="'.BASE_URL_LINK.'image/banner/new.png"  width="252px" height="178px"  >';
+                                              echo '<img style="margin-left: -12px;" src="'.BASE_URL_LINK.'image/banner/new.png"  width="138px" height="138px"  >';
                                               break;
                                           case $banner == 'great_deal':
                                               # code...
-                                              echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/great-deal.png"  width="252px" height="178px" >';
+                                              echo '<img style="float:right;" src="'.BASE_URL_LINK.'image/banner/great-deal.png"  width="138px" height="138px" >';
                                               break;
                                           case $banner == 'new_arrival':
                                               # code...
-                                              echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival.png"  width="252px" height="178px" >';
+                                              echo '<img style="margin-right: -10px;" src="'.BASE_URL_LINK.'image/banner/new-arrival.png"  width="138px" height="138px" >';
                                               break;
                                          default:
                                                 # code...
                                                 echo '';
                                                 break;  
                                       } ?>
-                                </div>
+                              </div>
                               <div class="card-body">
                                  <div id="response<?php echo $row['sale_id']; ?>"></div>
 
-                                  <div class="card-title"><?php echo $row["title"]; ?>
+                                  <div class="card-title">
+                                   <?php 
+                                    if (strlen($row["title"]) > 30) {
+                                    echo $row["title"] = substr($row["title"],0,30).'... ';
+                                    }else{
+                                    echo $row["title"];
+                                    } ?>
 
                                     <?php if($user_id == $row['user_id01']){ ?>
                                     <ul class="list-inline ml-2  float-right" style="list-style-type: none;">  
@@ -208,6 +218,23 @@ class Sale extends Home{
                                                         <ul style="list-style-type: none; margin:0px; margin:0px;width:250px;text-align:center;" >
                                                             <li style="list-style-type: none; margin:0px;"> 
                                                                  <label class="delete-sale"  data-sale="<?php echo $row["sale_id"];?>"  data-user="<?php echo $row["user_id01"];?>">Delete </label>
+                                                            </li>
+
+                                                            <li style="list-style-type: none;"> 
+                                                            <label for="title">
+                                                            <div class="form-row">
+                                                                <div class="col">
+                                                                        title
+                                                                    <div class="input-group">
+                                                                        <input  type="text" class="form-control form-control-sm" name="title" id="title<?php echo $row["sale_id"];?>" value="<?php echo $row["title"];?>">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text" style="padding: 0px 10px;"
+                                                                                aria-label="Username" aria-describedby="basic-addon1" ><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                                                                        </div>
+                                                                    </div> <!-- input-group -->
+                                                                </div>
+                                                            </div>
+                                                            </label>
                                                             </li>
                                                             
                                                             <li style="list-style-type: none; margin:0px;"> 
@@ -454,8 +481,10 @@ class Sale extends Home{
                 foreach ($_SESSION["cart_item"] as $item){
                     $item_price = $item["quantity"]*$item["price"];
             		?>
-            				<tr>
-                     <td style="background: url('<?php echo BASE_URL_PUBLIC ;?>uploads/sale/<?php echo $item["image"]; ?>')no-repeat center center;background-size:cover;height:80px;width:80px;position:relative">
+                     <tr>
+                     <td style="position:relative;text-align:center;">
+                     <img src="<?php echo BASE_URL_PUBLIC ;?>uploads/sale/<?php echo $item["image"]; ?>" height='80px' >
+                     <!-- <td style="background: url('< ?php echo BASE_URL_PUBLIC ;?>uploads/sale/< ?php echo $item["image"]; ?>')no-repeat center center;background-size:cover;height:80px;width:80px;position:relative"> -->
                     <div style="position:absolute;bottom:0px;left:0px;background-color:#0000006e;color:white;width: 100%;"><?php
                     if (strlen($item["name"]) > 12) {
                       echo $item["name"] = substr($item["name"],0,12).'..';
@@ -493,10 +522,10 @@ class Sale extends Home{
             } 
     }
 
-     public function update_sale($banner,$available,$discount_change,$discount_price,$price,$sale_id)
+     public function update_sale($banner,$title,$available,$discount_change,$discount_price,$price,$sale_id)
     {
         $mysqli= $this->database;
-        $query= "UPDATE sale SET banner= '$banner', buy = '$available', discount = $discount_change ,price_discount = $discount_price, price = $price WHERE sale_id= $sale_id ";
+        $query= "UPDATE sale SET title= '$title', banner= '$banner', buy = '$available', discount = $discount_change ,price_discount = $discount_price, price = $price WHERE sale_id= $sale_id ";
         $mysqli->query($query);
 
         if($query){

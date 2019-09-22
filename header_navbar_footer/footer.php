@@ -255,6 +255,7 @@
    <script src="<?php echo BASE_URL_LINK ;?>js/entertainment_addcategories.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>dist/js/slideText.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/jobs_price_post.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/sale_gurisha_delete.js"></script>
    
    <!-- <script src="<?php echo BASE_URL_LINK ;?>js/add_post_ajax.js"></script> -->
    <script src="<?php echo BASE_URL_LINK ;?>js/manage_admins_ajax.js"></script>

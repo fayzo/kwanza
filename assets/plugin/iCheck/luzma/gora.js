@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2019 at 04:51 AM
+-- Generation Time: Sep 23, 2019 at 01:31 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.2.20
 
@@ -298,13 +298,7 @@ CREATE TABLE `car` (
   `user_id3` int(11) NOT NULL,
   `created_on3` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `car`
---
-
-INSERT INTO `car` (`car_id`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `price`, `phone`, `country01`, `photo_Title_main`, `photo_Title`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `text`, `categories_car`, `discount`, `price_discount`, `banner`, `buy`, `user_id3`, `created_on3`) VALUES
-(20, 'fay', '2019_272017.jpg', '2019_26cr-c.jpg', '', '', '899900', '0746945245', 'RW', 'it gud', 'it run fast=====', '', '3', '303', '3030403', '30304', '303040305', 'it is gud', 'car_For_sale', 0, 0.00, 'empty', 'available', 61, '2019-08-14 17:47:22');
+-- Error reading data for table social_menya.car: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `social_menya`.`car`' at line 1
 
 -- --------------------------------------------------------
 
@@ -2918,7 +2912,8 @@ INSERT INTO `comment` (`comment_id`, `comment`, `comment_on`, `comment_by`, `com
 (8, 'khaled', 420, 83, '2019-09-03 16:09:07', 0, 0),
 (9, 'amakuru', 420, 83, '2019-09-03 16:09:26', 1, 1),
 (10, 'amakuru', 420, 83, '2019-09-03 16:09:26', 1, 1),
-(11, 'fafa', 428, 84, '2019-09-03 16:39:28', 0, 0);
+(11, 'fafa', 428, 84, '2019-09-03 16:39:28', 0, 1),
+(12, 'how are you', 430, 83, '2019-09-12 17:45:46', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -3305,6 +3300,42 @@ INSERT INTO `employersdomestics` (`employers_id`, `firstname_`, `lastname_`, `ph
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `entertainment`
+--
+
+CREATE TABLE `entertainment` (
+  `entertainment_id` int(11) NOT NULL,
+  `title` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `authors` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `other_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `video` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `youtube` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `categories_news` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id3` int(11) NOT NULL,
+  `created_on3` datetime NOT NULL,
+  `photo_Title_main` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title0` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title1` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title2` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title3` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title4` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title5` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `entertainment`
+--
+
+INSERT INTO `entertainment` (`entertainment_id`, `title`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `text`, `categories_news`, `user_id3`, `created_on3`, `photo_Title_main`, `photo_Title`, `photo_Title0`, `photo_Title1`, `photo_Title2`, `photo_Title3`, `photo_Title4`, `photo_Title5`) VALUES
+(27, 'igitaramo cyu mwaka', 'fayzo', '2019_32fam2.png', '2019_14fam0.png', '', '', 'nibisazwe kubona ibintu bidasazwe', 'break-news', 61, '2019-09-16 22:51:56', 'nice', 'dv=====', '', '', '', '', '', ''),
+(28, 'umwaka hagiye kuza inde ??', 'fayzo', '2019_14baby.png', '2019_99baby3.png', '', '', 'umuntu uiye kuza mu rwanda mufore ninde ??', 'break-news', 61, '2019-09-16 23:38:39', 'ari kureba', 'yambi=====', '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `events`
 --
 
@@ -3458,7 +3489,8 @@ INSERT INTO `follow` (`follow_id`, `sender`, `receiver`, `follow_on`) VALUES
 (61, 61, 68, '2019-09-02 19:00:00'),
 (62, 83, 61, '2019-09-03 16:07:35'),
 (63, 84, 83, '2019-09-03 16:22:48'),
-(64, 83, 84, '2019-09-03 16:29:34');
+(64, 83, 84, '2019-09-03 16:29:34'),
+(65, 61, 83, '2019-09-11 20:17:32');
 
 -- --------------------------------------------------------
 
@@ -4028,20 +4060,11 @@ CREATE TABLE `jobs` (
 --
 
 INSERT INTO `jobs` (`job_id`, `job_title`, `job_summary`, `responsibilities_duties`, `qualifications_skills`, `business_id`, `conditions`, `categories_jobs`, `deadline`, `website`, `created_on`, `turn`) VALUES
-(2, 'akazi', 'gukora', 'gukora', 'gukora', 61, 'gukora', 'Featured', '22', 'gukora', '2019-05-25 00:00:00', 'on'),
-(3, 'a', 'a', 'a', 'a', 61, 'a', 'Tenders', 'a', 'a', '2019-05-25 00:00:00', 'on'),
-(7, 'a', '<p>a</p>', '<p>a</p>', '<p>a</p>', 61, '<p>a</p>', 'Consultancy', '<p>ad</p>', 'gukora', '2019-05-26 13:34:55', 'on'),
-(8, 'ddfdf', '<p>dfdf</p>', '<p>fdf</p>', '<p>dfdf</p>', 61, '<p>dfdf</p>', 'Internships', '<p>dfdf</p>', 'dfdf', '2019-05-26 15:34:43', 'on'),
-(19, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:44', 'on'),
-(23, 'plumber', '<p>\n\n<div><div>  &lt;h4 &gt;Job Summary: &lt;/h4&gt;</div><div>                             &lt;p&gt; Example of an Accountant job summary. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                &lt;li&gt;Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to', '<p>\n\n<div><div>  &lt;h4&gt;Responsibilities and Duties: &lt;/h4&gt;</div><div>                             &lt;p &gt;Examples of an Accountant Responsibilities. &lt;/p&gt;</div><div>                             &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                                 &lt;li&gt;Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports', '<p>\n\n<div><div>&lt;h4 &gt;Qualifications and Skills: &lt;/h4&gt;</div><div>                           &lt;p &gt;Examples of an Accountant skills. &lt;/p&gt;</div><div>                           &lt;ul style=\"list-style-type:dot\"&gt;</div><div>                               &lt;li&gt;2+ years accounting experience&lt;/li&gt;</div><div>                               &lt;li&gt;Expertise with QuickBooks&lt;/li&gt;</div><div>                               &lt;li&gt;Extensive knowledge of US GAAP&lt;/', 64, '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Terms and conditions: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Terms and conditions: &lt;/p&gt;</div><div>                            &lt;p&gt;Include a list of hard and soft skills. Of course, the job ', 'Featured', '<p>\n\n<div><div> &lt;h4 class=\"card-title\"&gt;Deadline to submit: &lt;/h4&gt;</div><div>                            &lt;p class=\"card-title\"&gt;Explaination of Deadline to submit: &lt;/p&gt;</div><div>', '2+ yearsâ€™ Data mining experience', '2019-07-01 08:47:45', 'off'),
-(25, 'Accountant', '<p><ul><li>\r\n\r\n<div><p>Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to-day bookkeeping. Weâ€™re an energetic company and are looking for a passionate individual to join our organization and revitalize our record keeping and bring more organization to our day to day financials.</p></div></li><li><p>\r\n', '<p>\r\n\r\n<div><div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li></ul><ul><li>Analyze and report on financial status including income statement variances, communicating financial results to management, budget preparation and analysis</li></ul><ul>', '<p>\n\n<div><div>2+ years accounting experience</div><div>Expertise with QuickBooks</div><div>Extensive knowledge of US GAAP</div><div>Advanced computer skills in MS Office, accounting software and databases</div><div>Excellent organizational, problem-solving, project management and communication skills</div><div>Additional experience in Audit and International accounting</div><div>Experience with SaaS companies</div><div>CPA certification&nbsp;</div></div>\n\n<br></p>', 64, '<p>\n\n<div><div><ul><li>Include a list of hard and soft skills. Of course, the job description should specify education, previous job experience, certifications and technical skills required for the role. You may also include soft skills, like communication and problem solving, as well as personality', 'Public', '<p>\n\n<div><div>Include a list of hard and soft skills. Of course, the job description should specify education, previous job experience, certifications and technical skills required for the role. You ', 'wwww.dgsfg.com', '2019-07-12 17:22:06', 'off'),
-(26, 'Senior Staff Accountant ', '<p><ul><li>\r\n\r\n<div><p>Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to-day bookkeeping. Weâ€™re an energetic company and are looking for a passionate individual to join our organization and revitalize our record keeping and bring more organization to our day to day financials.</p></div></li><li><p>\r\n', '<p>\r\n\r\n<div><div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li></ul><ul><li>Analyze and report on financial status including income statement variances, communicating financial results to management, budget preparation and analysis</li></ul><ul>', '<p>\n\n<div><div>2+ years accounting experience</div><div>Expertise with QuickBooks</div><div>Extensive knowledge of US GAAP</div><div>Advanced computer skills in MS Office, accounting software and databases</div><div>Excellent organizational, problem-solving, project management and communication skills</div><div>Additional experience in Audit and International accounting</div><div>Experience with SaaS companies</div><div>CPA certification&nbsp;</div></div>\n\n<br></p>', 64, '<p>\n\n<div><div><ul><li>Include a list of hard and soft skills. Of course, the job description should specify education, previous job experience, certifications and technical skills required for the role. You may also include soft skills, like communication and problem solving, as well as personality', 'Public', '<p>\n\n<div><div>Include a list of hard and soft skills. Of course, the job description should specify education, previous job experience, certifications and technical skills required for the role. You ', 'wwww.dgsfg.com', '2019-07-12 17:22:37', 'on'),
-(27, 'Accounts Payable Specialist', '<p>\n\n<div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>\n\n<div><p>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessaryï»¿</p></div></li><li>\n\n<di', '<p><ul><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\n\n<br></li><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</', '<h1><b>niceï»¿</b><b></b></h1><p><ul><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\n\n</li><li><p>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial r', 64, '<p><small>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\n\n</small><br></p><p>\n\n<div><div>Perform monthly', 'Featured', '<p><ul><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewi', 'goood', '2019-07-12 17:46:31', 'on'),
-(28, 'Senior Staff Accountant', '<p><div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li>\r\n<li><div><p>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessaryï»¿</p></div></li>\r\n</ul></di', '<p><ul><li>\r\n\r\n<div><div>xPerform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\r\n\r\n<br></li><li>\r\n\r\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as nece', '<h1><b>niceï»¿</b><b></b></h1><p><ul><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\n\n</li><li><p>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial r', 64, '<p><small>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</div></div>\n\n</small><br></p><p>\n\n<div><div>Perform monthly', 'Featured', '<p><ul><li>\n\n<div><div>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewi', 'goood', '2019-07-12 17:46:58', 'on'),
-(29, 'amakuru', '<p><ul><li>adad</li><li>adad</li><li>adada</li><li>adad</li><li>adad</li><li>ad</li></ul></p>', '<p><ul><li>ama</li><li>abab</li><li>abab</li><li>abab</li><li>abab</li><li>abab</li></ul></p>', '<p><ul><li>dadad</li><li>dada</li><li>dad</li><li>dada</li><li>dadadvad</li><li>dafaav</li></ul></p>', 64, '<p><ul><li>adfadfad</li><li>adfafadf</li><li>afadfadf</li><li>dfadf</li><li>fadfadf</li><li>dfadfad</li><li>adfadbd</li></ul></p>', 'Tenders', '<p><ul><li>vsfbfvsfa</li><li>afavabfs</li><li>adfadvdafadfa</li><li>adfadvazc</li><li>adfadfadfad</li><li>vadvadfzcfz</li><li>adfdvv</li></ul></p>', 'dvadvf', '2019-07-12 18:25:40', 'on'),
-(30, 'Accountant', '<p>\n\n<div><div><ul><li>Weâ€™re looking for an organized and driven Staff Accountant to join our growing team at our company. The Staff Accountant position will work closely with our other accountants and operations personnel and handle day-to-day bookkeeping. Weâ€™re an energetic company and are looking for a passionate individual to join our organization and revitalize our record keeping and bring more organization to our day to day financials.</li><li>Weâ€™re looking for an organized and drive', '<p>\n\n<div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly a', '<p>\n\n<div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary Perform monthly, quarterly and annua', 64, '<p>\n\n<div><ul><li>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/support as necessary</li><li>Perform monthly, quarterly and annual accounting activi', 'Tenders', '<p>\n\n<div><ul><li><i>Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing', 'Perform monthly, quarterly and annual accounting activities including reconciliations of bank and credit card accounts, coordination and completion of annual audits, and reviewing financial reports/su', '2019-07-12 18:35:34', 'on'),
 (31, 'finance', '<p><ul><li>bite</li><li>amakuru</li><li>uraho</li><li>waramutse</li></ul></p>', '<p><ul><li>uraho</li><li>uraho</li><li>uraho</li></ul></p>', '<h1>umunota umwe fata</h1><p><ul><li>ubwoba</li><li>urwanwa</li></ul></p>', 61, '<p>uraho bebe</p><p><p><p><ul><li>never whenï»¿</li></ul><p><blockquote>hoya rwinoï»¿</blockquote></p></p><p>ï»¿<br></p></p></p>', 'Consultancy', '2019-09-09', 'www.urwego.com', '2019-09-09 14:44:05', 'on'),
-(32, 'finance', '<p><ul><li>bite</li><li>amakuru</li><li>uraho</li><li>waramutse</li></ul></p>', '<p><ul><li>uraho</li><li>uraho</li><li>uraho</li></ul></p>', '<h1>umunota umwe fata</h1><p><ul><li>ubwoba</li><li>urwanwa</li></ul></p>', 61, '<p>uraho bebe</p><p><p><p><ul><li>never whenï»¿</li></ul><p><blockquote>hoya rwinoï»¿</blockquote></p></p><p>ï»¿<br></p></p></p>', 'Consultancy', '2019-09-09', 'www.urwego.com', '2019-09-09 14:44:05', 'on');
+(32, 'finance', '<p><ul><li>bite</li><li>amakuru</li><li>uraho</li><li>waramutse</li></ul></p>', '<p><ul><li>uraho</li><li>uraho</li><li>uraho</li></ul></p>', '<h1>umunota umwe fata</h1><p><ul><li>ubwoba</li><li>urwanwa</li></ul></p>', 61, '<p>uraho bebe</p><p><p><p><ul><li>never whenï»¿</li></ul><p><blockquote>hoya rwinoï»¿</blockquote></p></p><p>ï»¿<br></p></p></p>', 'Consultancy', '2019-09-09', 'www.urwego.com', '2019-09-09 14:44:05', 'on'),
+(33, 'Data Analyst', '<p>\n\n<div><div>Open with a strong, attention-grabbing summary. Your summary should provide an overview of your company and expectations for the position. Hook your reader with details about what makes your company unique. Your job description is an introduction to your company and your employer brand. Include details about your company culture to sum up why a candidate would love to work for you. Include an exact job location. Provide an exact job location to optimize your job posting so it appe', '<p>\n\n<div><ul><li>Use statistical methods to analyze data and generate useful business reports</li><li>Work with management team to create a prioritized list of needs for each business segment</li><li>Identify and recommend new ways to save money by streamlining business processes</li><li>Use data to create models that depict trends in the customer base and the consumer population as a whole</li><li>Work with departmental managers to outline the specific data needs for each business method analy', '<p>\n\n<div><div><ul><li>Bachelorâ€™s Degree in Mathematics or Computer Engineering</li><li>2+ yearsâ€™ Data mining experience</li><li>3+ years in a data analyst role</li><li>Ability to collaborate effectively and work as part of a team</li><li>Strong attention to detail&nbsp;</li></ul></div></div>\n\n<br></p>', 61, '<p>\n\n<li>Bachelorâ€™s Degree in Mathematics or Computer Engineering</li><li>2+ yearsâ€™ Data mining experience</li><li>3+ years in a data analyst role</li><li>Ability to collaborate effectively and work as part of a team</li><li>Strong attention to detail </li>\n\n<br></p>', 'Tenders', '2019-09-12', 'www.gaho.rw', '2019-09-12 16:25:34', 'on'),
+(34, 'Clinical Data Analyst', '<p>\n\n<div><div>Open with a strong, attention-grabbing summary. Your summary should provide an overview of your company and expectations for the position. Hook your reader with details about what makes your company unique. Your job description is an introduction to your company and your employer brand. Include details about your company culture to sum up why a candidate would love to work for you. Include an exact job location. Provide an exact job location to optimize your job posting so it appe', '<p>\n\n<div><ul><li>Use statistical methods to analyze data and generate useful business reports</li><li>Work with management team to create a prioritized list of needs for each business segment</li><li>Identify and recommend new ways to save money by streamlining business processes</li><li>Use data to create models that depict trends in the customer base and the consumer population as a whole</li><li>Work with departmental managers to outline the specific data needs for each business method analy', '<p>\n\n<div><div><ul><li>Bachelorâ€™s Degree in Mathematics or Computer Engineering</li><li>2+ yearsâ€™ Data mining experience</li><li>3+ years in a data analyst role</li><li>Ability to collaborate effectively and work as part of a team</li><li>Strong attention to detail&nbsp;</li></ul></div></div>\n\n<br></p>', 61, '<p>\n\n<li>Bachelorâ€™s Degree in Mathematics or Computer Engineering</li><li>2+ yearsâ€™ Data mining experience</li><li>3+ years in a data analyst role</li><li>Ability to collaborate effectively and work as part of a team</li><li>Strong attention to detail </li>\n\n<br></p>', 'Internships', '2019-09-12', 'www.gaho.rw', '2019-09-12 16:26:02', 'on'),
+(35, 'Quantitative Analyst', '<p>\n\n<div><div>Open with a strong, attention-grabbing summary. Your summary should provide an overview of your company and expectations for the position. Hook your reader with details about what makes your company unique. Your job description is an introduction to your company and your employer brand. Include details about your company culture to sum up why a candidate would love to work for you. Include an exact job location. Provide an exact job location to optimize your job posting so it appe', '<p>\n\n<div><ul><li>Use statistical methods to analyze data and generate useful business reports</li><li>Work with management team to create a prioritized list of needs for each business segment</li><li>Identify and recommend new ways to save money by streamlining business processes</li><li>Use data to create models that depict trends in the customer base and the consumer population as a whole</li><li>Work with departmental managers to outline the specific data needs for each business method analy', '<p>\n\n<div><div><ul><li>Bachelorâ€™s Degree in Mathematics or Computer Engineering</li><li>2+ yearsâ€™ Data mining experience</li><li>3+ years in a data analyst role</li><li>Ability to collaborate effectively and work as part of a team</li><li>Strong attention to detail&nbsp;</li></ul></div></div>\n\n<br></p>', 61, '<p>\n\n<li>Bachelorâ€™s Degree in Mathematics or Computer Engineering</li><li>2+ yearsâ€™ Data mining experience</li><li>3+ years in a data analyst role</li><li>Ability to collaborate effectively and work as part of a team</li><li>Strong attention to detail </li>\n\n<br></p>', 'Internships', '2019-09-12', 'www.gaho.rw', '2019-09-12 16:26:23', 'on');
 
 -- --------------------------------------------------------
 
@@ -4073,7 +4096,10 @@ INSERT INTO `likes` (`like_id`, `like_by`, `like_on`) VALUES
 (13, 61, 413),
 (14, 61, 421),
 (15, 83, 426),
-(16, 61, 429);
+(16, 61, 429),
+(17, 83, 432),
+(18, 83, 394),
+(19, 83, 428);
 
 -- --------------------------------------------------------
 
@@ -4120,9 +4146,10 @@ INSERT INTO `message` (`message_id`, `message`, `message_to`, `message_from`, `m
 (125, 'mxd', 61, 69, '2019-08-09 09:42:07', 1),
 (126, 'uraho', 61, 69, '2019-08-09 09:49:19', 1),
 (127, 'boss  you   are  not    good', 83, 84, '2019-09-03 16:24:53', 1),
-(128, 'how am  not  good', 83, 84, '2019-09-03 16:26:45', 1),
 (129, 'how am i not good', 84, 83, '2019-09-03 16:28:33', 1),
-(130, 'lf   love', 83, 84, '2019-09-03 16:34:22', 0);
+(130, 'lf   love', 83, 84, '2019-09-03 16:34:22', 1),
+(131, 'What!', 84, 83, '2019-09-12 17:35:22', 0),
+(132, 'poop!', 84, 83, '2019-09-12 17:57:31', 0);
 
 -- --------------------------------------------------------
 
@@ -4153,25 +4180,13 @@ CREATE TABLE `movies` (
 --
 
 INSERT INTO `movies` (`movies_id`, `title_movies`, `director`, `actors`, `country`, `photo`, `latest_movies`, `date_release`, `duration`, `categories_movies`, `additioninformation`, `video`, `youtube`, `user_id3`, `created_on3`) VALUES
-(3, 'harry potter', 'john', 'miley', 'c', '2019_58487a.jpg', 'america-movies', '0000-00-00', '', 'Action', 'cs', '2019_53vlc-.mp4', '', 61, '2019-06-13 02:33:32'),
-(4, 'harry potter', 'john', 's', 'c', '2019_56482d.jpg', 'america-movies', '0000-00-00', '', 'Adventure', 's', '2019_50vlc-.mp4', '', 61, '2019-06-13 02:40:29'),
-(5, 'king kong', 'john', 'miley', 'a', '2019_1477e5.jpg', 'Tv-Series', '2019-06-02', '33mn', 'Tv-Series', 'cmb', '2019_95vlc-.mp4', '', 61, '2019-06-13 07:46:35'),
-(6, 'creed', 'stalon', 'miley', 'america', '2019_898750.jpg', 'america-movies', '2019-01-10', '120 min', 'Action', 'nice', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:04:06'),
-(7, 'hellboy', 'john', 'miley', 'c', '2019_267fcb.jpg', 'america-movies', '2019-06-13', '120 min', 'Action', 'nice', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:05:17'),
-(8, 'c', 'john', 'c', 'c', '2019_2933ba.jpg', 'america-movies', '2019-06-13', '120 min', 'Action', 'nice', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:06:01'),
-(9, 'king kong', 'john', 'miley', 'c', '2019_334eaf.jpg', 'america-movies', '2019-06-13', '120 min', 'Action', 'nice', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:06:39'),
-(10, 'c', 'john', 'miley', 'c', '2019_819f28.jpg', 'america-movies', '2019-06-13', '120 min', 'Action', 'nice', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:07:13'),
-(11, 'c', 'john', 'miley', 'c', '2019_28739c.jpg', 'america-movies', '2019-06-13', '120 min', 'Action', 'nice', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:07:52'),
-(12, 'creed', 'stalon', 'c', 'c', '2019_19a860.jpg', 'america-movies', '2019-06-13', '120 min', 'Action', 'nice', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:08:29'),
-(13, 'c', 'john', 'd', 'c', '2019_35aa75.jpg', 'america-movies', '2019-06-13', '120 min', 'Action', 'b', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:13:25'),
-(14, 'c', 'john', 'miley', 'c', '2019_36c02b.jpg', 'america-movies', '2019-06-13', '120 min', 'Action', 'nice', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:19:22'),
-(15, 'c', 'john', 'miley', 'c', '2019_94d87e.jpg', 'america-movies', '2019-06-13', '120 min', 'Action', 'nc', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:20:09'),
-(16, 'c', 'john', 'd', 'c', '2019_36e77e.jpg', 'america-movies', '2019-06-13', '120 min', 'Action', 'nice', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:20:43'),
-(17, 'c', 'john', 'miley', 'c', '2019_22eeba.jpg', 'america-movies', '2019-06-13', '120 min', 'Action', 'nc', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:21:44'),
-(18, 'c', 'john', 'miley', 'c', '2019_33f0a7.jpg', 'america-movies', '2019-06-13', '120 min', 'Action', 'v', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:24:40'),
-(19, 'c', 'john', 'miley', 'c', '2019_83fe2a.jpg', 'america-movies', '2019-06-13', '120 min', 'Action', 'b', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:25:14'),
-(20, 'c', 'john', 'miley', 'c', '2019_88oper.png', 'america-movies', '2019-06-13', '120 min', 'Action', 'x', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:25:41'),
-(21, 'c', 'john', 'miley', 'c', '2019_56oper.png', 'america-movies', '2019-06-13', '120 min', 'Action', 'bf', '2019_53vlc-.mp4', '', 61, '2019-06-13 14:26:13');
+(22, 'Bharat', 'ali bahazad alih', 'salman khan , katrina', 'india', '2019_580d85.jpg', 'america-movies', '2018-10-13', '120 min', 'Action', 'it is a movies from india which salman khan want to rescue his best friend', '2019_3601.mp4', '', 69, '2019-09-21 11:44:23'),
+(23, 'abominable', 'johnson', 'pstric, bebe,khaled', 'USA', '2019_981.jpg', 'Anime-Series', '2019-09-24', '120 min', 'Animation', 'it is a lovely animation which a boy love his animal and being his best friend', '2019_3601.mp4', '', 69, '2019-09-21 11:49:43'),
+(24, 'spiderman far for home', 'mr ali', 'samuel jackson', 'USA', '2019_881b4a.jpg', 'america-movies', '2018-09-08', '120 min', 'Action', 'it is a super movies which spiderman take a holiday in italy', '2019_3601.mp4', '', 69, '2019-09-21 11:59:33'),
+(25, 'the little mermaid', 'mr ali', 'jaquelline', 'USA', '2019_741f92.jpg', 'america-movies', '2019-09-21', '120 min', 'Drama', 'it a lvely story', '2019_3601.mp4', '', 69, '2019-09-21 12:01:44'),
+(26, 'stork', 'mr ali', 'houston', 'USA', '2019_233.jpg', 'Cartoons-Movies', '2019-09-13', '120 min', 'Animation', 'it a good movies a bird rescue a child in dest', '2019_3601.mp4', '', 69, '2019-09-21 12:04:47'),
+(27, 'xmen dark phonix', 'mr ali', 'ali ,kali', 'USA', '2019_7804b9.jpg', 'america-movies', '2019-09-15', '120 min', 'Action', 'it an action movies which it represented', '2019_3601.mp4', '', 69, '2019-09-21 12:09:57'),
+(28, 'steven universe', 'mr ali', 'ali,kali,huston', 'USA', '2019_734.jpg', 'Anime-Series', '2019-09-20', '120 min', 'Anime-Series', 'it a good movies', '2019_3601.mp4', '', 69, '2019-09-21 12:12:59');
 
 -- --------------------------------------------------------
 
@@ -4207,7 +4222,10 @@ CREATE TABLE `news` (
 
 INSERT INTO `news` (`news_id`, `title`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `text`, `categories_news`, `user_id3`, `created_on3`, `photo_Title_main`, `photo_Title`, `photo_Title0`, `photo_Title1`, `photo_Title2`, `photo_Title3`, `photo_Title4`, `photo_Title5`) VALUES
 (22, 'Title of a longer featured blog post', 'fayzo', '2019_141.jpg', '2019_402.jpg=2019_303.jpg', '', '', 'dsfs', 'Technology', 61, '2019-08-31 08:55:04', 'ari kwirukanka', 'ari kwiga=afite gitari====', '', '', '', '', '', ''),
-(23, 'isinzi', 'fayzo', '2019_62capt.png', '2019_78capt.png', '', '', 'gud', 'science', 61, '2019-08-31 07:38:34', 'umwana', 'bebe=====', '', '', '', '', '', '');
+(23, 'isinzi', 'fayzo', '2019_62capt.png', '2019_78capt.png', '', '', 'gud', 'science', 61, '2019-08-31 07:38:34', 'umwana', 'bebe=====', '', '', '', '', '', ''),
+(24, 'urubyiruko rurikwihagira imirimo', 'fayzo', '2019_16baby.png', '2019_57fam1.png', '', '', 'abanyarwanda baba i muhanga naba musaze naba burera i gicumbi', 'Culture', 61, '2019-09-11 07:58:23', 'afite umwana', 'nundi=====', '', '', '', '', '', ''),
+(25, 'abanyakarogi bashaka ifumbire', 'fayzo', '2019_695454.jpeg', '2019_1291xb.jpg', '', '', 'bashaka ubufasha mu kubona imfumbire va ruganda', 'Culture', 61, '2019-09-11 08:06:13', 'ubutaka', 'bugahirwa mo imfumbire=====', '', '', '', '', '', ''),
+(26, 'abanyakarogi bashaka ifumbire', 'fayzo', '2019_515454.jpeg', '2019_2291xb.jpg', '', '', 'bashaka ubufasha mu kubona imfumbire va ruganda', 'Culture', 61, '2019-09-11 08:06:13', 'ubutaka', 'bugahirwa mo imfumbire=====', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -4293,8 +4311,16 @@ INSERT INTO `notification` (`notification_id`, `notification_for`, `notification
 (123, 66, 61, 421, 'likes', '2019-08-25 08:19:25', 1),
 (124, 68, 61, 68, 'follow', '2019-09-02 19:00:00', 0),
 (125, 61, 83, 61, 'follow', '2019-09-03 16:07:35', 1),
-(126, 83, 84, 83, 'follow', '2019-09-03 16:22:48', 0),
-(127, 84, 83, 84, 'follow', '2019-09-03 16:29:34', 0);
+(126, 83, 84, 83, 'follow', '2019-09-03 16:22:48', 1),
+(127, 84, 83, 84, 'follow', '2019-09-03 16:29:34', 0),
+(128, 83, 61, 83, 'follow', '2019-09-11 20:17:32', 1),
+(129, 61, 83, 394, 'likes', '2019-09-12 17:43:48', 1),
+(130, 84, 83, 428, 'likes', '2019-09-12 17:58:11', 0),
+(134, 61, 66, 455, 'retweet', '2019-09-14 12:50:18', 1),
+(135, 61, 66, 455, 'retweet', '2019-09-14 12:50:18', 1),
+(136, 66, 66, 457, 'retweet', '2019-09-14 13:57:04', 0),
+(137, 66, 66, 457, 'retweet', '2019-09-14 13:57:04', 0),
+(138, 66, 61, 463, 'mention', '2019-09-17 11:39:15', 0);
 
 -- --------------------------------------------------------
 
@@ -4337,7 +4363,8 @@ CREATE TABLE `post_dislike` (
 INSERT INTO `post_dislike` (`like_id_`, `like_on_`, `like_by_`) VALUES
 (1, 1, 61),
 (2, 9, 83),
-(3, 10, 83);
+(3, 10, 83),
+(4, 11, 83);
 
 -- --------------------------------------------------------
 
@@ -4582,15 +4609,69 @@ INSERT INTO `sale` (`sale_id`, `title`, `code`, `price`, `price_discount`, `disc
 (2, 'inkweto', 'inkweto', 445.00, 0, 0, '', 0, '0787345243243', '2019_86air-.jpg', '2019_63air-.jpg=2019_12air-.jpg', '', '', 'nice one', 'clothes', 61, '2019-06-11 06:30:42', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
 (3, 'samsung', 'igisavi', 4000.00, 0, 0, '', 0, '0787345243243', '2019_3671p8.jpg', '2019_380302.jpg', '', '', 'nice', 'sports', 61, '2019-06-11 06:39:30', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
 (4, 'style', '9098', 400.00, 0, 0, '', 0, '0787345243243', '2019_372367.jpg', '2019_64set-.jpg=2019_33sigm.jpg', '', '', 'good', 'health_beauty', 61, '2019-06-11 13:13:26', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
-(5, 'FinePix Pro2 3D Camera', '3DcAM01', 1500.00, 0, 0, '', 0, '0787345243243', '2019_74camera.jpg', '2019_74camera.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:49:02', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
-(6, 'EXP Portable Hard Drive', 'USB02', 490000.00, 50000, 9, 'sold', 0, '0787345243243', '977baby2.png', '2019_24exte.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:50:23', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
-(7, 'Luxury Ultra thin Wrist Watch', 'wristWear03', 4000.00, 58000, 23, 'sold', 0, '0787345243243', '266baby.png', '2019_38watch.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:51:28', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'empty'),
-(8, 'XP 1155 Intel Core Laptop', 'LPN45', 800.00, 0, 0, '', 0, '0787345243243', '2019_39laptop.jpg', '2019_33laptop.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:52:34', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new_arrival'),
+(5, 'FinePix Pro2 3D Camera', '3DcAM01', 1500.00, 0, 0, '', 0, '0787345243243', '44841kx.jpg', '2019_74camera.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:49:02', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(6, 'EXP Portable Hard Drive', 'USB02', 490000.00, 50000, 9, 'sold', 0, '0787345243243', '389imag.jpg', '2019_24exte.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:50:23', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(7, 'Luxury Ultra thin Wrist Watch by', 'wristWear03', 4000.00, 58000, 23, 'sold', 0, '0787345243243', '45404b9.jpg', '2019_38watch.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:51:28', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'empty'),
+(8, 'XP 1155 Intel Core Laptop', 'LPN45', 800.00, 0, 0, 'sold', 0, '0787345243243', '6185dd3.png', '2019_33laptop.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:52:34', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
 (9, 'isahani', 'xfg54', 2464.00, 0, 0, '', 0, '0787345243243', '2019_6131enum.jpg', '2019_8071p8.jpg', '', '', 'is in good shape', 'home_garden', 61, '2019-07-01 16:31:57', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
 (10, 'isahani', 'xfg54', 2464.00, 0, 0, '', 0, '0787345243243', '2019_3731enum.jpg', '2019_2571p8.jpg', '', '', 'is in good shape', 'home_garden', 61, '2019-07-01 16:32:05', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
 (11, 'isafiriya', 'wte54', 4635.00, 0, 0, '', 0, '0787345243243', '2019_6851qs.jpg', '2019_7551xj.jpg', '', '', 'fgf', 'home_garden', 61, '2019-07-01 16:36:10', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
 (12, 'isafiriya', 'wte54', 4635.00, 0, 0, '', 0, '0787345243243', '2019_6251qs.jpg', '2019_2351xj.jpg', '', '', 'fgf', 'home_garden', 61, '2019-07-01 16:36:17', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
 (13, 'car', 'sf53', 4000.00, 0, 0, '', 0, '0787345243243', '2019_820032.jpeg', '2019_560032.jpeg', '', '', 'fdg', 'car', 61, '2019-07-01 16:37:30', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sale_gurisha`
+--
+
+CREATE TABLE `sale_gurisha` (
+  `sale_id` int(11) NOT NULL,
+  `title` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` double(10,2) NOT NULL,
+  `price_discount` int(11) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `buy` char(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `phone` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `other_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `video` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `youtube` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title_main` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `categories_sale` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id01` int(11) NOT NULL,
+  `created_on01` datetime NOT NULL,
+  `country01` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `province` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `districts` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sector` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cell` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `village` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `banner` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sale_gurisha`
+--
+
+INSERT INTO `sale_gurisha` (`sale_id`, `title`, `code`, `price`, `price_discount`, `discount`, `buy`, `quantity`, `phone`, `photo`, `other_photo`, `video`, `youtube`, `text`, `photo_Title_main`, `photo_Title`, `categories_sale`, `user_id01`, `created_on01`, `country01`, `province`, `districts`, `sector`, `cell`, `village`, `banner`) VALUES
+(2, 'inkweto', 'inkweto', 445.00, 0, 0, '', 0, '0787345243243', '2019_86air-.jpg', '2019_63air-.jpg=2019_12air-.jpg', '', '', 'nice one', '', '', 'clothes', 61, '2019-06-11 06:30:42', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(3, 'samsung', 'igisavi', 4000.00, 0, 0, '', 0, '0787345243243', '2019_3671p8.jpg', '2019_380302.jpg', '', '', 'nice', '', '', 'sports', 61, '2019-06-11 06:39:30', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(4, 'style', '9098', 400.00, 0, 0, '', 0, '0787345243243', '2019_372367.jpg', '2019_64set-.jpg=2019_33sigm.jpg', '', '', 'good', '', '', 'health_beauty', 61, '2019-06-11 13:13:26', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(5, 'FinePix Pro2 3D Camera', '3DcAM01', 1500.00, 0, 0, '', 0, '0787345243243', '44841kx.jpg', '2019_74camera.jpg', '', '', 'good quality', '', '', 'electronics', 61, '2019-06-22 00:49:02', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(6, 'EXP Portable Hard Drive', 'USB02', 490000.00, 50000, 9, 'sold', 0, '0787345243243', '109down.jpg', '2019_24exte.jpg', '', '', 'good quality', '', '', 'electronics', 61, '2019-06-22 00:50:23', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(7, 'Luxury Ultra thin Wrist Watchs', 'wristWear03', 4000.00, 58000, 23, 'sold', 0, '0787345243243', '410ipho.png', '2019_38watch.jpg', '', '', 'good quality', '', '', 'electronics', 61, '2019-06-22 00:51:28', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'empty'),
+(8, 'XP 1155 Intel Core Laptop', 'LPN45', 800.00, 0, 0, 'sold', 0, '0787345243243', '9281298.jpg', '2019_33laptop.jpg', '', '', 'good quality', '', '', 'electronics', 61, '2019-06-22 00:52:34', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(9, 'isahani', 'xfg54', 2464.00, 0, 0, '', 0, '0787345243243', '2019_6131enum.jpg', '2019_8071p8.jpg', '', '', 'is in good shape', '', '', 'home_garden', 61, '2019-07-01 16:31:57', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(10, 'isahani', 'xfg54', 2464.00, 0, 0, '', 0, '0787345243243', '2019_3731enum.jpg', '2019_2571p8.jpg', '', '', 'is in good shape', '', '', 'home_garden', 61, '2019-07-01 16:32:05', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(11, 'isafiriya', 'wte54', 4635.00, 0, 0, '', 0, '0787345243243', '2019_6851qs.jpg', '2019_7551xj.jpg', '', '', 'fgf', '', '', 'home_garden', 61, '2019-07-01 16:36:10', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(12, 'isafiriya', 'wte54', 4635.00, 0, 0, '', 0, '0787345243243', '2019_6251qs.jpg', '2019_2351xj.jpg', '', '', 'fgf', '', '', 'home_garden', 61, '2019-07-01 16:36:17', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(13, 'car', 'sf53', 4000.00, 0, 0, '', 0, '0787345243243', '2019_820032.jpeg', '2019_560032.jpeg', '', '', 'fdg', '', '', 'car', 61, '2019-07-01 16:37:30', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(15, 'samsung m1', 'asdjcd97', 80000.00, 0, 0, '', 0, '0784636747', '2019_2761u0.jpg', '2019_32d-01.jpg', '', '', 'used irakora neza', 'irakora', 'wallpaper=====', 'electronics', 61, '2019-09-22 10:45:42', 'RW', '1', '102', '10208', '1020803', '102080302', '');
 
 -- --------------------------------------------------------
 
@@ -5415,6 +5496,16 @@ CREATE TABLE `trends` (
   `created_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `trends`
+--
+
+INSERT INTO `trends` (`trend_id`, `hashtag`, `target`, `created_on`) VALUES
+(1, 'amakuru', '447', '2019-09-14 10:00:41'),
+(2, 'bite', '461', '2019-09-15 09:32:14'),
+(3, 'amakuru', '462', '2019-09-15 10:16:34'),
+(4, 'bite', '463', '2019-09-17 11:39:15');
+
 -- --------------------------------------------------------
 
 --
@@ -5449,6 +5540,7 @@ CREATE TABLE `tweets` (
   `retweet_id` int(11) NOT NULL,
   `retweet_by` int(11) NOT NULL,
   `tweet_image` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tweet_image_size` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `likes_counts` int(11) NOT NULL,
   `retweet_counts` int(11) NOT NULL,
   `posted_on` datetime NOT NULL,
@@ -5459,88 +5551,110 @@ CREATE TABLE `tweets` (
 -- Dumping data for table `tweets`
 --
 
-INSERT INTO `tweets` (`tweet_id`, `status`, `tweetBy`, `retweet_id`, `retweet_by`, `tweet_image`, `likes_counts`, `retweet_counts`, `posted_on`, `retweet_Msg`) VALUES
-(334, 'amakuru @fayzo', 66, 0, 0, '', 0, 3, '2019-06-17 04:12:32', ''),
-(343, 'https://stackoverflow.com/questions/31391113/php-preg-replace-youtube-links', 61, 340, 61, '', 1, 1, '2019-06-29 13:15:25', 'amakuru'),
-(344, 'abana muri beza', 72, 0, 0, '2019_411.jpg', 0, 0, '2019-07-01 16:25:56', ''),
-(345, 'amakuru @fayzo', 66, 334, 61, '', 1, 1, '2019-07-30 15:38:57', 'nice'),
-(346, 'gud', 61, 0, 0, '', 1, 2, '2019-07-31 13:34:10', ''),
-(347, 'gud', 61, 346, 69, '', 1, 1, '2019-07-31 13:34:36', 'nice'),
-(348, 'hello', 61, 0, 0, '', 0, 3, '2019-07-31 13:43:02', ''),
-(349, 'hello', 61, 0, 0, '', 1, 3, '2019-07-31 13:43:02', ''),
-(350, 'hello', 61, 349, 69, '', 0, 1, '2019-07-31 13:44:12', 'one'),
-(351, 'hello', 61, 349, 66, '', 0, 2, '2019-07-31 13:47:21', 'gud'),
-(352, 'rihana', 69, 0, 0, '', 0, 4, '2019-07-31 13:58:45', ''),
-(353, 'hello', 61, 348, 69, '', 0, 1, '2019-07-31 13:59:05', 'gud'),
-(354, 'thx', 69, 0, 0, '', 0, 3, '2019-07-31 14:01:39', ''),
-(355, 'thx', 69, 354, 61, '', 0, 1, '2019-07-31 14:02:43', 'guf'),
-(356, 'rihana', 69, 352, 61, '', 0, 1, '2019-07-31 14:03:24', 'd'),
-(357, 'rihana', 69, 352, 61, '', 0, 2, '2019-07-31 14:03:25', 'd'),
-(358, 'thx', 69, 354, 61, '', 0, 2, '2019-07-31 14:10:47', 'gud'),
-(359, 'gud', 61, 346, 66, '', 1, 2, '2019-07-31 14:13:14', 'nice'),
-(360, 'amakuru @fayzo', 66, 334, 66, '', 0, 2, '2019-07-31 14:17:06', 'nice'),
-(361, 'hello', 61, 348, 66, '', 0, 2, '2019-07-31 14:19:51', 'gud one'),
-(362, 'gud', 66, 0, 0, '', 0, 1, '2019-07-31 14:20:42', ''),
-(363, 'gud one', 69, 0, 0, '', 1, 3, '2019-07-31 14:22:34', ''),
-(364, 'gud one', 69, 363, 66, '', 0, 1, '2019-07-31 14:29:27', 'd'),
-(365, 'gud one', 69, 363, 74, '', 0, 2, '2019-07-31 14:34:57', 'gud'),
-(366, 'thx', 69, 354, 74, '', 0, 3, '2019-07-31 14:45:08', 'sd'),
-(367, 'rihana', 69, 352, 74, '', 0, 3, '2019-07-31 14:45:37', 'sd'),
-(368, 'hello', 61, 348, 74, '', 0, 3, '2019-07-31 14:47:06', 'sa'),
-(369, 'gud', 66, 362, 0, '', 0, 1, '2019-07-31 15:23:20', 'gud'),
-(370, 'hello', 61, 349, 0, '', 1, 3, '2019-07-31 15:24:31', 'li'),
-(371, 'gud one', 69, 363, 61, '', 0, 3, '2019-07-31 15:29:15', 'gud'),
-(372, 'rihana', 69, 352, 69, '', 0, 4, '2019-07-31 15:33:51', 'gud'),
-(373, 'amakuru @fayzo', 66, 334, 69, '', 0, 3, '2019-07-31 15:37:16', 'gud'),
-(374, 'gud one', 69, 0, 0, '', 0, 9, '2019-07-31 15:47:43', ''),
-(375, 'gud one', 69, 374, 61, '', 0, 8, '2019-07-31 16:03:02', 'gudzzz'),
-(376, 'nice', 61, 0, 0, '', 0, 1, '2019-07-31 16:05:36', ''),
-(377, 'nice', 61, 376, 69, '', 0, 1, '2019-07-31 16:08:13', 'zzzzzz'),
-(378, 'gud one', 69, 374, 69, '', 0, 9, '2019-07-31 16:11:14', 'nice'),
-(379, 'reka sha', 69, 0, 0, '', 0, 2, '2019-07-31 16:12:21', ''),
-(380, 'gute', 69, 0, 0, '', 0, 2, '2019-07-31 16:12:48', ''),
-(381, 'gute', 69, 380, 61, '', 0, 1, '2019-07-31 16:13:12', 'zzz'),
-(382, 'gudz', 69, 0, 0, '', 0, 1, '2019-07-31 16:32:36', ''),
-(383, 'gudz', 69, 382, 61, '', 0, 1, '2019-07-31 16:33:03', 'nice'),
-(384, 'reka sha', 69, 379, 61, '', 0, 1, '2019-07-31 16:34:08', 'aaas'),
-(385, 'gute', 69, 380, 66, '', 0, 2, '2019-07-31 16:35:10', 'nice'),
-(386, 'reka sha', 69, 379, 66, '', 0, 2, '2019-07-31 16:39:52', 'xxx'),
-(387, 'dsd', 66, 0, 0, '', 0, 2, '2019-07-31 16:41:49', ''),
-(388, 'scscsc', 66, 0, 0, '', 0, 2, '2019-07-31 16:41:54', ''),
-(389, 'scscsc', 66, 388, 61, '', 0, 1, '2019-07-31 16:42:12', 'gud'),
-(390, 'dsd', 66, 387, 61, '', 0, 1, '2019-07-31 16:43:09', 's'),
-(391, 'sas', 61, 0, 0, '', 0, 1, '2019-07-31 16:44:17', ''),
-(392, 'sa', 61, 0, 0, '', 0, 1, '2019-07-31 16:44:22', ''),
-(393, 'sa', 61, 392, 69, '', 0, 1, '2019-07-31 16:45:04', 'xz'),
-(394, 'sas', 61, 391, 69, '', 0, 1, '2019-07-31 16:49:03', 'x'),
-(395, 'scscsc', 66, 388, 69, '', 0, 2, '2019-07-31 16:50:47', 'nix'),
-(396, 'dsd', 66, 387, 69, '', 0, 2, '2019-07-31 16:53:02', 'xzccccccccccccc'),
-(397, 'zzx', 69, 0, 0, '', 0, 0, '2019-07-31 17:09:35', ''),
-(398, 'csc', 69, 0, 0, '', 0, 1, '2019-07-31 17:10:54', ''),
-(399, 'csc', 69, 398, 61, '', 0, 1, '2019-07-31 17:11:13', 'xz'),
-(400, '@karim nn', 61, 0, 0, '', 0, 0, '2019-07-31 18:34:35', ''),
-(401, '@fayzo none', 66, 0, 0, '', 0, 0, '2019-07-31 18:43:49', ''),
-(402, '@karim', 61, 0, 0, '', 0, 0, '2019-07-31 18:45:32', ''),
-(403, '@fayzo', 66, 0, 0, '', 0, 0, '2019-07-31 18:47:58', ''),
-(404, '@karim wowe', 61, 0, 0, '', 0, 0, '2019-07-31 18:54:33', ''),
-(405, '@fayzo', 66, 0, 0, '', 0, 0, '2019-07-31 18:59:39', ''),
-(406, '@karim', 61, 0, 0, '', 1, 1, '2019-07-31 19:01:00', ''),
-(407, '@fayzo gud', 66, 0, 0, '', 1, 1, '2019-07-31 19:06:49', ''),
-(408, '@karim', 61, 0, 0, '', 1, 1, '2019-07-31 19:07:34', ''),
-(409, '@fayzo gud', 66, 407, 61, '', 1, 1, '2019-07-31 19:07:47', 'gud'),
-(410, '@karim', 61, 408, 66, '', 1, 1, '2019-07-31 19:09:10', 'gud'),
-(411, '@fayzo', 66, 0, 0, '', 1, 1, '2019-07-31 19:09:24', ''),
-(412, '@fayzo', 66, 411, 61, '', 1, 1, '2019-07-31 19:15:25', 'gud'),
-(413, '@fayzo', 66, 0, 0, '', 1, 0, '2019-07-31 19:21:45', ''),
-(414, '@karim', 61, 406, 66, '', 1, 1, '2019-07-31 19:22:20', 'ggs'),
-(418, '@fayzo\nbite', 66, 416, 61, '', 2, 1, '2019-07-31 22:39:07', 'gyud'),
-(420, '@fayzo', 66, 419, 61, '', 1, 1, '2019-08-07 08:47:28', 'gudz'),
-(421, '@fayzo', 66, 419, 66, '', 3, 2, '2019-08-24 11:29:33', 'bite'),
-(425, 'Hotel Transylvania', 61, 424, 66, '2019_58vlc-.mp4', 2, 1, '2019-08-28 04:35:54', 'iyi niyo video'),
-(426, 'hey.', 83, 0, 0, '', 1, 0, '2019-09-03 16:05:51', ''),
-(427, 'you are intelligent', 84, 0, 0, '', 0, 0, '2019-09-03 16:37:27', ''),
-(428, 'you are intelligent', 84, 0, 0, '', 0, 0, '2019-09-03 16:37:28', ''),
-(429, 'firstname\nlastname', 61, 0, 0, '', 1, 0, '2019-09-09 11:03:54', '');
+INSERT INTO `tweets` (`tweet_id`, `status`, `tweetBy`, `retweet_id`, `retweet_by`, `tweet_image`, `tweet_image_size`, `likes_counts`, `retweet_counts`, `posted_on`, `retweet_Msg`) VALUES
+(334, 'amakuru @fayzo', 66, 0, 0, '', '', 0, 3, '2019-06-17 04:12:32', ''),
+(343, 'https://stackoverflow.com/questions/31391113/php-preg-replace-youtube-links', 61, 340, 61, '', '', 1, 1, '2019-06-29 13:15:25', 'amakuru'),
+(344, 'abana muri beza', 72, 0, 0, '2019_411.jpg', '', 0, 0, '2019-07-01 16:25:56', ''),
+(345, 'amakuru @fayzo', 66, 334, 61, '', '', 1, 1, '2019-07-30 15:38:57', 'nice'),
+(346, 'gud', 61, 0, 0, '', '', 1, 2, '2019-07-31 13:34:10', ''),
+(347, 'gud', 61, 346, 69, '', '', 1, 1, '2019-07-31 13:34:36', 'nice'),
+(348, 'hello', 61, 0, 0, '', '', 0, 3, '2019-07-31 13:43:02', ''),
+(349, 'hello', 61, 0, 0, '', '', 1, 3, '2019-07-31 13:43:02', ''),
+(350, 'hello', 61, 349, 69, '', '', 0, 1, '2019-07-31 13:44:12', 'one'),
+(351, 'hello', 61, 349, 66, '', '', 0, 2, '2019-07-31 13:47:21', 'gud'),
+(352, 'rihana', 69, 0, 0, '', '', 0, 4, '2019-07-31 13:58:45', ''),
+(353, 'hello', 61, 348, 69, '', '', 0, 1, '2019-07-31 13:59:05', 'gud'),
+(354, 'thx', 69, 0, 0, '', '', 0, 3, '2019-07-31 14:01:39', ''),
+(355, 'thx', 69, 354, 61, '', '', 0, 1, '2019-07-31 14:02:43', 'guf'),
+(356, 'rihana', 69, 352, 61, '', '', 0, 1, '2019-07-31 14:03:24', 'd'),
+(357, 'rihana', 69, 352, 61, '', '', 0, 2, '2019-07-31 14:03:25', 'd'),
+(358, 'thx', 69, 354, 61, '', '', 0, 2, '2019-07-31 14:10:47', 'gud'),
+(359, 'gud', 61, 346, 66, '', '', 1, 2, '2019-07-31 14:13:14', 'nice'),
+(360, 'amakuru @fayzo', 66, 334, 66, '', '', 0, 2, '2019-07-31 14:17:06', 'nice'),
+(361, 'hello', 61, 348, 66, '', '', 0, 2, '2019-07-31 14:19:51', 'gud one'),
+(362, 'gud', 66, 0, 0, '', '', 0, 1, '2019-07-31 14:20:42', ''),
+(363, 'gud one', 69, 0, 0, '', '', 1, 3, '2019-07-31 14:22:34', ''),
+(364, 'gud one', 69, 363, 66, '', '', 0, 1, '2019-07-31 14:29:27', 'd'),
+(365, 'gud one', 69, 363, 74, '', '', 0, 2, '2019-07-31 14:34:57', 'gud'),
+(366, 'thx', 69, 354, 74, '', '', 0, 3, '2019-07-31 14:45:08', 'sd'),
+(367, 'rihana', 69, 352, 74, '', '', 0, 3, '2019-07-31 14:45:37', 'sd'),
+(368, 'hello', 61, 348, 74, '', '', 0, 3, '2019-07-31 14:47:06', 'sa'),
+(369, 'gud', 66, 362, 0, '', '', 0, 1, '2019-07-31 15:23:20', 'gud'),
+(370, 'hello', 61, 349, 0, '', '', 1, 3, '2019-07-31 15:24:31', 'li'),
+(371, 'gud one', 69, 363, 61, '', '', 0, 3, '2019-07-31 15:29:15', 'gud'),
+(372, 'rihana', 69, 352, 69, '', '', 0, 4, '2019-07-31 15:33:51', 'gud'),
+(373, 'amakuru @fayzo', 66, 334, 69, '', '', 0, 3, '2019-07-31 15:37:16', 'gud'),
+(374, 'gud one', 69, 0, 0, '', '', 0, 9, '2019-07-31 15:47:43', ''),
+(375, 'gud one', 69, 374, 61, '', '', 0, 8, '2019-07-31 16:03:02', 'gudzzz'),
+(376, 'nice', 61, 0, 0, '', '', 0, 1, '2019-07-31 16:05:36', ''),
+(377, 'nice', 61, 376, 69, '', '', 0, 1, '2019-07-31 16:08:13', 'zzzzzz'),
+(378, 'gud one', 69, 374, 69, '', '', 0, 9, '2019-07-31 16:11:14', 'nice'),
+(379, 'reka sha', 69, 0, 0, '', '', 0, 2, '2019-07-31 16:12:21', ''),
+(380, 'gute', 69, 0, 0, '', '', 0, 2, '2019-07-31 16:12:48', ''),
+(381, 'gute', 69, 380, 61, '', '', 0, 1, '2019-07-31 16:13:12', 'zzz'),
+(382, 'gudz', 69, 0, 0, '', '', 0, 1, '2019-07-31 16:32:36', ''),
+(383, 'gudz', 69, 382, 61, '', '', 0, 1, '2019-07-31 16:33:03', 'nice'),
+(384, 'reka sha', 69, 379, 61, '', '', 0, 1, '2019-07-31 16:34:08', 'aaas'),
+(385, 'gute', 69, 380, 66, '', '', 0, 2, '2019-07-31 16:35:10', 'nice'),
+(386, 'reka sha', 69, 379, 66, '', '', 0, 2, '2019-07-31 16:39:52', 'xxx'),
+(387, 'dsd', 66, 0, 0, '', '', 0, 2, '2019-07-31 16:41:49', ''),
+(388, 'scscsc', 66, 0, 0, '', '', 0, 2, '2019-07-31 16:41:54', ''),
+(389, 'scscsc', 66, 388, 61, '', '', 0, 1, '2019-07-31 16:42:12', 'gud'),
+(390, 'dsd', 66, 387, 61, '', '', 0, 1, '2019-07-31 16:43:09', 's'),
+(391, 'sas', 61, 0, 0, '', '', 0, 1, '2019-07-31 16:44:17', ''),
+(392, 'sa', 61, 0, 0, '', '', 0, 1, '2019-07-31 16:44:22', ''),
+(393, 'sa', 61, 392, 69, '', '', 0, 1, '2019-07-31 16:45:04', 'xz'),
+(394, 'sas', 61, 391, 69, '', '', 1, 1, '2019-07-31 16:49:03', 'x'),
+(395, 'scscsc', 66, 388, 69, '', '', 0, 2, '2019-07-31 16:50:47', 'nix'),
+(396, 'dsd', 66, 387, 69, '', '', 0, 2, '2019-07-31 16:53:02', 'xzccccccccccccc'),
+(397, 'zzx', 69, 0, 0, '', '', 0, 0, '2019-07-31 17:09:35', ''),
+(398, 'csc', 69, 0, 0, '', '', 0, 1, '2019-07-31 17:10:54', ''),
+(399, 'csc', 69, 398, 61, '', '', 0, 1, '2019-07-31 17:11:13', 'xz'),
+(400, '@karim nn', 61, 0, 0, '', '', 0, 0, '2019-07-31 18:34:35', ''),
+(401, '@fayzo none', 66, 0, 0, '', '', 0, 0, '2019-07-31 18:43:49', ''),
+(402, '@karim', 61, 0, 0, '', '', 0, 0, '2019-07-31 18:45:32', ''),
+(403, '@fayzo', 66, 0, 0, '', '', 0, 0, '2019-07-31 18:47:58', ''),
+(404, '@karim wowe', 61, 0, 0, '', '', 0, 0, '2019-07-31 18:54:33', ''),
+(405, '@fayzo', 66, 0, 0, '', '', 0, 0, '2019-07-31 18:59:39', ''),
+(406, '@karim', 61, 0, 0, '', '', 1, 1, '2019-07-31 19:01:00', ''),
+(407, '@fayzo gud', 66, 0, 0, '', '', 1, 1, '2019-07-31 19:06:49', ''),
+(408, '@karim', 61, 0, 0, '', '', 1, 1, '2019-07-31 19:07:34', ''),
+(409, '@fayzo gud', 66, 407, 61, '', '', 1, 1, '2019-07-31 19:07:47', 'gud'),
+(410, '@karim', 61, 408, 66, '', '', 1, 1, '2019-07-31 19:09:10', 'gud'),
+(411, '@fayzo', 66, 0, 0, '', '', 1, 1, '2019-07-31 19:09:24', ''),
+(412, '@fayzo', 66, 411, 61, '', '', 1, 1, '2019-07-31 19:15:25', 'gud'),
+(413, '@fayzo', 66, 0, 0, '', '', 1, 0, '2019-07-31 19:21:45', ''),
+(414, '@karim', 61, 406, 66, '', '', 1, 1, '2019-07-31 19:22:20', 'ggs'),
+(418, '@fayzo\nbite', 66, 416, 61, '', '', 2, 1, '2019-07-31 22:39:07', 'gyud'),
+(420, '@fayzo', 66, 419, 61, '', '', 1, 1, '2019-08-07 08:47:28', 'gudz'),
+(421, '@fayzo', 66, 419, 66, '', '', 3, 2, '2019-08-24 11:29:33', 'bite'),
+(425, 'Hotel Transylvania', 61, 424, 66, '2019_58vlc-.mp4', '', 2, 1, '2019-08-28 04:35:54', 'iyi niyo video'),
+(426, 'hey.', 83, 0, 0, '', '', 1, 0, '2019-09-03 16:05:51', ''),
+(427, 'you are intelligent', 84, 0, 0, '', '', 0, 0, '2019-09-03 16:37:27', ''),
+(428, 'you are intelligent', 84, 0, 0, '', '', 1, 0, '2019-09-03 16:37:28', ''),
+(429, 'firstname\nlastname', 61, 0, 0, '', '', 1, 0, '2019-09-09 11:03:54', ''),
+(430, '', 61, 0, 0, '2019_9191xb.jpg=2019_205454.jpeg=2019_371520.jpg=2019_13crop.jpg', '', 0, 0, '2019-09-12 16:59:47', ''),
+(431, 'hello everyone', 83, 0, 0, '', '', 0, 0, '2019-09-12 17:31:42', ''),
+(432, 'Khaled doesn\'t listening hello', 83, 0, 0, '2019_961467.jpg=2019_111506.jpg=2019_63arto.jpg=2019_42arto.jpg', '', 1, 0, '2019-09-12 17:40:11', ''),
+(433, 'fire', 83, 0, 0, '', '', 0, 0, '2019-09-12 18:03:16', ''),
+(434, 'fire', 83, 0, 0, '', '', 0, 0, '2019-09-12 18:03:16', ''),
+(435, 'fire', 83, 0, 0, '', '', 0, 0, '2019-09-12 18:03:16', ''),
+(436, 'fire', 83, 0, 0, '', '', 0, 0, '2019-09-12 18:03:16', ''),
+(438, '', 61, 0, 0, '2019_96tttt.jpg', '', 0, 0, '2019-09-13 08:37:39', ''),
+(441, '', 61, 0, 0, '2019_69maxr.jpg', '', 0, 0, '2019-09-13 09:42:05', ''),
+(442, '', 61, 0, 0, '2019_941467.jpg=2019_211506.jpg=2019_86arto.jpg=2019_62arto.jpg', '', 0, 0, '2019-09-13 10:14:13', ''),
+(443, '', 61, 439, 66, '2019_79ande.pdf', '', 0, 1, '2019-09-13 13:23:25', 'gud'),
+(444, '', 66, 0, 0, '2019_551506.jpg=2019_55arto.jpg=2019_14arto.jpg', '', 0, 0, '2019-09-13 14:28:26', ''),
+(447, '#amakuru @fayzo', 61, 0, 0, '', '', 0, 0, '2019-09-14 10:00:41', ''),
+(455, '', 61, 0, 0, '2019_402019.docx', '', 0, 1, '2019-09-14 12:38:30', ''),
+(456, '', 61, 455, 66, '2019_402019.docx', '', 0, 1, '2019-09-14 12:50:17', 'nicwe'),
+(457, '', 66, 0, 0, '2019_96win_.mp4', '', 0, 1, '2019-09-14 13:47:44', ''),
+(458, '', 66, 457, 66, '2019_96win_.mp4', '', 0, 1, '2019-09-14 13:57:04', 'amakuru'),
+(459, '', 66, 0, 0, '2019_90win_.mp4', '', 0, 0, '2019-09-14 14:01:05', ''),
+(460, 'aa', 61, 0, 0, '', '', 0, 0, '2019-09-14 14:06:05', ''),
+(461, '#bite', 61, 0, 0, '2019_43win_.jpg', '54618', 0, 0, '2019-09-15 09:32:14', ''),
+(462, '#amakuru', 61, 0, 0, '2019_43win_.jpg', '50141', 0, 0, '2019-09-15 10:16:34', ''),
+(463, '#bite amakuru @karim', 61, 0, 0, '', '', 0, 0, '2019-09-17 11:39:15', '');
 
 -- --------------------------------------------------------
 
@@ -5602,18 +5716,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `password`, `gender`, `chat`, `career`, `country`, `date_birth`, `date_registry`, `last_login`, `counts_login`, `forgotUsernameCounts`, `forgotUsernameCountsTimesHeCreates`, `forgotUsernameCountsTimesHeCreatespassword`, `profile_img`, `profile_img_crop`, `cover_img`, `background`, `language`, `color`, `education`, `diploma`, `skills`, `location`, `hobbys`, `followers`, `following`, `approval`, `company_education`, `type_of_business`, `address`, `size_of_people`, `companyname`, `overview`, `history`, `team`, `legal_structure`, `location_facilities`, `mission_statement`, `website`, `unemplyoment`, `categories_fields`, `phone`) VALUES
-(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'on', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-09-09 14:10:27', 516, 0, 10, 10, '112baby3.png', '', '702caus.jpg', 'white-bg', '', 'purple', 'lycee', 'project', 'web', 'BR', 'styuding', 9, 6, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
-(64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-09-02 13:13:36', 62, 0, 0, 0, '', '', '', 'chair', '', 'purple-green', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
+(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'on', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-09-22 03:18:30', 555, 0, 10, 10, '112baby3.png', '', '702caus.jpg', 'white-bg', '', 'rose', 'lycee', 'project', 'web', 'BR', 'styuding', 9, 7, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
+(64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-09-21 11:26:10', 66, 0, 0, 0, '', '', '', 'white-bg', '', 'black', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
 (65, 'karisa', 'bosco', 'bosco', 'faysal@gmail.com', 'bosco', 'Male', '', '', 'RW', '2019-05-03', '2019-05-02', '2019-05-27 21:50:00', 8, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 2, 2, 'off', '', '', '', '', 'LAMBORGIN', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
-(66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-09-02 13:13:10', 114, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'chair', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
+(66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-09-14 12:49:53', 118, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'white-bg', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
 (67, 'musema', 'musema', 'musema', 'musemafaysal@gmail.com', 'musema', 'Male', '', '', 'RW', '2019-05-06', '2019-05-06', '2019-05-21 14:53:30', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 2, 'off', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
 (68, 'zidani', 'zidani', 'zidanii', 'zidani@gmail.com', 'zidani', 'Male', '', '', 'FR', '2019-05-06', '2019-05-22', '2019-05-30 11:54:50', 5, 0, 0, 0, '855fays.gif', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
-(69, 'rihana', 'rihana', 'rihana', 'rihana@gmail.com', 'rihana', 'Female', 'off', '', 'AF', '1988-03-18', '2019-06-02', '2019-08-28 04:28:44', 26, 0, 0, 0, '', '', '', 'chair', '', 'rose', '', '', '', '', '', 3, 3, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
+(69, 'rihana', 'rihana', 'rihana', 'rihana@gmail.com', 'rihana', 'Female', 'off', '', 'AF', '1988-03-18', '2019-06-02', '2019-09-21 11:26:28', 27, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 3, 3, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
 (70, 'patrick', 'patrick', 'patrick', 'patrick@gmail.com', 'patrick', 'Male', '', '', 'AS', '2019-06-04', '2019-06-02', '2019-06-02 14:47:57', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
 (71, 'saleh', 'saleh', 'saleh', 'saleh@gmail.com', 'saleh', 'Male', 'on', '', 'AQ', '2019-05-31', '2019-06-02', '2019-06-02 14:50:22', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
 (72, 'riri', 'aline', 'aline', 'aline@gmail.com', 'aline', 'Male', 'off', '', 'RW', '2019-07-01', '2019-07-01', '2019-07-02 08:52:01', 5, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
 (73, 'antonia', 'griezman', 'antonia', 'antonia@gmail.com', 'fafa', 'Male', 'off', '', 'FR', '2019-07-01', '2019-07-02', '2019-07-31 17:42:18', 3, 0, 0, 1, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
-(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-08-20 17:57:02', 15, 0, 0, 0, '', '', '', 'white-bg', '', 'purple', '', '', '', '', '', 1, 6, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
+(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-08-20 17:57:02', 15, 0, 0, 0, '', '', '', 'chair', '', 'purple', '', '', '', '', '', 1, 6, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
 (75, 'FAFA', 'FAFA', 'FAFA', 'FAFA@yahoo.com', 'FAFA', 'Male', 'off', '', '', '2019-08-03', '2019-08-03', '2019-08-03 04:29:40', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (76, 'riri', 'riri', 'riri', 'riri@yahoo.com', 'riri', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 06:58:18', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (77, 'mani', 'mani', 'mani', 'mani@yahoo.com', 'mani', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 07:00:29', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
@@ -5622,7 +5736,7 @@ INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `p
 (80, 'shema', 'shema', 'shema', 'shema@yahoo.com', 'shema', 'Male', '', '', 'RW', '2019-08-09', '2019-08-07', '2019-08-07 07:06:11', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (81, 'manzi', 'manzi', 'manzi', 'manzi@yahoo.com', 'manzi', 'Female', '', '', 'RW', '2019-08-09', '2019-08-07', '2019-08-07 07:11:35', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (82, 'kiki', 'kiki', 'kiki', 'kiki@yahoo.com', 'kiki', 'Female', '', '', 'RW', '2019-08-09', '2019-08-07', '2019-08-07 07:16:37', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(83, 'KAGENZA', 'KABOSI', 'BOSS', 'Boss@gmail.com', 'boss11', 'Male', 'off', '', 'RW', '2010-01-29', '2019-09-03', '2019-09-03 16:27:17', 2, 0, 0, 0, '315boyz.png', '', '3983.jpg', 'build2', '', 'rose', '', '', '', '', '', 1, 2, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(83, 'KAGENZA', 'KABOSI', 'BOSS', 'Boss@gmail.com', 'boss11', 'Male', 'off', '', 'RW', '2010-01-29', '2019-09-03', '2019-09-12 17:30:20', 3, 0, 0, 0, '258plots.jpg', '', '3983.jpg', 'build2', '', 'rose', '', '', '', '', '', 2, 2, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (84, 'uwase', 'fatma', 'dada', 'zasu@gmail.com', 'tana', 'Female', 'off', '', 'RW', '2007-12-18', '2019-09-03', '2019-09-03 16:32:19', 2, 0, 0, 0, '7879.jpg', '', '86420.jpg', 'build', '', 'orange-white', '', '', '', '', '', 1, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
@@ -18355,6 +18469,12 @@ ALTER TABLE `employersdomestics`
   ADD PRIMARY KEY (`employers_id`);
 
 --
+-- Indexes for table `entertainment`
+--
+ALTER TABLE `entertainment`
+  ADD PRIMARY KEY (`entertainment_id`);
+
+--
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
@@ -18560,6 +18680,12 @@ ALTER TABLE `sale`
   ADD PRIMARY KEY (`sale_id`);
 
 --
+-- Indexes for table `sale_gurisha`
+--
+ALTER TABLE `sale_gurisha`
+  ADD PRIMARY KEY (`sale_id`);
+
+--
 -- Indexes for table `school`
 --
 ALTER TABLE `school`
@@ -18726,7 +18852,7 @@ ALTER TABLE `car`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `comment_crowfunding`
@@ -18783,6 +18909,12 @@ ALTER TABLE `employersdomestics`
   MODIFY `employers_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
+-- AUTO_INCREMENT for table `entertainment`
+--
+ALTER TABLE `entertainment`
+  MODIFY `entertainment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
@@ -18810,7 +18942,7 @@ ALTER TABLE `events_like`
 -- AUTO_INCREMENT for table `follow`
 --
 ALTER TABLE `follow`
-  MODIFY `follow_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `follow_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `food`
@@ -18894,37 +19026,37 @@ ALTER TABLE `house`
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `job_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `job_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `like_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `like_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `message_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `message_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `movies_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `movies_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `notification_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `notification_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT for table `post_comment`
@@ -18936,7 +19068,7 @@ ALTER TABLE `post_comment`
 -- AUTO_INCREMENT for table `post_dislike`
 --
 ALTER TABLE `post_dislike`
-  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `like_id_` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `post_like`
@@ -18979,6 +19111,12 @@ ALTER TABLE `rwandamotel`
 --
 ALTER TABLE `sale`
   MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `sale_gurisha`
+--
+ALTER TABLE `sale_gurisha`
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `school`
@@ -19050,7 +19188,7 @@ ALTER TABLE `trash`
 -- AUTO_INCREMENT for table `trends`
 --
 ALTER TABLE `trends`
-  MODIFY `trend_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `trend_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tutorial`
@@ -19062,7 +19200,7 @@ ALTER TABLE `tutorial`
 -- AUTO_INCREMENT for table `tweets`
 --
 ALTER TABLE `tweets`
-  MODIFY `tweet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=430;
+  MODIFY `tweet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=464;
 
 --
 -- AUTO_INCREMENT for table `users`
