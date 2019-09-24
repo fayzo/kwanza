@@ -356,7 +356,8 @@ class Sale extends Home{
                                           <input type="hidden" style="width:30px;" name="action" value="add" />
                                           <input type="hidden" style="width:30px;" name="code" value="<?php echo $row['code']; ?>" />
                                           <input type="text" class="product-quantity" style="width:30px;" name="quantity" value="1" size="2" readonly/>
-                                          <input type="button" onclick="cart_add('add','<?php echo 'form-cartitem'.$row['code'].'add'; ?>','<?php echo $row['code']; ?>');" value="Add to Cart" class="btnAddAction" />
+                                          <input type="button" value="Add to Cart" class="btnAddAction offer-price-sale" data-sale="<?php echo $row['sale_id']; ?>"/>
+                                          <!-- <input type="button" onclick="cart_add('add','< ?php echo 'form-cartitem'.$row['code'].'add'; ?>','< ?php echo $row['code']; ?>');" value="Add to Cart" class="btnAddAction" /> -->
                                       </div>
                                   </form>
                               </div><!-- card-body -->
@@ -605,6 +606,21 @@ class Sale extends Home{
                     <strong>Fail to delete !!!</strong>
                 </div>');
         }
+    }
+
+    
+       public function saleReadmore($sale_id)
+    {
+        $mysqli= $this->database;
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN sale H ON H. user_id01 = u. user_id 
+            Left JOIN provinces P ON H. province = P. provincecode
+            Left JOIN districts M ON H. districts = M. districtcode
+            Left JOIN sectors T ON H. sector = T. sectorcode
+            Left JOIN cells C ON H. cell = C. codecell
+            Left JOIN vilages V ON H. village = V. CodeVillage 
+        WHERE H. sale_id = '$sale_id' ");
+        $row= $query->fetch_array();
+        return $row;
     }
 
 

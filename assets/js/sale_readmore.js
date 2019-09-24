@@ -51,23 +51,30 @@ $(document).ready(function () {
         var price = $('#price');
         var phone = $('#phone');
         var country = $('#country');
-        var province = $('#province');
         var additioninformation = $('#addition-information');
-        var districts = $('#districts');
-        var city = $('#city');
-        var sector = $('#sector');
-        var cell = $('#cell');
-        var village = $('#village');
+        var province = $('.provincecode');
+        var districts = $('.districtcode');
+        var sector = $('.sectorcode');
+        var cell = $('.codecell');
+        var village = $('.CodeVillage');
         var photo = $('#photo');
         var other_photo = $('#other-photo');
         var video = $('#video');
         var youtube = $('#youtube');
         var categories_sale = $('#categories_sale');
+        var photo_Titleo0 = $('#photo-Titleo0');
+        var photo_Title0 = $('#photo-Title0');
+        var photo_Title1 = $('#photo-Title1');
+        var photo_Title2 = $('#photo-Title2');
+        var photo_Title3 = $('#photo-Title3');
+        var photo_Title4 = $('#photo-Title4');
+        var photo_Title5 = $('#photo-Title5');
 
-        if (isEmpty(country) && isEmpty(city) && isEmpty(province) && isEmpty(districts) &&
+        if (isEmpty(country) && isEmpty(province) && isEmpty(districts) &&
             isEmpty(sector) && isEmpty(cell) && isEmpty(village) && isEmpty(categories_sale) && 
             isEmpty(additioninformation) && isEmpty(title) && isEmpty(code) && isEmpty(price) && isEmpty(phone) &&
-             isEmpty(photo) && isEmpty(other_photo) && isEmpty(video) && isEmpty(youtube)) {
+            isEmpty(photo) && isEmpty(other_photo) && isEmpty(video) && isEmpty(youtube) && isEmpty(photo_Titleo0) && isEmpty(photo_Title0) && isEmpty(photo_Title1) && isEmpty(photo_Title2) &&
+            isEmpty(photo_Title3) && isEmpty(photo_Title4) && isEmpty(photo_Title5)) {
             
             var extensions1 = $('#photo').val().split('.').pop().toLowerCase();
             var extensions2 = $('#other-photo').val().split('.').pop().toLowerCase();

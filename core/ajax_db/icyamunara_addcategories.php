@@ -3,13 +3,13 @@ session_start();
 include('../init.php');
 $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpath($_SERVER['SCRIPT_FILENAME']));
 
-if (isset($_POST['sale_view']) && !empty($_POST['sale_view'])) {
+if (isset($_POST['icyamunara_view']) && !empty($_POST['icyamunara_view'])) {
     $user_id= $_SESSION['key'];
     $get_province = mysqli_query($db,"SELECT * FROM provinces"); ?>
 
 <script src="<?php echo BASE_URL_LINK ;?>dist/js/country_login_ajax-db.js"></script>
 
-<div class="sale-popup">
+<div class="icyamunara-popup">
     <div class="wrap6">
         <span class="colose">
         	<button class="close-imagePopup"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -18,16 +18,16 @@ if (isset($_POST['sale_view']) && !empty($_POST['sale_view'])) {
         	<div class="img-popup-body">
 
             <div class="card">
-                <span id="responseSubmitsale"></span>
+                <span id="responseSubmithouse"></span>
                 <div class="card-header">
-                    <h5 class="card-text">Sale</h5>
-                    <p class="card-text">Do you want to sale a products ? Please fill details below.</p>
+                    <h5 class="card-text">Rwanda icyamunara</h5>
+                    <p class="card-text">Do you want to add icyamunara ? Please fill details below.</p>
                 </div>
-                <form method="post" id="form-sale"  enctype="multipart/form-data" >
+                <form method="post" id="form-icyamunara"  enctype="multipart/form-data" >
                 <div class="card-body">
                     <div>Choose your location and categories </div>
                       <input type="hidden" name="user_id" value="<?php echo $user_id ;?>">
-                     <div class="form-row mt-2">
+                       <div class="form-row mt-2">
                         <div class="col">
                           <label for="" class="text-dark">Country</label>
                             <!-- <div id="myCountry"></div> -->
@@ -96,21 +96,6 @@ if (isset($_POST['sale_view']) && !empty($_POST['sale_view'])) {
                                 </div>
                             </div>
 
-                        <div class="col">
-                                <label for="Village">categories sale</label>
-                            <div class="form-group">
-                              <select class="form-control" name="categories_sale" id="categories_sale">
-                                <option value="">Select what types of sale</option>
-                                <option value="electronics">Electronics</option>
-                                <option value="clothes">Clothes</option>
-                                <option value="sports">Sports</option>
-                                <option value="health_beauty">Health & beauty</option>
-                                <option value="house">House</option>
-                                <option value="car">car</option>
-                                <option value="home_garden">Home & Garden</option>
-                              </select>
-                            </div>
-                        </div>
                       </div>
 
                       <div class="form-group mt-2">
@@ -118,37 +103,17 @@ if (isset($_POST['sale_view']) && !empty($_POST['sale_view'])) {
                       </div>
 
                       <div class="form-row mt-2">
-                        
+                       
                         <div class="col">
                           <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon2">name</span>
+                                <span class="input-group-text" id="basic-addon2">author</span>
                             </div>
-                            <input type="text" class="form-control" name="title" id="title" placeholder="name of products Example Samsung v8">
+                            <input type="text" class="form-control" name="author" id="author" placeholder="name of author">
                           </div>
                         </div>
 
-                        <div class="col">
-                          <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon2">code</span>
-                            </div>
-                            <input type="text" class="form-control" name="code" id="code" placeholder="code of products Example nokia x94">
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="form-row mt-2">
-
-                        <div class="col">
-                          <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon2">Frw</span>
-                            </div>
-                            <input type="text" class="form-control" name="price" id="price" placeholder="Price ">
-                          </div>
-                        </div>
-
+                      
                         <div class="col">
                           <div class="input-group">
                             <div class="input-group-prepend">
@@ -157,7 +122,7 @@ if (isset($_POST['sale_view']) && !empty($_POST['sale_view'])) {
                             <input type="text" class="form-control" name="phone" id="phone" placeholder="phone number">
                           </div>
                         </div>
-
+                      
                       </div>
 
                       <div class="form-row mt-2">
@@ -197,10 +162,10 @@ if (isset($_POST['sale_view']) && !empty($_POST['sale_view'])) {
 
                     <div id="add-videohelp">
                     </div>
-
+                    <!-- collapse addmore-->
+                    
                      <div id="add-photo0" class="row">
                     </div>
-                    <!-- collapse addmore-->
 
                  </div><!-- card-body end-->
                 <div class="card-footer text-center">
@@ -231,13 +196,14 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
 
     if (!empty($_FILES['video']['name'][0])) {
       $video= $_FILES['video'];
-      $video_ = $home->uploadSaleFile($video);
+      $video_ = $home->uploadRwandahotelFile($video);
       $youtube=  $users->test_input($_POST['youtube']);
     }else{
       $video_= "";
       $youtube=  "";
     }
-     if (!empty($_POST['photo-Titleo0'])) {
+
+   if (!empty($_POST['photo-Titleo0'])) {
           $photo_Titleo=  $users->test_input($_POST['photo-Titleo0']);
   }else {
            $photo_Titleo='';
@@ -273,9 +239,9 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
            $photo_Title5='';
   }
 
-    $title = $users->test_input($_POST['title']);
-    $code = $users->test_input($_POST['code']);
-    $price = $users->test_input($_POST['price']);
+  
+    $authors = $users->test_input($_POST['author']);
+    $additioninformation = $users->test_input($_POST['additioninformation']);
     $phone = $users->test_input($_POST['phone']);
     $country = $users->test_input($_POST['country']);
     $province =  $users->test_input($_POST['provincecode']);
@@ -283,15 +249,13 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
     $cell=  $users->test_input($_POST['codecell']);
     $sector =  $users->test_input($_POST['sectorcode']);
     $village =  $users->test_input($_POST['CodeVillage']);
-    $additioninformation = $users->test_input($_POST['additioninformation']);
-    $categories_sale=  $users->test_input($_POST['categories_sale']);
 
 
 	if (!empty($phone) || !empty(array_filter($photo['name'])) || !empty(array_filter($other_photo['name'])) ) {
 		if (!empty($photo['name'][0])) {
 			# code...
-			$photo_ = $home->uploadSaleFile($photo);
-            $other_photo_ = $home->uploadSaleFile($other_photo);
+			$photo_ = $home->uploadRwandaicymunaraFile($photo);
+            $other_photo_ = $home->uploadRwandaicymunaraFile($other_photo);
 		}
 
 		if (strlen($additioninformation ) > 400) {
@@ -302,27 +266,25 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
                     <strong>The text is too long !!!</strong> </div>');
 		}
 
-	$users->Postsjobscreates('sale',array( 
-	'title'=> $title,
-	'code'=> $code,
-	'price'=> $price,
+	$users->Postsjobscreates('icyamunara',array( 
+	'authors'=> $authors,
+	'photo'=> $photo_, 
+	'other_photo'=> $other_photo_, 
+	'video'=> $video_, 
+    'youtube'=> $youtube, 
 	'phone'=> $phone,
-	'country01'=> $country,
+    'country01'=> $country,
+    'photo_Title_main'=> $photo_Titleo,
+    'photo_Title'=> $photo_Title0.'='.$photo_Title1.'='.$photo_Title2.'='.$photo_Title3.'='.$photo_Title4.'='.$photo_Title5,
 	'province'=> $province,
 	'districts'=> $districts,
 	'sector'=> $sector,
 	'cell'=> $cell,
 	'village'=> $village,
-	'photo'=> $photo_, 
-  'other_photo'=> $other_photo_, 
-   'photo_Title_main'=> $photo_Titleo,
-  'photo_Title'=> $photo_Title0.'='.$photo_Title1.'='.$photo_Title2.'='.$photo_Title3.'='.$photo_Title4.'='.$photo_Title5,
-	'video'=> $video_, 
-	'youtube'=> $youtube, 
-    'text'=> $additioninformation,
-    'categories_sale'=> $categories_sale,
-    'user_id01'=> $user_id,
-    'created_on01'=> $datetime ));
+  'text'=> $additioninformation,
+  'buy'=> 'available',
+  'user_id3'=> $user_id,
+  'created_on3'=> $datetime ));
 
     }
 } ?> 

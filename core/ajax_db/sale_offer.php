@@ -16,7 +16,7 @@ if (isset($_POST['sale']) && !empty($_POST['sale'])) {
     }
     
     $sale_id = $_POST['sale'];
-    $user= $gurisha->gurishaReadmore($sale_id);
+    $user= $sale->saleReadmore($sale_id);
      ?>
 <style>
     	
@@ -36,7 +36,7 @@ if (isset($_POST['sale']) && !empty($_POST['sale'])) {
 			width: 800px;
 		}
 </style>
-<div class="gurisha-popup">
+<div class="sale-popup">
     <div class="wrap6">
         <span class="colose">
         	<button class="close-imagePopup"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -46,7 +46,7 @@ if (isset($_POST['sale']) && !empty($_POST['sale'])) {
 
             <div class="card">
                 <div class="card-body">
-                 <div class="row reusercolor p-2">
+                 <div class="row reusercolor p-2 mb-2">
 
                        <div class="col-md-6">
                          <h2 class='text-center'><?php echo $user['title']; ?></h2>
@@ -58,8 +58,8 @@ if (isset($_POST['sale']) && !empty($_POST['sale'])) {
                                         // $splice = array_expode ($expode,0,10);
                                         for ($i=0; $i < count($expode); ++$i) { 
                                             ?>
-                                            <li data-thumb="<?php echo BASE_URL_PUBLIC.'uploads/sale-gurisha/'.$expode [$i]; ?>" > 
-                                               <img src="<?php echo BASE_URL_PUBLIC.'uploads/sale-gurisha/'.$expode [$i]; ?>" />
+                                            <li data-thumb="<?php echo BASE_URL_PUBLIC.'uploads/sale/'.$expode [$i]; ?>" > 
+                                               <img src="<?php echo BASE_URL_PUBLIC.'uploads/sale/'.$expode [$i]; ?>" />
                                             </li>
                                       <?php } ?>
                                 </ul>
@@ -70,7 +70,7 @@ if (isset($_POST['sale']) && !empty($_POST['sale'])) {
                              
                             <div><span class="font-weight-bold">Condition : </span>
                              <ul>
-                                <li>Used </li>
+                                <li>New</li>
                                 <li><?php echo $user['text']; ?></li>
                              </ul></div>
 
@@ -78,26 +78,13 @@ if (isset($_POST['sale']) && !empty($_POST['sale'])) {
                             <table class="table table-hover table-inverse" style="background-color:#0000000d;">
                                     <tbody>
                                         <tr>
-                                            <td>starting bid: </td>
-                                            <td><?php echo number_format($user['price']) ." Frw"; ?><span class="float-right text-primary">[ 0 bids]</span></td>
+                                            <td>Price: </td>
+                                            <td class="float-right">  <?php if($user['price_discount'] != 0){ ?><span class="text-danger " style="text-decoration: line-through;"><?php echo number_format($user['price_discount']); ?> Frw</span> <?php } ?> <span class="ml-3 text-primary"><?php echo number_format($user['price']) ." Frw"; ?></span></td>
                                         </tr>
+                                       
                                         <tr>
-                                            <td></td>
-                                            <td>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon2">Frw</span>
-                                                    </div>
-                                                    <input type="text" class="form-control" name="title" id="title" placeholder="458" style="width: 3px;" >
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text btnAddAction ml-0 btn-primary" style="padding: 0px 10px;" id="basic-addon2">Place bid</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Best Offer:</td>
-                                            <td><button type="button" class="btn btn-primary float-right" <?php if(isset($_SESSION['key'])){ echo ' onclick="cart_gurisha_add(\'add\',\'form-cartitem'.$user['code'].'add\',\''.$user['code'].'\');" '; }else{ echo 'id="login-please"  data-login="1"'; } ?> >Make Offer</button></td>
+                                            <td>Best Price:</td>
+                                            <td><button type="button" class="btn btn-primary float-right" <?php if(isset($_SESSION['key'])){ echo ' onclick="cart_add(\'add\',\'form-cartitem'.$user['code'].'add\',\''.$user['code'].'\');" '; }else{ echo 'id="login-please"  data-login="1"'; } ?> >add to cart</button></td>
                                         </tr>
                                     </tbody>
                             </table>
@@ -115,7 +102,7 @@ if (isset($_POST['sale']) && !empty($_POST['sale'])) {
                              <ul>
                                 <li>Visa Card | Mtn money | Airtel money | Pesa money</li>
                              </ul></div>
-                            <div><span class="font-weight-bold">Returns:</span> Sellers does not accept returns items</div>
+                            <div><span class="font-weight-bold">Returns:</span> Sellers accept returns items if it has problem within 3 days used</div>
                             
 
                        </div><!-- /.col -->
@@ -148,7 +135,7 @@ if (isset($_POST['sale']) && !empty($_POST['sale'])) {
                             ?>
                         <div class="col-md-<?php echo 12/$numOfCols; ?>">
                              <div class="imagesaleViewPopup more"  data-sale="<?php echo $user["sale_id"] ;?>">
-                                <img src="<?php echo BASE_URL_PUBLIC."uploads/sale-gurisha/".$splice[$i] ;?>"
+                                <img src="<?php echo BASE_URL_PUBLIC."uploads/sale/".$splice[$i] ;?>"
                                     alt="Photo" height="250px">
                                 </div>
                             <div class="h5"><i><?php echo $photo_title[$i]; ?></i></div>
@@ -173,7 +160,7 @@ if (isset($_POST['sale']) && !empty($_POST['sale'])) {
                             ?>
                         <div class="col-md-<?php echo 12/$numOfCols; ?>">
                             <div class="imagesaleViewPopup more"  data-sale="<?php echo $user["sale_id"] ;?>">
-                                <img src="<?php echo BASE_URL_PUBLIC."uploads/sale-gurisha/".$splice[$i] ;?>"
+                                <img src="<?php echo BASE_URL_PUBLIC."uploads/sale/".$splice[$i] ;?>"
                                     alt="Photo" height="250px" >
                                 </div>
                             <div class="h5"><i><?php echo $photo_title[$i]; ?></i></div>

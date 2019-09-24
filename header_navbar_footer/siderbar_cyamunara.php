@@ -36,7 +36,7 @@
          </div> <!-- col -->
 
          <div class="col-md-6 " id="house-hides">
-            <?php echo $icyamunara->icyamunaraList('House_For_sale',1,$user_id); ?>
+            <?php echo $icyamunara->icyamunaraList(1,$user_id); ?>
          </div> <!-- col -->
 
          <div class="col-md-3">

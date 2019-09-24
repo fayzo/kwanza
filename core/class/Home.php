@@ -1435,6 +1435,42 @@ class Home extends Comment {
 
     }
 
+    public function uploadRwandaicymunaraFile($file)
+    {
+
+        $insertValuesSQL ="";
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/icyamunara/';
+        $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
+        
+        foreach($file['name'] as $key => $value){
+            // File upload path
+            $fileName = basename($file['name'][$key]);
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+
+             $filenames = (strlen($fileName) > 10)? 
+                     strtolower(date('Y').'_'.rand(10,100).substr($fileName,0,4).".".$fileActualExt):
+                     strtolower(date('Y').'_'.rand(10,100).$fileName);
+
+            $valued[] = $filenames;
+
+            $targetFilePath = $targetDir . $filenames;
+            
+            // Check whether file type is valid
+            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+            if(in_array($fileType, $allowTypes)){
+                // Upload file to server
+                $fileTmpName = $file["tmp_name"];
+                move_uploaded_file($fileTmpName[$key], $targetFilePath);
+            }
+        }
+        
+        # Build the values
+        $filenamedb = implode("=", $valued);
+        return  $filenamedb;
+
+    }
+
     public function uploadcarFile($file)
     {
 

@@ -3,8 +3,8 @@ session_start();
 include('../init.php');
 $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpath($_SERVER['SCRIPT_FILENAME']));
 
-if (isset($_POST['food_id']) && !empty($_POST['food_id'])) {
-   if (isset($_SESSION['key'])) {
+if (isset($_POST['house_id']) && !empty($_POST['house_id'])) {
+    if (isset($_SESSION['key'])) {
         # code...
         $user_id= $_SESSION['key'];
     }else {
@@ -15,8 +15,8 @@ if (isset($_POST['food_id']) && !empty($_POST['food_id'])) {
         $user_id= $profileData['user_id'];
     }
     
-    $food_id = $_POST['food_id'];
-    $user= $food->foodReadmore($food_id);
+    $house_id = $_POST['house_id'];
+    $user= $icyamunara->icyamunaraReadmore($house_id);
      ?>
 <style>
     	ul{
@@ -39,8 +39,8 @@ if (isset($_POST['food_id']) && !empty($_POST['food_id'])) {
 		.demo{
 			width: 800px;
 		}
-</style>
-<div class="food-popup">
+    </style>
+<div class="icyamunara-popup">
     <div class="wrap6">
         <span class="colose">
         	<button class="close-imagePopup"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -61,8 +61,7 @@ if (isset($_POST['food_id']) && !empty($_POST['food_id'])) {
                          </div>
                          </div>
                          <span class="username">
-                             <a
-                                 href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $user['firstname']." ".$user['lastname'] ;?></a>
+                             <a href="<?php echo BASE_URL_PUBLIC.$user['username'] ;?>"><?php echo $user['firstname']." ".$user['lastname'] ;?></a>
                              <!-- //Jonathan Burke Jr. -->
                          </span>
                          <span class="description">Shared publicly - <?php echo $users->timeAgo($user['created_on3']) ;?></span>
@@ -73,10 +72,14 @@ if (isset($_POST['food_id']) && !empty($_POST['food_id'])) {
 
                    <div class="row reusercolor p-2">
                        <div class="col-md-12">
-                           <h5 class="text-center black-bg h4 mb-2"><?php echo $user['photo_Title_main']." at ".number_format($user['price'])." Frw"; ?></h5>
-                        </div>
-                        <div class="col-md-6">
+                            <h5 class="text-center black-bg h4 mb-2"><?php echo " in ".$user['provincename']." Location ".$user['namedistrict']." district/".$user['namesector']." sector/".$user['nameCell']." cell"; ?></h5>
+                             <!-- < ?php echo $house['provincename']; ?> /  -->
+                                <!-- < ?php echo $house['namedistrict']; ?> District/  -->
+                                <!-- < ?php echo $house['namesector']; ?> Sector/  -->
+                                <!-- < ?php echo $house['nameCell']; ?> Cell  -->
+                       </div>
 
+                       <div class="col-md-6">
                             <div class="clearfix" style="max-width:474px;">
                                 <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
                                 <?php 
@@ -85,30 +88,21 @@ if (isset($_POST['food_id']) && !empty($_POST['food_id'])) {
                                         // $splice = array_expode ($expode,0,10);
                                         for ($i=0; $i < count($expode); ++$i) { 
                                             ?>
-                                            <li data-thumb="<?php echo BASE_URL_PUBLIC.'uploads/food/'.$expode [$i]; ?>" > 
-                                               <img src="<?php echo BASE_URL_PUBLIC.'uploads/food/'.$expode [$i]; ?>" />
+                                            <li data-thumb="<?php echo BASE_URL_PUBLIC.'uploads /icyamunara/'.$expode [$i]; ?>" > 
+                                               <img src="<?php echo BASE_URL_PUBLIC.'uploads /icyamunara/'.$expode [$i]; ?>" />
                                             </li>
                                       <?php } ?>
                                 </ul>
                             </div>  
-
+                        
                             <h4 class="mt-2"><i>
                                 authors: <?php echo $user['authors']; ?>
                             </i></h4>
-                            <div class="mt-2">
-                                <?php echo $user['text']; ?>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="mt-2"><i>Details of food</i></h4>
-                            <ul>
-                                <li>200 m square feet Garden,</li>
-                                <li>4 bedroom,</li>
-                                <li>2 bathroom, </li>
-                                <li>kitchen and cabinet,</li>
-                                <li>car parking ,</li>
-                                <li>dapibuseget quame</li>
-                            </ul>      
+                           
+                       </div> <!-- col-md-6  -->
+                       <div class="col-md-6">
+                            <h4 class="mt-2"><i>Details of icyamunara</i></h4>
+                            <div> <?php echo $user['text']; ?></div>
                        </div><!-- /.col -->
                        <?php 
                         $file = $user['photo']."=".$user['other_photo'];
@@ -119,8 +113,9 @@ if (isset($_POST['food_id']) && !empty($_POST['food_id'])) {
                          }
                          $allower_ext = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
              if (array_diff($fileActualExt,$allower_ext) == false) {
+
                         $file = $user['photo']."=".$user['other_photo'];
-                        $expode = explode("=",$file); 
+                        $expode = explode("=",$file);  
                         $count = count($expode); ?>
 
                <?php if ($count < 4) { ?>
@@ -131,12 +126,11 @@ if (isset($_POST['food_id']) && !empty($_POST['food_id'])) {
                                $photo_title=  explode("=",$title);
                                $explode = explode("=",$file);
                                $splice= array_splice($explode,0,3);
-
                                for ($i=0; $i < count($splice); ++$i) { 
                                    ?>
-                                   <div class="col-md-6 mt-2">
-                                         <div class="imagefoodViewPopup more"  data-food="<?php echo $user["food_id"] ;?>">
-                                         <img src="<?php echo BASE_URL_PUBLIC."uploads/food/".$splice[$i] ;?>"
+                                    <div class="col-md-6 mt-2">
+                                         <div class="imagehouseViewPopup more"  data-house="<?php echo $user["house_id"] ;?>">
+                                         <img src="<?php echo BASE_URL_PUBLIC."uploads /icyamunara/".$splice[$i] ;?>"
                                              alt="Photo" >
                                          </div>
                                      <div class="h5"><i><?php echo $photo_title[$i]; ?></i></div>
@@ -151,18 +145,19 @@ if (isset($_POST['food_id']) && !empty($_POST['food_id'])) {
                                $photo_title=  explode("=",$title);
                                $explode = explode("=",$file);
                                $splice= array_splice($explode,0,4);
-
                                for ($i=0; $i < count($splice); ++$i) { 
                                    ?>
-                                   <div class="col-md-6 mt-2">
-                                         <div class="imagefoodViewPopup more"  data-food="<?php echo $user["food_id"] ;?>">
-                                         <img src="<?php echo BASE_URL_PUBLIC."uploads/food/".$splice[$i] ;?>"
+                                    <div class="col-md-6 mt-2">
+                                         <div class="imagehouseViewPopup more"  data-house="<?php echo $user["house_id"] ;?>">
+                                         <img src="<?php echo BASE_URL_PUBLIC."uploads /icyamunara/".$splice[$i] ;?>"
                                              alt="Photo" >
                                          </div>
                                      <div class="h5"><i><?php echo $photo_title[$i]; ?></i></div>
                                    </div>
                              <?php } ?>
-                            <span class="btn btn-primary imagefoodViewPopup  float-right" data-food="<?php echo $user["food_id"] ;?>" > View More photo  <i class="fa fa-picture-o"></i> >>> </span>
+
+                            <span class="btn btn-primary imagehouseViewPopup  float-right" data-house="<?php echo $user["house_id"] ;?>" > View More photo  <i class="fa fa-picture-o"></i> >>> </span>
+
                   <?php } ?>
                   
                <?php } ?>
@@ -178,7 +173,7 @@ if (isset($_POST['food_id']) && !empty($_POST['food_id'])) {
         </div><!-- user-show-popup-box -->
     </div> <!-- Wrp4 -->
 </div> <!-- apply-popup" -->
-<script>
+ <script>
     	 $(document).ready(function() {
 			$("#content-slider").lightSlider({
                 loop:true,

@@ -240,6 +240,27 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on('click', '.offer-price-sale', function (e) {
+        e.stopPropagation();
+        var sale = $(this).data('sale');
+
+        $.ajax({
+            url: 'core/ajax_db/sale_offer.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                sale: sale,
+
+            }, success: function (response) {
+                $(".popupTweet").html(response);
+                $(".close-imagePopup").click(function () {
+                    $(".sale-popup").hide();
+                });
+                console.log(response);
+            }
+        });
+    });
+
 
 });
 

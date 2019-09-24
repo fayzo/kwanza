@@ -35,7 +35,12 @@
                     <?php echo $home->userProfile($user_id); ?>
                 <!-- hastTag Me Box -->
                  <?php echo $trending->trends(); ?>
+
+                <?php echo $news->home_recent_News(); ?>
+                <?php echo $football->footballMatchLineup(); ?>
+                <?php echo $football->footballMatchFixture(); ?>
             </div>
+          
             <!-- /.col -->
 
             <div class="col-md-6">
@@ -62,6 +67,7 @@
                        <?php echo $home->options(); ?>
                     </div>
                     <!-- /.col -->
+
                 </div>
                 <!-- /.row -->
             </div>
