@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2019 at 01:31 AM
+-- Generation Time: Sep 24, 2019 at 04:24 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.2.20
 
@@ -298,7 +298,13 @@ CREATE TABLE `car` (
   `user_id3` int(11) NOT NULL,
   `created_on3` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
--- Error reading data for table social_menya.car: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `social_menya`.`car`' at line 1
+
+--
+-- Dumping data for table `car`
+--
+
+INSERT INTO `car` (`car_id`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `price`, `phone`, `country01`, `photo_Title_main`, `photo_Title`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `text`, `categories_car`, `discount`, `price_discount`, `banner`, `buy`, `user_id3`, `created_on3`) VALUES
+(20, 'fay', '2019_272017.jpg', '2019_26cr-c.jpg', '', '', '899900', '0746945245', 'RW', 'it gud', 'it run fast=====', '', '3', '303', '3030403', '30304', '303040305', 'it is gud', 'car_For_sale', 0, 0.00, 'empty', 'available', 61, '2019-08-14 17:47:22');
 
 -- --------------------------------------------------------
 
@@ -4037,6 +4043,45 @@ INSERT INTO `house` (`house_id`, `authors`, `photo`, `other_photo`, `video`, `yo
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `icyamunara`
+--
+
+CREATE TABLE `icyamunara` (
+  `house_id` int(11) NOT NULL,
+  `authors` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `discount` int(11) NOT NULL,
+  `photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `other_photo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `video` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `youtube` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country01` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `province` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `districts` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sector` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cell` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `village` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `buy` char(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `banner` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title_main` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id3` int(11) NOT NULL,
+  `created_on3` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `icyamunara`
+--
+
+INSERT INTO `icyamunara` (`house_id`, `authors`, `discount`, `photo`, `other_photo`, `video`, `youtube`, `text`, `phone`, `country01`, `province`, `districts`, `sector`, `cell`, `village`, `buy`, `banner`, `photo_Title_main`, `photo_Title`, `user_id3`, `created_on3`) VALUES
+(36, 'fayzo', 0, '2019_551807.jpg', '2019_241905.jpg', '', '', 'it is good shape', '05984954', 'RW', '1', '102', '10208', '1020803', '102080302', 'sold', 'new', 'ni nziza', 'ifite na jardin=====', 61, '2019-08-14 12:59:54'),
+(37, 'fayzo', 0, '2019_8547f4.jpg', '2019_60down.jpg', '', '', 'nice', '0787384312', 'AF', '2', '204', '20404', '2040402', '204040204', 'available', '', 'ubutaka', 'igiti=====', 61, '2019-09-23 13:08:09'),
+(38, 'fayzo', 0, '2019_49crop.jpg', '2019_52crop.jpg', '', '', 'nice', '077846745', 'RW', '1', '102', '10203', '1020302', '102030203', 'available', '', 'buragurisha', 'imfite ibyasi=====', 61, '2019-09-23 13:09:37');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `jobs`
 --
 
@@ -4589,10 +4634,11 @@ CREATE TABLE `sale` (
   `youtube` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `categories_sale` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title_main` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_Title` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id01` int(11) NOT NULL,
   `created_on01` datetime NOT NULL,
   `country01` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `city` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `province` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `districts` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sector` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -4605,19 +4651,20 @@ CREATE TABLE `sale` (
 -- Dumping data for table `sale`
 --
 
-INSERT INTO `sale` (`sale_id`, `title`, `code`, `price`, `price_discount`, `discount`, `buy`, `quantity`, `phone`, `photo`, `other_photo`, `video`, `youtube`, `text`, `categories_sale`, `user_id01`, `created_on01`, `country01`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `banner`) VALUES
-(2, 'inkweto', 'inkweto', 445.00, 0, 0, '', 0, '0787345243243', '2019_86air-.jpg', '2019_63air-.jpg=2019_12air-.jpg', '', '', 'nice one', 'clothes', 61, '2019-06-11 06:30:42', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
-(3, 'samsung', 'igisavi', 4000.00, 0, 0, '', 0, '0787345243243', '2019_3671p8.jpg', '2019_380302.jpg', '', '', 'nice', 'sports', 61, '2019-06-11 06:39:30', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
-(4, 'style', '9098', 400.00, 0, 0, '', 0, '0787345243243', '2019_372367.jpg', '2019_64set-.jpg=2019_33sigm.jpg', '', '', 'good', 'health_beauty', 61, '2019-06-11 13:13:26', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
-(5, 'FinePix Pro2 3D Camera', '3DcAM01', 1500.00, 0, 0, '', 0, '0787345243243', '44841kx.jpg', '2019_74camera.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:49:02', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
-(6, 'EXP Portable Hard Drive', 'USB02', 490000.00, 50000, 9, 'sold', 0, '0787345243243', '389imag.jpg', '2019_24exte.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:50:23', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
-(7, 'Luxury Ultra thin Wrist Watch by', 'wristWear03', 4000.00, 58000, 23, 'sold', 0, '0787345243243', '45404b9.jpg', '2019_38watch.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:51:28', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'empty'),
-(8, 'XP 1155 Intel Core Laptop', 'LPN45', 800.00, 0, 0, 'sold', 0, '0787345243243', '6185dd3.png', '2019_33laptop.jpg', '', '', 'good quality', 'electronics', 61, '2019-06-22 00:52:34', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
-(9, 'isahani', 'xfg54', 2464.00, 0, 0, '', 0, '0787345243243', '2019_6131enum.jpg', '2019_8071p8.jpg', '', '', 'is in good shape', 'home_garden', 61, '2019-07-01 16:31:57', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
-(10, 'isahani', 'xfg54', 2464.00, 0, 0, '', 0, '0787345243243', '2019_3731enum.jpg', '2019_2571p8.jpg', '', '', 'is in good shape', 'home_garden', 61, '2019-07-01 16:32:05', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
-(11, 'isafiriya', 'wte54', 4635.00, 0, 0, '', 0, '0787345243243', '2019_6851qs.jpg', '2019_7551xj.jpg', '', '', 'fgf', 'home_garden', 61, '2019-07-01 16:36:10', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
-(12, 'isafiriya', 'wte54', 4635.00, 0, 0, '', 0, '0787345243243', '2019_6251qs.jpg', '2019_2351xj.jpg', '', '', 'fgf', 'home_garden', 61, '2019-07-01 16:36:17', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
-(13, 'car', 'sf53', 4000.00, 0, 0, '', 0, '0787345243243', '2019_820032.jpeg', '2019_560032.jpeg', '', '', 'fdg', 'car', 61, '2019-07-01 16:37:30', 'rwanda', 'kigali', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new');
+INSERT INTO `sale` (`sale_id`, `title`, `code`, `price`, `price_discount`, `discount`, `buy`, `quantity`, `phone`, `photo`, `other_photo`, `video`, `youtube`, `text`, `categories_sale`, `photo_Title_main`, `photo_Title`, `user_id01`, `created_on01`, `country01`, `province`, `districts`, `sector`, `cell`, `village`, `banner`) VALUES
+(2, 'inkweto', 'inkweto', 445.00, 0, 0, '', 0, '0787345243243', '2019_86air-.jpg', '2019_63air-.jpg=2019_12air-.jpg', '', '', 'nice one', 'clothes', '', '', 61, '2019-06-11 06:30:42', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(3, 'samsung', 'igisavi', 4000.00, 0, 0, '', 0, '0787345243243', '2019_3671p8.jpg', '2019_380302.jpg', '', '', 'nice', 'sports', '', '', 61, '2019-06-11 06:39:30', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(4, 'style', '9098', 400.00, 0, 0, '', 0, '0787345243243', '2019_372367.jpg', '2019_64set-.jpg=2019_33sigm.jpg', '', '', 'good', 'health_beauty', '', '', 61, '2019-06-11 13:13:26', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(5, 'FinePix Pro2 3D Camera', '3DcAM01', 1500.00, 0, 0, '', 0, '0787345243243', '44841kx.jpg', '2019_74camera.jpg', '', '', 'good quality', 'electronics', '', '', 61, '2019-06-22 00:49:02', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(6, 'EXP Portable Hard Drive', 'USB02', 490000.00, 50000, 9, 'sold', 0, '0787345243243', '389imag.jpg', '2019_24exte.jpg', '', '', 'good quality', 'electronics', '', '', 61, '2019-06-22 00:50:23', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(7, 'Luxury Ultra thin Wrist Watch by', 'wristWear03', 4000.00, 58000, 23, 'sold', 0, '0787345243243', '45404b9.jpg', '2019_38watch.jpg', '', '', 'good quality', 'electronics', '', '', 61, '2019-06-22 00:51:28', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'empty'),
+(8, 'XP 1155 Intel Core Laptop', 'LPN45', 800.00, 0, 0, 'sold', 0, '0787345243243', '6185dd3.png', '2019_33laptop.jpg', '', '', 'good quality', 'electronics', '', '', 61, '2019-06-22 00:52:34', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(9, 'isahani', 'xfg54', 2464.00, 0, 0, '', 0, '0787345243243', '2019_6131enum.jpg', '2019_8071p8.jpg', '', '', 'is in good shape', 'home_garden', '', '', 61, '2019-07-01 16:31:57', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(10, 'isahani', 'xfg54', 2464.00, 0, 0, '', 0, '0787345243243', '2019_3731enum.jpg', '2019_2571p8.jpg', '', '', 'is in good shape', 'home_garden', '', '', 61, '2019-07-01 16:32:05', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(11, 'isafiriya', 'wte54', 4635.00, 0, 0, '', 0, '0787345243243', '2019_6851qs.jpg', '2019_7551xj.jpg', '', '', 'fgf', 'home_garden', '', '', 61, '2019-07-01 16:36:10', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
+(12, 'isafiriya', 'wte54', 4635.00, 0, 0, '', 0, '0787345243243', '2019_6251qs.jpg', '2019_2351xj.jpg', '', '', 'fgf', 'home_garden', '', '', 61, '2019-07-01 16:36:17', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(13, 'car', 'sf53', 4000.00, 0, 0, '', 0, '0787345243243', '2019_820032.jpeg', '2019_560032.jpeg', '', '', 'fdg', 'car', '', '', 61, '2019-07-01 16:37:30', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
+(14, 'iphone s6', 'df86', 67000.00, 0, 0, '', 0, '06774334', '2019_68imag.jpg', '2019_80ipho.png', '', '', 'it in good condition', 'electronics', 'iphone s10', 'iphone s5=====', 61, '2019-09-23 11:09:25', 'RW', '2', '203', '20305', '2030503', '203050303', '');
 
 -- --------------------------------------------------------
 
@@ -5716,7 +5763,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `password`, `gender`, `chat`, `career`, `country`, `date_birth`, `date_registry`, `last_login`, `counts_login`, `forgotUsernameCounts`, `forgotUsernameCountsTimesHeCreates`, `forgotUsernameCountsTimesHeCreatespassword`, `profile_img`, `profile_img_crop`, `cover_img`, `background`, `language`, `color`, `education`, `diploma`, `skills`, `location`, `hobbys`, `followers`, `following`, `approval`, `company_education`, `type_of_business`, `address`, `size_of_people`, `companyname`, `overview`, `history`, `team`, `legal_structure`, `location_facilities`, `mission_statement`, `website`, `unemplyoment`, `categories_fields`, `phone`) VALUES
-(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'on', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-09-22 03:18:30', 555, 0, 10, 10, '112baby3.png', '', '702caus.jpg', 'white-bg', '', 'rose', 'lycee', 'project', 'web', 'BR', 'styuding', 9, 7, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
+(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'on', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-09-23 09:41:22', 556, 0, 10, 10, '112baby3.png', '', '702caus.jpg', 'white-bg', '', 'rose', 'lycee', 'project', 'web', 'BR', 'styuding', 9, 7, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
 (64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-09-21 11:26:10', 66, 0, 0, 0, '', '', '', 'white-bg', '', 'black', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
 (65, 'karisa', 'bosco', 'bosco', 'faysal@gmail.com', 'bosco', 'Male', '', '', 'RW', '2019-05-03', '2019-05-02', '2019-05-27 21:50:00', 8, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 2, 2, 'off', '', '', '', '', 'LAMBORGIN', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
 (66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-09-14 12:49:53', 118, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'white-bg', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
@@ -18583,6 +18630,12 @@ ALTER TABLE `house`
   ADD PRIMARY KEY (`house_id`);
 
 --
+-- Indexes for table `icyamunara`
+--
+ALTER TABLE `icyamunara`
+  ADD PRIMARY KEY (`house_id`);
+
+--
 -- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
@@ -19023,6 +19076,12 @@ ALTER TABLE `house`
   MODIFY `house_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
+-- AUTO_INCREMENT for table `icyamunara`
+--
+ALTER TABLE `icyamunara`
+  MODIFY `house_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
@@ -19110,7 +19169,7 @@ ALTER TABLE `rwandamotel`
 -- AUTO_INCREMENT for table `sale`
 --
 ALTER TABLE `sale`
-  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `sale_gurisha`
