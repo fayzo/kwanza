@@ -9,12 +9,12 @@ class Gurisha extends Home {
     {
         $mysqli= $this->database;
         $db_handle = $mysqli;
-        if(!empty($_POST["action_gurisha"])) {
-        switch($_POST["action_gurisha"]) {
+        if(!empty($_REQUEST["action_gurisha"])) {
+        switch($_REQUEST["action_gurisha"]) {
         	case "add":
-        		if(!empty($_POST["quantity"])) {
-        			$productByCode = $this->runQuery("SELECT * FROM sale_gurisha WHERE code='" . $_POST["code"] . "'");
-        			$itemArray = array($productByCode[0]["code"]=>array('name'=>$productByCode[0]["title"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"], 'image'=>$productByCode[0]["photo"]));
+        		if(!empty($_REQUEST["quantity"])) {
+        			$productByCode = $this->runQuery("SELECT * FROM sale_gurisha WHERE code='" . $_REQUEST["code"] . "'");
+        			$itemArray = array($productByCode[0]["code"]=>array('name'=>$productByCode[0]["title"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_REQUEST["quantity"], 'price'=>$productByCode[0]["price"], 'image'=>$productByCode[0]["photo"]));
         			
         			if(!empty($_SESSION["cart_item_gurisha"])) {    
         				if(in_array($productByCode[0]["code"],array_keys($_SESSION["cart_item_gurisha"]))) {
@@ -23,7 +23,7 @@ class Gurisha extends Home {
         								if(empty($_SESSION["cart_item_gurisha"][$k]["quantity"])) {
         									$_SESSION["cart_item_gurisha"][$k]["quantity"] = 0;
         								}
-        								$_SESSION["cart_item_gurisha"][$k]["quantity"] += $_POST["quantity"];
+        								$_SESSION["cart_item_gurisha"][$k]["quantity"] += $_REQUEST["quantity"];
         							}
         					}
         				} else {
@@ -38,13 +38,56 @@ class Gurisha extends Home {
         	case "remove":
         		if(!empty($_SESSION["cart_item_gurisha"])) {
         			foreach($_SESSION["cart_item_gurisha"] as $k => $v) {
-        					if($_POST["code"] == $k)
+        					if($_REQUEST["code"] == $k)
         						unset($_SESSION["cart_item_gurisha"][$k]);				
         					if(empty($_SESSION["cart_item_gurisha"]))
         						unset($_SESSION["cart_item_gurisha"]);
         			}
             }
              exit($this->showCart_gurisha_itemSale());
+        	break;
+        	case "empty":
+        		unset($_SESSION["cart_item_gurisha"]);
+        	break;	
+        }
+        }
+
+        if(!empty($_REQUEST["action_gurisha0"])) {
+        switch($_REQUEST["action_gurisha0"]) {
+        	case "add":
+        		if(!empty($_REQUEST["quantity"])) {
+        			$productByCode = $this->runQuery("SELECT * FROM sale_gurisha WHERE code='" . $_REQUEST["code"] . "'");
+        			$itemArray = array($productByCode[0]["code"]=>array('name'=>$productByCode[0]["title"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_REQUEST["quantity"], 'price'=>$productByCode[0]["price"], 'image'=>$productByCode[0]["photo"]));
+        			
+        			if(!empty($_SESSION["cart_item_gurisha"])) {    
+        				if(in_array($productByCode[0]["code"],array_keys($_SESSION["cart_item_gurisha"]))) {
+        					foreach($_SESSION["cart_item_gurisha"] as $k => $v) {
+        							if($productByCode[0]["code"] == $k) {
+        								if(empty($_SESSION["cart_item_gurisha"][$k]["quantity"])) {
+        									$_SESSION["cart_item_gurisha"][$k]["quantity"] = 0;
+        								}
+        								$_SESSION["cart_item_gurisha"][$k]["quantity"] += $_REQUEST["quantity"];
+        							}
+        					}
+        				} else {
+        					$_SESSION["cart_item_gurisha"] = array_merge($_SESSION["cart_item_gurisha"],$itemArray);
+        				}
+        			} else {
+        				$_SESSION["cart_item_gurisha"] = $itemArray;
+        			}
+            }
+             exit($this->showCart_gurisha_item());
+        	break;
+        	case "remove":
+        		if(!empty($_SESSION["cart_item_gurisha"])) {
+        			foreach($_SESSION["cart_item_gurisha"] as $k => $v) {
+        					if($_REQUEST["code"] == $k)
+        						unset($_SESSION["cart_item_gurisha"][$k]);				
+        					if(empty($_SESSION["cart_item_gurisha"]))
+        						unset($_SESSION["cart_item_gurisha"]);
+        			}
+            }
+             exit($this->showCart_gurisha_item());
         	break;
         	case "empty":
         		unset($_SESSION["cart_item_gurisha"]);
@@ -167,15 +210,16 @@ class Gurisha extends Home {
                     
           <?php while($row= $query->fetch_array()) { ?>
 
-                         <div class="mr-3 mb-3 float-left" style="width: 260px;">
+                         <div class="mr-3 mb-3 float-left" style="width: 260px;height:276px;">
                         <!-- //   width: 252px;height:178px -->
                          <!-- <div class="col-md-3"> -->
 
                           <div class="card">
-                            <div class="card-img-top img-fuild" id="sale_gurishaPreview<?php echo $row['sale_id']; ?>" style="width:260px;height:178px;text-align: center;z-index:1;">
-                                 <img src="<?php echo BASE_URL_PUBLIC."uploads/sale-gurisha/".$row["photo"]; ?>" height="178px">
+                            <div class="card-img-top img-fuild" id="sale_gurishaPreview<?php echo $row['sale_id']; ?>" style="background: url('<?php echo BASE_URL_PUBLIC ;?>uploads/sale-gurisha/<?php echo $row["photo"]; ?>')no-repeat center center;background-size:contain;height:178px;width:260px;position:relative" >
+                            <!-- <div class="card-img-top img-fuild" id="sale_gurishaPreview< ?php echo $row['sale_id']; ?>" style="width:260px;height:178px;text-align: center;z-index:1;">
+                                 <img src="< ?php echo BASE_URL_PUBLIC."uploads/sale-gurisha/".$row["photo"]; ?>" height="178px">
                             </div>
-                            <div class="card-img-top img-fuild" id="sale_gurishaPreview<?php echo $row['sale_id']; ?>" style="position:absolute;z-index:2;">
+                            <div class="card-img-top img-fuild" id="sale_gurishaPreview< ?php echo $row['sale_id']; ?>" style="position:absolute;z-index:2;"> -->
 
                                 <?php $banner = $row['banner'];
                                       switch ($banner) {
@@ -218,7 +262,7 @@ class Gurisha extends Home {
                                                         <a href="javascript:void(0)" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                                                         <ul style="list-style-type: none; margin:0px; margin:0px;width:250px;text-align:center;" >
                                                             <li style="list-style-type: none; margin:0px;"> 
-                                                                 <label class="delete-sale"  data-sale="<?php echo $row["sale_id"];?>"  data-user="<?php echo $row["user_id01"];?>">Delete </label>
+                                                                 <label class="delete-gurisha"  data-sale="<?php echo $row["sale_id"];?>"  data-user="<?php echo $row["user_id01"];?>">Delete </label>
                                                             </li>
 
                                                             <li style="list-style-type: none;"> 
@@ -429,18 +473,20 @@ class Gurisha extends Home {
             <th style="text-align:center;" width="5%">Remove</th>
             </tr>	
              </thead>
-            <tbody>
+            <tbody class="bg-light">
             <?php		
                 foreach ($_SESSION["cart_item_gurisha"] as $item){
                     $item_price = $item["quantity"]*$item["price"];
             		?>
             				<tr>
-            				<td><img src="<?php echo BASE_URL_PUBLIC ;?>uploads/sale-gurisha/<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
+                            <td style="background: url('<?php echo BASE_URL_PUBLIC ;?>uploads/sale-gurisha/<?php echo $item["image"]; ?>')no-repeat center center;background-size:contain;height:80px;width:80px;position:relative">
+                            </td>
             				<td><?php echo $item["code"]; ?></td>
             				<td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
             				<td  style="text-align:right;"><?php echo "$ ".$item["price"]; ?></td>
             				<td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
-            				<td style="text-align:center;"><a href="gurisha.php?action_gurisha=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="<?php echo BASE_URL_LINK ;?>image/product-images/icon-delete.png" alt="Remove Item" /></a></td>
+            				<td style="text-align:center;"><a href="javascript:void(0);" onclick="cart_gura_add('remove','<?php echo $item['code']; ?>');" class="btnRemoveAction"><img src="<?php echo BASE_URL_LINK ;?>image/product-images/icon-delete.png" alt="Remove Item" /></a></td>
+            				<!-- <td style="text-align:center;"><a href="gura.php?action_gurisha0=remove&code=< ?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="< ?php echo BASE_URL_LINK ;?>image/product-images/icon-delete.png" alt="Remove Item" /></a></td> -->
             				</tr>
             				<?php
             				$total_quantity += $item["quantity"];
@@ -484,8 +530,9 @@ class Gurisha extends Home {
                     $item_price = $item["quantity"]*$item["price"];
             		?>
                     <tr>
-                     <td style="position:relative;text-align:center;">
-                     <img src="<?php echo BASE_URL_PUBLIC ;?>uploads/sale-gurisha/<?php echo $item["image"]; ?>" height='80px' >
+                     <!-- <td style="position:relative;text-align:center;">
+                     <img src="< ?php echo BASE_URL_PUBLIC ;?>uploads/sale-gurisha/< ?php echo $item["image"]; ?>" height='80px' > -->
+                     <td style="background: url('<?php echo BASE_URL_PUBLIC ;?>uploads/sale-gurisha/<?php echo $item["image"]; ?>')no-repeat center center;background-size:contain;height:80px;width:80px;position:relative">
                     <div style="position:absolute;bottom:0px;left:0px;background-color:#0000006e;color:white;width: 100%;"><?php
                     if (strlen($item["name"]) > 12) {
                       echo $item["name"] = substr($item["name"],0,12).'..';

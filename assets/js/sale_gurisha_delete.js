@@ -120,7 +120,7 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on('click', '.delete-gurisha-sale', function (e) {
+    $(document).on('click', '.delete-gurisha', function (e) {
         e.preventDefault();
         var sale_id = $(this).data('sale');
         var user_id = $(this).data('user');
@@ -240,6 +240,7 @@ $(document).ready(function () {
         });
     });
 
+
     $(document).on('click', '.offer-price-sale', function (e) {
         e.stopPropagation();
         var sale = $(this).data('sale');
@@ -263,6 +264,52 @@ $(document).ready(function () {
 
 
 });
+
+function checkout(checkout) {
+
+    $.ajax({
+        url: 'core/ajax_db/sale_offer.php',
+        method: 'POST',
+        dataType: 'text',
+        data: {
+            checkout: checkout,
+
+        }, success: function (response) {
+            $("#responseSubmititerm").html('<div class="alert alert-success alert-dismissible fade show text-center">' +
+                '<button class="close" data-dismiss="alert" type="button">' +
+                '<span>&times;</span>' +
+                '</button> <strong>SUCCESS</strong>' + ' </div>');
+            setInterval(function () {
+                $("#responseSubmititerm").fadeOut();
+            });
+            $("#responseCheckout").html(response);
+            console.log(response);
+        }
+    });
+}
+
+function paymentSale(payment) {
+
+    $.ajax({
+        url: 'core/ajax_db/sale_offer.php',
+        method: 'POST',
+        dataType: 'text',
+        data: {
+            payment: payment,
+
+        }, success: function (response) {
+            $("#responseSubmititerm").html('<div class="alert alert-success alert-dismissible fade show text-center">' +
+                '<button class="close" data-dismiss="alert" type="button">' +
+                '<span>&times;</span>' +
+                '</button> <strong>SUCCESS</strong>' + ' </div>');
+            setInterval(function () {
+                $("#responseSubmititerm").fadeOut();
+            });
+            $("#responseCheckout").html(response);
+            console.log(response);
+        }
+    });
+}
 
 function saleuploadz(success, fileName) {
     if (success) {

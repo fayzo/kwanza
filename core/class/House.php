@@ -398,7 +398,13 @@ class House extends Home {
     public function house_getPopupTweet($user_id,$house_id,$house_user_id)
     {
         $mysqli= $this->database;
-        $result= $mysqli->query("SELECT * FROM users U Left JOIN house B ON B. user_id3 = u. user_id WHERE B. house_id = $house_id AND B. user_id3 = $house_user_id ");
+        $result= $mysqli->query("SELECT * FROM users U Left JOIN house H ON H. user_id3 = u. user_id 
+        Left JOIN provinces P ON H. province = P. provincecode
+            Left JOIN districts M ON H. districts = M. districtcode
+            Left JOIN sectors T ON H. sector = T. sectorcode
+            Left JOIN cells C ON H. cell = C. codecell
+            Left JOIN vilages V ON H. village = V. CodeVillage 
+         WHERE H. house_id = $house_id AND H. user_id3 = $house_user_id ");
         // var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
         while ($row= $result->fetch_array()) {
             # code...
@@ -407,16 +413,12 @@ class House extends Home {
     }
 
       
-    public function deleteLikesHouse($tweet_id)
+    public function deleteLikesHouse($house_id)
     {
         $mysqli= $this->database;
-        $query="DELETE B , L ,C ,R FROM events B 
-                        LEFT JOIN events_like L ON L. like_on = B. events_id 
-                        LEFT JOIN events_comment_like C ON C. like_on_ = B. events_id 
-                        LEFT JOIN events_comment R ON R. comment_on = B. events_id 
-                        WHERE B. events_id = '{$tweet_id}' and B. user_id3 = '{$user_id}' ";
+        $query="DELETE FROM house WHERE house_id = '{$house_id}' and B. user_id3 = '{$user_id}' ";
 
-        $query1="SELECT * FROM events WHERE events_id = $tweet_id and user_id3 = $user_id ";
+        $query1="SELECT * FROM house WHERE house_id = $house_id and user_id3 = $user_id ";
 
         $result= $mysqli->query($query1);
         $rows= $result->fetch_assoc();
@@ -431,15 +433,15 @@ class House extends Home {
             $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
             if (array_diff($fileActualExt,$allower_ext) == false) {
                 $expode = explode("=",$photo);
-                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/events/';
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/house/';
                 for ($i=0; $i < count($expode); ++$i) { 
                       unlink($uploadDir.$expode[$i]);
                 }
             }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp4') {
-                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/events/';
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/house/';
                       unlink($uploadDir.$photo);
             }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp3') {
-                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/events/';
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/house/';
                       unlink($uploadDir.$photo);
             }
         }

@@ -101,7 +101,7 @@ class Icyamunara extends House {
                                                         <a href="javascript:void(0)" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                                                         <ul style="list-style-type: none; margin:0px; margin:0px;width:250px;text-align:center;" >
                                                             <li style="list-style-type: none; margin:0px;"> 
-                                                            <label class="deleteHouse"  data-icyamunara="<?php echo $icyamunara["house_id"];?>"  data-user="<?php echo $icyamunara["user_id3"];?>">Delete </label>
+                                                            <label class="delete-cyamunara"  data-cyamunara="<?php echo $icyamunara["house_id"];?>"  data-user="<?php echo $icyamunara["user_id3"];?>">Delete </label>
                                                             </li>
 
                                                             <li style="list-style-type: none; margin:0px;"> 
@@ -165,7 +165,7 @@ class Icyamunara extends House {
                                                             </li>
                                                             
                                                             <li style="list-style-type: none;"> 
-                                                            <label for="discount" class="update-icyamunara-btn" data-icyamunara="<?php echo $icyamunara["house_id"];?>" data-user="<?php echo $icyamunara["user_id3"];?>">submit</label>
+                                                            <label for="discount" class="update-cyamunara-btn" data-cyamunara="<?php echo $icyamunara["house_id"];?>" data-user="<?php echo $icyamunara["user_id3"];?>">submit</label>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -236,6 +236,100 @@ class Icyamunara extends House {
         $row= $query->fetch_array();
         return $row;
     }
+
+    
+    public function cyamunara_getPopupTweet($user_id,$house_id,$house_user_id)
+    {
+        $mysqli= $this->database;
+        $result= $mysqli->query("SELECT * FROM users U Left JOIN icyamunara H ON H. user_id3 = u. user_id
+            Left JOIN provinces P ON H. province = P. provincecode
+            Left JOIN districts M ON H. districts = M. districtcode
+            Left JOIN sectors T ON H. sector = T. sectorcode
+            Left JOIN cells C ON H. cell = C. codecell
+            Left JOIN vilages V ON H. village = V. CodeVillage 
+         WHERE H. house_id = $house_id AND H. user_id3 = $house_user_id ");
+        // var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
+        while ($row= $result->fetch_array()) {
+            # code...
+            return $row;
+        }
+    }
+
+      
+    public function deleteLikesCyamunara($house_id,$user_id)
+    {
+        $mysqli= $this->database;
+        $query="DELETE FROM icyamunara WHERE house_id = '{$house_id}' and B. user_id3 = '{$user_id}' ";
+
+        $query1="SELECT * FROM icyamunara WHERE house_id = $house_id and user_id3 = $user_id ";
+
+        $result= $mysqli->query($query1);
+        $rows= $result->fetch_assoc();
+
+        if(!empty($rows['photo'])){
+            $photo=$rows['photo'].'='.$rows['other_photo'];
+            $expodefile = explode("=",$photo);
+            $fileActualExt= array();
+            for ($i=0; $i < count($expodefile); ++$i) { 
+                $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
+            }
+            $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt'); // valid extensions
+            if (array_diff($fileActualExt,$allower_ext) == false) {
+                $expode = explode("=",$photo);
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/icyamunara/';
+                for ($i=0; $i < count($expode); ++$i) { 
+                      unlink($uploadDir.$expode[$i]);
+                }
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp4') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/icyamunara/';
+                      unlink($uploadDir.$photo);
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp3') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/icyamunara/';
+                      unlink($uploadDir.$photo);
+            }
+        }
+
+        $query= $mysqli->query($query);
+        // var_dump("ERROR: Could not able to execute $query.".mysqli_error($mysqli));
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS DELETE</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail to delete !!!</strong>
+                </div>');
+        }
+    }
+
+    public function update_cyamunara($banner,$available,$discount_change,$house_id)
+    {
+        $mysqli= $this->database;
+        $query= "UPDATE icyamunara SET banner= '$banner', buy = '$available', discount = $discount_change WHERE house_id= $house_id ";
+        $mysqli->query($query);
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center" style="font-size:12px;padding:2px;">
+                    <button class="close" data-dismiss="alert" type="button" style="top:-6px;">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center" style="font-size:12px;padding:2px;">
+                    <button class="close" data-dismiss="alert" type="button"  style="top:-6px;">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail to Edit !!!</strong>
+                </div>');
+        }
+    }
+
        
 }
 

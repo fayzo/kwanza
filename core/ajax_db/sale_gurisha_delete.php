@@ -58,7 +58,7 @@ if (isset($_POST['showpopupdelete']) && !empty($_POST['showpopupdelete'])) {
                                     <span class="description">Shared publicly - <?php echo $users->timeAgo($cars['created_on01']); ?></span>
                             </div> <!-- user-block -->
                       </div> 
-                           <div class="card-img-top img-fuild" id="salePreview<?php echo $cars['sale_id']; ?>" style="background: url('<?php echo BASE_URL_PUBLIC."uploads/sale-gurisha/".$cars["photo"]; ?>')no-repeat center center;background-size:cover;width: 260px;height:178px">
+                           <div class="card-img-top img-fuild" id="salePreview<?php echo $cars['sale_id']; ?>" style="background: url('<?php echo BASE_URL_PUBLIC."uploads/sale-gurisha/".$cars["photo"]; ?>')no-repeat center center;background-size:contain;width: 260px;height:178px">
                                 <?php $banner = $cars['banner'];
                                       switch ($banner) {
                                           case $banner == 'new':

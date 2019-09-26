@@ -126,7 +126,7 @@ class Food extends home {
                     $item_price = $item["quantitys"]*$item["price"];
             		?>
             		<tr>
-                    <td style="background: url('<?php echo BASE_URL_PUBLIC ;?>uploads/food/<?php echo $item["image"]; ?>')no-repeat center center;background-size:cover;height:80px;width:80px;position:relative">
+                    <td style="background: url('<?php echo BASE_URL_PUBLIC ;?>uploads/food/<?php echo $item["image"]; ?>')no-repeat center center;background-size:contain;height:80px;width:80px;position:relative">
                     <div style="position:absolute;bottom:0px;left:0px;background-color:#0000006e;color:white;width: 100%;"><?php
                     if (strlen($item["name"]) > 12) {
                       echo $item["name"] = substr($item["name"],0,12).'..';

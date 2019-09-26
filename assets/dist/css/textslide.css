@@ -1,0 +1,95 @@
+body {
+  background: #000;
+  font-size: 5em;
+  color: #69BE28;
+  padding-top: 100px;
+}
+.container, .item {
+  width: 500px;
+  height: 100px;
+  line-height: 100px;
+}
+.container {
+  margin: 0 auto;
+  height: 100px;
+  text-align: center; 
+  background: #002244;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.item {
+  position: absolute;
+  top: 0;
+  left: 500px;
+}
+.first {
+  left: 0;
+  opacity: 1;
+  z-index: 0;
+}
+
+.first { animation: cycleone 20s ease-in-out infinite; }
+.second { animation: cycletwo 20s ease-in-out infinite; }
+.third { animation: cyclethree 20s ease-in-out infinite; }
+.fourth { animation: cyclefour 20s ease-in-out infinite; }
+
+@keyframes cycleone {
+    0% { left:    0px; opacity: 1; z-index:  0; }
+     /* // 5% = 1 second */
+   20% { left:    0px; opacity: 1; z-index:  0; } 
+   /* // from 0% to 20% = visible 4 seconds */
+   25% { left: -500px; opacity: 0; z-index:  0; } 
+   /* // from 20% to 25% = 1 second exit */
+   26% { left: -500px; opacity: 0; z-index: -1; } 
+   /* // return from whence you came */
+   27% { left:  500px; opacity: 0; z-index: -1; } 
+   /* // until your are complete again */
+   95% { left:  500px; opacity: 0; z-index:  0; } 
+   /* // From 95% to 100% = 1 second enter */
+  100% { left:    0px; opacity: 1; z-index:  0; }
+}
+@keyframes cycletwo {
+    0% { left:  500px; opacity: 0; } 
+    /* // 5% = 1 second */
+   20% { left:  500px; opacity: 0; } 
+   /* // starts moving after 20% ie 4 seconds  */
+   25% { left:    0px; opacity: 1; } 
+   /* // from 20% to 25% = for 1 second enter */
+   45% { left:    0px; opacity: 1; z-index:  0; } 
+   /* // from 25% to 45% = visible for 4 seconds */
+   50% { left: -500px; opacity: 0; z-index:  0; }
+    /* // from 45% to 50% for 1 second exit */
+   51% { left:  500px; opacity: 0; z-index: -1; } 
+   /* // From 95% to 100% = 1 second enter */
+  100% { left:  500px; opacity: 0; z-index: -1; } 
+  /* // stays put for remainder */
+}
+@keyframes cyclethree {
+    0% { left:  500px; opacity: 0; } 
+    /* // 5% = 1 second */
+   45% { left:  500px; opacity: 0; z-index: -1; } 
+   /* // starts moving after 45% = 9 seconds  */
+   50% { left:    0px; opacity: 1; z-index:  0; } 
+   /* // from 45% to 50% = for 1 second enter */
+   70% { left:    0px; opacity: 1; z-index:  0; } 
+   /* // from 50% to 70% = visible 4 seconds */
+   75% { left: -500px; opacity: 0; z-index:  0; } 
+   /* // from 70% to 75% = 1 second exit */
+   76% { left:  500px; opacity: 0; z-index: -1; } 
+   /* // return to origin posish */
+  100% { left:  500px; opacity: 0; z-index: -1; } 
+  /* // stays put for remainder */
+}
+@keyframes cyclefour {
+    0% { left:  500px; opacity: 0; z-index: -1; } 
+ /* 5% = 1 second */
+   70% { left:  500px; opacity: 0; z-index:  0; } 
+   /* // starts moving after 70% = 14 seconds  */
+   75% { left:    0px; opacity: 1; z-index:  0; } 
+   /* // from 70% to 75% = 1 second enter */
+   95% { left:    0px; opacity: 1; z-index:  0; } 
+   /* // from 75% to 95% = visible 4 seconds */
+  100% { left: -500px; opacity: 0; z-index:  0; } 
+  /* // from 95% to 100% = 1 second exit */
+}

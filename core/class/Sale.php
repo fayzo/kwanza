@@ -9,12 +9,12 @@ class Sale extends Home{
 
         $mysqli= $this->database;
         $db_handle = $mysqli;
-        if(!empty($_POST["action"])) {
-        switch($_POST["action"]) {
+        if(!empty($_REQUEST["action"])) {
+        switch($_REQUEST["action"]) {
         	case "add":
-        		if(!empty($_POST["quantity"])) {
-        			$productByCode = $this->runQuery("SELECT * FROM sale WHERE code='" . $_POST["code"] . "'");
-        			$itemArray = array($productByCode[0]["code"]=>array('name'=>$productByCode[0]["title"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"], 'image'=>$productByCode[0]["photo"]));
+        		if(!empty($_REQUEST["quantity"])) {
+        			$productByCode = $this->runQuery("SELECT * FROM sale WHERE code='" . $_REQUEST["code"] . "'");
+        			$itemArray = array($productByCode[0]["code"]=>array('name'=>$productByCode[0]["title"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_REQUEST["quantity"], 'price'=>$productByCode[0]["price"], 'image'=>$productByCode[0]["photo"]));
         			
         			if(!empty($_SESSION["cart_item"])) {    
         				if(in_array($productByCode[0]["code"],array_keys($_SESSION["cart_item"]))) {
@@ -23,7 +23,7 @@ class Sale extends Home{
         								if(empty($_SESSION["cart_item"][$k]["quantity"])) {
         									$_SESSION["cart_item"][$k]["quantity"] = 0;
         								}
-        								$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+        								$_SESSION["cart_item"][$k]["quantity"] += $_REQUEST["quantity"];
         							}
         					}
         				} else {
@@ -38,7 +38,7 @@ class Sale extends Home{
         	case "remove":
         		if(!empty($_SESSION["cart_item"])) {
         			foreach($_SESSION["cart_item"] as $k => $v) {
-        					if($_POST["code"] == $k)
+        					if($_REQUEST["code"] == $k)
         						unset($_SESSION["cart_item"][$k]);				
         					if(empty($_SESSION["cart_item"]))
         						unset($_SESSION["cart_item"]);
@@ -51,6 +51,52 @@ class Sale extends Home{
         	break;	
         }
         }
+        if(!empty($_REQUEST["action0"])) {
+        switch($_REQUEST["action0"]) {
+        	case "add":
+        		if(!empty($_REQUEST["quantity"])) {
+        			$productByCode = $this->runQuery("SELECT * FROM sale WHERE code='" . $_REQUEST["code"] . "'");
+        			$itemArray = array($productByCode[0]["code"]=>array('name'=>$productByCode[0]["title"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_REQUEST["quantity"], 'price'=>$productByCode[0]["price"], 'image'=>$productByCode[0]["photo"]));
+        			
+        			if(!empty($_SESSION["cart_item"])) {    
+        				if(in_array($productByCode[0]["code"],array_keys($_SESSION["cart_item"]))) {
+        					foreach($_SESSION["cart_item"] as $k => $v) {
+        							if($productByCode[0]["code"] == $k) {
+        								if(empty($_SESSION["cart_item"][$k]["quantity"])) {
+        									$_SESSION["cart_item"][$k]["quantity"] = 0;
+        								}
+        								$_SESSION["cart_item"][$k]["quantity"] += $_REQUEST["quantity"];
+        							}
+        					}
+        				} else {
+        					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
+        				}
+        			} else {
+        				$_SESSION["cart_item"] = $itemArray;
+        			}
+            }
+             exit($this->showCart_itemSale());
+        	break;
+        	case "remove":
+        		if(!empty($_SESSION["cart_item"])) {
+        			foreach($_SESSION["cart_item"] as $k => $v) {
+        					if($_REQUEST["code"] == $k)
+        						unset($_SESSION["cart_item"][$k]);				
+        					if(empty($_SESSION["cart_item"]))
+        						unset($_SESSION["cart_item"]);
+        			}
+            }
+             exit($this->showCart_itemSale());
+        	break;
+        	case "empty":
+        		unset($_SESSION["cart_item"]);
+        	break;	
+        }
+        }
+    }
+
+    public function checkout(){ 
+     
     }
 
     public function categories_sale($categories_sale)
@@ -76,7 +122,12 @@ class Sale extends Home{
                 </div><!-- col -->
     <?php }
     }
-
+// background-image:url('../images/bg.png');
+// background-repeat:no-repeat;
+// background-size:contain;
+// background-position:center;
+// background-size: 100%;
+// background-size:cover;
      public function cartList($categories,$pages,$user_id)
     {
         $pages= $pages;
@@ -167,16 +218,17 @@ class Sale extends Home{
                     
           <?php while($row= $query->fetch_array()) { ?>
 
-                         <div class="mr-3 mb-3 float-left" style="width: 260px;">
+                         <div class="mr-3 mb-3 float-left" style="width: 260px;height:276px;">
                         <!-- //   width: 252px;height:178px -->
                          <!-- <div class="col-md-3"> -->
 
                           <div class="card">
-                             <div class="card-img-top img-fuild" id="sale_gurishaPreview<?php echo $row['sale_id']; ?>" style="width:260px;height:178px;text-align: center;z-index:1;">
-                                 <img src="<?php echo BASE_URL_PUBLIC."uploads/sale/".$row["photo"]; ?>" height="178px">
+                             <div class="card-img-top img-fuild" id="sale_gurishaPreview<?php echo $row['sale_id']; ?>" style="background: url('<?php echo BASE_URL_PUBLIC ;?>uploads/sale/<?php echo $row["photo"]; ?>')no-repeat center center;background-size:contain;height:178px;width:260px;position:relative" >
+                             <!-- <div class="card-img-top img-fuild" id="sale_gurishaPreview< ?php echo $row['sale_id']; ?>" style="width:260px;height:178px;text-align: center;z-index:1;">
+                                 <img src="< ?php echo BASE_URL_PUBLIC."uploads/sale/".$row["photo"]; ?>" height="178px">
                             </div>
-                            <div class="card-img-top img-fuild" id="sale_gurishaPreview<?php echo $row['sale_id']; ?>" style="position:absolute;z-index:2;">
-
+                            <div class="card-img-top img-fuild" id="sale_gurishaPreview< ?php echo $row['sale_id']; ?>" style="position:absolute;z-index:2;">
+ -->
                                 <?php $banner = $row['banner'];
                                       switch ($banner) {
                                           case $banner == 'new':
@@ -428,18 +480,21 @@ class Sale extends Home{
             <th style="text-align:center;" width="5%">Remove</th>
             </tr>	
              </thead>
-            <tbody>
+            <tbody class="bg-light">
             <?php		
                 foreach ($_SESSION["cart_item"] as $item){
                     $item_price = $item["quantity"]*$item["price"];
             		?>
             				<tr>
-            				<td><img src="<?php echo BASE_URL_PUBLIC ;?>uploads/sale/<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
+                            <td style="background: url('<?php echo BASE_URL_PUBLIC ;?>uploads/sale/<?php echo $item["image"]; ?>')no-repeat center center;background-size:contain;height:80px;width:80px;position:relative">
+                            </td>
+            				<!-- <td><img src="< ?php echo BASE_URL_PUBLIC ;?>uploads/sale/< ?php echo $item["image"]; ?>" class="cart-item-image" />< ?php echo $item["name"]; ?></td> -->
             				<td><?php echo $item["code"]; ?></td>
             				<td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
             				<td  style="text-align:right;"><?php echo "$ ".$item["price"]; ?></td>
             				<td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
-            				<td style="text-align:center;"><a href="sale.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="<?php echo BASE_URL_LINK ;?>image/product-images/icon-delete.png" alt="Remove Item" /></a></td>
+            				<td style="text-align:center;"><a href="javascript:void(0);" onclick="cart_sale_add('remove','<?php echo $item['code']; ?>');" class="btnRemoveAction"><img src="<?php echo BASE_URL_LINK ;?>image/product-images/icon-delete.png" alt="Remove Item" /></a></td>
+            				<!-- <td style="text-align:center;"><a href="sale.php?action=remove&code=< ?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="< ?php echo BASE_URL_LINK ;?>image/product-images/icon-delete.png" alt="Remove Item" /></a></td> -->
             				</tr>
             				<?php
             				$total_quantity += $item["quantity"];
@@ -454,7 +509,7 @@ class Sale extends Home{
             <td></td>
             </tr>
             </tbody>
-            </table>		
+            </table>	
               <?php
             } else {
             ?>
@@ -483,9 +538,9 @@ class Sale extends Home{
                     $item_price = $item["quantity"]*$item["price"];
             		?>
                      <tr>
-                     <td style="position:relative;text-align:center;">
-                     <img src="<?php echo BASE_URL_PUBLIC ;?>uploads/sale/<?php echo $item["image"]; ?>" height='80px' >
-                     <!-- <td style="background: url('< ?php echo BASE_URL_PUBLIC ;?>uploads/sale/< ?php echo $item["image"]; ?>')no-repeat center center;background-size:cover;height:80px;width:80px;position:relative"> -->
+                     <!-- <td style="position:relative;text-align:center;">
+                     <img src="< ?php echo BASE_URL_PUBLIC ;?>uploads/sale/< ?php echo $item["image"]; ?>" height='80px' > -->
+                     <td style="background: url('<?php echo BASE_URL_PUBLIC ;?>uploads/sale/<?php echo $item["image"]; ?>')no-repeat center center;background-size:contain;height:80px;width:80px;position:relative">
                     <div style="position:absolute;bottom:0px;left:0px;background-color:#0000006e;color:white;width: 100%;"><?php
                     if (strlen($item["name"]) > 12) {
                       echo $item["name"] = substr($item["name"],0,12).'..';
@@ -514,8 +569,11 @@ class Sale extends Home{
             <td align="left" colspan="2" ><strong><?php echo "$ ".number_format($total_price); ?></strong></td>
             </tr>
             </tbody>
-            </table>		
-              <?php
+            </table>	
+            <div id="responseCheckout">
+              <input type="button" name="checkout" id="checkout" onclick="checkout('checkout');" value="Go To Checkout" class="btnRemoveAction btn-primary float-right" >	
+            </div>
+            <?php
             } else {
             ?>
             <div class="no-records">Your Cart is Empty</div>

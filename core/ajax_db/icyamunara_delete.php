@@ -9,23 +9,21 @@ if (isset($_POST['available']) && !empty($_POST['available'])) {
 	$user_id= $_POST['user_id'];
     $available= $_POST['available'];
     $discount_change= $_POST['discount_change'];
-	$discount_price= $_POST['discount_price'];
-	$price= $_POST['price'];
 	$banner= $_POST['banner'];
-    $house->update_house($banner,$available,$discount_change,$discount_price,$price,$house_id);
+    $icyamunara->update_cyamunara($banner,$available,$discount_change,$house_id);
 }
 
 if (isset($_POST['deleteTweetHome']) && !empty($_POST['deleteTweetHome'])) {
     $user_id= $_SESSION['key'];
 	$house_id= $_POST['deleteTweetHome'];
-    $house->deleteLikesHouse($house_id,$user_id);
+    $icyamunara->deleteLikesCyamunara($house_id,$user_id);
 }
 
 if (isset($_POST['showpopupdelete']) && !empty($_POST['showpopupdelete'])) {
     $user_id= $_SESSION['key'];
 	$house_id= $_POST['showpopupdelete'];
 	$house_user_id= $_POST['deleteEvents'];
-    $houses=$house->house_getPopupTweet($user_id,$house_id,$house_user_id);
+    $houses=$icyamunara->cyamunara_getPopupTweet($user_id,$house_id,$house_user_id);
     ?>
     <div class="house-popup">
       <div class="wrap5">
@@ -69,7 +67,7 @@ if (isset($_POST['showpopupdelete']) && !empty($_POST['showpopupdelete'])) {
 
                         <div class="timeline-item card flex-md-row shadow-sm h-md-100 border-0">
                         <!-- <img class="card-img-left flex-auto d-none d-lg-block" height="100px" width="100px" src="< ?php echo BASE_URL_PUBLIC.'uploads/house/'.$houses['photo'] ;?>" alt="Card image cap"> -->
-                        <div class='card-img-left flex-auto d-none d-lg-block' style="background: url('<?php echo BASE_URL_PUBLIC.'uploads/house/'.$houses['photo']; ?>')no-repeat center center;background-size:cover;height:100px;width:100px">
+                        <div class='card-img-left flex-auto d-none d-lg-block' style="background: url('<?php echo BASE_URL_PUBLIC.'uploads/icyamunara/'.$houses['photo']; ?>')no-repeat center center;background-size:cover;height:100px;width:100px">
                         <?php $banner = $houses['banner'];
                         switch ($banner) {
                             case $banner == 'new':
@@ -104,13 +102,10 @@ if (isset($_POST['showpopupdelete']) && !empty($_POST['showpopupdelete'])) {
                                 <?php echo $houses['namesector']; ?> Sector
                                 <!-- < ?php echo $icyamunara['nameCell']; ?> Cell  -->
                             </a>
-                                <span class="float-right"> 
-                                     <?php if($houses['price_discount'] != 0){ ?><span class="mr-2 text-danger " style="text-decoration: line-through;"><?php echo number_format($houses['price_discount']); ?> Frw</span> <?php } ?><span class="text-primary" > <?php echo number_format($houses['price']); ?> Frw</span>
-                               </span>
                                <!-- <span class="float-right"> < ?php echo $houses['price']; ?> Frw</span> -->
                             </div> 
                             <div class="text-muted clear-float">
-                                <span class="float-left"><i class="fa fa-home" aria-hidden="true"></i>  <?php echo $houses['categories_house']; ?></span>
+                                <span class="float-left"><i class="fa fa-home" aria-hidden="true"></i>cyamunara</span>
                                 <span class="float-right mr-5"><i class="fa fa-heart" aria-hidden="true"></i></span></div>
                             <div class="text-muted clear-float">
                                 <span><i class="fa fa-clock-o" aria-hidden="true"></i> Created on <?php echo $house->timeAgo($houses['created_on3'])." By ".$houses['authors']; ?></span>

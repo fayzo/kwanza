@@ -64,15 +64,15 @@ if (isset($_POST['sale']) && !empty($_POST['sale'])) {
                                       <?php } ?>
                                 </ul>
                             </div>  
-                       </div> <!-- col-md-6  -->
-                       <div class="col-md-6">
+
                             <h4 class="mt-2 text-center"><i>Details of Items</i></h4>
-                             
                             <div><span class="font-weight-bold">Condition : </span>
                              <ul>
                                 <li>Used </li>
                                 <li><?php echo $user['text']; ?></li>
                              </ul></div>
+                       </div> <!-- col-md-6  -->
+                       <div class="col-md-6">
 
                             <form action="" method="post" class="retweetcolor">
                             <table class="table table-hover table-inverse" style="background-color:#0000000d;">
@@ -103,7 +103,8 @@ if (isset($_POST['sale']) && !empty($_POST['sale'])) {
                             </table>
                             </form>
 
-                            <div><span class="font-weight-bold"> Shipping:</span> 
+                            <div>
+                                <span class="font-weight-bold"> Shipping:</span> 
                             <ul>
                                 <li>it depend your location mininmun shipping 3000 Frw only in Rwanda</li> 
                              </ul></div>
@@ -126,7 +127,7 @@ if (isset($_POST['sale']) && !empty($_POST['sale'])) {
                 for ($i=0; $i < count($expodefile); ++$i) { 
                     $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
                 }
-                $allower_ext = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
+                $allower_ext = array('jpeg','peg', 'jpg', 'png', 'gif'); // valid extensions
                 
              if (array_diff($fileActualExt,$allower_ext) == false) {
 

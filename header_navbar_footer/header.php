@@ -1100,7 +1100,47 @@
             }
         };
     }
+
+    function cart_gura_add(requests, id) {
+        var xhr = new XMLHttpRequest();
+        // Add any event handlers here...
+        xhr.open('POST', 'gura.php?action_gurisha0=' + requests + '&code=' + id, true);
+        xhr.send();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                $("#responseSubmititerm").html('<div class="alert alert-success alert-dismissible fade show text-center">'+
+                     '<button class="close" data-dismiss="alert" type="button">'+
+                         '<span>&times;</span>'+
+                     '</button> <strong>SUCCESS</strong>'+' </div>');
+                var forms = document.getElementById('responseSubmitcartiterm');
+                 setInterval(function () {
+                    $("#responseSubmititerm").fadeOut();
+                            }, 2000);
+                forms.innerHTML = xhr.responseText;
+            }
+        };
+    }
    
+    function cart_sale_add(requests, id) {
+        var xhr = new XMLHttpRequest();
+        // Add any event handlers here...
+        xhr.open('POST', 'shopping.php?action0=' + requests + '&code=' + id, true);
+        xhr.send();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                $("#responseSubmititerm").html('<div class="alert alert-success alert-dismissible fade show text-center">'+
+                     '<button class="close" data-dismiss="alert" type="button">'+
+                         '<span>&times;</span>'+
+                     '</button> <strong>SUCCESS</strong>'+' </div>');
+                var forms = document.getElementById('responseSubmitcartiterm');
+                 setInterval(function () {
+                    $("#responseSubmititerm").fadeOut();
+                            }, 2000);
+                forms.innerHTML = xhr.responseText;
+            }
+        };
+    }
+
      function  hotelCategories(categories,id,user_id) {
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'core/ajax_db/hotel_FecthPaginat.php?pages=' + id + '&categories=' + categories+ '&user_id=' + user_id, true);

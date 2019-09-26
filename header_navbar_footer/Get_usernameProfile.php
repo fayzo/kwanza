@@ -103,7 +103,6 @@ echo $food->Foodcart_item();
 
 echo $gurisha->cart_gurisha_item();
 
-
 ?>
 <!DOCTYPE html>
 <html>

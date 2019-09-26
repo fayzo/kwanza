@@ -21,7 +21,10 @@
     <div id="gura-cart" >
        <button type="button" class="btn btn-primary btn-md" onclick="location.href='<?php echo BASE_URL_PUBLIC.'gurisha.php'; ?>'">Back to Purchase more</button>
        <a id="btnEmpty" href="sale.php?action=empty">Empty Cart</a>
-       <!-- < ?php echo $sale->showCart_item(); ?> -->
+         <span id="responseSubmititerm"> </span>
+                <div id="responseSubmitcartiterm">
+                 <?php echo $gurisha->showCart_gurisha_item(); ?>
+                </div>
     </div>
 
 
