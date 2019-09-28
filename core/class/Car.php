@@ -99,7 +99,7 @@ class Car extends House {
 
                         <div class="timeline-item card flex-md-row shadow-sm h-md-100 border-0">
                         <!-- <img class="card-img-left flex-auto d-none d-lg-block" height="100px" width="100px" src="< ?php echo BASE_URL_PUBLIC.'uploads/car/'.$car['photo'] ;?>" alt="Card image cap"> -->
-                        <div class='card-img-left flex-auto d-none d-lg-block' style="background: url('<?php echo BASE_URL_PUBLIC.'uploads/car/'.$car['photo']; ?>')no-repeat center center;background-size:cover;height:100px;width:100px">
+                        <div class='card-img-left flex-auto d-none d-lg-block' style="background: url('<?php echo BASE_URL_PUBLIC.'uploads/car/'.$car['photo']; ?>')no-repeat center center;background-size:contain;height:100px;width:100px">
                         <?php $banner = $car['banner'];
                         switch ($banner) {
                             case $banner == 'new':

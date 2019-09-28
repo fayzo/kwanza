@@ -52,10 +52,10 @@ if (isset($_POST['car_id']) && !empty($_POST['car_id'])) {
 
                    <div class="row reusercolor ">
                        <div class="col-md-12">
-                            <h5 class="text-center black-bg h4 mb-2"><?php echo $user['categories_car']." in ".$user['provincename']." Location ".$user['namedistrict']."/".$user['namesector']." at ".number_format($user['price'])." Frw"; ?></h5>
+                            <h5 class="text-center black-bg h4 mb-2"><?php echo $user['categories_car']." in ".$user['provincename']." Location ".$user['namedistrict']." district/".$user['namesector']." sector at ".number_format($user['price'])." Frw"; ?></h5>
 
                        </div>
-                       <div class="col-md-1-12 ">
+                       <div class="col-md-12 ">
                            <div id="jssor_3" style="position:relative;margin:0;top:0px;left:0px;width:840px;height:380px;overflow:hidden;visibility:hidden;">
                                 <!-- Loading Screen -->
                                 <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">

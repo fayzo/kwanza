@@ -136,10 +136,10 @@ class Sale extends Home{
         if($pages === 0 || $pages < 1){
             $showpages = 0 ;
         }else{
-            $showpages = ($pages*10)-10;
+            $showpages = ($pages*9)-9;
         }
         $mysqli= $this->database;
-        $query= $mysqli->query("SELECT * FROM users U Left JOIN sale S ON S. user_id01 = U. user_id WHERE S. categories_sale = '{$categories}' ORDER BY created_on01 Desc Limit $showpages,10");
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN sale S ON S. user_id01 = U. user_id WHERE S. categories_sale = '{$categories}' ORDER BY created_on01 Desc Limit $showpages,9");
         ?>
         <div class="mb-3 ">
           <?php 
@@ -423,7 +423,7 @@ class Sale extends Home{
                     $query1= $mysqli->query("SELECT COUNT(*) FROM sale WHERE categories_sale ='$categories' ");
                     $row_Paginaion = $query1->fetch_array();
                     $total_Paginaion = array_shift($row_Paginaion);
-                    $post_Perpages = $total_Paginaion/10;
+                    $post_Perpages = $total_Paginaion/9;
                     $post_Perpage = ceil($post_Perpages); ?>    
                     
                 </div>
