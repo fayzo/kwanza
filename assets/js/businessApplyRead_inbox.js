@@ -1,14 +1,18 @@
 $(document).ready(function () {
 
-    $(document).on('click', '#form-inbox',function (e) {
+    $(document).on('click', '.deleteforminbox',function (e) {
         e.preventDefault();
+        var deletes = $(this).data('delete');
+        var cvid = $(this).data('cvid');
 
                 $.ajax({
                     url: 'core/ajax_db/businessApplyViewInbox.php',
-                    method: "POST",
-                    data: new FormData(this),
-                    contentType: false,
-                    processData: false,
+                    method: 'POST',
+                    dataType: 'text',
+                    data:{
+                        delete: deletes,
+                        cvid: cvid,
+                   },
                     success: function (response) {
                         $("#responseSubmitdelete").html(response).fadeIn();
                         setInterval(function () {
@@ -27,15 +31,20 @@ $(document).ready(function () {
          
     });
 
-    $(document).on('click', '#form-trash',function (e) {
+    $(document).on('click', '.deleteTrashinbox',function (e) {
         e.preventDefault();
+        var deletes = $(this).data('delete');
+        var trashid = $(this).data('trashid');
 
                 $.ajax({
                     url: 'core/ajax_db/businessApplyViewTrash.php',
                     method: "POST",
-                    data: new FormData(this),
-                    contentType: false,
-                    processData: false,
+                    method: 'POST',
+                    dataType: 'text',
+                    data: {
+                        delete: deletes,
+                        trashid: trashid,
+                    },
                     success: function (response) {
                         $("#responseSubmitdelete").html(response).fadeIn();
                         setInterval(function () {
@@ -48,6 +57,32 @@ $(document).ready(function () {
                         $("#responseSubmitdelete").html(response).fadeIn();
                         setInterval(function () {
                             $("#responseSubmitdelete").fadeOut();
+                        }, 3000);
+                    }
+                });
+         
+    });
+    
+    $(document).on('click', '.alldeleteinbox',function (e) {
+        e.preventDefault();
+
+                $.ajax({
+                    url: 'core/ajax_db/businessApplyViewTrash.php',
+                    method: "POST",
+                    dataType: 'text',
+                    data: $('#form-delete-all').serialize(),
+                    success: function (response) {
+                        $("#responseSubmitalldelete").html(response).fadeIn();
+                        setInterval(function () {
+                            $("#responseSubmitalldelete").fadeOut();
+                        }, 2000);
+                        setInterval(function () {
+                            // location.reload();
+                        }, 2400);
+                    }, error: function (response) {
+                        $("#responseSubmitalldelete").html(response).fadeIn();
+                        setInterval(function () {
+                            $("#responseSubmitalldelete").fadeOut();
                         }, 3000);
                     }
                 });

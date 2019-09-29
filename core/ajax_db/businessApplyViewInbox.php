@@ -18,7 +18,6 @@ if (isset($_POST['cv_id']) && !empty($_POST['business_id'])) {
         </span>
         <div class="img-popup-wrap">
         	<div class="img-popup-body">
-              <form method="post" id="form-inbox">
 
                 <div class="card">
                     <span id="responseSubmitdelete"></span>
@@ -31,7 +30,7 @@ if (isset($_POST['cv_id']) && !empty($_POST['business_id'])) {
                          <!-- /.mailbox-read-info -->
                          <div class="mailbox-controls with-border text-center">
                              <div class="btn-group">
-                                 <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip"
+                                 <button type="button" class="btn btn-default btn-sm deleteforminbox" data-delete="delete"  data-cvid="<?php echo $row['cv_id']; ?>" data-toggle="tooltip"
                                      data-container="body" title="Delete">
                                      <i class="fa fa-trash-o"></i></button>
                                  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip"
@@ -122,7 +121,6 @@ if (isset($_POST['cv_id']) && !empty($_POST['business_id'])) {
                              <p>Thanks,<br>Jane</p>
                          </div>
                          <!-- /.mailbox-read-message -->
-                     <input type="hidden" class="form-control" name="delete" value="delete">
 
                      </div>
                      <!-- /.card-body -->
@@ -143,7 +141,6 @@ if (isset($_POST['cv_id']) && !empty($_POST['business_id'])) {
 
                      for ($i=0; $i < count($expode); ++$i) { ?>
 
-                     <input type="hidden" class="form-control" name="a<?php echo $row['cv_id']; ?>" value="<?php echo $row['cv_id']; ?>">
                      <li  class="list-inline-item">
 
                        <?php if(pathinfo($expode[$i])['extension'] == 'docx'|| pathinfo($expode[$i])['extension'] == 'xls'||
@@ -195,7 +192,6 @@ if (isset($_POST['cv_id']) && !empty($_POST['business_id'])) {
                          </ul>
                      </div>
                  </div>
-              </form>
             </div><!-- img-popup-body -->
         </div><!-- tweet-show-popup-box -->
     </div> <!-- Wrp4 -->
@@ -207,8 +203,9 @@ if (isset($_POST['delete'])) {
     if ($_POST['delete'] == 'delete') {
 
         $datetime= date('Y-m-d H-i-s');
-        $id = array_keys($_POST)[1];
-        $id = $_POST[ $id];
+        // $id = array_keys($_POST)[1];
+        // $id = $_POST[ $id];
+        $id = $_POST['cvid'];
         // var_dump($_POST);
         // var_dump($id);
         // var_dump(array_keys($_POST)[1]);

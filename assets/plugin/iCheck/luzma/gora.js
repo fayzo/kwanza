@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2019 at 04:24 AM
+-- Generation Time: Sep 28, 2019 at 09:33 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.2.20
 
@@ -75,26 +75,6 @@ CREATE TABLE `apply_job` (
   `created_on0` datetime NOT NULL,
   `deadline0` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `apply_job`
---
-
-INSERT INTO `apply_job` (`cv_id`, `firstname0`, `middlename0`, `lastname0`, `email0`, `address0`, `telephone`, `degree`, `field`, `uploadfilecv`, `uploadfilecertificates`, `addition_information`, `user_id0`, `job_id0`, `business_id0`, `created_on0`, `deadline0`) VALUES
-(1, 'fa', 'fa', 'fa', 'shemafaysal@gmail.com', 'sd', '34343', '', '', '2019_52cove.pdf', '2019_29cove.pdf', 'sf', 61, 7, 61, '2019-05-27 13:23:42', '0000-00-00 00:00:00'),
-(2, 'fa', 'fa', 'fa', 'shemafaysal@gmail.com', 'sdfds', '3132', '', '', '2019_652018.xls=2019_622018.pdf=2019_43apa .docx', '2019_50appl.pdf=2019_53appl.pdf', 'fa', 61, 7, 61, '2019-05-27 13:41:00', '0000-00-00 00:00:00'),
-(3, 'a', 'a', 'a', 'shemafaysal@gmail.com', 'sd', 'faf', '', '', '2019_60begi.docx=2019_54blue.jpg', '2019_32book1.xlsx', 'assas', 61, 7, 61, '2019-05-27 13:46:57', '0000-00-00 00:00:00'),
-(4, 'b', 'b', 'b', 'b@gmail.com', 'b', 'bbbbb', '', '', '2019_162018.pdf', '2019_74begi.docx', 'bb', 61, 7, 61, '2019-05-27 13:55:00', '0000-00-00 00:00:00'),
-(5, 'z', 'z', 'z', 'zidani@gmail.com', 'z', 'z21', '', '', '2019_232018.pdf', '2019_40begi.docx=2019_13blue.jpg=2019_86book1.xlsx=2019_79book.xlsx=2019_12copy.xlsx=2019_23cove.pdf=2019_80crim.pdf', 'zz', 61, 8, 61, '2019-05-27 13:56:55', '0000-00-00 00:00:00'),
-(6, 'karim', 'karim', 'karim', 'kariml@gmail.com', 'karim', '1331e43r', '', '', '2019_79acco.pdf=2019_30adob.docx=2019_77apa .docx=2019_34appl.pdf=2019_24appl.pdf', '2019_84acco.pdf=2019_39adob.docx=2019_35apa .docx=2019_46appl.pdf=2019_37appl.pdf=2019_83appl.pdf', 'efavcvav', 66, 7, 61, '2019-05-27 14:10:27', '0000-00-00 00:00:00'),
-(7, 'x', 'x', 'x', 'xl@gmail.com', 'x', 'x', '', '', '2019_96acco.pdf', '2019_16book1.xlsx', 'x', 65, 3, 61, '2019-05-27 21:51:22', '0000-00-00 00:00:00'),
-(8, 'm', 'm', 'm', 'm@gmail.com', 'm', '42424', '', '', '2019_74head.jpg=2019_70hear.jpg=2019_83hear.jpg', '2019_26ramz.png=2019_97ramz.png=2019_19rwanda.jpg', 'hgd', 61, 8, 61, '2019-05-28 14:38:13', '0000-00-00 00:00:00'),
-(9, 'ronaldo', 'ronaldo', 'ronaldo', 'ronaldol@gmail.com', 'ronaldo', 'ronaldo', '', '', '2019_39gori.jpg=2019_55images.jpg', '2019_50hear.jpg', 'ronaldoronaldoronaldoronaldoronaldoronaldo', 61, 8, 61, '2019-05-30 05:36:05', '0000-00-00 00:00:00'),
-(10, 'c', 'c', 'c', 'c@gmail.com', 'c', 'c', 'diploma', 'finace', '2019_43hear.jpg', '2019_20imag.jpg', 'ddc', 61, 3, 61, '2019-05-30 07:28:49', '0000-00-00 00:00:00'),
-(11, 'c', 'd', 'd', 'd', 'sdfds', 'c', 'diploma', 'account', '2019_79fayz.jpg', '2019_56imag.jpg', 'c', 61, 3, 61, '2019-05-30 11:44:21', '0000-00-00 00:00:00'),
-(12, 'fa', 'fa', 'fa', 'fa@gmail.com', 'da', '0389758', 'diploma', 'account', '2019_38hote.pdf', '2019_50hote.pdf', 'amadamda', 61, 30, 64, '2019-07-13 09:38:23', '0000-00-00 00:00:00'),
-(13, 'eq', 'wrw', 'wrw', 'dfsdf', '', 'wrwr', 'diploma', 'account', '2019_49hote.pdf', '2019_25hote.pdf', 'rwrw', 61, 30, 64, '2019-07-13 09:43:04', '0000-00-00 00:00:00'),
-(14, 'faf', 'afa', 'fa', 'fafa', 'fa', 'fa', 'diploma', 'account', '2019_91hote.pdf', '2019_96hote.pdf', 'fafa', 61, 30, 64, '2019-07-13 09:56:36', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -304,7 +284,8 @@ CREATE TABLE `car` (
 --
 
 INSERT INTO `car` (`car_id`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `price`, `phone`, `country01`, `photo_Title_main`, `photo_Title`, `city`, `province`, `districts`, `sector`, `cell`, `village`, `text`, `categories_car`, `discount`, `price_discount`, `banner`, `buy`, `user_id3`, `created_on3`) VALUES
-(20, 'fay', '2019_272017.jpg', '2019_26cr-c.jpg', '', '', '899900', '0746945245', 'RW', 'it gud', 'it run fast=====', '', '3', '303', '3030403', '30304', '303040305', 'it is gud', 'car_For_sale', 0, 0.00, 'empty', 'available', 61, '2019-08-14 17:47:22');
+(20, 'fay', '2019_272017.jpg', '2019_26cr-c.jpg', '', '', '899900', '0746945245', 'RW', 'it gud', 'it run fast=====', '', '3', '303', '3030403', '30304', '303040305', 'it is gud', 'car_For_sale', 1, 0.00, 'empty', 'available', 61, '2019-08-14 17:47:22'),
+(21, 'fayzo', '2019_26cr-c.jpg', '2019_362017.jpg', '', '', '2000000', '0787384312', 'RW', 'red car', 'best race=====', '', '2', '204', '20402', '2040202', '204020204', 'it is used', 'car_For_sale', 0, 0.00, '', 'available', 61, '2019-09-27 11:47:05');
 
 -- --------------------------------------------------------
 
@@ -4038,7 +4019,7 @@ CREATE TABLE `house` (
 --
 
 INSERT INTO `house` (`house_id`, `authors`, `photo`, `other_photo`, `video`, `youtube`, `text`, `categories_house`, `price`, `phone`, `country01`, `province`, `districts`, `sector`, `cell`, `village`, `buy`, `discount`, `price_discount`, `banner`, `photo_Title_main`, `photo_Title`, `user_id3`, `created_on3`) VALUES
-(36, 'fayzo', '2019_551807.jpg', '2019_241905.jpg', '', '', 'it is good shape', 'House_For_sale', 59997.00, '05984954', 'RW', '1', '102', '10208', '1020803', '102080302', 'sold', 0, 0.00, 'new', 'ni nziza', 'ifite na jardin=====', 61, '2019-08-14 12:59:54');
+(36, 'fayzo', '2019_551807.jpg', '2019_241905.jpg', '', '', 'it is good shape', 'House_For_sale', 59997.00, '05984954', 'RW', '1', '102', '10208', '1020803', '102080302', 'sold', 40, 0.00, 'new', 'ni nziza', 'ifite na jardin=====', 61, '2019-08-14 12:59:54');
 
 -- --------------------------------------------------------
 
@@ -4077,7 +4058,8 @@ CREATE TABLE `icyamunara` (
 INSERT INTO `icyamunara` (`house_id`, `authors`, `discount`, `photo`, `other_photo`, `video`, `youtube`, `text`, `phone`, `country01`, `province`, `districts`, `sector`, `cell`, `village`, `buy`, `banner`, `photo_Title_main`, `photo_Title`, `user_id3`, `created_on3`) VALUES
 (36, 'fayzo', 0, '2019_551807.jpg', '2019_241905.jpg', '', '', 'it is good shape', '05984954', 'RW', '1', '102', '10208', '1020803', '102080302', 'sold', 'new', 'ni nziza', 'ifite na jardin=====', 61, '2019-08-14 12:59:54'),
 (37, 'fayzo', 0, '2019_8547f4.jpg', '2019_60down.jpg', '', '', 'nice', '0787384312', 'AF', '2', '204', '20404', '2040402', '204040204', 'available', '', 'ubutaka', 'igiti=====', 61, '2019-09-23 13:08:09'),
-(38, 'fayzo', 0, '2019_49crop.jpg', '2019_52crop.jpg', '', '', 'nice', '077846745', 'RW', '1', '102', '10203', '1020302', '102030203', 'available', '', 'buragurisha', 'imfite ibyasi=====', 61, '2019-09-23 13:09:37');
+(38, 'fayzo', 50, '2019_49crop.jpg', '2019_52crop.jpg', '', '', 'nice', '077846745', 'RW', '1', '102', '10203', '1020302', '102030203', 'available', 'new_arrival', 'buragurisha', 'imfite ibyasi=====', 61, '2019-09-23 13:09:37'),
+(39, 'FAYZO', 0, '2019_99linc.jpg', '2019_45imag.jpg=2019_10images.jpg', '', '', 'TURIKUGURISHA INTEBE ,AMASAHANI ,IBIKOMBE,AMABASE,TOILET', '07873856735', 'RW', '1', '101', '10102', '1010202', '101020203', 'available', '', 'ibimurikureba ni bikoresho byo murugo', 'intebe=intebe zo muri sallon====', 61, '2019-09-24 09:33:33');
 
 -- --------------------------------------------------------
 
@@ -4664,7 +4646,12 @@ INSERT INTO `sale` (`sale_id`, `title`, `code`, `price`, `price_discount`, `disc
 (11, 'isafiriya', 'wte54', 4635.00, 0, 0, '', 0, '0787345243243', '2019_6851qs.jpg', '2019_7551xj.jpg', '', '', 'fgf', 'home_garden', '', '', 61, '2019-07-01 16:36:10', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
 (12, 'isafiriya', 'wte54', 4635.00, 0, 0, '', 0, '0787345243243', '2019_6251qs.jpg', '2019_2351xj.jpg', '', '', 'fgf', 'home_garden', '', '', 61, '2019-07-01 16:36:17', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
 (13, 'car', 'sf53', 4000.00, 0, 0, '', 0, '0787345243243', '2019_820032.jpeg', '2019_560032.jpeg', '', '', 'fdg', 'car', '', '', 61, '2019-07-01 16:37:30', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
-(14, 'iphone s6', 'df86', 67000.00, 0, 0, '', 0, '06774334', '2019_68imag.jpg', '2019_80ipho.png', '', '', 'it in good condition', 'electronics', 'iphone s10', 'iphone s5=====', 61, '2019-09-23 11:09:25', 'RW', '2', '203', '20305', '2030503', '203050303', '');
+(14, 'iphone s6', 'df86', 67000.00, 0, 0, '', 0, '06774334', '2019_68imag.jpg', '2019_80ipho.png', '', '', 'it in good condition', 'electronics', 'iphone s10', 'iphone s5=====', 61, '2019-09-23 11:09:25', 'RW', '2', '203', '20305', '2030503', '203050303', ''),
+(15, 'printer', 'retv42', 10000.00, 9000, 0, 'sold', 0, '07436246', '2019_6951xr.jpg', '2019_63images.jpg', '', '', 'it i s gud', 'electronics', 'printer', 'prinnter black=====', 61, '2019-09-24 07:50:14', 'RW', '1', '102', '10202', '1020201', '102020103', ''),
+(16, 'motherboard', 'bord24', 100000.00, 0, 0, '', 0, '0787384312', '2019_58down.jpg', '2019_62hp-p.jpg', '', '', 'it is machinary', 'electronics', 'motherboard', 'in front=====', 61, '2019-09-27 11:25:31', 'RW', '1', '102', '10203', '1020302', '102030203', ''),
+(17, 'nokia', 'nokiaa42', 30000.00, 0, 0, '', 0, '0787384312', '2019_97imag.jpg', '2019_50imag.jpg', '', '', 'it is new', 'electronics', 'nokia keza', 'nokia bwiza=====', 61, '2019-09-27 11:27:03', 'RW', '3', '301', '30103', '3010302', '301030203', ''),
+(18, 'printer', 'printerewr3', 32300.00, 0, 0, '', 0, '0787384312', '2019_13down.jpg', '2019_38images.jpg', '', '', 'it nice', 'electronics', 'printer', 'printer=====', 61, '2019-09-27 11:29:28', 'RW', '3', '302', '30203', '3020301', '302030102', ''),
+(19, 'laptop hp', 'lapto42', 50000.00, 0, 0, '', 0, '0787384312', '2019_71610y.jpg', '2019_18610y.jpg', '', '', 'it is gud to be selling', 'electronics', 'lenovo v4', 'lenovo42=====', 61, '2019-09-27 11:32:30', 'RW', '2', '202', '20202', '2020202', '202020202', '');
 
 -- --------------------------------------------------------
 
@@ -4718,7 +4705,8 @@ INSERT INTO `sale_gurisha` (`sale_id`, `title`, `code`, `price`, `price_discount
 (11, 'isafiriya', 'wte54', 4635.00, 0, 0, '', 0, '0787345243243', '2019_6851qs.jpg', '2019_7551xj.jpg', '', '', 'fgf', '', '', 'home_garden', 61, '2019-07-01 16:36:10', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'great_deal'),
 (12, 'isafiriya', 'wte54', 4635.00, 0, 0, '', 0, '0787345243243', '2019_6251qs.jpg', '2019_2351xj.jpg', '', '', 'fgf', '', '', 'home_garden', 61, '2019-07-01 16:36:17', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
 (13, 'car', 'sf53', 4000.00, 0, 0, '', 0, '0787345243243', '2019_820032.jpeg', '2019_560032.jpeg', '', '', 'fdg', '', '', 'car', 61, '2019-07-01 16:37:30', 'rwanda', 'kigali', 'gasabo', 'kimihurura', 'rugando', 'gasange', 'new'),
-(15, 'samsung m1', 'asdjcd97', 80000.00, 0, 0, '', 0, '0784636747', '2019_2761u0.jpg', '2019_32d-01.jpg', '', '', 'used irakora neza', 'irakora', 'wallpaper=====', 'electronics', 61, '2019-09-22 10:45:42', 'RW', '1', '102', '10208', '1020803', '102080302', '');
+(15, 'samsung m1', 'asdjcd97', 80000.00, 0, 0, '', 0, '0784636747', '2019_2761u0.jpg', '2019_32d-01.jpg', '', '', 'used irakora neza', 'irakora', 'wallpaper=====', 'electronics', 61, '2019-09-22 10:45:42', 'RW', '1', '102', '10208', '1020803', '102080302', ''),
+(17, 'printers', '80gf4gf', 456460.00, 560000, 0, 'sold', 0, '0787384312', '2770015.jpeg', '2019_290015.jpeg', '', '', 'it is gud', 'printer', 'laptop=====', 'electronics', 61, '2019-09-24 07:56:19', 'RW', '2', '202', '20202', '2020203', '202020302', 'great_deal');
 
 -- --------------------------------------------------------
 
@@ -5297,6 +5285,15 @@ CREATE TABLE `tbl_cart` (
   `member_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_cart`
+--
+
+INSERT INTO `tbl_cart` (`id`, `product_id`, `quantity`, `member_id`) VALUES
+(1, 1, 1, 2),
+(2, 3, 1, 2),
+(3, 2, 1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -5351,7 +5348,10 @@ INSERT INTO `tbl_order` (`id`, `customer_id`, `amount`, `name`, `address`, `city
 (15, 2, 3900, 'fayzo', 'sd', 'd', 'stat', '32', 'z', 'PAYPAL', 'PENDING', '2019-06-24 17:35:40'),
 (16, 2, 3900, 'fayzo', 'sd', 'd', 'stat', '32', 'z', 'PAYPAL', 'PENDING', '2019-06-24 17:35:50'),
 (17, 2, 3900, 'fayzo', 'sd', 'd', 'stat', '32', 'z', 'PAYPAL', 'PENDING', '2019-06-24 17:35:51'),
-(18, 2, 2300, 'haha', 'kg 6 avenue st', 'kigali/kigali city/gasasa', 'Kigali/kigali/gasabo', '1453', 'Rwanda', 'PAYPAL', 'PENDING', '2019-09-02 17:51:46');
+(18, 2, 2300, 'haha', 'kg 6 avenue st', 'kigali/kigali city/gasasa', 'Kigali/kigali/gasabo', '1453', 'Rwanda', 'PAYPAL', 'PENDING', '2019-09-02 17:51:46'),
+(19, 2, 2600, 'sd', 'sds', 'ds', 'ds', 'sd', 'dsd', 'PAYPAL', 'PENDING', '2019-09-24 09:49:25'),
+(20, 2, 2600, 'tyy', 'tyty', 'yty', 'tyt', 'tyty', 'yt', 'PAYPAL', 'PENDING', '2019-09-24 14:46:29'),
+(21, 2, 2600, 'hjh', 'hjh', 'hjh', 'hjh', 'hjh', 'hjh', 'PAYPAL', 'PENDING', '2019-09-26 10:22:04');
 
 -- --------------------------------------------------------
 
@@ -5404,7 +5404,16 @@ INSERT INTO `tbl_order_item` (`id`, `order_id`, `product_id`, `item_price`, `qua
 (38, 17, 1, 1500, 1),
 (39, 17, 2, 800, 3),
 (40, 18, 1, 1500, 1),
-(41, 18, 2, 800, 1);
+(41, 18, 2, 800, 1),
+(42, 19, 1, 1500, 1),
+(43, 19, 3, 300, 1),
+(44, 19, 2, 800, 1),
+(45, 20, 1, 1500, 1),
+(46, 20, 2, 800, 1),
+(47, 20, 3, 300, 1),
+(48, 21, 1, 1500, 1),
+(49, 21, 2, 800, 1),
+(50, 21, 3, 300, 1);
 
 -- --------------------------------------------------------
 
@@ -5503,32 +5512,6 @@ CREATE TABLE `trash` (
   `created_on0` datetime NOT NULL,
   `deadline0` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `trash`
---
-
-INSERT INTO `trash` (`trash_id`, `cv_id`, `firstname0`, `middlename0`, `lastname0`, `email0`, `address0`, `telephone`, `degree`, `field`, `uploadfilecv`, `uploadfilecertificates`, `addition_information`, `user_id0`, `job_id0`, `business_id0`, `created_on0`, `deadline0`) VALUES
-(8, 11, 'c', 'd', 'd', 'd', 'sdfds', 'c', 'diploma', 'account', '2019_79fayz.jpg', '2019_56imag.jpg', 'c', 61, 3, 61, '2019-05-30 11:44:21', '0000-00-00 00:00:00'),
-(9, 10, 'c', 'c', 'c', 'c@gmail.com', 'c', 'c', 'diploma', 'finace', '2019_43hear.jpg', '2019_20imag.jpg', 'ddc', 61, 3, 61, '2019-05-30 07:28:49', '0000-00-00 00:00:00'),
-(10, 9, 'ronaldo', 'ronaldo', 'ronaldo', 'ronaldol@gmail.com', 'ronaldo', 'ronaldo', '', '', '2019_39gori.jpg=2019_55images.jpg', '2019_50hear.jpg', 'ronaldoronaldoronaldoronaldoronaldoronaldo', 61, 8, 61, '2019-05-30 05:36:05', '0000-00-00 00:00:00'),
-(11, 8, 'm', 'm', 'm', 'm@gmail.com', 'm', '42424', '', '', '2019_74head.jpg=2019_70hear.jpg=2019_83hear.jpg', '2019_26ramz.png=2019_97ramz.png=2019_19rwanda.jpg', 'hgd', 61, 8, 61, '2019-05-28 14:38:13', '0000-00-00 00:00:00'),
-(12, 10, 'c', 'c', 'c', 'c@gmail.com', 'c', 'c', 'diploma', 'finace', '2019_43hear.jpg', '2019_20imag.jpg', 'ddc', 61, 3, 61, '2019-05-30 07:28:49', '0000-00-00 00:00:00'),
-(13, 10, 'c', 'c', 'c', 'c@gmail.com', 'c', 'c', 'diploma', 'finace', '2019_43hear.jpg', '2019_20imag.jpg', 'ddc', 61, 3, 61, '2019-05-30 07:28:49', '0000-00-00 00:00:00'),
-(14, 10, 'c', 'c', 'c', 'c@gmail.com', 'c', 'c', 'diploma', 'finace', '2019_43hear.jpg', '2019_20imag.jpg', 'ddc', 61, 3, 61, '2019-05-30 07:28:49', '0000-00-00 00:00:00'),
-(15, 10, 'c', 'c', 'c', 'c@gmail.com', 'c', 'c', 'diploma', 'finace', '2019_43hear.jpg', '2019_20imag.jpg', 'ddc', 61, 3, 61, '2019-05-30 07:28:49', '0000-00-00 00:00:00'),
-(16, 10, 'c', 'c', 'c', 'c@gmail.com', 'c', 'c', 'diploma', 'finace', '2019_43hear.jpg', '2019_20imag.jpg', 'ddc', 61, 3, 61, '2019-05-30 07:28:49', '0000-00-00 00:00:00'),
-(17, 10, 'c', 'c', 'c', 'c@gmail.com', 'c', 'c', 'diploma', 'finace', '2019_43hear.jpg', '2019_20imag.jpg', 'ddc', 61, 3, 61, '2019-05-30 07:28:49', '0000-00-00 00:00:00'),
-(18, 10, 'c', 'c', 'c', 'c@gmail.com', 'c', 'c', 'diploma', 'finace', '2019_43hear.jpg', '2019_20imag.jpg', 'ddc', 61, 3, 61, '2019-05-30 07:28:49', '0000-00-00 00:00:00'),
-(19, 7, 'x', 'x', 'x', 'xl@gmail.com', 'x', 'x', '', '', '2019_96acco.pdf', '2019_16book1.xlsx', 'x', 65, 3, 61, '2019-05-27 21:51:22', '0000-00-00 00:00:00'),
-(20, 7, 'x', 'x', 'x', 'xl@gmail.com', 'x', 'x', '', '', '2019_96acco.pdf', '2019_16book1.xlsx', 'x', 65, 3, 61, '2019-05-27 21:51:22', '0000-00-00 00:00:00'),
-(21, 7, 'x', 'x', 'x', 'xl@gmail.com', 'x', 'x', '', '', '2019_96acco.pdf', '2019_16book1.xlsx', 'x', 65, 3, 61, '2019-05-27 21:51:22', '0000-00-00 00:00:00'),
-(22, 7, 'x', 'x', 'x', 'xl@gmail.com', 'x', 'x', '', '', '2019_96acco.pdf', '2019_16book1.xlsx', 'x', 65, 3, 61, '2019-05-27 21:51:22', '0000-00-00 00:00:00'),
-(23, 7, 'x', 'x', 'x', 'xl@gmail.com', 'x', 'x', '', '', '2019_96acco.pdf', '2019_16book1.xlsx', 'x', 65, 3, 61, '2019-05-27 21:51:22', '0000-00-00 00:00:00'),
-(24, 7, 'x', 'x', 'x', 'xl@gmail.com', 'x', 'x', '', '', '2019_96acco.pdf', '2019_16book1.xlsx', 'x', 65, 3, 61, '2019-05-27 21:51:22', '0000-00-00 00:00:00'),
-(25, 7, 'x', 'x', 'x', 'xl@gmail.com', 'x', 'x', '', '', '2019_96acco.pdf', '2019_16book1.xlsx', 'x', 65, 3, 61, '2019-05-27 21:51:22', '0000-00-00 00:00:00'),
-(26, 7, 'x', 'x', 'x', 'xl@gmail.com', 'x', 'x', '', '', '2019_96acco.pdf', '2019_16book1.xlsx', 'x', 65, 3, 61, '2019-05-27 21:51:22', '0000-00-00 00:00:00'),
-(27, 2, 'fa', 'fa', 'fa', 'shemafaysal@gmail.com', 'sdfds', '3132', '', '', '2019_652018.xls=2019_622018.pdf=2019_43apa .docx', '2019_50appl.pdf=2019_53appl.pdf', 'fa', 61, 7, 61, '2019-05-27 13:41:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -5763,7 +5746,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `password`, `gender`, `chat`, `career`, `country`, `date_birth`, `date_registry`, `last_login`, `counts_login`, `forgotUsernameCounts`, `forgotUsernameCountsTimesHeCreates`, `forgotUsernameCountsTimesHeCreatespassword`, `profile_img`, `profile_img_crop`, `cover_img`, `background`, `language`, `color`, `education`, `diploma`, `skills`, `location`, `hobbys`, `followers`, `following`, `approval`, `company_education`, `type_of_business`, `address`, `size_of_people`, `companyname`, `overview`, `history`, `team`, `legal_structure`, `location_facilities`, `mission_statement`, `website`, `unemplyoment`, `categories_fields`, `phone`) VALUES
-(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'on', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-09-23 09:41:22', 556, 0, 10, 10, '112baby3.png', '', '702caus.jpg', 'white-bg', '', 'rose', 'lycee', 'project', 'web', 'BR', 'styuding', 9, 7, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
+(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'on', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-09-28 14:09:59', 561, 0, 10, 10, '112baby3.png', '', '702caus.jpg', 'white-bg', '', 'rose', 'lycee', 'project', 'web', 'BR', 'styuding', 9, 7, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
 (64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-09-21 11:26:10', 66, 0, 0, 0, '', '', '', 'white-bg', '', 'black', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
 (65, 'karisa', 'bosco', 'bosco', 'faysal@gmail.com', 'bosco', 'Male', '', '', 'RW', '2019-05-03', '2019-05-02', '2019-05-27 21:50:00', 8, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 2, 2, 'off', '', '', '', '', 'LAMBORGIN', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
 (66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-09-14 12:49:53', 118, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'white-bg', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
@@ -18863,7 +18846,7 @@ ALTER TABLE `album`
 -- AUTO_INCREMENT for table `apply_job`
 --
 ALTER TABLE `apply_job`
-  MODIFY `cv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `cv_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `basketball`
@@ -18899,7 +18882,7 @@ ALTER TABLE `blog_like`
 -- AUTO_INCREMENT for table `car`
 --
 ALTER TABLE `car`
-  MODIFY `car_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `car_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `comment`
@@ -19079,7 +19062,7 @@ ALTER TABLE `house`
 -- AUTO_INCREMENT for table `icyamunara`
 --
 ALTER TABLE `icyamunara`
-  MODIFY `house_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `house_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `jobs`
@@ -19169,13 +19152,13 @@ ALTER TABLE `rwandamotel`
 -- AUTO_INCREMENT for table `sale`
 --
 ALTER TABLE `sale`
-  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `sale_gurisha`
 --
 ALTER TABLE `sale_gurisha`
-  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `school`
@@ -19199,7 +19182,7 @@ ALTER TABLE `tblproduct`
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_member_rating`
@@ -19211,13 +19194,13 @@ ALTER TABLE `tbl_member_rating`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tbl_order_item`
 --
 ALTER TABLE `tbl_order_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `tbl_payment`
@@ -19241,7 +19224,7 @@ ALTER TABLE `tenis`
 -- AUTO_INCREMENT for table `trash`
 --
 ALTER TABLE `trash`
-  MODIFY `trash_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `trash_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `trends`

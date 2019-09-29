@@ -852,7 +852,6 @@ class Home extends Comment {
         </div> <!-- card -->
    <?php }
 
-
     public function inbox($sessions)
     {
         $mysqli = $this->database;

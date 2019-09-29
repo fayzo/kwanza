@@ -227,6 +227,66 @@ class Users{
         }
     }
 
+    
+    public function TrashAllDelete($table,$id,$datetime)
+    {
+        $mysqli= $this->database;
+        $i=1;
+        while ($i < count($id)) { 
+
+            $id_= $id[$i];
+        $sql = "DELETE FROM $table WHERE cv_id= $id_";
+
+        $query1= "SELECT * FROM $table  WHERE cv_id= $id_ ";
+
+        $result= $mysqli->query($query1);
+        $rows= $result->fetch_assoc();
+
+        if(!empty($rows['uploadfilecertificates'])){
+            $file=$rows['uploadfilecv'].'='.$rows['uploadfilecertificates'];
+            $expodefile = explode("=",$file);
+            $fileActualExt= array();
+            for ($i=0; $i < count($expodefile); ++$i) { 
+                $fileActualExt[]= strtolower(substr($expodefile[$i],-3));
+            }
+            $allower_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','ocx','lsx'); // valid extensions
+            if (array_diff($fileActualExt,$allower_ext) == false) {
+                $expode = explode("=",$file);
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/jobs/';
+                for ($i=0; $i < count($expode); ++$i) { 
+                      unlink($uploadDir.$expode[$i]);
+                }
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp4') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/jobs/';
+                      unlink($uploadDir.$file);
+            }else if (array_diff($fileActualExt,$allower_ext)[0] == 'mp3') {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/jobs/';
+                      unlink($uploadDir.$file);
+            }
+        }
+        
+        $query= $mysqli->query($sql);
+        // var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
+
+        if($query){
+                exit('<div class="alert alert-success alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>SUCCESS</strong> </div>');
+            }else{
+                exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>Fail input try again !!!</strong>
+                </div>');
+        }
+            $i++ ;
+
+       }
+    }
+
     public function Postsjobscreates($table,$fields=array())
     {
         $mysqli= $this->database;

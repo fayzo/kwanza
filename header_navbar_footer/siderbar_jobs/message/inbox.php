@@ -16,7 +16,12 @@
                      </div>
                      <!-- /.card-header -->
                      <div class="card-body p-0">
-                       <form method="post" id="form-inbox0">
+                    <script>
+                        $('input[type="checkbox"]').on('change', function() {
+                            $('input[type="checkbox"]').not(this).prop('checked', false).attr('name','').attr('value','');
+                            $(this).prop('checked', true);
+                        });
+                    </script>
 
                          <div class="mailbox-controls">
                              <!-- Check all button -->
@@ -24,7 +29,7 @@
                                      class="fa fa-square-o"></i>
                              </button>
                              <div class="btn-group">
-                                 <button type="button" class="btn btn-default btn-sm" ><i
+                                 <button type="button" class="btn btn-default btn-sm alldeleteinbox" ><i
                                          class="fa fa-trash-o"></i></button>
                                  <button type="button" class="btn btn-default btn-sm"><i
                                          class="fa fa-reply"></i></button>
@@ -46,6 +51,7 @@
                              <!-- /.float-right -->
                          </div>
                          <div class="table-responsive mailbox-messages">
+                            <form id="form-delete-all" method="post">
                              <table class="table table-hover table-striped">
                                  <thead class="main-active">
                                      <tr>
@@ -58,7 +64,8 @@
                                      </tr>
                                  </thead>
                                  <tbody>
-                                    <tr><input type="hidden" class="form-control" name="deleteCheck" value="deleteCheck" ></tr>
+                                    <tr><span id="responseSubmitalldelete"></span></tr>
+                                    <tr><input type="hidden" name="deleteCheck" value="deleteCheck" ></tr>
                                     <?php echo $home->inbox($_SESSION['key']) ; ?>
                                      <!-- <tr>
                                          <td><input type="checkbox"></td>
@@ -75,9 +82,9 @@
                                  </tbody>
                              </table>
                              <!-- /.table -->
+                        </form>
                          </div>
                          <!-- /.mail-box-messages -->
-                         </form>
                      </div>
                      <!-- /.card-body -->
                      <div class="card-footer p-0">
