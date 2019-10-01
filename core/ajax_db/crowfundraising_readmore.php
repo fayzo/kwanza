@@ -240,7 +240,7 @@ if (isset($_POST['crowfund_id']) && !empty($_POST['crowfund_id'])) {
                                         </div>
                                         </div>
                                         <span class="username">
-                                            <a href="<?php echo BASE_URL_PUBLIC.$donate['username'] ;?>"><?php echo number_format($donate['money_donate']); ?> Frw <span class="float-right mr-2"><i class="fa fa-heart" ></i></span></a>
+                                            <a href="<?php echo BASE_URL_PUBLIC.$donate['username'] ;?>"><?php echo number_format($donate['money_donate']); ?> Frw </a> <span class="float-right mr-2"><i class="fa fa-heart" ></i></span>
                                             <!-- //Jonathan Burke Jr. -->
                                         </span>
                                         <span class="description"><?php echo $donate['comment']; ?> </span>
