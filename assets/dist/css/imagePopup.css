@@ -27,6 +27,21 @@
 	overflow-y: scroll;
 	display: block;
 }
+.wrap6:before{
+	content: '';
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
+	background-color: rgba(0, 0, 0, 0.34);
+	/* background-color: rgba(255, 255, 255, 0.5);  */
+	/* -webkit-filter: blur(10px);
+	-moz-filter: blur(10px);
+	-o-filter: blur(10px);
+	-ms-filter: blur(10px);
+	filter: blur(10px); */
+}
 .img-popup-wrap{
 	border-radius: 4px;
 	background: #fff;

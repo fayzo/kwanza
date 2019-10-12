@@ -4,7 +4,16 @@ include('../init.php');
 $users->preventUsersAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpath($_SERVER['SCRIPT_FILENAME']));
 
 if (isset($_POST['hotel_id']) && !empty($_POST['hotel_id'])) {
-    $user_id= $_SESSION['key'];
+      if (isset($_SESSION['key'])) {
+        # code...
+        $user_id= $_SESSION['key'];
+    }else {
+        # code...
+        $username= $users->test_input('jojo');
+        $uprofileId= $home->usersNameId($username);
+        $profileData= $home->userData($uprofileId['user_id']);
+        $user_id= $profileData['user_id'];
+    }
     $hotel_id = $_POST['hotel_id'];
     $user= $hotel->hotelReadmore($hotel_id);
      ?>
@@ -30,6 +39,7 @@ if (isset($_POST['hotel_id']) && !empty($_POST['hotel_id'])) {
 			width: 800px;
 		}
     </style>
+<div class="filterz"></div>
 <div class="hotel-popup">
     <div class="wrap6">
         <span class="colose">
