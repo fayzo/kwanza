@@ -79,6 +79,28 @@ $(document).ready(function () {
             $("#Form_change_domestics").submit();
         }
     });
+
+    $(document).on('click', '.profile-edit-more', function () {
+        var user_id = $(this).data('user'); 
+        $.ajax({
+            url: 'core/ajax_db/profile_edit_more.php',
+            method: 'POST',
+            dataType: 'text',
+            data: {
+                key: 'profile_edit_more',
+                user_id: user_id
+            },
+            success: function (response) {
+                $(".popupTweet").html(response);
+                $(".close-imagePopup").click(function () {
+                    $(".profile-popup").hide();
+                });
+                console.log(response);
+            }
+        });
+
+    });
+
 });
 
 // After completion of image upload process

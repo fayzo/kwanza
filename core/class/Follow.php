@@ -636,6 +636,12 @@ class Follow extends Events
         <div class="tab-pane" id="pages">
            pages
         </div> 
+        <div class="tab-pane" id="business">
+           firms
+        </div> 
+        <div class="tab-pane" id="hashtag">
+           hashtag
+        </div> 
         <!-- tab-panel -->
         </div> 
         <!-- tab-panel -->

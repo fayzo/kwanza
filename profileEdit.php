@@ -202,6 +202,7 @@
                                             <span id="response"></span>
                                         </div>
                                     </div>
+                                    <a href="javascript:void(0);" data-user="<?php echo $_SESSION['key']; ?>" class="profile-edit-more float-right">Edit more</a>
                                     <button type="button" onclick="careers('career');" class="btn main-active btn-block"><b>Submit</b></button>
                                     <span id="respone-success"></span>
                             </form>
@@ -286,6 +287,7 @@
                                             aria-describedby="helpId" value="<?php echo $user['hobbys'] ;?>"
                                             placeholder='studying ,played ,Dance ,Read.....'>
                                     </div>
+                                    <a href="javascript:void(0);" data-user="<?php echo $_SESSION['key']; ?>" class="profile-edit-more float-right">Edit more</a>
                                     <hr>
                                 </div> <!-- FORM-GROUP -->
                                 <button type="button" onclick="aboutMe('aboutme');" class="btn main-active btn-block"><b>Submit</b></button>

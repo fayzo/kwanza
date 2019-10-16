@@ -36,11 +36,13 @@ if ($_POST['key'] == 'image') {
     }else if (strlen($career) < 4) {
          exit('<p style="color:red;"> Your Career is too short</p>');
     }else{
-          
+        $date= date('Y-m-d H-i-s');
+
         $users->update('users',array(
             'firstname' => $firstname,
             'lastname' => $lastname,
             'career' => $career,
+            'last_profile_edit' => $date,
         ),array('user_id' => $id));
 
       }
@@ -53,7 +55,8 @@ if ($_POST['key'] == 'image') {
     $location= $users->test_input($_POST['location']);
     $skills= $users->test_input($_POST['skills']);
     $hobbys= $users->test_input($_POST['hobbys']);
-	$id= $users->test_input($_POST['id']);
+    $id= $users->test_input($_POST['id']);
+    $date= date('Y-m-d H-i-s');
 	
 	if(empty($education)|| empty($diploma)|| empty($location)|| empty($skills)|| empty($hobbys)){
 		exit('<div class="alert alert-danger alert-dismissible fade show text-center">
@@ -68,6 +71,7 @@ if ($_POST['key'] == 'image') {
             'location' => $location,
             'skills' => $skills,
             'hobbys' => $hobbys,
+            'last_profile_edit' => $date,
         ),array('user_id' => $id));
 
       }
