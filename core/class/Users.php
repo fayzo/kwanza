@@ -746,6 +746,8 @@ class Users{
          }
 
         $query= $mysqli->query($sql);
+        // var_dump('ERROR: Could not able to execute'. $query.mysqli_error($mysqli));
+
         // var_dump($sql);
          if($query){
                 exit('<div class="alert alert-success alert-dismissible fade show text-center">

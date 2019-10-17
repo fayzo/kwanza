@@ -17,9 +17,9 @@ class Unemployment extends Home {
         }
         $mysqli= $this->database;
         if($categories == 'Featured'){
-            $query= $mysqli->query("SELECT * FROM users WHERE unemplyoment ='yes' ORDER BY rand() Desc Limit $showpages,10");
+            $query= $mysqli->query("SELECT * FROM users WHERE unemployment ='yes' ORDER BY rand() Desc Limit $showpages,10");
         }else{
-            $query= $mysqli->query("SELECT * FROM users WHERE unemplyoment ='yes' AND categories_fields='$categories' ORDER BY rand() Desc Limit $showpages,10");
+            $query= $mysqli->query("SELECT * FROM users WHERE unemployment ='yes' AND categories_fields='$categories' ORDER BY rand() Desc Limit $showpages,10");
         }
         ?>
         <div class="card card-primary mb-1 ">
@@ -96,7 +96,7 @@ class Unemployment extends Home {
                     </div>
                   <div class="clear-float">
                       <span class='float-left'>Fields study: <?php echo $row['categories_fields']; ?> </span>
-                      <span class='float-right'>Unemployment: <?php echo $row['unemplyoment']; ?> </span>
+                      <span class='float-right'>Unemployment: <?php echo $row['unemployment']; ?> </span>
                   </div>
                </div> <!-- col-10 -->
             </div> <!-- row -->
@@ -107,9 +107,9 @@ class Unemployment extends Home {
         <?php }
 
         if($categories == 'Featured'){
-            $query1= $mysqli->query("SELECT COUNT(*) FROM users WHERE unemplyoment ='yes' ");
+            $query1= $mysqli->query("SELECT COUNT(*) FROM users WHERE unemployment ='yes' ");
         }else{
-            $query1= $mysqli->query("SELECT COUNT(*) FROM users WHERE unemplyoment ='yes' AND categories_fields='$categories' ");
+            $query1= $mysqli->query("SELECT COUNT(*) FROM users WHERE unemployment ='yes' AND categories_fields='$categories' ");
         }
 
         $row_Paginaion = $query1->fetch_array();
@@ -144,9 +144,9 @@ class Unemployment extends Home {
     {
         $mysqli =$this->database;
           if($categories == 'Featured'){
-            $sql= $mysqli->query("SELECT COUNT(*) FROM users WHERE unemplyoment ='yes' ");
+            $sql= $mysqli->query("SELECT COUNT(*) FROM users WHERE unemployment ='yes' ");
         }else{
-            $sql= $mysqli->query("SELECT COUNT(*) FROM users WHERE unemplyoment ='yes' AND categories_fields='$categories' ");
+            $sql= $mysqli->query("SELECT COUNT(*) FROM users WHERE unemployment ='yes' AND categories_fields='$categories' ");
         }
         $row_post = $sql->fetch_array();
         $total_post= array_shift($row_post);
@@ -159,7 +159,7 @@ class Unemployment extends Home {
     {
         $mysqli= $this->database;
         $param= '%'.$search.'%';
-        $query = "SELECT * FROM users WHERE unemplyoment ='yes' AND categories_fields LIKE '{$param}' ";
+        $query = "SELECT * FROM users WHERE unemployment ='yes' AND categories_fields LIKE '{$param}' ";
         $result= $mysqli->query($query);
         $contacts = array();
         while ($row= $result->fetch_array()) {
@@ -172,7 +172,7 @@ class Unemployment extends Home {
             'phone' => $row['phone'],
             'categories_fields' => $row['categories_fields'],
             'email' => $row['email'],
-            'unemplyoment' => $row['unemplyoment'],
+            'unemployment' => $row['unemployment'],
             'profile_img' => $row['profile_img']
            );
         }

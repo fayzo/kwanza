@@ -15,7 +15,18 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
         $user_id= $profileData['user_id'];
     }
     $user_id = $_POST['user_id'];
-    $user= $home->userData($user_id);
+    // $user= $home->userData($user_id);
+
+    $query= $db->query("SELECT * FROM users D 
+        Left JOIN provinces P ON D. province = P. provincecode
+        Left JOIN districts M ON D. districts = M. districtcode
+        Left JOIN sectors T ON D. sector = T. sectorcode
+        Left JOIN cells C ON D. cell = C. codecell
+        Left JOIN vilages V ON D. village = V. CodeVillage 
+    WHERE D. user_id = $user_id ");
+
+    $user= $query->fetch_array();
+
     $get_province = mysqli_query($db,"SELECT * FROM provinces");   
      ?>
 <style>
@@ -55,9 +66,10 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                 </div> <!-- /.card-header -->
 
                 <div class="card-body">
-                   <form method="post" id="form-blog"  enctype="multipart/form-data" >
+                <span id="respone-profile"></span>
+                   <form method="post" id="form-Profile-edit"  enctype="multipart/form-data" >
 
-                      <input type="hidden" name="user_id" value="<?php echo $user_id ;?>">
+                      <input type="hidden" name="user_id" id="user_id" value="<?php echo $user_id ;?>">
 
                       <div class="form-row mt-2">
                         <div class="col" style="background: #00000047;">
@@ -72,7 +84,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-user" aria-hidden="true"></i></span>
                             </div>
-                            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="firstname">
+                            <input type="text" class="form-control" name="firstnameProfile" id="firstnameProfile" value="<?php echo $user['firstname']; ?>" placeholder="firstname">
                           </div>
                         </div>
 
@@ -82,7 +94,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-user" aria-hidden="true"></i></span>
                             </div>
-                            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="lastname">
+                            <input type="text" class="form-control" name="lastnameProfile" id="lastnameProfile" value="<?php echo $user['lastname']; ?>" placeholder="lastname">
                           </div>
                         </div>
 
@@ -92,7 +104,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-calendar" aria-hidden="true"></i></span>
                             </div>
-                            <input type="date" class="form-control" name="date-start" id="datestart" placeholder="date start">
+                            <input type="date" class="form-control" name="datestart" id="datestart"  value="<?php echo $user['date_birth']; ?>" placeholder="date start">
                           </div>
                         </div>
 
@@ -105,7 +117,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-phone" aria-hidden="true"></i></span>
                             </div>
-                            <input type="number" class="form-control" name="number" id="number" placeholder="number">
+                            <input type="number" class="form-control" name="telephoneProfile" value="<?php echo $user['phone']; ?>" id="telephoneProfile" placeholder="number">
                           </div>
                         </div>
 
@@ -115,14 +127,17 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-email" aria-hidden="true"></i></span>
                             </div>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="email">
+                            <input type="email" class="form-control" name="emailProfile" id="emailProfile" value="<?php echo $user['email']; ?>" placeholder="email">
                           </div>
                         </div>
 
                         <div class="col">
                           <label for="" >Status</label>
-                          <select class="form-control" name="status" id="status">
-                            <option selected>Select</option>
+                          <select class="form-control" name="statusProfile" id="statusProfile">
+                            <?php if(!empty($user['status'])) { ?>
+                            <option value="<?php echo $user['status']; ?>" selected><?php echo $user['status']; ?></option>
+                            <?php } ?>
+                            <option>Select</option>
                             <option value="single">single</option>
                             <option value="married">married</option>
                           </select>
@@ -130,11 +145,15 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
 
                      </div>
 
+                      <label for="" >About me</label>
+                      <textarea name="aboutProfile" value="<?php echo $user['about']; ?>"  id="aboutProfile" cols="30" rows="4"><?php echo $user['about']; ?></textarea>      
+
                       <div class="form-row mt-2">
                         <div class="col" style="background: #00000047;">
                              <label for="">Address</label>
                         </div>
                       </div>
+
 
                      <div class="form-row mt-2">
                         <div class="col">
@@ -144,6 +163,9 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
                                     </div>
                                     <select name="provincecode"  id="provincecode" onchange="showResult();" class="form-control provincecode">
+                                        <?php if(!empty($user['province'])) { ?>
+                                        <option value="<?php echo $user['province']; ?>" selected><?php echo $user['provincename']; ?></option>
+                                        <?php } ?>
                                         <option value="">----Select province----</option>
                                         <?php while($show_province = mysqli_fetch_array($get_province)) { ?>
                                         <option value="<?php echo $show_province['provincecode'] ?>"><?php echo $show_province['provincename'] ?></option>
@@ -158,6 +180,9 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
                                     </div>
                                     <select class="form-control districtcode" name="districtcode" id="districtcode" onchange="showResult2();" >
+                                        <?php if(!empty($user['districts'])) { ?>
+                                        <option value="<?php echo $user['districts']; ?>" selected><?php echo $user['namedistrict']; ?></option>
+                                        <?php } ?>
                                         <option></option>
                                     </select>
                                 </div>
@@ -169,6 +194,9 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
                                     </div>
                                     <select class="form-control sectorcode" name="sectorcode" id="sectorcode"  onchange="showResult3();">
+                                        <?php if(!empty($user['sector'])) { ?>
+                                        <option value="<?php echo $user['sector']; ?>" selected><?php echo $user['namesector']; ?></option>
+                                        <?php } ?>
                                         <option></option>
                                     </select>
                                 </div>
@@ -180,6 +208,9 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
                                     </div>
                                     <select name="codecell" id="codecell" class="form-control codecell" onchange="showResult4();">
+                                        <?php if(!empty($user['cell'])) { ?>
+                                        <option value="<?php echo $user['cell']; ?>" selected><?php echo $user['nameCell']; ?></option>
+                                        <?php } ?>
                                         <option></option>
                                     </select>
                                 </div>
@@ -192,12 +223,15 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
                                     </div>
                                       <select name="CodeVillage" id="CodeVillage" class="form-control CodeVillage">
+                                       <?php if(!empty($user['village'])) { ?>
+                                        <option value="<?php echo $user['village']; ?>" selected><?php echo $user['VillageName']; ?></option>
+                                        <?php } ?>
                                           <option> </option>
                                       </select>
                                 </div>
                             </div>
                       </div>
-
+                      
                       <div class="form-row mt-2">
                         <div class="col" style="background: #00000047;">
                              <label for="">Education</label>
@@ -211,7 +245,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-home" aria-hidden="true"></i></span>
                             </div>
-                            <input type="text" class="form-control" name="education" id="education" placeholder="education">
+                            <input type="text" class="form-control" name="educationProfile" value="<?php echo $user['primary_education']; ?>" id="educationProfile" placeholder="education">
                           </div>
                         </div>
 
@@ -221,7 +255,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-calendar" aria-hidden="true"></i></span>
                             </div>
-                            <input type="date" class="form-control" name="date-start" id="datestart" placeholder="date start">
+                            <input type="date" class="form-control" name="datestartEduc" id="datestartEduc" value="<?php echo $user['primary_date_start']; ?>"  placeholder="date start">
                           </div>
                         </div>
 
@@ -231,7 +265,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-calendar" aria-hidden="true"></i></span>
                             </div>
-                            <input type="date" class="form-control" name="date-end" id="dateend" placeholder="date end">
+                            <input type="date" class="form-control" name="dateendEduc" id="dateendEduc" value="<?php echo $user['primary_date_end']; ?>" placeholder="date end">
                           </div>
                         </div>
                         
@@ -244,7 +278,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-building" aria-hidden="true"></i></span>
                             </div>
-                            <input type="text" class="form-control" name="education" id="education" placeholder="education">
+                            <input type="text" class="form-control" name="education2" id="education2" value="<?php echo $user['secondary_education']; ?>" placeholder="education">
                           </div>
                         </div>
 
@@ -254,7 +288,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-calendar" aria-hidden="true"></i></span>
                             </div>
-                            <input type="date" class="form-control" name="date-start" id="datestart" placeholder="date start">
+                            <input type="date" class="form-control" name="datestart2" id="datestart2" value="<?php echo $user['secondary_date_start']; ?>" placeholder="date start">
                           </div>
                         </div>
 
@@ -264,7 +298,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-calendar" aria-hidden="true"></i></span>
                             </div>
-                            <input type="date" class="form-control" name="date-end" id="dateend" placeholder="date end">
+                            <input type="date" class="form-control" name="dateend02" id="dateend02"  value="<?php echo $user['secondary_date_end']; ?>" placeholder="date end">
                           </div>
                         </div>
 
@@ -277,7 +311,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-university" aria-hidden="true"></i></span>
                             </div>
-                            <input type="text" class="form-control" name="education" id="education" placeholder="education">
+                            <input type="text" class="form-control" name="education3" id="education3"  value="<?php echo $user['university_education']; ?>"  placeholder="education">
                           </div>
                         </div>
 
@@ -287,7 +321,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-calendar" aria-hidden="true"></i></span>
                             </div>
-                            <input type="date" class="form-control" name="date-start" id="datestart" placeholder="date start">
+                            <input type="date" class="form-control" name="datestart3" id="datestart3"  value="<?php echo $user['university_date_start']; ?>"  placeholder="date start">
                           </div>
                         </div>
 
@@ -297,7 +331,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-calendar" aria-hidden="true"></i></span>
                             </div>
-                            <input type="date" class="form-control" name="date-end" id="dateend" placeholder="date end">
+                            <input type="date" class="form-control" name="dateend03" id="dateend03"  value="<?php echo $user['university_date_end']; ?>"  placeholder="date end">
                           </div>
                         </div>
 
@@ -318,7 +352,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-calendar" aria-hidden="true"></i></span>
                             </div>
-                            <input type="date" class="form-control" name="date-start" id="datestart" placeholder="date start">
+                            <input type="date" class="form-control" name="datestartExp" id="datestartExp"  value="<?php echo $user['experience_date_start']; ?>" placeholder="date start">
                           </div>
                         </div>
 
@@ -328,7 +362,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-home" aria-hidden="true"></i></span>
                             </div>
-                            <input type="text" class="form-control" name="working" id="working" placeholder="working">
+                            <input type="text" class="form-control" name="working" id="working"  value="<?php echo $user['experience_working']; ?>" placeholder="working">
                           </div>
                         </div>
 
@@ -338,7 +372,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-calendar" aria-hidden="true"></i></span>
                             </div>
-                            <input type="date" class="form-control" name="duties" id="duties" placeholder="duties">
+                            <input type="text" class="form-control" name="duties" id="duties"  value="<?php echo $user['experience_duties']; ?>" placeholder="duties">
                           </div>
                         </div>
                         
@@ -358,7 +392,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-home" aria-hidden="true"></i></span>
                             </div>
-                            <input type="text" class="form-control" name="field" id="field" placeholder="field">
+                            <input type="text" class="form-control" name="field" value="<?php echo $user['experience_field']; ?>" id="field" placeholder="field">
                           </div>
                         </div>
                         
@@ -368,7 +402,7 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-home" aria-hidden="true"></i></span>
                             </div>
-                            <input type="text" class="form-control" name="field" id="field" placeholder="field">
+                            <input type="text" class="form-control" name="field1" id="field1"  value="<?php echo $user['experience_field1']; ?>" placeholder="field">
                           </div>
                         </div>
 
@@ -378,14 +412,18 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i style="font-size:20px;" class="fa fa-home" aria-hidden="true"></i></span>
                             </div>
-                            <input type="text" class="form-control" name="field" id="field" placeholder="field">
+                            <input type="text" class="form-control" name="field2" id="field2"  value="<?php echo $user['experience_field2']; ?>" placeholder="field">
                           </div>
                         </div>
                       
                         <div class="col">
-                        <label for="" >are you emplyoment</label>
+                          <label for="" >are you emplyoment</label>
                            <select class="custom-select" name="employment" id="employment">
-                             <option selected>Select one</option>
+                            <?php if(!empty($user['unemployment'])) { ?>
+                            <option value="<?php echo $user['unemployment']; ?>" selected><?php echo $user['unemployment']; ?></option>
+                            <?php } ?>
+
+                             <option>Select one</option>
                              <option value="yes">Yes</option>
                              <option value="no">no</option>
                            </select>
@@ -393,21 +431,14 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
 
                       </div>
 
-                      <div class="form-row mt-2">
-                        <div class="col">
-                        <label for="" >About you</label>
-                          <textarea name="about1" id="about1" cols="30" rows="4"></textarea>                        </div>
-                         </div>
-                      </div>
 
-                   <button type="button" class="btn btn-primary btn-block ">Submit</button>
+                   <br>
+                   <button type="button" onclick="profile_edit_more('profile');" class="btn btn-primary btn-block ">Submit</button>
                    <br>
                    </form>
 
                 </div><!-- /.card-body -->
-
-            </div><!-- /.card -->
-
+              </div><!-- /.card -->
 
            </div><!-- img-popup-body -->
         </div><!-- user-show-popup-box -->
@@ -415,3 +446,83 @@ if (isset($_POST['key']) && !empty($_POST['key'])) {
 </div> <!-- apply-popup" -->
 
 <?php } 
+
+if (isset($_POST['profile_edit']) && !empty($_POST['profile_edit'])) {
+
+  $user_id= $_POST['user_id'];
+  $datetime= date('Y-m-d H-i-s');
+
+  $firstname= $users->test_input($_POST['firstname']);
+  $lastname= $users->test_input($_POST['lastname']);
+  $birth= $users->test_input($_POST['birth']);
+  $telephone= $users->test_input($_POST['telephone']);
+  $email= $users->test_input($_POST['email']);
+  $status= $users->test_input($_POST['status']);
+  $about= $users->test_input($_POST['about']);
+  $province= $users->test_input($_POST['province']);
+  $districts= $users->test_input($_POST['districts']);
+  $sector= $users->test_input($_POST['sector']);
+  $cell= $users->test_input($_POST['cell']);
+  $village= $users->test_input($_POST['village']);
+  $education= $users->test_input($_POST['education']);
+  $datestartEduc= $users->test_input($_POST['datestartEduc']);
+  $dateendEduc= $users->test_input($_POST['dateendEduc']);
+  $education2= $users->test_input($_POST['education2']);
+  $datestart2= $users->test_input($_POST['datestart2']);
+  $dateend02= $users->test_input($_POST['dateend02']);
+  $education3= $users->test_input($_POST['education3']);
+  $datestart3= $users->test_input($_POST['datestart3']);
+  $dateend03= $users->test_input($_POST['dateend03']);
+  $datestartExp= $users->test_input($_POST['datestartExp']);
+  $working= $users->test_input($_POST['working']);
+  $duties= $users->test_input($_POST['duties']);
+  $field= $users->test_input($_POST['field']);
+  $field1= $users->test_input($_POST['field1']);
+  $field2= $users->test_input($_POST['field2']);
+  $employment= $users->test_input($_POST['employment']);
+   
+
+	if (!empty($employment)) {
+		
+
+		if (strlen($about) > 400) {
+			exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>The text is too long !!!</strong> </div>');
+		}
+
+	$users->updateReal('users',array( 
+  'firstname' => $firstname,
+  'lastname' => $lastname,
+  'date_birth' => $birth,
+  'phone' => $telephone,
+  'email' => $email,
+  'status' => $status,
+  'about' => $about,
+  'province' => $province,
+  'districts' => $districts,
+  'sector' => $sector,
+  'cell' => $cell,
+  'village' => $village,
+  'primary_education' => $education,
+  'primary_date_start' => $datestartEduc,
+  'primary_date_end' => $dateendEduc,
+  'secondary_education' => $education2,
+  'secondary_date_start' => $datestart2,
+  'secondary_date_end' => $dateend02,
+  'university_education' => $education3,
+  'university_date_start' => $datestart3,
+  'university_date_end' => $dateend03,
+  'experience_date_start' => $datestartExp,
+  'experience_working' => $working,
+  'experience_duties' => $duties,
+  'experience_field' => $field,
+  'experience_field1' => $field1,
+  'experience_field2' => $field2,
+  'unemployment' => $employment), 
+  array('user_id' => $user_id));
+
+    }
+} ?> 
