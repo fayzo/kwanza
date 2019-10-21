@@ -14,7 +14,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="<?php echo HOME ;?>">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="<?php echo HOME ;?>"> User Profile</a></i></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL_PUBLIC.$user['username'] ;?>'"> User Profile</a></i></li>
                 </ol>
             </div>
         </div>

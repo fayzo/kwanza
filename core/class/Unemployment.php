@@ -84,11 +84,11 @@ class Unemployment extends Home {
               <div class="col-10 pl-4">
                   <div>
                       <span class='float-left'>Names: <?php echo $row['firstname']." ".$row['lastname']; ?> </span>
-                      <span class="float-right people-message more" data-user="<?php echo $row['user_id'];?>"><i style="font-size: 20px;" class="fa fa-envelope-o"></i> Message </span>
+                      <span <?php if(isset($_SESSION['key'])){ echo 'class="float-right people-message more"'; }else{ echo 'class="float-right more" id="login-please"  data-login="1"'; } ?> data-user="<?php echo $row['user_id'];?>"><i style="font-size: 20px;" class="fa fa-envelope-o"></i> Message </span>
                   </div>
                   <div class="clear-float">
                       <span class='float-left'>education: <?php echo $row['education']; ?> </span>
-                      <span class='float-right emailSent' data-user="<?php echo $row['user_id'];?>"><?php echo $row['email']; ?></span>
+                      <span  <?php if(isset($_SESSION['key'])){ echo 'class="float-right emailSent more"'; }else{ echo 'class="float-right more" id="login-please"  data-login="1"'; } ?> data-user="<?php echo $row['user_id'];?>"><?php echo $row['email']; ?></span>
                   </div>
                   <div class="clear-float">
                       <span class='float-left'>diploma: <?php echo $row['diploma']; ?> </span>

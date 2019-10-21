@@ -259,6 +259,7 @@
    <script src="<?php echo BASE_URL_LINK ;?>js/icyamunara.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/cyamunara_delete.js"></script>
    <script src="<?php echo BASE_URL_LINK ;?>js/profile_edit_more.js"></script>
+   <script src="<?php echo BASE_URL_LINK ;?>js/email_notifiacation.js"></script>
    
    <!-- <script src="<?php echo BASE_URL_LINK ;?>js/add_post_ajax.js"></script> -->
    <script src="<?php echo BASE_URL_LINK ;?>js/manage_admins_ajax.js"></script>

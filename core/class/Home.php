@@ -855,7 +855,7 @@ class Home extends Comment {
     public function inbox($sessions)
     {
         $mysqli = $this->database;
-        $query= $mysqli->query("SELECT * FROM users U Left JOIN apply_job A ON A. business_id0= U. user_id LEFT JOIN jobs J ON J. job_id = A. job_id0  WHERE A. business_id0= '$sessions' ORDER BY created_on0 DESC ");
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN apply_job A ON A. business_id0= U. user_id LEFT JOIN jobs J ON J. job_id = A. job_id0  WHERE A. email_sent_to= '$sessions' ORDER BY created_on0 DESC ");
         while($apply = $query->fetch_array()) { 
             # code...
        echo '
@@ -940,6 +940,19 @@ class Home extends Comment {
         $mysqli= $this->database;
         $param= '%'.$search.'%';
         $query = "SELECT * FROM rwandahotel WHERE title_ LIKE '{$param}' ";
+        $result= $mysqli->query($query);
+        $contacts = array();
+        while ($row= $result->fetch_array()) {
+            $contacts[] = $row;
+        }
+        return $contacts; // Return the $contacts array
+    }
+
+    public function search_email_composer($search)
+    {
+        $mysqli= $this->database;
+        $param= '%'.$search.'%';
+        $query = "SELECT email,user_id FROM users WHERE email LIKE '{$param}' ";
         $result= $mysqli->query($query);
         $contacts = array();
         while ($row= $result->fetch_array()) {
@@ -1979,6 +1992,42 @@ class Home extends Comment {
 
         $insertValuesSQL ="";
         $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/crowfund/';
+        $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
+        
+        foreach($file['name'] as $key => $value){
+            // File upload path
+            $fileName = basename($file['name'][$key]);
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+
+             $filenames = (strlen($fileName) > 10)? 
+                     strtolower(date('Y').'_'.rand(10,100).substr($fileName,0,4).".".$fileActualExt):
+                     strtolower(date('Y').'_'.rand(10,100).$fileName);
+
+            $valued[] = $filenames;
+
+            $targetFilePath = $targetDir . $filenames;
+            
+            // Check whether file type is valid
+            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+            if(in_array($fileType, $allowTypes)){
+                // Upload file to server
+                $fileTmpName = $file["tmp_name"];
+                move_uploaded_file($fileTmpName[$key], $targetFilePath);
+            }
+        }
+        
+        # Build the values
+        $filenamedb = implode("=", $valued);
+        return  $filenamedb;
+
+    }
+
+    public function uploadComposerFile($file)
+    {
+
+        $insertValuesSQL ="";
+        $targetDir = $_SERVER['DOCUMENT_ROOT'].'/Blog_nyarwanda_CMS/uploads/emailComposer/';
         $allowTypes = array('jpg','png','jpeg','mp4','mp3', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt','docx', 'xlsx','xls','zip');
         
         foreach($file['name'] as $key => $value){

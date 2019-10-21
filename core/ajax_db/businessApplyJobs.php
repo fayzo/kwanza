@@ -200,6 +200,8 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
   'user_id0'=> $user_id,
   'job_id0'=> $job_id,
   'business_id0'=> $business_id,
+  'email_sent_for'=> $user_id,
+  'email_sent_to'=> $business_id,
   'created_on0'=> $datetime ));
 
     // 'deadline'=> $deadline,

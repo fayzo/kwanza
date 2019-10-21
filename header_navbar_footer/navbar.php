@@ -150,6 +150,28 @@
             </ul>
           </li>
 
+          <!-- Email: style can be found in dropdown.less -->
+          <li class="dropdown email-menu messages-menu nav-item">
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" id="email-dropdown-menu">
+              <i style="font-size: 20px;" class="fa fa-telegram"></i>
+             <span id="email1"><?php if($notific['total_email'] > 0){echo '<span class="badge badge-warning navbar-badge">'.$notific['total_email'].'</span>'; } ?></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header main-active">You have  <span ><?php if($notific['total_email'] > 0){echo '<span >'.$notific['total_email'].'</span>'; }else{ echo 'no';} ?></span> email</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu large-2" id="email-menu-view">
+                  <!-- <li>
+                    <a href="#">
+                      <i class="fa fa-users text-info"></i> 5 new members joined today
+                    </a>
+                  </li> -->
+                </ul>
+              </li>
+              <li class="footer"><a href="<?php echo BASE_URL_PUBLIC ;?>i.email" >View all</a></li>
+            </ul>
+          </li>
+
            <li>
               <form class="form-inline searchingResult">
                  <div class="input-group">

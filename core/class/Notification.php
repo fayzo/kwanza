@@ -8,7 +8,7 @@ class Notification extends Home
     public function getNotificationCount($user_id)
     {
        $mysqli= $this->database;
-       $query="SELECT COUNT(message_id) AS totalmessage, (SELECT COUNT(notification_id) FROM notification WHERE notification_for = $user_id AND status ='0') AS totalnotification FROM message WHERE message_to= $user_id AND status= '0' ";
+       $query="SELECT COUNT(message_id) AS totalmessage, (SELECT COUNT(notification_id) FROM notification WHERE notification_for = $user_id AND status ='0') AS totalnotification , (SELECT COUNT(cv_id) FROM apply_job WHERE email_sent_for= $user_id AND email_status=0) AS total_email FROM message WHERE message_to= $user_id AND status= '0' ";
        $result=$mysqli->query($query);
        $data=array();
        while ($row = $result->fetch_assoc()) {
@@ -25,6 +25,13 @@ class Notification extends Home
     {
        $mysqli= $this->database;
        $query="UPDATE message SET status = '1' WHERE message_to = $user_id AND status= '0'";
+       $result=$mysqli->query($query);
+    }
+
+    public function emailView($user_id)
+    {
+       $mysqli= $this->database;
+       $query="UPDATE apply_job SET email_status = '1' WHERE email_sent_to = $user_id AND email_status= '0' ";
        $result=$mysqli->query($query);
     }
 

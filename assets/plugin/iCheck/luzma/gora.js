@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2019 at 09:33 PM
+-- Generation Time: Oct 21, 2019 at 03:53 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.2.20
 
@@ -72,9 +72,22 @@ CREATE TABLE `apply_job` (
   `user_id0` int(11) NOT NULL,
   `job_id0` int(11) NOT NULL,
   `business_id0` int(11) NOT NULL,
-  `created_on0` datetime NOT NULL,
-  `deadline0` datetime NOT NULL
+  `email_sent_for` int(11) NOT NULL,
+  `email_sent_to` int(11) NOT NULL,
+  `email_status` int(11) NOT NULL,
+  `subject_composer` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type_of_email` char(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_on0` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `apply_job`
+--
+
+INSERT INTO `apply_job` (`cv_id`, `firstname0`, `middlename0`, `lastname0`, `email0`, `address0`, `telephone`, `degree`, `field`, `uploadfilecv`, `uploadfilecertificates`, `addition_information`, `user_id0`, `job_id0`, `business_id0`, `email_sent_for`, `email_sent_to`, `email_status`, `subject_composer`, `type_of_email`, `created_on0`) VALUES
+(2, 'fa', 'fa', 'fa', 'shema@yahoo.com', 'kg 6 avenue st', '0787384312', 'diploma', 'account', '2019_26inte.docx', '2019_70proj.doc', 'amakuru', 61, 33, 61, 61, 61, 1, '', '', '2019-10-20 12:43:13'),
+(14, '', '', '', 'hemafaysal@gmail.com', '', '', '', '', '2019_36inte.docx', '', 'ndaho', 61, 0, 61, 61, 64, 1, 'amakuru yawe', 'sent', '2019-10-21 12:29:01'),
+(15, '', '', '', 'hemafaysal@gmail.com', '', '', '', '', '2019_25inte.docx', '', 'ndaho', 61, 0, 61, 61, 64, 1, 'amakuru yawe', 'sent', '2019-10-21 12:31:57');
 
 -- --------------------------------------------------------
 
@@ -3249,6 +3262,21 @@ INSERT INTO `domestics_employers_jobs` (`jobs_id`, `family_type`, `status_type`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `email_notification`
+--
+
+CREATE TABLE `email_notification` (
+  `email_id` int(11) NOT NULL,
+  `email_text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_sent_to` int(11) NOT NULL,
+  `email_sent_for` int(11) NOT NULL,
+  `email_sent_on` datetime NOT NULL,
+  `email_status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `employersdomestics`
 --
 
@@ -5706,6 +5734,7 @@ CREATE TABLE `users` (
   `date_birth` date NOT NULL,
   `date_registry` date NOT NULL,
   `last_login` datetime NOT NULL,
+  `last_profile_edit` datetime NOT NULL,
   `counts_login` int(11) NOT NULL,
   `forgotUsernameCounts` int(11) NOT NULL,
   `forgotUsernameCountsTimesHeCreates` int(11) NOT NULL,
@@ -5736,38 +5765,60 @@ CREATE TABLE `users` (
   `location_facilities` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `mission_statement` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `website` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `unemplyoment` char(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `unemployment` char(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   `categories_fields` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `phone` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` char(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `about` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `province` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `districts` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sector` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cell` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `village` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `primary_education` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `primary_date_start` date NOT NULL,
+  `primary_date_end` date NOT NULL,
+  `secondary_education` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `secondary_date_start` date NOT NULL,
+  `secondary_date_end` date NOT NULL,
+  `university_education` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `university_date_start` date NOT NULL,
+  `university_date_end` date NOT NULL,
+  `experience_date_start` date NOT NULL,
+  `experience_working` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `experience_duties` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `experience_field` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `experience_field1` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `experience_field2` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `password`, `gender`, `chat`, `career`, `country`, `date_birth`, `date_registry`, `last_login`, `counts_login`, `forgotUsernameCounts`, `forgotUsernameCountsTimesHeCreates`, `forgotUsernameCountsTimesHeCreatespassword`, `profile_img`, `profile_img_crop`, `cover_img`, `background`, `language`, `color`, `education`, `diploma`, `skills`, `location`, `hobbys`, `followers`, `following`, `approval`, `company_education`, `type_of_business`, `address`, `size_of_people`, `companyname`, `overview`, `history`, `team`, `legal_structure`, `location_facilities`, `mission_statement`, `website`, `unemplyoment`, `categories_fields`, `phone`) VALUES
-(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'on', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-09-28 14:09:59', 561, 0, 10, 10, '112baby3.png', '', '702caus.jpg', 'white-bg', '', 'rose', 'lycee', 'project', 'web', 'BR', 'styuding', 9, 7, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477'),
-(64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-09-21 11:26:10', 66, 0, 0, 0, '', '', '', 'white-bg', '', 'black', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477'),
-(65, 'karisa', 'bosco', 'bosco', 'faysal@gmail.com', 'bosco', 'Male', '', '', 'RW', '2019-05-03', '2019-05-02', '2019-05-27 21:50:00', 8, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 2, 2, 'off', '', '', '', '', 'LAMBORGIN', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
-(66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-09-14 12:49:53', 118, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'white-bg', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477'),
-(67, 'musema', 'musema', 'musema', 'musemafaysal@gmail.com', 'musema', 'Male', '', '', 'RW', '2019-05-06', '2019-05-06', '2019-05-21 14:53:30', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 2, 'off', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
-(68, 'zidani', 'zidani', 'zidanii', 'zidani@gmail.com', 'zidani', 'Male', '', '', 'FR', '2019-05-06', '2019-05-22', '2019-05-30 11:54:50', 5, 0, 0, 0, '855fays.gif', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477'),
-(69, 'rihana', 'rihana', 'rihana', 'rihana@gmail.com', 'rihana', 'Female', 'off', '', 'AF', '1988-03-18', '2019-06-02', '2019-09-21 11:26:28', 27, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 3, 3, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
-(70, 'patrick', 'patrick', 'patrick', 'patrick@gmail.com', 'patrick', 'Male', '', '', 'AS', '2019-06-04', '2019-06-02', '2019-06-02 14:47:57', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477'),
-(71, 'saleh', 'saleh', 'saleh', 'saleh@gmail.com', 'saleh', 'Male', 'on', '', 'AQ', '2019-05-31', '2019-06-02', '2019-06-02 14:50:22', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
-(72, 'riri', 'aline', 'aline', 'aline@gmail.com', 'aline', 'Male', 'off', '', 'RW', '2019-07-01', '2019-07-01', '2019-07-02 08:52:01', 5, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477'),
-(73, 'antonia', 'griezman', 'antonia', 'antonia@gmail.com', 'fafa', 'Male', 'off', '', 'FR', '2019-07-01', '2019-07-02', '2019-07-31 17:42:18', 3, 0, 0, 1, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
-(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-08-20 17:57:02', 15, 0, 0, 0, '', '', '', 'chair', '', 'purple', '', '', '', '', '', 1, 6, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477'),
-(75, 'FAFA', 'FAFA', 'FAFA', 'FAFA@yahoo.com', 'FAFA', 'Male', 'off', '', '', '2019-08-03', '2019-08-03', '2019-08-03 04:29:40', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(76, 'riri', 'riri', 'riri', 'riri@yahoo.com', 'riri', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 06:58:18', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(77, 'mani', 'mani', 'mani', 'mani@yahoo.com', 'mani', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 07:00:29', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(78, 'eric', 'eric', 'eric', 'eric@yahoo.com', 'eric', 'Male', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 07:02:23', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(79, 'bebe', 'bebe', 'bebe', 'bebe@yahoo.com', 'bebe', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 07:04:35', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(80, 'shema', 'shema', 'shema', 'shema@yahoo.com', 'shema', 'Male', '', '', 'RW', '2019-08-09', '2019-08-07', '2019-08-07 07:06:11', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(81, 'manzi', 'manzi', 'manzi', 'manzi@yahoo.com', 'manzi', 'Female', '', '', 'RW', '2019-08-09', '2019-08-07', '2019-08-07 07:11:35', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(82, 'kiki', 'kiki', 'kiki', 'kiki@yahoo.com', 'kiki', 'Female', '', '', 'RW', '2019-08-09', '2019-08-07', '2019-08-07 07:16:37', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(83, 'KAGENZA', 'KABOSI', 'BOSS', 'Boss@gmail.com', 'boss11', 'Male', 'off', '', 'RW', '2010-01-29', '2019-09-03', '2019-09-12 17:30:20', 3, 0, 0, 0, '258plots.jpg', '', '3983.jpg', 'build2', '', 'rose', '', '', '', '', '', 2, 2, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(84, 'uwase', 'fatma', 'dada', 'zasu@gmail.com', 'tana', 'Female', 'off', '', 'RW', '2007-12-18', '2019-09-03', '2019-09-03 16:32:19', 2, 0, 0, 0, '7879.jpg', '', '86420.jpg', 'build', '', 'orange-white', '', '', '', '', '', 1, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `password`, `gender`, `chat`, `career`, `country`, `date_birth`, `date_registry`, `last_login`, `last_profile_edit`, `counts_login`, `forgotUsernameCounts`, `forgotUsernameCountsTimesHeCreates`, `forgotUsernameCountsTimesHeCreatespassword`, `profile_img`, `profile_img_crop`, `cover_img`, `background`, `language`, `color`, `education`, `diploma`, `skills`, `location`, `hobbys`, `followers`, `following`, `approval`, `company_education`, `type_of_business`, `address`, `size_of_people`, `companyname`, `overview`, `history`, `team`, `legal_structure`, `location_facilities`, `mission_statement`, `website`, `unemployment`, `categories_fields`, `phone`, `status`, `about`, `province`, `districts`, `sector`, `cell`, `village`, `primary_education`, `primary_date_start`, `primary_date_end`, `secondary_education`, `secondary_date_start`, `secondary_date_end`, `university_education`, `university_date_start`, `university_date_end`, `experience_date_start`, `experience_working`, `experience_duties`, `experience_field`, `experience_field1`, `experience_field2`) VALUES
+(61, 'faysal', 'shema', 'fayzo', 'shemafaysal@gmail.com', 'fafa', 'Male', 'on', 'engineering', 'RW', '2019-05-01', '2019-05-01', '2019-10-21 12:40:18', '2019-10-14 11:18:45', 575, 0, 10, 10, '112baby3.png', '', '702caus.jpg', 'white-bg', '', 'rose', 'lycee', 'project', 'web', 'BR', 'styuding', 9, 7, 'on', 'Private', 'sale', 'sd', '250', 'rwanda', 'ikorana buhanga', '1994', '100100 team', 'mine', 'kigali', 'umwunga', 'mtn', 'yes', 'accountant', '03680482477', 'single', 'nitwa hakizimana shema faysal waba uzi icyo gukora', '1', '102', '10208', '1020803', '102080302', 'apade', '2000-01-01', '2007-01-02', 'ifak', '2008-01-01', '2010-01-01', 'Kim', '2015-01-02', '2017-01-02', '2016-01-10', 'radissin', 'casual', 'account', 'finance', 'project management'),
+(64, 'ruzindana', 'eric', 'fayz', 'hemafaysal@gmail.com', 'fafa', 'Female', 'off', '', 'RW', '2019-05-02', '2019-05-02', '2019-10-21 12:38:05', '0000-00-00 00:00:00', 68, 0, 0, 0, '', '', '', 'white-bg', '', 'black', '', '', '', '', '', 0, 1, 'on', '', '', '', '', '<b></b><b><h1>kfc</h1></b><b></b>', '<p>\n\n<i><b></b></i><b><i>ï»¿</i></b><i><b></b></i><i>Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n</i><i></i>\n<br></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve. Use your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.&nbsp;</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p><ul><li>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n</li></ul></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', '<p>\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\n<br></p>', 'good', 'yes', 'accountant', '03680482477', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(65, 'karisa', 'bosco', 'bosco', 'faysal@gmail.com', 'bosco', 'Male', '', '', 'RW', '2019-05-03', '2019-05-02', '2019-05-27 21:50:00', '0000-00-00 00:00:00', 8, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 2, 2, 'off', '', '', '', '', 'LAMBORGIN', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(66, 'muhre', 'karim', 'karim', 'karim@gmail.com', 'karim', 'Male', 'off', '', 'RW', '1994-08-03', '2019-05-05', '2019-09-14 12:49:53', '0000-00-00 00:00:00', 118, 0, 0, 0, '710head.jpg', '', '8902.jpg', 'white-bg', '', 'rose', '', '', '', '', '', 5, 2, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'finance', '03680482477', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(67, 'musema', 'musema', 'musema', 'musemafaysal@gmail.com', 'musema', 'Male', '', '', 'RW', '2019-05-06', '2019-05-06', '2019-05-21 14:53:30', '0000-00-00 00:00:00', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 2, 'off', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(68, 'zidani', 'zidani', 'zidanii', 'zidani@gmail.com', 'zidani', 'Male', '', '', 'FR', '2019-05-06', '2019-05-22', '2019-05-30 11:54:50', '0000-00-00 00:00:00', 5, 0, 0, 0, '855fays.gif', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'on', '', '', '', '', '', '0', '0', '0', '0', '', '0', '', 'yes', 'management', '03680482477', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(69, 'rihana', 'rihana', 'rihana', 'rihana@gmail.com', 'rihana', 'Female', 'off', '', 'AF', '1988-03-18', '2019-06-02', '2019-09-21 11:26:28', '0000-00-00 00:00:00', 27, 0, 0, 0, '', '', '', 'chair', '', 'black', '', '', '', '', '', 3, 3, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(70, 'patrick', 'patrick', 'patrick', 'patrick@gmail.com', 'patrick', 'Male', '', '', 'AS', '2019-06-04', '2019-06-02', '2019-06-02 14:47:57', '0000-00-00 00:00:00', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'computer_enginnering', '03680482477', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(71, 'saleh', 'saleh', 'saleh', 'saleh@gmail.com', 'saleh', 'Male', 'on', '', 'AQ', '2019-05-31', '2019-06-02', '2019-06-02 14:50:22', '0000-00-00 00:00:00', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 1, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(72, 'riri', 'aline', 'aline', 'aline@gmail.com', 'aline', 'Male', 'off', '', 'RW', '2019-07-01', '2019-07-01', '2019-07-02 08:52:01', '0000-00-00 00:00:00', 5, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'mechanical_enginnering', '03680482477', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(73, 'antonia', 'griezman', 'antonia', 'antonia@gmail.com', 'fafa', 'Male', 'off', '', 'FR', '2019-07-01', '2019-07-02', '2019-07-31 17:42:18', '0000-00-00 00:00:00', 3, 0, 0, 1, '', '', '', '', '', 'black', '', '', '', '', '', 1, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(74, 'jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'jojo', 'Male', 'off', '', 'RW', '2019-07-03', '2019-07-02', '2019-08-20 17:57:02', '0000-00-00 00:00:00', 15, 0, 0, 0, '', '', '', 'chair', '', 'purple', '', '', '', '', '', 1, 6, 'off', '', '', '', '', '', '', '', '', '', '', '', '', 'yes', 'electrical_enginnering', '03680482477', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(75, 'FAFA', 'FAFA', 'FAFA', 'FAFA@yahoo.com', 'FAFA', 'Male', 'off', '', '', '2019-08-03', '2019-08-03', '2019-08-03 04:29:40', '0000-00-00 00:00:00', 1, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(76, 'riri', 'riri', 'riri', 'riri@yahoo.com', 'riri', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 06:58:18', '0000-00-00 00:00:00', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(77, 'mani', 'mani', 'mani', 'mani@yahoo.com', 'mani', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 07:00:29', '0000-00-00 00:00:00', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(78, 'eric', 'eric', 'eric', 'eric@yahoo.com', 'eric', 'Male', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 07:02:23', '0000-00-00 00:00:00', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(79, 'bebe', 'bebe', 'bebe', 'bebe@yahoo.com', 'bebe', 'Female', '', '', 'RW', '2019-08-08', '2019-08-07', '2019-08-07 07:04:35', '0000-00-00 00:00:00', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(80, 'shema', 'shema', 'shema', 'shema@yahoo.com', 'shema', 'Male', '', '', 'RW', '2019-08-09', '2019-08-07', '2019-08-07 07:06:11', '0000-00-00 00:00:00', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(81, 'manzi', 'manzi', 'manzi', 'manzi@yahoo.com', 'manzi', 'Female', '', '', 'RW', '2019-08-09', '2019-08-07', '2019-08-07 07:11:35', '0000-00-00 00:00:00', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(82, 'kiki', 'kiki', 'kiki', 'kiki@yahoo.com', 'kiki', 'Female', '', '', 'RW', '2019-08-09', '2019-08-07', '2019-08-07 07:16:37', '0000-00-00 00:00:00', 0, 0, 0, 0, '', '', '', '', '', 'black', '', '', '', '', '', 0, 0, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(83, 'KAGENZA', 'KABOSI', 'BOSS', 'Boss@gmail.com', 'boss11', 'Male', 'off', '', 'RW', '2010-01-29', '2019-09-03', '2019-09-12 17:30:20', '0000-00-00 00:00:00', 3, 0, 0, 0, '258plots.jpg', '', '3983.jpg', 'build2', '', 'rose', '', '', '', '', '', 2, 2, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', ''),
+(84, 'uwase', 'fatma', 'dada', 'zasu@gmail.com', 'tana', 'Female', 'off', '', 'RW', '2007-12-18', '2019-09-03', '2019-09-03 16:32:19', '0000-00-00 00:00:00', 2, 0, 0, 0, '7879.jpg', '', '86420.jpg', 'build', '', 'orange-white', '', '', '', '', '', 1, 1, 'off', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -18493,6 +18544,12 @@ ALTER TABLE `domestics_employers_jobs`
   ADD PRIMARY KEY (`jobs_id`);
 
 --
+-- Indexes for table `email_notification`
+--
+ALTER TABLE `email_notification`
+  ADD PRIMARY KEY (`email_id`);
+
+--
 -- Indexes for table `employersdomestics`
 --
 ALTER TABLE `employersdomestics`
@@ -18846,7 +18903,7 @@ ALTER TABLE `album`
 -- AUTO_INCREMENT for table `apply_job`
 --
 ALTER TABLE `apply_job`
-  MODIFY `cv_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `basketball`
@@ -18937,6 +18994,12 @@ ALTER TABLE `domestics`
 --
 ALTER TABLE `domestics_employers_jobs`
   MODIFY `jobs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `email_notification`
+--
+ALTER TABLE `email_notification`
+  MODIFY `email_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `employersdomestics`

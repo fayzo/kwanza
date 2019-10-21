@@ -8,7 +8,6 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
     $result= $home->search($search);
 
      if (is_array($result) || is_object($result)){
-
        
        echo '<div id="black" class="nav-right-down-wrap main-active">
              <ul '.((count($result) > 6 )?'class="large-2" style="height:400px;"':'').' > ';

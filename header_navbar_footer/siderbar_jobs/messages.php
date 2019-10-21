@@ -1,19 +1,5 @@
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper mb-5">
-     <!-- Content Header (Page header) -->
-     <section class="content-header">
-         <div class="row mb-2">
-             <div class="col-sm-6">
-                 <h1>Inbox</h1>
-             </div>
-             <div class="col-sm-6">
-                 <ol class="breadcrumb float-sm-right">
-                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                     <li class="breadcrumb-item active">Inbox</li>
-                 </ol>
-             </div>
-         </div>
-     </section>
 
      <!-- Main content -->
      <section class="content">
@@ -121,20 +107,55 @@
  <div class="modal" id="myModalComposer">
      <div class="modal-dialog">
          <div class="modal-content">
+             <span id="responseSubmit"></span>
+             <form method="post" id="email-composer-new" enctype="multipart/form-data" >
+                <input type="hidden" name="user_id" value="<?php echo $user_id ;?>">
+
              <div class="modal-header">
                  <h5 class="modal-title"><i class="fa fa-pencil"></i> Compose New Message</h5>
                  <button class="close" data-dismiss="modal">&times;</button>
              </div>
              <div class="modal-body">
+             
                  <div class="form-group">
-                     <input class="form-control" placeholder="To:">
+                     <input class="form-control emailcomposer search-email-composer" name="emailcomposer" placeholder="To:">
+                      <div class="search-result">			
+                      </div>
+                 </div>
+                 <div class="form-group emailsendto">
                  </div>
                  <div class="form-group">
-                     <input class="form-control" placeholder="Subject:">
+                     <input class="form-control subjectcomposer" name="subjectcomposer" placeholder="Subject:">
                  </div>
                  <div class="form-group">
-                     <textarea id="compose-textarea" class="form-control" style="height: 300px">
-                      <h1><u>Heading Of Message</u></h1>
+                     <textarea id="compose-textarea" name="textcomposer" class="form-control textcomposer" style="height: 300px">
+                    </textarea>
+                 </div>
+                 <div class="form-group">
+                     <div class="btn btn-defaults btn-file">
+                         <i class="fa fa-paperclip"></i> Attachment
+                         <input type="file" id="filecomposer" name="file[]" multiple>
+                     </div>
+                     <small class="help-block">Max. 32MB</small>
+                 </div> 
+             </div>
+             <!-- /.card-body -->
+             <div class="modal-footer">
+                 <div class="float-right">
+                     <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button>
+                     <button type="button" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send</button>
+                 </div>
+                 <button type="reset" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>
+                     Discard</button>
+                 <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+             </div>
+         </form>
+         </div>
+     </div>
+ </div>
+ <br>
+ 
+                     <!-- <h1><u>Heading Of Message</u></h1>
                       <h4>Subheading</h4>
                       <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
                         was born and I will give you a complete account of the system, and expound the actual teachings
@@ -156,32 +177,8 @@
                         <li>List item four</li>
                       </ul>
                       <p>Thank you,</p>
-                      <p>John Doe</p>
-                    </textarea>
-                 </div>
-                 <div class="form-group">
-                     <div class="btn btn-defaults btn-file">
-                         <i class="fa fa-paperclip"></i> Attachment
-                         <input type="file" name="attachment">
-                     </div>
-                     <small class="help-block">Max. 32MB</small>
-                 </div> 
-             </div>
-             <!-- /.card-body -->
-             <div class="modal-footer">
-                 <div class="float-right">
-                     <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button>
-                     <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send</button>
-                 </div>
-                 <button type="reset" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>
-                     Discard</button>
-                 <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-             </div>
-         </div>
-     </div>
- </div>
- <br>
- 
+                      <p>John Doe</p> -->
+
  <!-- READ FILE MESSAGE -->
  <div class="modal" id="myModalReady">
      <div class="modal-dialog">
