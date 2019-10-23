@@ -855,7 +855,28 @@ class Home extends Comment {
     public function inbox($sessions)
     {
         $mysqli = $this->database;
-        $query= $mysqli->query("SELECT * FROM users U Left JOIN apply_job A ON A. business_id0= U. user_id LEFT JOIN jobs J ON J. job_id = A. job_id0  WHERE A. email_sent_to= '$sessions' ORDER BY created_on0 DESC ");
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN apply_job A ON A. business_id0= U. user_id LEFT JOIN jobs J ON J. job_id = A. job_id0  WHERE A. email_sent_to= '$sessions' AND A. type_of_email = 'inbox' ORDER BY created_on0 DESC ");
+        while($apply = $query->fetch_array()) { 
+            # code...
+       echo '
+             <tr class="inbox-view more" data-cv_id="'.$apply['cv_id'].'" data-business="'.$apply['business_id'].'" >
+                   <td><input type="checkbox" name="a'.$apply['cv_id'].'" value="'.$apply['cv_id'].'"></td>
+                   <td class="mailbox-star"><a href="#"><i class="fa fa-star text-warning"></i></a></td>
+                   <td class="mailbox-name inbox-view more"><a href="#">'.$apply['firstname0']." ".$apply['lastname0'].'</a></td>
+                   <td class="mailbox-subject"><b>'.$apply['job_title'].'</b> - '.$apply['addition_information'].'
+                   </td>
+                   <td class="mailbox-attachment">'.((!empty($apply['uploadfilecv']))? '<i class="fa fa-paperclip"></i>':'' ).'</td>
+                   <td class="mailbox-date">'.$this->timeAgo($apply['created_on0']).'</td>
+              </tr>';
+
+        }
+    }
+
+    public function sentInbox($sessions)
+    {
+        $mysqli = $this->database;
+        
+        $query= $mysqli->query("SELECT * FROM users U Left JOIN apply_job A ON A. business_id0= U. user_id LEFT JOIN jobs J ON J. job_id = A. job_id0  WHERE A. email_sent_for= '$sessions' AND A. type_of_email = 'sent' ORDER BY created_on0 DESC ");
         while($apply = $query->fetch_array()) { 
             # code...
        echo '

@@ -38,8 +38,9 @@ class Trending extends Home
     public function getTweetsTrendbyhastag($hashtag)
     {
        $mysqli= $this->database;
-       $query= "SELECT * FROM tweets LEFT JOIN users ON tweetBy= user_id WHERE status LIKE '%#".$hashtag."%' OR retweet_Msg LIKE '%#".$hashtag."%' ORDER BY posted_on DESC";
+       $query= "SELECT * FROM tweets T LEFT JOIN users U ON T. tweetBy= U. user_id WHERE T. status LIKE '%#". $hashtag ."%' OR T. retweet_Msg LIKE '%#". $hashtag ."%' ORDER BY T. posted_on DESC";
        $result= $mysqli->query($query);
+      //   var_dump('ERROR: Could not able to execute '. $result.mysqli_error($mysqli));
        $tweets_hashtag = array();
        while ($row = $result->fetch_assoc()) {
             /* TABLE OF tweety */
@@ -52,7 +53,7 @@ class Trending extends Home
     public function getUsersHashtag($hashtag)
     {
       $mysqli = $this->database;
-      $query = "SELECT DISTINCT * FROM tweets LEFT JOIN users ON tweetBy= user_id WHERE status LIKE '%#" . $hashtag . "%' OR retweet_Msg LIKE '%#" . $hashtag . "%' GROUP BY user_id";
+      $query = "SELECT DISTINCT * FROM tweets T LEFT JOIN users U ON T. tweetBy= U. user_id WHERE T. status LIKE '%#" . $hashtag . "%' OR T. retweet_Msg LIKE '%#" . $hashtag . "%' GROUP BY U. user_id";
       $result = $mysqli->query($query);
       $users_hashtag = array();
       while ($row = $result->fetch_assoc()) {

@@ -179,9 +179,10 @@ class Users{
         $mysqli= $this->database;
         $sql = "INSERT INTO $table (cv_id, firstname0, middlename0, lastname0, email0, address0, telephone, degree,
         field, uploadfilecv, uploadfilecertificates, addition_information, user_id0, job_id0, business_id0, 
-        created_on0, deadline0) SELECT cv_id, firstname0, middlename0, lastname0, email0, address0, 
+        email_sent_for, email_sent_to, subject_composer, type_of_email, email_status,
+        created_on0) SELECT cv_id, firstname0, middlename0, lastname0, email0, address0, 
         telephone, degree, field, uploadfilecv, uploadfilecertificates, addition_information, user_id0, job_id0, business_id0,
-        created_on0, deadline0 FROM apply_job WHERE cv_id= $id";
+        email_sent_for, email_sent_to, subject_composer, type_of_email, email_status, created_on0 FROM apply_job WHERE cv_id= $id";
         
         // $sql = "INSERT INTO $table  (SELECT * FROM apply_job WHERE cv_id= $id )";
         $query= $mysqli->query($sql);

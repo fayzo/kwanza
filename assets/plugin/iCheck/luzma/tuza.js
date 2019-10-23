@@ -4,7 +4,6 @@ include('class/Users.php');
 include('class/Post_like.php');
 include('class/Comment.php');
 include('class/Home.php');
-include('class/Icyamunara.php');
 include('class/Football_home.php');
 include('class/Events.php');
 include('class/Follow.php');
@@ -36,12 +35,15 @@ include('class/News.php');
 include('class/Entertainment.php');
 include('class/Food.php');
 include('class/House.php');
+include('class/Icyamunara.php');
 include('class/Car.php');
 include('class/Unemployment.php');
 include('class/School.php');
 include('class/Domestics.php');
 include('class/Hotel.php');
 include('class/motel.php');
+include('class/Email_notification.php');
+
 
 define('BASE_URL_LINK', 'http://localhost:80/Blog_nyarwanda_CMS/assets/');
 // SETTING FILE
