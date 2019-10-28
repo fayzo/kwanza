@@ -38,14 +38,47 @@ $(document).ready(function () {
     $(document).on('click', '#email-composer-new', function (e) {
         // event.preventDefault();
         e.stopPropagation();
+        var user_id = $('#user_id');
+        var email_send_to = $('#email-send-to');
         var emailcomposer = $('.emailcomposer');
         var subjectcomposer = $('.subjectcomposer');
         var textcomposer = $('.textcomposer');
-        var filecomposer = $('#filecomposer');
-
          
-        if (isEmpty(emailcomposer) && isEmpty(subjectcomposer) && isEmpty(textcomposer) &&
-             isEmpty(filecomposer)) {
+        if (isEmpty(emailcomposer) && isEmpty(subjectcomposer) && isEmpty(textcomposer)) {
+            var filecomposer = $('#filecomposer').val();
+            var textarea = textcomposer.val();
+
+            if (filecomposer == '') {
+
+                if (textarea != '') {
+                    $.ajax({
+                        url: "core/ajax_db/email_notification.php",
+                        method: "POST",
+                        data: {
+                            key: 'textarea',
+                            user_id: user_id.val(),
+                            email_send_to: email_send_to.val(),
+                            emailcomposer :emailcomposer.val(),
+                            subjectcomposer: subjectcomposer.val(),
+                            textcomposer: textcomposer.val(),
+                        },
+                        success: function (response) {
+                            $("#responseSubmit").html(response).fadeIn();
+                            setInterval(function () {
+                                $("#responseSubmit").fadeOut();
+                            }, 2000);
+                            setInterval(function () {
+                                // location.reload();
+                            }, 2400);
+                        }, error: function (response) {
+                            $("#responseSubmit").html(response).fadeIn();
+                            setInterval(function () {
+                                $("#responseSubmit").fadeOut();
+                            }, 3000);
+                        }
+                    });
+                }
+            }else {
 
             var extensions3 = $('#filecomposer').val().split('.').pop().toLowerCase();
 
@@ -56,7 +89,8 @@ $(document).ready(function () {
                 }, 4000);
                 $('#filecomposer').val('');
                 return false;
-            }else {
+            } else if ($('#send').attr("value") == "sendx") {
+                //do button 1 thing
                 $.ajax({
                     url: 'core/ajax_db/email_notification.php',
                     method: "POST",
@@ -99,6 +133,7 @@ $(document).ready(function () {
                     }
                 });
                 return false;
+            }
             }
         }
     });

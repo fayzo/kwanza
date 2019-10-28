@@ -22,24 +22,41 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-            
-            <div class="col-md-3 mb-3">
-                <div class="mb-2">
-                    <?php echo $home->userProfile($user_id); ?>
-                </div>
-                <?php echo $trending->trends(); ?>
-                <!-- Profile Image -->
-                 <div class="sticky-top" style="top:53px;">
-                        <?php echo $home->jobsfetch() ;?>
-                </div>
-                <!-- jobs -->
-            </div>
-            <!-- /.col -->
-
             <div class="col-md-9">
                 <?php include "header_navbar_footer/siderbar_jobs/messages.php"?>
             </div>
-            <!-- /.col -->
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <div class="mb-2">
+                            <?php echo $home->userProfile($user_id); ?>
+                        </div>
+                        <?php echo $trending->trends(); ?>
+                        <!-- Profile Image -->
+                        <div class="sticky-top" style="top:53px;">
+                                <?php echo $home->jobsfetch() ;?>
+                        </div>
+                        <!-- jobs -->
+                    </div>
+                    <!-- /.col -->
+
+                    <div class="col-md-12 mb-3">
+                    <?php echo $follow->whoTofollow($user_id,$user_id) ;?>
+                    </div>
+
+                    <div class="col-md-12">
+                    <?php echo $news->home_recent_News(); ?>
+                    <?php echo $football->footballMatchLineup(); ?>
+                        <?php echo $football->footballMatchFixture(); ?>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="sticky-top " style="top: 52px;">
+                    <?php echo $home->options(); ?>
+                </div>
+                
+            </div>
+            <!-- /.col-md-3 -->
         </div>
         <!-- /.row -->
     </section>

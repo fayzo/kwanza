@@ -32,8 +32,7 @@ $(document).ready(function () {
         var image_name = $('#file').val();
         var textarea = $('.status').val();
 
-
-        if (image_name == '') {
+         if (image_name == '') {
 
             if (textarea != '') {
                 $.ajax({

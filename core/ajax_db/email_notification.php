@@ -84,7 +84,7 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
 			 # code...
 			$jsonArrays = array(
         		'email' => $user['email'],
-        		'form' => ' <input  type="hidden" class="email-send-to" name="email-send-to" value="'.$user['user_id'].'">' ,
+        		'form' => ' <input  type="hidden" id="email-send-to" class="email-send-to" name="email-send-to" value="'.$user['user_id'].'">' ,
 			);
 			
            exit(json_encode($jsonArrays));
@@ -113,8 +113,48 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
 	// 	 </div> ';
 		 
 }
+if (isset($_POST['key']) == 'textarea'){
 
-if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
+	$user_id= $_POST['user_id'];
+    $email_send_to= $_POST['email_send_to'];
+    $datetime= date('Y-m-d H-i-s');
+
+    $emailcomposer = $users->test_input($_POST['emailcomposer']);
+    $subjectcomposer = $users->test_input($_POST['subjectcomposer']);
+    $textcomposer =  $users->test_input($_POST['textcomposer']);
+	// $type_of_email =  'sent';
+	if (!empty($_POST['send'])) {
+		# code...
+    	$type_of_email = $users->test_input($_POST['send']);
+	}else {
+		# code...
+    	$type_of_email = $users->test_input($_POST['draft']);
+	}
+
+	if (!empty($emailcomposer) ) {
+
+		if (strlen($textcomposer ) > 1000) {
+			exit('<div class="alert alert-danger alert-dismissible fade show text-center">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span>&times;</span>
+                    </button>
+                    <strong>The text is too long !!!</strong> </div>');
+		}
+
+	$users->Postsjobscreates('apply_job',array( 
+	'email0'=> $emailcomposer,
+	'email_sent_for'=>  $user_id,
+	'email_sent_to'=> $email_send_to,
+	'subject_composer'=> $subjectcomposer,
+	'addition_information'=> $textcomposer,
+	'uploadfilecv'=> 'no file', 
+	'user_id0'=> $user_id,
+	'business_id0'=> $user_id,
+	'type_of_email'=> $type_of_email,
+	'created_on0'=> $datetime ));
+    }
+
+}else if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
     $user_id= $_POST['user_id'];
     $email_send_to= $_POST['email-send-to'];
     $datetime= date('Y-m-d H-i-s');
@@ -124,7 +164,14 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
     $emailcomposer = $users->test_input($_POST['emailcomposer']);
     $subjectcomposer = $users->test_input($_POST['subjectcomposer']);
     $textcomposer =  $users->test_input($_POST['textcomposer']);
-    $type_of_email =  'sent';
+	// $type_of_email =  'sent';
+	if (!empty($_POST['send'])) {
+		# code...
+    	$type_of_email = $users->test_input($_POST['send']);
+	}else {
+		# code...
+    	$type_of_email = $users->test_input($_POST['draft']);
+	}
 
 	if (!empty($emailcomposer) || !empty(array_filter($photo['name'])) ) {
 		if (!empty($photo['name'][0])) {
