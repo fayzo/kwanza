@@ -78,15 +78,19 @@ if (isset($_POST['search']) && !empty($_POST['search'])) {
     $user_id= $_SESSION['key'];
     $search= $users->test_input($_POST['search']);
 	$result= $home->search_email_composer($search);
+	// echo '<pre>';
+	// var_dump($result);
+	// echo '<pre>';
 
 	 foreach ($result as $user) {
          if ($user['user_id'] != $user_id) {
 			 # code...
 			$jsonArrays = array(
-        		'email' => $user['email'],
+        		'email' => array(
+						$user['email' ] => $user['email'],
+				),
         		'form' => ' <input  type="hidden" id="email-send-to" class="email-send-to" name="email-send-to" value="'.$user['user_id'].'">' ,
 			);
-			
            exit(json_encode($jsonArrays));
 			// $count= count($search);
 			// $strpos_countsTo = strpos($user['email'], $search);

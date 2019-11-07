@@ -122,14 +122,13 @@
                       <div class="search-result">			
                       </div>
                  </div>
-                 <div class="form-group emailsendto">
+                 <div class="form-group emailsendto" id="myDiv-search-email-composer">
                  </div>
                  <div class="form-group">
                      <input class="form-control subjectcomposer" name="subjectcomposer" placeholder="Subject:">
                  </div>
                  <div class="form-group">
-                     <textarea id="compose-textarea" name="textcomposer" class="form-control textcomposer" style="height: 300px">
-                    </textarea>
+                     <textarea id="compose-textarea" name="textcomposer" class="form-control textcomposer" style="height: 300px"></textarea>
                  </div>
                  <div class="form-group">
                      <div class="btn btn-defaults btn-file">
@@ -142,8 +141,8 @@
              <!-- /.card-body -->
              <div class="modal-footer">
                  <div class="float-right">
-                     <button type="button" class="btn btn-default" name="draft" value="draft"><i class="fa fa-pencil"></i> Draft</button>
-                     <button type="button" class="btn btn-primary" name="send" id="sendx" value="send"><i class="fa fa-envelope-o"></i> Send</button>
+                     <button type="button" class="btn btn-default email-composer-daft1" name="draft" value="draft"><i class="fa fa-pencil"></i> Draft</button>
+                     <button type="button" class="btn btn-primary email-composer-new1" name="send" id="sendx" value="send"><i class="fa fa-envelope-o"></i> Send</button>
                  </div>
                  <button type="reset" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>
                      Discard</button>
