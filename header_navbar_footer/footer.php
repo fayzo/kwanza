@@ -1,5 +1,5 @@
 <div class="popupTweet"></div>
-  
+
   <footer class="blog-footer main-active">
        <p class="mb-1"><?php echo $users->copyright(2018); ?></p>
        <ul class="list-inline">
@@ -653,6 +653,7 @@ $('.price_range0').jRange({
                 }  
             });
 		});
+
     </script>
     <!-- #endregion Jssor Slider End -->
    </body>

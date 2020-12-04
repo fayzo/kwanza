@@ -28,7 +28,7 @@
                      </table>
               </div>
 
-                <?php}else if( $jobs['turn'] === 'off') { ?>
+                <?php }else if( $jobs['turn'] === 'off') { ?>
 
               <div class="col-md-6">
        

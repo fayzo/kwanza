@@ -2928,7 +2928,7 @@ class Home extends Comment {
                                                 <?php }?>
                                         </div>
 
-                                    <?php }else if($count === 3 || $count > 3){?>
+                                    <?php }else if($count === 3 || $count > 3){ ?>
                                      <div class="row mb-2 more">
                                             <?php $expode = explode("=",$tweet['tweet_image']);
                                               $splice= array_splice($expode,0,1);

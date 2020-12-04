@@ -9,18 +9,21 @@ if (isset($_POST['movies_id']) && !empty($_POST['movies_id'])) {
      ?>
 
 <div class="movies-popup">
-    <div class="wrap6">
+    
+    <div class="wrap6" id="disabler">
+        <div class="wrap6Pophide" onclick="togglePopup ( )" ></div>
         <span class="colose">
         	<button class="close-imagePopup"><i class="fa fa-times" aria-hidden="true"></i></button>
         </span>
-        <div class="img-popup-wrap">
-        	<div class="img-popup-body">
+        <div class="img-popup-wrap" id="popupEnd">
+            <div class="img-popup-body">
+                <button class="btn btn-success btn-sm"  onclick="togglePopup ( )">close</button>
 
              <?php echo $movies->moviesWatchVideo($movies_id) ?>
 
            </div><!-- img-popup-body -->
         </div><!-- user-show-popup-box -->
-    </div> <!-- Wrp4 -->
+    <!-- </div> Wrp4 -->
 </div> <!-- apply-popup" -->
 
 <?php } 

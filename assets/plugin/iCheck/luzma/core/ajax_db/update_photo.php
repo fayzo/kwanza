@@ -1,4 +1,4 @@
- //Columns must be a factor of 12 (1,2,3,4,6,12)
+<?php
                                     $rowCount = 0;
                                     
                                     switch ($count) {

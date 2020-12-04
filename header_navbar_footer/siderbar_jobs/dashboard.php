@@ -75,7 +75,7 @@
  <!-- CARD -->
  <div class="card mb-3">
      <div class="card-body">
-         <table class="table table-responsive-sm table-hover ">
+         <table class="table table-responsive-sm table_adminLA table-hover ">
              <thead class="main-active">
                  <tr>
                      <th>N0</th>

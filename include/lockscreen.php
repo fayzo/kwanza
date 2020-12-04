@@ -35,7 +35,7 @@ if (isset($_POST['key']) == 'lockscreen') {
                     <strong>Please Try Again ...!!!</strong> </div>');
     }
     $users->forgotUsernameCountsTodelete('users',
-          array('forgotUsernameCounts' => 0, ),$_SESSION['keys']);
+          array('forgotUsernameCounts' => 'forgotUsernameCounts +1', ),$_SESSION['keys']);
   } 
 
 ?>

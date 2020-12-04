@@ -80,7 +80,7 @@ class School extends Home {
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
                     </div>
                     <select name="provincecode"  id="provincecode" onchange="showResult();" class="form-control">
-                        <option value="">----Select province----</option>
+                        <option value="">Province</option>
                         <?php while($show_province = mysqli_fetch_array($get_province)) { ?>
                         <option value="<?php echo $show_province['provincecode'] ?>"><?php echo $show_province['provincename'] ?></option>
                         <?php } ?>
@@ -94,7 +94,8 @@ class School extends Home {
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
                     </div>
                     <select class="form-control" name="districtcode" id="districtcode" onchange="showResult2();" >
-                        <option></option>
+                        <option value="">District</option>
+                        <!-- <option></option> -->
                     </select>
                 </div>
             </div>
@@ -105,7 +106,8 @@ class School extends Home {
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
                     </div>
                     <select class="form-control" name="sectorcode" id="sectorcode"  onchange="showResult3();">
-                        <option></option>
+                        <option value="">Sector</option>
+                        <!-- <option></option> -->
                     </select>
                 </div>
             </div>
@@ -116,7 +118,8 @@ class School extends Home {
                         <span class="input-group-text" id="basic-addon2"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span>
                     </div>
                     <select name="codecell" id="codecell" class="form-control" onchange="showResultCell();">
-                        <option></option>
+                        <option value="">Cell</option>
+                        <!-- <option></option> -->
                     </select>
                 </div>
             </div>

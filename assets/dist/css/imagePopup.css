@@ -2,6 +2,7 @@
 	position: relative;
 	top: 12%;
 	left: 85%;
+	z-index: 10001;
 }
 
 .colose button {
@@ -25,12 +26,21 @@
 	left:0px;
 	z-index: 10000;
 	overflow-y: scroll;
-	display: block;
+	/* display: block; */
+}
+.wrap6Pophide{
+	background-color: rgba(0, 0, 0, 0.34);
+	position: fixed;
+	width: 99%;
+	height: 100%;
+	top:0px;
+	left:0px;
+	z-index: 9999;
 }
 .wrap6:before{
 	content: '';
 	position: fixed;
-	width: 100vw;
+	width: 97.5vw;
 	height: 100vh;
 	-webkit-backdrop-filter: blur(2px);
 	backdrop-filter: blur(2px);
@@ -46,11 +56,12 @@
 	border-radius: 4px;
 	background: #fff;
 	max-width: 800px;
-	max-height: auto;
+	max-height: 100%;
 	position: relative;
 	top: 5%;
 	margin: 20px auto;
 	padding: 0px;
+	z-index: 10001;
 	
 }
 

@@ -413,7 +413,7 @@ class House extends Home {
     }
 
       
-    public function deleteLikesHouse($house_id)
+    public function deleteLikesHouse($house_id,$user_id)
     {
         $mysqli= $this->database;
         $query="DELETE FROM house WHERE house_id = '{$house_id}' and B. user_id3 = '{$user_id}' ";

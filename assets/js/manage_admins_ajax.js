@@ -27,6 +27,11 @@
 
             fetch_admin(0, 50);
             fetch_admin1(0, 50);
+            $(".table_adminLA").DataTable({
+                "lengthChange": true,
+                "pageLength":10,
+                "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]]
+            });
         });
 
         function deleteRow(rowID) {
@@ -112,7 +117,9 @@
                     //    fetch_admin(start, limit);
                     } else{
                         $(".table_admin").DataTable({
-                         "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]]
+                            "lengthChange": true,
+                            "pageLength":10,
+                            "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]]
                         });
                      }
                 }
@@ -135,6 +142,8 @@
                     //    fetch_admin(start, limit);
                     } else{
                         $(".table_admin1").DataTable({
+                            "lengthChange": true,
+                            "pageLength":10,
                          "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]]
                        });
                     }

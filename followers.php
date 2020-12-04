@@ -167,7 +167,7 @@
                     <div class="col-md-12">
                         <!-- hastTag Me Box -->
                           <!-- jobs -->
-                          <?php echo $home->jobsfetch() ;?>
+                          <!-- <?php echo $home->jobsfetch() ;?> -->
                           <!-- jobs -->
                     </div>
                     <!-- /.col -->

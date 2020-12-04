@@ -1,0 +1,79 @@
+<html>
+<head>
+<style>
+
+.button {
+    text-align: center;
+    width: 100px;
+    height: 30px;
+    background-color: green;
+    border: 2px solid grey;
+    color: white;
+    margin: auto;
+    position: relative;
+}
+
+.disabler {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 99998;
+    background-color: #000000;
+    opacity: 0.5;
+}
+
+.popup {
+    position: relative;
+    /* Center with whatever voodoo you like */
+    top: calc(50% - 150px);
+    left: calc(50% - 150px);
+    width: 300px;
+    height: 300px;
+    background-color: blue;
+    border: 2px solid grey;
+    z-index: 99999;
+}
+</style>
+</head>
+<body>
+
+<div class="button" onclick="togglePopup ( )">
+    Show Popup
+</div>
+
+<div class="button" onclick="showAlert ( )">
+    Show Alert
+</div>
+
+<!-- This div is on top of everything except the popup div -->
+<!-- It effectively disables the entire app except for the popup -->
+<div id="disabler" class="disabler" onclick="togglePopup ( )"></div>
+
+<!-- This div holds the popup -->
+<!-- You can only close the popup by clicking the close button, or the disabler background -->
+<!-- Clicking in the blue popup area doesn't do anything (intentionally) -->
+<!-- Even though you can see other widgets through the disabler, they're all inaccessible -->
+<!-- Try the show alert button to confirm -->
+<div id="popup" class="popup">
+    <div class="button" onclick="togglePopup ( )">
+            Close Popup
+    </div>
+</div>
+
+<script type="text/javascript">
+    togglePopup ( ); // Hide them to start.
+    function togglePopup ( ) {
+        let disabler = document.getElementById ( 'disabler' );
+        disabler.style.display = disabler.style.display ? '' : 'none';
+
+        let popup = document.getElementById ( 'popup' );
+        popup.style.display = popup.style.display ? '' : 'none';
+    }
+
+</script>
+
+</body>
+
+</html>

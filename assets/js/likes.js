@@ -15,12 +15,12 @@ $(document).ready(function () {
                 user_id: user_id,
             }, success: function (response) {
                 likescounter.show();
-                button.addClass('.unlike-btn');
-                button.removeClass('.like-btn');
+                button.addClass('unlike-btn');
+                button.removeClass('like-btn');
                 counter++;
                 likescounter.text(counter++);
-                button.find('.fa-thumbs-o-up').css('color', 'red').addClass('.fa-thumbs-up');
-                button.find('.fa-thumbs-up').removeClass('.fa-thumbs-o-up');
+                button.find('.fa-thumbs-o-up').addClass('fa-thumbs-up').css('color', 'red');
+                button.find('.fa-thumbs-up').removeClass('fa-thumbs-o-up');
 
                 // location.reload();
 
@@ -47,16 +47,16 @@ $(document).ready(function () {
                 user_id: user_id,
             }, success: function (response) {
                 likescounter.show();
-                button.addClass('.like-btn');
-                button.removeClass('.unlike-btn');
+                button.addClass('like-btn');
+                button.removeClass('unlike-btn');
                 counter--;
                 if (counter === 0) {
                     likescounter.hide();
                 } else {
                     likescounter.text(counter--);
                 }
-                button.find('.fa-thumbs-up').css('color', '#007bff').addClass('.fa-thumbs-o-up');
-                button.find('.fa-thumbs-o-up').removeClass('.fa-thumbs-up');
+                button.find('.fa-thumbs-up').addClass('fa-thumbs-o-up').css('color', '#007bff');
+                button.find('.fa-thumbs-o-up').removeClass('fa-thumbs-up');
 
                 console.log(response);
             }

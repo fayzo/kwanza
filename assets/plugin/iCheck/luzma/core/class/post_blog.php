@@ -1,4 +1,4 @@
-  <?php }else if(!empty($tweet['blog_retweet_Msg']) == $tweet["retweet_blog_id"] || $tweet["retweet_blog_id"] > 0 ){ ?> 
+  <?php } else if(!empty($tweet['blog_retweet_Msg']) == $tweet["retweet_blog_id"] || $tweet["retweet_blog_id"] > 0 ){ ?> 
                                     
                                     <span class="t-show-banner">
                                           <div class="t-show-banner-inner">
