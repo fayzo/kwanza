@@ -10,9 +10,9 @@
 
   <?php if ($jobs['business_id'] == $user['user_id'] && $_SESSION['key'] == $jobs['business_id']) { ?>
              <div class="row">
-              <div class="col-md-6">
 
                 <?php if($jobs['turn']  === 'on') { ?>
+              <div class="col-md-6">
                        <h3 class="text-center"><i> Jobs Turn <span class="bg-success rounded text-white px-1">On</span></i></h3>
                       <table class="table table-striped table-bordered table-hover table-jobsFetchOn" >
                         <thead class="main-active">
@@ -50,12 +50,10 @@
 
               <?php } ?>
           </div><!-- row -->
-        </div><!-- card-body -->
-       </div><!-- card -->
 
     <?php }else{ ?>  
 
-     <div class="card mt-3 col-8 offset-2 mb-4">
+     <div class="card mt-3 col-12">
        <div class="card-body">
 
           <h4 class="card-title">Job Title: </h4>
@@ -164,6 +162,9 @@
       </div>
   </div>
     <?php } ?>
+
+    </div><!-- card-body -->
+</div><!-- card -->
 
 
              <div id="Postjobs" class="modal fade">

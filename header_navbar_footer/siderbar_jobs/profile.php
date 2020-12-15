@@ -2562,7 +2562,7 @@
                 <div class="row">
                     <div class="col-md-12 mb-3">
                         <!-- whoTofollow: user whoTofollow style 1 -->
-                        <?php $follow->whoTofollow($user['user_id'],$user['user_id'])?>
+                        <?php $follow->whoTofollow($user_id,$user['user_id'])?>
                     </div>
                     <!-- /. col -->
 
